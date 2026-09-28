@@ -1,0 +1,89 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import WhatsAppFAB from '../components/layout/WhatsAppFAB.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  activePath?: string;
+}
+
+const {
+  title = 'Incluxia Bolivia | Trabajos para Personas con Pérdida Auditiva e Hipoacusia',
+  description = 'Plataforma boliviana de trabajo y oportunidades laborales para personas con pérdida auditiva o hipoacusia. Postulaciones y entrevistas 100% por chat o WhatsApp, sin llamadas telefónicas.',
+  activePath = '/',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#212051" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/images/logo.png" />
+
+    <!-- Google Fonts: Montserrat (Headings) & Poppins (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Astro View Transitions / Client-side Router -->
+    <ClientRouter />
+  </head>
+  <body>
+    <!-- Skip to content for accessibility -->
+    <a href="#main-content" class="skip-to-content">Saltar al contenido principal</a>
+
+    <!-- Top Navigation Header -->
+    <Header activePath={activePath} />
+
+    <!-- Main Content Canvas -->
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <!-- Global Footer -->
+    <Footer />
+
+    <!-- Accessible Floating Action Button -->
+    <WhatsAppFAB />
+  </body>
+</html>
+
+<style is:global>
+  .skip-to-content {
+    position: absolute;
+    top: -100px;
+    left: 1rem;
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+    padding: 0.75rem 1.25rem;
+    z-index: 1000;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    transition: top var(--transition-fast);
+  }
+
+  .skip-to-content:focus {
+    top: 1rem;
+    outline: 3px solid var(--color-accent);
+  }
+</style>

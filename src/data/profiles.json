@@ -1,0 +1,236 @@
+[
+  {
+    "id": "1",
+    "slug": "valeria-morales-teran",
+    "name": "Valeria Morales Terán",
+    "role": "Diseñadora Gráfica",
+    "city": "Cochabamba",
+    "photo": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=600&q=80",
+    "tagline": "Creativa visual con 4 años en diseño editorial y branding.",
+    "availability": "Disponible",
+    "about": "Diseñadora gráfica especializada en identidad visual, diseño editorial y piezas digitales. Me comunico por chat escrito y WhatsApp con fluidez. Trabajo con precisión tipográfica y atención al detalle cromático. Tengo experiencia colaborando con equipos de marketing en entornos 100% escritos.",
+    "skills": ["Adobe Illustrator", "Adobe Photoshop", "InDesign", "Figma", "Canva Pro", "Branding", "Tipografía", "Diseño Editorial"],
+    "languages": ["Español escrito (nativo)", "LSB (básico)", "Inglés técnico (lectura)"],
+    "experience": [
+      {
+        "company": "Agencia Creativa Nodo",
+        "role": "Diseñadora Gráfica Jr.",
+        "period": "2022 – 2024",
+        "highlights": [
+          "Diseñé identidades visuales para 12 marcas locales.",
+          "Coordiné entregas con clientes vía chat y correo electrónico.",
+          "Reduje tiempos de revisión con flujos documentados en Notion."
+        ]
+      },
+      {
+        "company": "Freelance",
+        "role": "Diseñadora Independiente",
+        "period": "2021 – 2022",
+        "highlights": [
+          "Creé más de 40 piezas gráficas para redes sociales y eventos.",
+          "Gestión de proyectos íntegramente por WhatsApp y formularios."
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "Universidad Mayor de San Simón (UMSS)",
+        "degree": "Licenciatura en Diseño Gráfico",
+        "year": "2021"
+      }
+    ],
+    "contact": {
+      "whatsapp": "59170000001",
+      "email": "valeria.morales@example.com"
+    }
+  },
+  {
+    "id": "2",
+    "slug": "javier-mercado-rocha",
+    "name": "Javier Mercado Rocha",
+    "role": "Auxiliar Contable",
+    "city": "La Paz",
+    "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
+    "tagline": "Contador con habilidades en ERP y conciliación bancaria.",
+    "availability": "Disponible",
+    "about": "Profesional contable con experiencia en manejo de software ERP, conciliaciones bancarias y archivo de comprobantes fiscales. Me adapto fácilmente a entornos de trabajo escritos y digitales. Tengo carnet de discapacidad vigente (SIPRUNPCD) y cuento con referencias laborales verificables.",
+    "skills": ["Microsoft Excel", "SAP Básico", "Conciliación Bancaria", "Archivo Digital", "QuickBooks", "Facturación Electrónica", "Tablas Dinámicas"],
+    "languages": ["Español escrito (nativo)", "LSB (intermedio)"],
+    "experience": [
+      {
+        "company": "Farmacorp S.A.",
+        "role": "Auxiliar de Facturación",
+        "period": "2023 – 2024",
+        "highlights": [
+          "Registré y verifiqué facturas en SAP para sucursales de Cochabamba.",
+          "Concilié reportes de cierre de caja con margen de error cero durante 6 meses.",
+          "Coordiné con RRHH íntegramente por WhatsApp y correo."
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "Universidad Privada Boliviana (UPB)",
+        "degree": "Técnico Superior en Contabilidad",
+        "year": "2022"
+      }
+    ],
+    "contact": {
+      "whatsapp": "59171000002",
+      "email": "javier.mercado@example.com"
+    }
+  },
+  {
+    "id": "3",
+    "slug": "camila-rojas-claure",
+    "name": "Camila Rojas Claure",
+    "role": "Digitadora de Datos y Soporte TI",
+    "city": "Santa Cruz",
+    "photo": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80",
+    "tagline": "Técnica en sistemas con velocidad de digitación de 75 PPM.",
+    "availability": "Disponible",
+    "about": "Técnica en sistemas especializada en soporte de primer nivel, digitación de datos y gestión de tickets escritos. Disponible para trabajo remoto o híbrido. Me comunico de forma precisa y empática por WhatsApp, Slack y correo. Velocidad de digitación certificada de 75 palabras por minuto con 98% de precisión.",
+    "skills": ["Soporte Técnico Nivel 1", "Digitación Avanzada", "Gestión de Tickets", "Slack", "Google Workspace", "Windows Server Básico", "Atención al Cliente Escrita"],
+    "languages": ["Español escrito (nativo)", "LSB (básico)", "Inglés básico (escrito)"],
+    "experience": [
+      {
+        "company": "EMTech Soluciones Digitales",
+        "role": "Auxiliar de Soporte TI (Remoto)",
+        "period": "2023 – 2025",
+        "highlights": [
+          "Atendí más de 200 tickets mensuales con tasa de resolución del 87% en primer nivel.",
+          "Documenté procedimientos de soporte en base de conocimiento interna.",
+          "Cero incidencias de comunicación en 18 meses de trabajo remoto."
+        ]
+      },
+      {
+        "company": "DataEntry Bolivia",
+        "role": "Digitadora Senior",
+        "period": "2021 – 2023",
+        "highlights": [
+          "Digité bases de datos de 10,000+ registros con precisión del 99%.",
+          "Capacité a 3 nuevas digitadoras en protocolo de calidad."
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "Instituto Técnico INFOCAL",
+        "degree": "Técnico Medio en Sistemas Informáticos",
+        "year": "2020"
+      }
+    ],
+    "contact": {
+      "whatsapp": "59172000003",
+      "email": "camila.rojas@example.com"
+    }
+  },
+  {
+    "id": "4",
+    "slug": "diego-siles-montano",
+    "name": "Diego Siles Montaño",
+    "role": "Operador de Preprensa",
+    "city": "Cochabamba",
+    "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80",
+    "tagline": "Especialista en artes gráficas con dominio de Adobe Creative Suite.",
+    "availability": "Buscando empleo",
+    "about": "Operador de preprensa con sólido manejo de flujos de impresión offset y gran formato. Experto en corrección de color CMYK, imposición de páginas y preparación de archivos para CTP. Trabajo en entornos visuales de taller con comunicación escrita mediante órdenes de trabajo y señalética.",
+    "skills": ["Adobe Illustrator", "Adobe Photoshop", "InDesign", "Preprensa Offset", "Control de Color CMYK", "Imposición de Páginas", "CTP", "Gran Formato"],
+    "languages": ["Español escrito (nativo)", "LSB (avanzado)"],
+    "experience": [
+      {
+        "company": "Conecta Impresores Offset & Digital",
+        "role": "Operador de Preprensa",
+        "period": "2020 – 2025",
+        "highlights": [
+          "Preparé archivos de más de 500 trabajos de impresión sin errores en placas CTP.",
+          "Reduje devoluciones por error de color en un 30% mediante fichas técnicas estandarizadas.",
+          "Coordiné con diseñadores vía correo y sistema de tickets internos."
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "Escuela Superior de Bellas Artes",
+        "degree": "Técnico en Artes Gráficas",
+        "year": "2019"
+      }
+    ],
+    "contact": {
+      "whatsapp": "59173000004",
+      "email": "diego.siles@example.com"
+    }
+  },
+  {
+    "id": "5",
+    "slug": "lucia-salazar-pinto",
+    "name": "Lucía Salazar Pinto",
+    "role": "Asistente Administrativa",
+    "city": "La Paz",
+    "photo": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80",
+    "tagline": "Organizada y precisa, 3 años gestionando documentación y agendas ejecutivas.",
+    "availability": "Disponible",
+    "about": "Asistente administrativa con experiencia en gestión documental, coordinación de agendas y atención de correspondencia interna. Me desenvuelvo con eficiencia en entornos de trabajo escritos y digitales. Carnet de Discapacidad SIPRUNPCD vigente.",
+    "skills": ["Microsoft Office", "Gestión Documental", "Organización", "Atención Escrita", "Google Workspace", "Archivo Digital"],
+    "languages": ["Español escrito (nativo)", "LSB (básico)"],
+    "experience": [
+      {
+        "company": "Grupo Empresarial Inti",
+        "role": "Asistente de Gerencia",
+        "period": "2022 – 2025",
+        "highlights": [
+          "Gestioné la agenda de 3 directivos mediante herramientas digitales sin llamadas.",
+          "Redacté y archivé más de 500 documentos internos con cero observaciones.",
+          "Coordiné reuniones y envío de comunicados vía correo y chat corporativo."
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "Universidad Mayor de San Andrés (UMSA)",
+        "degree": "Técnico Superior en Administración de Empresas",
+        "year": "2021"
+      }
+    ],
+    "contact": {
+      "whatsapp": "59174000005",
+      "email": "lucia.salazar@example.com"
+    }
+  },
+  {
+    "id": "6",
+    "slug": "mateo-penaranda-alarcon",
+    "name": "Mateo Peñaranda Alarcón",
+    "role": "Desarrollador Web Junior",
+    "city": "Cochabamba",
+    "photo": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80",
+    "tagline": "Desarrollador front-end con dominio de React y diseño responsivo.",
+    "availability": "Disponible",
+    "about": "Desarrollador web junior especializado en interfaces con React y CSS moderno. Trabajo de forma completamente remota y gestiono proyectos vía GitHub, Slack y Notion. Me comunico con precisión por escrito y entrego código limpio y documentado.",
+    "skills": ["React", "JavaScript", "HTML & CSS", "Git & GitHub", "Figma", "Tailwind CSS", "Node.js Básico"],
+    "languages": ["Español escrito (nativo)", "LSB (intermedio)", "Inglés técnico (lectura/escritura)"],
+    "experience": [
+      {
+        "company": "Freelance / Proyectos propios",
+        "role": "Desarrollador Front-End",
+        "period": "2023 – 2025",
+        "highlights": [
+          "Desarrollé 6 sitios web completos para clientes bolivianos gestionados por chat y email.",
+          "Implementé diseños responsivos con puntuaciones Lighthouse superiores a 90.",
+          "Colaboré en equipo remoto usando GitHub Pull Requests y revisiones escritas."
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "Instituto Tecnológico Boliviano (ITB)",
+        "degree": "Técnico en Desarrollo de Software",
+        "year": "2023"
+      }
+    ],
+    "contact": {
+      "whatsapp": "59175000006",
+      "email": "mateo.penaranda@example.com"
+    }
+  }
+]

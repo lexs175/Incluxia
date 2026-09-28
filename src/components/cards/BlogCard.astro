@@ -1,0 +1,180 @@
+---
+import Badge from "../ui/Badge.astro";
+
+interface Props {
+  article: {
+    id: string;
+    slug: string;
+    title: string;
+    category: string;
+    date: string;
+    readTime?: string;
+    image: string;
+    summary: string;
+  };
+}
+
+const { article } = Astro.props;
+---
+
+<article class="blog-card">
+  <div class="blog-image-wrapper">
+    <img
+      src={article.image}
+      alt={article.title}
+      class="blog-img"
+      loading="lazy"
+    />
+    <div class="blog-badge-wrapper">
+      <Badge variant="cyan">{article.category}</Badge>
+    </div>
+  </div>
+
+  <div class="blog-body">
+    <div class="blog-meta">
+      <span>{article.date}</span>
+      {article.readTime && <span>• {article.readTime}</span>}
+    </div>
+
+    <h3 class="blog-title">
+      <a href={`/blog/${article.slug}`}>{article.title}</a>
+    </h3>
+
+    <p class="blog-summary">{article.summary}</p>
+
+    <a href={`/blog/${article.slug}`} class="blog-read-more">
+      <span>Leer artículo completo</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M5 12h14"></path>
+        <path d="m12 5 7 7-7 7"></path>
+      </svg>
+    </a>
+  </div>
+</article>
+
+<style>
+  .blog-card {
+    background: var(--color-bg-card);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: none;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    transition:
+      transform var(--transition-normal),
+      border-color var(--transition-normal);
+  }
+
+  .blog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: none;
+    border-color: rgba(var(--color-primary-rgb), 0.25);
+  }
+
+  .blog-image-wrapper {
+    position: relative;
+    height: 190px;
+    overflow: hidden;
+  }
+
+  .blog-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .blog-card:hover .blog-img {
+    transform: scale(1.06);
+  }
+
+  .blog-badge-wrapper {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+  }
+
+  .blog-body {
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .blog-meta {
+    font-size: var(--text-xs);
+    color: var(--color-text-light);
+    font-weight: 500;
+    margin-bottom: var(--space-2);
+  }
+
+  .blog-title {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: var(--space-3);
+  }
+
+  .blog-title a {
+    color: var(--color-primary);
+    transition: color var(--transition-fast);
+  }
+
+  .blog-title a:hover {
+    color: var(--color-primary-light);
+  }
+
+  .blog-summary {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: var(--space-6);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .blog-read-more {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    transition: all var(--transition-fast);
+  }
+
+  .blog-read-more:hover {
+    color: var(--color-primary-light);
+    gap: 0.75rem;
+  }
+
+  @media (max-width: 479px) {
+    .blog-image-wrapper {
+      height: 150px;
+    }
+    .blog-body {
+      padding: var(--space-4);
+    }
+    .blog-title {
+      font-size: var(--text-base);
+    }
+  }
+</style>

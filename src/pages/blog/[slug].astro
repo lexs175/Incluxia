@@ -1,0 +1,699 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Badge from '../../components/ui/Badge.astro';
+import Button from '../../components/ui/Button.astro';
+import articlesData from '../../data/articles.json';
+
+export function getStaticPaths() {
+  return articlesData.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const otherArticles = articlesData.filter((a) => a.id !== article.id).slice(0, 3);
+const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`${article.title} - ${Astro.url}`)}`;
+---
+
+<Layout
+  title={`${article.title} | Blog Incluxia Bolivia`}
+  description={article.summary}
+  activePath="/blog"
+>
+  <div class="article-page-layout">
+    <div class="container article-container">
+      <!-- 2-Column Grid: Main Article Content + Right Sidebar -->
+      <div class="article-grid">
+        
+        <!-- Left: Main Article Column -->
+        <main class="article-main-column">
+          <!-- Article Header directly on page -->
+          <header class="article-intro-header">
+            <div class="badge-wrapper">
+              <span class="custom-category-badge">{article.category}</span>
+            </div>
+            
+            <h1 class="article-headline">{article.title}</h1>
+
+            <div class="article-byline">
+              <span class="byline-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                {article.date}
+              </span>
+              <span class="byline-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                {article.author}
+              </span>
+            </div>
+          </header>
+
+          <!-- Featured Header Image -->
+          <div class="featured-image-box">
+            <img src={article.image} alt={article.title} class="featured-img" />
+          </div>
+
+          <!-- Video Showcase with LSB Interpreter Box -->
+          <div class="video-showcase-box">
+            <!-- Background Image Preview with Overlay -->
+            <div class="video-preview-bg">
+              <img src={article.image} alt="Vista previa video" class="video-backdrop-img" />
+              <div class="video-dark-overlay"></div>
+            </div>
+
+            <!-- Central Play Button -->
+            <div class="play-btn-wrapper">
+              <button class="center-play-button" aria-label="Reproducir video con intérprete LSB">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="play-icon">
+                  <polygon points="6 4 20 12 6 20 6 4"></polygon>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Subtitle Quote in Bottom Left -->
+            <div class="video-quote-overlay">
+              <p class="quote-caption">
+                "{article.summary}"
+              </p>
+            </div>
+
+            <!-- LSB Interpreter Inset Box in Bottom Right -->
+            <div class="lsb-interpreter-box">
+              <img
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80"
+                alt="Intérprete de Lengua de Señas Boliviana (LSB)"
+                class="interpreter-photo"
+              />
+              <span class="lsb-badge">INTÉRPRETE LSB</span>
+            </div>
+          </div>
+
+          <!-- Article Prose Paragraphs -->
+          <div class="article-content-body">
+            {article.content.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+          </div>
+
+          <!-- Social Share Bottom Section -->
+          <div class="article-share-section">
+            <span class="share-headline">Compartir este artículo:</span>
+            <Button
+              href={shareWhatsAppUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="whatsapp"
+              size="sm"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.014 8.00613C6.12827 7.1024 7.30277 5.87414 8.23488 6.01043L8.23339 6.00894C9.14051 6.18132 9.85859 7.74261 10.2635 8.44465C10.5504 8.95402 10.3641 9.4701 10.0965 9.68787C9.7355 9.97883 9.17099 10.3803 9.28943 10.7834C9.5 11.5 12 14 13.2296 14.7107C13.695 14.9797 14.0325 14.2702 14.3207 13.9067C14.5301 13.6271 15.0466 13.46 15.5548 13.736C16.3138 14.178 17.0288 14.6917 17.69 15.27C18.0202 15.546 18.0977 15.9539 17.8689 16.385C17.4659 17.1443 16.3003 18.1456 15.4542 17.9421C13.9764 17.5868 8 15.27 6.08033 8.55801C5.97237 8.24048 5.99955 8.12044 6.014 8.00613Z" fill="currentColor"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 23C10.7764 23 10.0994 22.8687 9 22.5L6.89443 23.5528C5.56462 24.2177 4 23.2507 4 21.7639V19.5C1.84655 17.492 1 15.1767 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23ZM6 18.6303L5.36395 18.0372C3.69087 16.4772 3 14.7331 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C11.0143 21 10.552 20.911 9.63595 20.6038L8.84847 20.3397L6 21.7639V18.6303Z" fill="currentColor"/>
+              </svg>
+              <span>Compartir en WhatsApp</span>
+            </Button>
+          </div>
+        </main>
+
+        <!-- Right: Modern Sidebar -->
+        <aside class="article-sidebar">
+          <!-- Card 1: SIPRUNPCD Dark CTA -->
+          <div class="sidebar-siprunpcd-card">
+            <h3 class="siprunpcd-title">Carnet de Discapacidad</h3>
+            <p class="siprunpcd-desc">
+              Conoce los pasos sencillos para tramitar tu carnet oficial y acceder a trabajos protegidos por ley en Bolivia.
+            </p>
+            <a href="/nosotros#tramites" class="siprunpcd-btn">
+              Ver Pasos
+            </a>
+          </div>
+
+          <!-- Card 2: Recomendados -->
+          <div class="sidebar-recomended-section">
+            <h3 class="recommended-header">Recomendados</h3>
+            <div class="recommended-list">
+              {otherArticles.map((rec) => (
+                <a href={`/blog/${rec.slug}`} class="recommended-card-item">
+                  <img src={rec.image} alt={rec.title} class="rec-thumbnail-img" />
+                  <div class="rec-text-wrap">
+                    <h4 class="rec-item-title">{rec.title}</h4>
+                    <span class="rec-item-cat">{rec.category}</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <!-- Card 3: Newsletter Box -->
+          <div class="sidebar-newsletter-box">
+            <div class="newsletter-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00C2D1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </div>
+            <h4 class="newsletter-title">Boletín Informativo</h4>
+            <p class="newsletter-desc">
+              Recibe consejos útiles y nuevos trabajos cada mes.
+            </p>
+            <form class="newsletter-form-inner" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte al boletín de Incluxia!');">
+              <input
+                type="email"
+                required
+                placeholder="Tu correo electrónico"
+                class="newsletter-input"
+              />
+              <button type="submit" class="newsletter-submit-btn">
+                Suscribirse
+              </button>
+            </form>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .article-page-layout {
+    background-color: var(--color-white);
+    padding-top: calc(90px + var(--space-8));
+    padding-bottom: var(--space-16);
+    min-height: 100vh;
+  }
+
+  .article-container {
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding-inline: var(--container-padding);
+  }
+
+  /* 2-Column Main Layout */
+  .article-grid {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 3.5rem;
+    align-items: start;
+  }
+
+  /* Left Main Column */
+  .article-main-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Article Intro Header */
+  .article-intro-header {
+    margin-bottom: 2rem;
+  }
+
+  .custom-category-badge {
+    display: inline-block;
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .article-headline {
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    line-height: 1.22;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.25rem 0;
+  }
+
+  .article-byline {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .byline-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  /* Featured Hero Image */
+  .featured-image-box {
+    width: 100%;
+    height: 400px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  }
+
+  .featured-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Video Showcase with LSB Inset */
+  .video-showcase-box {
+    position: relative;
+    width: 100%;
+    height: 380px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+    background-color: #0F172A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .video-preview-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .video-backdrop-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.65) blur(1px);
+  }
+
+  .video-dark-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.2) 0%, rgba(15, 23, 42, 0.85) 100%);
+  }
+
+  /* Center Play Button */
+  .play-btn-wrapper {
+    position: relative;
+    z-index: 5;
+  }
+
+  .center-play-button {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 30px rgba(var(--color-accent-rgb), 0.6);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .center-play-button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 40px rgba(var(--color-accent-rgb), 0.9);
+  }
+
+  .play-icon {
+    margin-left: 3px;
+  }
+
+  /* Bottom Left Quote Caption */
+  .video-quote-overlay {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.5rem;
+    max-width: 55%;
+    z-index: 5;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--color-accent);
+  }
+
+  .quote-caption {
+    color: var(--color-text-inverse);
+    font-size: 0.825rem;
+    line-height: 1.45;
+    margin: 0;
+    font-style: italic;
+  }
+
+  /* Bottom Right LSB Interpreter Box */
+  .lsb-interpreter-box {
+    position: absolute;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    width: 140px;
+    height: 120px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 2px solid var(--color-accent);
+    z-index: 5;
+    background: #000000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  }
+
+  .interpreter-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .lsb-badge {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    font-size: 0.625rem;
+    font-weight: 800;
+    text-align: center;
+    padding: 0.2rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* Article Content Body */
+  .article-content-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    color: var(--color-text-main);
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+
+  .article-content-body p {
+    margin: 0;
+  }
+
+  /* Share Section */
+  .article-share-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 2rem;
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--color-border);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .share-headline {
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  /* ==========================================================
+     RIGHT SIDEBAR CARDS
+     ========================================================== */
+  .article-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  /* Card 1: SIPRUNPCD Dark Card */
+  .sidebar-siprunpcd-card {
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    border-radius: var(--radius-sm);
+    padding: 1.75rem;
+    box-shadow: 0 4px 20px rgba(var(--color-primary-rgb), 0.12);
+  }
+
+  .siprunpcd-title {
+    color: var(--color-text-inverse);
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 0.85rem 0;
+    line-height: 1.3;
+  }
+
+  .siprunpcd-desc {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.875rem;
+    line-height: 1.55;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .siprunpcd-btn {
+    display: block;
+    width: 100%;
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .siprunpcd-btn:hover {
+    background-color: var(--color-accent-dark);
+    transform: translateY(-2px);
+  }
+
+  /* Card 2: Recommended Section */
+  .sidebar-recomended-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .recommended-header {
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin: 0 0 1.25rem 0;
+  }
+
+  .recommended-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .recommended-card-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+  }
+
+  .recommended-card-item:hover {
+    transform: translateX(4px);
+  }
+
+  .rec-thumbnail-img {
+    width: 68px;
+    height: 68px;
+    border-radius: var(--radius-sm);
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .rec-text-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .rec-item-title {
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0;
+    transition: color 0.2s ease;
+  }
+
+  .recommended-card-item:hover .rec-item-title {
+    color: var(--color-primary-light);
+  }
+
+  .rec-item-cat {
+    color: var(--color-text-muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* Card 3: Newsletter Box */
+  .sidebar-newsletter-box {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 1.75rem;
+  }
+
+  .newsletter-icon-wrap {
+    margin-bottom: 0.75rem;
+  }
+
+  .newsletter-title {
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .newsletter-desc {
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0 0 1.25rem 0;
+  }
+
+  .newsletter-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius-sm);
+    border: 1.5px solid var(--color-border-hover);
+    font-size: 0.9rem;
+    color: var(--color-text-main);
+    background-color: var(--color-white);
+    margin-bottom: 0.85rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .newsletter-input:focus {
+    border-color: var(--color-primary);
+  }
+
+  .newsletter-submit-btn {
+    width: 100%;
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .newsletter-submit-btn:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-2px);
+  }
+
+  /* ==========================================================
+     RESPONSIVE BREAKPOINTS (ESTÁNDAR DEL PROYECTO)
+     - Tablet: max-width: 1024px
+     - Mobile Landscape: max-width: 767px
+     - Mobile Portrait: max-width: 479px (base 240px)
+     ========================================================== */
+
+  /* 1. Tablet Tier (hasta 1024px) */
+  @media (max-width: 1024px) {
+    .article-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .article-sidebar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .sidebar-newsletter-box {
+      grid-column: span 2;
+    }
+  }
+
+  /* 2. Mobile Landscape Tier (hasta 767px) */
+  @media (max-width: 767px) {
+    .article-page-layout {
+      padding-top: calc(90px + var(--space-6));
+      padding-bottom: var(--space-10);
+    }
+    .article-sidebar {
+      grid-template-columns: 1fr;
+    }
+    .sidebar-newsletter-box {
+      grid-column: span 1;
+    }
+    .featured-image-box {
+      height: 280px;
+    }
+    .video-showcase-box {
+      height: 280px;
+    }
+    .video-quote-overlay {
+      max-width: 60%;
+      bottom: 0.75rem;
+      left: 0.75rem;
+    }
+    .lsb-interpreter-box {
+      width: 110px;
+      height: 95px;
+      bottom: 0.75rem;
+      right: 0.75rem;
+    }
+  }
+
+  /* 3. Mobile Portrait Tier (hasta 479px - base 240px) */
+  @media (max-width: 479px) {
+    .article-page-layout {
+      padding-top: calc(90px + var(--space-4));
+      padding-bottom: var(--space-8);
+    }
+    .article-byline {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.4rem;
+    }
+    .featured-image-box {
+      height: 200px;
+      border-radius: 10px;
+    }
+    .video-showcase-box {
+      height: 240px;
+      border-radius: 10px;
+    }
+    .video-quote-overlay {
+      display: none; /* Hide quote on tiny screen for clean UI */
+    }
+    .lsb-interpreter-box {
+      width: 90px;
+      height: 80px;
+    }
+    .article-content-body {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+  }
+</style>

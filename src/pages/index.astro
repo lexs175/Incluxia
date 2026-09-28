@@ -1,0 +1,1014 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/ui/Button.astro";
+import Badge from "../components/ui/Badge.astro";
+import JobCard from "../components/cards/JobCard.astro";
+import StoryCard from "../components/cards/StoryCard.astro";
+import BlogCard from "../components/cards/BlogCard.astro";
+
+import jobsData from "../data/jobs.json";
+import storiesData from "../data/stories.json";
+import articlesData from "../data/articles.json";
+
+const featuredJobs = jobsData.slice(0, 3);
+const featuredStories = storiesData.slice(0, 3);
+const featuredArticles = articlesData.slice(0, 3);
+---
+
+<Layout
+  title="Incluxia Bolivia | Trabajos para Personas con Hipoacusia"
+  description="Encuentra ofertas de trabajo reales en Bolivia con comunicación 100% por chat o WhatsApp, sin llamadas telefónicas sorpresa. Cumplimiento de la Ley 977."
+  activePath="/"
+>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <Badge variant="cyan" class="hero-badge">
+          Trabajo Sin Barreras · Bolivia
+        </Badge>
+
+        <h1 class="hero-title">
+          Trabajos para personas con hipoacusia en <span
+            class="highlight-text">Bolivia</span
+          >
+        </h1>
+
+        <p class="hero-subtitle">
+          Basta de llamadas telefónicas que descartan tu talento.
+          Accede a ofertas de trabajo reales con comunicación <strong
+            >100% por chat y WhatsApp</strong
+          >, tareas claras y trato respetuoso.
+        </p>
+
+        <div class="hero-cta-group">
+          <Button href="/empleos" variant="accent" size="lg">
+            <span>Ver Ofertas de Trabajo</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </Button>
+
+          <Button href="#formulario-empresas" variant="outline-white" size="lg">
+            <span>Publicar un Trabajo</span>
+          </Button>
+        </div>
+
+        <!-- Trust Badges with Bolivian Real Data -->
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-num">100%</span>
+            <span class="stat-label">Comunicación por Chat</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num">Ley 977</span>
+            <span class="stat-label">Cuota 2% y 4% Bolivia</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num">0</span>
+            <span class="stat-label">Llamadas sorpresa</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual Card -->
+      <div class="hero-visual">
+        <div class="hero-visual-card">
+          <img
+            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80"
+            alt="Profesional con hipoacusia desempeñándose con concentración y precisión en Bolivia"
+            class="hero-img"
+          />
+          <div class="hero-float-badge">
+            <div class="badge-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <div>
+              <p class="float-title">Ajustes Razonables</p>
+              <p class="float-subtitle">Sin llamadas de audio</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Search Bar Section -->
+  <section class="search-bar-section">
+    <div class="container">
+      <form action="/empleos" method="GET" class="search-bar-form">
+        <div class="search-input-group">
+          <svg
+            class="search-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input
+            type="text"
+            name="q"
+            placeholder="Puesto requerido, palabra clave o empresa..."
+            class="search-input"
+            aria-label="Buscar empleo por palabra clave"
+          />
+        </div>
+
+        <div class="search-select-group">
+          <svg
+            class="search-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <select
+            name="ciudad"
+            class="search-select"
+            aria-label="Filtrar por ciudad en Bolivia"
+          >
+            <option value="">Toda Bolivia</option>
+            <option value="Cochabamba">Cochabamba</option>
+            <option value="La Paz">La Paz</option>
+            <option value="Santa Cruz">Santa Cruz</option>
+          </select>
+        </div>
+
+        <Button type="submit" variant="primary" class="search-btn">
+          <span>Buscar Vacantes</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </Button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Featured Jobs Section -->
+  <section class="section featured-jobs-section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <Badge variant="navy">Ofertas Verificadas</Badge>
+          <h2 class="section-title">Trabajos Disponibles</h2>
+          <p class="section-subtitle">
+            Puestos de trabajo con procesos de selección 100% por chat y comunicación escrita garantizada.
+          </p>
+        </div>
+        <a href="/empleos" class="view-all-link">
+          <span>Ver todas las ofertas</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+
+      <div class="jobs-grid">
+        {featuredJobs.map((job) => <JobCard job={job} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Enterprise Lead Form Section -->
+  <section class="section enterprise-section" id="formulario-empresas">
+    <div class="container enterprise-grid">
+      <div class="enterprise-info">
+        <Badge variant="cyan">Para Empresas y Contratadores</Badge>
+        <h2 class="enterprise-title">
+          ¿Tu empresa busca personas responsables y cumplir la Ley 977?
+        </h2>
+        <p class="enterprise-desc">
+          Te conectamos con personas preparadas y con alto nivel de concentración. Cumple la cuota obligatoria de la ley (<strong
+            >2% en empresas privadas y 4% en el sector público</strong
+          >) de forma sencilla, con comunicación por chat y tareas bien definidas.
+        </p>
+
+        <ul class="enterprise-benefits">
+          <li>
+            <div class="benefit-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <span
+              >Cumplimiento garantizado de las cuotas de inserción laboral (Ley N° 223 y Ley N° 977).</span
+            >
+          </li>
+          <li>
+            <div class="benefit-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <span
+              >Trabajo ordenado con tareas por escrito y cero llamadas innecesarias.</span
+            >
+          </li>
+          <li>
+            <div class="benefit-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <span
+              >Publicación rápida y contacto directo con el equipo de Incluxia.</span
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Enterprise Form Card -->
+      <div class="enterprise-form-card">
+        <h3 class="form-title">Publica tu oferta de trabajo</h3>
+        <p class="form-sub">
+          Llena los datos del puesto y el equipo de Incluxia te escribirá por WhatsApp para coordinar los detalles.
+        </p>
+
+        <form
+          class="company-form"
+          onsubmit="event.preventDefault(); alert('¡Gracias! Tu solicitud ha sido enviada. Te escribiremos a la brevedad por WhatsApp.');"
+        >
+          <div class="form-group">
+            <label for="companyName" class="form-label"
+              >Nombre de la Empresa o Negocio *</label
+            >
+            <input
+              type="text"
+              id="companyName"
+              required
+              placeholder="Ej. Banco Mercantil, Farmacorp, etc."
+              class="form-input"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="contactName" class="form-label"
+              >Persona de Contacto *</label
+            >
+            <input
+              type="text"
+              id="contactName"
+              required
+              placeholder="Nombre y apellido"
+              class="form-input"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="contactWhatsapp" class="form-label"
+              >WhatsApp o Correo Electrónico *</label
+            >
+            <input
+              type="text"
+              id="contactWhatsapp"
+              required
+              placeholder="+591 70000000 o rrhh@empresa.com"
+              class="form-input"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="jobRequirements" class="form-label"
+              >Puesto Disponible, Ciudad y Tareas Principales *</label
+            >
+            <textarea
+              id="jobRequirements"
+              required
+              placeholder="Describa el puesto vacante, ciudad (Cochabamba, La Paz, Santa Cruz), área laboral y adaptaciones..."
+              class="form-textarea"></textarea>
+          </div>
+
+          <Button
+            type="submit"
+            variant="primary"
+            style="width: 100%; margin-top: 1rem;"
+          >
+            <span>Enviar Oferta a Incluxia</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </Button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stories / Success Cases Section -->
+  <section class="section stories-section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <Badge variant="cyan">Testimonios Reales de Inclusión</Badge>
+          <h2 class="section-title">Talento Sin Barreras en Bolivia</h2>
+          <p class="section-subtitle">
+            Conoce a profesionales con hipoacusia que demuestran su alta productividad en tecnología, diseño y finanzas.
+          </p>
+        </div>
+        <a href="/casos-de-exito" class="view-all-link">
+          <span>Ver todas las historias</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+
+      <div class="stories-grid">
+        {featuredStories.map((story) => <StoryCard story={story} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog / Legal Resources Section -->
+  <section class="section blog-preview-section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <Badge variant="navy">Consejos y Leyes en Bolivia</Badge>
+          <h2 class="section-title">Blog y Consejos Útiles</h2>
+          <p class="section-subtitle">
+            Aprende cómo tramitar tu carnet de discapacidad, tus derechos en el trabajo y consejos prácticos para el día a día.
+          </p>
+        </div>
+        <a href="/blog" class="view-all-link">
+          <span>Ver todos los artículos</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+
+      <div class="blog-grid">
+        {featuredArticles.map((article) => <BlogCard article={article} />)}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    min-height: 850px;
+    padding-top: calc(var(--space-16) + 44px);
+    padding-bottom: var(--space-16);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-section .container {
+    width: 100%;
+  }
+
+  .hero-section::before {
+    content: "";
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(
+      circle,
+      rgba(var(--color-accent-rgb), 0.15) 0%,
+      rgba(var(--color-primary-rgb), 0) 70%
+    );
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .hero-badge {
+    width: fit-content;
+  }
+
+  .hero-title {
+    color: var(--color-text-inverse);
+    font-size: var(--text-hero);
+    line-height: 1.15;
+    font-weight: 800;
+  }
+
+  .highlight-text {
+    color: var(--color-accent);
+    position: relative;
+  }
+
+  .hero-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: var(--text-lg);
+    line-height: 1.65;
+    max-width: 580px;
+  }
+
+  .hero-subtitle strong {
+    color: var(--color-accent);
+  }
+
+  .hero-cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-2);
+  }
+
+  .hero-stats {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    padding-top: var(--space-6);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    margin-top: var(--space-4);
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-num {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 800;
+    color: var(--color-accent);
+  }
+
+  .stat-label {
+    font-size: var(--text-xs);
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 500;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 36px;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Hero Visual */
+  .hero-visual {
+    position: relative;
+  }
+
+  .hero-visual-card {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    border: 4px solid rgba(var(--color-accent-rgb), 0.2);
+  }
+
+  .hero-img {
+    width: 100%;
+    height: 440px;
+    object-fit: cover;
+  }
+
+  .hero-float-badge {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    color: var(--color-primary);
+    padding: 0.85rem 1.25rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--color-accent);
+  }
+
+  .badge-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .float-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    margin-bottom: 0;
+  }
+
+  .float-subtitle {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    margin-bottom: 0;
+  }
+
+  /* Search Bar Section */
+  .search-bar-section {
+    margin-top: -36px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .search-bar-form {
+    background: var(--color-bg-card);
+    border: 2px solid rgba(var(--color-primary-rgb), 0.1);
+    border-radius: var(--radius-sm);
+    padding: 0.85rem;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr auto;
+    gap: 0.75rem;
+    box-shadow: var(--shadow-xl);
+    align-items: center;
+  }
+
+  .search-input-group,
+  .search-select-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--color-bg);
+    border-radius: var(--radius-lg);
+  }
+
+  .search-icon {
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+
+  .search-input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-size: var(--text-sm);
+    color: var(--color-text-main);
+    outline: none;
+  }
+
+  .search-select {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-primary);
+    outline: none;
+    cursor: pointer;
+  }
+
+  .search-btn {
+    padding: 0.95rem 1.75rem;
+    height: 100%;
+  }
+
+  /* Section Headers */
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
+  }
+
+  .section-title {
+    margin-top: var(--space-2);
+    margin-bottom: 0.25rem;
+  }
+
+  .section-subtitle {
+    color: var(--color-text-muted);
+    font-size: var(--text-base);
+    margin-bottom: 0;
+  }
+
+  .view-all-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    padding-bottom: 0.25rem;
+    border-bottom: 2px solid var(--color-accent);
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+  }
+
+  .view-all-link:hover {
+    color: var(--color-primary-light);
+    border-bottom-color: var(--color-primary-light);
+    gap: 0.75rem;
+  }
+
+  /* Grids */
+  .jobs-grid,
+  .stories-grid,
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .jobs-grid > *,
+  .stories-grid > *,
+  .blog-grid > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  /* Enterprise Section */
+  .enterprise-section {
+    background-color: var(--color-bg-alt);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .enterprise-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+
+  .enterprise-title {
+    margin-top: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .enterprise-desc {
+    color: var(--color-text-muted);
+    font-size: var(--text-base);
+    line-height: 1.7;
+    margin-bottom: var(--space-6);
+  }
+
+  .enterprise-benefits {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .enterprise-benefits li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    font-size: var(--text-sm);
+    color: var(--color-text-main);
+    font-weight: 500;
+  }
+
+  .benefit-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    color: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .enterprise-form-card {
+    background: var(--color-bg-card);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-8);
+    box-shadow: none;
+  }
+
+  .form-title {
+    font-size: var(--text-xl);
+    margin-bottom: 0.25rem;
+  }
+
+  .form-sub {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-6);
+  }
+
+  /* ========================================================
+     5-TIER RESPONSIVE ADAPTATIONS
+     ======================================================== */
+
+  /* 1. Desktop Tier (>= 1440px) */
+  @media (min-width: 1440px) {
+    .jobs-grid,
+    .stories-grid,
+    .blog-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
+    }
+  }
+
+  /* 2. Laptop Tier (992px - 1439px) */
+  @media (min-width: 992px) and (max-width: 1439px) {
+    .hero-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: var(--space-8);
+    }
+    .jobs-grid,
+    .stories-grid,
+    .blog-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-5);
+    }
+    .enterprise-grid {
+      gap: var(--space-8);
+    }
+  }
+
+  /* 3. Tablet Tier (768px - 991px) */
+  @media (min-width: 768px) and (max-width: 991px) {
+    .hero-section {
+      min-height: auto;
+      padding-top: calc(var(--space-12) + 44px);
+      padding-bottom: var(--space-12);
+    }
+    .hero-grid,
+    .enterprise-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+    .hero-visual-card {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .search-bar-form {
+      grid-template-columns: 1fr 1fr;
+    }
+    .search-btn {
+      grid-column: span 2;
+    }
+    .jobs-grid,
+    .stories-grid,
+    .blog-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-6);
+    }
+    .section-header {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+  }
+
+  /* 4. Mobile Landscape Tier (480px - 767px) */
+  @media (min-width: 480px) and (max-width: 767px) {
+    .hero-section {
+      min-height: auto;
+      padding-top: calc(90px + var(--space-8));
+      padding-bottom: var(--space-12);
+    }
+    .hero-grid,
+    .enterprise-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+    .hero-cta-group {
+      flex-direction: column;
+    }
+    .hero-cta-group .btn {
+      width: 100%;
+    }
+    .search-bar-form {
+      grid-template-columns: 1fr;
+      padding: 0.75rem;
+    }
+    .jobs-grid,
+    .stories-grid,
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+    .section-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-4);
+    }
+    .hero-stats {
+      flex-wrap: wrap;
+      gap: var(--space-4);
+    }
+    .stat-divider {
+      display: none;
+    }
+  }
+
+  /* 5. Mobile Portrait Tier (240px - 479px) */
+  @media (max-width: 479px) {
+    .hero-section {
+      min-height: auto;
+      padding-top: calc(90px + var(--space-8));
+      padding-bottom: var(--space-10);
+    }
+    .hero-grid,
+    .enterprise-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+    .hero-subtitle {
+      font-size: var(--text-sm);
+    }
+    .hero-cta-group {
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    .hero-cta-group .btn {
+      width: 100%;
+    }
+    .hero-stats {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-3);
+      padding-top: var(--space-4);
+    }
+    .stat-divider {
+      display: none;
+    }
+    .hero-img {
+      height: 260px;
+    }
+    .hero-float-badge {
+      position: static;
+      margin-top: 0.75rem;
+      width: 100%;
+      box-shadow: none;
+      border-radius: var(--radius-md);
+    }
+    .search-bar-section {
+      margin-top: -20px;
+    }
+    .search-bar-form {
+      grid-template-columns: 1fr;
+      padding: 0.5rem;
+      border-radius: var(--radius-md);
+    }
+    .search-input-group,
+    .search-select-group {
+      padding: 0.6rem 0.75rem;
+    }
+    .jobs-grid,
+    .stories-grid,
+    .blog-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+    .section-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-3);
+    }
+    .enterprise-form-card {
+      padding: var(--space-5);
+    }
+  }
+</style>

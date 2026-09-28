@@ -1,0 +1,215 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Badge from '../../components/ui/Badge.astro';
+import BlogCard from '../../components/cards/BlogCard.astro';
+import articlesData from '../../data/articles.json';
+---
+
+<Layout
+  title="Blog y Guías Útiles | Incluxia Bolivia"
+  description="Artículos claros sobre leyes laborales en Bolivia, carnet de discapacidad, salud auditiva y consejos para trabajar por chat."
+  activePath="/blog"
+>
+  <!-- Hero Banner -->
+  <section class="blog-hero">
+    <div class="container">
+      <Badge variant="cyan" class="blog-badge">Guías y Consejos</Badge>
+      <h1 class="blog-hero-title">Blog y Consejos Prácticos</h1>
+      <p class="blog-hero-desc">
+        Información clara y sin rodeos sobre las leyes bolivianas, cómo sacar tu carnet de discapacidad, salud auditiva y cómo trabajar cómodamente por chat.
+      </p>
+    </div>
+  </section>
+
+  <!-- Categories and Grid -->
+  <section class="section">
+    <div class="container">
+      <div class="category-pills">
+        <button class="cat-pill active" data-cat="all">Todos los Artículos</button>
+        <button class="cat-pill" data-cat="leyes">Leyes y Derechos Bolivia</button>
+        <button class="cat-pill" data-cat="salud">Salud Auditiva</button>
+        <button class="cat-pill" data-cat="consejos">Consejos para Empresas</button>
+      </div>
+
+      <div class="blog-articles-grid" id="articlesGrid">
+        {articlesData.map((article) => (
+          <div class="article-item" data-category={article.category.toLowerCase()}>
+            <BlogCard article={article} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  function initBlogFilters() {
+    const pills = document.querySelectorAll('.cat-pill');
+    const items = document.querySelectorAll('.article-item');
+
+    pills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        pills.forEach((p) => p.classList.remove('active'));
+        pill.classList.add('active');
+
+        const cat = pill.getAttribute('data-cat') || 'all';
+
+        items.forEach((item: any) => {
+          const itemCat = item.getAttribute('data-category') || '';
+          if (cat === 'all' || itemCat.includes(cat)) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  document.addEventListener('astro:page-load', initBlogFilters);
+</script>
+
+<style>
+  .blog-hero {
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    min-height: 550px;
+    padding: calc(var(--space-16) + 40px) 0 var(--space-16) 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .blog-hero .container {
+    width: 100%;
+  }
+
+  .blog-badge {
+    margin-bottom: var(--space-4);
+  }
+
+  .blog-hero-title {
+    color: var(--color-text-inverse);
+    font-size: var(--text-5xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .blog-hero-desc {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: var(--text-lg);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .category-pills {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: var(--space-10);
+  }
+
+  .cat-pill {
+    padding: 0.6rem 1.25rem;
+    border-radius: var(--radius-full);
+    font-family: var(--font-heading);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    border: 1.5px solid var(--color-border);
+    transition: all var(--transition-fast);
+    cursor: pointer;
+  }
+
+  .cat-pill:hover,
+  .cat-pill.active {
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    border-color: var(--color-primary);
+  }
+
+  .blog-articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+
+  /* ========================================================
+     5-TIER RESPONSIVE ADAPTATIONS
+     ======================================================== */
+
+  /* 1. Desktop Tier (>= 1440px) */
+  @media (min-width: 1440px) {
+    .blog-articles-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
+    }
+  }
+
+  /* 2. Laptop Tier (992px - 1439px) */
+  @media (min-width: 992px) and (max-width: 1439px) {
+    .blog-articles-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-5);
+    }
+  }
+
+  /* 3. Tablet Tier (768px - 991px) */
+  @media (min-width: 768px) and (max-width: 991px) {
+    .blog-hero {
+      min-height: 480px;
+      padding: calc(90px + var(--space-8)) 0 var(--space-12) 0;
+    }
+    .blog-articles-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-6);
+    }
+  }
+
+  /* 4. Mobile Landscape Tier (480px - 767px) */
+  @media (min-width: 480px) and (max-width: 767px) {
+    .blog-hero {
+      min-height: 440px;
+      padding: calc(90px + var(--space-8)) 0 var(--space-10) 0;
+    }
+    .blog-articles-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+    }
+    .category-pills {
+      gap: 0.5rem;
+    }
+    .cat-pill {
+      font-size: var(--text-xs);
+      padding: 0.5rem 0.85rem;
+    }
+  }
+
+  /* 5. Mobile Portrait Tier (240px - 479px) */
+  @media (max-width: 479px) {
+    .blog-hero {
+      min-height: 400px;
+      padding: calc(90px + var(--space-8)) 0 var(--space-10) 0;
+    }
+    .blog-hero-desc {
+      font-size: var(--text-sm);
+    }
+    .category-pills {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.5rem;
+    }
+    .cat-pill {
+      width: 100%;
+      text-align: center;
+      padding: 0.6rem;
+    }
+    .blog-articles-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+  }
+</style>

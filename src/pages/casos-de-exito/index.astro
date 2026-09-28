@@ -1,0 +1,332 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Badge from '../../components/ui/Badge.astro';
+import StoryCard from '../../components/cards/StoryCard.astro';
+import Button from '../../components/ui/Button.astro';
+import storiesData from '../../data/stories.json';
+---
+
+<Layout
+  title="Historias de Éxito Laboral | Incluxia Bolivia"
+  description="Historias reales de personas con hipoacusia en Bolivia que trabajan en tecnología, diseño, administración y finanzas."
+  activePath="/casos-de-exito"
+>
+  <!-- Hero Section -->
+  <section class="stories-hero">
+    <div class="container hero-split">
+      <div>
+        <Badge variant="cyan" class="stories-badge">Historias Reales</Badge>
+        <h1 class="hero-title">Casos de Éxito en Bolivia</h1>
+        <p class="hero-desc">
+          Conoce a personas con hipoacusia que demuestran su capacidad y talento todos los días cuando las empresas se comunican por chat o mensajes y dan tareas claras.
+        </p>
+      </div>
+
+      <div class="featured-video-preview">
+        <div class="video-preview-card">
+          <img
+            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80"
+            alt="Entrevista con Luis Mendoza"
+            class="video-preview-img"
+          />
+          <div class="video-play-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+          </div>
+          <div class="video-info-tag">
+            <span>Video con Intérprete LSB y Subtítulos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <section class="section">
+    <div class="container">
+      <div class="gallery-header">
+        <h2 class="gallery-title">Galería de Testimonios y Profesionales</h2>
+        <p class="gallery-sub">Haz clic en cada historia para ver la entrevista completa y su trayectoria laboral.</p>
+      </div>
+
+      <div class="stories-grid">
+        {storiesData.map((story) => (
+          <StoryCard story={story} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Box -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-content">
+          <h2 class="cta-title">¿Quieres encontrar un trabajo como ellos?</h2>
+          <p class="cta-desc">
+            Si tienes hipoacusia y buscas trabajo o eres una empresa que quiere contratar personas responsables, en Incluxia te conectamos directo.
+          </p>
+        </div>
+        <div class="cta-actions">
+          <Button href="/empleos" variant="primary" size="lg">Ver Ofertas de Trabajo</Button>
+          <Button href="/nosotros#contacto" variant="outline" size="lg">Contactar con Incluxia</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .stories-hero {
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    min-height: 550px;
+    padding: calc(var(--space-16) + 40px) 0 var(--space-16) 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .stories-hero .container {
+    width: 100%;
+  }
+
+  .hero-split {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    width: 100%;
+    gap: var(--space-12);
+    align-items: center;
+  }
+
+  .stories-badge {
+    margin-bottom: var(--space-4);
+  }
+
+  .hero-title {
+    color: var(--color-text-inverse);
+    font-size: var(--text-5xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .hero-desc {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: var(--text-lg);
+    line-height: 1.65;
+  }
+
+  .video-preview-card {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    height: 320px;
+    box-shadow: var(--shadow-xl);
+    border: 3px solid rgba(var(--color-accent-rgb), 0.3);
+  }
+
+  .video-preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .video-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg);
+    cursor: pointer;
+    transition: transform var(--transition-normal);
+  }
+
+  .video-play-btn:hover {
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+
+  .video-info-tag {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    background: rgba(var(--color-primary-rgb), 0.9);
+    color: var(--color-accent);
+    padding: 0.4rem 0.85rem;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 600;
+  }
+
+  .gallery-header {
+    margin-bottom: var(--space-8);
+  }
+
+  .gallery-title {
+    margin-bottom: 0.25rem;
+  }
+
+  .gallery-sub {
+    color: var(--color-text-muted);
+    font-size: var(--text-base);
+  }
+
+  .stories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+
+  .cta-section {
+    padding-top: 0;
+  }
+
+  .cta-card {
+    background: var(--color-bg-alt);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-12);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-8);
+  }
+
+  .cta-title {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-2);
+  }
+
+  .cta-desc {
+    color: var(--color-text-muted);
+    font-size: var(--text-base);
+    max-width: 600px;
+    margin-bottom: 0;
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    flex-shrink: 0;
+  }
+
+  /* ========================================================
+     5-TIER RESPONSIVE ADAPTATIONS
+     ======================================================== */
+
+  /* 1. Desktop Tier (>= 1440px) */
+  @media (min-width: 1440px) {
+    .stories-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
+    }
+  }
+
+  /* 2. Laptop Tier (992px - 1439px) */
+  @media (min-width: 992px) and (max-width: 1439px) {
+    .hero-split {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: var(--space-8);
+    }
+    .stories-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-5);
+    }
+  }
+
+  /* 3. Tablet Tier (768px - 991px) */
+  @media (min-width: 768px) and (max-width: 991px) {
+    .stories-hero {
+      min-height: 480px;
+      padding: calc(90px + var(--space-8)) 0 var(--space-12) 0;
+    }
+    .hero-split {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+    .stories-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-6);
+    }
+    .cta-card {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-6);
+    }
+    .cta-actions {
+      flex-direction: row;
+      width: 100%;
+    }
+  }
+
+  /* 4. Mobile Landscape Tier (480px - 767px) */
+  @media (min-width: 480px) and (max-width: 767px) {
+    .stories-hero {
+      min-height: 440px;
+      padding: calc(90px + var(--space-8)) 0 var(--space-10) 0;
+    }
+    .hero-split {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+    .stories-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+    .cta-card {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: var(--space-6);
+    }
+    .cta-actions {
+      width: 100%;
+    }
+    .cta-actions .btn {
+      width: 100%;
+    }
+  }
+
+  /* 5. Mobile Portrait Tier (240px - 479px) */
+  @media (max-width: 479px) {
+    .stories-hero {
+      min-height: 400px;
+      padding: calc(90px + var(--space-8)) 0 var(--space-10) 0;
+    }
+    .hero-split {
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+    }
+    .hero-desc {
+      font-size: var(--text-sm);
+    }
+    .video-preview-card {
+      height: 220px;
+    }
+    .video-play-btn {
+      width: 52px;
+      height: 52px;
+    }
+    .stories-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+    .cta-card {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: var(--space-5);
+    }
+    .cta-actions {
+      width: 100%;
+    }
+    .cta-actions .btn {
+      width: 100%;
+    }
+  }
+</style>

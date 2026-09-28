@@ -1,0 +1,399 @@
+---
+import Button from "../ui/Button.astro";
+
+interface Props {
+  activePath?: string;
+}
+
+const { activePath = "/" } = Astro.props;
+
+const navLinks = [
+  { label: "Inicio", href: "/" },
+  { label: "Ofertas de Empleo", href: "/empleos" },
+  { label: "Perfiles", href: "/perfiles" },
+  { label: "Casos de Éxito", href: "/casos-de-exito" },
+  { label: "Blog & Leyes", href: "/blog" },
+  { label: "Sobre Nosotros", href: "/nosotros" },
+];
+---
+
+<header class="header">
+  <div class="container header-container">
+    <div class="navbar-capsule">
+      <!-- Logo -->
+      <a href="/" class="brand" aria-label="Incluxia Bolivia - Inicio">
+        <img
+          src="/images/logo.png"
+          alt="Incluxia Bolivia"
+          class="brand-logo"
+          onerror="this.src='/images/Logo incluxia horizontal-03.png'"
+        />
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="nav-desktop" aria-label="Navegación principal">
+        <ul class="nav-list">
+          {
+            navLinks.map((link) => {
+              const isActive =
+                activePath === link.href ||
+                (link.href !== "/" && activePath.startsWith(link.href));
+              return (
+                <li>
+                  <a
+                    href={link.href}
+                    class={`nav-link ${isActive ? "active" : ""}`}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <div class="desktop-cta-wrapper">
+          <Button href="/empleos" variant="primary" size="sm">
+            <span>Buscar trabajo</span>
+          </Button>
+        </div>
+
+        <!-- Mobile Hamburger Button -->
+        <button
+          class="mobile-toggle"
+          id="mobileMenuBtn"
+          aria-label="Abrir menú de navegación"
+          aria-expanded="false"
+        >
+          <svg
+            class="icon-open"
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg
+            class="icon-close"
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Floating Dropdown -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <nav class="nav-mobile">
+        <ul class="mobile-nav-list">
+          {
+            navLinks.map((link) => {
+              const isActive =
+                activePath === link.href ||
+                (link.href !== "/" && activePath.startsWith(link.href));
+              return (
+                <li>
+                  <a
+                    href={link.href}
+                    class={`mobile-nav-link ${isActive ? "active" : ""}`}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              );
+            })
+          }
+        </ul>
+        <div class="mobile-drawer-cta">
+          <Button href="/empleos" variant="primary" fullWidth={true}>
+            Ver ofertas de trabajo
+          </Button>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<script>
+  function initMobileMenu() {
+    const btn = document.getElementById("mobileMenuBtn");
+    const drawer = document.getElementById("mobileDrawer");
+    const mobileLinks = drawer?.querySelectorAll("a");
+
+    if (btn && drawer) {
+      btn.onclick = () => {
+        const isOpen = drawer.classList.toggle("open");
+        btn.classList.toggle("open", isOpen);
+        btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      };
+
+      mobileLinks?.forEach((link) => {
+        link.onclick = () => {
+          drawer.classList.remove("open");
+          btn.classList.remove("open");
+          btn.setAttribute("aria-expanded", "false");
+        };
+      });
+    }
+  }
+
+  document.addEventListener("astro:page-load", initMobileMenu);
+</script>
+
+<style>
+  /* 1. Structural Fixed Rail */
+  .header {
+    position: fixed;
+    top: 1rem;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    pointer-events: none;
+    transition: top var(--transition-normal);
+  }
+
+  .header-container {
+    position: relative;
+  }
+
+  /* 2. Floating Navbar Capsule */
+  .navbar-capsule {
+    pointer-events: auto;
+    background-color: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: var(--space-4);
+    padding-block: var(--space-2);
+    transition: all var(--transition-normal);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .brand-logo {
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  /* Desktop Nav */
+  .nav-desktop {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .nav-link {
+    font-family: var(--font-heading);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-primary);
+    padding: 0.5rem 0.25rem;
+    position: relative;
+    transition: color var(--transition-fast);
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2.5px;
+    background-color: var(--color-primary);
+    transition: width var(--transition-normal);
+    border-radius: var(--radius-full);
+  }
+
+  .nav-link:hover {
+    color: var(--color-primary-light);
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: 100%;
+  }
+
+  .nav-link.active {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  /* Mobile Toggle */
+  .mobile-toggle {
+    display: none;
+    padding: 0.5rem;
+    color: var(--color-primary);
+    border-radius: var(--radius-sm);
+  }
+
+  .icon-close {
+    display: none;
+  }
+  .mobile-toggle.open .icon-open {
+    display: none;
+  }
+  .mobile-toggle.open .icon-close {
+    display: block;
+  }
+
+  /* Mobile Drawer Floating Dropdown */
+  .mobile-drawer {
+    display: none;
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: var(--container-padding);
+    right: var(--container-padding);
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all var(--transition-normal);
+  }
+
+  .mobile-drawer.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .mobile-nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  .mobile-nav-link {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-primary);
+    display: block;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .mobile-nav-link.active {
+    color: var(--color-primary);
+    font-weight: 800;
+    border-bottom-color: var(--color-primary);
+  }
+
+  .desktop-cta-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  /* ========================================================
+     RESPONSIVE BREAKPOINTS (ESTÁNDAR DEL PROYECTO)
+     - Desktop: >= 1440px
+     - Laptop: 1025px - 1439px
+     - Tablet: max-width: 1024px
+     - Mobile Landscape: max-width: 767px
+     - Mobile Portrait: max-width: 479px (base 240px)
+     ======================================================== */
+
+  /* 1. Desktop Tier (>= 1440px) */
+  @media (min-width: 1440px) {
+    .nav-list {
+      gap: 2rem;
+    }
+  }
+
+  /* 2. Laptop Tier (1025px - 1439px) */
+  @media (min-width: 1025px) and (max-width: 1439px) {
+    .nav-list {
+      gap: 1.25rem;
+    }
+  }
+
+  /* 3. Tablet Tier (hasta 1024px) */
+  @media (max-width: 1024px) {
+    .nav-desktop {
+      display: none;
+    }
+    .desktop-cta-wrapper {
+      display: none;
+    }
+    .mobile-toggle {
+      display: block;
+    }
+    .mobile-drawer {
+      display: block;
+    }
+  }
+
+  /* 4. Mobile Landscape Tier (hasta 767px) */
+  @media (max-width: 767px) {
+    .brand-logo {
+      height: 38px;
+    }
+  }
+
+  /* 5. Mobile Portrait Tier (hasta 479px - base 240px) */
+  @media (max-width: 479px) {
+    .header {
+      top: 0.75rem;
+    }
+    .navbar-capsule {
+      padding-inline: var(--space-3);
+      padding-block: var(--space-2);
+    }
+    .mobile-drawer {
+      padding: var(--space-4);
+    }
+    .brand-logo {
+      height: 36px;
+    }
+  }
+</style>

@@ -1,0 +1,1004 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/ui/Button.astro';
+import Badge from '../../components/ui/Badge.astro';
+import profilesData from '../../data/profiles.json';
+
+export function getStaticPaths() {
+  return profilesData.map((profile) => ({
+    params: { slug: profile.slug },
+    props: { profile },
+  }));
+}
+
+const { profile } = Astro.props;
+const otherProfiles = profilesData.filter((p) => p.id !== profile.id).slice(0, 3);
+
+const whatsappUrl = `https://wa.me/${profile.contact.whatsapp}?text=${encodeURIComponent(`Hola ${profile.name}, vi tu perfil en Incluxia Bolivia y me interesa conectar contigo.`)}`;
+const shareUrl = `https://wa.me/?text=${encodeURIComponent(`Te comparto el perfil laboral de ${profile.name} (${profile.role}) en Incluxia Bolivia: ${Astro.url}`)}`;
+---
+
+<Layout
+  title={`${profile.name} – ${profile.role} | Perfiles Laborales Incluxia Bolivia`}
+  description={profile.tagline}
+  activePath="/perfiles"
+>
+  <div class="profile-page-layout">
+    <div class="container profile-container">
+
+      <div class="profile-grid">
+
+        <!-- ==============================
+             COLUMNA PRINCIPAL (izquierda)
+             ============================== -->
+        <main class="profile-main-col">
+
+          <!-- Header del perfil -->
+          <header class="profile-header-section">
+            <div class="profile-header-inner">
+              <!-- Foto -->
+              <div class="profile-photo-wrap">
+                <img
+                  src={profile.photo}
+                  alt={`Foto de ${profile.name}`}
+                  class="profile-photo"
+                  loading="eager"
+                />
+
+              </div>
+
+              <!-- Info principal -->
+              <div class="profile-header-text">
+                <h1 class="profile-name">{profile.name}</h1>
+                <p class="profile-role-title">{profile.role}</p>
+
+                <div class="profile-meta-row">
+                  <span class="meta-chip">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    {profile.city}, Bolivia
+                  </span>
+                </div>
+
+                <!-- Botones de contacto directo -->
+                <div class="profile-cta-buttons">
+                  <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="whatsapp" size="md">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M6.014 8.00613C6.12827 7.1024 7.30277 5.87414 8.23488 6.01043L8.23339 6.00894C9.14051 6.18132 9.85859 7.74261 10.2635 8.44465C10.5504 8.95402 10.3641 9.4701 10.0965 9.68787C9.7355 9.97883 9.17099 10.3803 9.28943 10.7834C9.5 11.5 12 14 13.2296 14.7107C13.695 14.9797 14.0325 14.2702 14.3207 13.9067C14.5301 13.6271 15.0466 13.46 15.5548 13.736C16.3138 14.178 17.0288 14.6917 17.69 15.27C18.0202 15.546 18.0977 15.9539 17.8689 16.385C17.4659 17.1443 16.3003 18.1456 15.4542 17.9421C13.9764 17.5868 8 15.27 6.08033 8.55801C5.97237 8.24048 5.99955 8.12044 6.014 8.00613Z"/>
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 23C10.7764 23 10.0994 22.8687 9 22.5L6.89443 23.5528C5.56462 24.2177 4 23.2507 4 21.7639V19.5C1.84655 17.492 1 15.1767 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23ZM6 18.6303L5.36395 18.0372C3.69087 16.4772 3 14.7331 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C11.0143 21 10.552 20.911 9.63595 20.6038L8.84847 20.3397L6 21.7639V18.6303Z"/>
+                    </svg>
+                    Contactar por WhatsApp
+                  </Button>
+                  <Button href={`mailto:${profile.contact.email}`} variant="outline" size="md">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    Enviar correo
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <!-- Sobre mí -->
+          <section class="cv-section" aria-labelledby="about-heading">
+            <div class="cv-section-label-wrap">
+              <span class="cv-section-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="8" r="4"></circle>
+                  <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path>
+                </svg>
+              </span>
+              <h2 id="about-heading" class="cv-section-title">Sobre mí</h2>
+            </div>
+            <div class="cv-section-body">
+              <p class="about-text">{profile.about}</p>
+            </div>
+          </section>
+
+          <!-- Experiencia Laboral -->
+          <section class="cv-section" aria-labelledby="experience-heading">
+            <div class="cv-section-label-wrap">
+              <span class="cv-section-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+              </span>
+              <h2 id="experience-heading" class="cv-section-title">Experiencia Laboral</h2>
+            </div>
+            <div class="cv-section-body">
+              <ol class="experience-timeline" role="list">
+                {profile.experience.map((exp, i) => (
+                  <li class="timeline-item">
+                    <div class="timeline-marker" aria-hidden="true">
+                      <span class="timeline-dot"></span>
+                      {i < profile.experience.length - 1 && <span class="timeline-line"></span>}
+                    </div>
+                    <div class="timeline-content">
+                      <div class="timeline-header">
+                        <div class="timeline-title-wrap">
+                          <h3 class="timeline-role">{exp.role}</h3>
+                          <p class="timeline-company">{exp.company}</p>
+                        </div>
+                        <span class="timeline-period">{exp.period}</span>
+                      </div>
+                      <ul class="timeline-highlights" role="list">
+                        {exp.highlights.map((h) => (
+                          <li class="highlight-item">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="highlight-check" aria-hidden="true">
+                              <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            {h}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </section>
+
+          <!-- Habilidades -->
+          <section class="cv-section" aria-labelledby="skills-heading">
+            <div class="cv-section-label-wrap">
+              <span class="cv-section-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+              </span>
+              <h2 id="skills-heading" class="cv-section-title">Habilidades</h2>
+            </div>
+            <div class="cv-section-body">
+              <div class="skills-grid">
+                {profile.skills.map((skill) => (
+                  <span class="skill-tag">{skill}</span>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <!-- Educación -->
+          <section class="cv-section" aria-labelledby="education-heading">
+            <div class="cv-section-label-wrap">
+              <span class="cv-section-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+              </span>
+              <h2 id="education-heading" class="cv-section-title">Educación</h2>
+            </div>
+            <div class="cv-section-body">
+              <ul class="education-list" role="list">
+                {profile.education.map((ed) => (
+                  <li class="education-item">
+                    <div class="education-year">{ed.year}</div>
+                    <div class="education-info">
+                      <h3 class="education-degree">{ed.degree}</h3>
+                      <p class="education-institution">{ed.institution}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+
+          <!-- Idiomas -->
+          <section class="cv-section" aria-labelledby="languages-heading">
+            <div class="cv-section-label-wrap">
+              <span class="cv-section-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+              </span>
+              <h2 id="languages-heading" class="cv-section-title">Idiomas y Comunicación</h2>
+            </div>
+            <div class="cv-section-body">
+              <div class="languages-list">
+                {profile.languages.map((lang) => (
+                  <div class="language-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lang-check" aria-hidden="true">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>{lang}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <!-- Compartir -->
+          <div class="profile-share-section">
+            <span class="share-label">Compartir perfil:</span>
+            <Button href={shareUrl} target="_blank" rel="noopener noreferrer" variant="whatsapp" size="sm">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M6.014 8.00613C6.12827 7.1024 7.30277 5.87414 8.23488 6.01043L8.23339 6.00894C9.14051 6.18132 9.85859 7.74261 10.2635 8.44465C10.5504 8.95402 10.3641 9.4701 10.0965 9.68787C9.7355 9.97883 9.17099 10.3803 9.28943 10.7834C9.5 11.5 12 14 13.2296 14.7107C13.695 14.9797 14.0325 14.2702 14.3207 13.9067C14.5301 13.6271 15.0466 13.46 15.5548 13.736C16.3138 14.178 17.0288 14.6917 17.69 15.27C18.0202 15.546 18.0977 15.9539 17.8689 16.385C17.4659 17.1443 16.3003 18.1456 15.4542 17.9421C13.9764 17.5868 8 15.27 6.08033 8.55801C5.97237 8.24048 5.99955 8.12044 6.014 8.00613Z"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 23C10.7764 23 10.0994 22.8687 9 22.5L6.89443 23.5528C5.56462 24.2177 4 23.2507 4 21.7639V19.5C1.84655 17.492 1 15.1767 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23ZM6 18.6303L5.36395 18.0372C3.69087 16.4772 3 14.7331 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C11.0143 21 10.552 20.911 9.63595 20.6038L8.84847 20.3397L6 21.7639V18.6303Z"/>
+              </svg>
+              Compartir en WhatsApp
+            </Button>
+          </div>
+
+        </main>
+
+        <!-- ==============================
+             SIDEBAR (derecha)
+             ============================== -->
+        <aside class="profile-sidebar">
+
+          <!-- Card: Contacto directo -->
+          <div class="sidebar-contact-card">
+            <h3 class="sidebar-card-title">Contactar a {profile.name}</h3>
+            <p class="sidebar-contact-desc">
+              Proceso 100% por chat escrito. Sin llamadas telefónicas en ninguna etapa.
+            </p>
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="sidebar-whatsapp-btn"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M6.014 8.00613C6.12827 7.1024 7.30277 5.87414 8.23488 6.01043L8.23339 6.00894C9.14051 6.18132 9.85859 7.74261 10.2635 8.44465C10.5504 8.95402 10.3641 9.4701 10.0965 9.68787C9.7355 9.97883 9.17099 10.3803 9.28943 10.7834C9.5 11.5 12 14 13.2296 14.7107C13.695 14.9797 14.0325 14.2702 14.3207 13.9067C14.5301 13.6271 15.0466 13.46 15.5548 13.736C16.3138 14.178 17.0288 14.6917 17.69 15.27C18.0202 15.546 18.0977 15.9539 17.8689 16.385C17.4659 17.1443 16.3003 18.1456 15.4542 17.9421C13.9764 17.5868 8 15.27 6.08033 8.55801C5.97237 8.24048 5.99955 8.12044 6.014 8.00613Z"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 23C10.7764 23 10.0994 22.8687 9 22.5L6.89443 23.5528C5.56462 24.2177 4 23.2507 4 21.7639V19.5C1.84655 17.492 1 15.1767 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23ZM6 18.6303L5.36395 18.0372C3.69087 16.4772 3 14.7331 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C11.0143 21 10.552 20.911 9.63595 20.6038L8.84847 20.3397L6 21.7639V18.6303Z"/>
+              </svg>
+              Escribir por WhatsApp
+            </a>
+            <a href={`mailto:${profile.contact.email}`} class="sidebar-email-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              {profile.contact.email}
+            </a>
+          </div>
+
+          <!-- Card: Más perfiles -->
+          <div class="sidebar-more-profiles">
+            <h3 class="sidebar-card-title sidebar-title-dark">Más Perfiles</h3>
+            <div class="more-profiles-list">
+              {otherProfiles.map((p) => (
+                <a href={`/perfiles/${p.slug}`} class="more-profile-item">
+                  <img src={p.photo} alt={p.name} class="more-profile-photo" loading="lazy" />
+                  <div class="more-profile-text">
+                    <h4 class="more-profile-name">{p.name}</h4>
+                    <span class="more-profile-role">{p.role} · {p.city}</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+            <a href="/perfiles" class="sidebar-all-profiles-link">
+              Ver todos los perfiles
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Card: Incluxia Verificación -->
+          <div class="sidebar-verified-card">
+            <div class="verified-card-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h4 class="verified-card-title">Perfil Verificado en Incluxia</h4>
+            <p class="verified-card-desc">
+              Este perfil está registrado y verificado en la plataforma Incluxia. Garantizamos procesos de selección y comunicación 100% por chat escrito.
+            </p>
+            <a href="/nosotros" class="verified-card-link">Conocer más sobre Incluxia</a>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  /* ====================================================
+     PAGE WRAPPER
+     ==================================================== */
+  .profile-page-layout {
+    background-color: var(--color-bg);
+    padding-top: calc(90px + var(--space-8));
+    padding-bottom: var(--space-16);
+    min-height: 100vh;
+  }
+
+  .profile-container {
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding-inline: var(--container-padding);
+  }
+
+  /* 2-Column grid */
+  .profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: var(--space-10);
+    align-items: start;
+  }
+
+  .profile-main-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    min-width: 0;
+  }
+
+  /* ====================================================
+     PROFILE HEADER
+     ==================================================== */
+  .profile-header-section {
+    background: var(--color-bg-card);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    margin-bottom: var(--space-6);
+  }
+
+  .profile-header-inner {
+    display: flex;
+    gap: var(--space-8);
+    align-items: flex-start;
+  }
+
+  /* Foto */
+  .profile-photo-wrap {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .profile-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: var(--radius-xl);
+    object-fit: cover;
+    object-position: top center;
+    border: 3px solid var(--color-border);
+  }
+
+  .profile-status-badge {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .status--open {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+  }
+
+  .status--searching {
+    background-color: var(--color-warning-bg);
+    color: var(--color-warning);
+    border: 1px solid var(--color-warning);
+  }
+
+  .status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: var(--radius-full);
+    background-color: currentColor;
+    flex-shrink: 0;
+  }
+
+  /* Info */
+  .profile-header-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .profile-category-badge-wrap {
+    margin-bottom: var(--space-3);
+  }
+
+  .profile-name {
+    font-size: var(--text-4xl);
+    font-weight: 900;
+    color: var(--color-primary);
+    line-height: 1.15;
+    margin-bottom: var(--space-2);
+  }
+
+  .profile-role-title {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-accent-dark);
+    margin-bottom: var(--space-4);
+  }
+
+  .profile-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+  }
+
+  .meta-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    background-color: var(--color-bg-alt);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-full);
+  }
+
+  .profile-cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  /* ====================================================
+     CV SECTIONS
+     ==================================================== */
+  .cv-section {
+    background: var(--color-bg-card);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    margin-bottom: var(--space-4);
+  }
+
+  .cv-section-label-wrap {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-4);
+    border-bottom: 1.5px solid var(--color-border);
+  }
+
+  .cv-section-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-md);
+    background-color: rgba(var(--color-primary-rgb), 0.07);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .cv-section-title {
+    font-size: var(--text-xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    margin: 0;
+  }
+
+  .cv-section-body {
+    /* container for content */
+  }
+
+  /* About */
+  .about-text {
+    color: var(--color-text-main);
+    font-size: var(--text-base);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  /* Experience Timeline */
+  .experience-timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: var(--space-5);
+  }
+
+  .timeline-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .timeline-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-primary);
+    border: 3px solid var(--color-bg-card);
+    box-shadow: 0 0 0 2px var(--color-primary);
+    flex-shrink: 0;
+    margin-top: var(--space-1);
+  }
+
+  .timeline-line {
+    width: 2px;
+    flex: 1;
+    background-color: var(--color-border);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-2);
+    min-height: var(--space-6);
+  }
+
+  .timeline-content {
+    flex: 1;
+    padding-bottom: var(--space-8);
+    min-width: 0;
+  }
+
+  .timeline-item:last-child .timeline-content {
+    padding-bottom: 0;
+  }
+
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .timeline-role {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--color-text-main);
+    margin: 0 0 var(--space-1) 0;
+    line-height: 1.3;
+  }
+
+  .timeline-company {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin: 0;
+  }
+
+  .timeline-period {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    background-color: var(--color-bg-alt);
+    padding: 0.3rem 0.7rem;
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .timeline-highlights {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .highlight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+  }
+
+  .highlight-check {
+    color: var(--color-primary);
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  /* Skills */
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(0.35rem, 0.3vw + 0.25rem, 0.55rem);
+  }
+
+  .skill-tag {
+    background-color: rgba(var(--color-primary-rgb), 0.07);
+    color: var(--color-primary);
+    border: 1px solid rgba(var(--color-primary-rgb), 0.16);
+    font-family: var(--font-heading);
+    font-size: clamp(0.7rem, 0.35vw + 0.62rem, 0.82rem);
+    font-weight: 600;
+    padding: clamp(0.25rem, 0.2vw + 0.2rem, 0.4rem) clamp(0.6rem, 0.4vw + 0.45rem, 0.85rem);
+    border-radius: var(--radius-full);
+    line-height: 1.3;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .skill-tag:hover {
+    background-color: rgba(var(--color-primary-rgb), 0.12);
+    border-color: rgba(var(--color-primary-rgb), 0.3);
+  }
+
+  /* Education */
+  .education-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .education-item {
+    display: flex;
+    gap: var(--space-5);
+    align-items: flex-start;
+  }
+
+  .education-year {
+    font-family: var(--font-heading);
+    font-size: var(--text-base);
+    font-weight: 800;
+    color: var(--color-primary);
+    background-color: rgba(var(--color-primary-rgb), 0.07);
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+    min-width: 60px;
+    text-align: center;
+  }
+
+  .education-degree {
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--color-text-main);
+    margin: 0 0 var(--space-1) 0;
+  }
+
+  .education-institution {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  /* Languages */
+  .languages-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .language-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-base);
+    color: var(--color-text-main);
+    font-weight: 500;
+  }
+
+  .lang-check {
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+
+  /* Share */
+  .profile-share-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    padding-top: var(--space-6);
+    margin-top: var(--space-2);
+    border-top: 1.5px solid var(--color-border);
+  }
+
+  .share-label {
+    font-family: var(--font-heading);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  /* ====================================================
+     SIDEBAR
+     ==================================================== */
+  .profile-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    position: sticky;
+    top: calc(90px + var(--space-6));
+  }
+
+  /* Contact Card */
+  .sidebar-contact-card {
+    background-color: var(--color-primary);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    color: var(--color-text-inverse);
+  }
+
+  .sidebar-card-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: 800;
+    color: var(--color-text-inverse);
+    margin: 0 0 var(--space-3) 0;
+    line-height: 1.3;
+  }
+
+  .sidebar-contact-desc {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: var(--text-sm);
+    line-height: 1.55;
+    margin: 0 0 var(--space-5) 0;
+  }
+
+  .sidebar-whatsapp-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    width: 100%;
+    background-color: var(--color-whatsapp);
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    margin-bottom: var(--space-3);
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .sidebar-whatsapp-btn:hover {
+    background-color: var(--color-whatsapp-dark);
+    transform: translateY(-2px);
+  }
+
+  .sidebar-email-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    transition: color var(--transition-fast);
+    word-break: break-all;
+  }
+
+  .sidebar-email-link:hover {
+    color: var(--color-accent);
+  }
+
+  /* More Profiles */
+  .sidebar-more-profiles {
+    background-color: var(--color-bg-card);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+  }
+
+  .sidebar-title-dark {
+    color: var(--color-primary);
+  }
+
+  .more-profiles-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-bottom: var(--space-5);
+  }
+
+  .more-profile-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    text-decoration: none;
+    transition: transform var(--transition-fast);
+  }
+
+  .more-profile-item:hover {
+    transform: translateX(4px);
+  }
+
+  .more-profile-photo {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-md);
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .more-profile-name {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0 0 var(--space-1) 0;
+    line-height: 1.3;
+    transition: color var(--transition-fast);
+  }
+
+  .more-profile-item:hover .more-profile-name {
+    color: var(--color-primary-light);
+  }
+
+  .more-profile-role {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    font-weight: 500;
+  }
+
+  .sidebar-all-profiles-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    transition: gap var(--transition-fast);
+  }
+
+  .sidebar-all-profiles-link:hover {
+    gap: 0.6rem;
+  }
+
+  /* Verified card */
+  .sidebar-verified-card {
+    background-color: rgba(var(--color-primary-rgb), 0.04);
+    border: 1.5px solid rgba(var(--color-primary-rgb), 0.12);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+  }
+
+  .verified-card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background-color: var(--color-primary);
+    color: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-4);
+  }
+
+  .verified-card-title {
+    font-size: var(--text-base);
+    font-weight: 800;
+    color: var(--color-primary);
+    margin: 0 0 var(--space-2) 0;
+  }
+
+  .verified-card-desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    margin: 0 0 var(--space-4) 0;
+  }
+
+  .verified-card-link {
+    font-family: var(--font-heading);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-primary);
+    transition: color var(--transition-fast);
+  }
+
+  .verified-card-link:hover {
+    color: var(--color-primary-light);
+  }
+
+  /* ====================================================
+     RESPONSIVE
+     ==================================================== */
+
+  /* Tablet */
+  @media (max-width: 1024px) {
+    .profile-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+    .profile-sidebar {
+      position: static;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-5);
+    }
+    .sidebar-verified-card {
+      grid-column: span 2;
+    }
+  }
+
+  /* Mobile Landscape */
+  @media (max-width: 767px) {
+    .profile-page-layout {
+      padding-top: calc(90px + var(--space-5));
+      padding-bottom: var(--space-10);
+    }
+    .profile-header-inner {
+      flex-direction: column;
+      gap: var(--space-5);
+    }
+    .profile-photo {
+      width: 110px;
+      height: 110px;
+    }
+    .profile-status-badge {
+      left: 55px;
+      transform: none;
+      bottom: -8px;
+    }
+    .profile-name {
+      font-size: var(--text-3xl);
+    }
+    .profile-sidebar {
+      grid-template-columns: 1fr;
+    }
+    .sidebar-verified-card {
+      grid-column: span 1;
+    }
+    .timeline-header {
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+  }
+
+  /* Mobile Portrait */
+  @media (max-width: 479px) {
+    .profile-page-layout {
+      padding-top: calc(90px + var(--space-4));
+      padding-bottom: var(--space-8);
+    }
+    .profile-header-section {
+      padding: var(--space-5);
+    }
+    .profile-header-inner {
+      gap: var(--space-4);
+    }
+    .profile-photo {
+      width: 90px;
+      height: 90px;
+    }
+    .cv-section {
+      padding: var(--space-5);
+    }
+    .profile-cta-buttons {
+      flex-direction: column;
+    }
+    .profile-cta-buttons .btn {
+      width: 100%;
+      justify-content: center;
+    }
+    .education-item {
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+  }
+</style>

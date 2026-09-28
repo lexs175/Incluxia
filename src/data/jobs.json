@@ -1,0 +1,170 @@
+[
+  {
+    "id": "1",
+    "slug": "asistente-gestion-documental-archivo",
+    "title": "Asistente de Gestión Documental y Archivo Digital",
+    "company": "Banco Mercantil Santa Cruz",
+    "city": "Cochabamba",
+    "department": "Administración",
+    "modality": "Presencial",
+    "contractType": "Tiempo Completo",
+    "postedDays": "Hace 2 días",
+    "accessibilityBadge": "Contacto 100% WhatsApp / Chat",
+    "description": "Responsable de la clasificación, digitalización con escáneres de alta velocidad, codificación y custodia del archivo físico y digital en la sede central de Cochabamba.",
+    "accessibilityHighlights": [
+      {
+        "title": "Proceso de Selección (100% escrito)",
+        "desc": "Coordinación y evaluaciones mediante chat de WhatsApp y correo electrónico. Sin llamadas telefónicas de audio en ninguna etapa del proceso de contratación.",
+        "icon": "chat"
+      },
+      {
+        "title": "Entorno Laboral Sin Llamadas",
+        "desc": "Área de archivo y procesamiento de datos internos sin atención al cliente externo ni recepción telefónica.",
+        "icon": "headphones-off"
+      },
+      {
+        "title": "Manuales y Flujos Visuales",
+        "desc": "Procedimientos estandarizados y documentados con capturas de pantalla, códigos de color y guías paso a paso.",
+        "icon": "document"
+      }
+    ],
+    "functions": [
+      "Clasificar, ordenar y codificar expedientes crediticios, pólizas y documentación contable de la entidad bancaria.",
+      "Digitalizar documentos físicos mediante escáneres documentales de alta velocidad y verificar la legibilidad de las imágenes.",
+      "Cargar y validar metadatos en el sistema de gestión documental electrónico del banco.",
+      "Atender y despachar solicitudes internas de préstamo y consulta de expedientes a través de tickets escritos."
+    ],
+    "requirements": [
+      "Técnico Medio o Superior en Bibliotecología, Administración de Empresas, Sistemas Informáticos o ramas afines.",
+      "Manejo básico o intermedio de herramientas ofimáticas (Microsoft Word, Excel) y software de escaneo.",
+      "Alto sentido de organización, confidencialidad, pulcritud y atención meticulosa al detalle.",
+      "Carnet de Discapacidad vigente emitido por el SIPRUNPCD (Ley N° 223 / Ley N° 977)."
+    ]
+  },
+  {
+    "id": "2",
+    "slug": "auxiliar-soporte-tecnico-digitador",
+    "title": "Auxiliar de Soporte Técnico y Digitador de Datos",
+    "company": "EMTech Soluciones Digitales",
+    "city": "La Paz",
+    "department": "Tecnología",
+    "modality": "Remoto",
+    "contractType": "Tiempo Completo",
+    "postedDays": "Hace 4 días",
+    "accessibilityBadge": "Contacto 100% WhatsApp / Chat",
+    "description": "Atención de soporte técnico de primer nivel mediante mensajería escrita, resolución de incidencias en sistemas y digitación de reportes de clientes.",
+    "accessibilityHighlights": [
+      {
+        "title": "Proceso de Selección (100% escrito)",
+        "desc": "Entrevistas técnicas y pruebas prácticas realizadas íntegramente por chat de WhatsApp, Slack y cuestionarios en línea.",
+        "icon": "chat"
+      },
+      {
+        "title": "Modalidad Remota y Sin Audio",
+        "desc": "Trabajo 100% remoto desde casa, gestionando tickets y consultas exclusivamente a través de chat de soporte y correo.",
+        "icon": "headphones-off"
+      },
+      {
+        "title": "Instrucciones Guiadas por Software",
+        "desc": "Protocolos de soporte documentados en base de conocimiento interactiva con diagramas de flujo y soluciones rápidas.",
+        "icon": "document"
+      }
+    ],
+    "functions": [
+      "Registrar y actualizar datos de clientes, contratos y reportes técnicos en el sistema CRM de la empresa.",
+      "Diagnosticar y resolver incidencias básicas de software y acceso a cuentas mediante chat de soporte escrito.",
+      "Clasificar y derivar tickets de alta complejidad al equipo de ingeniería de segundo nivel.",
+      "Elaborar reportes diarios de incidencias atendidas con precisión y puntualidad."
+    ],
+    "requirements": [
+      "Técnico Medio o Egresado en Informática, Sistemas, Telecomunicaciones o áreas relacionadas.",
+      "Excelente redacción y ortografía para comunicación clara y empática por chat.",
+      "Capacidad demostrada de concentración prolongada en entornos digitales remotos.",
+      "Conexión a internet estable en domicilio y equipo de computación propio (bono de conectividad provisto)."
+    ]
+  },
+  {
+    "id": "3",
+    "slug": "operador-preprensa-diseno-grafico",
+    "title": "Operador de Preprensa y Diseño Gráfico Impreso",
+    "company": "Conecta Impresores Offset & Digital",
+    "city": "Santa Cruz",
+    "department": "Diseño",
+    "modality": "Presencial",
+    "contractType": "Tiempo Completo",
+    "postedDays": "Hace 3 días",
+    "accessibilityBadge": "Entrevista con Intérprete LSB / Chat",
+    "description": "Preparación y verificación técnica de archivos para impresión offset y gran formato, retoque digital de color y control de calidad visual de pliegos.",
+    "accessibilityHighlights": [
+      {
+        "title": "Entrevista con Intérprete LSB o Chat",
+        "desc": "Entrevista presencial coordinada con intérprete de Lengua de Señas Boliviana (LSB) o por intercambio de notas escritas.",
+        "icon": "chat"
+      },
+      {
+        "title": "Taller Visual sin Interrupciones Sonoras",
+        "desc": "Coordinación en planta mediante órdenes de trabajo impresas, fichas técnicas de color y señalética visual en maquinaria.",
+        "icon": "headphones-off"
+      },
+      {
+        "title": "Fichas Técnicas Estandarizadas",
+        "desc": "Especificaciones de imposición de páginas, sangrías y perfiles de color documentados visualmente en pantalla.",
+        "icon": "document"
+      }
+    ],
+    "functions": [
+      "Revisar y corregir archivos de clientes (resolución de imágenes, modos de color CMYK, sangrados e incrustación de tipografías).",
+      "Realizar la imposición de páginas y armado de pliegos para placas de CTP (Computer to Plate).",
+      "Supervisar el control de calidad del primer pliego de tiro en máquinas de impresión offset.",
+      "Diseñar y adaptar piezas gráficas comerciales según manuales de marca."
+    ],
+    "requirements": [
+      "Técnico Medio o Licenciatura en Diseño Gráfico, Comunicación Visual o Artes Gráficas.",
+      "Manejo sólido de Adobe Illustrator, Photoshop e InDesign, y nociones de perfiles de color.",
+      "Gran agudeza visual, atención al detalle cromático y sentido estético.",
+      "Carnet de Discapacidad del SIPRUNPCD o predisposición para tramitarlo con la guía de Incluxia."
+    ]
+  },
+  {
+    "id": "4",
+    "slug": "auxiliar-administrativo-facturacion",
+    "title": "Auxiliar Administrativo de Facturación y Conciliación",
+    "company": "Farmacorp S.A.",
+    "city": "Cochabamba",
+    "department": "Administración",
+    "modality": "Presencial",
+    "contractType": "Tiempo Completo",
+    "postedDays": "Hace 5 días",
+    "accessibilityBadge": "Contacto 100% WhatsApp / Chat",
+    "description": "Emisión, control y registro de facturación electrónica en el sistema ERP, conciliación de comprobantes de ventas y archivo de comprobantes fiscales.",
+    "accessibilityHighlights": [
+      {
+        "title": "Proceso de Selección 100% Escrito",
+        "desc": "Coordinación y prueba de digitación mediante formularios en línea y WhatsApp con el departamento de RRHH.",
+        "icon": "chat"
+      },
+      {
+        "title": "Oficina Administrativa Interna",
+        "desc": "Trabajo de gabinete contable sin atención al público ni requerimiento de llamadas telefónicas.",
+        "icon": "headphones-off"
+      },
+      {
+        "title": "Sistema ERP Visual e Inducción Guiada",
+        "desc": "Capacitación inicial con manuales visuales y tareas coordinadas por chat a través de Incluxia.",
+        "icon": "document"
+      }
+    ],
+    "functions": [
+      "Registrar y verificar facturas de compras y ventas en el sistema contable corporativo (SAP / ERP interno).",
+      "Conciliar los reportes diarios de cierre de caja enviados por las sucursales de farmacia en Cochabamba.",
+      "Identificar y reportar inconsistencias en numeración tributaria o montos declarados.",
+      "Organizar y resguardar el archivo de comprobantes contables físicos y digitales para auditorías."
+    ],
+    "requirements": [
+      "Técnico Medio o Superior en Contabilidad General, Auditoría, Administración Financiera o ramas afines.",
+      "Manejo intermedio de Microsoft Excel (tablas dinámicas, fórmulas básicas) y software administrativo.",
+      "Puntualidad, honestidad probada y alta concentración en tareas numéricas repetitivas.",
+      "Carnet de Discapacidad SIPRUNPCD vigente (Ley N° 223 / Ley N° 977)."
+    ]
+  }
+]

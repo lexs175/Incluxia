@@ -1,0 +1,59 @@
+---
+interface Props {
+  variant?: 'cyan' | 'navy' | 'whatsapp';
+  class?: string;
+  id?: string;
+}
+
+const { variant = 'cyan', class: className = '', ...rest } = Astro.props;
+const variantClass = `badge-${variant}`;
+---
+
+<span class={`badge ${variantClass} ${className}`.trim()} {...rest}>
+  <slot />
+</span>
+
+<style>
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    max-width: 100%;
+    line-height: 1.25;
+    text-align: center;
+    box-sizing: border-box;
+    word-break: normal;
+  }
+
+  .badge-cyan {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+  }
+
+  .badge-navy {
+    background-color: rgba(var(--color-primary-rgb), 0.08);
+    color: var(--color-primary);
+  }
+
+  .badge-whatsapp {
+    background-color: var(--color-whatsapp-light);
+    color: var(--color-whatsapp-dark);
+    border: 1px solid rgba(37, 211, 102, 0.3);
+  }
+
+  /* Responsive for Mobile (240px - 479px) */
+  @media (max-width: 479px) {
+    .badge {
+      padding: 0.25rem 0.55rem;
+      letter-spacing: 0.02em;
+    }
+  }
+</style>

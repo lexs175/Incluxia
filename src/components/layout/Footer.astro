@@ -1,0 +1,671 @@
+---
+// Footer Component with 21shares-inspired layout & mobile accordion
+---
+
+<footer class="footer">
+  <div class="container footer-container">
+    <!-- Top Grid: 5 Columns (Desktop) / Mobile Accordion -->
+    <div class="footer-top-grid">
+      <!-- Col 1: Connect with us -->
+      <div class="footer-col col-connect">
+        <h3 class="connect-heading">Conéctate con<br />nosotros hoy</h3>
+        <div class="social-row">
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-btn"
+            aria-label="Facebook de Incluxia"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 32 32"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12.6,16.1v11.6c0,0.2,0.1,0.3,0.3,0.3h4.6c0.2,0,0.3-0.1,0.3-0.3V15.9h3.4c0.2,0,0.3-0.1,0.3-0.3l0.3-3.6 c0-0.2-0.1-0.3-0.3-0.3h-3.7V9.2c0-0.6,0.5-1.1,1.2-1.1h2.6C21.9,8.1,22,8,22,7.8V4.3C22,4.1,21.9,4,21.7,4h-4.4 c-2.6,0-4.7,1.9-4.7,4.3v3.4h-2.3c-0.2,0-0.3,0.1-0.3,0.3v3.6c0,0.2,0.1,0.3,0.3,0.3h2.3V16.1z"
+              ></path>
+            </svg>
+          </a>
+          <a
+            href="https://tiktok.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-btn"
+            aria-label="TikTok de Incluxia"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 512 512"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M412.19,118.66a109.27,109.27,0,0,1-9.45-5.5,132.87,132.87,0,0,1-24.27-20.62c-18.1-20.71-24.86-41.72-27.35-56.43h.1C349.14,23.9,350,16,350.13,16H267.69V334.78c0,4.28,0,8.51-.18,12.69,0,.52-.05,1-.08,1.56,0,.23,0,.47-.05.71,0,.06,0,.12,0,.18a70,70,0,0,1-35.22,55.56,68.8,68.8,0,0,1-34.11,9c-38.41,0-69.54-31.32-69.54-70s31.13-70,69.54-70a68.9,68.9,0,0,1,21.41,3.39l.1-83.94a153.14,153.14,0,0,0-118,34.52,161.79,161.79,0,0,0-35.3,43.53c-3.48,6-16.61,30.11-18.2,69.24-1,22.21,5.67,45.22,8.85,54.73v.2c2,5.6,9.75,24.71,22.38,40.82A167.53,167.53,0,0,0,115,470.66v-.2l.2.2C155.11,497.78,199.36,496,199.36,496c7.66-.31,33.32,0,62.46-13.81,32.32-15.31,50.72-38.12,50.72-38.12a158.46,158.46,0,0,0,27.64-45.93c7.46-19.61,9.95-43.13,9.95-52.53V176.49c1,.6,14.32,9.41,14.32,9.41s19.19,12.3,49.13,20.31c21.48,5.7,50.42,6.9,50.42,6.9V131.27C453.86,132.37,433.27,129.17,412.19,118.66Z"
+              ></path>
+            </svg>
+          </a>
+          <a
+            href="https://wa.me/59172255726"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-btn"
+            aria-label="WhatsApp de Incluxia"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.014 8.00613C6.12827 7.1024 7.30277 5.87414 8.23488 6.01043L8.23339 6.00894C9.14051 6.18132 9.85859 7.74261 10.2635 8.44465C10.5504 8.95402 10.3641 9.4701 10.0965 9.68787C9.7355 9.97883 9.17099 10.3803 9.28943 10.7834C9.5 11.5 12 14 13.2296 14.7107C13.695 14.9797 14.0325 14.2702 14.3207 13.9067C14.5301 13.6271 15.0466 13.46 15.5548 13.736C16.3138 14.178 17.0288 14.6917 17.69 15.27C18.0202 15.546 18.0977 15.9539 17.8689 16.385C17.4659 17.1443 16.3003 18.1456 15.4542 17.9421C13.9764 17.5868 8 15.27 6.08033 8.55801C5.97237 8.24048 5.99955 8.12044 6.014 8.00613Z"
+                fill="currentColor"></path>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12 23C10.7764 23 10.0994 22.8687 9 22.5L6.89443 23.5528C5.56462 24.2177 4 23.2507 4 21.7639V19.5C1.84655 17.492 1 15.1767 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23ZM6 18.6303L5.36395 18.0372C3.69087 16.4772 3 14.7331 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C11.0143 21 10.552 20.911 9.63595 20.6038L8.84847 20.3397L6 21.7639V18.6303Z"
+                fill="currentColor"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 2: Navegación (Accordion on mobile) -->
+      <div class="footer-col footer-accordion">
+        <button class="col-accordion-toggle" aria-expanded="false">
+          <span class="col-title">Navegación</span>
+          <svg
+            class="col-chevron"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="col-accordion-panel">
+          <ul class="col-links">
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/empleos">Ofertas de Empleo</a></li>
+            <li><a href="/casos-de-exito">Casos de Éxito</a></li>
+            <li><a href="/blog">Blog & Leyes</a></li>
+            <li><a href="/nosotros">Sobre Nosotros</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Col 3: Documentos & Leyes (Accordion on mobile) -->
+      <div class="footer-col footer-accordion">
+        <button class="col-accordion-toggle" aria-expanded="false">
+          <span class="col-title">Documentos & Leyes</span>
+          <svg
+            class="col-chevron"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="col-accordion-panel">
+          <ul class="col-links">
+            <li>
+              <a href="/blog/guia-inclusion-laboral-ley-223-ley-977"
+                >Marco Legal (Ley 223 / 977)</a
+              >
+            </li>
+            <li>
+              <a
+                href="/blog/requisitos-tramite-carnet-discapacidad-siprunpcd-bolivia"
+                >Trámite SIPRUNPCD</a
+              >
+            </li>
+            <li>
+              <a
+                href="/blog/adaptaciones-razonables-puesto-de-trabajo-hipoacusia"
+                >Adaptaciones en Oficina</a
+              >
+            </li>
+            <li>
+              <a href="/blog/comunicacion-inclusiva-guia-practica-empresas"
+                >Guía de Comunicación</a
+              >
+            </li>
+            <li>
+              <a href="/blog/tipos-de-perdida-auditiva-y-grados"
+                >Salud y Grados Auditivos</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Col 4: Institución (Accordion on mobile) -->
+      <div class="footer-col footer-accordion">
+        <button class="col-accordion-toggle" aria-expanded="false">
+          <span class="col-title">Institución</span>
+          <svg
+            class="col-chevron"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="col-accordion-panel">
+          <ul class="col-links">
+            <li><a href="/nosotros">Sobre Incluxia</a></li>
+            <li><a href="/nosotros#mision-vision">Propósito y Solución</a></li>
+            <li><a href="/nosotros#tramites">Carnet y Leyes</a></li>
+            <li><a href="/nosotros#contacto">Contacto Directo</a></li>
+            <li>
+              <a
+                href="/blog/consejos-cv-entrevistas-laborales-personas-hipoacusia"
+                >Consejos para el CV</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Col 5: Contacto (Accordion on mobile) -->
+      <div class="footer-col footer-accordion">
+        <button class="col-accordion-toggle" aria-expanded="false">
+          <span class="col-title">Contacto</span>
+          <svg
+            class="col-chevron"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="col-accordion-panel">
+          <div class="contact-box">
+            <p class="contact-highlight">Incluxia Bolivia</p>
+            <p class="contact-text">Plataforma 100% Digital</p>
+            <p class="contact-text">Atención por WhatsApp y Correo</p>
+            <a
+              href="https://wa.me/59172255726"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-phone"
+            >
+              (+591) 72255726
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Center/Bottom: Massive Vector Brand Logo -->
+    <div class="footer-brand-stage" aria-hidden="true">
+      <svg
+        viewBox="0 0 67 10"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="brand-svg-hero"
+      >
+        <path
+          d="M10.7605 0.119162C11.458 0.14608 12.2168 0.126094 12.913 0.0913696C12.9164 1.02037 12.979 9.25913 12.8504 9.53605L12.7372 9.55052C12.2175 9.53491 11.6337 9.54554 11.1086 9.54379C10.8722 9.16472 10.2373 8.47845 9.9424 8.09312C8.88533 6.71459 7.4189 5.17387 6.46282 3.76122C6.56786 5.33363 6.48437 7.92394 6.47966 9.56512C5.92217 9.52488 4.85634 9.51869 4.31569 9.58753C4.25509 6.48551 4.30559 3.22791 4.30155 0.113779C4.88731 0.145879 5.4953 0.1302 6.11271 0.165193C7.57174 1.68498 9.31557 4.11398 10.7685 5.77784L10.7605 0.119162Z"
+          fill="currentColor"></path>
+        <path
+          d="M59.6551 0.11142C60.2375 0.156036 61.1875 0.131609 61.7968 0.134704C62.0284 0.837867 62.9912 2.8703 63.3467 3.6382C64.2328 5.55166 65.0953 7.68349 66.0184 9.55328C65.2912 9.51579 64.3991 9.54359 63.6591 9.54877L62.8788 7.57172L61.7194 7.57602L58.4882 7.57266C58.3313 8.16404 57.9536 9.00065 57.6877 9.55207C57.0824 9.53221 56.0159 9.50691 55.4463 9.58679C56.7989 6.4347 58.2512 3.24372 59.6551 0.11142ZM59.2134 5.9061L60.696 5.89695L62.1631 5.89709C61.9833 5.42831 60.8838 2.6343 60.6549 2.43531C60.1991 3.6024 59.7183 4.75954 59.2134 5.9061Z"
+          fill="currentColor"></path>
+        <path
+          d="M38.8871 0.116866C39.5759 0.151792 40.361 0.123595 41.0491 0.0976868L41.0551 2.00906L41.0639 4.95226C41.0612 6.21734 40.9097 7.65798 39.9543 8.58403C38.3653 10.1236 35.186 10.1119 33.6449 8.52481C33.2584 8.12972 32.9743 7.64567 32.8187 7.11525C32.4329 5.80011 32.5427 1.71074 32.5736 0.137189C33.3035 0.141631 34.0333 0.1347 34.7632 0.116463C34.8164 1.42366 34.7773 2.80522 34.7726 4.14156C34.7221 5.75448 34.6339 7.8493 36.845 7.86236C39.2271 7.87635 38.8986 5.22804 38.8905 3.64587C38.8817 2.46956 38.8804 1.29318 38.8871 0.116866Z"
+          fill="currentColor"></path>
+        <path
+          d="M48.9011 0.129452C49.668 0.131875 50.5305 0.152803 51.2866 0.0940552C50.3433 1.55455 49.0297 3.21128 48.003 4.69405C48.4191 5.31761 51.3169 9.20866 51.3499 9.48753L51.2301 9.53921L48.9348 9.5421C48.1753 8.50179 47.465 7.30489 46.653 6.31761C46.2787 7.02434 44.9718 8.86835 44.4722 9.55415C43.6488 9.5314 42.8247 9.53282 42.0012 9.55832C42.8556 8.21048 44.4803 6.02501 45.4714 4.74594C45.0122 4.23732 42.4227 0.652937 42.2052 0.116598C42.6557 0.183893 43.9578 0.117204 44.6028 0.15637C45.2882 1.00395 46.1353 2.27407 46.8018 3.18874C47.2967 2.32326 48.2905 0.983894 48.9011 0.129452Z"
+          fill="currentColor"></path>
+        <path
+          d="M18.8111 0.0655129C20.6788 -0.197475 22.2422 0.328703 23.5308 1.69135C23.3235 1.84411 22.2482 2.93079 22.0671 2.82884C21.3171 2.41222 20.8754 1.92547 19.953 1.8717C16.0122 1.64196 15.5274 7.43671 19.4709 7.84324C20.4909 7.94835 21.1891 7.54479 21.9392 6.89169L22.0644 6.82938C22.3506 6.84506 23.2252 7.75562 23.5315 8.01572C21.7816 9.98799 18.3788 10.3105 16.3959 8.69714C13.0234 5.95347 14.4333 0.653804 18.8111 0.0655129Z"
+          fill="currentColor"></path>
+        <path
+          d="M24.8155 0.116394C25.5399 0.139813 26.2658 0.140082 26.9902 0.117337C26.9478 2.63026 26.9862 5.24923 26.9875 7.77037C28.388 7.69574 30.3533 7.86236 31.6777 7.71841L31.6763 9.58369C30.8866 9.45112 25.575 9.48739 24.8256 9.58988C24.7852 6.45381 24.8222 3.25825 24.8155 0.116394Z"
+          fill="currentColor"></path>
+        <path
+          d="M0 0.114899C0.694099 0.154804 1.49687 0.132597 2.19299 0.122167C2.09293 2.30124 2.2548 4.81032 2.18713 7.01779C2.16309 7.80137 2.23749 8.72432 2.1711 9.48838L2.08176 9.55359C1.53949 9.52405 0.540589 9.52715 0.016968 9.58408C0.00922508 6.51362 0.0835558 3.15326 0 0.114899Z"
+          fill="currentColor"></path>
+        <path
+          d="M52.3531 0.117004C53.0776 0.139548 53.8034 0.139749 54.5285 0.117744C54.4861 3.23336 54.6026 6.47683 54.5103 9.57333C53.9596 9.51586 52.9146 9.52064 52.3673 9.58423C52.3127 6.46377 52.3646 3.24783 52.3531 0.117004Z"
+          fill="currentColor"></path>
+      </svg>
+    </div>
+
+    <!-- Bottom Bar: Sub-Footer -->
+    <div class="footer-sub-bar">
+      <div class="sub-bar-top-row">
+        <p class="sub-bar-copyright">
+          &copy; {new Date().getFullYear()} Incluxia. Todos los derechos reservados.
+        </p>
+        <p class="sub-bar-affiliation">
+          Incluxia: Trabajos para personas con hipoacusia en Bolivia
+        </p>
+      </div>
+
+      <p class="sub-bar-legal">
+        Incluxia es una plataforma digital y gratuita para ayudar a personas con hipoacusia a encontrar trabajo en Bolivia, bajo el respaldo de la Ley 223 y la Ley 977. Todas las postulaciones y la atención son 100% por chat y sin costo.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+    margin-top: auto;
+    border-top: 3px solid var(--color-accent);
+    width: 100%;
+  }
+
+  .footer-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  /* 5-Column Equal Grid */
+  .footer-top-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr 1fr 1.2fr;
+    gap: 2.5rem;
+    align-items: start;
+    width: 100%;
+    margin-bottom: 4rem;
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Connect Heading & Socials */
+  .connect-heading {
+    color: var(--color-text-inverse);
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 1.25rem 0;
+    letter-spacing: -0.02em;
+  }
+
+  .social-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--color-text-inverse);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.2s ease;
+  }
+
+  .social-btn:hover {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+
+  /* Column Titles & Desktop Button Reset */
+  .col-accordion-toggle {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    color: inherit;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .col-title {
+    color: var(--color-text-inverse);
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 1.25rem 0;
+    letter-spacing: -0.01em;
+  }
+
+  .col-chevron {
+    display: none;
+  }
+
+  .col-accordion-panel {
+    display: block;
+    width: 100%;
+  }
+
+  /* Links */
+  .col-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .col-links li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .col-links a {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.875rem;
+    line-height: 1.4;
+    text-decoration: none;
+    display: inline-block;
+    transition:
+      color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .col-links a:hover {
+    color: var(--color-accent);
+    transform: translateX(3px);
+  }
+
+  /* Contact Info */
+  .contact-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.5;
+  }
+
+  .contact-highlight {
+    color: var(--color-text-inverse);
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .contact-text {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .contact-phone {
+    color: var(--color-accent);
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-top: 0.35rem;
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .contact-phone:hover {
+    text-decoration: underline;
+  }
+
+  /* Massive Hero Brand Logo */
+  .footer-brand-stage {
+    width: 100%;
+    margin-top: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .brand-svg-hero {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    display: block;
+    color: var(--color-text-inverse);
+    transition:
+      color 0.3s ease,
+      opacity 0.3s ease;
+  }
+
+  .footer-brand-stage:hover .brand-svg-hero {
+    color: var(--color-accent);
+  }
+
+  /* Sub-Footer */
+  .footer-sub-bar {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .sub-bar-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .sub-bar-copyright {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.825rem;
+    margin: 0;
+  }
+
+  .sub-bar-affiliation {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.825rem;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .sub-bar-legal {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.75rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ==========================================================
+     RESPONSIVE BREAKPOINTS (ESTÁNDAR DEL PROYECTO)
+     - Tablet: max-width: 1024px
+     - Mobile Landscape: max-width: 767px
+     - Mobile Portrait: max-width: 479px (base 240px)
+     ========================================================== */
+
+  /* 1. Tablet Tier (hasta 1024px) */
+  @media (max-width: 1024px) {
+    .footer-top-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6, 1.5rem);
+    }
+    .col-connect {
+      grid-column: span 3;
+    }
+  }
+
+  /* 2. Mobile Landscape Tier (hasta 767px) - Accordions Activated */
+  @media (max-width: 767px) {
+    .footer {
+      padding-top: var(--space-10, 2.5rem);
+      padding-bottom: var(--space-8, 2rem);
+    }
+    .footer-top-grid {
+      grid-template-columns: 1fr;
+      gap: 0;
+      margin-bottom: var(--space-8, 2rem);
+    }
+    .col-connect {
+      grid-column: span 1;
+      margin-bottom: 1.5rem;
+    }
+    .connect-heading {
+      font-size: 1.6rem;
+    }
+
+    /* Accordion Toggle UI */
+    .col-accordion-toggle {
+      pointer-events: auto;
+      cursor: pointer;
+      padding-block: 0.9rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      transition: background-color 0.2s ease;
+    }
+
+    .col-accordion-toggle:active {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .col-title {
+      font-size: 1.15rem;
+      margin: 0;
+    }
+
+    .col-chevron {
+      display: block;
+      color: var(--color-accent);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .footer-accordion.is-open .col-chevron {
+      transform: rotate(180deg);
+    }
+
+    /* Accordion Panel */
+    .col-accordion-panel {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        max-height 0.35s ease,
+        opacity 0.3s ease,
+        padding 0.3s ease;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .footer-accordion.is-open .col-accordion-panel {
+      max-height: 400px;
+      opacity: 1;
+      visibility: visible;
+      padding-top: 0.85rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-brand-stage {
+      margin-top: 3rem;
+      margin-bottom: 2.5rem;
+    }
+    .sub-bar-top-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+  }
+
+  /* 3. Mobile Portrait Tier (hasta 479px - base 240px) */
+  @media (max-width: 479px) {
+    .footer {
+      padding-top: var(--space-8, 2rem);
+      padding-bottom: var(--space-6, 1.5rem);
+    }
+    .connect-heading {
+      font-size: 1.35rem;
+    }
+    .col-title {
+      font-size: 1.5rem;
+    }
+    .footer-brand-stage {
+      margin-top: 2rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  function setupFooterAccordions() {
+    const accordions = document.querySelectorAll(".footer-accordion");
+    accordions.forEach((acc) => {
+      const toggle = acc.querySelector(".col-accordion-toggle");
+      if (!toggle) return;
+
+      // Handle click on accordion header
+      toggle.onclick = (e) => {
+        // Only active on mobile / tablet <= 767px
+        if (window.innerWidth > 767) return;
+
+        e.preventDefault();
+        const isOpen = acc.classList.contains("is-open");
+
+        // Close other accordions for clean accordion UX
+        accordions.forEach((other) => {
+          if (other !== acc) {
+            other.classList.remove("is-open");
+            other
+              .querySelector(".col-accordion-toggle")
+              ?.setAttribute("aria-expanded", "false");
+          }
+        });
+
+        if (isOpen) {
+          acc.classList.remove("is-open");
+          toggle.setAttribute("aria-expanded", "false");
+        } else {
+          acc.classList.add("is-open");
+          toggle.setAttribute("aria-expanded", "true");
+        }
+      };
+    });
+  }
+
+  document.addEventListener("astro:page-load", setupFooterAccordions);
+</script>

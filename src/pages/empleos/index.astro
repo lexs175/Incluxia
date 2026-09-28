@@ -1,0 +1,687 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import Button from "../../components/ui/Button.astro";
+import JobCard from "../../components/cards/JobCard.astro";
+import jobsData from "../../data/jobs.json";
+---
+
+<Layout
+  title="Ofertas de Trabajo en Bolivia | Incluxia"
+  description="Encuentra trabajos para personas con hipoacusia en Cochabamba, La Paz, Santa Cruz y toda Bolivia. Postulaciones 100% por chat o WhatsApp, sin llamadas telefónicas."
+  activePath="/empleos"
+>
+  <!-- Header Banner -->
+  <section class="page-banner">
+    <div class="container">
+      <div class="page-banner-content">
+        <Badge variant="cyan" class="banner-badge"
+          >Trabajos Disponibles</Badge
+        >
+        <h1 class="page-title">Encuentra Trabajo en Bolivia</h1>
+        <p class="page-desc">
+          Ofertas de trabajo reales donde la comunicación es 100% por chat o WhatsApp.
+          Cero llamadas telefónicas sorpresa, tareas claras y trato respetuoso.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Jobs Board with Filters -->
+  <section class="section jobs-board-section">
+    <div class="container board-layout">
+        <!-- Left Sidebar Filters -->
+        <aside class="filters-sidebar">
+          <div class="filter-card">
+            <div class="filter-header">
+              <h3 class="filter-title">Filtros de Búsqueda</h3>
+              <button type="button" class="clear-filters-btn" id="resetFilters"
+                >Limpiar</button
+              >
+            </div>
+
+            <!-- Filter: City -->
+            <div class="filter-group">
+              <h4 class="filter-subtitle">Ciudad</h4>
+              <div class="checkbox-list">
+                <label class="checkbox-label">
+                  <input
+                    type="checkbox"
+                    name="city"
+                    value="Cochabamba"
+                    class="filter-cb"
+                  />
+                  <span>Cochabamba</span>
+                </label>
+                <label class="checkbox-label">
+                  <input
+                    type="checkbox"
+                    name="city"
+                    value="La Paz"
+                    class="filter-cb"
+                  />
+                  <span>La Paz</span>
+                </label>
+                <label class="checkbox-label">
+                  <input
+                    type="checkbox"
+                    name="city"
+                    value="Santa Cruz"
+                    class="filter-cb"
+                  />
+                  <span>Santa Cruz</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Filter: Area -->
+            <div class="filter-group">
+              <h4 class="filter-subtitle">Área Laboral</h4>
+              <div class="checkbox-list">
+                <label class="checkbox-label">
+                  <input
+                    type="checkbox"
+                    name="area"
+                    value="Administración"
+                    class="filter-cb"
+                  />
+                  <span>Administración & Archivo</span>
+                </label>
+                <label class="checkbox-label">
+                  <input
+                    type="checkbox"
+                    name="area"
+                    value="Tecnología"
+                    class="filter-cb"
+                  />
+                  <span>Tecnología & Digitador</span>
+                </label>
+                <label class="checkbox-label">
+                  <input
+                    type="checkbox"
+                    name="area"
+                    value="Diseño"
+                    class="filter-cb"
+                  />
+                  <span>Diseño Gráfico & Preprensa</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Filter: Accessibility -->
+            <div class="filter-group">
+              <h4 class="filter-subtitle">Ajuste de Accesibilidad</h4>
+              <div class="checkbox-list">
+                <label class="checkbox-label">
+                  <input
+                    type="checkbox"
+                    name="access"
+                    value="WhatsApp"
+                    class="filter-cb"
+                  />
+                  <span>Contacto 100% WhatsApp</span>
+                </label>
+                <label class="checkbox-label">
+                  <input
+                    type="checkbox"
+                    name="access"
+                    value="LSB"
+                    class="filter-cb"
+                  />
+                  <span>Intérprete LSB / Chat</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Help Box -->
+          <div class="support-card">
+            <div class="support-icon">💬</div>
+            <h4 class="support-title">¿Necesitas ayuda para postular?</h4>
+            <p class="support-text">
+              Escríbenos por WhatsApp y te asistiremos paso a paso con tu CV y
+              registro.
+            </p>
+            <Button
+              href="https://wa.me/59172255726"
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="whatsapp"
+              size="sm"
+              fullWidth={true}
+            >
+              Soporte Incluxia
+            </Button>
+          </div>
+        </aside>
+
+        <!-- Right Main Grid -->
+        <main class="jobs-results">
+          <div class="results-header">
+            <p class="results-count">
+              Mostrando <strong id="jobsCount">{jobsData.length}</strong> ofertas de trabajo
+            </p>
+            <div class="search-inline">
+              <input
+                type="text"
+                id="jobSearchInput"
+                placeholder="Filtrar por palabra clave..."
+                class="form-input"
+                style="padding: 0.5rem 1rem; font-size: var(--text-sm);"
+              />
+            </div>
+          </div>
+
+          <div class="jobs-list" id="jobsGrid">
+            {
+              jobsData.map((job) => (
+                <div
+                  class="job-item-wrapper"
+                  data-city={job.city}
+                  data-area={job.department}
+                  data-title={job.title}
+                  data-company={job.company}
+                  data-badge={job.accessibilityBadge}
+                >
+                  <JobCard job={job} />
+                </div>
+              ))
+            }
+          </div>
+
+          <!-- Empty State when 0 jobs match -->
+          <div class="no-results-message" id="noResultsMsg" style="display: none;">
+            <div class="empty-icon">🔍</div>
+            <h3>No encontramos ofertas para tu búsqueda</h3>
+            <p>Intenta buscando con otros términos o limpia los filtros para ver todas las oportunidades.</p>
+            <button type="button" class="btn-reset-link" id="resetFiltersEmpty">
+              Ver todas las vacantes
+            </button>
+          </div>
+        </main>
+      </div>
+    </section>
+
+  <script>
+    function initJobsFilterPage() {
+      const searchInput = document.getElementById(
+        "jobSearchInput",
+      ) as HTMLInputElement;
+      const checkboxes = document.querySelectorAll(
+        ".filter-cb",
+      ) as NodeListOf<HTMLInputElement>;
+      const resetBtn = document.getElementById("resetFilters");
+      const resetEmptyBtn = document.getElementById("resetFiltersEmpty");
+      const jobItems = document.querySelectorAll(
+        ".job-item-wrapper",
+      ) as NodeListOf<HTMLElement>;
+      const countEl = document.getElementById("jobsCount");
+      const noResultsMsg = document.getElementById("noResultsMsg");
+
+      if (!searchInput && checkboxes.length === 0) return;
+
+      function filterJobs() {
+        const query = searchInput?.value.toLowerCase().trim() || "";
+        const selectedCities = Array.from(
+          document.querySelectorAll('input[name="city"]:checked'),
+        ).map((cb: any) => cb.value.toLowerCase());
+        const selectedAreas = Array.from(
+          document.querySelectorAll('input[name="area"]:checked'),
+        ).map((cb: any) => cb.value.toLowerCase());
+        const selectedAccess = Array.from(
+          document.querySelectorAll('input[name="access"]:checked'),
+        ).map((cb: any) => cb.value.toLowerCase());
+
+        let visibleCount = 0;
+
+        jobItems.forEach((item) => {
+          const city = (item.dataset.city || "").toLowerCase();
+          const area = (item.dataset.area || "").toLowerCase();
+          const title = (item.dataset.title || "").toLowerCase();
+          const company = (item.dataset.company || "").toLowerCase();
+          const badge = (item.dataset.badge || "").toLowerCase();
+
+          const matchQuery =
+            !query ||
+            title.includes(query) ||
+            company.includes(query) ||
+            city.includes(query) ||
+            area.includes(query);
+          const matchCity =
+            selectedCities.length === 0 || selectedCities.includes(city);
+          const matchArea =
+            selectedAreas.length === 0 || selectedAreas.includes(area);
+          const matchAccess =
+            selectedAccess.length === 0 ||
+            selectedAccess.some((a) => badge.includes(a));
+
+          if (matchQuery && matchCity && matchArea && matchAccess) {
+            item.style.display = "block";
+            visibleCount++;
+          } else {
+            item.style.display = "none";
+          }
+        });
+
+        if (countEl) countEl.textContent = visibleCount.toString();
+        if (noResultsMsg) {
+          noResultsMsg.style.display = visibleCount === 0 ? "block" : "none";
+        }
+      }
+
+      function initFromUrlParams() {
+        const params = new URLSearchParams(window.location.search);
+        const qParam = params.get("q");
+        const cityParam = params.get("ciudad") || params.get("city");
+        const areaParam = params.get("area");
+        const accessParam = params.get("access");
+
+        if (qParam && searchInput) {
+          searchInput.value = qParam;
+        }
+
+        if (cityParam) {
+          checkboxes.forEach((cb) => {
+            if (
+              cb.name === "city" &&
+              cb.value.toLowerCase() === cityParam.toLowerCase()
+            ) {
+              cb.checked = true;
+            }
+          });
+        }
+
+        if (areaParam) {
+          checkboxes.forEach((cb) => {
+            if (
+              cb.name === "area" &&
+              cb.value.toLowerCase().includes(areaParam.toLowerCase())
+            ) {
+              cb.checked = true;
+            }
+          });
+        }
+
+        if (accessParam) {
+          checkboxes.forEach((cb) => {
+            if (
+              cb.name === "access" &&
+              cb.value.toLowerCase().includes(accessParam.toLowerCase())
+            ) {
+              cb.checked = true;
+            }
+          });
+        }
+
+        filterJobs();
+      }
+
+      searchInput?.addEventListener("input", filterJobs);
+      checkboxes.forEach((cb) => cb.addEventListener("change", filterJobs));
+
+      function resetAll() {
+        if (searchInput) searchInput.value = "";
+        checkboxes.forEach((cb) => (cb.checked = false));
+        if (window.history.replaceState) {
+          window.history.replaceState(
+            {},
+            document.title,
+            window.location.pathname,
+          );
+        }
+        filterJobs();
+      }
+
+      resetBtn?.addEventListener("click", resetAll);
+      resetEmptyBtn?.addEventListener("click", resetAll);
+
+      // Run on load
+      initFromUrlParams();
+    }
+
+    document.addEventListener("astro:page-load", initJobsFilterPage);
+  </script>
+
+  <style>
+    .page-banner {
+      background-color: var(--color-primary);
+      color: var(--color-text-inverse);
+      min-height: 550px;
+      padding: calc(var(--space-12) + 40px) 0 var(--space-12) 0;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .page-banner-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      margin: 0 auto;
+      max-width: 720px;
+    }
+
+    .banner-badge {
+      margin-bottom: var(--space-4);
+    }
+
+    .page-title {
+      color: var(--color-text-inverse);
+      font-size: var(--text-5xl);
+      margin-bottom: var(--space-3);
+    }
+
+    .page-desc {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: var(--text-lg);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* Board Layout */
+    .board-layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: var(--space-8);
+      align-items: start;
+    }
+
+    /* Filters Sidebar */
+    .filters-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    .filter-card {
+      background: var(--color-bg-card);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+      box-shadow: none;
+    }
+
+    .filter-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: var(--space-4);
+    }
+
+    .filter-title {
+      font-size: var(--text-base);
+      font-weight: 700;
+    }
+
+    .clear-filters-btn {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      text-decoration: underline;
+    }
+
+    .clear-filters-btn:hover {
+      color: var(--color-primary);
+    }
+
+    .filter-group {
+      margin-bottom: var(--space-6);
+    }
+
+    .filter-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .filter-subtitle {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      margin-bottom: var(--space-3);
+      color: var(--color-primary);
+    }
+
+    .checkbox-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: var(--text-sm);
+      color: var(--color-text-main);
+      cursor: pointer;
+    }
+
+    .checkbox-label input {
+      accent-color: var(--color-primary);
+      width: 17px;
+      height: 17px;
+      cursor: pointer;
+    }
+
+    .support-card {
+      background: var(--color-bg-alt);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+      text-align: center;
+    }
+
+    .support-icon {
+      font-size: 2rem;
+      margin-bottom: var(--space-2);
+    }
+
+    .support-title {
+      font-size: var(--text-sm);
+      margin-bottom: var(--space-2);
+    }
+
+    .support-text {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-4);
+    }
+
+    /* Results Grid */
+    .results-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-6);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .results-count {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .results-count strong {
+      color: var(--color-primary);
+    }
+
+    .jobs-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-6);
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .jobs-list > *,
+    .job-item-wrapper {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    /* Empty State */
+    .no-results-message {
+      text-align: center;
+      padding: var(--space-12) var(--space-6);
+      background: var(--color-bg-card);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-md);
+      margin-top: var(--space-4);
+    }
+
+    .empty-icon {
+      font-size: 2.5rem;
+      margin-bottom: var(--space-3);
+    }
+
+    .no-results-message h3 {
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-2);
+      color: var(--color-primary);
+    }
+
+    .no-results-message p {
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      margin-bottom: var(--space-6);
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-reset-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      border: 2px solid transparent;
+      padding: 0.65rem 1.5rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .btn-reset-link:hover {
+      background: var(--color-primary-hover);
+      transform: translateY(-2px);
+    }
+
+    /* ========================================================
+     5-TIER RESPONSIVE ADAPTATIONS
+     ======================================================== */
+
+    /* 1. Desktop Tier (>= 1440px) */
+    @media (min-width: 1440px) {
+      .board-layout {
+        grid-template-columns: 320px 1fr;
+        gap: var(--space-10);
+      }
+      .jobs-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-8);
+      }
+    }
+
+    /* 2. Laptop Tier (992px - 1439px) */
+    @media (min-width: 992px) and (max-width: 1439px) {
+      .board-layout {
+        grid-template-columns: 280px 1fr;
+        gap: var(--space-6);
+      }
+      .jobs-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-5);
+      }
+    }
+
+    /* 3. Tablet Tier (768px - 991px) */
+    @media (min-width: 768px) and (max-width: 991px) {
+      .page-banner {
+        min-height: 480px;
+        padding: calc(90px + var(--space-8)) 0 var(--space-12) 0;
+      }
+      .board-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+      }
+      .filters-sidebar {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-6);
+      }
+      .jobs-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-6);
+      }
+    }
+
+    /* 4. Mobile Landscape Tier (480px - 767px) */
+    @media (min-width: 480px) and (max-width: 767px) {
+      .page-banner {
+        min-height: 440px;
+        padding: calc(90px + var(--space-8)) 0 var(--space-10) 0;
+      }
+      .board-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+      }
+      .filters-sidebar {
+        display: flex;
+        flex-direction: column;
+      }
+      .jobs-list {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+      .results-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-3);
+      }
+      .search-inline {
+        width: 100%;
+      }
+    }
+
+    /* 5. Mobile Portrait Tier (240px - 479px) */
+    @media (max-width: 479px) {
+      .page-banner {
+        min-height: 400px;
+        padding: calc(90px + var(--space-8)) 0 var(--space-10) 0;
+      }
+      .page-desc {
+        font-size: var(--text-sm);
+      }
+      .board-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-5);
+      }
+      .filter-card,
+      .support-card {
+        padding: var(--space-4);
+      }
+      .jobs-list {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+      .results-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-3);
+      }
+      .search-inline {
+        width: 100%;
+      }
+    }
+  </style>
+</Layout>

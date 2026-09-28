@@ -1,0 +1,106 @@
+:root {
+  /* Colors */
+  --color-primary: #212051;
+  --color-primary-dark: #17163c;
+  --color-primary-light: #2c2b69;
+  --color-primary-hover: #1b1a45;
+  --color-primary-rgb: 33, 32, 81;
+
+  --color-accent: #ACF7FF;
+  --color-accent-dark: #7ce8f5;
+  --color-accent-light: #d8fcff;
+  --color-accent-rgb: 172, 247, 255;
+
+  --color-white: #FFFFFF;
+  --color-bg: #F8FAFC;
+  --color-bg-alt: #F1F5F9;
+  --color-bg-card: #FFFFFF;
+
+  --color-text-main: #1E293B;
+  --color-text-muted: #64748B;
+  --color-text-light: #94A3B8;
+  --color-text-inverse: #FFFFFF;
+
+  --color-border: #E2E8F0;
+  --color-border-hover: #CBD5E1;
+  --color-border-primary: rgba(33, 32, 81, 0.12);
+
+  /* Status Colors */
+  --color-whatsapp: #25D366;
+  --color-whatsapp-dark: #1EBE5D;
+  --color-whatsapp-light: #E7F9EE;
+
+  --color-success: #10B981;
+  --color-success-bg: #ECFDF5;
+  --color-warning: #F59E0B;
+  --color-warning-bg: #FFFBEB;
+  --color-info: #3B82F6;
+  --color-info-bg: #EFF6FF;
+
+  /* Typography */
+  --font-heading: 'Montserrat', system-ui, -apple-system, sans-serif;
+  --font-body: 'Poppins', system-ui, -apple-system, sans-serif;
+
+  /* Fluid Typography (clamp based from mobile 240px to desktop 1440px) */
+  --text-xs: clamp(0.72rem, 0.2vw + 0.68rem, 0.75rem);
+  --text-sm: clamp(0.8125rem, 0.3vw + 0.75rem, 0.875rem);
+  --text-base: clamp(0.925rem, 0.35vw + 0.85rem, 1rem);
+  --text-lg: clamp(1.05rem, 0.5vw + 0.925rem, 1.125rem);
+  --text-xl: clamp(1.15rem, 0.7vw + 0.98rem, 1.35rem);
+  --text-2xl: clamp(1.35rem, 1vw + 1.1rem, 1.65rem);
+  --text-3xl: clamp(1.65rem, 1.6vw + 1.25rem, 2rem);
+  --text-4xl: clamp(1.95rem, 2.4vw + 1.35rem, 2.5rem);
+  --text-5xl: clamp(2.25rem, 3.5vw + 1.45rem, 3.25rem);
+  --text-hero: clamp(2.35rem, 4vw + 1.5rem, 3.5rem);
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Radii */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(33, 32, 81, 0.08), 0 2px 4px -2px rgba(33, 32, 81, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(33, 32, 81, 0.1), 0 4px 6px -4px rgba(33, 32, 81, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(33, 32, 81, 0.12), 0 8px 10px -6px rgba(33, 32, 81, 0.05);
+  --shadow-fab: 0 12px 28px rgba(37, 211, 102, 0.35);
+
+  /* Container */
+  --container-max-width: 1440px;
+  --container-padding: clamp(1rem, 0.86rem + 0.71vw, 1.5rem);
+
+
+  /* Responsive Breakpoint Reference Tokens */
+  /* Desktop: >= 1440px */
+  /* Laptop: 992px - 1439px */
+  /* Tablet: 768px - 991px */
+  /* Mobile Landscape: 480px - 767px */
+  /* Mobile Portrait: 240px - 479px */
+  --bp-desktop: 1440px;
+  --bp-laptop: 992px;
+  --bp-tablet: 768px;
+  --bp-mobile-landscape: 480px;
+  --bp-mobile-min: 240px;
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}

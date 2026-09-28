@@ -1,0 +1,41 @@
+[
+  {
+    "id": "1",
+    "slug": "luis-programador-santa-cruz",
+    "name": "Luis Mendoza",
+    "role": "Desarrollador Web Frontend & Sistemas",
+    "company": "Banco Mercantil Santa Cruz",
+    "city": "Santa Cruz",
+    "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+    "quote": "El código es un lenguaje universal donde prima la lógica y la precisión. En el banco valoran mis resultados y respetamos los canales escritos de comunicación.",
+    "category": "Tecnología & Desarrollo",
+    "videoDuration": "4:35 min (Con LSB & Subtítulos)",
+    "storyFull": "Luis tiene hipoacusia desde niño. Aunque se graduó con las mejores notas en Ingeniería de Sistemas, siempre se topaba con la frustración de que las empresas lo llamaban por teléfono sin avisar para entrevistarlo. A través de Incluxia, Luis postuló directo a una oferta evaluada por chat y pruebas de código en vivo. Hoy trabaja en el equipo de banca digital, programando páginas web y demostrando que comunicarse por texto y mensajes claros hace que el equipo trabaje con máxima eficiencia sin llamadas sorpresa."
+  },
+  {
+    "id": "2",
+    "slug": "maria-ascenso-directora-creativa",
+    "name": "María René Morales",
+    "role": "Directora Creativa & Especialista en Preprensa",
+    "company": "Agencia Publicitaria Croma",
+    "city": "La Paz",
+    "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80",
+    "quote": "Visualizo detalles y contrastes cromáticos que otros pasan por alto. Mi agudeza visual aporta una perspectiva de innovación única a cada campaña gráfica.",
+    "category": "Diseño & Comunicación Visual",
+    "videoDuration": "3:50 min (Con LSB & Subtítulos)",
+    "storyFull": "María René tiene hipoacusia profunda y se comunica fluidamente en Lengua de Señas Boliviana (LSB), lectura labiofacial y notas escritas. Su destreza para el diseño conceptual, la diagramación editorial y el control cromático en preprensa la convirtieron en una referente indispensable en su agencia. La empresa implementó adaptaciones razonables de bajo costo: reuniones con subtitulado automático en tiempo real (ASR), pizarras colaborativas digitales (Figma/Miro) y resúmenes de proyectos por chat. Su ascenso a Directora Creativa demuestra que cuando los entornos de trabajo son accesibles, el talento se desenvuelve sin límites."
+  },
+  {
+    "id": "3",
+    "slug": "juan-analista-financiero-cochabamba",
+    "name": "Juan Pablo Claros",
+    "role": "Analista de Facturación y Conciliación Contable",
+    "company": "Farmacorp S.A.",
+    "city": "Cochabamba",
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
+    "quote": "La inclusión no es beneficencia, es una ventaja competitiva para las empresas. El trabajo enfocado en datos sin interrupciones acústicas elevó mi rendimiento contable.",
+    "category": "Finanzas & Administración",
+    "videoDuration": "5:12 min (Con LSB & Subtítulos)",
+    "storyFull": "Juan Pablo trabaja en la oficina de Farmacorp en Cochabamba, donde concilia miles de facturas electrónicas al día. Al no estar distraído por llamadas telefónicas constantes, su nivel de concentración y precisión contable es de los más altos de la empresa. Con el apoyo de Incluxia, los supervisores acordaron coordinar todo por chat y mensajes de texto, logrando un ambiente de trabajo tranquilo, respetuoso y muy productivo bajo la Ley 977."
+  }
+]
