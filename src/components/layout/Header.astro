@@ -181,11 +181,12 @@ const navLinks = [
   /* 2. Floating Navbar Capsule */
   .navbar-capsule {
     pointer-events: auto;
-    background-color: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background-color: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border-radius: var(--radius-md);
-    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+    box-shadow: none; /* ZERO SHADOWS */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -292,7 +293,7 @@ const navLinks = [
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     padding: var(--space-6);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    box-shadow: none; /* ZERO SHADOWS */
     transform: translateY(-10px);
     opacity: 0;
     pointer-events: none;

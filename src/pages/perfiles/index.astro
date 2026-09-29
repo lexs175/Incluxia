@@ -7,81 +7,74 @@ import profilesData from '../../data/profiles.json';
 ---
 
 <Layout
-  title="Perfiles Laborales | Incluxia Bolivia"
-  description="Conoce perfiles de personas con hipoacusia en Bolivia listos para trabajar, con comunicación 100% por chat o WhatsApp."
+  title="Perfiles Laborales Inclusivos | Incluxia Bolivia"
+  description="Conoce perfiles de profesionales con hipoacusia en Bolivia listos para trabajar, con comunicación 100% por chat o WhatsApp. Cumplimiento Ley 977."
   activePath="/perfiles"
 >
-  <!-- Hero Section -->
-  <section class="profiles-hero">
-    <div class="container hero-split">
-      <div class="hero-text-col">
-        <Badge variant="cyan" class="profiles-badge">Talento con Hipoacusia · Bolivia</Badge>
-        <h1 class="hero-title">Perfiles Laborales Inclusivos</h1>
-        <p class="hero-desc">
-          Conoce a profesionales con hipoacusia listos para integrarse en tu empresa. Cada perfil incluye experiencia laboral, habilidades y disponibilidad para contacto 100% por chat o WhatsApp.
+  <!-- 1. HERO SECTION: Clean Modern White Canvas (Trustly Fintech Style) -->
+  <section class="trustly-profiles-hero">
+    <div class="container hero-container">
+      <div class="hero-header">
+        <span class="hero-pill-badge">
+          <span class="status-dot"></span>
+          Talento Verificado · Bolivia · Ley 977
+        </span>
+
+        <h1 class="hero-main-title">
+          Perfiles profesionales con <span class="highlight-cyan">hipoacusia</span>
+        </h1>
+
+        <p class="hero-lead-text">
+          Conoce a profesionales preparados en tecnología, diseño, administración y finanzas. Cada perfil cuenta con adaptaciones verificadas y coordinación directa <strong>100% por chat o WhatsApp</strong>.
         </p>
-        <div class="hero-stats">
-          <div class="stat-item">
-            <span class="stat-number">{profilesData.length}</span>
-            <span class="stat-label">Perfiles activos</span>
-          </div>
-          <div class="stat-divider" aria-hidden="true"></div>
-          <div class="stat-item">
-            <span class="stat-number">100%</span>
-            <span class="stat-label">Contacto por escrito</span>
-          </div>
-          <div class="stat-divider" aria-hidden="true"></div>
-          <div class="stat-item">
-            <span class="stat-number">3</span>
-            <span class="stat-label">Ciudades de Bolivia</span>
-          </div>
-        </div>
       </div>
 
-      <div class="hero-illustration-col" aria-hidden="true">
-        <div class="hero-card-preview">
-          <div class="preview-avatar-ring">
-            {profilesData.slice(0, 3).map((p) => (
-              <img src={p.photo} alt="" class="preview-avatar" loading="lazy" />
-            ))}
-          </div>
-          <div class="preview-text-block">
-            <span class="preview-label">Profesionales verificados</span>
-            <p class="preview-desc">Con adaptaciones garantizadas y procesos 100% escritos</p>
-          </div>
-          <div class="preview-badge-row">
-            <span class="preview-badge-pill">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              LSB disponible
-            </span>
-            <span class="preview-badge-pill">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              Chat escrito
-            </span>
-          </div>
+      <!-- Trustly Horizontal Stats Ribbon (Zero Shadows, Clean Flat Pills) -->
+      <div class="stats-pills-row">
+        <div class="stat-pill-item">
+          <span class="stat-number">{profilesData.length}</span>
+          <span class="stat-text">Perfiles Activos</span>
+        </div>
+        <div class="stat-sep" aria-hidden="true">·</div>
+        <div class="stat-pill-item">
+          <span class="stat-number">100%</span>
+          <span class="stat-text">Canales Escritos</span>
+        </div>
+        <div class="stat-sep" aria-hidden="true">·</div>
+        <div class="stat-pill-item">
+          <span class="stat-number">0</span>
+          <span class="stat-text">Llamadas Telefónicas</span>
+        </div>
+        <div class="stat-sep" aria-hidden="true">·</div>
+        <div class="stat-pill-item">
+          <span class="stat-number">3</span>
+          <span class="stat-text">Ciudades Principales</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Profiles Grid Section -->
+  <!-- 2. PROFILES DIRECTORY GRID SECTION (Soft Tinted Background, Zero Shadows) -->
   <section class="section profiles-grid-section">
     <div class="container">
-      <div class="grid-header">
-        <div class="grid-header-text">
-          <h2 class="grid-title">Directorio de Profesionales</h2>
-          <p class="grid-sub">Haz clic en cada tarjeta para ver el currículum completo y datos de contacto.</p>
+      <div class="section-top-bar">
+        <div>
+          <h2 class="section-heading">Profesionales listos para tu empresa</h2>
+          <p class="section-desc">
+            Pasa el cursor sobre cada perfil para conocer sus habilidades clave y abrir su currículum completo.
+          </p>
         </div>
+
         <Button href="/empleos" variant="outline" size="sm">
-          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+          <span>Ver Ofertas de Trabajo</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
           </svg>
-          Ver Trabajos Disponibles
         </Button>
       </div>
 
-      <div class="profiles-grid">
+      <div class="profiles-cards-grid">
         {profilesData.map((profile) => (
           <ProfileCard profile={profile} />
         ))}
@@ -89,27 +82,23 @@ import profilesData from '../../data/profiles.json';
     </div>
   </section>
 
-  <!-- CTA Bottom -->
-  <section class="section cta-section">
+  <!-- 3. BOTTOM CTA CAPSULE FOR RECRUITERS (Zero Shadows, Clean Flat Design) -->
+  <section class="section final-cta-section">
     <div class="container">
-      <div class="cta-card">
-        <div class="cta-icon-wrap" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-            <circle cx="9" cy="7" r="4"></circle>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-          </svg>
-        </div>
-        <div class="cta-content">
-          <h2 class="cta-title">¿Tu empresa busca personas con ganas de trabajar?</h2>
-          <p class="cta-desc">
-            En Incluxia te conectamos directo con profesionales preparados. Te ayudamos a organizar las tareas por chat y coordinar todo sin llamadas ni complicaciones.
-          </p>
-        </div>
-        <div class="cta-actions">
-          <Button href="/nosotros#contacto" variant="primary" size="lg">Contactar con Incluxia</Button>
-          <Button href="/casos-de-exito" variant="outline" size="lg">Ver Casos de Éxito</Button>
+      <div class="final-cta-capsule">
+        <h2 class="final-cta-title">
+          ¿Buscas contratar talento comprometido y cumplir la Ley 977?
+        </h2>
+        <p class="final-cta-subtitle">
+          El equipo de Incluxia te ayuda a coordinar entrevistas técnicas directas por WhatsApp y a implementar adaptaciones razonables en tu equipo sin costo.
+        </p>
+        <div class="final-cta-buttons">
+          <Button href="/#empresas-ley977" variant="primary" size="lg">
+            <span>Publicar Puesto de Trabajo</span>
+          </Button>
+          <Button href="https://wa.me/59172255726?text=Hola%2C%20quisiera%20conectar%20con%20los%20perfiles%20profesionales%20de%20Incluxia" target="_blank" rel="noopener noreferrer" variant="whatsapp" size="lg">
+            <span>Contactar por WhatsApp</span>
+          </Button>
         </div>
       </div>
     </div>
@@ -118,367 +107,231 @@ import profilesData from '../../data/profiles.json';
 
 <style>
   /* ====================================================
-     HERO
+     1. HERO SECTION: TRUSTLY CLEAN FINTECH STYLE
+     Zero shadows. Zero glow. Flat minimalism.
      ==================================================== */
-  .profiles-hero {
-    background-color: var(--color-primary);
-    color: var(--color-text-inverse);
-    min-height: 560px;
-    padding: calc(var(--space-16) + 48px) 0 var(--space-16) 0;
-    display: flex;
-    align-items: center;
+  .trustly-profiles-hero {
+    background-color: var(--color-white);
+    padding-top: calc(90px + var(--space-12));
+    padding-bottom: var(--space-16);
+    position: relative;
+    overflow: hidden;
   }
 
-  .profiles-hero .container {
-    width: 100%;
-  }
-
-  .hero-split {
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: var(--space-12);
-    align-items: center;
-    width: 100%;
-  }
-
-  .profiles-badge {
-    margin-bottom: var(--space-5);
-  }
-
-  .hero-title {
-    color: var(--color-text-inverse);
-    font-size: var(--text-5xl);
-    line-height: 1.15;
-    margin-bottom: var(--space-5);
-  }
-
-  .hero-desc {
-    color: rgba(255, 255, 255, 0.88);
-    font-size: var(--text-lg);
-    line-height: 1.65;
-    margin-bottom: var(--space-8);
-    max-width: 560px;
-  }
-
-  /* Stats row */
-  .hero-stats {
-    display: flex;
-    align-items: center;
-    gap: var(--space-6);
-  }
-
-  .stat-item {
+  .hero-container {
     display: flex;
     flex-direction: column;
-    gap: var(--space-1);
+    align-items: center;
+  }
+
+  .hero-header {
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto var(--space-8) auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-pill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(var(--color-primary-rgb), 0.04);
+    border: 1px solid rgba(var(--color-primary-rgb), 0.12);
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    padding: 0.45rem 1.15rem;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-6);
+    letter-spacing: -0.01em;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-whatsapp);
+  }
+
+  .hero-main-title {
+    font-size: var(--text-hero);
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+    margin-bottom: var(--space-6);
+  }
+
+  .highlight-cyan {
+    color: var(--color-accent-dark);
+  }
+
+  .hero-lead-text {
+    color: var(--color-text-muted);
+    font-size: var(--text-lg);
+    line-height: 1.65;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .hero-lead-text strong {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  /* Stats Ribbon */
+  .stats-pills-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    margin-top: var(--space-8);
+  }
+
+  .stat-pill-item {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.45rem;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    padding: 0.5rem 1.15rem;
+    border-radius: var(--radius-full);
   }
 
   .stat-number {
     font-family: var(--font-heading);
-    font-size: var(--text-3xl);
-    font-weight: 900;
-    color: var(--color-accent);
-    line-height: 1;
-  }
-
-  .stat-label {
-    font-size: var(--text-xs);
-    color: rgba(255, 255, 255, 0.65);
-    font-weight: 500;
-    white-space: nowrap;
-  }
-
-  .stat-divider {
-    width: 1px;
-    height: 36px;
-    background-color: rgba(255, 255, 255, 0.2);
-    flex-shrink: 0;
-  }
-
-  /* Hero illustration card */
-  .hero-card-preview {
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: var(--radius-xl);
-    padding: var(--space-8);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-5);
-  }
-
-  .preview-avatar-ring {
-    display: flex;
-    margin-left: 0;
-  }
-
-  .preview-avatar {
-    width: 52px;
-    height: 52px;
-    border-radius: var(--radius-full);
-    object-fit: cover;
-    border: 3px solid var(--color-primary);
-    margin-left: -14px;
-    flex-shrink: 0;
-    transition: transform var(--transition-fast);
-  }
-
-  .preview-avatar:first-child {
-    margin-left: 0;
-  }
-
-  .preview-avatar:hover {
-    transform: translateY(-4px);
-    z-index: 1;
-  }
-
-  .preview-label {
-    font-family: var(--font-heading);
     font-size: var(--text-base);
-    font-weight: 700;
-    color: var(--color-text-inverse);
-    display: block;
-    margin-bottom: var(--space-1);
+    font-weight: 800;
+    color: var(--color-primary);
   }
 
-  .preview-desc {
-    font-size: var(--text-sm);
-    color: rgba(255, 255, 255, 0.7);
-    line-height: 1.5;
-    margin: 0;
-  }
-
-  .preview-badge-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-  }
-
-  .preview-badge-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-1);
-    background-color: rgba(var(--color-accent-rgb), 0.15);
-    color: var(--color-accent);
-    border: 1px solid rgba(var(--color-accent-rgb), 0.3);
+  .stat-text {
+    font-family: var(--font-heading);
     font-size: var(--text-xs);
-    font-weight: 700;
-    padding: 0.3rem 0.65rem;
-    border-radius: var(--radius-full);
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+
+  .stat-sep {
+    color: var(--color-text-light);
   }
 
   /* ====================================================
-     GRID SECTION
+     2. PROFILES GRID SECTION
      ==================================================== */
   .profiles-grid-section {
     background-color: var(--color-bg);
   }
 
-  .grid-header {
+  .section-top-bar {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     gap: var(--space-4);
-    margin-bottom: var(--space-8);
+    margin-bottom: var(--space-10);
     flex-wrap: wrap;
   }
 
-  .grid-title {
-    margin-bottom: var(--space-1);
+  .section-heading {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.02em;
+    margin-top: var(--space-2);
+    margin-bottom: 0.25rem;
+    line-height: 1.25;
   }
 
-  .grid-sub {
+  .section-desc {
     color: var(--color-text-muted);
     font-size: var(--text-base);
+    max-width: 620px;
     margin: 0;
   }
 
-  .profiles-grid {
+  .profiles-cards-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-6);
   }
 
   /* ====================================================
-     CTA BOTTOM
+     3. FINAL CTA SECTION
      ==================================================== */
-  .cta-section {
-    padding-top: 0;
+  .final-cta-section {
+    background-color: var(--color-white);
+    padding-top: var(--space-12);
   }
 
-  .cta-card {
-    background: var(--color-primary);
-    border-radius: var(--radius-xl);
-    padding: var(--space-12);
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: var(--space-8);
+  .final-cta-capsule {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-radius: var(--radius-3xl);
+    padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+    text-align: center;
+    color: var(--color-text-inverse);
+    box-shadow: none; /* ZERO SHADOWS */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 1080px;
+    margin: 0 auto;
   }
 
-  .cta-icon-wrap {
-    width: 64px;
-    height: 64px;
-    border-radius: var(--radius-xl);
-    background-color: rgba(var(--color-accent-rgb), 0.15);
-    color: var(--color-accent);
+  .final-cta-title {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--color-text-inverse);
+    margin-bottom: var(--space-4);
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .final-cta-subtitle {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto var(--space-8) auto;
+  }
+
+  .final-cta-buttons {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
+    flex-wrap: wrap;
+    gap: var(--space-4);
   }
 
-  .cta-title {
-    font-size: var(--text-2xl);
-    color: var(--color-text-inverse);
-    margin-bottom: var(--space-2);
-  }
-
-  .cta-desc {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: var(--text-base);
-    line-height: 1.6;
-    max-width: 520px;
-    margin: 0;
-  }
-
-  .cta-actions {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    flex-shrink: 0;
-  }
-
-  /* ====================================================
-     5-TIER RESPONSIVE
-     ==================================================== */
-
-  /* 1. Desktop (>= 1440px) */
-  @media (min-width: 1440px) {
-    .profiles-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-8);
-    }
-  }
-
-  /* 2. Laptop (992px - 1439px) */
-  @media (min-width: 992px) and (max-width: 1439px) {
-    .hero-split {
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: var(--space-8);
-    }
-    .profiles-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  /* 3. Tablet (768px - 991px) */
-  @media (min-width: 768px) and (max-width: 991px) {
-    .profiles-hero {
-      min-height: 480px;
-      padding: calc(90px + var(--space-8)) 0 var(--space-12) 0;
-    }
-    .hero-split {
-      grid-template-columns: 1fr;
-      gap: var(--space-8);
-    }
-    .hero-illustration-col {
-      display: none;
-    }
-    .profiles-grid {
+  /* Responsive Rules */
+  @media (max-width: 991px) {
+    .profiles-cards-grid {
       grid-template-columns: repeat(2, 1fr);
     }
-    .cta-card {
-      grid-template-columns: 1fr;
-      text-align: center;
-    }
-    .cta-icon-wrap {
-      margin: 0 auto;
-    }
-    .cta-desc {
-      max-width: 100%;
-    }
-    .cta-actions {
-      flex-direction: row;
-      justify-content: center;
-      width: 100%;
-    }
   }
 
-  /* 4. Mobile Landscape (480px - 767px) */
-  @media (min-width: 480px) and (max-width: 767px) {
-    .profiles-hero {
-      min-height: 400px;
-      padding: calc(90px + var(--space-8)) 0 var(--space-10) 0;
-    }
-    .hero-split {
+  @media (max-width: 767px) {
+    .profiles-cards-grid {
       grid-template-columns: 1fr;
     }
-    .hero-illustration-col {
-      display: none;
-    }
-    .hero-stats {
-      gap: var(--space-4);
-    }
-    .profiles-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--space-4);
-    }
-    .cta-card {
-      grid-template-columns: 1fr;
-      padding: var(--space-8);
-    }
-    .cta-icon-wrap {
-      display: none;
-    }
-    .cta-actions {
-      width: 100%;
-    }
-  }
 
-  /* 5. Mobile Portrait (240px - 479px) */
-  @media (max-width: 479px) {
-    .profiles-hero {
-      min-height: 360px;
-      padding: calc(90px + var(--space-6)) 0 var(--space-10) 0;
+    .stats-pills-row {
+      gap: var(--space-2);
     }
-    .hero-split {
-      grid-template-columns: 1fr;
-    }
-    .hero-illustration-col {
+
+    .stat-sep {
       display: none;
     }
-    .hero-desc {
-      font-size: var(--text-sm);
-    }
-    .hero-stats {
-      gap: var(--space-3);
-    }
-    .stat-divider {
-      height: 28px;
-    }
-    .profiles-grid {
-      grid-template-columns: 1fr;
-      gap: var(--space-4);
-    }
-    .grid-header {
+
+    .final-cta-buttons {
       flex-direction: column;
-      align-items: flex-start;
-      gap: var(--space-3);
-    }
-    .cta-card {
-      grid-template-columns: 1fr;
-      padding: var(--space-6);
-      gap: var(--space-5);
-    }
-    .cta-icon-wrap {
-      display: none;
-    }
-    .cta-actions {
       width: 100%;
     }
-    .cta-actions .btn {
+
+    .final-cta-buttons .btn {
       width: 100%;
     }
   }

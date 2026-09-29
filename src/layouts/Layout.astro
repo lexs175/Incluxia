@@ -65,6 +65,73 @@ const {
 
     <!-- Accessible Floating Action Button -->
     <WhatsAppFAB />
+
+    <!-- GSAP Title & Heading Entrance Animations -->
+    <script>
+      import gsap from 'gsap';
+
+      function initGsapAnimations() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        // 1. Immediate entrance for Hero titles & page header titles
+        const heroTitles = document.querySelectorAll<HTMLElement>(
+          'h1, .hero-main-title, .page-header-title, .jobs-hero-title, .casos-hero-title, .perfiles-hero-title, .blog-hero-title, .about-hero-title'
+        );
+
+        if (heroTitles.length > 0) {
+          gsap.fromTo(
+            heroTitles,
+            { y: 28, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.85,
+              stagger: 0.08,
+              ease: 'power3.out',
+              clearProps: 'transform,opacity',
+            }
+          );
+        }
+
+        // 2. Scroll-triggered entrance for section titles (h2, section-heading, etc.)
+        const sectionHeadings = document.querySelectorAll<HTMLElement>(
+          'h2, .section-heading, .manifesto-text, .manifesto-statement, .enterprise-title'
+        );
+
+        if (sectionHeadings.length > 0 && 'IntersectionObserver' in window) {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  gsap.fromTo(
+                    entry.target,
+                    { y: 24, opacity: 0 },
+                    {
+                      y: 0,
+                      opacity: 1,
+                      duration: 0.75,
+                      ease: 'power3.out',
+                      clearProps: 'transform,opacity',
+                    }
+                  );
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+          );
+
+          sectionHeadings.forEach((heading) => {
+            // Avoid re-observing h1s already animated above
+            if (heading.tagName !== 'H1') {
+              observer.observe(heading);
+            }
+          });
+        }
+      }
+
+      document.addEventListener('astro:page-load', initGsapAnimations);
+    </script>
   </body>
 </html>
 

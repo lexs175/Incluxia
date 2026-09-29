@@ -1,76 +1,128 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Badge from '../../components/ui/Badge.astro';
-import StoryCard from '../../components/cards/StoryCard.astro';
-import Button from '../../components/ui/Button.astro';
-import storiesData from '../../data/stories.json';
+import Layout from "../../layouts/Layout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import StoryCard from "../../components/cards/StoryCard.astro";
+import Button from "../../components/ui/Button.astro";
+import ExpandableButton from "../../components/ui/ExpandableButton.astro";
+import storiesData from "../../data/stories.json";
+
+const featuredStory = storiesData[0];
 ---
 
 <Layout
-  title="Historias de Éxito Laboral | Incluxia Bolivia"
-  description="Historias reales de personas con hipoacusia en Bolivia que trabajan en tecnología, diseño, administración y finanzas."
+  title="Casos de Éxito en Bolivia | Incluxia"
+  description="Historias reales de profesionales con hipoacusia que destacan en empresas formales de Bolivia con comunicación 100% por chat."
   activePath="/casos-de-exito"
 >
-  <!-- Hero Section -->
-  <section class="stories-hero">
-    <div class="container hero-split">
-      <div>
-        <Badge variant="cyan" class="stories-badge">Historias Reales</Badge>
-        <h1 class="hero-title">Casos de Éxito en Bolivia</h1>
-        <p class="hero-desc">
-          Conoce a personas con hipoacusia que demuestran su capacidad y talento todos los días cuando las empresas se comunican por chat o mensajes y dan tareas claras.
+  <!-- 1. HERO SECTION: Clean Modern White Canvas (Trustly Fintech Style) -->
+  <section class="trustly-stories-hero">
+    <div class="container hero-container">
+      <div class="hero-header">
+        <span class="hero-pill-badge">
+          <span class="status-dot"></span>
+          Historias Reales · Bolivia · Inclusión Laboral
+        </span>
+
+        <h1 class="hero-main-title">
+          Casos de éxito que inspiran a <span class="highlight-cyan">Bolivia</span>
+        </h1>
+
+        <p class="hero-lead-text">
+          Profesionales con hipoacusia demostrando su capacidad y concentración en tecnología, diseño, administración y finanzas cuando las empresas eligen canales 100% escritos.
         </p>
       </div>
 
-      <div class="featured-video-preview">
-        <div class="video-preview-card">
-          <img
-            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80"
-            alt="Entrevista con Luis Mendoza"
-            class="video-preview-img"
-          />
-          <div class="video-play-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-              <polygon points="5 3 19 12 5 21 5 3"></polygon>
-            </svg>
+      <!-- Featured Centerpiece Bento Showcase -->
+      {featuredStory && (
+        <div class="featured-bento-card">
+          <div class="featured-content-col">
+            <div class="featured-badge-row">
+              <span class="featured-company-pill">{featuredStory.company}</span>
+            </div>
+
+            <h2 class="featured-name-title">
+              {featuredStory.name}: {featuredStory.role}
+            </h2>
+
+            <blockquote class="featured-quote">
+              “{featuredStory.quote}”
+            </blockquote>
+
+            <div class="featured-meta-row">
+              <span class="meta-tag">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                {featuredStory.city}, Bolivia
+              </span>
+              <span class="meta-dot">·</span>
+              <span class="meta-tag">Entrevista con Intérprete LSB</span>
+            </div>
+
+            <div class="featured-action-wrap">
+              <ExpandableButton
+                href={`/casos-de-exito/${featuredStory.slug}`}
+                text="Ver historia completa"
+                variant="white"
+                size="md"
+              />
+            </div>
           </div>
-          <div class="video-info-tag">
-            <span>Video con Intérprete LSB y Subtítulos</span>
+
+          <div class="featured-photo-col">
+            <img
+              src={featuredStory.image}
+              alt={`Entrevista con ${featuredStory.name}`}
+              class="featured-photo"
+              loading="eager"
+            />
+            <div class="photo-caption-bar">
+              <span class="caption-title">{featuredStory.name}</span>
+              <span class="caption-sub">{featuredStory.role} en {featuredStory.company}</span>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   </section>
 
-  <!-- Gallery Grid -->
-  <section class="section">
+  <!-- 2. GALLERY GRID SECTION (Soft Tinted Bento Grid) -->
+  <section class="section stories-grid-section">
     <div class="container">
-      <div class="gallery-header">
-        <h2 class="gallery-title">Galería de Testimonios y Profesionales</h2>
-        <p class="gallery-sub">Haz clic en cada historia para ver la entrevista completa y su trayectoria laboral.</p>
-      </div>
-
-      <div class="stories-grid">
-        {storiesData.map((story) => (
-          <StoryCard story={story} />
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Box -->
-  <section class="section cta-section">
-    <div class="container">
-      <div class="cta-card">
-        <div class="cta-content">
-          <h2 class="cta-title">¿Quieres encontrar un trabajo como ellos?</h2>
-          <p class="cta-desc">
-            Si tienes hipoacusia y buscas trabajo o eres una empresa que quiere contratar personas responsables, en Incluxia te conectamos directo.
+      <div class="section-top-bar">
+        <div>
+          <span class="badge badge-navy">Directorio de Testimonios</span>
+          <h2 class="section-heading">Más trayectorias que derriban barreras</h2>
+          <p class="section-desc">
+            Cada testimonio demuestra que la agudeza visual, la disciplina y el trabajo sin interrupciones acústicas impulsan el éxito corporativo.
           </p>
         </div>
-        <div class="cta-actions">
-          <Button href="/empleos" variant="primary" size="lg">Ver Ofertas de Trabajo</Button>
-          <Button href="/nosotros#contacto" variant="outline" size="lg">Contactar con Incluxia</Button>
+      </div>
+
+      <div class="stories-cards-grid">
+        {storiesData.map((story) => <StoryCard story={story} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. BOTTOM CTA CAPSULE (Trustly Clean Fintech Style) -->
+  <section class="section final-cta-section">
+    <div class="container">
+      <div class="final-cta-capsule">
+        <h2 class="final-cta-title">
+          ¿Quieres encontrar un trabajo digno o contratar talento como ellos?
+        </h2>
+        <p class="final-cta-subtitle">
+          En Incluxia conectamos a profesionales con hipoacusia con empresas que coordinan por WhatsApp y ofrecen estabilidad laboral conforme a la Ley 977.
+        </p>
+        <div class="final-cta-buttons">
+          <Button href="/empleos" variant="primary" size="lg">
+            <span>Ver Ofertas de Trabajo</span>
+          </Button>
+          <Button href="https://wa.me/59172255726?text=Hola%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Incluxia" target="_blank" rel="noopener noreferrer" variant="whatsapp" size="lg">
+            <span>Contactar por WhatsApp</span>
+          </Button>
         </div>
       </div>
     </div>
@@ -78,254 +130,308 @@ import storiesData from '../../data/stories.json';
 </Layout>
 
 <style>
-  .stories-hero {
-    background-color: var(--color-primary);
-    color: var(--color-text-inverse);
-    min-height: 550px;
-    padding: calc(var(--space-16) + 40px) 0 var(--space-16) 0;
+  /* ====================================================
+     1. HERO SECTION: TRUSTLY CLEAN FINTECH STYLE
+     Zero shadows. Zero glow. Flat minimalism.
+     ==================================================== */
+  .trustly-stories-hero {
+    background-color: var(--color-white);
+    padding-top: calc(90px + var(--space-12));
+    padding-bottom: var(--space-16);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
   }
 
-  .stories-hero .container {
-    width: 100%;
-  }
-
-  .hero-split {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    width: 100%;
-    gap: var(--space-12);
+  .hero-header {
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto var(--space-12) auto;
+    display: flex;
+    flex-direction: column;
     align-items: center;
   }
 
-  .stories-badge {
-    margin-bottom: var(--space-4);
+  .hero-pill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(var(--color-primary-rgb), 0.04);
+    border: 1px solid rgba(var(--color-primary-rgb), 0.12);
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    padding: 0.45rem 1.15rem;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-6);
+    letter-spacing: -0.01em;
   }
 
-  .hero-title {
-    color: var(--color-text-inverse);
-    font-size: var(--text-5xl);
-    margin-bottom: var(--space-4);
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-whatsapp);
   }
 
-  .hero-desc {
-    color: rgba(255, 255, 255, 0.9);
+  .hero-main-title {
+    font-size: var(--text-hero);
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+    margin-bottom: var(--space-6);
+  }
+
+  .highlight-cyan {
+    color: var(--color-accent-dark);
+  }
+
+  .hero-lead-text {
+    color: var(--color-text-muted);
     font-size: var(--text-lg);
     line-height: 1.65;
+    max-width: 680px;
+    margin: 0 auto;
   }
 
-  .video-preview-card {
-    position: relative;
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    height: 320px;
-    box-shadow: var(--shadow-xl);
-    border: 3px solid rgba(var(--color-accent-rgb), 0.3);
-  }
-
-  .video-preview-img {
+  /* Featured Bento Showcase Card */
+  .featured-bento-card {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    margin: 0 auto;
+    background: var(--color-surface-dark);
+    border-radius: var(--radius-3xl);
+    border: 1px solid var(--color-border-dark);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    min-height: 480px;
+    box-shadow: none; /* ZERO SHADOWS */
   }
 
-  .video-play-btn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 68px;
-    height: 68px;
-    border-radius: 50%;
-    background-color: var(--color-accent);
-    color: var(--color-primary);
+  .featured-content-col {
+    padding: clamp(2.5rem, 5vw, 4rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-6);
+    color: var(--color-white);
+  }
+
+  .featured-badge-row {
     display: flex;
     align-items: center;
-    justify-content: center;
-    box-shadow: var(--shadow-lg);
-    cursor: pointer;
-    transition: transform var(--transition-normal);
+    gap: var(--space-3);
+    flex-wrap: wrap;
   }
 
-  .video-play-btn:hover {
-    transform: translate(-50%, -50%) scale(1.15);
-  }
-
-  .video-info-tag {
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-    background: rgba(var(--color-primary-rgb), 0.9);
-    color: var(--color-accent);
-    padding: 0.4rem 0.85rem;
-    border-radius: var(--radius-full);
+  .featured-company-pill {
+    font-family: var(--font-heading);
     font-size: var(--text-xs);
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .featured-name-title {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--color-white);
+    letter-spacing: -0.025em;
+    line-height: 1.25;
+    margin: 0;
+  }
+
+  .featured-quote {
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    font-style: italic;
+    border-left: 3px solid var(--color-accent);
+    padding-left: var(--space-5);
+    margin: 0;
+  }
+
+  .featured-meta-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: rgba(255, 255, 255, 0.65);
+    font-size: var(--text-xs);
+    font-family: var(--font-heading);
     font-weight: 600;
   }
 
-  .gallery-header {
-    margin-bottom: var(--space-8);
+  .meta-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
   }
 
-  .gallery-title {
+  .meta-dot {
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  .featured-action-wrap {
+    padding-top: var(--space-2);
+  }
+
+  /* Photo Column */
+  .featured-photo-col {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .featured-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .photo-caption-bar {
+    position: absolute;
+    bottom: var(--space-4);
+    left: var(--space-4);
+    right: var(--space-4);
+    background: rgba(11, 15, 25, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-xl);
+    padding: var(--space-3) var(--space-4);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .caption-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--color-white);
+  }
+
+  .caption-sub {
+    font-size: 0.72rem;
+    color: var(--color-accent);
+  }
+
+  /* ====================================================
+     2. STORIES GRID SECTION
+     ==================================================== */
+  .stories-grid-section {
+    background-color: var(--color-bg);
+  }
+
+  .section-top-bar {
+    margin-bottom: var(--space-10);
+  }
+
+  .section-heading {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.02em;
+    margin-top: var(--space-2);
     margin-bottom: 0.25rem;
+    line-height: 1.25;
   }
 
-  .gallery-sub {
+  .section-desc {
     color: var(--color-text-muted);
     font-size: var(--text-base);
+    max-width: 620px;
+    margin: 0;
   }
 
-  .stories-grid {
+  .stories-cards-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-6);
   }
 
-  .cta-section {
-    padding-top: 0;
+  /* ====================================================
+     3. FINAL CTA SECTION
+     ==================================================== */
+  .final-cta-section {
+    background-color: var(--color-white);
+    padding-top: var(--space-12);
   }
 
-  .cta-card {
-    background: var(--color-bg-alt);
-    border: 2px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: var(--space-12);
+  .final-cta-capsule {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-radius: var(--radius-3xl);
+    padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+    text-align: center;
+    color: var(--color-text-inverse);
+    box-shadow: none; /* ZERO SHADOWS */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .final-cta-title {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--color-text-inverse);
+    margin-bottom: var(--space-4);
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .final-cta-subtitle {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto var(--space-8) auto;
+  }
+
+  .final-cta-buttons {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: var(--space-8);
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-4);
   }
 
-  .cta-title {
-    font-size: var(--text-2xl);
-    margin-bottom: var(--space-2);
-  }
-
-  .cta-desc {
-    color: var(--color-text-muted);
-    font-size: var(--text-base);
-    max-width: 600px;
-    margin-bottom: 0;
-  }
-
-  .cta-actions {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    flex-shrink: 0;
-  }
-
-  /* ========================================================
-     5-TIER RESPONSIVE ADAPTATIONS
-     ======================================================== */
-
-  /* 1. Desktop Tier (>= 1440px) */
-  @media (min-width: 1440px) {
-    .stories-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-8);
-    }
-  }
-
-  /* 2. Laptop Tier (992px - 1439px) */
-  @media (min-width: 992px) and (max-width: 1439px) {
-    .hero-split {
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: var(--space-8);
-    }
-    .stories-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-5);
-    }
-  }
-
-  /* 3. Tablet Tier (768px - 991px) */
-  @media (min-width: 768px) and (max-width: 991px) {
-    .stories-hero {
-      min-height: 480px;
-      padding: calc(90px + var(--space-8)) 0 var(--space-12) 0;
-    }
-    .hero-split {
+  /* Responsive Rules */
+  @media (max-width: 991px) {
+    .featured-bento-card {
       grid-template-columns: 1fr;
-      gap: var(--space-8);
     }
-    .stories-grid {
+
+    .featured-photo {
+      height: 320px;
+    }
+
+    .stories-cards-grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: var(--space-6);
-    }
-    .cta-card {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--space-6);
-    }
-    .cta-actions {
-      flex-direction: row;
-      width: 100%;
     }
   }
 
-  /* 4. Mobile Landscape Tier (480px - 767px) */
-  @media (min-width: 480px) and (max-width: 767px) {
-    .stories-hero {
-      min-height: 440px;
-      padding: calc(90px + var(--space-8)) 0 var(--space-10) 0;
-    }
-    .hero-split {
+  @media (max-width: 767px) {
+    .stories-cards-grid {
       grid-template-columns: 1fr;
-      gap: var(--space-6);
     }
-    .stories-grid {
-      grid-template-columns: 1fr;
-      gap: var(--space-4);
-    }
-    .cta-card {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: var(--space-6);
-    }
-    .cta-actions {
-      width: 100%;
-    }
-    .cta-actions .btn {
-      width: 100%;
-    }
-  }
 
-  /* 5. Mobile Portrait Tier (240px - 479px) */
-  @media (max-width: 479px) {
-    .stories-hero {
-      min-height: 400px;
-      padding: calc(90px + var(--space-8)) 0 var(--space-10) 0;
-    }
-    .hero-split {
-      grid-template-columns: 1fr;
-      gap: var(--space-5);
-    }
-    .hero-desc {
-      font-size: var(--text-sm);
-    }
-    .video-preview-card {
-      height: 220px;
-    }
-    .video-play-btn {
-      width: 52px;
-      height: 52px;
-    }
-    .stories-grid {
-      grid-template-columns: 1fr;
-      gap: var(--space-4);
-    }
-    .cta-card {
+    .final-cta-buttons {
       flex-direction: column;
-      align-items: flex-start;
-      padding: var(--space-5);
-    }
-    .cta-actions {
       width: 100%;
     }
-    .cta-actions .btn {
+
+    .final-cta-buttons .btn {
       width: 100%;
     }
   }

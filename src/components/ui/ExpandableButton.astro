@@ -1,0 +1,229 @@
+---
+interface Props {
+  href: string;
+  text: string;
+  variant?: "dark" | "white" | "accent";
+  size?: "sm" | "md";
+  class?: string;
+  target?: string;
+  rel?: string;
+  id?: string;
+}
+
+const {
+  href,
+  text,
+  variant = "dark",
+  size = "md",
+  class: className = "",
+  target,
+  rel,
+  id,
+  ...rest
+} = Astro.props;
+
+const variantClass = `exp-btn-${variant}`;
+const sizeClass = size === "sm" ? "exp-btn-sm" : "exp-btn-md";
+---
+
+<a
+  href={href}
+  class={`trustly-expand-btn ${variantClass} ${sizeClass} ${className}`.trim()}
+  id={id}
+  target={target}
+  rel={rel}
+  aria-label={text}
+  {...rest}
+>
+  <span class="btn-text-reveal">{text}</span>
+  <span class="btn-icon-wrapper" aria-hidden="true">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="7" y1="17" x2="17" y2="7"></line>
+      <polyline points="7 7 17 7 17 17"></polyline>
+    </svg>
+  </span>
+</a>
+
+<style>
+  /* ====================================================
+     TRUSTLY SIGNATURE EXPANDABLE PILL BUTTON
+     Zero shadows. Flat minimalism. Springy smooth expansion.
+     ==================================================== */
+  .trustly-expand-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: none; /* STRICTLY ZERO SHADOWS */
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    border: none;
+    transition: 
+      max-width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      padding 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      background-color var(--transition-fast),
+      transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Medium Size (Default for Cards) */
+  .exp-btn-md {
+    height: 42px;
+    min-width: 42px;
+    max-width: 42px;
+    padding: 0;
+  }
+
+  /* Small Size */
+  .exp-btn-sm {
+    height: 36px;
+    min-width: 36px;
+    max-width: 36px;
+    padding: 0;
+  }
+
+  /* Text to reveal */
+  .btn-text-reveal {
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    transform: translateX(-4px);
+    transition: 
+      max-width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      margin 0.3s ease;
+    margin-right: 0;
+  }
+
+  /* Icon container */
+  .btn-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .btn-icon-wrapper svg {
+    display: block;
+    width: 15px;
+    height: 15px;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* ----------------------------------------------------
+     COLOR VARIANTS (Clean Flat Contrast, Zero Shadows, Zero Border)
+     ---------------------------------------------------- */
+  
+  /* Variant 1: Dark (Navy) - For Light Backgrounds */
+  .exp-btn-dark {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+  }
+  .exp-btn-dark .btn-text-reveal {
+    color: var(--color-white);
+  }
+  .exp-btn-dark .btn-icon-wrapper {
+    color: var(--color-white);
+  }
+  .exp-btn-dark:hover {
+    background-color: var(--color-primary-hover);
+  }
+
+  /* Variant 2: White - For Dark Panels, Photos & Bento Cards */
+  .exp-btn-white {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    border: none;
+  }
+  .exp-btn-white .btn-text-reveal {
+    color: var(--color-primary);
+  }
+  .exp-btn-white .btn-icon-wrapper {
+    color: var(--color-primary);
+  }
+  .exp-btn-white:hover {
+    background-color: var(--color-white);
+  }
+
+  /* Variant 3: Accent (Cyan) */
+  .exp-btn-accent {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    border: none;
+  }
+  .exp-btn-accent .btn-text-reveal {
+    color: var(--color-primary);
+  }
+  .exp-btn-accent .btn-icon-wrapper {
+    color: var(--color-primary);
+  }
+
+  /* ----------------------------------------------------
+     HOVER & EXPANSION STATES
+     Triggers when button itself is hovered/focused
+     OR when parent card is hovered!
+     ---------------------------------------------------- */
+  .trustly-expand-btn:hover,
+  .trustly-expand-btn:focus-visible,
+  :global(.job-card:hover) .trustly-expand-btn,
+  :global(.profile-card:hover) .trustly-expand-btn,
+  :global(.story-card:hover) .trustly-expand-btn,
+  :global(.blog-card:hover) .trustly-expand-btn,
+  :global(.bento-card:hover) .trustly-expand-btn {
+    max-width: 240px;
+    padding-left: 1.15rem;
+    padding-right: 0.95rem;
+  }
+
+  .exp-btn-sm:hover,
+  .exp-btn-sm:focus-visible,
+  :global(.job-card:hover) .exp-btn-sm,
+  :global(.profile-card:hover) .exp-btn-sm,
+  :global(.story-card:hover) .exp-btn-sm,
+  :global(.blog-card:hover) .exp-btn-sm,
+  :global(.bento-card:hover) .exp-btn-sm {
+    padding-left: 0.95rem;
+    padding-right: 0.75rem;
+  }
+
+  .trustly-expand-btn:hover .btn-text-reveal,
+  .trustly-expand-btn:focus-visible .btn-text-reveal,
+  :global(.job-card:hover) .trustly-expand-btn .btn-text-reveal,
+  :global(.profile-card:hover) .trustly-expand-btn .btn-text-reveal,
+  :global(.story-card:hover) .trustly-expand-btn .btn-text-reveal,
+  :global(.blog-card:hover) .trustly-expand-btn .btn-text-reveal,
+  :global(.bento-card:hover) .trustly-expand-btn .btn-text-reveal {
+    max-width: 170px;
+    opacity: 1;
+    transform: translateX(0);
+    margin-right: 0.45rem;
+  }
+
+  .trustly-expand-btn:hover .btn-icon-wrapper svg,
+  .trustly-expand-btn:focus-visible .btn-icon-wrapper svg,
+  :global(.job-card:hover) .trustly-expand-btn .btn-icon-wrapper svg,
+  :global(.profile-card:hover) .trustly-expand-btn .btn-icon-wrapper svg,
+  :global(.story-card:hover) .trustly-expand-btn .btn-icon-wrapper svg,
+  :global(.blog-card:hover) .trustly-expand-btn .btn-icon-wrapper svg,
+  :global(.bento-card:hover) .trustly-expand-btn .btn-icon-wrapper svg {
+    transform: translate(2px, -2px);
+  }
+
+  /* Accessibility focus */
+  .trustly-expand-btn:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+</style>

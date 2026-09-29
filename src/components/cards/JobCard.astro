@@ -1,6 +1,6 @@
 ---
 import Badge from '../ui/Badge.astro';
-import Button from '../ui/Button.astro';
+import ExpandableButton from '../ui/ExpandableButton.astro';
 
 interface Props {
   job: {
@@ -57,21 +57,15 @@ const { job } = Astro.props;
   <!-- Card Footer -->
   <div class="job-card-footer">
     <span class="posted-time">{job.postedDays}</span>
-    <Button href={`/empleos/${job.slug}`} variant="primary" size="sm">
-      <span>Ver Puesto</span>
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M5 12h14"></path>
-        <path d="m12 5 7 7-7 7"></path>
-      </svg>
-    </Button>
+    <ExpandableButton href={`/empleos/${job.slug}`} text="Ver Puesto" variant="dark" size="sm" />
   </div>
 </article>
 
 <style>
   .job-card {
     background: var(--color-bg-card);
-    border: 1.5px solid var(--color-border);
-    border-radius: var(--radius-md);
+    border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+    border-radius: var(--radius-2xl);
     padding: var(--space-6);
     display: flex;
     flex-direction: column;
@@ -80,14 +74,12 @@ const { job } = Astro.props;
     min-width: 0;
     max-width: 100%;
     box-sizing: border-box;
-    box-shadow: none;
-    transition: transform var(--transition-normal), border-color var(--transition-normal);
+    box-shadow: none; /* ZERO SHADOWS */
   }
 
   .job-card:hover {
-    transform: translateY(-4px);
-    box-shadow: none;
-    border-color: rgba(var(--color-primary-rgb), 0.3);
+    box-shadow: none; /* ZERO SHADOWS */
+    /* NO TRANSLATEY, NO BORDER CHANGE */
   }
 
   .job-card-header {
@@ -102,7 +94,7 @@ const { job } = Astro.props;
   .company-icon-box {
     width: 44px;
     height: 44px;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     background-color: rgba(var(--color-primary-rgb), 0.05);
     color: var(--color-primary);
     display: flex;
@@ -121,6 +113,7 @@ const { job } = Astro.props;
   .job-title {
     font-size: var(--text-lg);
     font-weight: 700;
+    letter-spacing: -0.015em;
     line-height: 1.35;
     margin-bottom: var(--space-2);
     word-break: break-word;
@@ -192,12 +185,8 @@ const { job } = Astro.props;
     }
 
     .company-icon-box {
-      width: 36px;
-      height: 36px;
-    }
-
-    .job-title {
-      font-size: var(--text-base);
+      width: 38px;
+      height: 38px;
     }
 
     .job-card-footer {

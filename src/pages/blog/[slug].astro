@@ -23,6 +23,17 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`${article.ti
 >
   <div class="article-page-layout">
     <div class="container article-container">
+      <!-- Breadcrumb navigation -->
+      <nav class="article-breadcrumb" aria-label="Ruta de navegación">
+        <a href="/blog" class="breadcrumb-back-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          Volver a todos los artículos
+        </a>
+      </nav>
+
       <!-- 2-Column Grid: Main Article Content + Right Sidebar -->
       <div class="article-grid">
         
@@ -31,7 +42,7 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`${article.ti
           <!-- Article Header directly on page -->
           <header class="article-intro-header">
             <div class="badge-wrapper">
-              <span class="custom-category-badge">{article.category}</span>
+              <Badge variant="cyan">{article.category}</Badge>
             </div>
             
             <h1 class="article-headline">{article.title}</h1>
@@ -46,6 +57,7 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`${article.ti
                 </svg>
                 {article.date}
               </span>
+              <span class="byline-divider">•</span>
               <span class="byline-item">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
@@ -53,47 +65,20 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`${article.ti
                 </svg>
                 {article.author}
               </span>
+              <span class="byline-divider">•</span>
+              <span class="byline-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                4 min de lectura
+              </span>
             </div>
           </header>
 
-          <!-- Featured Header Image -->
+          <!-- Featured Header Image (Flat, Zero Shadows, Zero Scale) -->
           <div class="featured-image-box">
             <img src={article.image} alt={article.title} class="featured-img" />
-          </div>
-
-          <!-- Video Showcase with LSB Interpreter Box -->
-          <div class="video-showcase-box">
-            <!-- Background Image Preview with Overlay -->
-            <div class="video-preview-bg">
-              <img src={article.image} alt="Vista previa video" class="video-backdrop-img" />
-              <div class="video-dark-overlay"></div>
-            </div>
-
-            <!-- Central Play Button -->
-            <div class="play-btn-wrapper">
-              <button class="center-play-button" aria-label="Reproducir video con intérprete LSB">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="play-icon">
-                  <polygon points="6 4 20 12 6 20 6 4"></polygon>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Subtitle Quote in Bottom Left -->
-            <div class="video-quote-overlay">
-              <p class="quote-caption">
-                "{article.summary}"
-              </p>
-            </div>
-
-            <!-- LSB Interpreter Inset Box in Bottom Right -->
-            <div class="lsb-interpreter-box">
-              <img
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80"
-                alt="Intérprete de Lengua de Señas Boliviana (LSB)"
-                class="interpreter-photo"
-              />
-              <span class="lsb-badge">INTÉRPRETE LSB</span>
-            </div>
           </div>
 
           <!-- Article Prose Paragraphs -->
@@ -105,13 +90,13 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`${article.ti
 
           <!-- Social Share Bottom Section -->
           <div class="article-share-section">
-            <span class="share-headline">Compartir este artículo:</span>
+            <span class="share-headline">¿Te resultó útil esta información?</span>
             <Button
               href={shareWhatsAppUrl}
               target="_blank"
               rel="noopener noreferrer"
               variant="whatsapp"
-              size="sm"
+              size="md"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6.014 8.00613C6.12827 7.1024 7.30277 5.87414 8.23488 6.01043L8.23339 6.00894C9.14051 6.18132 9.85859 7.74261 10.2635 8.44465C10.5504 8.95402 10.3641 9.4701 10.0965 9.68787C9.7355 9.97883 9.17099 10.3803 9.28943 10.7834C9.5 11.5 12 14 13.2296 14.7107C13.695 14.9797 14.0325 14.2702 14.3207 13.9067C14.5301 13.6271 15.0466 13.46 15.5548 13.736C16.3138 14.178 17.0288 14.6917 17.69 15.27C18.0202 15.546 18.0977 15.9539 17.8689 16.385C17.4659 17.1443 16.3003 18.1456 15.4542 17.9421C13.9764 17.5868 8 15.27 6.08033 8.55801C5.97237 8.24048 5.99955 8.12044 6.014 8.00613Z" fill="currentColor"/>
@@ -122,48 +107,49 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`${article.ti
           </div>
         </main>
 
-        <!-- Right: Modern Sidebar -->
+        <!-- Right: Modern Flat Sidebar -->
         <aside class="article-sidebar">
-          <!-- Card 1: SIPRUNPCD Dark CTA -->
+          <!-- Card 1: SIPRUNPCD Card (Zero Shadows) -->
           <div class="sidebar-siprunpcd-card">
-            <h3 class="siprunpcd-title">Carnet de Discapacidad</h3>
+            <span class="siprunpcd-badge">TRÁMITE OFICIAL</span>
+            <h3 class="siprunpcd-title">Carnet de Discapacidad en Bolivia</h3>
             <p class="siprunpcd-desc">
-              Conoce los pasos sencillos para tramitar tu carnet oficial y acceder a trabajos protegidos por ley en Bolivia.
+              Conoce los pasos sencillos ante el SIPRUNPCD para tramitar tu carnet oficial y acceder a los beneficios de la Ley 223.
             </p>
             <a href="/nosotros#tramites" class="siprunpcd-btn">
-              Ver Pasos
+              Ver Guía de Trámite ➔
             </a>
           </div>
 
-          <!-- Card 2: Recomendados -->
+          <!-- Card 2: Recomendados (Zero Shadows, Zero Scale) -->
           <div class="sidebar-recomended-section">
-            <h3 class="recommended-header">Recomendados</h3>
+            <h3 class="recommended-header">Artículos Recomendados</h3>
             <div class="recommended-list">
               {otherArticles.map((rec) => (
                 <a href={`/blog/${rec.slug}`} class="recommended-card-item">
                   <img src={rec.image} alt={rec.title} class="rec-thumbnail-img" />
                   <div class="rec-text-wrap">
-                    <h4 class="rec-item-title">{rec.title}</h4>
                     <span class="rec-item-cat">{rec.category}</span>
+                    <h4 class="rec-item-title">{rec.title}</h4>
                   </div>
                 </a>
               ))}
             </div>
           </div>
 
-          <!-- Card 3: Newsletter Box -->
+          <!-- Card 3: Newsletter Box (Zero Shadows) -->
           <div class="sidebar-newsletter-box">
             <div class="newsletter-icon-wrap">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00C2D1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                 <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
             </div>
             <h4 class="newsletter-title">Boletín Informativo</h4>
             <p class="newsletter-desc">
-              Recibe consejos útiles y nuevos trabajos cada mes.
+              Recibe avisos sobre nuevas convocatorias de empleo e informes sobre leyes de inclusión en Bolivia.
             </p>
-            <form class="newsletter-form-inner" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte al boletín de Incluxia!');">
+            <form class="newsletter-form-inner" onsubmit="event.preventDefault(); const b=this.querySelector('button'); if(b){ b.textContent='✓ ¡Suscrito con Éxito!'; b.disabled=true; b.style.opacity='0.85'; }">
               <input
                 type="email"
                 required
@@ -171,7 +157,7 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`${article.ti
                 class="newsletter-input"
               />
               <button type="submit" class="newsletter-submit-btn">
-                Suscribirse
+                Suscribirme
               </button>
             </form>
           </div>
@@ -192,15 +178,36 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`${article.ti
 
   .article-container {
     width: 100%;
-    max-width: 1320px;
+    max-width: var(--container-max-width);
     margin: 0 auto;
     padding-inline: var(--container-padding);
+  }
+
+  /* Breadcrumb */
+  .article-breadcrumb {
+    margin-bottom: var(--space-6);
+  }
+
+  .breadcrumb-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .breadcrumb-back-link:hover {
+    color: var(--color-primary);
   }
 
   /* 2-Column Main Layout */
   .article-grid {
     display: grid;
-    grid-template-columns: 1fr 360px;
+    grid-template-columns: 1fr 380px;
     gap: 3.5rem;
     align-items: start;
   }
@@ -216,17 +223,8 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`${article.ti
     margin-bottom: 2rem;
   }
 
-  .custom-category-badge {
-    display: inline-block;
-    background-color: var(--color-accent);
-    color: var(--color-primary);
-    font-family: var(--font-heading);
-    font-size: 0.8rem;
-    font-weight: 700;
-    padding: 0.35rem 0.85rem;
-    border-radius: var(--radius-sm);
-    margin-bottom: 1rem;
-    letter-spacing: -0.01em;
+  .badge-wrapper {
+    margin-bottom: var(--space-3);
   }
 
   .article-headline {
@@ -234,34 +232,39 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`${article.ti
     font-family: var(--font-heading);
     font-size: var(--text-4xl);
     font-weight: 800;
-    line-height: 1.22;
-    letter-spacing: -0.02em;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
     margin: 0 0 1.25rem 0;
   }
 
   .article-byline {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 0.85rem;
     color: var(--color-text-muted);
-    font-size: 0.9rem;
+    font-size: var(--text-sm);
     font-weight: 500;
   }
 
   .byline-item {
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
+    gap: 0.4rem;
   }
 
-  /* Featured Hero Image */
+  .byline-divider {
+    color: rgba(var(--color-primary-rgb), 0.2);
+  }
+
+  /* Featured Hero Image (Flat, Zero Shadows, Zero Scale) */
   .featured-image-box {
     width: 100%;
-    height: 400px;
-    border-radius: var(--radius-sm);
+    height: 420px;
+    border-radius: var(--radius-2xl);
     overflow: hidden;
     margin-bottom: 2rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+    box-shadow: none; /* ZERO SHADOWS */
   }
 
   .featured-img {
@@ -269,129 +272,10 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`${article.ti
     height: 100%;
     object-fit: cover;
     display: block;
+    /* ZERO SCALE ON HOVER */
   }
 
-  /* Video Showcase with LSB Inset */
-  .video-showcase-box {
-    position: relative;
-    width: 100%;
-    height: 380px;
-    border-radius: var(--radius-sm);
-    overflow: hidden;
-    margin-bottom: 2.5rem;
-    background-color: #0F172A;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
 
-  .video-preview-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .video-backdrop-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(0.65) blur(1px);
-  }
-
-  .video-dark-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0.2) 0%, rgba(15, 23, 42, 0.85) 100%);
-  }
-
-  /* Center Play Button */
-  .play-btn-wrapper {
-    position: relative;
-    z-index: 5;
-  }
-
-  .center-play-button {
-    width: 68px;
-    height: 68px;
-    border-radius: 50%;
-    background-color: var(--color-accent);
-    color: var(--color-primary);
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 30px rgba(var(--color-accent-rgb), 0.6);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .center-play-button:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 40px rgba(var(--color-accent-rgb), 0.9);
-  }
-
-  .play-icon {
-    margin-left: 3px;
-  }
-
-  /* Bottom Left Quote Caption */
-  .video-quote-overlay {
-    position: absolute;
-    bottom: 1.25rem;
-    left: 1.5rem;
-    max-width: 55%;
-    z-index: 5;
-    background: rgba(15, 23, 42, 0.75);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    padding: 0.75rem 1rem;
-    border-radius: var(--radius-sm);
-    border-left: 3px solid var(--color-accent);
-  }
-
-  .quote-caption {
-    color: var(--color-text-inverse);
-    font-size: 0.825rem;
-    line-height: 1.45;
-    margin: 0;
-    font-style: italic;
-  }
-
-  /* Bottom Right LSB Interpreter Box */
-  .lsb-interpreter-box {
-    position: absolute;
-    bottom: 1.25rem;
-    right: 1.25rem;
-    width: 140px;
-    height: 120px;
-    border-radius: var(--radius-sm);
-    overflow: hidden;
-    border: 2px solid var(--color-accent);
-    z-index: 5;
-    background: #000000;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-  }
-
-  .interpreter-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .lsb-badge {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: var(--color-primary);
-    color: var(--color-text-inverse);
-    font-size: 0.625rem;
-    font-weight: 800;
-    text-align: center;
-    padding: 0.2rem;
-    letter-spacing: 0.05em;
-  }
 
   /* Article Content Body */
   .article-content-body {
@@ -399,7 +283,7 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`${article.ti
     flex-direction: column;
     gap: 1.5rem;
     color: var(--color-text-main);
-    font-size: 1.1rem;
+    font-size: var(--text-base);
     line-height: 1.8;
   }
 
@@ -414,7 +298,7 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`${article.ti
     justify-content: space-between;
     padding-top: 2rem;
     margin-top: 2.5rem;
-    border-top: 1px solid var(--color-border);
+    border-top: 1px solid rgba(var(--color-primary-rgb), 0.1);
     flex-wrap: wrap;
     gap: 1rem;
   }
@@ -422,114 +306,145 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`${article.ti
   .share-headline {
     color: var(--color-primary);
     font-family: var(--font-heading);
-    font-size: 1rem;
+    font-size: var(--text-base);
     font-weight: 700;
   }
 
   /* ==========================================================
-     RIGHT SIDEBAR CARDS
+     RIGHT SIDEBAR CARDS (Flat Trustly Style)
      ========================================================== */
   .article-sidebar {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 2rem;
   }
 
-  /* Card 1: SIPRUNPCD Dark Card */
+  /* Card 1: SIPRUNPCD Dark Card (Flat) */
   .sidebar-siprunpcd-card {
     background-color: var(--color-primary);
     color: var(--color-text-inverse);
-    border-radius: var(--radius-sm);
-    padding: 1.75rem;
-    box-shadow: 0 4px 20px rgba(var(--color-primary-rgb), 0.12);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-8);
+    border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+    box-shadow: none; /* ZERO SHADOWS */
+  }
+
+  .siprunpcd-badge {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 800;
+    color: var(--color-accent);
+    letter-spacing: 0.06em;
+    margin-bottom: var(--space-2);
   }
 
   .siprunpcd-title {
     color: var(--color-text-inverse);
     font-family: var(--font-heading);
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin: 0 0 0.85rem 0;
+    font-size: var(--text-xl);
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    margin: 0 0 0.75rem 0;
     line-height: 1.3;
   }
 
   .siprunpcd-desc {
     color: rgba(255, 255, 255, 0.85);
-    font-size: 0.875rem;
+    font-size: var(--text-sm);
     line-height: 1.55;
     margin: 0 0 1.5rem 0;
   }
 
   .siprunpcd-btn {
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     background-color: var(--color-accent);
     color: var(--color-primary);
     text-align: center;
     font-family: var(--font-heading);
-    font-size: 0.95rem;
+    font-size: var(--text-sm);
     font-weight: 700;
-    padding: 0.8rem 1rem;
-    border-radius: var(--radius-sm);
+    padding: 0.8rem 1.25rem;
+    border-radius: var(--radius-full);
     text-decoration: none;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    box-shadow: none; /* ZERO SHADOWS */
+    transition: background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .siprunpcd-btn:hover {
     background-color: var(--color-accent-dark);
-    transform: translateY(-2px);
   }
 
-  /* Card 2: Recommended Section */
+  /* Card 2: Recommended Section (Flat) */
   .sidebar-recomended-section {
     display: flex;
     flex-direction: column;
+    background: var(--color-white);
+    border: 1px solid rgba(var(--color-primary-rgb), 0.08);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-6);
+    box-shadow: none; /* ZERO SHADOWS */
   }
 
   .recommended-header {
     color: var(--color-primary);
     font-family: var(--font-heading);
-    font-size: 1.35rem;
-    font-weight: 700;
+    font-size: var(--text-base);
+    font-weight: 800;
+    letter-spacing: -0.015em;
     margin: 0 0 1.25rem 0;
   }
 
   .recommended-list {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1rem;
   }
 
   .recommended-card-item {
     display: flex;
-    align-items: flex-start;
-    gap: 1rem;
+    align-items: center;
+    gap: 0.85rem;
     text-decoration: none;
-    transition: transform 0.2s ease;
+    padding: 0.5rem;
+    border-radius: var(--radius-xl);
+    transition: background-color 0.2s ease;
   }
 
   .recommended-card-item:hover {
-    transform: translateX(4px);
+    background-color: rgba(var(--color-primary-rgb), 0.04);
   }
 
   .rec-thumbnail-img {
-    width: 68px;
-    height: 68px;
-    border-radius: var(--radius-sm);
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-lg);
     object-fit: cover;
     flex-shrink: 0;
+    border: 1px solid rgba(var(--color-primary-rgb), 0.08);
   }
 
   .rec-text-wrap {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 0.2rem;
+  }
+
+  .rec-item-cat {
+    color: var(--color-accent-dark);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
 
   .rec-item-title {
     color: var(--color-primary);
     font-family: var(--font-heading);
-    font-size: 0.9rem;
+    font-size: var(--text-xs);
     font-weight: 700;
     line-height: 1.35;
     margin: 0;
@@ -537,59 +452,63 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`${article.ti
   }
 
   .recommended-card-item:hover .rec-item-title {
-    color: var(--color-primary-light);
+    color: var(--color-primary-hover);
   }
 
-  .rec-item-cat {
-    color: var(--color-text-muted);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
-  /* Card 3: Newsletter Box */
+  /* Card 3: Newsletter Box (Flat) */
   .sidebar-newsletter-box {
     background-color: var(--color-bg);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    padding: 1.75rem;
+    border: 1px solid rgba(var(--color-primary-rgb), 0.08);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-6);
+    box-shadow: none; /* ZERO SHADOWS */
   }
 
   .newsletter-icon-wrap {
-    margin-bottom: 0.75rem;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    background: rgba(var(--color-accent-rgb), 0.15);
+    color: var(--color-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-3);
   }
 
   .newsletter-title {
     color: var(--color-primary);
     font-family: var(--font-heading);
-    font-size: 1.15rem;
-    font-weight: 700;
-    margin: 0 0 0.5rem 0;
+    font-size: var(--text-base);
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    margin: 0 0 0.4rem 0;
   }
 
   .newsletter-desc {
     color: var(--color-text-muted);
-    font-size: 0.85rem;
+    font-size: var(--text-xs);
     line-height: 1.5;
-    margin: 0 0 1.25rem 0;
+    margin: 0 0 1rem 0;
   }
 
   .newsletter-input {
     width: 100%;
-    padding: 0.8rem 1rem;
-    border-radius: var(--radius-sm);
-    border: 1.5px solid var(--color-border-hover);
-    font-size: 0.9rem;
+    padding: 0.7rem 1rem;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(var(--color-primary-rgb), 0.15);
+    font-size: var(--text-xs);
     color: var(--color-text-main);
     background-color: var(--color-white);
-    margin-bottom: 0.85rem;
+    margin-bottom: 0.75rem;
     outline: none;
+    box-shadow: none;
     transition: border-color 0.2s ease;
   }
 
   .newsletter-input:focus {
     border-color: var(--color-primary);
+    outline: 2px solid var(--color-primary);
   }
 
   .newsletter-submit-btn {
@@ -597,28 +516,23 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`${article.ti
     background-color: var(--color-primary);
     color: var(--color-text-inverse);
     font-family: var(--font-heading);
-    font-size: 0.95rem;
+    font-size: var(--text-xs);
     font-weight: 700;
-    padding: 0.8rem 1rem;
+    padding: 0.7rem 1.25rem;
     border: none;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-full);
     cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    box-shadow: none; /* ZERO SHADOWS */
+    transition: background-color 0.2s ease;
   }
 
   .newsletter-submit-btn:hover {
     background-color: var(--color-primary-hover);
-    transform: translateY(-2px);
   }
 
   /* ==========================================================
-     RESPONSIVE BREAKPOINTS (ESTÁNDAR DEL PROYECTO)
-     - Tablet: max-width: 1024px
-     - Mobile Landscape: max-width: 767px
-     - Mobile Portrait: max-width: 479px (base 240px)
+     RESPONSIVE BREAKPOINTS
      ========================================================== */
-
-  /* 1. Tablet Tier (hasta 1024px) */
   @media (max-width: 1024px) {
     .article-grid {
       grid-template-columns: 1fr;
@@ -627,17 +541,16 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`${article.ti
     .article-sidebar {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      gap: 1.5rem;
     }
     .sidebar-newsletter-box {
       grid-column: span 2;
     }
   }
 
-  /* 2. Mobile Landscape Tier (hasta 767px) */
   @media (max-width: 767px) {
     .article-page-layout {
-      padding-top: calc(90px + var(--space-6));
+      padding-top: calc(90px + var(--space-4));
       padding-bottom: var(--space-10);
     }
     .article-sidebar {
@@ -647,53 +560,28 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`${article.ti
       grid-column: span 1;
     }
     .featured-image-box {
-      height: 280px;
+      height: 260px;
     }
-    .video-showcase-box {
-      height: 280px;
-    }
-    .video-quote-overlay {
-      max-width: 60%;
-      bottom: 0.75rem;
-      left: 0.75rem;
-    }
-    .lsb-interpreter-box {
-      width: 110px;
-      height: 95px;
-      bottom: 0.75rem;
-      right: 0.75rem;
-    }
+
   }
 
-  /* 3. Mobile Portrait Tier (hasta 479px - base 240px) */
   @media (max-width: 479px) {
-    .article-page-layout {
-      padding-top: calc(90px + var(--space-4));
-      padding-bottom: var(--space-8);
-    }
     .article-byline {
       flex-direction: column;
       align-items: flex-start;
-      gap: 0.4rem;
+      gap: 0.35rem;
+    }
+    .byline-divider {
+      display: none;
     }
     .featured-image-box {
       height: 200px;
-      border-radius: 10px;
+      border-radius: var(--radius-xl);
     }
-    .video-showcase-box {
-      height: 240px;
-      border-radius: 10px;
-    }
-    .video-quote-overlay {
-      display: none; /* Hide quote on tiny screen for clean UI */
-    }
-    .lsb-interpreter-box {
-      width: 90px;
-      height: 80px;
-    }
-    .article-content-body {
-      font-size: 1rem;
-      line-height: 1.7;
+
+    .article-share-section {
+      flex-direction: column;
+      align-items: stretch;
     }
   }
 </style>

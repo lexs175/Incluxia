@@ -1,21 +1,77 @@
-# Build & Dependencies
-dist/
-.astro/
-node_modules/
+# ============================================================
+#  ASHICO / Incluxia - .gitignore
+#  Regla: solo se versiona el código del sitio.
+# ============================================================
 
-# Environment & Logs
+# --- Build & Dependencies ---
+node_modules/
+dist/
+build/
+.astro/
+.output/
+.svelte-kit/
+.cache/
+.parcel-cache/
+.turbo/
+
+# --- Segredos y entorno ---
 .env
 .env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+secrets/
+credentials/
+
+# --- Logs ---
+*.log
 npm-debug.log*
 yarn-debug.log*
+yarn-error.log*
 pnpm-debug.log*
+lerna-debug.log*
+logs/
+*.pid
 
-# OS Files
+# --- Editores e IDEs ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.code-workspace
+
+# --- Sistemas operativos ---
 .DS_Store
+.DS_Store?
+._*
 Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
 
-# Vercel
+# --- Proveedores / Despliegue ---
 .vercel
+.netlify
+.firebase/
+.wrangler/
+.sentryclirc
 
+# --- Registros y cachés de herramientas ---
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+.vite/
+.parcel-cache/
 
-.vercel
+# --- Documentación interna (no forma parte del sitio) ---
+.agents/
+informacion/
+Hipoacusia/
+AGENTS.md
+RECURSOS_MULTIMEDIA.md
+que es la hipoacusia .md
+scratchpad*.md
