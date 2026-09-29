@@ -66,36 +66,174 @@ const {
     <!-- Accessible Floating Action Button -->
     <WhatsAppFAB />
 
-    <!-- GSAP Title & Heading Entrance Animations -->
+    <!-- GSAP Title & Heading Entrance Animations (Line Mask + Letter-by-Letter Stagger) -->
     <script>
       import gsap from 'gsap';
 
-      function initGsapAnimations() {
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      function splitIntoMaskedLinesAndChars(element: HTMLElement): HTMLElement[] {
+        // If element is not rendered or hidden, skip
+        if (element.offsetWidth === 0 && element.offsetHeight === 0) return [];
 
-        // 1. Immediate entrance for Hero titles & page header titles
-        const heroTitles = document.querySelectorAll<HTMLElement>(
-          'h1, .hero-main-title, .page-header-title, .jobs-hero-title, .casos-hero-title, .perfiles-hero-title, .blog-hero-title, .about-hero-title'
-        );
-
-        if (heroTitles.length > 0) {
-          gsap.fromTo(
-            heroTitles,
-            { y: 28, opacity: 0 },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 0.85,
-              stagger: 0.08,
-              ease: 'power3.out',
-              clearProps: 'transform,opacity',
-            }
-          );
+        // Save original pristine HTML once
+        if (!element.dataset.origHtml) {
+          element.dataset.origHtml = element.innerHTML;
+        } else {
+          // Reset to pristine original HTML before recalculating (essential for responsive resize)
+          element.innerHTML = element.dataset.origHtml;
         }
 
-        // 2. Scroll-triggered entrance for section titles (h2, section-heading, etc.)
+        // Accessibility: preserve full text for screen readers
+        const fullText = (element.textContent || '').trim();
+        if (!element.getAttribute('aria-label') && fullText) {
+          element.setAttribute('aria-label', fullText);
+        }
+
+        // 1. Process DOM recursively: wrap words in .line-word and characters in .line-char
+        function processNodeToWordsAndChars(node: Node): Node[] {
+          if (node.nodeType === Node.TEXT_NODE) {
+            const text = node.textContent || '';
+            if (!text) return [];
+            const tokens = text.split(/(\s+)/);
+            const result: Node[] = [];
+
+            tokens.forEach((token) => {
+              if (/^\s+$/.test(token)) {
+                result.push(document.createTextNode(token));
+              } else if (token.length > 0) {
+                const wordSpan = document.createElement('span');
+                wordSpan.className = 'line-word';
+                wordSpan.style.display = 'inline-block';
+                wordSpan.style.whiteSpace = 'nowrap';
+
+                for (const char of token) {
+                  const charSpan = document.createElement('span');
+                  charSpan.className = 'line-char';
+                  charSpan.style.display = 'inline-block';
+                  charSpan.style.willChange = 'transform';
+                  charSpan.textContent = char;
+                  wordSpan.appendChild(charSpan);
+                }
+                result.push(wordSpan);
+              }
+            });
+            return result;
+          } else if (node.nodeType === Node.ELEMENT_NODE) {
+            const el = node as HTMLElement;
+            const clone = el.cloneNode(false) as HTMLElement;
+            const childNodes = Array.from(el.childNodes);
+            childNodes.forEach((child) => {
+              const processedChildren = processNodeToWordsAndChars(child);
+              processedChildren.forEach((pChild) => clone.appendChild(pChild));
+            });
+            return [clone];
+          }
+          return [node.cloneNode(true)];
+        }
+
+        const childNodes = Array.from(element.childNodes);
+        element.innerHTML = '';
+        childNodes.forEach((child) => {
+          const processed = processNodeToWordsAndChars(child);
+          processed.forEach((p) => element.appendChild(p));
+        });
+
+        // 2. Measure rendered top position of each .line-word to detect lines
+        const wordElements = Array.from(element.querySelectorAll<HTMLElement>('.line-word'));
+        if (wordElements.length === 0) return [];
+
+        const lineGroups: HTMLElement[][] = [];
+        let currentLine: HTMLElement[] = [];
+        let lastTop = -99999;
+
+        wordElements.forEach((word) => {
+          const top = Math.round(word.getBoundingClientRect().top);
+          if (Math.abs(top - lastTop) > 6) {
+            if (currentLine.length > 0) {
+              lineGroups.push(currentLine);
+            }
+            currentLine = [word];
+            lastTop = top;
+          } else {
+            currentLine.push(word);
+          }
+        });
+        if (currentLine.length > 0) {
+          lineGroups.push(currentLine);
+        }
+
+        // 3. Wrap each line in a .line-mask (overflow: hidden)
+        const maskList: HTMLElement[] = [];
+
+        for (let i = 0; i < lineGroups.length; i++) {
+          const lineWords = lineGroups[i];
+          const firstWord = lineWords[0];
+          const lastWord = lineWords[lineWords.length - 1];
+
+          const range = document.createRange();
+          range.setStartBefore(firstWord);
+          range.setEndAfter(lastWord);
+          const contents = range.extractContents();
+
+          const mask = document.createElement('span');
+          mask.className = 'line-mask';
+          mask.style.display = 'block';
+          mask.style.overflow = 'hidden';
+          mask.style.lineHeight = 'inherit';
+          mask.style.paddingBottom = '0.14em'; // Prevents clipping descenders (g, j, p, q, y)
+          mask.style.marginBottom = '-0.14em';
+
+          mask.appendChild(contents);
+          maskList.push(mask);
+        }
+
+        element.innerHTML = '';
+        maskList.forEach((mask) => element.appendChild(mask));
+
+        // Return all characters across all line masks in reading order
+        return Array.from(element.querySelectorAll<HTMLElement>('.line-char'));
+      }
+
+      async function initGsapMaskAnimations() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        // Ensure custom fonts are loaded so line detection measurements are 100% accurate
+        if (document.fonts) {
+          try {
+            await document.fonts.ready;
+          } catch (e) {
+            // fallback if fonts ready fails
+          }
+        }
+
+        // 1. Immediate masked line + letter-by-letter reveal for Hero titles (h1)
+        const heroTitles = document.querySelectorAll<HTMLElement>(
+          'h1, .hero-main-title, .page-header-title, .jobs-hero-title, .casos-hero-title, .perfiles-hero-title, .blog-hero-title, .about-hero-title, .article-headline'
+        );
+
+        heroTitles.forEach((heroTitle) => {
+          if (heroTitle.dataset.animated === 'true') return;
+          heroTitle.dataset.animated = 'true';
+
+          const chars = splitIntoMaskedLinesAndChars(heroTitle);
+          if (chars.length > 0) {
+            // Pure mask reveal: letters start below the mask line and emerge letter-by-letter with 0 opacity fade
+            gsap.fromTo(
+              chars,
+              { yPercent: 125 },
+              {
+                yPercent: 0,
+                duration: 0.65,
+                stagger: 0.018, // Letter by letter cascade
+                ease: 'power3.out',
+                clearProps: 'transform',
+              }
+            );
+          }
+        });
+
+        // 2. Scroll-triggered masked line + letter-by-letter reveal for section titles (h2, etc.)
         const sectionHeadings = document.querySelectorAll<HTMLElement>(
-          'h2, .section-heading, .manifesto-text, .manifesto-statement, .enterprise-title'
+          'h2, .section-heading, .bento-box-title, .enterprise-title, .split-title, .final-cta-title, .metrics-banner-title'
         );
 
         if (sectionHeadings.length > 0 && 'IntersectionObserver' in window) {
@@ -103,18 +241,25 @@ const {
             (entries) => {
               entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                  gsap.fromTo(
-                    entry.target,
-                    { y: 24, opacity: 0 },
-                    {
-                      y: 0,
-                      opacity: 1,
-                      duration: 0.75,
-                      ease: 'power3.out',
-                      clearProps: 'transform,opacity',
+                  const target = entry.target as HTMLElement;
+                  if (target.dataset.animated !== 'true') {
+                    target.dataset.animated = 'true';
+                    const chars = splitIntoMaskedLinesAndChars(target);
+                    if (chars.length > 0) {
+                      gsap.fromTo(
+                        chars,
+                        { yPercent: 125 },
+                        {
+                          yPercent: 0,
+                          duration: 0.6,
+                          stagger: 0.015,
+                          ease: 'power3.out',
+                          clearProps: 'transform',
+                        }
+                      );
                     }
-                  );
-                  observer.unobserve(entry.target);
+                  }
+                  observer.unobserve(target);
                 }
               });
             },
@@ -122,20 +267,65 @@ const {
           );
 
           sectionHeadings.forEach((heading) => {
-            // Avoid re-observing h1s already animated above
-            if (heading.tagName !== 'H1') {
+            if (heading.tagName !== 'H1' && heading.dataset.animated !== 'true') {
               observer.observe(heading);
             }
           });
         }
+
+        // 3. Responsive Resize Listener: dynamically re-split lines on window width change
+        let resizeTimer: any;
+        let prevWidth = window.innerWidth;
+
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            if (Math.abs(window.innerWidth - prevWidth) > 15) {
+              prevWidth = window.innerWidth;
+
+              heroTitles.forEach((el) => {
+                if (el.dataset.origHtml) {
+                  const chars = splitIntoMaskedLinesAndChars(el);
+                  gsap.set(chars, { yPercent: 0, clearProps: 'transform' });
+                }
+              });
+
+              sectionHeadings.forEach((el) => {
+                if (el.dataset.origHtml && el.dataset.animated === 'true') {
+                  const chars = splitIntoMaskedLinesAndChars(el);
+                  gsap.set(chars, { yPercent: 0, clearProps: 'transform' });
+                }
+              });
+            }
+          }, 200);
+        });
       }
 
-      document.addEventListener('astro:page-load', initGsapAnimations);
+      document.addEventListener('astro:page-load', initGsapMaskAnimations);
     </script>
   </body>
 </html>
 
 <style is:global>
+  /* Line Mask Reveal Animation Core Styles */
+  .line-mask {
+    display: block;
+    overflow: hidden;
+    line-height: inherit;
+    padding-bottom: 0.14em;
+    margin-bottom: -0.14em;
+  }
+
+  .line-word {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .line-char {
+    display: inline-block;
+    will-change: transform;
+  }
+
   .skip-to-content {
     position: absolute;
     top: -100px;
