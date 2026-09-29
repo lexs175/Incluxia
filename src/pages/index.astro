@@ -37,28 +37,67 @@ const featuredArticles = articlesData.slice(0, 3);
           >, con tareas claras por escrito y salario justo.
         </p>
 
-        <div class="hero-button-row">
-          <Button href="/empleos" variant="primary" size="lg">
-            <span>Ver Ofertas de Trabajo</span>
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M5 12h14"></path>
-              <path d="m12 5 7 7-7 7"></path>
-            </svg>
-          </Button>
+        <!-- Quick Search Bar Pill in Hero -->
+        <div class="hero-search-wrapper">
+          <form action="/empleos" method="GET" class="search-pill-form">
+            <div class="search-field">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input
+                type="text"
+                name="q"
+                placeholder="Puesto, habilidad o palabra clave..."
+                class="search-input"
+              />
+            </div>
+            <div class="search-field select-field">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <select name="ciudad" class="search-select">
+                <option value="">Toda Bolivia</option>
+                <option value="Cochabamba">Cochabamba</option>
+                <option value="La Paz">La Paz</option>
+                <option value="Santa Cruz">Santa Cruz</option>
+              </select>
+            </div>
+            <Button type="submit" variant="primary" size="sm">
+              <span>Buscar</span>
+            </Button>
+          </form>
 
-          <Button href="#empresas-ley977" variant="outline" size="lg">
-            <span>Para Empresas (Ley 977)</span>
-          </Button>
+          <div class="hero-sub-actions">
+            <span class="hero-quick-tag-label">Frecuentes:</span>
+            <a href="/empleos?q=auxiliar" class="hero-quick-tag">Auxiliar</a>
+            <a href="/empleos?q=digitador" class="hero-quick-tag">Digitador</a>
+            <a href="/empleos?q=diseno" class="hero-quick-tag">Diseño</a>
+            <a href="/empleos?q=archivo" class="hero-quick-tag">Archivo</a>
+            <span class="hero-quick-dot">·</span>
+            <a href="#empresas-ley977" class="hero-quick-empresa">Para Empresas (Ley 977) &rarr;</a>
+          </div>
         </div>
       </div>
 
@@ -328,57 +367,6 @@ const featuredArticles = articlesData.slice(0, 3);
           </svg>
         </a>
       </div>
-
-      <!-- Quick Search Bar Pill -->
-      <form action="/empleos" method="GET" class="search-pill-form">
-        <div class="search-field">
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          <input
-            type="text"
-            name="q"
-            placeholder="Puesto, habilidad o palabra clave..."
-            class="search-input"
-          />
-        </div>
-        <div class="search-field select-field">
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-            <circle cx="12" cy="10" r="3"></circle>
-          </svg>
-          <select name="ciudad" class="search-select">
-            <option value="">Toda Bolivia</option>
-            <option value="Cochabamba">Cochabamba</option>
-            <option value="La Paz">La Paz</option>
-            <option value="Santa Cruz">Santa Cruz</option>
-          </select>
-        </div>
-        <Button type="submit" variant="primary" size="sm">
-          <span>Buscar</span>
-        </Button>
-      </form>
 
       <div class="jobs-cards-grid">
         {featuredJobs.map((job) => <JobCard job={job} />)}
@@ -690,12 +678,55 @@ const featuredArticles = articlesData.slice(0, 3);
     font-weight: 600;
   }
 
-  .hero-button-row {
+  .hero-search-wrapper {
+    max-width: 680px;
+    margin: 0 auto var(--space-8) auto;
+    width: 100%;
+  }
+
+  .hero-sub-actions {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
     flex-wrap: wrap;
-    gap: var(--space-4);
+    margin-top: var(--space-3);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+  }
+
+  .hero-quick-tag-label {
+    font-weight: 500;
+  }
+
+  .hero-quick-tag {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(var(--color-primary-rgb), 0.25);
+    transition: all var(--transition-fast);
+  }
+
+  .hero-quick-tag:hover {
+    color: var(--color-accent-dark);
+    text-decoration-color: var(--color-accent-dark);
+  }
+
+  .hero-quick-dot {
+    color: rgba(var(--color-primary-rgb), 0.2);
+    margin: 0 0.25rem;
+  }
+
+  .hero-quick-empresa {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-family: var(--font-heading);
+    transition: color var(--transition-fast);
+  }
+
+  .hero-quick-empresa:hover {
+    color: var(--color-accent-dark);
   }
 
   /* Hero Centerpiece Bento Showcase */
@@ -1099,7 +1130,7 @@ const featuredArticles = articlesData.slice(0, 3);
     gap: 0.75rem;
     box-shadow: none; /* ZERO SHADOWS */
     align-items: center;
-    margin-bottom: var(--space-8);
+    margin-bottom: 0;
   }
 
   .search-field {
@@ -1317,7 +1348,7 @@ const featuredArticles = articlesData.slice(0, 3);
      8. FINAL HIGH-IMPACT CTA
      ==================================================== */
   .final-cta-section {
-    background-color: var(--color-bg);
+    background-color: var(--color-white);
     padding-top: 0;
   }
 

@@ -14,10 +14,6 @@ import Button from '../components/ui/Button.astro';
     <div class="container hero-container">
       <div class="hero-split-header">
         <div class="header-left">
-          <span class="hero-pill-badge">
-            <span class="status-dot"></span>
-            Plataforma 100% Digital · Bolivia
-          </span>
           <h1 class="hero-main-title">
             Inclusión laboral sin barreras telefónicas en <span class="highlight-cyan">Bolivia</span>
           </h1>
@@ -154,7 +150,6 @@ import Button from '../components/ui/Button.astro';
     <div class="container">
       <div class="section-top-bar">
         <div>
-          <span class="badge badge-navy">Equipo e Impulsores</span>
           <h2 class="section-heading">Liderazgo con vocación inclusiva</h2>
           <p class="section-desc">Especialistas en accesibilidad, derecho laboral y tecnología trabajando por una Bolivia sin barreras.</p>
         </div>
@@ -170,9 +165,11 @@ import Button from '../components/ui/Button.astro';
               loading="lazy"
             />
           </div>
-          <h3 class="team-member-name">Carlos Mendoza Terán</h3>
-          <span class="team-member-role">Dirección de Inclusión y Selección</span>
-          <p class="team-member-bio">Especialista en procesos de selección accesibles y adaptación de puestos de trabajo para personas sordas e hipoacúsicas.</p>
+          <div class="team-card-body">
+            <h3 class="team-member-name">Carlos Mendoza Terán</h3>
+            <span class="team-member-role">Dirección de Inclusión y Selección</span>
+            <p class="team-member-bio">Especialista en procesos de selección accesibles y adaptación de puestos de trabajo para personas sordas e hipoacúsicas.</p>
+          </div>
         </div>
 
         <div class="team-card">
@@ -184,9 +181,11 @@ import Button from '../components/ui/Button.astro';
               loading="lazy"
             />
           </div>
-          <h3 class="team-member-name">Dra. Gabriela Siles Rocha</h3>
-          <span class="team-member-role">Asesoría Legal Laboral (Ley 977 / 223)</span>
-          <p class="team-member-bio">Abogada especializada en derechos de personas con discapacidad, carnetización SIPRUNPCD e intermediación empresarial.</p>
+          <div class="team-card-body">
+            <h3 class="team-member-name">Dra. Gabriela Siles Rocha</h3>
+            <span class="team-member-role">Asesoría Legal Laboral (Ley 977 / 223)</span>
+            <p class="team-member-bio">Abogada especializada en derechos de personas con discapacidad, carnetización SIPRUNPCD e intermediación empresarial.</p>
+          </div>
         </div>
 
         <div class="team-card">
@@ -198,9 +197,11 @@ import Button from '../components/ui/Button.astro';
               loading="lazy"
             />
           </div>
-          <h3 class="team-member-name">Rodrigo Peñaranda</h3>
-          <span class="team-member-role">Coordinación de Lengua de Señas (LSB)</span>
-          <p class="team-member-bio">Intérprete acreditado de Lengua de Señas Boliviana para entrevistas técnicas y facilitación de reuniones corporativas.</p>
+          <div class="team-card-body">
+            <h3 class="team-member-name">Rodrigo Peñaranda</h3>
+            <span class="team-member-role">Coordinación de Lengua de Señas (LSB)</span>
+            <p class="team-member-bio">Intérprete acreditado de Lengua de Señas Boliviana para entrevistas técnicas y facilitación de reuniones corporativas.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -253,22 +254,6 @@ import Button from '../components/ui/Button.astro';
     grid-template-columns: 1.2fr 0.8fr;
     gap: var(--space-10);
     align-items: end;
-  }
-
-  .hero-pill-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(var(--color-primary-rgb), 0.04);
-    border: 1px solid rgba(var(--color-primary-rgb), 0.12);
-    color: var(--color-primary);
-    font-family: var(--font-heading);
-    font-size: var(--text-xs);
-    font-weight: 700;
-    padding: 0.45rem 1.15rem;
-    border-radius: var(--radius-full);
-    margin-bottom: var(--space-4);
-    letter-spacing: -0.01em;
   }
 
   .status-dot {
@@ -566,7 +551,8 @@ import Button from '../components/ui/Button.astro';
     background-color: var(--color-white);
     border: 1px solid rgba(var(--color-primary-rgb), 0.1);
     border-radius: var(--radius-2xl);
-    padding: var(--space-6);
+    padding: 0;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     box-shadow: none; /* ZERO SHADOWS */
@@ -575,16 +561,26 @@ import Button from '../components/ui/Button.astro';
   .team-photo-wrap {
     width: 100%;
     height: 260px;
-    border-radius: var(--radius-xl);
+
+    border-radius: 0;
     overflow: hidden;
-    margin-bottom: var(--space-5);
+    margin-bottom: 0;
+    background-color: var(--color-bg);
   }
 
   .team-photo {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 20%;
     filter: grayscale(100%);
+  }
+
+  .team-card-body {
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
   }
 
   .team-member-name {
