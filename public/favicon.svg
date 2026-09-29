@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Incluxia">
+  <rect width="64" height="64" rx="14" fill="#212051"/>
+  <g fill="none" stroke-linecap="round" stroke-width="6.5">
+    <path d="M15 41 L32 15" stroke="#FFFFFF"/>
+    <path d="M49 41 L32 15" stroke="#ACF7FF"/>
+  </g>
+  <g>
+    <rect x="24.5" y="46" width="3.5" height="9" rx="1.75" fill="#ACF7FF"/>
+    <rect x="30.25" y="43" width="3.5" height="12" rx="1.75" fill="#FFFFFF"/>
+    <rect x="36" y="46" width="3.5" height="9" rx="1.75" fill="#ACF7FF"/>
+  </g>
+</svg>
