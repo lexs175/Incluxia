@@ -467,18 +467,22 @@ const featuredArticles = articlesData.slice(0, 3);
     min-height: 90dvh;
     display: flex;
     align-items: center;
+    background-color: var(--color-primary-dark);
     background-image:
       linear-gradient(
         180deg,
-        color-mix(in srgb, var(--color-primary) 70%, transparent) 0%,
-        var(--color-primary-dark) 90%
+        rgba(var(--color-primary-rgb), 0.72) 0%,
+        rgba(var(--color-primary-dark-rgb), 0.85) 45%,
+        var(--color-primary-dark) 80%,
+        var(--color-primary-dark) 100%
       ),
       url("/images/hero-ashico-cochabamba.jpg");
     background-size: cover;
     background-position: center 30%;
     background-repeat: no-repeat;
     padding-top: calc(90px + var(--space-8));
-    padding-bottom: var(--space-12);
+    padding-bottom: var(--space-16);
+    margin-bottom: -1px;
     overflow: hidden;
   }
 
@@ -642,6 +646,8 @@ const featuredArticles = articlesData.slice(0, 3);
      ==================================================== */
   .bento-how-section {
     background-color: var(--color-primary-dark);
+    position: relative;
+    z-index: 1;
   }
 
   .bento-container-box {
@@ -1090,17 +1096,20 @@ const featuredArticles = articlesData.slice(0, 3);
   /* 4. Mobile Landscape Tier (480px - 767px) */
   @media (min-width: 480px) and (max-width: 767px) {
     .ashico-hero {
+      background-color: var(--color-primary-dark);
       background-image:
         linear-gradient(
           180deg,
-          rgba(var(--color-primary-dark-rgb), 0.94) 0%,
-          rgba(var(--color-primary-dark-rgb), 0.9) 50%,
-          rgba(var(--color-primary-dark-rgb), 0.98) 100%
+          rgba(var(--color-primary-rgb), 0.80) 0%,
+          rgba(var(--color-primary-dark-rgb), 0.90) 45%,
+          var(--color-primary-dark) 78%,
+          var(--color-primary-dark) 100%
         ),
         url("/images/hero-ashico-cochabamba.jpg");
       padding-top: calc(90px + var(--space-6));
-      padding-bottom: var(--space-10);
-      min-height: auto;
+      padding-bottom: var(--space-14);
+      min-height: clamp(520px, 85dvh, 680px);
+      margin-bottom: -1px;
     }
     .bento-cards-grid {
       grid-template-columns: 1fr;
@@ -1121,17 +1130,20 @@ const featuredArticles = articlesData.slice(0, 3);
   /* 5. Mobile Portrait Tier (240px - 479px) */
   @media (max-width: 479px) {
     .ashico-hero {
+      background-color: var(--color-primary-dark);
       background-image:
         linear-gradient(
           180deg,
-          rgba(var(--color-primary-dark-rgb), 0.95) 0%,
-          rgba(var(--color-primary-dark-rgb), 0.92) 50%,
-          rgba(var(--color-primary-dark-rgb), 0.98) 100%
+          rgba(var(--color-primary-rgb), 0.82) 0%,
+          rgba(var(--color-primary-dark-rgb), 0.92) 45%,
+          var(--color-primary-dark) 78%,
+          var(--color-primary-dark) 100%
         ),
         url("/images/hero-ashico-cochabamba.jpg");
-      padding-top: calc(85px + var(--space-4));
-      padding-bottom: var(--space-8);
-      min-height: auto;
+      padding-top: calc(85px + var(--space-6));
+      padding-bottom: var(--space-14);
+      min-height: clamp(520px, 85dvh, 680px);
+      margin-bottom: -1px;
     }
     .hero-btn-accent {
       width: 100%;
