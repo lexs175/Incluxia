@@ -1,8 +1,8 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Button from '../../components/ui/Button.astro';
-import StoryCard from '../../components/cards/StoryCard.astro';
-import storiesData from '../../data/stories.json';
+import Layout from "../../layouts/Layout.astro";
+import Button from "../../components/ui/Button.astro";
+import StoryCard from "../../components/cards/StoryCard.astro";
+import storiesData from "../../data/stories.json";
 
 export function getStaticPaths() {
   return storiesData.map((story) => ({
@@ -26,7 +26,16 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`Conoce la hi
       <!-- Breadcrumb & Top Info -->
       <div class="story-top-nav">
         <a href="/casos-de-exito" class="back-link">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>
           </svg>
@@ -37,7 +46,9 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`Conoce la hi
       <!-- Main Editorial Header (Trustly Large Typography) -->
       <header class="story-header">
         <div class="header-badge-row">
-          <span class="custom-badge">{story.category || 'Inclusión Laboral'}</span>
+          <span class="custom-badge"
+            >{story.category || "Inclusión Laboral"}</span
+          >
           <span class="company-badge">{story.company}</span>
         </div>
 
@@ -45,57 +56,34 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`Conoce la hi
 
         <div class="story-byline">
           <span class="byline-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
               <circle cx="12" cy="10" r="3"></circle>
             </svg>
             {story.city}, Bolivia
           </span>
           <span class="byline-dot">·</span>
-          <span class="byline-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <polyline points="12 6 12 12 16 14"></polyline>
-            </svg>
-            {story.videoDuration || '4 min'}
-          </span>
-          <span class="byline-dot">·</span>
           <span class="byline-item">Entrevista con Intérprete LSB</span>
         </div>
       </header>
 
-      <!-- Video / Photography Hero Showcase (Flat Bento Box, Zero Glow, Zero Shadows) -->
+      <!-- Fotografía Principal del Caso de Éxito -->
       <div class="media-showcase-box">
         <img
           src={story.image}
-          alt={`Entrevista a ${story.name}`}
+          alt={`Fotografía de ${story.name}`}
           class="media-cover-img"
+          loading="eager"
         />
-        <div class="media-gradient-overlay"></div>
-
-        <!-- Central Flat Play Button (Zero Glow, Clean Flat Circle) -->
-        <div class="center-play-wrapper">
-          <button class="flat-play-button" aria-label={`Reproducir entrevista en video a ${story.name} con intérprete LSB`}>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-              <polygon points="6 4 20 12 6 20 6 4"></polygon>
-            </svg>
-          </button>
-        </div>
-
-        <!-- Bottom Quote Overlay -->
-        <div class="media-quote-bar">
-          <p class="media-quote-text">“{story.quote}”</p>
-        </div>
-
-        <!-- Inset LSB Interpreter Box (Clean Flat Border) -->
-        <div class="lsb-inset-card">
-          <img
-            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80"
-            alt="Intérprete de Lengua de Señas Boliviana (LSB)"
-            class="lsb-thumb-img"
-          />
-          <span class="lsb-pill-label">INTÉRPRETE LSB</span>
-        </div>
       </div>
 
       <!-- 2-Column Content Layout: Editorial Story + Sticky Sidebar -->
@@ -110,21 +98,36 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`Conoce la hi
           <section class="editorial-section">
             <h2 class="editorial-heading">El desafío antes de Incluxia</h2>
             <p class="editorial-paragraph">
-              Durante meses, {story.name} enfrentó el filtro más injusto del mercado tradicional en Bolivia: llamadas telefónicas imprevistas de reclutadores donde el tono de voz o la imposibilidad de escuchar definían su futuro profesional, ignorando años de formación y capacidad técnica.
+              Durante meses, {story.name} enfrentó el filtro más injusto del mercado
+              tradicional en Bolivia: llamadas telefónicas imprevistas de reclutadores
+              donde el tono de voz o la imposibilidad de escuchar definían su futuro
+              profesional, ignorando años de formación y capacidad técnica.
             </p>
           </section>
 
           <section class="editorial-section">
-            <h2 class="editorial-heading">La adaptación razonable en {story.company}</h2>
+            <h2 class="editorial-heading">
+              La adaptación razonable en {story.company}
+            </h2>
             <p class="editorial-paragraph">
-              A través de Incluxia, {story.company} coordinó todo el proceso 100% por mensaje de WhatsApp. En su puesto de trabajo diario como {story.role}, las tareas se definen con manuales escritos, tableros digitales y seguimiento por chat. Sin teléfono de por medio, el rendimiento y la precisión de {story.name} superaron todas las expectativas.
+              A través de Incluxia, {story.company} coordinó todo el proceso 100%
+              por mensaje de WhatsApp. En su puesto de trabajo diario como {
+                story.role
+              }, las tareas se definen con manuales escritos, tableros digitales
+              y seguimiento por chat. Sin teléfono de por medio, el rendimiento
+              y la precisión de {story.name} superaron todas las expectativas.
             </p>
           </section>
 
           <section class="editorial-section">
-            <h2 class="editorial-heading">Impacto y cumplimiento de la Ley 977</h2>
+            <h2 class="editorial-heading">
+              Impacto y cumplimiento de la Ley 977
+            </h2>
             <p class="editorial-paragraph">
-              La contratación no solo cumplió la cuota legal obligatoria en Bolivia (2% o 4%), sino que enriqueció la cultura del equipo, demostrando que la accesibilidad laboral genera rentabilidad y lealtad profesional.
+              La contratación no solo cumplió la cuota legal obligatoria en
+              Bolivia (2% o 4%), sino que enriqueció la cultura del equipo,
+              demostrando que la accesibilidad laboral genera rentabilidad y
+              lealtad profesional.
             </p>
           </section>
 
@@ -168,18 +171,13 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`Conoce la hi
               <span class="fact-value">{story.city}, Bolivia</span>
             </div>
 
-            <div class="fact-item">
-              <span class="fact-label">Canal de Comunicación:</span>
-              <span class="fact-value highlight-green">100% Chat / WhatsApp</span>
-            </div>
-
-            <div class="fact-item">
-              <span class="fact-label">Marco Normativo:</span>
-              <span class="fact-value">Ley 977 / Ley 223</span>
-            </div>
-
             <div class="facts-cta-row">
-              <Button href="/empleos" variant="primary" size="md" fullWidth={true}>
+              <Button
+                href="/empleos"
+                variant="primary"
+                size="md"
+                fullWidth={true}
+              >
                 <span>Ver Empleos Disponibles</span>
               </Button>
             </div>
@@ -188,19 +186,23 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`Conoce la hi
       </div>
 
       <!-- Other Stories (Related Testimonials) -->
-      {otherStories.length > 0 && (
-        <section class="related-stories-section">
-          <div class="section-top-bar">
-            <div>
-              <span class="badge badge-navy">Historias Relacionadas</span>
-              <h2 class="section-heading">Más casos de éxito en Bolivia</h2>
+      {
+        otherStories.length > 0 && (
+          <section class="related-stories-section">
+            <div class="section-top-bar">
+              <div>
+                <span class="badge badge-navy">Historias Relacionadas</span>
+                <h2 class="section-heading">Más casos de éxito en Bolivia</h2>
+              </div>
             </div>
-          </div>
-          <div class="stories-cards-grid">
-            {otherStories.map((s) => <StoryCard story={s} />)}
-          </div>
-        </section>
-      )}
+            <div class="stories-cards-grid">
+              {otherStories.map((s) => (
+                <StoryCard story={s} />
+              ))}
+            </div>
+          </section>
+        )
+      }
     </div>
   </div>
 </Layout>
@@ -229,7 +231,7 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`Conoce la hi
   }
 
   .back-link:hover {
-    color: var(--color-accent-dark);
+    color: var(--color-accent);
   }
 
   /* Header Section */
@@ -296,123 +298,22 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`Conoce la hi
     color: var(--color-text-light);
   }
 
-  /* Media Showcase Box (Zero Shadows, Zero Glow, Flat Minimalism) */
+  /* Media Showcase Box (Fotografía Principal) */
   .media-showcase-box {
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
-    border-radius: var(--radius-3xl);
-    border: 1px solid var(--color-border-dark);
+    border-radius: var(--radius-md);
     overflow: hidden;
     margin-bottom: var(--space-12);
     background-color: var(--color-surface-dark);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: none; /* ZERO SHADOWS */
   }
 
   .media-cover-img {
     width: 100%;
     height: 100%;
-    position: absolute;
     object-fit: cover;
-    filter: brightness(0.7);
-  }
-
-  .media-gradient-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(11, 15, 25, 0.1) 0%, rgba(11, 15, 25, 0.8) 100%);
-  }
-
-  /* Flat Play Button: ZERO GLOW, ZERO SCALE */
-  .center-play-wrapper {
-    position: relative;
-    z-index: 5;
-  }
-
-  .flat-play-button {
-    width: 64px;
-    height: 64px;
-    border-radius: var(--radius-full);
-    background-color: var(--color-white);
-    color: var(--color-primary);
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: none; /* ZERO SHADOWS */
-    transition: background-color var(--transition-fast), color var(--transition-fast);
-  }
-
-  .flat-play-button:hover {
-    background-color: var(--color-accent);
-    color: var(--color-primary);
-  }
-
-  .flat-play-button svg {
-    margin-left: 3px;
-  }
-
-  /* Bottom Quote Overlay */
-  .media-quote-bar {
-    position: absolute;
-    bottom: var(--space-6);
-    left: var(--space-6);
-    max-width: 60%;
-    z-index: 5;
-    background: rgba(11, 15, 25, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    padding: var(--space-4) var(--space-5);
-    border-radius: var(--radius-xl);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: none; /* ZERO SHADOWS */
-  }
-
-  .media-quote-text {
-    color: var(--color-white);
-    font-size: var(--text-sm);
-    line-height: 1.5;
-    margin: 0;
-    font-style: italic;
-  }
-
-  /* Inset LSB Interpreter Box */
-  .lsb-inset-card {
-    position: absolute;
-    bottom: var(--space-6);
-    right: var(--space-6);
-    width: 140px;
-    height: 110px;
-    border-radius: var(--radius-xl);
-    overflow: hidden;
-    border: 1.5px solid rgba(255, 255, 255, 0.2);
-    z-index: 5;
-    background: var(--color-surface-dark);
-    box-shadow: none; /* ZERO SHADOWS */
-  }
-
-  .lsb-thumb-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .lsb-pill-label {
-    position: absolute;
-    bottom: 0.4rem;
-    left: 0.4rem;
-    right: 0.4rem;
-    background: rgba(11, 15, 25, 0.85);
-    font-size: 0.65rem;
-    font-weight: 800;
-    color: var(--color-accent);
-    text-align: center;
-    padding: 0.2rem 0;
-    border-radius: var(--radius-sm);
+    display: block;
   }
 
   /* 2-Column Content Layout */
@@ -556,29 +457,12 @@ const shareWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`Conoce la hi
     .story-content-grid {
       grid-template-columns: 1fr;
     }
-    .media-showcase-box {
-      height: 380px;
-    }
-    .media-quote-bar {
-      max-width: 80%;
-    }
     .stories-cards-grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
   @media (max-width: 767px) {
-    .media-showcase-box {
-      height: 300px;
-    }
-    .lsb-inset-card {
-      display: none;
-    }
-    .media-quote-bar {
-      max-width: 90%;
-      bottom: var(--space-3);
-      left: var(--space-3);
-    }
     .stories-cards-grid {
       grid-template-columns: 1fr;
     }

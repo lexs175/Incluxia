@@ -18,70 +18,92 @@ const featuredStory = storiesData[0];
   <section class="trustly-stories-hero">
     <div class="container hero-container">
       <div class="hero-header">
-
         <h1 class="hero-main-title">
-          Casos de éxito que inspiran a <span class="highlight-cyan">Bolivia</span>
+          Casos de éxito que inspiran a <span class="highlight-cyan"
+            >Bolivia</span
+          >
         </h1>
 
         <p class="hero-lead-text">
-          Profesionales con hipoacusia demostrando su capacidad y concentración en tecnología, diseño, administración y finanzas cuando las empresas eligen canales 100% escritos.
+          Profesionales con hipoacusia demostrando su capacidad y concentración
+          en tecnología, diseño, administración y finanzas cuando las empresas
+          eligen canales 100% escritos.
         </p>
       </div>
+    </div>
+  </section>
 
-      <!-- Featured Centerpiece Bento Showcase -->
-      {featuredStory && (
-        <div class="featured-bento-card">
-          <div class="featured-content-col">
-            <div class="featured-badge-row">
-              <span class="featured-company-pill">{featuredStory.company}</span>
+  <!-- 2. FEATURED SHOWCASE SECTION (Borde a borde de la pantalla) -->
+  {
+    featuredStory && (
+      <section class="section featured-showcase-section">
+        <div class="container">
+          <div class="featured-showcase-grid">
+            <div class="featured-content-col">
+              <div class="featured-badge-row">
+                <span class="featured-company-pill">
+                  {featuredStory.company}
+                </span>
+              </div>
+
+              <h2 class="featured-name-title">
+                {featuredStory.name}: {featuredStory.role}
+              </h2>
+
+              <blockquote class="featured-quote">
+                “{featuredStory.quote}”
+              </blockquote>
+
+              <div class="featured-meta-row">
+                <span class="meta-tag">
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                  {featuredStory.city}, Bolivia
+                </span>
+                <span class="meta-dot">·</span>
+                <span class="meta-tag">Entrevista con Intérprete LSB</span>
+              </div>
+
+              <div class="featured-action-wrap">
+                <ExpandableButton
+                  href={`/casos-de-exito/${featuredStory.slug}`}
+                  text="Ver historia completa"
+                  variant="white"
+                  size="md"
+                />
+              </div>
             </div>
 
-            <h2 class="featured-name-title">
-              {featuredStory.name}: {featuredStory.role}
-            </h2>
-
-            <blockquote class="featured-quote">
-              “{featuredStory.quote}”
-            </blockquote>
-
-            <div class="featured-meta-row">
-              <span class="meta-tag">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
-                {featuredStory.city}, Bolivia
-              </span>
-              <span class="meta-dot">·</span>
-              <span class="meta-tag">Entrevista con Intérprete LSB</span>
-            </div>
-
-            <div class="featured-action-wrap">
-              <ExpandableButton
-                href={`/casos-de-exito/${featuredStory.slug}`}
-                text="Ver historia completa"
-                variant="white"
-                size="md"
+            <div class="featured-photo-col">
+              <img
+                src={featuredStory.image}
+                alt={`Entrevista con ${featuredStory.name}`}
+                class="featured-photo"
+                loading="eager"
               />
-            </div>
-          </div>
-
-          <div class="featured-photo-col">
-            <img
-              src={featuredStory.image}
-              alt={`Entrevista con ${featuredStory.name}`}
-              class="featured-photo"
-              loading="eager"
-            />
-            <div class="photo-caption-bar">
-              <span class="caption-title">{featuredStory.name}</span>
-              <span class="caption-sub">{featuredStory.role} en {featuredStory.company}</span>
+              <div class="photo-caption-bar">
+                <span class="caption-title">{featuredStory.name}</span>
+                <span class="caption-sub">
+                  {featuredStory.role} en {featuredStory.company}
+                </span>
+              </div>
             </div>
           </div>
         </div>
-      )}
-    </div>
-  </section>
+      </section>
+    )
+  }
 
   <!-- 2. GALLERY GRID SECTION (Soft Tinted Bento Grid) -->
   <section class="section stories-grid-section">
@@ -89,9 +111,12 @@ const featuredStory = storiesData[0];
       <div class="section-top-bar">
         <div>
           <span class="badge badge-navy">Directorio de Testimonios</span>
-          <h2 class="section-heading">Más trayectorias que derriban barreras</h2>
+          <h2 class="section-heading">
+            Más trayectorias que derriban barreras
+          </h2>
           <p class="section-desc">
-            Cada testimonio demuestra que la agudeza visual, la disciplina y el trabajo sin interrupciones acústicas impulsan el éxito corporativo.
+            Cada testimonio demuestra que la agudeza visual, la disciplina y el
+            trabajo sin interrupciones acústicas impulsan el éxito corporativo.
           </p>
         </div>
       </div>
@@ -110,13 +135,18 @@ const featuredStory = storiesData[0];
           ¿Quieres encontrar un trabajo digno o contratar talento como ellos?
         </h2>
         <p class="final-cta-subtitle">
-          En Incluxia conectamos a profesionales con hipoacusia con empresas que coordinan por WhatsApp y ofrecen estabilidad laboral conforme a la Ley 977.
+          En Incluxia conectamos a profesionales con hipoacusia con empresas que
+          coordinan por WhatsApp y ofrecen estabilidad laboral conforme a la Ley
+          977.
         </p>
         <div class="final-cta-buttons">
-          <Button href="/empleos" variant="primary" size="lg">
-            <span>Ver Ofertas de Trabajo</span>
-          </Button>
-          <Button href="https://wa.me/59172255726?text=Hola%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Incluxia" target="_blank" rel="noopener noreferrer" variant="whatsapp" size="lg">
+          <Button
+            href="https://wa.me/59172255726?text=Hola%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Incluxia"
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="white-whatsapp"
+            size="lg"
+          >
             <span>Contactar por WhatsApp</span>
           </Button>
         </div>
@@ -132,8 +162,8 @@ const featuredStory = storiesData[0];
      ==================================================== */
   .trustly-stories-hero {
     background-color: var(--color-white);
-    padding-top: calc(90px + var(--space-12));
-    padding-bottom: var(--space-16);
+    padding-top: calc(90px + var(--space-8));
+    padding-bottom: clamp(2.5rem, 5vw, 4.5rem);
     position: relative;
     overflow: hidden;
   }
@@ -147,12 +177,11 @@ const featuredStory = storiesData[0];
   .hero-header {
     text-align: center;
     max-width: 860px;
-    margin: 0 auto var(--space-12) auto;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-
 
   .hero-main-title {
     font-size: var(--text-hero);
@@ -164,7 +193,7 @@ const featuredStory = storiesData[0];
   }
 
   .highlight-cyan {
-    color: var(--color-accent-dark);
+    color: var(--color-accent);
   }
 
   .hero-lead-text {
@@ -175,25 +204,29 @@ const featuredStory = storiesData[0];
     margin: 0 auto;
   }
 
-  /* Featured Bento Showcase Card */
-  .featured-bento-card {
+  /* ====================================================
+     2. FEATURED SHOWCASE SECTION (Borde a borde de pantalla)
+     ==================================================== */
+  .featured-showcase-section {
+    background-color: var(--color-primary-dark);
+    padding-block: clamp(3.5rem, 6vw, 5.5rem);
+    position: relative;
     width: 100%;
-    margin: 0 auto;
-    background: var(--color-surface-dark);
-    border-radius: var(--radius-3xl);
-    border: 1px solid var(--color-border-dark);
-    overflow: hidden;
+    color: var(--color-white);
+  }
+
+  .featured-showcase-grid {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    min-height: 480px;
-    box-shadow: none; /* ZERO SHADOWS */
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+    min-height: 440px;
   }
 
   .featured-content-col {
-    padding: clamp(2.5rem, 5vw, 4rem);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     gap: var(--space-6);
     color: var(--color-white);
   }
@@ -262,7 +295,12 @@ const featuredStory = storiesData[0];
   /* Photo Column */
   .featured-photo-col {
     position: relative;
+    border-radius: var(--radius-md);
     overflow: hidden;
+    height: 100%;
+    min-height: 380px;
+    max-height: 480px;
+    display: flex;
   }
 
   .featured-photo {
@@ -270,6 +308,7 @@ const featuredStory = storiesData[0];
     height: 100%;
     object-fit: cover;
     display: block;
+    border-radius: var(--radius-md);
   }
 
   .photo-caption-bar {
@@ -281,7 +320,7 @@ const featuredStory = storiesData[0];
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: var(--radius-xl);
+    border-radius: var(--radius-md);
     padding: var(--space-3) var(--space-4);
     display: flex;
     flex-direction: column;
@@ -342,13 +381,11 @@ const featuredStory = storiesData[0];
   }
 
   .final-cta-capsule {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    border-radius: var(--radius-3xl);
+    background: var(--color-primary-dark);
+    border-radius: var(--radius-md);
     padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
     text-align: center;
     color: var(--color-text-inverse);
-    box-shadow: none; /* ZERO SHADOWS */
-    border: 1px solid rgba(255, 255, 255, 0.1);
     margin: 0 auto;
   }
 
@@ -381,12 +418,14 @@ const featuredStory = storiesData[0];
 
   /* Responsive Rules */
   @media (max-width: 991px) {
-    .featured-bento-card {
+    .featured-showcase-grid {
       grid-template-columns: 1fr;
+      gap: var(--space-8);
     }
 
-    .featured-photo {
-      height: 320px;
+    .featured-photo-col {
+      min-height: 320px;
+      height: 360px;
     }
 
     .stories-cards-grid {

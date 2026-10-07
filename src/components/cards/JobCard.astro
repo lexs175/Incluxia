@@ -23,12 +23,7 @@ const { job } = Astro.props;
 <article class="job-card">
   <!-- Card Header -->
   <div class="job-card-header">
-    <div class="company-icon-box">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-      </svg>
-    </div>
+
     <div class="badge-container">
       <Badge variant="whatsapp">
         {job.accessibilityBadge}
@@ -65,7 +60,7 @@ const { job } = Astro.props;
   .job-card {
     background: var(--color-bg-card);
     border: 1px solid rgba(var(--color-primary-rgb), 0.1);
-    border-radius: var(--radius-2xl);
+    border-radius: var(--radius-md);
     padding: var(--space-6);
     display: flex;
     flex-direction: column;

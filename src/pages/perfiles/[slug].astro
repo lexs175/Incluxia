@@ -1,8 +1,9 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Button from '../../components/ui/Button.astro';
-import Badge from '../../components/ui/Badge.astro';
-import profilesData from '../../data/profiles.json';
+import Layout from "../../layouts/Layout.astro";
+import Button from "../../components/ui/Button.astro";
+import Badge from "../../components/ui/Badge.astro";
+import profilesData from "../../data/profiles.json";
+import ExpandableButton from "../../components/ui/ExpandableButton.astro";
 
 export function getStaticPaths() {
   return profilesData.map((profile) => ({
@@ -12,7 +13,9 @@ export function getStaticPaths() {
 }
 
 const { profile } = Astro.props;
-const otherProfiles = profilesData.filter((p) => p.id !== profile.id).slice(0, 3);
+const otherProfiles = profilesData
+  .filter((p) => p.id !== profile.id)
+  .slice(0, 3);
 
 const whatsappUrl = `https://wa.me/${profile.contact.whatsapp}?text=${encodeURIComponent(`Hola ${profile.name}, vi tu perfil en Incluxia Bolivia y me interesa conectar contigo.`)}`;
 const shareUrl = `https://wa.me/?text=${encodeURIComponent(`Te comparto el perfil laboral de ${profile.name} (${profile.role}) en Incluxia Bolivia: ${Astro.url}`)}`;
@@ -25,14 +28,11 @@ const shareUrl = `https://wa.me/?text=${encodeURIComponent(`Te comparto el perfi
 >
   <div class="profile-page-layout">
     <div class="container profile-container">
-
       <div class="profile-grid">
-
         <!-- ==============================
              COLUMNA PRINCIPAL (izquierda)
              ============================== -->
         <main class="profile-main-col">
-
           <!-- Header del perfil -->
           <header class="profile-header-section">
             <div class="profile-header-inner">
@@ -44,7 +44,6 @@ const shareUrl = `https://wa.me/?text=${encodeURIComponent(`Te comparto el perfi
                   class="profile-photo"
                   loading="eager"
                 />
-
               </div>
 
               <!-- Info principal -->
@@ -54,8 +53,19 @@ const shareUrl = `https://wa.me/?text=${encodeURIComponent(`Te comparto el perfi
 
                 <div class="profile-meta-row">
                   <span class="meta-chip">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                      ></path>
                       <circle cx="12" cy="10" r="3"></circle>
                     </svg>
                     {profile.city}, Bolivia
@@ -64,16 +74,50 @@ const shareUrl = `https://wa.me/?text=${encodeURIComponent(`Te comparto el perfi
 
                 <!-- Botones de contacto directo -->
                 <div class="profile-cta-buttons">
-                  <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="whatsapp" size="md">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M6.014 8.00613C6.12827 7.1024 7.30277 5.87414 8.23488 6.01043L8.23339 6.00894C9.14051 6.18132 9.85859 7.74261 10.2635 8.44465C10.5504 8.95402 10.3641 9.4701 10.0965 9.68787C9.7355 9.97883 9.17099 10.3803 9.28943 10.7834C9.5 11.5 12 14 13.2296 14.7107C13.695 14.9797 14.0325 14.2702 14.3207 13.9067C14.5301 13.6271 15.0466 13.46 15.5548 13.736C16.3138 14.178 17.0288 14.6917 17.69 15.27C18.0202 15.546 18.0977 15.9539 17.8689 16.385C17.4659 17.1443 16.3003 18.1456 15.4542 17.9421C13.9764 17.5868 8 15.27 6.08033 8.55801C5.97237 8.24048 5.99955 8.12044 6.014 8.00613Z"/>
-                      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 23C10.7764 23 10.0994 22.8687 9 22.5L6.89443 23.5528C5.56462 24.2177 4 23.2507 4 21.7639V19.5C1.84655 17.492 1 15.1767 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23ZM6 18.6303L5.36395 18.0372C3.69087 16.4772 3 14.7331 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C11.0143 21 10.552 20.911 9.63595 20.6038L8.84847 20.3397L6 21.7639V18.6303Z"/>
+                  <Button
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variant="whatsapp"
+                    size="md"
+                  >
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M6.014 8.00613C6.12827 7.1024 7.30277 5.87414 8.23488 6.01043L8.23339 6.00894C9.14051 6.18132 9.85859 7.74261 10.2635 8.44465C10.5504 8.95402 10.3641 9.4701 10.0965 9.68787C9.7355 9.97883 9.17099 10.3803 9.28943 10.7834C9.5 11.5 12 14 13.2296 14.7107C13.695 14.9797 14.0325 14.2702 14.3207 13.9067C14.5301 13.6271 15.0466 13.46 15.5548 13.736C16.3138 14.178 17.0288 14.6917 17.69 15.27C18.0202 15.546 18.0977 15.9539 17.8689 16.385C17.4659 17.1443 16.3003 18.1456 15.4542 17.9421C13.9764 17.5868 8 15.27 6.08033 8.55801C5.97237 8.24048 5.99955 8.12044 6.014 8.00613Z"
+                      ></path>
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M12 23C10.7764 23 10.0994 22.8687 9 22.5L6.89443 23.5528C5.56462 24.2177 4 23.2507 4 21.7639V19.5C1.84655 17.492 1 15.1767 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23ZM6 18.6303L5.36395 18.0372C3.69087 16.4772 3 14.7331 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C11.0143 21 10.552 20.911 9.63595 20.6038L8.84847 20.3397L6 21.7639V18.6303Z"
+                      ></path>
                     </svg>
                     Contactar por WhatsApp
                   </Button>
-                  <Button href={`mailto:${profile.contact.email}`} variant="outline" size="md">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <Button
+                    href={`mailto:${profile.contact.email}`}
+                    variant="outline"
+                    size="md"
+                  >
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                      ></path>
                       <polyline points="22,6 12,13 2,6"></polyline>
                     </svg>
                     Enviar correo
@@ -86,12 +130,6 @@ const shareUrl = `https://wa.me/?text=${encodeURIComponent(`Te comparto el perfi
           <!-- Sobre mí -->
           <section class="cv-section" aria-labelledby="about-heading">
             <div class="cv-section-label-wrap">
-              <span class="cv-section-icon" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="8" r="4"></circle>
-                  <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path>
-                </svg>
-              </span>
               <h2 id="about-heading" class="cv-section-title">Sobre mí</h2>
             </div>
             <div class="cv-section-body">
@@ -102,43 +140,54 @@ const shareUrl = `https://wa.me/?text=${encodeURIComponent(`Te comparto el perfi
           <!-- Experiencia Laboral -->
           <section class="cv-section" aria-labelledby="experience-heading">
             <div class="cv-section-label-wrap">
-              <span class="cv-section-icon" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                </svg>
-              </span>
-              <h2 id="experience-heading" class="cv-section-title">Experiencia Laboral</h2>
+              <h2 id="experience-heading" class="cv-section-title">
+                Experiencia Laboral
+              </h2>
             </div>
             <div class="cv-section-body">
               <ol class="experience-timeline" role="list">
-                {profile.experience.map((exp, i) => (
-                  <li class="timeline-item">
-                    <div class="timeline-marker" aria-hidden="true">
-                      <span class="timeline-dot"></span>
-                      {i < profile.experience.length - 1 && <span class="timeline-line"></span>}
-                    </div>
-                    <div class="timeline-content">
-                      <div class="timeline-header">
-                        <div class="timeline-title-wrap">
-                          <h3 class="timeline-role">{exp.role}</h3>
-                          <p class="timeline-company">{exp.company}</p>
-                        </div>
-                        <span class="timeline-period">{exp.period}</span>
+                {
+                  profile.experience.map((exp, i) => (
+                    <li class="timeline-item">
+                      <div class="timeline-marker" aria-hidden="true">
+                        <span class="timeline-dot" />
+                        {i < profile.experience.length - 1 && (
+                          <span class="timeline-line" />
+                        )}
                       </div>
-                      <ul class="timeline-highlights" role="list">
-                        {exp.highlights.map((h) => (
-                          <li class="highlight-item">
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="highlight-check" aria-hidden="true">
-                              <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            {h}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </li>
-                ))}
+                      <div class="timeline-content">
+                        <div class="timeline-header">
+                          <div class="timeline-title-wrap">
+                            <h3 class="timeline-role">{exp.role}</h3>
+                            <p class="timeline-company">{exp.company}</p>
+                          </div>
+                          <span class="timeline-period">{exp.period}</span>
+                        </div>
+                        <ul class="timeline-highlights" role="list">
+                          {exp.highlights.map((h) => (
+                            <li class="highlight-item">
+                              <svg
+                                width="13"
+                                height="13"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="highlight-check"
+                                aria-hidden="true"
+                              >
+                                <polyline points="20 6 9 17 4 12" />
+                              </svg>
+                              {h}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </li>
+                  ))
+                }
               </ol>
             </div>
           </section>
@@ -146,18 +195,16 @@ const shareUrl = `https://wa.me/?text=${encodeURIComponent(`Te comparto el perfi
           <!-- Habilidades -->
           <section class="cv-section" aria-labelledby="skills-heading">
             <div class="cv-section-label-wrap">
-              <span class="cv-section-icon" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                </svg>
-              </span>
+
               <h2 id="skills-heading" class="cv-section-title">Habilidades</h2>
             </div>
             <div class="cv-section-body">
               <div class="skills-grid">
-                {profile.skills.map((skill) => (
-                  <span class="skill-tag">{skill}</span>
-                ))}
+                {
+                  profile.skills.map((skill) => (
+                    <span class="skill-tag">{skill}</span>
+                  ))
+                }
               </div>
             </div>
           </section>
@@ -165,25 +212,21 @@ const shareUrl = `https://wa.me/?text=${encodeURIComponent(`Te comparto el perfi
           <!-- Educación -->
           <section class="cv-section" aria-labelledby="education-heading">
             <div class="cv-section-label-wrap">
-              <span class="cv-section-icon" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-                </svg>
-              </span>
               <h2 id="education-heading" class="cv-section-title">Educación</h2>
             </div>
             <div class="cv-section-body">
               <ul class="education-list" role="list">
-                {profile.education.map((ed) => (
-                  <li class="education-item">
-                    <div class="education-year">{ed.year}</div>
-                    <div class="education-info">
-                      <h3 class="education-degree">{ed.degree}</h3>
-                      <p class="education-institution">{ed.institution}</p>
-                    </div>
-                  </li>
-                ))}
+                {
+                  profile.education.map((ed) => (
+                    <li class="education-item">
+                      <div class="education-year">{ed.year}</div>
+                      <div class="education-info">
+                        <h3 class="education-degree">{ed.degree}</h3>
+                        <p class="education-institution">{ed.institution}</p>
+                      </div>
+                    </li>
+                  ))
+                }
               </ul>
             </div>
           </section>
@@ -191,25 +234,33 @@ const shareUrl = `https://wa.me/?text=${encodeURIComponent(`Te comparto el perfi
           <!-- Idiomas -->
           <section class="cv-section" aria-labelledby="languages-heading">
             <div class="cv-section-label-wrap">
-              <span class="cv-section-icon" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="2" y1="12" x2="22" y2="12"></line>
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                </svg>
-              </span>
-              <h2 id="languages-heading" class="cv-section-title">Idiomas y Comunicación</h2>
+              <h2 id="languages-heading" class="cv-section-title">
+                Idiomas y Comunicación
+              </h2>
             </div>
             <div class="cv-section-body">
               <div class="languages-list">
-                {profile.languages.map((lang) => (
-                  <div class="language-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lang-check" aria-hidden="true">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                    <span>{lang}</span>
-                  </div>
-                ))}
+                {
+                  profile.languages.map((lang) => (
+                    <div class="language-item">
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lang-check"
+                        aria-hidden="true"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      <span>{lang}</span>
+                    </div>
+                  ))
+                }
               </div>
             </div>
           </section>
@@ -217,66 +268,86 @@ const shareUrl = `https://wa.me/?text=${encodeURIComponent(`Te comparto el perfi
           <!-- Compartir -->
           <div class="profile-share-section">
             <span class="share-label">Compartir perfil:</span>
-            <Button href={shareUrl} target="_blank" rel="noopener noreferrer" variant="whatsapp" size="sm">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M6.014 8.00613C6.12827 7.1024 7.30277 5.87414 8.23488 6.01043L8.23339 6.00894C9.14051 6.18132 9.85859 7.74261 10.2635 8.44465C10.5504 8.95402 10.3641 9.4701 10.0965 9.68787C9.7355 9.97883 9.17099 10.3803 9.28943 10.7834C9.5 11.5 12 14 13.2296 14.7107C13.695 14.9797 14.0325 14.2702 14.3207 13.9067C14.5301 13.6271 15.0466 13.46 15.5548 13.736C16.3138 14.178 17.0288 14.6917 17.69 15.27C18.0202 15.546 18.0977 15.9539 17.8689 16.385C17.4659 17.1443 16.3003 18.1456 15.4542 17.9421C13.9764 17.5868 8 15.27 6.08033 8.55801C5.97237 8.24048 5.99955 8.12044 6.014 8.00613Z"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 23C10.7764 23 10.0994 22.8687 9 22.5L6.89443 23.5528C5.56462 24.2177 4 23.2507 4 21.7639V19.5C1.84655 17.492 1 15.1767 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23ZM6 18.6303L5.36395 18.0372C3.69087 16.4772 3 14.7331 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C11.0143 21 10.552 20.911 9.63595 20.6038L8.84847 20.3397L6 21.7639V18.6303Z"/>
+            <Button
+              href={shareUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="whatsapp"
+              size="sm"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M6.014 8.00613C6.12827 7.1024 7.30277 5.87414 8.23488 6.01043L8.23339 6.00894C9.14051 6.18132 9.85859 7.74261 10.2635 8.44465C10.5504 8.95402 10.3641 9.4701 10.0965 9.68787C9.7355 9.97883 9.17099 10.3803 9.28943 10.7834C9.5 11.5 12 14 13.2296 14.7107C13.695 14.9797 14.0325 14.2702 14.3207 13.9067C14.5301 13.6271 15.0466 13.46 15.5548 13.736C16.3138 14.178 17.0288 14.6917 17.69 15.27C18.0202 15.546 18.0977 15.9539 17.8689 16.385C17.4659 17.1443 16.3003 18.1456 15.4542 17.9421C13.9764 17.5868 8 15.27 6.08033 8.55801C5.97237 8.24048 5.99955 8.12044 6.014 8.00613Z"
+                ></path>
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12 23C10.7764 23 10.0994 22.8687 9 22.5L6.89443 23.5528C5.56462 24.2177 4 23.2507 4 21.7639V19.5C1.84655 17.492 1 15.1767 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23ZM6 18.6303L5.36395 18.0372C3.69087 16.4772 3 14.7331 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C11.0143 21 10.552 20.911 9.63595 20.6038L8.84847 20.3397L6 21.7639V18.6303Z"
+                ></path>
               </svg>
               Compartir en WhatsApp
             </Button>
           </div>
-
         </main>
 
         <!-- ==============================
              SIDEBAR (derecha)
              ============================== -->
         <aside class="profile-sidebar">
-
           <!-- Card: Contacto directo -->
           <div class="sidebar-contact-card">
             <h3 class="sidebar-card-title">Contactar a {profile.name}</h3>
             <p class="sidebar-contact-desc">
-              Proceso 100% por chat escrito. Sin llamadas telefónicas en ninguna etapa.
+              Proceso 100% por chat escrito. Sin llamadas telefónicas en ninguna
+              etapa.
             </p>
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="sidebar-whatsapp-btn"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M6.014 8.00613C6.12827 7.1024 7.30277 5.87414 8.23488 6.01043L8.23339 6.00894C9.14051 6.18132 9.85859 7.74261 10.2635 8.44465C10.5504 8.95402 10.3641 9.4701 10.0965 9.68787C9.7355 9.97883 9.17099 10.3803 9.28943 10.7834C9.5 11.5 12 14 13.2296 14.7107C13.695 14.9797 14.0325 14.2702 14.3207 13.9067C14.5301 13.6271 15.0466 13.46 15.5548 13.736C16.3138 14.178 17.0288 14.6917 17.69 15.27C18.0202 15.546 18.0977 15.9539 17.8689 16.385C17.4659 17.1443 16.3003 18.1456 15.4542 17.9421C13.9764 17.5868 8 15.27 6.08033 8.55801C5.97237 8.24048 5.99955 8.12044 6.014 8.00613Z"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 23C10.7764 23 10.0994 22.8687 9 22.5L6.89443 23.5528C5.56462 24.2177 4 23.2507 4 21.7639V19.5C1.84655 17.492 1 15.1767 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23ZM6 18.6303L5.36395 18.0372C3.69087 16.4772 3 14.7331 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C11.0143 21 10.552 20.911 9.63595 20.6038L8.84847 20.3397L6 21.7639V18.6303Z"/>
-              </svg>
+            <ExpandableButton href={whatsappUrl} variant="white-whatsapp" size="lg">
               Escribir por WhatsApp
-            </a>
-            <a href={`mailto:${profile.contact.email}`} class="sidebar-email-link">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-              {profile.contact.email}
-            </a>
+            </ExpandableButton>
           </div>
 
           <!-- Card: Más perfiles -->
           <div class="sidebar-more-profiles">
             <h3 class="sidebar-card-title sidebar-title-dark">Más Perfiles</h3>
             <div class="more-profiles-list">
-              {otherProfiles.map((p) => (
-                <a href={`/perfiles/${p.slug}`} class="more-profile-item">
-                  <img src={p.photo} alt={p.name} class="more-profile-photo" loading="lazy" />
-                  <div class="more-profile-text">
-                    <h4 class="more-profile-name">{p.name}</h4>
-                    <span class="more-profile-role">{p.role} · {p.city}</span>
-                  </div>
-                </a>
-              ))}
+              {
+                otherProfiles.map((p) => (
+                  <a href={`/perfiles/${p.slug}`} class="more-profile-item">
+                    <img
+                      src={p.photo}
+                      alt={p.name}
+                      class="more-profile-photo"
+                      loading="lazy"
+                    />
+                    <div class="more-profile-text">
+                      <h4 class="more-profile-name">{p.name}</h4>
+                      <span class="more-profile-role">
+                        {p.role} · {p.city}
+                      </span>
+                    </div>
+                  </a>
+                ))
+              }
             </div>
             <a href="/perfiles" class="sidebar-all-profiles-link">
               Ver todos los perfiles
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
                 <path d="M5 12h14"></path>
                 <path d="m12 5 7 7-7 7"></path>
               </svg>
@@ -285,20 +356,17 @@ const shareUrl = `https://wa.me/?text=${encodeURIComponent(`Te comparto el perfi
 
           <!-- Card: Incluxia Verificación -->
           <div class="sidebar-verified-card">
-            <div class="verified-card-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-              </svg>
-            </div>
             <h4 class="verified-card-title">Perfil Verificado en Incluxia</h4>
             <p class="verified-card-desc">
-              Este perfil está registrado y verificado en la plataforma Incluxia. Garantizamos procesos de selección y comunicación 100% por chat escrito.
+              Este perfil está registrado y verificado en la plataforma
+              Incluxia. Garantizamos procesos de selección y comunicación 100%
+              por chat escrito.
             </p>
-            <a href="/nosotros" class="verified-card-link">Conocer más sobre Incluxia</a>
+            <a href="/nosotros" class="verified-card-link"
+              >Conocer más sobre Incluxia</a
+            >
           </div>
-
         </aside>
-
       </div>
     </div>
   </div>
@@ -343,7 +411,7 @@ const shareUrl = `https://wa.me/?text=${encodeURIComponent(`Te comparto el perfi
   .profile-header-section {
     background: var(--color-bg-card);
     border: 1px solid rgba(var(--color-primary-rgb), 0.1);
-    border-radius: var(--radius-2xl);
+    border-radius: var(--radius-md);
     box-shadow: none; /* ZERO SHADOWS */
     padding: var(--space-8);
     margin-bottom: var(--space-6);
@@ -364,7 +432,7 @@ const shareUrl = `https://wa.me/?text=${encodeURIComponent(`Te comparto el perfi
   .profile-photo {
     width: 140px;
     height: 140px;
-    border-radius: var(--radius-2xl);
+    border-radius: var(--radius-md);
     object-fit: cover;
     object-position: top center;
     border: 2px solid rgba(var(--color-primary-rgb), 0.12);
@@ -428,7 +496,7 @@ const shareUrl = `https://wa.me/?text=${encodeURIComponent(`Te comparto el perfi
   .profile-role-title {
     font-size: var(--text-xl);
     font-weight: 700;
-    color: var(--color-accent-dark);
+    color: var(--color-accent);
     margin-bottom: var(--space-4);
   }
 
@@ -463,8 +531,7 @@ const shareUrl = `https://wa.me/?text=${encodeURIComponent(`Te comparto el perfi
   .cv-section {
     background: var(--color-bg-card);
     border: 1px solid rgba(var(--color-primary-rgb), 0.08);
-    border-radius: var(--radius-2xl);
-    box-shadow: none; /* ZERO SHADOWS */
+    border-radius: var(--radius-md);
     padding: var(--space-8);
     margin-bottom: var(--space-6);
   }
@@ -635,10 +702,13 @@ const shareUrl = `https://wa.me/?text=${encodeURIComponent(`Te comparto el perfi
     font-family: var(--font-heading);
     font-size: clamp(0.7rem, 0.35vw + 0.62rem, 0.82rem);
     font-weight: 600;
-    padding: clamp(0.25rem, 0.2vw + 0.2rem, 0.4rem) clamp(0.6rem, 0.4vw + 0.45rem, 0.85rem);
+    padding: clamp(0.25rem, 0.2vw + 0.2rem, 0.4rem)
+      clamp(0.6rem, 0.4vw + 0.45rem, 0.85rem);
     border-radius: var(--radius-full);
     line-height: 1.3;
-    transition: background-color var(--transition-fast), border-color var(--transition-fast);
+    transition:
+      background-color var(--transition-fast),
+      border-color var(--transition-fast);
   }
 
   .skill-tag:hover {
@@ -741,7 +811,11 @@ const shareUrl = `https://wa.me/?text=${encodeURIComponent(`Te comparto el perfi
 
   /* Contact Card */
   .sidebar-contact-card {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    background: linear-gradient(
+      135deg,
+      var(--color-primary) 0%,
+      var(--color-primary-dark) 100%
+    );
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: var(--radius-2xl);
     box-shadow: none; /* ZERO SHADOWS */
@@ -782,7 +856,9 @@ const shareUrl = `https://wa.me/?text=${encodeURIComponent(`Te comparto el perfi
     text-decoration: none;
     margin-bottom: var(--space-3);
     box-shadow: none; /* ZERO SHADOWS */
-    transition: background-color var(--transition-fast), transform var(--transition-fast);
+    transition:
+      background-color var(--transition-fast),
+      transform var(--transition-fast);
   }
 
   .sidebar-whatsapp-btn:hover {
@@ -840,7 +916,7 @@ const shareUrl = `https://wa.me/?text=${encodeURIComponent(`Te comparto el perfi
   .more-profile-photo {
     width: 52px;
     height: 52px;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-sm);
     object-fit: cover;
     flex-shrink: 0;
   }

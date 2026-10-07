@@ -1,7 +1,9 @@
 ---
+import ExpandableButton from "./ExpandableButton.astro";
+
 interface Props {
   href?: string;
-  variant?: "primary" | "accent" | "outline" | "outline-white" | "whatsapp";
+  variant?: "default" | "primary" | "accent" | "outline" | "outline-white" | "whatsapp" | "white" | "white-whatsapp" | "dark";
   size?: "sm" | "md" | "lg";
   type?: "button" | "submit" | "reset";
   class?: string;
@@ -9,11 +11,12 @@ interface Props {
   target?: string;
   rel?: string;
   fullWidth?: boolean;
+  text?: string;
 }
 
 const {
   href,
-  variant = "primary",
+  variant = "default",
   size = "md",
   type = "button",
   class: className = "",
@@ -21,138 +24,30 @@ const {
   target,
   rel,
   fullWidth = false,
+  text,
   ...rest
 } = Astro.props;
 
-const variantClass = `btn-${variant}`;
-const sizeClass =
-  size === "sm" ? "btn-sm" : size === "lg" ? "btn-lg" : "btn-md";
-const fullWidthClass = fullWidth ? "btn-block" : "";
-const combinedClasses =
-  `btn ${variantClass} ${sizeClass} ${fullWidthClass} ${className}`.trim();
+const mappedVariant =
+  variant === "primary" || variant === "outline" || variant === "accent" || variant === "dark"
+    ? "default"
+    : variant === "outline-white"
+      ? "white"
+      : variant;
 ---
 
-{
-  href ? (
-    <a
-      href={href}
-      class={combinedClasses}
-      id={id}
-      target={target}
-      rel={rel}
-      {...rest}
-    >
-      <slot />
-    </a>
-  ) : (
-    <button type={type} class={combinedClasses} id={id} {...rest}>
-      <slot />
-    </button>
-  )
-}
-
-<style>
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.6rem;
-    border-radius: var(--radius-full);
-    font-family: var(--font-heading);
-    font-weight: 700;
-    letter-spacing: 0.01em;
-    text-align: center;
-    text-decoration: none;
-    transition: all var(--transition-normal);
-    cursor: pointer;
-    border: none;
-    line-height: 1.2;
-    white-space: nowrap;
-  }
-
-  /* Sizes */
-  .btn-sm {
-    padding: 0.5rem 1rem;
-    font-size: var(--text-xs);
-  }
-
-  .btn-md {
-    padding: 0.85rem 1.75rem;
-    font-size: var(--text-sm);
-  }
-
-  .btn-lg {
-    padding: 1.1rem 2.25rem;
-    font-size: var(--text-base);
-  }
-
-  .btn-block {
-    width: 100%;
-  }
-
-  /* Variant: Primary */
-  .btn-primary {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    border: none;
-  }
-  .btn-primary:hover {
-    background-color: var(--color-primary-hover);
-  }
-
-  /* Variant: Accent */
-  .btn-accent {
-    background-color: var(--color-accent);
-    color: var(--color-primary);
-    border: none;
-  }
-  .btn-accent:hover {
-    background-color: var(--color-accent-dark);
-  }
-
-  /* Variant: Outline (Flat Subtle Surface - No Border) */
-  .btn-outline {
-    background-color: rgba(var(--color-primary-rgb), 0.08);
-    color: var(--color-primary);
-    border: none;
-  }
-  .btn-outline:hover {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-  }
-
-  /* Variant: Outline White (Frosted Pill - No Border) */
-  .btn-outline-white {
-    background-color: rgba(255, 255, 255, 0.18);
-    color: var(--color-white);
-    border: none;
-    backdrop-filter: blur(8px);
-  }
-  .btn-outline-white:hover {
-    background-color: var(--color-white);
-    color: var(--color-primary);
-  }
-
-  /* Variant: WhatsApp */
-  .btn-whatsapp {
-    background-color: var(--color-whatsapp);
-    color: var(--color-white);
-    border: none;
-  }
-  .btn-whatsapp:hover {
-    background-color: var(--color-whatsapp-dark);
-  }
-
-  /* Accessibility focus */
-  .btn:focus-visible {
-    outline: 3px solid var(--color-accent);
-    outline-offset: 3px;
-  }
-
-  /* Responsive Mobile Portrait Tier (240px - 479px) */
-  @media (max-width: 479px) {
-    .btn {
-      padding: 0.65rem 1.25rem;
-    }
-  }
-</style>
+<ExpandableButton
+  href={href}
+  variant={mappedVariant as any}
+  size={size}
+  type={type}
+  class={className}
+  id={id}
+  target={target}
+  rel={rel}
+  fullWidth={fullWidth}
+  text={text}
+  {...rest}
+>
+  <slot />
+</ExpandableButton>

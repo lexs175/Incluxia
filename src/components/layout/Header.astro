@@ -1,5 +1,5 @@
 ---
-import Button from "../ui/Button.astro";
+import ExpandableButton from "../ui/ExpandableButton.astro";
 
 interface Props {
   activePath?: string;
@@ -12,8 +12,8 @@ const navLinks = [
   { label: "Ofertas de Empleo", href: "/empleos" },
   { label: "Perfiles", href: "/perfiles" },
   { label: "Casos de Éxito", href: "/casos-de-exito" },
-  { label: "Blog & Leyes", href: "/blog" },
-  { label: "Sobre Nosotros", href: "/nosotros" },
+  { label: "Blog", href: "/blog" },
+  // { label: "Sobre Nosotros", href: "/nosotros" },
 ];
 ---
 
@@ -57,9 +57,7 @@ const navLinks = [
       <!-- Header Actions -->
       <div class="header-actions">
         <div class="desktop-cta-wrapper">
-          <Button href="/empleos" variant="primary" size="sm">
-            <span>Buscar trabajo</span>
-          </Button>
+          <ExpandableButton href="/empleos" text="Buscar trabajo" variant="dark" size="sm" />
         </div>
 
         <!-- Mobile Hamburger Button -->
@@ -127,9 +125,7 @@ const navLinks = [
           }
         </ul>
         <div class="mobile-drawer-cta">
-          <Button href="/empleos" variant="primary" fullWidth={true}>
-            Ver ofertas de trabajo
-          </Button>
+          <ExpandableButton href="/empleos" text="Ver ofertas de trabajo" variant="dark" size="md" fullWidth={true} />
         </div>
       </nav>
     </div>

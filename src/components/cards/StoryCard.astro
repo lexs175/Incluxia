@@ -35,9 +35,8 @@ const { story } = Astro.props;
       <Badge variant="cyan">Caso de Éxito</Badge>
     </div>
     <h3 class="story-title">
-      <a href={`/casos-de-exito/${story.slug}`}>
-        {story.name}: {story.role} en {story.company}
-      </a>
+      {story.name}: {story.role} en {story.company}
+
     </h3>
     <p class="story-quote">“{story.quote}”</p>
     <div class="story-btn-wrap">
@@ -49,7 +48,7 @@ const { story } = Astro.props;
 <style>
   .story-card {
     position: relative;
-    border-radius: var(--radius-2xl);
+    border-radius: var(--radius-md);
     overflow: hidden;
     height: 420px;
     display: flex;

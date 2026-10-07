@@ -1,9 +1,9 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Badge from '../../components/ui/Badge.astro';
-import Button from '../../components/ui/Button.astro';
-import ProfileCard from '../../components/cards/ProfileCard.astro';
-import profilesData from '../../data/profiles.json';
+import Layout from "../../layouts/Layout.astro";
+import Badge from "../../components/ui/Badge.astro";
+import Button from "../../components/ui/Button.astro";
+import ProfileCard from "../../components/cards/ProfileCard.astro";
+import profilesData from "../../data/profiles.json";
 ---
 
 <Layout
@@ -15,17 +15,18 @@ import profilesData from '../../data/profiles.json';
   <section class="trustly-profiles-hero">
     <div class="container hero-container">
       <div class="hero-header">
-        <span class="hero-pill-badge">
-          <span class="status-dot"></span>
-          Talento Verificado · Bolivia · Ley 977
-        </span>
-
         <h1 class="hero-main-title">
-          Perfiles profesionales con <span class="highlight-cyan">hipoacusia</span>
+          Perfiles profesionales con <span class="highlight-cyan"
+            >hipoacusia</span
+          >
         </h1>
 
         <p class="hero-lead-text">
-          Conoce a profesionales preparados en tecnología, diseño, administración y finanzas. Cada perfil cuenta con adaptaciones verificadas y coordinación directa <strong>100% por chat o WhatsApp</strong>.
+          Conoce a profesionales preparados en tecnología, diseño,
+          administración y finanzas. Cada perfil cuenta con adaptaciones
+          verificadas y coordinación directa <strong
+            >100% por chat o WhatsApp</strong
+          >.
         </p>
       </div>
 
@@ -61,13 +62,24 @@ import profilesData from '../../data/profiles.json';
         <div>
           <h2 class="section-heading">Profesionales listos para tu empresa</h2>
           <p class="section-desc">
-            Pasa el cursor sobre cada perfil para conocer sus habilidades clave y abrir su currículum completo.
+            Pasa el cursor sobre cada perfil para conocer sus habilidades clave
+            y abrir su currículum completo.
           </p>
         </div>
 
         <Button href="/empleos" variant="outline" size="sm">
           <span>Ver Ofertas de Trabajo</span>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
             <line x1="5" y1="12" x2="19" y2="12"></line>
             <polyline points="12 5 19 12 12 19"></polyline>
           </svg>
@@ -75,9 +87,7 @@ import profilesData from '../../data/profiles.json';
       </div>
 
       <div class="profiles-cards-grid">
-        {profilesData.map((profile) => (
-          <ProfileCard profile={profile} />
-        ))}
+        {profilesData.map((profile) => <ProfileCard profile={profile} />)}
       </div>
     </div>
   </section>
@@ -90,14 +100,13 @@ import profilesData from '../../data/profiles.json';
           ¿Buscas contratar talento comprometido y cumplir la Ley 977?
         </h2>
         <p class="final-cta-subtitle">
-          El equipo de Incluxia te ayuda a coordinar entrevistas técnicas directas por WhatsApp y a implementar adaptaciones razonables en tu equipo sin costo.
+          El equipo de Incluxia te ayuda a coordinar entrevistas técnicas
+          directas por WhatsApp y a implementar adaptaciones razonables en tu
+          equipo sin costo.
         </p>
         <div class="final-cta-buttons">
-          <Button href="/#empresas-ley977" variant="primary" size="lg">
+          <Button href="/#empresas-ley977" variant="white" size="lg">
             <span>Publicar Puesto de Trabajo</span>
-          </Button>
-          <Button href="https://wa.me/59172255726?text=Hola%2C%20quisiera%20conectar%20con%20los%20perfiles%20profesionales%20de%20Incluxia" target="_blank" rel="noopener noreferrer" variant="whatsapp" size="lg">
-            <span>Contactar por WhatsApp</span>
           </Button>
         </div>
       </div>
@@ -111,7 +120,7 @@ import profilesData from '../../data/profiles.json';
      Zero shadows. Zero glow. Flat minimalism.
      ==================================================== */
   .trustly-profiles-hero {
-    background-color: var(--color-white);
+    background-color: var(--color-primary);
     padding-top: calc(90px + var(--space-12));
     padding-bottom: var(--space-16);
     position: relative;
@@ -137,9 +146,9 @@ import profilesData from '../../data/profiles.json';
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(var(--color-primary-rgb), 0.04);
-    border: 1px solid rgba(var(--color-primary-rgb), 0.12);
-    color: var(--color-primary);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--color-white);
     font-family: var(--font-heading);
     font-size: var(--text-xs);
     font-weight: 700;
@@ -159,18 +168,18 @@ import profilesData from '../../data/profiles.json';
   .hero-main-title {
     font-size: var(--text-hero);
     font-weight: 800;
-    color: var(--color-primary);
+    color: var(--color-white);
     letter-spacing: -0.035em;
     line-height: 1.1;
     margin-bottom: var(--space-6);
   }
 
   .highlight-cyan {
-    color: var(--color-accent-dark);
+    color: var(--color-accent);
   }
 
   .hero-lead-text {
-    color: var(--color-text-muted);
+    color: rgba(255, 255, 255, 0.85);
     font-size: var(--text-lg);
     line-height: 1.65;
     max-width: 720px;
@@ -178,7 +187,7 @@ import profilesData from '../../data/profiles.json';
   }
 
   .hero-lead-text strong {
-    color: var(--color-primary);
+    color: var(--color-white);
     font-weight: 600;
   }
 
@@ -196,8 +205,8 @@ import profilesData from '../../data/profiles.json';
     display: inline-flex;
     align-items: baseline;
     gap: 0.45rem;
-    background-color: var(--color-bg);
-    border: 1px solid var(--color-border);
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     padding: 0.5rem 1.15rem;
     border-radius: var(--radius-full);
   }
@@ -206,18 +215,18 @@ import profilesData from '../../data/profiles.json';
     font-family: var(--font-heading);
     font-size: var(--text-base);
     font-weight: 800;
-    color: var(--color-primary);
+    color: var(--color-accent);
   }
 
   .stat-text {
     font-family: var(--font-heading);
     font-size: var(--text-xs);
     font-weight: 600;
-    color: var(--color-text-muted);
+    color: rgba(255, 255, 255, 0.85);
   }
 
   .stat-sep {
-    color: var(--color-text-light);
+    color: rgba(255, 255, 255, 0.35);
   }
 
   /* ====================================================
@@ -268,13 +277,11 @@ import profilesData from '../../data/profiles.json';
   }
 
   .final-cta-capsule {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    border-radius: var(--radius-3xl);
+    background: var(--color-primary-dark);
+    border-radius: var(--radius-md);
     padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
     text-align: center;
     color: var(--color-text-inverse);
-    box-shadow: none; /* ZERO SHADOWS */
-    border: 1px solid rgba(255, 255, 255, 0.1);
     margin: 0 auto;
   }
 
