@@ -6,7 +6,7 @@
     "role": "Desarrollador Web Frontend & Sistemas",
     "company": "Banco Mercantil Santa Cruz",
     "city": "Santa Cruz",
-    "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+    "image": "/images/stories/luis-mendoza.jpg",
     "quote": "El código es un lenguaje universal donde prima la lógica y la precisión. En el banco valoran mis resultados y respetamos los canales escritos de comunicación.",
     "category": "Tecnología & Desarrollo",
     "videoDuration": "4:35 min (Con LSB & Subtítulos)",
@@ -19,7 +19,7 @@
     "role": "Directora Creativa & Especialista en Preprensa",
     "company": "Agencia Publicitaria Croma",
     "city": "La Paz",
-    "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80",
+    "image": "/images/stories/maria-rene-morales.jpg",
     "quote": "Visualizo detalles y contrastes cromáticos que otros pasan por alto. Mi agudeza visual aporta una perspectiva de innovación única a cada campaña gráfica.",
     "category": "Diseño & Comunicación Visual",
     "videoDuration": "3:50 min (Con LSB & Subtítulos)",
@@ -32,10 +32,23 @@
     "role": "Analista de Facturación y Conciliación Contable",
     "company": "Farmacorp S.A.",
     "city": "Cochabamba",
-    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
+    "image": "/images/stories/juan-pablo-claros.jpg",
     "quote": "La inclusión no es beneficencia, es una ventaja competitiva para las empresas. El trabajo enfocado en datos sin interrupciones acústicas elevó mi rendimiento contable.",
     "category": "Finanzas & Administración",
     "videoDuration": "5:12 min (Con LSB & Subtítulos)",
     "storyFull": "Juan Pablo trabaja en la oficina de Farmacorp en Cochabamba, donde concilia miles de facturas electrónicas al día. Al no estar distraído por llamadas telefónicas constantes, su nivel de concentración y precisión contable es de los más altos de la empresa. Con el apoyo de Incluxia, los supervisores acordaron coordinar todo por chat y mensajes de texto, logrando un ambiente de trabajo tranquilo, respetuoso y muy productivo bajo la Ley 977."
+  },
+  {
+    "id": "4",
+    "slug": "carla-gestion-documental-la-paz",
+    "name": "Carla Rodríguez Vaca",
+    "role": "Coordinadora de Gestión Documental y Archivo",
+    "company": "Corporación Minera y Servicios Bolivia",
+    "city": "La Paz",
+    "image": "/images/stories/historia-destacada-bolivia.jpg",
+    "quote": "La precisión visual y el orden metódico son mis mayores fortalezas. En mi escritorio todo fluye por plataformas digitales sin necesidad de llamadas telefónicas.",
+    "category": "Administración & Archivo",
+    "videoDuration": "4:15 min (Con LSB & Subtítulos)",
+    "storyFull": "Carla coordina el área de archivo digital y expedientes institucionales en La Paz. Con adaptaciones sencillas basadas en software de gestión documental y comunicación fluida por chat escrito, optimizó los tiempos de respuesta del equipo en un 40%. Su experiencia demuestra que la inclusión laboral planificada con herramientas visuales genera resultados de excelencia y estabilidad profesional bajo la Ley 977."
   }
 ]
