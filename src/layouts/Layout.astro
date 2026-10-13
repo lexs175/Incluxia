@@ -3,6 +3,7 @@ import { ClientRouter } from 'astro:transitions';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import WhatsAppFAB from '../components/layout/WhatsAppFAB.astro';
+import AuthModal from '../components/ui/AuthModal.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -62,6 +63,9 @@ const {
 
     <!-- Global Footer -->
     <Footer />
+
+    <!-- Accessible Auth Modal (Login / Registro) -->
+    <AuthModal />
 
     <!-- Accessible Floating Action Button -->
     <WhatsAppFAB />

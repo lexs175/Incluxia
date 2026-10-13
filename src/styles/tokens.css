@@ -13,6 +13,7 @@
   --color-accent-rgb: 245, 133, 20;
 
   --color-white: #FFFFFF;
+  --color-white-rgb: 255, 255, 255;
   --color-bg: #F8FAFC;
   --color-bg-alt: #F1F5F9;
   --color-bg-card: #FFFFFF;
@@ -35,6 +36,9 @@
   --color-success-bg: #ECFDF5;
   --color-warning: #F59E0B;
   --color-warning-bg: #FFFBEB;
+  --color-error: #EF4444;
+  --color-error-bg: #FEF2F2;
+  --color-error-border: rgba(239, 68, 68, 0.3);
   --color-info: #3B82F6;
   --color-info-bg: #EFF6FF;
 
