@@ -30,7 +30,7 @@ const {
     <!-- SEO Meta Tags -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#212051" />
+    <meta name="theme-color" content="#285FF3" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -69,6 +69,9 @@ const {
 
     <!-- Accessible Floating Action Button -->
     <WhatsAppFAB />
+
+    <!-- Modals & Fullscreen Drawers Slot (Direct child of body, above Header and FAB) -->
+    <slot name="drawer" />
 
     <!-- GSAP Title & Heading Entrance Animations (Line Mask + Letter-by-Letter Stagger) -->
     <script>

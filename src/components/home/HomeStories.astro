@@ -1,0 +1,126 @@
+---
+import StoryCard from "../cards/StoryCard.astro";
+
+interface Props {
+  stories: any[];
+}
+
+const { stories } = Astro.props;
+---
+
+<section class="section stories-section">
+  <div class="container">
+    <div class="section-top-bar">
+      <div>
+        <h2 class="section-heading">Talento Sin Barreras en Bolivia</h2>
+        <p class="section-desc">
+          Conoce a personas con hipoacusia que demuestran su capacidad y
+          compromiso en tecnología, diseño y administración.
+        </p>
+      </div>
+      <a href="/casos-de-exito" class="section-action-link">
+        <span>Ver todas las historias</span>
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M5 12h14"></path>
+          <path d="m12 5 7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+
+    <div class="stories-cards-grid">
+      {stories.map((story) => <StoryCard story={story} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .stories-section {
+    background-color: var(--color-bg);
+  }
+
+  .section-top-bar {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
+    flex-wrap: wrap;
+  }
+
+  .section-heading {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.02em;
+    margin-top: var(--space-2);
+    margin-bottom: 0.25rem;
+    line-height: 1.25;
+  }
+
+  .section-desc {
+    color: var(--color-text-muted);
+    font-size: var(--text-base);
+    margin: 0;
+    max-width: 620px;
+  }
+
+  .section-action-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    padding-bottom: 0.25rem;
+    border-bottom: 2px solid var(--color-accent);
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+  }
+
+  .section-action-link:hover {
+    color: var(--color-primary-light);
+    gap: 0.75rem;
+  }
+
+  .stories-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 1440px) {
+    .stories-cards-grid {
+      gap: var(--space-8);
+    }
+  }
+
+  @media (min-width: 992px) and (max-width: 1439px) {
+    .stories-cards-grid {
+      gap: var(--space-5);
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    .stories-cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .stories-cards-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+  }
+</style>

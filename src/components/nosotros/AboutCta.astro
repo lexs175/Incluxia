@@ -1,0 +1,91 @@
+---
+import Button from "../ui/Button.astro";
+---
+
+<section class="section final-cta-section" id="contacto">
+  <div class="container">
+    <div class="final-cta-capsule">
+      <h2 class="final-cta-title">
+        Construyamos juntos un mercado laboral más justo y productivo.
+      </h2>
+      <p class="final-cta-subtitle">
+        Ya sea que busques empleo formal o quieras contratar talento
+        verificado bajo la Ley 977, escríbenos directamente por WhatsApp.
+      </p>
+      <div class="final-cta-buttons">
+        <Button href="/empleos" variant="white" size="lg">
+          <span>Ver Ofertas de Trabajo</span>
+        </Button>
+        <Button
+          href="https://wa.me/59172255726?text=Hola%20Incluxia%2C%20quisiera%20contactarme%20con%20el%20equipo"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="white-whatsapp"
+          size="lg"
+        >
+          <span>Escribir por WhatsApp</span>
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .final-cta-section {
+    background-color: var(--color-white);
+    padding-top: var(--space-12);
+  }
+
+  .final-cta-capsule {
+    background: linear-gradient(
+      135deg,
+      var(--color-primary) 0%,
+      var(--color-primary-dark) 100%
+    );
+    border-radius: var(--radius-3xl);
+    padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+    text-align: center;
+    color: var(--color-text-inverse);
+    box-shadow: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 0 auto;
+  }
+
+  .final-cta-title {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--color-text-inverse);
+    margin-bottom: var(--space-4);
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .final-cta-subtitle {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto var(--space-8) auto;
+  }
+
+  .final-cta-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  @media (max-width: 767px) {
+    .final-cta-buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .final-cta-buttons :global(.btn) {
+      width: 100%;
+    }
+  }
+</style>

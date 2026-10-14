@@ -1,5 +1,4 @@
 ---
-import Badge from "../ui/Badge.astro";
 import ExpandableButton from "../ui/ExpandableButton.astro";
 
 interface Props {
@@ -26,16 +25,12 @@ const { article } = Astro.props;
       class="blog-img"
       loading="lazy"
     />
-    <div class="blog-badge-wrapper">
-      <Badge variant="cyan">{article.category}</Badge>
-    </div>
   </div>
 
   <div class="blog-body">
-    <div class="blog-meta">
-      <span>{article.date}</span>
-      {article.readTime && <span>• {article.readTime}</span>}
-    </div>
+    <span class="blog-category-tag">
+      {article.category || "Artículo"}
+    </span>
 
     <h3 class="blog-title">
       <a href={`/blog/${article.slug}`}>{article.title}</a>
@@ -44,119 +39,121 @@ const { article } = Astro.props;
     <p class="blog-summary">{article.summary}</p>
 
     <div class="blog-btn-wrap">
-      <ExpandableButton href={`/blog/${article.slug}`} text="Leer artículo" variant="white" size="sm" />
+      <ExpandableButton
+        href={`/blog/${article.slug}`}
+        text="Leer artículo"
+        variant="primary-line"
+        size="md"
+      />
     </div>
   </div>
 </article>
 
 <style>
   .blog-card {
-    background: var(--color-primary);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    overflow: hidden;
+    padding: var(--space-4);
     display: flex;
     flex-direction: column;
     box-shadow: none; /* ZERO SHADOWS */
     min-width: 0;
     max-width: 100%;
     box-sizing: border-box;
-    color: var(--color-white);
+    transition: border-color var(--transition-fast);
   }
 
   .blog-card:hover {
-    box-shadow: none; /* ZERO SHADOWS */
-    /* NO TRANSLATEY, NO BORDER CHANGE */
-  }
-
-  .blog-btn-wrap {
-    margin-top: auto;
-    padding-top: var(--space-4);
+    border-color: var(--color-border-hover);
   }
 
   .blog-image-wrapper {
     position: relative;
-    height: 190px;
+    width: 100%;
+    height: 220px;
+    border-radius: var(--radius-md);
     overflow: hidden;
+    background-color: var(--color-bg-alt);
+    flex-shrink: 0;
   }
 
   .blog-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-
-  .blog-badge-wrapper {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
+    display: block;
   }
 
   .blog-body {
-    padding: var(--space-6);
+    padding-top: var(--space-5);
+    padding-inline: var(--space-1);
     display: flex;
     flex-direction: column;
     flex-grow: 1;
   }
 
-  .blog-meta {
+  .blog-category-tag {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.85rem;
+    border-radius: var(--radius-full);
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-family: var(--font-heading);
     font-size: var(--text-xs);
-    color: rgba(255, 255, 255, 0.65);
-    font-weight: 500;
-    margin-bottom: var(--space-2);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: var(--space-4);
   }
 
   .blog-title {
-    font-size: var(--text-lg);
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
     font-weight: 700;
     letter-spacing: -0.015em;
     line-height: 1.35;
-    margin-bottom: var(--space-3);
+    margin: 0 0 var(--space-3) 0;
   }
 
   .blog-title a {
-    color: var(--color-white);
+    color: var(--color-text-primary);
+    text-decoration: none;
     transition: color var(--transition-fast);
   }
 
   .blog-title a:hover {
-    color: var(--color-accent);
+    color: var(--color-primary-hover);
   }
 
   .blog-summary {
+    font-family: var(--font-body);
     font-size: var(--text-sm);
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--color-text-muted);
     line-height: 1.6;
-    margin-bottom: var(--space-6);
+    margin: 0 0 var(--space-6) 0;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
 
-  .blog-read-more {
+  .blog-btn-wrap {
     margin-top: auto;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--color-white);
-    font-family: var(--font-heading);
-    font-size: var(--text-sm);
-    font-weight: 700;
-    transition: all var(--transition-fast);
-  }
-
-  .blog-read-more:hover {
-    color: var(--color-accent);
-    gap: 0.75rem;
+    padding-top: var(--space-2);
   }
 
   @media (max-width: 479px) {
+    .blog-card {
+      padding: var(--space-3);
+    }
     .blog-image-wrapper {
-      height: 160px;
+      height: 180px;
     }
     .blog-body {
-      padding: var(--space-4);
+      padding-top: var(--space-4);
     }
   }
 </style>

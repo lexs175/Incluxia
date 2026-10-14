@@ -1,0 +1,1584 @@
+---
+import ExpandableButton from "../ui/ExpandableButton.astro";
+
+interface Props {
+  jobs: any[];
+}
+
+const { jobs } = Astro.props;
+---
+
+<div class="jobs-master-explorer" id="jobsMasterExplorer">
+  <!-- ====================================================
+       1. COLUMNA IZQUIERDA: SIDEBAR / LISTADO DE EMPLEOS
+       ==================================================== -->
+  <aside class="jobs-sidebar-column" aria-label="Listado de vacantes de empleo">
+    <!-- Cabecera del Sidebar: Contador + Buscador y Filtros -->
+    <div class="sidebar-header-box">
+      <div class="sidebar-count-row">
+        <span class="sidebar-count-text" id="sidebarJobCount">
+          <strong>{jobs.length}</strong> empleos verificados disponibles
+        </span>
+        <span class="sidebar-guarantee-pill">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          Ley 977
+        </span>
+      </div>
+
+      <!-- Barra de búsqueda rápida -->
+      <div class="sidebar-search-wrap">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input
+          type="text"
+          id="sidebarSearchInput"
+          placeholder="Buscar puesto o empresa..."
+          class="sidebar-search-input"
+          aria-label="Buscar ofertas de empleo"
+        />
+      </div>
+
+      <!-- Pastillas de filtro de ciudad -->
+      <div class="sidebar-city-pills" id="sidebarCityPills" role="tablist" aria-label="Filtro por ciudad">
+        <button type="button" class="city-pill active" data-city="">Todas</button>
+        <button type="button" class="city-pill" data-city="Cochabamba">Cochabamba</button>
+        <button type="button" class="city-pill" data-city="La Paz">La Paz</button>
+        <button type="button" class="city-pill" data-city="Santa Cruz">Santa Cruz</button>
+      </div>
+    </div>
+
+    <!-- Lista Scrollable de Tarjetas de Empleo -->
+    <div class="sidebar-scrollable-list" id="sidebarJobList" role="tablist" aria-orientation="vertical">
+      {
+        jobs.map((job, index) => (
+          <article
+            class={`job-list-card ${index === 0 ? "active" : ""}`}
+            data-job-id={job.id}
+            data-city={job.city}
+            data-title={job.title.toLowerCase()}
+            data-company={job.company.toLowerCase()}
+            role="tab"
+            aria-selected={index === 0 ? "true" : "false"}
+            tabindex="0"
+          >
+            <!-- Indicador activo lateral izquierdo -->
+
+            <div class="job-card-inner">
+              <div class="job-card-top-row">
+                <!-- Avatar circular de la empresa -->
+                <div class="company-avatar-box" aria-hidden="true">
+                  <span>{job.companyInitial || job.company.charAt(0)}</span>
+                </div>
+
+                <!-- Título y Empresa -->
+                <div class="job-card-titles">
+                  <h3 class="job-card-title">{job.title}</h3>
+                  <p class="job-card-meta">
+                    <span class="meta-company">{job.company}</span>
+                    <span class="meta-dot">•</span>
+                    <span class="meta-city">{job.city}</span>
+                    <span class="meta-dot">•</span>
+                    <span class="meta-modality">{job.modality}</span>
+                  </p>
+                </div>
+
+                <!-- Botones superiores derechos: 3 puntos y estrella -->
+                <div class="job-card-actions">
+                  <div class="menu-dropdown-wrapper">
+                    <button
+                      type="button"
+                      class="job-action-icon-btn job-menu-trigger-btn"
+                      aria-label="Más opciones"
+                      data-job-slug={job.slug}
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <circle cx="12" cy="12" r="2"></circle>
+                        <circle cx="19" cy="12" r="2"></circle>
+                        <circle cx="5" cy="12" r="2"></circle>
+                      </svg>
+                    </button>
+
+                    <!-- Menú desplegable flotante de 3 puntos -->
+                    <div class="job-action-menu-dropdown" role="menu">
+                      <button type="button" class="dropdown-item-btn action-save-job" role="menuitem" data-job-id={job.id}>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                        <span>Guardar vacante</span>
+                      </button>
+                      <a
+                        href={`https://wa.me/59172255726?text=${encodeURIComponent(`Hola Incluxia, deseo postular a la vacante "${job.title}" en "${job.company}" (${job.city}).`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="dropdown-item-btn action-apply-job"
+                        role="menuitem"
+                      >
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Postular por WhatsApp</span>
+                      </a>
+                      <button type="button" class="dropdown-item-btn action-copy-link" role="menuitem" data-job-slug={job.slug}>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                        </svg>
+                        <span>Copiar vínculo</span>
+                      </button>
+                      <div class="dropdown-divider"></div>
+                      <button type="button" class="dropdown-item-btn action-report-job text-danger" role="menuitem" data-job-id={job.id}>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                          <line x1="12" y1="9" x2="12" y2="13"></line>
+                          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                        <span>Reportar oferta</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Botón Estrella de Guardar -->
+                  <button
+                    type="button"
+                    class="job-action-icon-btn job-star-btn"
+                    aria-label="Guardar oferta como favorita"
+                    data-job-id={job.id}
+                  >
+                    <svg class="star-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Fila inferior de Pastillas: Tipo de trabajo + Sueldo mensual destacado -->
+              <div class="job-card-bottom-row">
+                <span class="badge-pill contract-pill">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                  </svg>
+                  {job.contractType}
+                </span>
+
+                <span class="badge-pill salary-pill">
+                  {job.salary}
+                </span>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+
+      <div id="sidebarNoResults" class="sidebar-no-results" style="display: none;">
+        <p class="no-results-text">No se encontraron empleos con ese criterio.</p>
+        <button type="button" class="reset-filter-btn" id="resetFiltersBtn">Ver todos los empleos</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ====================================================
+       2. COLUMNA DERECHA: PANEL DE DETALLE DINÁMICO
+       ==================================================== -->
+  <main class="jobs-detail-column" id="jobsDetailColumn" aria-live="polite">
+    <!-- Barra superior para móviles (Volver a la lista) -->
+    <div class="mobile-back-bar">
+      <button type="button" class="mobile-back-btn" id="mobileBackBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span>Volver a la lista de ofertas</span>
+      </button>
+    </div>
+
+    <!-- Paneles de detalle pre-renderizados para cada vacante -->
+    {
+      jobs.map((job, index) => {
+        const whatsappApplyUrl = `https://wa.me/59172255726?text=${encodeURIComponent(
+          `Hola Incluxia, deseo postular a la vacante de "${job.title}" en "${job.company}" (${job.city}). Adjunto mis datos y CV.`
+        )}`;
+
+        return (
+          <div
+            class={`job-detail-panel ${index === 0 ? "active" : ""}`}
+            id={`detail-panel-${job.id}`}
+            data-job-id={job.id}
+            role="tabpanel"
+            aria-labelledby={`tab-${job.id}`}
+          >
+            <!-- Cabecera del Detalle -->
+            <header class="detail-header-card">
+              <div class="detail-header-top">
+                <div class="detail-company-logo-box" aria-hidden="true">
+                  <span>{job.companyInitial || job.company.charAt(0)}</span>
+                </div>
+
+                <div class="detail-header-info">
+                  <h2 class="detail-job-title">{job.title}</h2>
+                  <div class="detail-job-meta-row">
+                    <span class="detail-company-name">
+                      {job.company}
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                      </svg>
+                    </span>
+                    <span class="detail-meta-dot">•</span>
+                    <span class="detail-city-tag">{job.city}, Bolivia</span>
+                    <span class="detail-meta-dot">•</span>
+                    <span class="detail-modality-tag">{job.modality}</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Barra de Acciones y Sueldo Destacado -->
+              <div class="detail-action-bar">
+                <div class="action-buttons-group">
+                  <ExpandableButton
+                    href={whatsappApplyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    text="Postular por WhatsApp"
+                    variant="primary"
+                    size="md"
+                  />
+
+                  <button
+                    type="button"
+                    class="detail-save-btn action-save-job"
+                    data-job-id={job.id}
+                  >
+                    <svg class="star-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                    <span class="save-label">Guardar vacante</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    class="detail-dots-btn action-copy-link"
+                    title="Copiar enlace de vacante"
+                    data-job-slug={job.slug}
+                    aria-label="Copiar enlace de vacante"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                    </svg>
+                  </button>
+                </div>
+
+                <!-- Monto que se paga en la oferta laboral -->
+                <div class="detail-salary-box">
+                  <span class="salary-prefix">Sueldo mensual:</span>
+                  <span class="salary-amount">{job.salary}</span>
+                </div>
+              </div>
+            </header>
+
+            <!-- Cuerpo del Detalle (2 Columnas internas: Contenido + Ficha Técnica) -->
+            <div class="detail-body-grid">
+              <!-- Sub-columna Izquierda: Descripción y Requisitos -->
+              <div class="detail-main-content">
+                <!-- Descripción del puesto -->
+                <section class="detail-section" aria-labelledby={`desc-title-${job.id}`}>
+                  <p class="detail-lead-desc">{job.description}</p>
+                </section>
+
+                <!-- Funciones principales -->
+                <section class="detail-section" aria-labelledby={`func-title-${job.id}`}>
+                  <h3 id={`func-title-${job.id}`} class="detail-section-title">Funciones principales</h3>
+                  <ul class="detail-bullets-list" role="list">
+                    {job.functions.map((fn) => (
+                      <li class="detail-bullet-item">
+                        <span class="bullet-point" aria-hidden="true">•</span>
+                        <span>{fn}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+
+                <!-- Requisitos indispensables -->
+                <section class="detail-section" aria-labelledby={`req-title-${job.id}`}>
+                  <h3 id={`req-title-${job.id}`} class="detail-section-title">Requisitos del postulante</h3>
+                  <ul class="detail-bullets-list" role="list">
+                    {job.requirements.map((req) => (
+                      <li class="detail-bullet-item">
+                        <span class="bullet-point" aria-hidden="true">•</span>
+                        <span>{req}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+
+                <!-- Adaptaciones de Accesibilidad e Inclusión Hipoacusia -->
+                <section class="detail-section accessibility-guarantee-section" aria-labelledby={`acc-title-${job.id}`}>
+                  <h3 id={`acc-title-${job.id}`} class="detail-section-title">Garantías de accesibilidad para hipoacusia</h3>
+                  <div class="accessibility-cards-grid">
+                    {job.accessibilityHighlights.map((highlight) => (
+                      <div class="accessibility-feature-box">
+                        <div class="feature-header-row">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feature-icon" aria-hidden="true">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                          </svg>
+                          <h4 class="feature-title">{highlight.title}</h4>
+                        </div>
+                        <p class="feature-desc">{highlight.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                <!-- Barra de postulación repetida al final -->
+                <div class="detail-bottom-apply-bar">
+                  <ExpandableButton
+                    href={whatsappApplyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    text="Postular por WhatsApp"
+                    variant="primary"
+                    size="md"
+                  />
+                  <button
+                    type="button"
+                    class="detail-save-btn action-save-job"
+                    data-job-id={job.id}
+                  >
+                    <svg class="star-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                    <span class="save-label">Guardar vacante</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Sub-columna Derecha: Ficha Técnica Lateral del Empleo -->
+              <aside class="detail-sidebar-card" aria-label="Ficha técnica de la oferta">
+                <div class="meta-field-item">
+                  <span class="meta-field-label">TIPO DE TRABAJO</span>
+                  <span class="meta-field-value">{job.contractType}</span>
+                </div>
+
+                <div class="meta-field-item">
+                  <span class="meta-field-label">UBICACIÓN DE LA VACANTE</span>
+                  <span class="meta-field-value">{job.city}, Bolivia ({job.modality})</span>
+                </div>
+
+                <div class="meta-field-item">
+                  <span class="meta-field-label">CONTACTO DE CONTRATACIÓN</span>
+                  <div class="recruiter-box">
+                    <span class="recruiter-avatar" aria-hidden="true">{job.companyInitial}</span>
+                    <span class="meta-field-value">{job.recruiter}</span>
+                  </div>
+                </div>
+
+                <div class="meta-field-item">
+                  <span class="meta-field-label">NÚMERO DE SOLICITANTES</span>
+                  <span class="meta-field-value bold-value">{job.applicantsCount}</span>
+                </div>
+
+                <div class="meta-field-item">
+                  <span class="meta-field-label">FECHA DE PUBLICACIÓN</span>
+                  <span class="meta-field-value">{job.postedDate}</span>
+                </div>
+
+                <div class="meta-field-item">
+                  <span class="meta-field-label">SECTORES Y HABILIDADES</span>
+                  <div class="sectors-pill-wrap">
+                    {job.sectors.map((sector) => (
+                      <span class="sector-tag">{sector}</span>
+                    ))}
+                  </div>
+                </div>
+
+                <div class="meta-field-item law-protection-item">
+                  <span class="meta-field-label">MARCO LEGAL DE INCLUSIÓN</span>
+                  <span class="law-tag">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    Protección Ley N° 977 / SIPRUNPCD
+                  </span>
+                </div>
+              </aside>
+            </div>
+          </div>
+        );
+      })
+    }
+  </main>
+</div>
+
+<!-- Notificación Toast de confirmación al copiar enlace o guardar -->
+<div id="jobToastNotification" class="job-toast-notification" role="status" aria-live="polite">
+  <span id="jobToastText">¡Enlace copiado al portapapeles!</span>
+</div>
+
+<style>
+  /* ====================================================
+     ESTRUCTURA GENERAL DEL MASTER-DETAIL EXPLORER
+     Arquitectura de 2 columnas con scroll independiente
+     ==================================================== */
+  .jobs-master-explorer {
+    display: grid;
+    grid-template-columns: minmax(340px, 390px) 1fr;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    height: calc(100dvh - 120px);
+    min-height: 680px;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  /* ====================================================
+     1. COLUMNA IZQUIERDA: SIDEBAR / LISTADO
+     ==================================================== */
+  .jobs-sidebar-column {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--color-border);
+    background-color: var(--color-bg-card);
+    height: 100%;
+    overflow: hidden;
+  }
+
+  /* Cabecera del Sidebar */
+  .sidebar-header-box {
+    padding: var(--space-4) var(--space-4) var(--space-3);
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-bg-card);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    flex-shrink: 0;
+  }
+
+  .sidebar-count-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+  }
+
+  .sidebar-count-text {
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    color: var(--color-text-main);
+  }
+
+  .sidebar-count-text strong {
+    color: var(--color-primary);
+  }
+
+  .sidebar-guarantee-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius-full);
+    background-color: rgba(var(--color-primary-rgb), 0.08);
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+
+  /* Buscador en Sidebar */
+  .sidebar-search-wrap {
+    position: relative;
+    width: 100%;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: var(--space-3);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-light);
+    pointer-events: none;
+  }
+
+  .sidebar-search-input {
+    width: 100%;
+    padding: 0.55rem 0.75rem 0.55rem 2.2rem;
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    color: var(--color-text-main);
+    outline: none;
+    transition: border-color var(--transition-fast);
+    box-sizing: border-box;
+  }
+
+  .sidebar-search-input:focus {
+    border-color: var(--color-primary);
+    background-color: var(--color-white);
+  }
+
+  /* Pastillas de filtro por ciudad */
+  .sidebar-city-pills {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+
+  .city-pill {
+    padding: 0.25rem 0.65rem;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all var(--transition-fast);
+  }
+
+  .city-pill:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .city-pill.active {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-text-inverse);
+  }
+
+  /* Lista de Empleos con Scroll Vertical */
+  .sidebar-scrollable-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--space-2);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  /* Tarjeta de Lista */
+  .job-list-card {
+    position: relative;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast);
+    user-select: none;
+  }
+
+  .job-list-card:hover {
+    border-color: var(--color-primary);
+    background-color: rgba(var(--color-primary-rgb), 0.02);
+  }
+
+  .job-list-card.active {
+    background-color: rgba(var(--color-primary-rgb), 0.04);
+    border-color: var(--color-primary);
+  }
+
+  .job-card-inner {
+    padding: var(--space-4) var(--space-4) var(--space-4) calc(var(--space-4) + 2px);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .job-card-top-row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .company-avatar-box {
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: var(--text-base);
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .job-card-titles {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .job-card-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-text-main);
+    margin: 0 0 0.2rem 0;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .job-card-meta {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .meta-dot {
+    margin-inline: 0.25rem;
+    color: var(--color-border);
+  }
+
+  /* Botones de acción en tarjeta */
+  .job-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .job-action-icon-btn {
+    background: transparent;
+    border: none;
+    color: var(--color-text-muted);
+    padding: 0.35rem;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+  }
+
+  .job-action-icon-btn:hover {
+    color: var(--color-text-main);
+    background-color: var(--color-bg-alt);
+  }
+
+  .job-star-btn.is-saved svg {
+    fill: var(--color-warning);
+    color: var(--color-warning);
+  }
+
+  /* Menú flotante 3 puntos */
+  .menu-dropdown-wrapper {
+    position: relative;
+  }
+
+  .job-action-menu-dropdown {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 4px);
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 0.35rem 0;
+    min-width: 190px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+    display: none;
+  }
+
+  .job-action-menu-dropdown.is-open {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dropdown-item-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 0.85rem;
+    background: transparent;
+    border: none;
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-text-main);
+    cursor: pointer;
+    text-decoration: none;
+    text-align: left;
+    transition: background-color var(--transition-fast);
+  }
+
+  .dropdown-item-btn:hover {
+    background-color: var(--color-bg-alt);
+    color: var(--color-primary);
+  }
+
+  .dropdown-item-btn.text-danger {
+    color: var(--color-error);
+  }
+
+  .dropdown-item-btn.text-danger:hover {
+    background-color: var(--color-error-bg);
+  }
+
+  .dropdown-divider {
+    height: 1px;
+    background-color: var(--color-border);
+    margin: 0.25rem 0;
+  }
+
+  /* Fila inferior de Pastillas */
+  .job-card-bottom-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  .badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.55rem;
+    border-radius: var(--radius-full);
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .contract-pill {
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+  }
+
+  .salary-pill {
+    background-color: rgba(var(--color-primary-rgb), 0.08);
+    border: 1px solid rgba(var(--color-primary-rgb), 0.15);
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .sidebar-no-results {
+    padding: var(--space-8) var(--space-4);
+    text-align: center;
+  }
+
+  .no-results-text {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    margin: 0 0 var(--space-3) 0;
+  }
+
+  .reset-filter-btn {
+    padding: 0.4rem 0.8rem;
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+  }
+
+  /* ====================================================
+     2. COLUMNA DERECHA: PANEL DE DETALLE
+     ==================================================== */
+  .jobs-detail-column {
+    height: 100%;
+    overflow-y: auto;
+    background-color: var(--color-bg-card);
+    position: relative;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) transparent;
+  }
+
+  .jobs-detail-column::-webkit-scrollbar,
+  .sidebar-scrollable-list::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  .jobs-detail-column::-webkit-scrollbar-track,
+  .sidebar-scrollable-list::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .jobs-detail-column::-webkit-scrollbar-thumb,
+  .sidebar-scrollable-list::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+    border-radius: var(--radius-full);
+    transition: background-color var(--transition-fast);
+  }
+
+  .jobs-detail-column::-webkit-scrollbar-thumb:hover,
+  .sidebar-scrollable-list::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-primary-hover);
+  }
+
+  .jobs-detail-column::-webkit-scrollbar-button,
+  .sidebar-scrollable-list::-webkit-scrollbar-button {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  .mobile-back-bar {
+    display: none;
+    padding: var(--space-3) var(--space-6);
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-bg-alt);
+  }
+
+  .mobile-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: none;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .job-detail-panel {
+    display: none;
+    padding: var(--space-6) var(--space-8);
+  }
+
+  .job-detail-panel.active {
+    display: block;
+  }
+
+  /* Cabecera del Detalle */
+  .detail-header-card {
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--space-6);
+  }
+
+  .detail-header-top {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    margin-bottom: var(--space-5);
+  }
+
+  .detail-company-logo-box {
+    width: 54px;
+    height: 54px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .detail-header-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .detail-job-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    color: var(--color-text-main);
+    letter-spacing: -0.02em;
+    margin: 0 0 0.35rem 0;
+    line-height: 1.25;
+  }
+
+  .detail-job-meta-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    flex-wrap: wrap;
+  }
+
+  .detail-company-name {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+  }
+
+  .detail-meta-dot {
+    color: var(--color-border);
+  }
+
+  /* Barra de Acciones y Sueldo */
+  .detail-action-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    padding-top: var(--space-2);
+  }
+
+  .action-buttons-group {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  .detail-save-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    height: 2.85em;
+    padding: 0 1.25em;
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-card);
+    border: 1.5px solid var(--color-border);
+    color: var(--color-text-main);
+    font-family: var(--font-heading);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .detail-save-btn:hover {
+    border-color: var(--color-border-hover);
+    color: var(--color-primary);
+  }
+
+  .detail-save-btn.is-saved {
+    border-color: var(--color-warning);
+    color: var(--color-warning);
+  }
+
+  .detail-save-btn.is-saved svg {
+    fill: var(--color-warning);
+  }
+
+  .detail-dots-btn {
+    width: 2.85em;
+    height: 2.85em;
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-card);
+    border: 1.5px solid var(--color-border);
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .detail-dots-btn:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  /* Sueldo Mensual Destacado */
+  .detail-salary-box {
+    display: flex;
+    align-items: baseline;
+    gap: 0.45rem;
+    padding: 0.5rem 1rem;
+    background-color: rgba(var(--color-primary-rgb), 0.06);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(var(--color-primary-rgb), 0.12);
+  }
+
+  .salary-prefix {
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    font-weight: 600;
+  }
+
+  .salary-amount {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.01em;
+  }
+
+  /* ====================================================
+     CUERPO DEL DETALLE (2 Columnas internas)
+     ==================================================== */
+  .detail-body-grid {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  .detail-main-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .detail-lead-desc {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    color: var(--color-text-main);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .detail-section-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: 800;
+    color: var(--color-text-main);
+    margin: 0 0 var(--space-3) 0;
+  }
+
+  .detail-bullets-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .detail-bullet-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: var(--text-sm);
+    color: var(--color-text-main);
+    line-height: 1.6;
+  }
+
+  .bullet-point {
+    color: var(--color-primary);
+    font-weight: 800;
+    font-size: 1.2rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  /* Garantías de Accesibilidad */
+  .accessibility-cards-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .accessibility-feature-box {
+    padding: var(--space-4);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+  }
+
+  .feature-header-row {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .feature-icon {
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+
+  .feature-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--color-text-main);
+    margin: 0;
+  }
+
+  .feature-desc {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .detail-bottom-apply-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+    flex-wrap: wrap;
+  }
+
+  /* Ficha Técnica Lateral */
+  .detail-sidebar-card {
+    padding: var(--space-5);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .meta-field-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .meta-field-label {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--color-text-light);
+  }
+
+  .meta-field-value {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-text-main);
+  }
+
+  .meta-field-value.bold-value {
+    font-family: var(--font-heading);
+    font-size: var(--text-sm);
+    font-weight: 800;
+    color: var(--color-primary);
+  }
+
+  .recruiter-box {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .recruiter-avatar {
+    width: 22px;
+    height: 22px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    font-size: 0.65rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sectors-pill-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.15rem;
+  }
+
+  .sector-tag {
+    padding: 0.15rem 0.5rem;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+
+  .law-protection-item {
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .law-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+  }
+
+  /* Toast Notification */
+  .job-toast-notification {
+    position: fixed;
+    bottom: var(--space-6);
+    right: var(--space-6);
+    background-color: var(--slate-800);
+    color: var(--color-text-inverse);
+    padding: 0.65rem 1.25rem;
+    border-radius: var(--radius-md);
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    z-index: 9999;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transform: translateY(100px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  }
+
+  .job-toast-notification.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* ====================================================
+     RESPONSIVE BREAKPOINTS (Tablet & Mobile)
+     ==================================================== */
+  @media (max-width: 1180px) {
+    .detail-body-grid {
+      grid-template-columns: 1fr;
+    }
+    .detail-sidebar-card {
+      order: 2;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .jobs-master-explorer {
+      grid-template-columns: 1fr;
+      height: auto;
+      min-height: auto;
+    }
+
+    .jobs-sidebar-column {
+      border-right: none;
+      height: auto;
+      display: flex;
+    }
+
+    .jobs-detail-column {
+      display: none;
+      height: auto;
+    }
+
+    /* Vista activa en móvil */
+    .jobs-master-explorer.is-mobile-detail-open .jobs-sidebar-column {
+      display: none;
+    }
+
+    .jobs-master-explorer.is-mobile-detail-open .jobs-detail-column {
+      display: block;
+    }
+
+    .mobile-back-bar {
+      display: block;
+    }
+
+    .job-detail-panel {
+      padding: var(--space-5);
+    }
+  }
+
+  @media (max-width: 479px) {
+    .detail-header-top {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-3);
+    }
+
+    .detail-action-bar {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .action-buttons-group {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .action-buttons-group :global(.modular-btn) {
+      width: 100%;
+    }
+
+    .action-buttons-group :global(.btn-text-capsule) {
+      flex: 1;
+    }
+
+    .detail-save-btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .detail-salary-box {
+      width: 100%;
+      justify-content: space-between;
+      box-sizing: border-box;
+    }
+  }
+</style>
+
+<script>
+  function initJobsMasterDetail() {
+    const explorer = document.getElementById("jobsMasterExplorer");
+    if (!explorer) return;
+
+    const cards = explorer.querySelectorAll<HTMLElement>(".job-list-card");
+    const panels = explorer.querySelectorAll<HTMLElement>(".job-detail-panel");
+    const mobileBackBtn = document.getElementById("mobileBackBtn");
+    const searchInput = document.getElementById("sidebarSearchInput") as HTMLInputElement | null;
+    const cityPills = explorer.querySelectorAll<HTMLButtonElement>(".city-pill");
+    const countText = document.getElementById("sidebarJobCount");
+    const noResultsMsg = document.getElementById("sidebarNoResults");
+    const toast = document.getElementById("jobToastNotification");
+    const toastText = document.getElementById("jobToastText");
+
+    let toastTimer: any = null;
+    function showToast(msg: string) {
+      if (!toast || !toastText) return;
+      toastText.textContent = msg;
+      toast.classList.add("is-visible");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove("is-visible");
+      }, 2500);
+    }
+
+    // 1. Selección de Empleo
+    function selectJob(jobId: string, openMobile: boolean = true) {
+      cards.forEach((card) => {
+        if (card.getAttribute("data-job-id") === jobId) {
+          card.classList.add("active");
+          card.setAttribute("aria-selected", "true");
+        } else {
+          card.classList.remove("active");
+          card.setAttribute("aria-selected", "false");
+        }
+      });
+
+      panels.forEach((panel) => {
+        if (panel.getAttribute("data-job-id") === jobId) {
+          panel.classList.add("active");
+        } else {
+          panel.classList.remove("active");
+        }
+      });
+
+      if (openMobile && window.innerWidth < 992) {
+        explorer.classList.add("is-mobile-detail-open");
+        window.scrollTo({ top: explorer.offsetTop - 80, behavior: "smooth" });
+      }
+    }
+
+    cards.forEach((card) => {
+      card.addEventListener("click", () => {
+        const jobId = card.getAttribute("data-job-id");
+        if (jobId) selectJob(jobId, true);
+      });
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          const jobId = card.getAttribute("data-job-id");
+          if (jobId) selectJob(jobId, true);
+        }
+      });
+    });
+
+    // 2. Retorno móvil
+    if (mobileBackBtn) {
+      mobileBackBtn.addEventListener("click", () => {
+        explorer.classList.remove("is-mobile-detail-open");
+      });
+    }
+
+    // 3. Menú flotante 3 puntos
+    const menuTriggers = explorer.querySelectorAll<HTMLButtonElement>(".job-menu-trigger-btn");
+    menuTriggers.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const wrapper = btn.closest(".menu-dropdown-wrapper");
+        const dropdown = wrapper?.querySelector(".job-action-menu-dropdown");
+        
+        // Cerrar otros menús abiertos
+        explorer.querySelectorAll(".job-action-menu-dropdown.is-open").forEach((m) => {
+          if (m !== dropdown) m.classList.remove("is-open");
+        });
+
+        if (dropdown) dropdown.classList.toggle("is-open");
+      });
+    });
+
+    // Cerrar menú al hacer clic fuera
+    document.addEventListener("click", () => {
+      explorer.querySelectorAll(".job-action-menu-dropdown.is-open").forEach((m) => {
+        m.classList.remove("is-open");
+      });
+    });
+
+    // 4. Copiar Vínculo
+    const copyBtns = explorer.querySelectorAll<HTMLElement>(".action-copy-link");
+    copyBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const slug = btn.getAttribute("data-job-slug");
+        const url = `${window.location.origin}/empleos/${slug || ""}`;
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(url).then(() => {
+            showToast("¡Enlace del empleo copiado al portapapeles!");
+          }).catch(() => {
+            showToast("Enlace: " + url);
+          });
+        }
+      });
+    });
+
+    // 5. Guardar Vacante (Estrellita / Botón Guardar)
+    const savedJobsKey = "incluxia_saved_jobs";
+    function getSavedJobs(): string[] {
+      try {
+        return JSON.parse(localStorage.getItem(savedJobsKey) || "[]");
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function toggleSaveJob(jobId: string) {
+      let saved = getSavedJobs();
+      if (saved.includes(jobId)) {
+        saved = saved.filter((id) => id !== jobId);
+        showToast("Vacante eliminada de tus guardados");
+      } else {
+        saved.push(jobId);
+        showToast("¡Vacante guardada con éxito!");
+      }
+      try {
+        localStorage.setItem(savedJobsKey, JSON.stringify(saved));
+      } catch (e) {}
+      updateSavedButtonsUI();
+    }
+
+    function updateSavedButtonsUI() {
+      const saved = getSavedJobs();
+      explorer.querySelectorAll<HTMLElement>(".job-star-btn, .detail-save-btn").forEach((btn) => {
+        const id = btn.getAttribute("data-job-id");
+        if (id && saved.includes(id)) {
+          btn.classList.add("is-saved");
+          const label = btn.querySelector(".save-label");
+          if (label) label.textContent = "Guardada";
+        } else {
+          btn.classList.remove("is-saved");
+          const label = btn.querySelector(".save-label");
+          if (label) label.textContent = "Guardar vacante";
+        }
+      });
+    }
+
+    explorer.querySelectorAll<HTMLElement>(".job-star-btn, .action-save-job").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const jobId = btn.getAttribute("data-job-id");
+        if (jobId) toggleSaveJob(jobId);
+      });
+    });
+
+    // Reportar oferta
+    explorer.querySelectorAll<HTMLElement>(".action-report-job").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        showToast("Gracias por el reporte. El equipo de Incluxia revisará la oferta.");
+      });
+    });
+
+    updateSavedButtonsUI();
+
+    // 6. Filtros de Búsqueda y Ciudad
+    let activeCity = "";
+    let searchQuery = "";
+
+    function filterJobs() {
+      let visibleCount = 0;
+      let firstVisibleId: string | null = null;
+
+      cards.forEach((card) => {
+        const itemCity = (card.getAttribute("data-city") || "").toLowerCase();
+        const itemTitle = (card.getAttribute("data-title") || "").toLowerCase();
+        const itemCompany = (card.getAttribute("data-company") || "").toLowerCase();
+
+        const matchesCity = !activeCity || itemCity === activeCity.toLowerCase();
+        const matchesQuery = !searchQuery || itemTitle.includes(searchQuery) || itemCompany.includes(searchQuery);
+
+        if (matchesCity && matchesQuery) {
+          card.style.display = "";
+          visibleCount++;
+          if (!firstVisibleId) firstVisibleId = card.getAttribute("data-job-id");
+        } else {
+          card.style.display = "none";
+        }
+      });
+
+      if (countText) {
+        countText.innerHTML = `<strong>${visibleCount}</strong> empleos verificados disponibles`;
+      }
+
+      if (noResultsMsg) {
+        noResultsMsg.style.display = visibleCount === 0 ? "block" : "none";
+      }
+
+      // Si el seleccionado quedó oculto, seleccionar el primer visible
+      const currentActive = explorer.querySelector(".job-list-card.active") as HTMLElement | null;
+      if (currentActive && currentActive.style.display === "none" && firstVisibleId) {
+        selectJob(firstVisibleId, false);
+      }
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener("input", (e) => {
+        searchQuery = (e.target as HTMLInputElement).value.trim().toLowerCase();
+        filterJobs();
+      });
+    }
+
+    cityPills.forEach((pill) => {
+      pill.addEventListener("click", () => {
+        cityPills.forEach((p) => p.classList.remove("active"));
+        pill.classList.add("active");
+        activeCity = pill.getAttribute("data-city") || "";
+        filterJobs();
+      });
+    });
+
+    const resetBtn = document.getElementById("resetFiltersBtn");
+    if (resetBtn) {
+      resetBtn.addEventListener("click", () => {
+        if (searchInput) searchInput.value = "";
+        searchQuery = "";
+        activeCity = "";
+        cityPills.forEach((p) => {
+          if (p.getAttribute("data-city") === "") p.classList.add("active");
+          else p.classList.remove("active");
+        });
+        filterJobs();
+      });
+    }
+  }
+
+  document.addEventListener("astro:page-load", initJobsMasterDetail);
+</script>

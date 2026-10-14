@@ -1,0 +1,92 @@
+---
+import Button from "../ui/Button.astro";
+---
+
+<div class="blog-bottom-cta">
+  <div class="cta-inner-text">
+    <span class="cta-label">¿TIENES DUDAS LEGALES O MÉDICAS?</span>
+    <h2 class="cta-heading">Te asesoramos paso a paso por WhatsApp</h2>
+    <p class="cta-sub">
+      Conoce cómo registrar tu discapacidad auditiva o cómo adaptar tu
+      empresa a la Ley 223 sin complicaciones burocráticas.
+    </p>
+  </div>
+  <div class="cta-actions">
+    <Button
+      href="https://wa.me/59172255726?text=Hola%2C%20tengo%20preguntas%20sobre%20las%20gu%C3%ADas%20y%20leyes%20de%20Incluxia"
+      target="_blank"
+      rel="noopener noreferrer"
+      variant="whatsapp"
+      size="md"
+    >
+      Consultar por WhatsApp
+    </Button>
+  </div>
+</div>
+
+<style>
+  .blog-bottom-cta {
+    margin-top: var(--space-16);
+    background-color: var(--color-white);
+    border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+    border-radius: var(--radius-md);
+    padding: var(--space-10) var(--space-12);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-8);
+    box-shadow: none;
+  }
+
+  .cta-inner-text {
+    max-width: 680px;
+  }
+
+  .cta-label {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 800;
+    color: var(--color-accent);
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-2);
+  }
+
+  .cta-heading {
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    margin: 0 0 var(--space-2) 0;
+  }
+
+  .cta-sub {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .cta-actions {
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .blog-bottom-cta {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: var(--space-8);
+    }
+  }
+
+  @media (max-width: 479px) {
+    .blog-bottom-cta {
+      padding: var(--space-6) var(--space-4);
+    }
+
+    .cta-actions {
+      width: 100%;
+    }
+  }
+</style>

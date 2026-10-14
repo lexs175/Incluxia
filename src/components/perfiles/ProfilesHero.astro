@@ -1,0 +1,143 @@
+---
+interface Props {
+  totalProfiles: number;
+}
+
+const { totalProfiles } = Astro.props;
+---
+
+<section class="trustly-profiles-hero">
+  <div class="container hero-container">
+    <div class="hero-header">
+      <h1 class="hero-main-title">
+        Perfiles profesionales con <span class="highlight-cyan">hipoacusia</span>
+      </h1>
+
+      <p class="hero-lead-text">
+        Conoce a profesionales preparados en tecnología, diseño,
+        administración y finanzas. Cada perfil cuenta con adaptaciones
+        verificadas y coordinación directa <strong>100% por chat o WhatsApp</strong>.
+      </p>
+    </div>
+
+    <!-- Stats Ribbon -->
+    <div class="stats-pills-row">
+      <div class="stat-pill-item">
+        <span class="stat-number">{totalProfiles}</span>
+        <span class="stat-text">Perfiles Activos</span>
+      </div>
+      <div class="stat-sep" aria-hidden="true">·</div>
+      <div class="stat-pill-item">
+        <span class="stat-number">100%</span>
+        <span class="stat-text">Canales Escritos</span>
+      </div>
+      <div class="stat-sep" aria-hidden="true">·</div>
+      <div class="stat-pill-item">
+        <span class="stat-number">0</span>
+        <span class="stat-text">Llamadas Telefónicas</span>
+      </div>
+      <div class="stat-sep" aria-hidden="true">·</div>
+      <div class="stat-pill-item">
+        <span class="stat-number">3</span>
+        <span class="stat-text">Ciudades Principales</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .trustly-profiles-hero {
+    background-color: var(--color-primary);
+    padding-top: calc(90px + var(--space-12));
+    padding-bottom: var(--space-16);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-header {
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto var(--space-8) auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-main-title {
+    font-size: var(--text-hero);
+    font-weight: 800;
+    color: var(--color-white);
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+    margin-bottom: var(--space-6);
+  }
+
+  .highlight-cyan {
+    color: var(--color-accent);
+  }
+
+  .hero-lead-text {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: var(--text-lg);
+    line-height: 1.65;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .hero-lead-text strong {
+    color: var(--color-white);
+    font-weight: 600;
+  }
+
+  .stats-pills-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    margin-top: var(--space-8);
+  }
+
+  .stat-pill-item {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.45rem;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 0.5rem 1.15rem;
+    border-radius: var(--radius-full);
+  }
+
+  .stat-number {
+    font-family: var(--font-heading);
+    font-size: var(--text-base);
+    font-weight: 800;
+    color: var(--color-accent);
+  }
+
+  .stat-text {
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .stat-sep {
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  @media (max-width: 767px) {
+    .stats-pills-row {
+      gap: var(--space-2);
+    }
+    .stat-sep {
+      display: none;
+    }
+  }
+</style>

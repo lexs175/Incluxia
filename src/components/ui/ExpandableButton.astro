@@ -2,7 +2,18 @@
 interface Props {
   href?: string;
   text?: string;
-  variant?: "default" | "white" | "whatsapp" | "white-whatsapp" | "accent" | "dark" | "primary" | "outline-white";
+  variant?:
+    | "primary"
+    | "primary-line"
+    | "secondary"
+    | "secondary-line"
+    | "default"
+    | "white"
+    | "whatsapp"
+    | "white-whatsapp"
+    | "accent"
+    | "dark"
+    | "outline-white";
   size?: "sm" | "md" | "lg";
   class?: string;
   target?: string;
@@ -15,7 +26,7 @@ interface Props {
 const {
   href,
   text,
-  variant = "default",
+  variant = "primary",
   size = "md",
   class: className = "",
   target,
@@ -26,13 +37,21 @@ const {
   ...rest
 } = Astro.props;
 
-// Soporte para cápsula blanca en secciones oscuras
-const isWhite = variant === "white" || variant === "white-whatsapp" || variant === "outline-white";
-const isWhatsapp = variant === "whatsapp" || variant === "white-whatsapp";
-
-const variantClass = isWhite
-  ? (isWhatsapp ? "btn-white-whatsapp" : "btn-white")
-  : (isWhatsapp ? "btn-whatsapp" : "btn-default");
+// Normalización limpia a las 4 variantes oficiales + variantes funcionales
+let variantClass = "btn-primary";
+if (variant === "primary-line") {
+  variantClass = "btn-primary-line";
+} else if (variant === "secondary" || variant === "white") {
+  variantClass = "btn-secondary";
+} else if (variant === "secondary-line" || variant === "outline-white") {
+  variantClass = "btn-secondary-line";
+} else if (variant === "whatsapp") {
+  variantClass = "btn-whatsapp";
+} else if (variant === "white-whatsapp") {
+  variantClass = "btn-white-whatsapp";
+} else {
+  variantClass = "btn-primary"; // default, primary, dark, accent
+}
 
 const sizeClass =
   size === "sm" ? "btn-sm" : size === "lg" ? "btn-lg" : "btn-md";
@@ -148,7 +167,7 @@ const ariaLabel = text || undefined;
 
 <style>
   /* ====================================================
-     MODULAR BUTTON (Solo 2 variantes, escala proporcional con 'em')
+     MODULAR BUTTON (4 Versiones Oficiales)
      Normal: [ Text Capsule ] [ Badge ↘ ]
      Hover:  [ Badge → ] [ Text Capsule ]
      ==================================================== */
@@ -162,10 +181,6 @@ const ariaLabel = text || undefined;
     justify-content: flex-start;
     text-decoration: none;
     cursor: pointer;
-    box-shadow: none;
-    border: none;
-    background: transparent;
-    padding: 0;
     position: relative;
     user-select: none;
     vertical-align: middle;
@@ -187,7 +202,7 @@ const ariaLabel = text || undefined;
     flex: 1;
   }
 
-  /* Cápsula de texto (Fondo azul marino primario, texto blanco) */
+  /* Cápsula de texto */
   .btn-text-capsule {
     display: inline-flex;
     align-items: center;
@@ -197,9 +212,7 @@ const ariaLabel = text || undefined;
     border-radius: var(--btn-radius);
     letter-spacing: -0.01em;
     white-space: nowrap;
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    transition: background-color var(--transition-fast);
+    box-sizing: border-box;
   }
 
   .btn-text-label {
@@ -209,7 +222,7 @@ const ariaLabel = text || undefined;
     gap: 0.5em;
   }
 
-  /* Slot de layout (Controla el espacio flex sin recortar) */
+  /* Slot de layout */
   .btn-badge {
     display: inline-flex;
     align-items: center;
@@ -233,11 +246,10 @@ const ariaLabel = text || undefined;
     min-width: var(--btn-h);
     border-radius: var(--btn-radius);
     transform-origin: center center;
-    color: var(--color-white);
+    box-sizing: border-box;
     transition:
       transform var(--btn-speed) cubic-bezier(0.16, 1, 0.3, 1),
-      opacity calc(var(--btn-speed) * 0.75) cubic-bezier(0.16, 1, 0.3, 1),
-      background-color var(--transition-fast);
+      opacity calc(var(--btn-speed) * 0.75) cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .btn-arrow-svg {
@@ -279,93 +291,84 @@ const ariaLabel = text || undefined;
   }
 
   /* ====================================================
-     4 VARIANTES DE COLOR OFICIALES
+     4 VARIANTES OFICIALES (Tokens Semánticos Estrictos)
      ==================================================== */
 
-  /* --- GRUPO 1: CÁPSULA AZUL NAVY (var(--color-primary)) --- */
-
-  /* 1. Default: Cápsula Navy + Arrow Naranja Accent */
-  .btn-default .btn-text-capsule {
-    background-color: var(--color-primary);
-    color: var(--color-white);
+  /* 1. Primary (Fill Azul) */
+  .btn-primary .btn-text-capsule {
+    background-color: var(--color-bg-primary);
+    border: 1.5px solid transparent;
+    color: var(--color-text-inverse);
   }
-  .btn-default .btn-badge-inner {
-    background-color: var(--color-accent);
+  .btn-primary .btn-badge-inner {
+    background-color: var(--color-bg-primary);
+    border: 1.5px solid transparent;
+    color: var(--color-text-inverse);
   }
 
-  /* 2. WhatsApp: Cápsula Navy + Arrow Verde WhatsApp */
+  /* 2. Primary Line (Línea Azul) */
+  .btn-primary-line .btn-text-capsule {
+    background-color: transparent;
+    border: 1.5px solid var(--color-border-primary);
+    color: var(--color-text-primary);
+  }
+  .btn-primary-line .btn-badge-inner {
+    background-color: transparent;
+    border: 1.5px solid var(--color-border-primary);
+    color: var(--color-text-primary);
+  }
+
+  /* 3. Secondary (Fill Blanco) */
+  .btn-secondary .btn-text-capsule {
+    background-color: var(--color-bg-white);
+    border: 1.5px solid transparent;
+    color: var(--color-text-primary);
+  }
+  .btn-secondary .btn-badge-inner {
+    background-color: var(--color-bg-white);
+    border: 1.5px solid transparent;
+    color: var(--color-text-primary);
+  }
+
+  /* 4. Secondary Line (Línea Blanca) */
+  .btn-secondary-line .btn-text-capsule {
+    background-color: transparent;
+    border: 1.5px solid var(--color-border-white);
+    color: var(--color-text-inverse);
+  }
+  .btn-secondary-line .btn-badge-inner {
+    background-color: transparent;
+    border: 1.5px solid var(--color-border-white);
+    color: var(--color-text-inverse);
+  }
+
+  /* Variantes Funcionales (WhatsApp) */
   .btn-whatsapp .btn-text-capsule {
-    background-color: var(--color-primary);
-    color: var(--color-white);
+    background-color: var(--color-bg-primary);
+    border: 1.5px solid transparent;
+    color: var(--color-text-inverse);
   }
   .btn-whatsapp .btn-badge-inner {
     background-color: var(--color-whatsapp);
+    border: 1.5px solid transparent;
+    color: var(--color-text-inverse);
   }
 
-  /* --- GRUPO 2: CÁPSULA BLANCA (var(--color-white)) --- */
-
-  /* 3. White: Cápsula Blanca + Texto Navy + Arrow Naranja Accent */
-  .btn-white .btn-text-capsule {
-    background-color: var(--color-white);
-    color: var(--color-primary);
-  }
-  .btn-white .btn-badge-inner {
-    background-color: var(--color-accent);
-  }
-
-  /* 4. White WhatsApp: Cápsula Blanca + Texto Navy + Arrow Verde WhatsApp */
   .btn-white-whatsapp .btn-text-capsule {
-    background-color: var(--color-white);
-    color: var(--color-primary);
+    background-color: var(--color-bg-white);
+    border: 1.5px solid transparent;
+    color: var(--color-text-primary);
   }
   .btn-white-whatsapp .btn-badge-inner {
     background-color: var(--color-whatsapp);
+    border: 1.5px solid transparent;
+    color: var(--color-text-inverse);
   }
 
   /* ====================================================
-     HOVER (Solo en pantallas con cursor/mouse)
+     HOVER: SOLO ANIMACIÓN DE FLECHA (SIN CAMBIO DE COLOR)
      ==================================================== */
   @media (hover: hover) and (pointer: fine) {
-    /* Hover cápsulas Navy: pasan a primary-hover */
-    .btn-default:hover .btn-text-capsule,
-    .btn-default:focus-visible .btn-text-capsule,
-    .btn-whatsapp:hover .btn-text-capsule,
-    .btn-whatsapp:focus-visible .btn-text-capsule,
-    :global(.job-card:hover) .btn-default .btn-text-capsule,
-    :global(.profile-card:hover) .btn-default .btn-text-capsule,
-    :global(.story-card:hover) .btn-default .btn-text-capsule,
-    :global(.blog-card:hover) .btn-default .btn-text-capsule,
-    :global(.bento-card:hover) .btn-default .btn-text-capsule {
-      background-color: var(--color-primary-hover);
-      color: var(--color-white);
-    }
-
-    /* Hover cápsulas Blancas: pasan a bg-alt sutil manteniendo texto navy */
-    .btn-white:hover .btn-text-capsule,
-    .btn-white:focus-visible .btn-text-capsule,
-    .btn-white-whatsapp:hover .btn-text-capsule,
-    .btn-white-whatsapp:focus-visible .btn-text-capsule,
-    :global(.story-card:hover) .btn-white .btn-text-capsule,
-    :global(.profile-card:hover) .btn-white .btn-text-capsule,
-    :global(.job-card:hover) .btn-white .btn-text-capsule,
-    :global(.blog-card:hover) .btn-white .btn-text-capsule {
-      background-color: var(--color-bg-alt);
-      color: var(--color-primary);
-    }
-
-    /* Los badges mantienen sus colores puros (cero accent-light) */
-    .btn-default:hover .btn-badge-inner,
-    .btn-white:hover .btn-badge-inner {
-      background-color: var(--color-accent);
-    }
-
-    .btn-whatsapp:hover .btn-badge-inner,
-    .btn-whatsapp:focus-visible .btn-badge-inner,
-    .btn-white-whatsapp:hover .btn-badge-inner,
-    .btn-white-whatsapp:focus-visible .btn-badge-inner {
-      background-color: var(--color-whatsapp);
-    }
-
     /* Left badge abre a 1 */
     .modular-btn:hover .btn-badge--left,
     .modular-btn:focus-visible .btn-badge--left,
@@ -438,7 +441,7 @@ const ariaLabel = text || undefined;
   }
 
   .modular-btn:focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-border-primary);
     outline-offset: 3px;
     border-radius: var(--btn-radius);
   }

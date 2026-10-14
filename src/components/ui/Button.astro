@@ -3,7 +3,19 @@ import ExpandableButton from "./ExpandableButton.astro";
 
 interface Props {
   href?: string;
-  variant?: "default" | "primary" | "accent" | "outline" | "outline-white" | "whatsapp" | "white" | "white-whatsapp" | "dark";
+  variant?:
+    | "primary"
+    | "primary-line"
+    | "secondary"
+    | "secondary-line"
+    | "default"
+    | "accent"
+    | "outline"
+    | "outline-white"
+    | "whatsapp"
+    | "white"
+    | "white-whatsapp"
+    | "dark";
   size?: "sm" | "md" | "lg";
   type?: "button" | "submit" | "reset";
   class?: string;
@@ -16,7 +28,7 @@ interface Props {
 
 const {
   href,
-  variant = "default",
+  variant = "primary",
   size = "md",
   type = "button",
   class: className = "",
@@ -29,11 +41,11 @@ const {
 } = Astro.props;
 
 const mappedVariant =
-  variant === "primary" || variant === "outline" || variant === "accent" || variant === "dark"
-    ? "default"
-    : variant === "outline-white"
-      ? "white"
-      : variant;
+  variant === "outline" ? "primary-line" :
+  variant === "outline-white" ? "secondary-line" :
+  variant === "white" ? "secondary" :
+  variant === "default" || variant === "accent" || variant === "dark" ? "primary" :
+  variant;
 ---
 
 <ExpandableButton

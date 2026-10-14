@@ -1,0 +1,127 @@
+---
+import Button from "../ui/Button.astro";
+---
+
+<section class="section enterprise-cta-section">
+  <div class="container">
+    <div class="enterprise-dark-card">
+      <div class="enterprise-split">
+        <div class="enterprise-text-col">
+          <h2 class="enterprise-card-title">
+            ¿Tu empresa necesita cumplir la cuota de la Ley 977?
+          </h2>
+          <p class="enterprise-card-desc">
+            Publica tu vacante en Incluxia de forma gratuita. Conectamos a tu
+            equipo con profesionales calificados y te asesoramos para adaptar
+            la entrevista y las tareas por escrito.
+          </p>
+          <div class="enterprise-actions">
+            <Button href="/#empresas-ley977" variant="white" size="lg">
+              <span>Publicar Vacante Laboral</span>
+            </Button>
+          </div>
+        </div>
+
+        <div class="enterprise-metrics-box">
+          <div class="metric-mini-card">
+            <span class="metric-number">2%</span>
+            <span class="metric-label">Sector Privado (Ley 977)</span>
+          </div>
+          <div class="metric-mini-card">
+            <span class="metric-number">4%</span>
+            <span class="metric-label">Sector Público (Ley 223)</span>
+          </div>
+          <div class="metric-mini-card">
+            <span class="metric-number">0</span>
+            <span class="metric-label">Llamadas Telefónicas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .enterprise-cta-section {
+    background-color: var(--color-white);
+  }
+
+  .enterprise-dark-card {
+    background-color: var(--color-primary);
+    border-radius: var(--radius-3xl);
+    padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3.5rem);
+    box-shadow: none;
+  }
+
+  .enterprise-split {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  .enterprise-card-title {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--color-white);
+    letter-spacing: -0.025em;
+    line-height: 1.25;
+    margin: 0 0 var(--space-4) 0;
+  }
+
+  .enterprise-card-desc {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    margin-bottom: var(--space-6);
+  }
+
+  .enterprise-actions {
+    display: flex;
+    gap: var(--space-4);
+  }
+
+  .enterprise-metrics-box {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .metric-mini-card {
+    background: var(--color-primary-dark);
+    border-radius: var(--radius-md);
+    padding: var(--space-4) var(--space-5);
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .metric-number {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    color: var(--color-accent);
+    line-height: 1;
+    min-width: 48px;
+  }
+
+  .metric-label {
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--color-white);
+  }
+
+  @media (max-width: 991px) {
+    .enterprise-split {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .enterprise-dark-card {
+      padding: var(--space-6) var(--space-4);
+      border-radius: var(--radius-2xl);
+    }
+  }
+</style>

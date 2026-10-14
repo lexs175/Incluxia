@@ -1,0 +1,273 @@
+---
+import ExpandableButton from "../ui/ExpandableButton.astro";
+
+interface Props {
+  autonomo: any;
+}
+
+const { autonomo } = Astro.props;
+---
+
+<article
+  class="autonomo-card-item"
+  data-id={autonomo.id}
+  data-name={autonomo.name.toLowerCase()}
+  data-role={autonomo.role.toLowerCase()}
+  data-city={autonomo.city}
+  data-skills={autonomo.skills.join(" ").toLowerCase()}
+>
+  <div class="autonomo-card-header">
+    <img
+      src={autonomo.avatar}
+      alt={autonomo.name}
+      class="autonomo-avatar-img"
+      loading="lazy"
+    />
+    <div class="autonomo-header-info">
+      <div class="autonomo-name-row">
+        <h2 class="autonomo-name">{autonomo.name}</h2>
+        <span class="pro-tag">PRO</span>
+      </div>
+      <p class="autonomo-role">{autonomo.role}</p>
+      <p class="autonomo-city">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        {autonomo.city}, Bolivia · <span class="rate-badge">{autonomo.hourlyRate}</span>
+      </p>
+    </div>
+
+    <!-- Botón oficial ExpandableButton para abrir detalle -->
+    <div class="autonomo-action-wrap">
+      <ExpandableButton
+        text="Ver detalles"
+        variant="primary-line"
+        size="sm"
+        type="button"
+        class="card-open-trigger"
+      />
+    </div>
+  </div>
+
+  <p class="autonomo-bio-preview">{autonomo.bio}</p>
+
+  <!-- Aptitudes -->
+  <div class="autonomo-skills-chips">
+    {autonomo.skills.slice(0, 5).map((skill: string) => (
+      <span class="skill-chip">{skill}</span>
+    ))}
+  </div>
+
+  <!-- Miniaturas de Portafolio -->
+  <div class="autonomo-portfolio-thumbnails">
+    {autonomo.portfolio.map((item: any) => (
+      <div class="portfolio-thumb-box" style={`background-color: ${item.color};`}>
+        <span class="thumb-title">{item.title}</span>
+        <span class="thumb-cat">{item.category}</span>
+      </div>
+    ))}
+  </div>
+
+  <div class="autonomo-card-footer">
+    <span class="footer-meta-item">
+      ⭐ <strong>{autonomo.rating.toFixed(1)}</strong> · {autonomo.completedJobs} trabajos completados
+    </span>
+    <span class="footer-meta-click">Clic para ver portafolio completo →</span>
+  </div>
+</article>
+
+<style>
+  .autonomo-card-item {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    box-shadow: 0 1px 3px rgba(var(--color-primary-dark-rgb), 0.04);
+    cursor: pointer;
+    transition: border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .autonomo-card-item:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(var(--color-primary-dark-rgb), 0.08);
+  }
+
+  .autonomo-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    margin-bottom: var(--space-3);
+  }
+
+  .autonomo-avatar-img {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-full);
+    object-fit: cover;
+    border: 2px solid var(--color-border);
+    flex-shrink: 0;
+  }
+
+  .autonomo-header-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .autonomo-name-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: 0.15rem;
+  }
+
+  .autonomo-name {
+    font-family: var(--font-heading);
+    font-size: var(--text-base);
+    font-weight: 800;
+    color: var(--color-text-main);
+    margin: 0;
+  }
+
+  .pro-tag {
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 0.1rem 0.4rem;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+  }
+
+  .autonomo-role {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin: 0 0 0.25rem 0;
+  }
+
+  .autonomo-city {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin: 0;
+  }
+
+  .rate-badge {
+    color: var(--color-text-main);
+    font-weight: 700;
+  }
+
+  .autonomo-action-wrap {
+    pointer-events: none; /* El clic se delega a la tarjeta entera */
+  }
+
+  .autonomo-bio-preview {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: 0 0 var(--space-4) 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .autonomo-skills-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-bottom: var(--space-4);
+  }
+
+  .skill-chip {
+    padding: 0.2rem 0.55rem;
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: 0.72rem;
+    color: var(--color-text-main);
+    font-weight: 600;
+  }
+
+  .autonomo-portfolio-thumbnails {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .portfolio-thumb-box {
+    height: 80px;
+    border-radius: var(--radius-md);
+    padding: var(--space-3);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border: 1px solid var(--color-border);
+    transition: transform var(--transition-fast);
+    box-sizing: border-box;
+  }
+
+  .thumb-title {
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+    line-height: 1.2;
+  }
+
+  .thumb-cat {
+    font-size: 0.65rem;
+    color: var(--color-text-muted);
+  }
+
+  .autonomo-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--color-border);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+  }
+
+  .footer-meta-click {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  @media (max-width: 680px) {
+    .autonomo-card-item {
+      padding: var(--space-4);
+    }
+
+    .autonomo-portfolio-thumbnails {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .autonomo-card-header {
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .autonomo-action-wrap {
+      width: 100%;
+    }
+
+    .autonomo-action-wrap :global(.modular-btn) {
+      width: 100%;
+    }
+
+    .autonomo-action-wrap :global(.btn-text-capsule) {
+      flex: 1;
+    }
+  }
+</style>

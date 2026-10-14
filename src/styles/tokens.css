@@ -1,46 +1,103 @@
 :root {
-  /* Colors */
-  --color-primary: #212051;
-  --color-primary-dark: #0D0C29;
-  --color-primary-light: #2c2b69;
-  --color-primary-hover: #1b1a45;
-  --color-primary-rgb: 33, 32, 81;
-  --color-primary-dark-rgb: 13, 12, 41;
-  --color-primary-rgba: rgba(33, 32, 81, 0.60);
+  /* ====================================================
+     1. TOKENS PRIMITIVOS (Paleta global de valores)
+     ==================================================== */
+  /* Azules de Marca (#285FF3) */
+  --blue-400: #4f7dfa;
+  --blue-400-rgb: 79, 125, 250;
+  --blue-500: #285FF3;
+  --blue-500-rgb: 40, 95, 243;
+  --blue-600: #1b4edd;
+  --blue-600-rgb: 27, 78, 221;
+  --blue-700: #1545ca;
+  --blue-700-rgb: 21, 69, 202;
 
-  --color-accent: #F58514;
-  --color-accent-light: #faa856;
-  --color-accent-rgb: 245, 133, 20;
+  /* Neutros & Superficies */
+  --white: #FFFFFF;
+  --white-rgb: 255, 255, 255;
+  --slate-50: #F8FAFC;
+  --slate-100: #F1F5F9;
+  --slate-200: #E2E8F0;
+  --slate-300: #CBD5E1;
+  --slate-400: #94A3B8;
+  --slate-500: #64748B;
+  --slate-800: #1E293B;
 
-  --color-white: #FFFFFF;
-  --color-white-rgb: 255, 255, 255;
-  --color-bg: #F8FAFC;
-  --color-bg-alt: #F1F5F9;
-  --color-bg-card: #FFFFFF;
+  /* Superficies Oscuras */
+  --surface-dark-base: #020531;
+  --surface-dark-card: #020531;
 
-  --color-text-main: #1E293B;
-  --color-text-muted: #64748B;
-  --color-text-light: #94A3B8;
-  --color-text-inverse: #FFFFFF;
+  /* Estados Funcionales */
+  --whatsapp-green: #25D366;
+  --whatsapp-dark: #1EBE5D;
+  --whatsapp-light: #E7F9EE;
+  --emerald-500: #10B981;
+  --emerald-50: #ECFDF5;
+  --amber-500: #F59E0B;
+  --amber-50: #FFFBEB;
+  --red-500: #EF4444;
+  --red-50: #FEF2F2;
+  --sky-500: #3B82F6;
+  --sky-50: #EFF6FF;
 
-  --color-border: #E2E8F0;
-  --color-border-hover: #CBD5E1;
-  --color-border-primary: rgba(33, 32, 81, 0.12);
+  /* ====================================================
+     2. TOKENS SEMÁNTICOS (Propósito y función en la UI)
+     ==================================================== */
+  /* Marca: Roles universales */
+  --color-primary: var(--blue-500);
+  --color-primary-dark: var(--blue-600);
+  --color-primary-light: var(--blue-400);
+  --color-primary-hover: var(--blue-700);
+  --color-primary-rgb: var(--blue-500-rgb);
+  --color-primary-dark-rgb: var(--blue-600-rgb);
 
-  /* Status Colors */
-  --color-whatsapp: #25D366;
-  --color-whatsapp-dark: #1EBE5D;
-  --color-whatsapp-light: #E7F9EE;
+  /* Acento de marca (armónico con primario) */
+  --color-accent: var(--blue-500);
+  --color-accent-rgb: var(--blue-500-rgb);
+  --color-accent-light: var(--blue-400);
 
-  --color-success: #10B981;
-  --color-success-bg: #ECFDF5;
-  --color-warning: #F59E0B;
-  --color-warning-bg: #FFFBEB;
-  --color-error: #EF4444;
-  --color-error-bg: #FEF2F2;
+  /* Semánticos explícitos de Fondos (bg-*) */
+  --color-bg-white: var(--white);
+  --color-bg: var(--slate-50);
+  --color-bg-alt: var(--slate-100);
+  --color-bg-card: var(--white);
+  --color-bg-primary: var(--color-primary);
+  --color-bg-primary-hover: var(--color-primary-hover);
+  --color-bg-primary-soft: rgba(var(--color-primary-rgb), 0.08);
+  --color-bg-primary-dark: var(--color-primary-dark);
+  --color-surface-dark: var(--surface-dark-base);
+  --color-surface-dark-card: var(--surface-dark-card);
+  --color-border-dark: rgba(var(--white-rgb), 0.08);
+
+  /* Semánticos explícitos de Textos (text-*) */
+  --color-text-main: var(--slate-800);
+  --color-text-muted: var(--slate-500);
+  --color-text-light: var(--slate-400);
+  --color-text-inverse: var(--white);
+  --color-text-primary: var(--color-primary);
+
+  /* Semánticos explícitos de Bordes (border-*) */
+  --color-border: var(--slate-200);
+  --color-border-hover: var(--slate-300);
+  --color-border-primary: var(--color-primary);
+  --color-border-white: var(--white);
+
+  /* Estados Funcionales */
+  --color-white: var(--white);
+  --color-white-rgb: var(--white-rgb);
+  --color-whatsapp: var(--whatsapp-green);
+  --color-whatsapp-dark: var(--whatsapp-dark);
+  --color-whatsapp-light: var(--whatsapp-light);
+
+  --color-success: var(--emerald-500);
+  --color-success-bg: var(--emerald-50);
+  --color-warning: var(--amber-500);
+  --color-warning-bg: var(--amber-50);
+  --color-error: var(--red-500);
+  --color-error-bg: var(--red-50);
   --color-error-border: rgba(239, 68, 68, 0.3);
-  --color-info: #3B82F6;
-  --color-info-bg: #EFF6FF;
+  --color-info: var(--sky-500);
+  --color-info-bg: var(--sky-50);
 
   /* Typography */
   --font-heading: 'Montserrat', system-ui, -apple-system, sans-serif;
@@ -81,19 +138,6 @@
   --radius-3xl: 1.75rem;
   --radius-full: 9999px;
 
-  /* Shadows (PROHIBITED BY DESIGN DIRECTIVE - ZERO SHADOWS) */
-  --shadow-sm: none;
-  --shadow-md: none;
-  --shadow-lg: none;
-  --shadow-xl: none;
-  --shadow-card: none;
-  --shadow-card-hover: none;
-  --shadow-fab: none;
-
-  /* Modern Dark Bento Surfaces */
-  --color-surface-dark: #0b0f19;
-  --color-surface-dark-card: #111827;
-  --color-border-dark: rgba(255, 255, 255, 0.08);
 
   /* Container */
   --container-max-width: 1440px;

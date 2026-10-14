@@ -1,0 +1,2285 @@
+{
+  "categories": [
+    {
+      "id": "diseno-grafico",
+      "slug": "diseno-grafico",
+      "name": "Diseño Gráfico",
+      "shortDesc": "Identidad visual, branding, logotipos y piezas publicitarias digitales.",
+      "countAutonomos": 4,
+      "countServices": 4,
+      "bgGradient": "linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.85), rgba(var(--color-primary-dark-rgb), 0.95))",
+      "tags": [
+        "Logotipos",
+        "Identidad de marca",
+        "Redes sociales",
+        "Folletería",
+        "Packaging"
+      ]
+    },
+    {
+      "id": "sistemas-ti",
+      "slug": "sistemas-ti",
+      "name": "Sistemas & Soporte TI",
+      "shortDesc": "Mantenimiento preventivo, soporte helpdesk escrito y administración básica de redes.",
+      "countAutonomos": 4,
+      "countServices": 4,
+      "bgGradient": "linear-gradient(135deg, rgba(var(--color-primary-dark-rgb), 0.9), rgba(var(--color-primary-rgb), 0.75))",
+      "tags": [
+        "Helpdesk por chat",
+        "Mantenimiento PC",
+        "Redes LAN",
+        "Instalación software",
+        "Soporte remoto"
+      ]
+    },
+    {
+      "id": "contabilidad-finanzas",
+      "slug": "contabilidad-finanzas",
+      "name": "Contabilidad & Facturación",
+      "shortDesc": "Conciliaciones bancarias, libros de compras/ventas y facturación electrónica.",
+      "countAutonomos": 4,
+      "countServices": 4,
+      "bgGradient": "linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.75), rgba(var(--color-primary-dark-rgb), 0.9))",
+      "tags": [
+        "Facturación SIAT",
+        "Conciliación bancaria",
+        "Libro de compras",
+        "Planillas",
+        "Excel avanzado"
+      ]
+    },
+    {
+      "id": "digitacion-datos",
+      "slug": "digitacion-datos",
+      "name": "Digitación & Archivo de Datos",
+      "shortDesc": "Transcripción de documentos, captura masiva de datos y digitalización de archivos.",
+      "countAutonomos": 4,
+      "countServices": 4,
+      "bgGradient": "linear-gradient(135deg, rgba(var(--color-primary-dark-rgb), 0.85), rgba(var(--color-primary-rgb), 0.8))",
+      "tags": [
+        "Digitación 75+ PPM",
+        "Limpieza de bases de datos",
+        "Archivo digital",
+        "Formularios",
+        "Data Entry"
+      ]
+    },
+    {
+      "id": "redes-sociales",
+      "slug": "redes-sociales",
+      "name": "Redes Sociales & Contenido",
+      "shortDesc": "Parrillas de contenido, diseño de post/reels y gestión de comunidad 100% escrita.",
+      "countAutonomos": 4,
+      "countServices": 4,
+      "bgGradient": "linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.9), rgba(var(--color-primary-light-rgb, 79, 125, 250), 0.85))",
+      "tags": [
+        "Instagram & TikTok",
+        "Community management por chat",
+        "Calendarios de post",
+        "Copywriting",
+        "Canva Pro"
+      ]
+    },
+    {
+      "id": "desarrollo-web",
+      "slug": "desarrollo-web",
+      "name": "Desarrollo Web & Landing Pages",
+      "shortDesc": "Páginas web corporativas, tiendas online y landing pages accesibles y rápidas.",
+      "countAutonomos": 4,
+      "countServices": 4,
+      "bgGradient": "linear-gradient(135deg, rgba(var(--color-primary-dark-rgb), 0.95), rgba(var(--color-primary-rgb), 0.7))",
+      "tags": [
+        "WordPress",
+        "Landing pages",
+        "HTML/CSS responsive",
+        "Tienda online",
+        "Optimización web"
+      ]
+    },
+    {
+      "id": "ilustracion-arte",
+      "slug": "ilustracion-arte",
+      "name": "Ilustración & Arte Digital",
+      "shortDesc": "Personajes, iconos personalizados, infografías visuales y concept art.",
+      "countAutonomos": 4,
+      "countServices": 4,
+      "bgGradient": "linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.8), rgba(var(--color-primary-dark-rgb), 0.9))",
+      "tags": [
+        "Ilustración vectorial",
+        "Infografías",
+        "Iconografía",
+        "Procreate",
+        "Stickers & Merch"
+      ]
+    },
+    {
+      "id": "edicion-video",
+      "slug": "edicion-video",
+      "name": "Edición Audiovisual & Subtítulos",
+      "shortDesc": "Edición de video con subtítulos precisos, subtitulado accesible y clips para redes.",
+      "countAutonomos": 4,
+      "countServices": 4,
+      "bgGradient": "linear-gradient(135deg, rgba(var(--color-primary-dark-rgb), 0.85), rgba(var(--color-primary-rgb), 0.9))",
+      "tags": [
+        "Subtitulado accesible",
+        "Reels & Shorts",
+        "CapCut / Premiere",
+        "Animación de textos",
+        "Color"
+      ]
+    }
+  ],
+  "services": [
+    {
+      "id": "serv-1",
+      "categorySlug": "diseno-grafico",
+      "title": "Diseño de Identidad Visual y Logotipo Profesional",
+      "price": "Bs. 280",
+      "priceNumeric": 280,
+      "author": {
+        "name": "Valeria Morales Terán",
+        "role": "Diseñadora Gráfica",
+        "city": "Cochabamba",
+        "avatar": "/images/profiles/valeria-morales.jpg",
+        "whatsapp": "59170000001",
+        "rating": 5,
+        "completed": 16
+      },
+      "deliveryTime": "5 a 7 días hábiles",
+      "revisions": "3 revisiones incluidas",
+      "description": "Diseño tu marca con personalidad, coherencia cromática y adaptabilidad digital. Creamos desde cero el logotipo vectorial, paleta cromática oficial y tipografías para que tu negocio se vea confiable y profesional.",
+      "highlights": [
+        "Logotipo principal y versiones secundarias (SVG, PNG transparente, PDF)",
+        "Paleta cromática con códigos HEX, RGB y CMYK",
+        "Guía tipográfica y manual de uso básico en PDF",
+        "Archivos vectoriales 100% editables en Adobe Illustrator"
+      ],
+      "previewColor": "rgba(var(--color-primary-rgb), 0.15)"
+    },
+    {
+      "id": "serv-2",
+      "categorySlug": "diseno-grafico",
+      "title": "Pack de 12 Piezas Gráficas para Redes Sociales",
+      "price": "Bs. 190",
+      "priceNumeric": 190,
+      "author": {
+        "name": "Mateo Peñaranda Alarcón",
+        "role": "Diseñador Gráfico & Editor",
+        "city": "Cochabamba",
+        "avatar": "/images/profiles/mateo-penaranda.jpg",
+        "whatsapp": "59173000004",
+        "rating": 4.9,
+        "completed": 24
+      },
+      "deliveryTime": "3 a 5 días hábiles",
+      "revisions": "2 revisiones",
+      "description": "Diseños listos para publicar en Instagram, Facebook y WhatsApp Business. Formatos optimizados en 1080x1080px (Feed) y 1080x1920px (Stories) respetando la identidad visual de tu marca.",
+      "highlights": [
+        "12 artes gráficos de alto impacto visual",
+        "Plantillas editables en Canva Pro o Figma",
+        "Adaptación exacta a tus colores y logotipo",
+        "Entrega en PNG de máxima calidad"
+      ],
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.15)"
+    },
+    {
+      "id": "serv-3",
+      "categorySlug": "diseno-grafico",
+      "title": "Diseño de Packaging y Etiquetas de Producto",
+      "price": "Bs. 220",
+      "priceNumeric": 220,
+      "author": {
+        "name": "Andrea Torrico Suárez",
+        "role": "Diseñadora de Packaging",
+        "city": "Santa Cruz",
+        "avatar": "/images/profiles/andrea-torrico.jpg",
+        "whatsapp": "59175000006",
+        "rating": 5,
+        "completed": 21
+      },
+      "deliveryTime": "4 a 6 días hábiles",
+      "revisions": "3 revisiones incluidas",
+      "description": "Diseño técnico de etiquetas adhesivas, cajas o empaques para productos alimenticios, cosméticos o comerciales con líneas de troquel listas para imprenta.",
+      "highlights": [
+        "Archivo listo para imprenta con líneas de corte en PDF / AI",
+        "Mockup digital en 3D para ver el producto terminado",
+        "Revisión de códigos de barras y tabla nutricional",
+        "Asesoría técnica sobre acabados (brillante, mate, barniz)"
+      ],
+      "previewColor": "rgba(var(--color-primary-rgb), 0.18)"
+    },
+    {
+      "id": "serv-4",
+      "categorySlug": "diseno-grafico",
+      "title": "Manual de Marca y Guía de Estilo Corporativo",
+      "price": "Bs. 310",
+      "priceNumeric": 310,
+      "author": {
+        "name": "Marcelo Paz Céspedes",
+        "role": "Diseñador Gráfico",
+        "city": "La Paz",
+        "avatar": "/images/profiles/diego-siles.jpg",
+        "whatsapp": "59176000007",
+        "rating": 4.9,
+        "completed": 18
+      },
+      "deliveryTime": "6 a 8 días hábiles",
+      "revisions": "Revisiones ilimitadas sobre estructura",
+      "description": "Documento maestro institucional de 20 páginas que estandariza el uso de tu logotipo, áreas de aislamiento, aplicaciones prohibidas, papelería y uniformes.",
+      "highlights": [
+        "Manual completo en PDF interactivo de alta resolución",
+        "Reglas de uso en medios impresos y digitales",
+        "Plantilla para hojas membretadas, tarjetas y firmas de email",
+        "Garantía de coherencia corporativa total"
+      ],
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.16)"
+    },
+    {
+      "id": "serv-5",
+      "categorySlug": "sistemas-ti",
+      "title": "Optimización, Limpieza y Mantenimiento de Software Remoto",
+      "price": "Bs. 120",
+      "priceNumeric": 120,
+      "author": {
+        "name": "Camila Rojas Claure",
+        "role": "Técnica en Soporte TI",
+        "city": "Santa Cruz",
+        "avatar": "/images/profiles/camila-rojas.jpg",
+        "whatsapp": "59171000002",
+        "rating": 5,
+        "completed": 19
+      },
+      "deliveryTime": "Mismo día (2 a 4 horas)",
+      "revisions": "Garantía de 7 días",
+      "description": "Diagnóstico y limpieza integral de Windows. Eliminación de software basura, optimización del arranque, instalación de antivirus corporativo y actualización de controladores vía AnyDesk/TeamViewer coordinado 100% por chat.",
+      "highlights": [
+        "Aceleración y optimización de arranque del sistema",
+        "Eliminación de virus, malware y extensiones no deseadas",
+        "Actualización de parches de seguridad y drivers",
+        "Atención 100% por chat escrito sin llamadas"
+      ],
+      "previewColor": "rgba(var(--color-primary-rgb), 0.12)"
+    },
+    {
+      "id": "serv-6",
+      "categorySlug": "sistemas-ti",
+      "title": "Configuración Segura de Redes LAN y Wi-Fi de Oficina",
+      "price": "Bs. 250",
+      "priceNumeric": 250,
+      "author": {
+        "name": "Alex Quispe Mamani",
+        "role": "Administrador de Sistemas",
+        "city": "La Paz",
+        "avatar": "/images/profiles/alex-quispe.jpg",
+        "whatsapp": "59177000008",
+        "rating": 4.9,
+        "completed": 22
+      },
+      "deliveryTime": "1 a 2 días hábiles",
+      "revisions": "Soporte posconfiguración por 15 días",
+      "description": "Configuración remota o guiada de routers, repetidores y puntos de acceso para asegurar la red de tu empresa. Segmentación de red de invitados y filtrado de contenido.",
+      "highlights": [
+        "Segmentación segura para red administrativa y de clientes",
+        "Cifrado WPA3 / WPA2 Enterprise",
+        "Asignación de IPs fijas para impresoras y servidores",
+        "Manual escrito en PDF para el reinicio y soporte"
+      ],
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.14)"
+    },
+    {
+      "id": "serv-7",
+      "categorySlug": "sistemas-ti",
+      "title": "Soporte Helpdesk Mensual por Chat para Empresas (Hasta 10 PCs)",
+      "price": "Bs. 450",
+      "priceNumeric": 450,
+      "author": {
+        "name": "Diego Siles Gutiérrez",
+        "role": "Especialista en Soporte",
+        "city": "Cochabamba",
+        "avatar": "/images/profiles/carlos-mendoza.jpg",
+        "whatsapp": "59178000009",
+        "rating": 5,
+        "completed": 27
+      },
+      "deliveryTime": "Servicio Mensual Continuo",
+      "revisions": "Atención ilimitada de tickets",
+      "description": "Mesa de ayuda remota para tu personal de oficina: resolución rápida de problemas de impresión, acceso a correo, caídas de programas y dudas ofimáticas por WhatsApp o Slack.",
+      "highlights": [
+        "Tiempo de respuesta menor a 15 minutos por chat",
+        "Monitoreo semanal del estado de las computadoras",
+        "Reporte mensual de incidencias y recomendaciones",
+        "Cumplimiento Ley 977 de inclusión laboral garantizado"
+      ],
+      "previewColor": "rgba(var(--color-primary-rgb), 0.16)"
+    },
+    {
+      "id": "serv-8",
+      "categorySlug": "sistemas-ti",
+      "title": "Instalación y Parametrización de Software Corporativo y Antivirus",
+      "price": "Bs. 140",
+      "priceNumeric": 140,
+      "author": {
+        "name": "Rodrigo Vargas Choque",
+        "role": "Técnico Informático",
+        "city": "Cochabamba",
+        "avatar": "/images/profiles/rodrigo-vargas.jpg",
+        "whatsapp": "59179000010",
+        "rating": 4.9,
+        "completed": 17
+      },
+      "deliveryTime": "1 día hábil",
+      "revisions": "Verificación de licencias",
+      "description": "Instalación limpia de suites de oficina, antivirus corporativo, lectores PDF seguros y herramientas de trabajo colaborativo sin programas basura agregados.",
+      "highlights": [
+        "Instalación remota guiada paso a paso",
+        "Activación de cortafuegos y análisis profundo de amenazas",
+        "Configuración de perfiles de usuario estándar y administrador",
+        "Prueba de rendimiento final documentada"
+      ],
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.18)"
+    },
+    {
+      "id": "serv-9",
+      "categorySlug": "contabilidad-finanzas",
+      "title": "Conciliación Bancaria y Cierre Mensual de Facturación",
+      "price": "Bs. 320",
+      "priceNumeric": 320,
+      "author": {
+        "name": "Javier Mercado Rocha",
+        "role": "Auxiliar Contable",
+        "city": "La Paz",
+        "avatar": "/images/profiles/javier-mercado.jpg",
+        "whatsapp": "59172000003",
+        "rating": 4.9,
+        "completed": 14
+      },
+      "deliveryTime": "3 días hábiles",
+      "revisions": "Revisión ilimitada hasta cuadre 100%",
+      "description": "Conciliación minuciosa entre extractos bancarios y registros contables internos de tu negocio en Bolivia. Detección de partidas pendientes, cuadre de caja chica y reporte resumido en Excel con tablas dinámicas.",
+      "highlights": [
+        "Cuadre con 0% de margen de error garantizado",
+        "Informe en Excel automatizado y listo para auditoría",
+        "Cumplimiento con normas contables bolivianas",
+        "Manejo confidencial de datos bajo acuerdo escrito"
+      ],
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.12)"
+    },
+    {
+      "id": "serv-10",
+      "categorySlug": "contabilidad-finanzas",
+      "title": "Emisión y Registro de Facturación Electrónica SIAT",
+      "price": "Bs. 180",
+      "priceNumeric": 180,
+      "author": {
+        "name": "Gabriela Choque Flores",
+        "role": "Especialista Tributaria",
+        "city": "Santa Cruz",
+        "avatar": "/images/profiles/gabriela-choque.jpg",
+        "whatsapp": "59170220012",
+        "rating": 5,
+        "completed": 25
+      },
+      "deliveryTime": "2 días hábiles",
+      "revisions": "Validación SIAT garantizada",
+      "description": "Validación de clientes en padrón nacional, emisión de facturas electrónicas computarizadas y generación de reportes mensuales para presentación de impuestos sin retrasos.",
+      "highlights": [
+        "Emisión sin errores en NIT, razón social y montos",
+        "Control de facturas anuladas o emitidas fuera de plazo",
+        "Entrega de archivo consolidado para contador general",
+        "Coordinación 100% por chat de WhatsApp"
+      ],
+      "previewColor": "rgba(var(--color-primary-rgb), 0.15)"
+    },
+    {
+      "id": "serv-11",
+      "categorySlug": "contabilidad-finanzas",
+      "title": "Armado de Libros de Compras y Ventas IVA para Negocios",
+      "price": "Bs. 260",
+      "priceNumeric": 260,
+      "author": {
+        "name": "Fernando Gutiérrez Rios",
+        "role": "Contador General",
+        "city": "Cochabamba",
+        "avatar": "/images/profiles/fernando-gutierrez.jpg",
+        "whatsapp": "59170110011",
+        "rating": 5,
+        "completed": 33
+      },
+      "deliveryTime": "3 días hábiles",
+      "revisions": "Ajustes de facturas incluidos",
+      "description": "Registro cronológico y estandarizado de todas tus facturas de gastos y ventas del mes en formato oficial del Servicio de Impuestos Nacionales (SIN).",
+      "highlights": [
+        "Identificación precisa del crédito fiscal deducible",
+        "Verificación de código de control y QR tributario",
+        "Exportación directa a formato requerido por el SIAT",
+        "Ahorro de multas por declaraciones erróneas"
+      ],
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.18)"
+    },
+    {
+      "id": "serv-12",
+      "categorySlug": "contabilidad-finanzas",
+      "title": "Planilla de Sueldos y Aportes Patronales (Hasta 15 dependientes)",
+      "price": "Bs. 350",
+      "priceNumeric": 350,
+      "author": {
+        "name": "Luis Mendoza Albarracín",
+        "role": "Auditor Contable",
+        "city": "La Paz",
+        "avatar": "/images/stories/luis-mendoza.jpg",
+        "whatsapp": "59170330013",
+        "rating": 4.9,
+        "completed": 28
+      },
+      "deliveryTime": "3 a 4 días hábiles",
+      "revisions": "Cuadre 100% garantizado",
+      "description": "Elaboración de planilla salarial con descuentos de ley (Gestora Pública, IVA dependientes RC-IVA) y cargas sociales patronales (CNS, aguinaldo, indemnización).",
+      "highlights": [
+        "Cálculo exacto bajo la Ley General del Trabajo de Bolivia",
+        "Generación de boletas individuales de pago en PDF",
+        "Planilla lista para Ministerio de Trabajo (OVT)",
+        "Confidencialidad absoluta de sueldos"
+      ],
+      "previewColor": "rgba(var(--color-primary-rgb), 0.17)"
+    },
+    {
+      "id": "serv-13",
+      "categorySlug": "digitacion-datos",
+      "title": "Digitación y Transcripción Masiva de Documentos (Hasta 150 páginas)",
+      "price": "Bs. 150",
+      "priceNumeric": 150,
+      "author": {
+        "name": "Lucía Salazar Pinto",
+        "role": "Digitadora de Datos",
+        "city": "La Paz",
+        "avatar": "/images/profiles/lucia-salazar.jpg",
+        "whatsapp": "59174000005",
+        "rating": 5,
+        "completed": 31
+      },
+      "deliveryTime": "2 a 4 días hábiles",
+      "revisions": "Corrección ortográfica incluida",
+      "description": "Paso de documentos impresos, PDF escaneados o notas manuscritas a formato Word o Excel perfectamente estructurado, con velocidad de 80 PPM y precisión comprobada del 99%.",
+      "highlights": [
+        "Transcripción limpia sin erratas ortográficas",
+        "Tablas y formateo idéntico al documento original",
+        "Entrega en DOCX, XLSX y PDF listo para imprimir",
+        "Revisión doble antes de entrega final"
+      ],
+      "previewColor": "rgba(var(--color-primary-rgb), 0.1)"
+    },
+    {
+      "id": "serv-14",
+      "categorySlug": "digitacion-datos",
+      "title": "Limpieza y Normalización de Bases de Datos en Excel / Google Sheets",
+      "price": "Bs. 200",
+      "priceNumeric": 200,
+      "author": {
+        "name": "Juan Pablo Claros",
+        "role": "Transcriptor & Data Entry",
+        "city": "Cochabamba",
+        "avatar": "/images/stories/juan-pablo-claros.jpg",
+        "whatsapp": "59170440014",
+        "rating": 5,
+        "completed": 29
+      },
+      "deliveryTime": "2 a 3 días hábiles",
+      "revisions": "Ajuste de filtros y columnas",
+      "description": "Depuración de registros duplicados, unificación de formatos de teléfonos bolivianos (+591), corrección de nombres en mayúsculas/minúsculas y separación de direcciones.",
+      "highlights": [
+        "Eliminación del 100% de duplicados y filas vacías",
+        "Estandarización de números de contacto para WhatsApp",
+        "Fórmulas y validaciones de datos aplicadas",
+        "Resumen ejecutivo del estado de la base de datos"
+      ],
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.15)"
+    },
+    {
+      "id": "serv-15",
+      "categorySlug": "digitacion-datos",
+      "title": "Digitalización e Indexación de Archivos Físicos a PDF Buscable",
+      "price": "Bs. 180",
+      "priceNumeric": 180,
+      "author": {
+        "name": "Claudia Arce Montaño",
+        "role": "Especialista en Archivo",
+        "city": "Santa Cruz",
+        "avatar": "/images/profiles/claudia-arce.jpg",
+        "whatsapp": "59170550015",
+        "rating": 4.9,
+        "completed": 26
+      },
+      "deliveryTime": "3 a 5 días hábiles",
+      "revisions": "Revisión de legibilidad OCR",
+      "description": "Conversión de expedientes escaneados a PDFs con reconocimiento óptico de caracteres (OCR), permitiendo buscar palabras clave en segundos dentro de documentos antiguos.",
+      "highlights": [
+        "PDF con texto seleccionable y copiable",
+        "Estructura de carpetas por año, cliente o número de trámite",
+        "Optimización de peso en megabytes sin pérdida visual",
+        "Garantía de confidencialidad para archivos legales"
+      ],
+      "previewColor": "rgba(var(--color-primary-rgb), 0.16)"
+    },
+    {
+      "id": "serv-16",
+      "categorySlug": "digitacion-datos",
+      "title": "Captura Masiva de Formularios e Inventarios Comerciales",
+      "price": "Bs. 220",
+      "priceNumeric": 220,
+      "author": {
+        "name": "María René Morales",
+        "role": "Digitadora Documental",
+        "city": "Cochabamba",
+        "avatar": "/images/stories/maria-rene-morales.jpg",
+        "whatsapp": "59170660016",
+        "rating": 5,
+        "completed": 23
+      },
+      "deliveryTime": "3 a 4 días hábiles",
+      "revisions": "Validación de sumatorias",
+      "description": "Carga rápida de planillas de inventario físico, encuestas en papel o listas de pedidos a tu sistema ERP o planillas maestras de Excel.",
+      "highlights": [
+        "Verificación de códigos de producto (SKU) y cantidades",
+        "Control de totales contra boletas físicas",
+        "Entrega organizada con columnas protegidas",
+        "Rapidez y discreción con datos comerciales"
+      ],
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.17)"
+    },
+    {
+      "id": "serv-17",
+      "categorySlug": "redes-sociales",
+      "title": "Gestión Mensual de Redes Sociales: 16 Publicaciones + Atención por Chat",
+      "price": "Bs. 480",
+      "priceNumeric": 480,
+      "author": {
+        "name": "Claudia Arce Montaño",
+        "role": "Community Manager",
+        "city": "Santa Cruz",
+        "avatar": "/images/profiles/claudia-arce.jpg",
+        "whatsapp": "59170550015",
+        "rating": 5,
+        "completed": 22
+      },
+      "deliveryTime": "Mes completo (30 días)",
+      "revisions": "Aprobación semanal de contenidos",
+      "description": "Planificación estratégica mensual para tu marca: 16 artes/carruseles programados, redacción de textos (copys), hashtags segmentados y respuesta inmediata por chat/mensajería a clientes interesados.",
+      "highlights": [
+        "16 publicaciones en alta resolución con copies vendedores",
+        "Calendario mensual entregado con 7 días de anticipación",
+        "Atención de consultas por chat de Facebook e Instagram",
+        "Reporte mensual de métricas y alcance"
+      ],
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.15)"
+    },
+    {
+      "id": "serv-18",
+      "categorySlug": "redes-sociales",
+      "title": "Parrilla Mensual de Contenido con 20 Ideas y Guiones Escritos",
+      "price": "Bs. 210",
+      "priceNumeric": 210,
+      "author": {
+        "name": "Melissa Arteaga Tórrez",
+        "role": "Creadora de Contenido",
+        "city": "Cochabamba",
+        "avatar": "/images/profiles/melissa-arteaga.jpg",
+        "whatsapp": "59170770017",
+        "rating": 4.9,
+        "completed": 19
+      },
+      "deliveryTime": "4 días hábiles",
+      "revisions": "2 rondas de ajustes de temas",
+      "description": "Guía completa para tu mes: 20 ideas innovadoras de Reels, carruseles y posts con ganchos iniciales (hooks), textos completos y llamados a la acción (CTA).",
+      "highlights": [
+        "Guiones estructurados listos para grabar en 60 segundos",
+        "Ideas alineadas a fechas comerciales de Bolivia",
+        "Sugerencias de audios en tendencia y formato visual",
+        "Plantilla en Notion o Google Docs para tu equipo"
+      ],
+      "previewColor": "rgba(var(--color-primary-rgb), 0.18)"
+    },
+    {
+      "id": "serv-19",
+      "categorySlug": "redes-sociales",
+      "title": "Diseño de 10 Carruseles Educativos de Alto Alcance para Instagram",
+      "price": "Bs. 260",
+      "priceNumeric": 260,
+      "author": {
+        "name": "Valeria Morales Terán",
+        "role": "Diseñadora Gráfica",
+        "city": "Cochabamba",
+        "avatar": "/images/profiles/valeria-morales.jpg",
+        "whatsapp": "59170000001",
+        "rating": 5,
+        "completed": 25
+      },
+      "deliveryTime": "5 días hábiles",
+      "revisions": "3 revisiones",
+      "description": "10 carruseles deslizantes (de 4 a 6 diapositivas cada uno) diseñados para maximizar guardados y compartidos en Instagram y LinkedIn con tu estilo de marca.",
+      "highlights": [
+        "Diagramación continua de portada a contraportada",
+        "Textos legibles y sintetizados con alta retención",
+        "Exportación en JPG/PNG a 1080x1350px (vertical óptimo)",
+        "Incluye archivos editables en Figma"
+      ],
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.17)"
+    },
+    {
+      "id": "serv-20",
+      "categorySlug": "redes-sociales",
+      "title": "Moderación y Respuesta de Mensajes por WhatsApp y DMs (1 mes)",
+      "price": "Bs. 350",
+      "priceNumeric": 350,
+      "author": {
+        "name": "Mateo Peñaranda Alarcón",
+        "role": "Gestor de Mensajería",
+        "city": "Cochabamba",
+        "avatar": "/images/profiles/mateo-penaranda.jpg",
+        "whatsapp": "59173000004",
+        "rating": 4.9,
+        "completed": 20
+      },
+      "deliveryTime": "Mensual (Lunes a Sábado)",
+      "revisions": "Respuestas según manual de marca",
+      "description": "Atención cálida, rápida y por escrito a todos los prospectos que escriben a tus redes sociales o WhatsApp Business. Cierre de ventas y envío de catálogos.",
+      "highlights": [
+        "Tiempo de respuesta promedio menor a 10 minutos",
+        "Respuestas predefinidas y personalizadas por chat",
+        "Registro de contactos calificados en hoja compartida",
+        "100% comunicación escrita sin barreras"
+      ],
+      "previewColor": "rgba(var(--color-primary-rgb), 0.15)"
+    },
+    {
+      "id": "serv-21",
+      "categorySlug": "desarrollo-web",
+      "title": "Creación de Landing Page Moderna de Alta Conversión y Accesible",
+      "price": "Bs. 420",
+      "priceNumeric": 420,
+      "author": {
+        "name": "Rodrigo Vargas Choque",
+        "role": "Desarrollador Frontend",
+        "city": "Cochabamba",
+        "avatar": "/images/profiles/rodrigo-vargas.jpg",
+        "whatsapp": "59179000010",
+        "rating": 5,
+        "completed": 18
+      },
+      "deliveryTime": "5 a 7 días hábiles",
+      "revisions": "3 revisiones incluidas",
+      "description": "Página de aterrizaje optimizada para captar clientes en Bolivia. Botón directo a WhatsApp, formulario de contacto, velocidad ultrarrápida y diseño responsive adaptado a cualquier celular.",
+      "highlights": [
+        "Puntuación 95+ en Google PageSpeed Insights",
+        "Integración de botón flotante de WhatsApp",
+        "Formulario conectado a correo electrónico o Sheets",
+        "Dominio y hosting guiados paso a paso"
+      ],
+      "previewColor": "rgba(var(--color-primary-rgb), 0.18)"
+    },
+    {
+      "id": "serv-22",
+      "categorySlug": "desarrollo-web",
+      "title": "Desarrollo de Sitio Web Corporativo en WordPress (5 Secciones)",
+      "price": "Bs. 650",
+      "priceNumeric": 650,
+      "author": {
+        "name": "Patricia Soliz Guzmán",
+        "role": "Desarrolladora Web",
+        "city": "La Paz",
+        "avatar": "/images/profiles/patricia-soliz.jpg",
+        "whatsapp": "59170880018",
+        "rating": 5,
+        "completed": 26
+      },
+      "deliveryTime": "7 a 10 días hábiles",
+      "revisions": "Revisiones ilimitadas durante el desarrollo",
+      "description": "Sitio web completo para tu empresa: Inicio, Nosotros, Servicios, Casos de Éxito y Contacto. Autoadministrable para que puedas cambiar textos e imágenes cuando quieras.",
+      "highlights": [
+        "Panel de administración fácil de usar sin saber programar",
+        "Certificado SSL (https://) y seguridad antispam",
+        "Optimización SEO básica para Google Bolivia",
+        "Manual en video de 15 minutos enseñando a editar el contenido"
+      ],
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.2)"
+    },
+    {
+      "id": "serv-23",
+      "categorySlug": "desarrollo-web",
+      "title": "Optimización de Velocidad y Auditoría de Accesibilidad Web WCAG",
+      "price": "Bs. 280",
+      "priceNumeric": 280,
+      "author": {
+        "name": "Carlos Mendoza Villarroel",
+        "role": "Especialista en Accesibilidad",
+        "city": "Santa Cruz",
+        "avatar": "/images/profiles/carlos-mendoza.jpg",
+        "whatsapp": "59170990019",
+        "rating": 4.9,
+        "completed": 21
+      },
+      "deliveryTime": "3 a 4 días hábiles",
+      "revisions": "Informe técnico + remediación",
+      "description": "Evaluación exhaustiva de contrastes de color, navegación por teclado y optimización de código para que tu web cumpla normas de accesibilidad y cargue en menos de 2 segundos.",
+      "highlights": [
+        "Corrección de ratios de contraste tipográfico",
+        "Compresión de imágenes a formato WebP moderno",
+        "Informe con métricas Core Web Vitals antes y después",
+        "Cumplimiento con estándares internacionales WCAG 2.1"
+      ],
+      "previewColor": "rgba(var(--color-primary-rgb), 0.15)"
+    },
+    {
+      "id": "serv-24",
+      "categorySlug": "desarrollo-web",
+      "title": "Maquetación Responsive HTML5/CSS3 desde Diseño de Figma",
+      "price": "Bs. 320",
+      "priceNumeric": 320,
+      "author": {
+        "name": "Alex Quispe Mamani",
+        "role": "Maquetador Frontend",
+        "city": "La Paz",
+        "avatar": "/images/profiles/alex-quispe.jpg",
+        "whatsapp": "59177000008",
+        "rating": 4.9,
+        "completed": 19
+      },
+      "deliveryTime": "4 días hábiles",
+      "revisions": "Ajustes de responsividad incluidos",
+      "description": "Traducción fiel de tus diseños de Figma a código limpio, semántico, accesible y ligero, garantizando total fidelidad visual tanto en móviles como en monitores 4K.",
+      "highlights": [
+        "Código HTML5 y CSS puro sin dependencias pesadas",
+        "Cero saltos de diseño en teléfonos pequeños (360px a 1440px)",
+        "Animaciones sutiles y micro-interacciones suaves",
+        "Listo para integrar a cualquier backend o CMS"
+      ],
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.16)"
+    },
+    {
+      "id": "serv-25",
+      "categorySlug": "ilustracion-arte",
+      "title": "Ilustración de Mascota o Personaje Corporativo de Marca",
+      "price": "Bs. 290",
+      "priceNumeric": 290,
+      "author": {
+        "name": "Andrea Torrico Suárez",
+        "role": "Ilustradora Digital",
+        "city": "Santa Cruz",
+        "avatar": "/images/profiles/andrea-torrico.jpg",
+        "whatsapp": "59175000006",
+        "rating": 5,
+        "completed": 23
+      },
+      "deliveryTime": "5 a 7 días hábiles",
+      "revisions": "3 etapas: boceto, color y detalle",
+      "description": "Creación de un personaje único y recordable que represente los valores de tu negocio. Se entrega en 3 posturas diferentes listo para publicidad, web y uniformes.",
+      "highlights": [
+        "3 poses diferentes (saludo, acción y señalando)",
+        "Archivos vectoriales SVG, AI y PNG en alta resolución",
+        "Cesión completa de derechos de uso comercial",
+        "Guía básica de aplicación del personaje"
+      ],
+      "previewColor": "rgba(var(--color-primary-rgb), 0.19)"
+    },
+    {
+      "id": "serv-26",
+      "categorySlug": "ilustracion-arte",
+      "title": "Pack de 15 Iconos Vectoriales Personalizados para Web y App",
+      "price": "Bs. 170",
+      "priceNumeric": 170,
+      "author": {
+        "name": "Melissa Arteaga Tórrez",
+        "role": "Ilustradora Vectorial",
+        "city": "Cochabamba",
+        "avatar": "/images/profiles/melissa-arteaga.jpg",
+        "whatsapp": "59170770017",
+        "rating": 4.9,
+        "completed": 17
+      },
+      "deliveryTime": "3 a 4 días hábiles",
+      "revisions": "2 revisiones",
+      "description": "Set exclusivo de iconos diseñados específicamente para las funciones de tu negocio o aplicación web, con trazos uniformes y estilo coherente con tu marca.",
+      "highlights": [
+        "15 iconos en formato SVG escalable y PNG transparente",
+        "Grosor de línea y radio de esquinas unificado",
+        "Colores primarios y secundarios de tu negocio",
+        "Listo para subir a Figma o desarrollo web"
+      ],
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.14)"
+    },
+    {
+      "id": "serv-27",
+      "categorySlug": "ilustracion-arte",
+      "title": "Diseño de Infografía Educativa y Visual de Gran Formato",
+      "price": "Bs. 240",
+      "priceNumeric": 240,
+      "author": {
+        "name": "Marcelo Paz Céspedes",
+        "role": "Ilustrador & Diseñador",
+        "city": "La Paz",
+        "avatar": "/images/profiles/diego-siles.jpg",
+        "whatsapp": "59176000007",
+        "rating": 5,
+        "completed": 20
+      },
+      "deliveryTime": "4 a 5 días hábiles",
+      "revisions": "Revisión de contenidos y textos",
+      "description": "Transformación de informes técnicos o manuales educativos en infografías ilustradas atractivas, ideales para redes sociales, impresiones en afiche o memorias.",
+      "highlights": [
+        "Síntesis visual de datos y procesos paso a paso",
+        "Ilustraciones y gráficos conceptuales a medida",
+        "Versión vertical para celular y horizontal para folleto",
+        "Entrega en PDF de prensa y PNG de alta resolución"
+      ],
+      "previewColor": "rgba(var(--color-primary-rgb), 0.17)"
+    },
+    {
+      "id": "serv-28",
+      "categorySlug": "ilustracion-arte",
+      "title": "Pack de Stickers Digitales Personalizados para WhatsApp y Telegram",
+      "price": "Bs. 160",
+      "priceNumeric": 160,
+      "author": {
+        "name": "Gabriela Choque Flores",
+        "role": "Artista Digital",
+        "city": "Santa Cruz",
+        "avatar": "/images/profiles/gabriela-choque.jpg",
+        "whatsapp": "59170220012",
+        "rating": 4.9,
+        "completed": 18
+      },
+      "deliveryTime": "3 días hábiles",
+      "revisions": "Ajuste de expresiones y textos",
+      "description": "12 stickers expresivos con frases típicas y mensajes comerciales de tu empresa, listos para instalar con un solo clic y usar en atención al cliente.",
+      "highlights": [
+        "12 stickers en formato WebP con fondo transparente",
+        "Enlace directo de instalación para WhatsApp y Telegram",
+        "Frases bolivianas y de cortesía comercial a medida",
+        "Diseño divertido que humaniza tu negocio"
+      ],
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.16)"
+    },
+    {
+      "id": "serv-29",
+      "categorySlug": "edicion-video",
+      "title": "Pack de 5 Reels / TikToks con Subtítulos Dinámicos y Efectos",
+      "price": "Bs. 250",
+      "priceNumeric": 250,
+      "author": {
+        "name": "Sergio Mamani Calle",
+        "role": "Editor Audiovisual",
+        "city": "La Paz",
+        "avatar": "/images/profiles/sergio-mamani.jpg",
+        "whatsapp": "59170011020",
+        "rating": 5,
+        "completed": 27
+      },
+      "deliveryTime": "4 a 5 días hábiles",
+      "revisions": "2 revisiones por clip",
+      "description": "Edición profesional de 5 videos verticales de hasta 60 segundos: subtítulos animados con tipografía destacada, cortes dinámicos sin silencios, efectos sonoros y música libre de derechos.",
+      "highlights": [
+        "Subtítulos accesibles sincronizados palabra por palabra",
+        "Efectos visuales modernos (zoom, cortes rápidos, emojis)",
+        "Formato 9:16 optimizado en 1080x1920 Full HD",
+        "Música y efectos de sonido con licencia incluida"
+      ],
+      "previewColor": "rgba(var(--color-primary-rgb), 0.18)"
+    },
+    {
+      "id": "serv-30",
+      "categorySlug": "edicion-video",
+      "title": "Subtitulado Accesible y Sincronizado para Videos de Hasta 15 Minutos",
+      "price": "Bs. 140",
+      "priceNumeric": 140,
+      "author": {
+        "name": "Sergio Mamani Calle",
+        "role": "Editor Audiovisual",
+        "city": "La Paz",
+        "avatar": "/images/profiles/sergio-mamani.jpg",
+        "whatsapp": "59170011020",
+        "rating": 5,
+        "completed": 27
+      },
+      "deliveryTime": "2 días hábiles",
+      "revisions": "Corrección ortográfica al 100%",
+      "description": "Subtitulado estandarizado para conferencias, cursos online o videos institucionales. Generación de archivos de subtítulos abiertos (incrustados) o cerrados (.SRT / .VTT).",
+      "highlights": [
+        "Ortografía y puntuación rigurosamente revisadas",
+        "Archivo .SRT compatible con YouTube, LinkedIn y Facebook",
+        "Versión de video con subtítulos quemados en alta legibilidad",
+        "Cumplimiento con pautas de accesibilidad audiovisual"
+      ],
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.15)"
+    },
+    {
+      "id": "serv-31",
+      "categorySlug": "edicion-video",
+      "title": "Edición Completa de Video Institucional o Entrevista (Hasta 5 Min)",
+      "price": "Bs. 380",
+      "priceNumeric": 380,
+      "author": {
+        "name": "Mateo Peñaranda Alarcón",
+        "role": "Montajista de Video",
+        "city": "Cochabamba",
+        "avatar": "/images/profiles/mateo-penaranda.jpg",
+        "whatsapp": "59173000004",
+        "rating": 5,
+        "completed": 21
+      },
+      "deliveryTime": "5 a 6 días hábiles",
+      "revisions": "3 rondas de edición",
+      "description": "Montaje narrativo de material en bruto: selección de mejores tomas, sincronización de audio, planos de apoyo (b-roll), rotulación de entrevistados y corrección de color cinemática.",
+      "highlights": [
+        "Tratamiento estético y corrección de color",
+        "Generadores de tercios inferiores (nombres y cargos) animados",
+        "Mezcla de sonido balanceada con música de fondo",
+        "Exportación en 4K o 1080p para presentaciones o YouTube"
+      ],
+      "previewColor": "rgba(var(--color-primary-rgb), 0.16)"
+    },
+    {
+      "id": "serv-32",
+      "categorySlug": "edicion-video",
+      "title": "Creación de Video Promocional Animado para Redes Sociales (30 seg)",
+      "price": "Bs. 320",
+      "priceNumeric": 320,
+      "author": {
+        "name": "Diego Siles Gutiérrez",
+        "role": "Creador de Contenido",
+        "city": "Cochabamba",
+        "avatar": "/images/profiles/carlos-mendoza.jpg",
+        "whatsapp": "59178000009",
+        "rating": 4.9,
+        "completed": 23
+      },
+      "deliveryTime": "3 a 4 días hábiles",
+      "revisions": "2 revisiones",
+      "description": "Spot dinámico de 30 segundos combinando fotos de tus productos, textos animados impactantes y música enérgica para campañas publicitarias de Facebook e Instagram Ads.",
+      "highlights": [
+        "Estructura comercial: Gancho, Problema, Solución y Llamado a la Acción",
+        "Animación fluida de textos y elementos gráficos de tu marca",
+        "Entrega en formato cuadrado (1:1) y vertical (9:16)",
+        "Orientado a generar clics y mensajes de compra"
+      ],
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.19)"
+    }
+  ],
+  "autonomos": [
+    {
+      "id": "aut-1",
+      "slug": "valeria-morales-teran",
+      "categorySlug": "diseno-grafico",
+      "name": "Valeria Morales Terán",
+      "role": "Diseñadora Gráfica & Branding",
+      "city": "Cochabamba",
+      "avatar": "/images/profiles/valeria-morales.jpg",
+      "whatsapp": "59170000001",
+      "hourlyRate": "Bs. 45 / hora",
+      "availability": "Disponible inmediata (Part-time / Full-time)",
+      "experienceYears": "4 años",
+      "completedJobs": 16,
+      "rating": 5,
+      "bio": "Diseñadora gráfica con 4 años de experiencia en branding corporativo, diseño editorial y piezas para marketing digital. Trabajo con precisión cromática y comunicación 100% fluida por WhatsApp, Slack y Notion.",
+      "skills": [
+        "Adobe Illustrator",
+        "Photoshop",
+        "Figma",
+        "Branding",
+        "Tipografía",
+        "Diseño Editorial"
+      ],
+      "portfolio": [
+        {
+          "title": "Identidad Visual Café Altura",
+          "category": "Branding",
+          "color": "rgba(var(--color-primary-rgb), 0.2)"
+        },
+        {
+          "title": "Packaging Cosmética Natural",
+          "category": "Packaging",
+          "color": "rgba(var(--color-primary-dark-rgb), 0.2)"
+        },
+        {
+          "title": "Manual de Marca Fintech Cochabamba",
+          "category": "Manual de Marca",
+          "color": "rgba(var(--color-primary-rgb), 0.15)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Rodrigo Zeballos",
+          "company": "Nodo Creativo",
+          "rating": 5,
+          "comment": "Valeria entregó el manual de marca antes del plazo. La comunicación por WhatsApp fue impecable.",
+          "date": "Enero 2026"
+        },
+        {
+          "client": "María Elena Vaca",
+          "company": "BioSalud Bolivia",
+          "rating": 5,
+          "comment": "Excelente atención al detalle. Adaptó todas nuestras observaciones en menos de 24 horas.",
+          "date": "Diciembre 2025"
+        }
+      ]
+    },
+    {
+      "id": "aut-2",
+      "slug": "mateo-penaranda-alarcon",
+      "categorySlug": "diseno-grafico",
+      "name": "Mateo Peñaranda Alarcón",
+      "role": "Diseñador Gráfico & Piezas Digitales",
+      "city": "Cochabamba",
+      "avatar": "/images/profiles/mateo-penaranda.jpg",
+      "whatsapp": "59173000004",
+      "hourlyRate": "Bs. 40 / hora",
+      "availability": "Disponible (Remoto)",
+      "experienceYears": "3 años",
+      "completedJobs": 24,
+      "rating": 4.9,
+      "bio": "Especialista en creación de material gráfico de alto impacto para negocios locales y campañas digitales. Enfoque moderno y rápido retorno con comunicación 100% escrita.",
+      "skills": [
+        "Photoshop",
+        "Illustrator",
+        "Canva Pro",
+        "Diseño Social",
+        "Retoque Fotográfico"
+      ],
+      "portfolio": [
+        {
+          "title": "Campaña Anual Gastronomía Criolla",
+          "category": "Publicidad",
+          "color": "rgba(var(--color-primary-rgb), 0.18)"
+        },
+        {
+          "title": "Kits de Bienvenida para Startups",
+          "category": "Merchandising",
+          "color": "rgba(var(--color-primary-dark-rgb), 0.18)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Carlos Fuentes",
+          "company": "Sabores del Valle",
+          "rating": 5,
+          "comment": "Increíble velocidad y muy receptivo por chat.",
+          "date": "Febrero 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-3",
+      "slug": "andrea-torrico-suarez",
+      "categorySlug": "diseno-grafico",
+      "name": "Andrea Torrico Suárez",
+      "role": "Diseñadora de Identidad & Packaging",
+      "city": "Santa Cruz",
+      "avatar": "/images/profiles/andrea-torrico.jpg",
+      "whatsapp": "59175000006",
+      "hourlyRate": "Bs. 50 / hora",
+      "availability": "Disponible (Remoto)",
+      "experienceYears": "5 años",
+      "completedJobs": 21,
+      "rating": 5,
+      "bio": "Diseñadora senior con pasión por el empaque sostenible y la tipografía editorial limpia. Certificada en producción gráfica para imprenta digital.",
+      "skills": [
+        "InDesign",
+        "Illustrator",
+        "Mockups 3D",
+        "Packaging",
+        "Identidad Corporativa"
+      ],
+      "portfolio": [
+        {
+          "title": "Empaque Cacao Orgánico Madidi",
+          "category": "Packaging",
+          "color": "rgba(var(--color-primary-rgb), 0.2)"
+        },
+        {
+          "title": "Catálogo Anual Ropa Andina",
+          "category": "Editorial",
+          "color": "rgba(var(--color-primary-dark-rgb), 0.15)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Patricia Méndez",
+          "company": "Madidi Naturals",
+          "rating": 5,
+          "comment": "Nuestras ventas subieron con las nuevas etiquetas de Andrea. Trato inmejorable.",
+          "date": "Marzo 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-4",
+      "slug": "marcelo-paz-cespedes",
+      "categorySlug": "diseno-grafico",
+      "name": "Marcelo Paz Céspedes",
+      "role": "Diseñador Gráfico & Folletería",
+      "city": "La Paz",
+      "avatar": "/images/profiles/diego-siles.jpg",
+      "whatsapp": "59176000007",
+      "hourlyRate": "Bs. 42 / hora",
+      "availability": "Disponible Inmediata",
+      "experienceYears": "3 años",
+      "completedJobs": 18,
+      "rating": 4.9,
+      "bio": "Diseñador gráfico enfocado en comunicación institucional, folletería, memorias anuales y piezas vectoriales precisas. Gran disciplina de trabajo.",
+      "skills": [
+        "Vector",
+        "Adobe Acrobat Pro",
+        "Illustrator",
+        "Infografías",
+        "Manuales"
+      ],
+      "portfolio": [
+        {
+          "title": "Memoria Anual Fundación Progreso",
+          "category": "Editorial",
+          "color": "rgba(var(--color-primary-rgb), 0.15)"
+        },
+        {
+          "title": "Trípticos Sanitarios Hospitalarios",
+          "category": "Informativo",
+          "color": "rgba(var(--color-primary-dark-rgb), 0.2)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Lic. Javier Orozco",
+          "company": "Fundación Progreso",
+          "rating": 5,
+          "comment": "Puntualidad absoluta y diagramación impecable.",
+          "date": "Enero 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-5",
+      "slug": "camila-rojas-claure",
+      "categorySlug": "sistemas-ti",
+      "name": "Camila Rojas Claure",
+      "role": "Técnica de Soporte TI & Helpdesk",
+      "city": "Santa Cruz",
+      "avatar": "/images/profiles/camila-rojas.jpg",
+      "whatsapp": "59171000002",
+      "hourlyRate": "Bs. 40 / hora",
+      "availability": "Disponible (Remoto o Híbrido)",
+      "experienceYears": "3 años",
+      "completedJobs": 19,
+      "rating": 5,
+      "bio": "Técnica en sistemas con certificación de soporte de primer nivel y digitación de 75 PPM. Atiendo tickets de soporte técnico, resolución de incidencias en Windows y gestión documental 100% por chat.",
+      "skills": [
+        "Soporte Técnico Nivel 1",
+        "Helpdesk por Chat",
+        "Slack",
+        "Google Workspace",
+        "Windows Server",
+        "Gestión de Tickets"
+      ],
+      "portfolio": [
+        {
+          "title": "Base de Conocimiento Helpdesk Remoto",
+          "category": "Documentación TI",
+          "color": "rgba(var(--color-primary-rgb), 0.18)"
+        },
+        {
+          "title": "Protocolo de Mantenimiento de Equipos",
+          "category": "Soporte Técnico",
+          "color": "rgba(var(--color-primary-dark-rgb), 0.2)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Carlos Monasterio",
+          "company": "EMTech Soluciones",
+          "rating": 5,
+          "comment": "Camila resolvió más de 180 tickets en su primer mes sin una sola queja. Excelente profesional.",
+          "date": "Febrero 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-6",
+      "slug": "alex-quispe-mamani",
+      "categorySlug": "sistemas-ti",
+      "name": "Alex Quispe Mamani",
+      "role": "Administrador de Sistemas Junior",
+      "city": "La Paz",
+      "avatar": "/images/profiles/alex-quispe.jpg",
+      "whatsapp": "59177000008",
+      "hourlyRate": "Bs. 48 / hora",
+      "availability": "Disponible (Remoto)",
+      "experienceYears": "4 años",
+      "completedJobs": 22,
+      "rating": 4.9,
+      "bio": "Administrador de sistemas enfocado en entornos Linux, servidores Windows y configuración de copias de seguridad automatizadas. Coordinación 100% escrita por Slack o Discord.",
+      "skills": [
+        "Linux Ubuntu Server",
+        "Backups Cloud",
+        "Redes LAN / Mikrotik",
+        "AnyDesk",
+        "PowerShell"
+      ],
+      "portfolio": [
+        {
+          "title": "Script de Copia de Seguridad Diaria",
+          "category": "Automatización",
+          "color": "rgba(var(--color-primary-rgb), 0.2)"
+        },
+        {
+          "title": "Montaje de Servidor NAS de Oficina",
+          "category": "Infraestructura",
+          "color": "rgba(var(--color-primary-dark-rgb), 0.15)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Hernán Téllez",
+          "company": "Logística Andina",
+          "rating": 5,
+          "comment": "Alex dejó nuestros servidores blindados y configuró alertas automáticas por correo.",
+          "date": "Enero 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-7",
+      "slug": "diego-siles-gutierrez",
+      "categorySlug": "sistemas-ti",
+      "name": "Diego Siles Gutiérrez",
+      "role": "Especialista en Redes & Soporte Técnico",
+      "city": "Cochabamba",
+      "avatar": "/images/profiles/carlos-mendoza.jpg",
+      "whatsapp": "59178000009",
+      "hourlyRate": "Bs. 45 / hora",
+      "availability": "Disponible (Remoto / Presencial)",
+      "experienceYears": "5 años",
+      "completedJobs": 27,
+      "rating": 5,
+      "bio": "Especialista en resolución de fallas de conectividad, configuración de routers comerciales, soporte preventivo de hardware y limpieza física/lógica de equipos de computación.",
+      "skills": [
+        "Cableado Estructurado",
+        "Mantenimiento Preventivo",
+        "Routers Wi-Fi",
+        "Windows 11",
+        "Hardware Diagnostics"
+      ],
+      "portfolio": [
+        {
+          "title": "Migración de Red Corporativa 20 Puestos",
+          "category": "Redes",
+          "color": "rgba(var(--color-primary-rgb), 0.16)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Ing. Ramiro Silva",
+          "company": "Distribuidora El Valle",
+          "rating": 5,
+          "comment": "Diego es muy metódico. Dejó todo el cableado y la red impecable.",
+          "date": "Febrero 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-8",
+      "slug": "rodrigo-vargas-choque",
+      "categorySlug": "sistemas-ti",
+      "name": "Rodrigo Vargas Choque",
+      "role": "Técnico de Mantenimiento & Soporte PC",
+      "city": "Cochabamba",
+      "avatar": "/images/profiles/rodrigo-vargas.jpg",
+      "whatsapp": "59179000010",
+      "hourlyRate": "Bs. 38 / hora",
+      "availability": "Disponible Inmediata",
+      "experienceYears": "3 años",
+      "completedJobs": 17,
+      "rating": 4.9,
+      "bio": "Técnico informático experto en formateo, clonación de discos SSD, optimización de velocidad de Windows y diagnóstico de componentes por teleasistencia.",
+      "skills": [
+        "Clonación SSD",
+        "Windows 10/11",
+        "Instalación de Suites de Oficina",
+        "Soporte Remoto",
+        "Antivirus"
+      ],
+      "portfolio": [
+        {
+          "title": "Plan de Mantenimiento Preventivo para Call Center",
+          "category": "Hardware/Software",
+          "color": "rgba(var(--color-primary-dark-rgb), 0.18)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Gabriela Suárez",
+          "company": "Centro Médico Aurora",
+          "rating": 5,
+          "comment": "Recuperó 8 computadoras que estaban lentas sin perder ningún dato.",
+          "date": "Marzo 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-9",
+      "slug": "javier-mercado-rocha",
+      "categorySlug": "contabilidad-finanzas",
+      "name": "Javier Mercado Rocha",
+      "role": "Auxiliar Contable & Conciliación",
+      "city": "La Paz",
+      "avatar": "/images/profiles/javier-mercado.jpg",
+      "whatsapp": "59172000003",
+      "hourlyRate": "Bs. 50 / hora",
+      "availability": "Disponible (Remoto)",
+      "experienceYears": "4 años",
+      "completedJobs": 14,
+      "rating": 4.9,
+      "bio": "Contador con amplia experiencia en concilaciones bancarias, facturación SIAT boliviana y software contable ERP. Trabajo con absoluta confidencialidad y rigor numérico.",
+      "skills": [
+        "Microsoft Excel",
+        "Facturación SIAT",
+        "Conciliación Bancaria",
+        "SAP Básico",
+        "Libros de Compra y Venta"
+      ],
+      "portfolio": [
+        {
+          "title": "Plantilla Automatizada de Flujo de Caja",
+          "category": "Finanzas",
+          "color": "rgba(var(--color-primary-rgb), 0.2)"
+        },
+        {
+          "title": "Auditoría de Conciliaciones Anuales",
+          "category": "Contabilidad",
+          "color": "rgba(var(--color-primary-dark-rgb), 0.18)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Beatriz Quispe",
+          "company": "Importadora Andina",
+          "rating": 5,
+          "comment": "Nos cuadró 6 meses de facturación rezagada en una sola semana. Altamente recomendado.",
+          "date": "Enero 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-10",
+      "slug": "fernando-gutierrez-rios",
+      "categorySlug": "contabilidad-finanzas",
+      "name": "Fernando Gutiérrez Rios",
+      "role": "Contador General & Asistente Tributario",
+      "city": "Cochabamba",
+      "avatar": "/images/profiles/fernando-gutierrez.jpg",
+      "whatsapp": "59170110011",
+      "hourlyRate": "Bs. 55 / hora",
+      "availability": "Disponible Inmediata",
+      "experienceYears": "6 años",
+      "completedJobs": 33,
+      "rating": 5,
+      "bio": "Profesional contable con dominio de la normativa impositiva boliviana (IUE, IT, IVA), bancarización y preparación de estados financieros para auditoría externa.",
+      "skills": [
+        "Estados Financieros",
+        "SIAT en Línea",
+        "Bancarización",
+        "Excel Financiero",
+        "Declaraciones Juradas"
+      ],
+      "portfolio": [
+        {
+          "title": "Cierre Contable Anual y Formulario 500",
+          "category": "Tributario",
+          "color": "rgba(var(--color-primary-rgb), 0.18)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Lic. Carlos Arze",
+          "company": "Inversiones Paitití",
+          "rating": 5,
+          "comment": "Cero observaciones del SIN en los últimos 2 años gracias a Fernando.",
+          "date": "Febrero 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-11",
+      "slug": "gabriela-choque-flores",
+      "categorySlug": "contabilidad-finanzas",
+      "name": "Gabriela Choque Flores",
+      "role": "Especialista en Facturación SIAT",
+      "city": "Santa Cruz",
+      "avatar": "/images/profiles/gabriela-choque.jpg",
+      "whatsapp": "59170220012",
+      "hourlyRate": "Bs. 45 / hora",
+      "availability": "Disponible (Remoto)",
+      "experienceYears": "3 años",
+      "completedJobs": 25,
+      "rating": 5,
+      "bio": "Especialista en emisión masiva y validación de facturas electrónicas computarizadas en línea con el SIAT. Cuidado riguroso de NITs y códigos de autorización.",
+      "skills": [
+        "SIAT Facturación",
+        "Libro de Ventas IVA",
+        "Conciliación de Cajas",
+        "Excel Tablas Dinámicas"
+      ],
+      "portfolio": [
+        {
+          "title": "Automatización de Registro de Facturas",
+          "category": "Facturación",
+          "color": "rgba(var(--color-primary-dark-rgb), 0.16)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Mariela Justiniano",
+          "company": "Comercial Santa Cruz",
+          "rating": 5,
+          "comment": "Súper detallista y rápida. No comete ningún error de tipeo con los NITs.",
+          "date": "Marzo 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-12",
+      "slug": "luis-mendoza-albarracin",
+      "categorySlug": "contabilidad-finanzas",
+      "name": "Luis Mendoza Albarracín",
+      "role": "Auditor de Cuentas & Planillas Salariales",
+      "city": "La Paz",
+      "avatar": "/images/stories/luis-mendoza.jpg",
+      "whatsapp": "59170330013",
+      "hourlyRate": "Bs. 52 / hora",
+      "availability": "Disponible (Remoto)",
+      "experienceYears": "5 años",
+      "completedJobs": 28,
+      "rating": 4.9,
+      "bio": "Experto en elaboración de planillas de sueldos según Ley General del Trabajo, aportes a Gestora Pública, cajas de salud y liquidaciones laborales por escrito.",
+      "skills": [
+        "Planillas Salariales",
+        "Gestora Pública",
+        "Caja Nacional de Salud",
+        "Excel Macro",
+        "Finiquitos"
+      ],
+      "portfolio": [
+        {
+          "title": "Sistema Parametrizado de Planilla Mensual",
+          "category": "Planillas",
+          "color": "rgba(var(--color-primary-rgb), 0.2)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Lic. Hugo Pinto",
+          "company": "Constructora Illimani",
+          "rating": 5,
+          "comment": "Excelente profesional. Maneja toda la planilla sin retrasos cada fin de mes.",
+          "date": "Enero 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-13",
+      "slug": "lucia-salazar-pinto",
+      "categorySlug": "digitacion-datos",
+      "name": "Lucía Salazar Pinto",
+      "role": "Digitadora de Datos Senior",
+      "city": "La Paz",
+      "avatar": "/images/profiles/lucia-salazar.jpg",
+      "whatsapp": "59174000005",
+      "hourlyRate": "Bs. 35 / hora",
+      "availability": "Disponible Inmediata",
+      "experienceYears": "5 años",
+      "completedJobs": 31,
+      "rating": 5,
+      "bio": "Especialista en captura y procesamiento masivo de datos con velocidad certificada de 80 palabras por minuto. Gran capacidad de concentración y cero distracciones.",
+      "skills": [
+        "Digitación 80 PPM",
+        "Excel Avanzado",
+        "Captura de Datos",
+        "Transcripción de Audio Escrito",
+        "Gestión Documental"
+      ],
+      "portfolio": [
+        {
+          "title": "Migración de 25,000 Fichas Médicas a Base Digital",
+          "category": "Data Entry",
+          "color": "rgba(var(--color-primary-rgb), 0.16)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Dr. Fernando Morales",
+          "company": "Clínica San Gabriel",
+          "rating": 5,
+          "comment": "Rápida, impecable y muy ordenada con los archivos confidenciales.",
+          "date": "Febrero 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-14",
+      "slug": "juan-pablo-claros",
+      "categorySlug": "digitacion-datos",
+      "name": "Juan Pablo Claros",
+      "role": "Transcriptor & Operador de Entrada de Datos",
+      "city": "Cochabamba",
+      "avatar": "/images/stories/juan-pablo-claros.jpg",
+      "whatsapp": "59170440014",
+      "hourlyRate": "Bs. 32 / hora",
+      "availability": "Disponible Inmediata (Full-time)",
+      "experienceYears": "3 años",
+      "completedJobs": 29,
+      "rating": 5,
+      "bio": "Digitador veloz enfocado en transcripción de documentos notariales, encuestas de mercado y bases de datos de clientes con verificación cruzada.",
+      "skills": [
+        "Digitación 75 PPM",
+        "Google Sheets",
+        "Limpieza de Datos",
+        "Formularios Web",
+        "Word Avanzado"
+      ],
+      "portfolio": [
+        {
+          "title": "Digitalización de Registros Notariales 2021-2024",
+          "category": "Transcripción",
+          "color": "rgba(var(--color-primary-dark-rgb), 0.18)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Dra. Sofía Balderrama",
+          "company": "Notaría 14",
+          "rating": 5,
+          "comment": "Juan Pablo transcribió cientos de fojas sin un solo error de fechas ni nombres.",
+          "date": "Enero 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-15",
+      "slug": "claudia-arce-montano",
+      "categorySlug": "digitacion-datos",
+      "name": "Claudia Arce Montaño",
+      "role": "Especialista en Archivo Digital & Validación",
+      "city": "Santa Cruz",
+      "avatar": "/images/profiles/claudia-arce.jpg",
+      "whatsapp": "59170550015",
+      "hourlyRate": "Bs. 36 / hora",
+      "availability": "Disponible (Remoto)",
+      "experienceYears": "4 años",
+      "completedJobs": 26,
+      "rating": 4.9,
+      "bio": "Experta en clasificación documental, nombrado estandarizado de archivos PDF, extracción de metadatos y conversión de inventarios físicos a tablas dinámicas.",
+      "skills": [
+        "Archivo Digital",
+        "Acrobat OCR",
+        "Excel Tablas Dinámicas",
+        "Control de Calidad",
+        "GDrive"
+      ],
+      "portfolio": [
+        {
+          "title": "Organización de Archivo Histórico Empresarial",
+          "category": "Gestión Documental",
+          "color": "rgba(var(--color-primary-rgb), 0.15)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Ing. Marco Vera",
+          "company": "AgroBolivia SRL",
+          "rating": 5,
+          "comment": "Nos ahorró semanas de búsqueda de documentos escaneados. Excelente trabajo.",
+          "date": "Marzo 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-16",
+      "slug": "maria-rene-morales",
+      "categorySlug": "digitacion-datos",
+      "name": "María René Morales",
+      "role": "Digitadora Documental & Verificación",
+      "city": "Cochabamba",
+      "avatar": "/images/stories/maria-rene-morales.jpg",
+      "whatsapp": "59170660016",
+      "hourlyRate": "Bs. 34 / hora",
+      "availability": "Disponible (Remoto)",
+      "experienceYears": "3 años",
+      "completedJobs": 23,
+      "rating": 5,
+      "bio": "Digitadora metódica enfocada en captura de encuestas, ingreso de compras y verificación de duplicados con 0% margen de error en tablas maestras.",
+      "skills": [
+        "Excel VLOOKUP/XLOOKUP",
+        "Digitación Precisa",
+        "Validación de Datos",
+        "Formularios CSV"
+      ],
+      "portfolio": [
+        {
+          "title": "Consolidación de 10,000 Respuestas de Encuesta",
+          "category": "Data Entry",
+          "color": "rgba(var(--color-primary-dark-rgb), 0.16)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Lic. Andrea Paz",
+          "company": "Sondeos Bolivia",
+          "rating": 5,
+          "comment": "María René cumplió con la entrega antes del plazo acordado. Muy profesional.",
+          "date": "Febrero 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-17",
+      "slug": "claudia-arce-social",
+      "categorySlug": "redes-sociales",
+      "name": "Claudia Arce Montaño",
+      "role": "Community Manager & Estratega de Contenido",
+      "city": "Santa Cruz",
+      "avatar": "/images/profiles/claudia-arce.jpg",
+      "whatsapp": "59170550015",
+      "hourlyRate": "Bs. 45 / hora",
+      "availability": "Disponible (Remoto)",
+      "experienceYears": "4 años",
+      "completedJobs": 22,
+      "rating": 5,
+      "bio": "Especialista en parrillas de contenidos, redacción de textos persuasivos (copywriting) y atención de clientes por chat de Instagram y WhatsApp Business con alta tasa de conversión.",
+      "skills": [
+        "Copywriting",
+        "Instagram Reels",
+        "Meta Business Suite",
+        "Atención por Chat",
+        "Canva Pro"
+      ],
+      "portfolio": [
+        {
+          "title": "Plan de Crecimiento Orgánico Marca de Moda",
+          "category": "Social Media",
+          "color": "rgba(var(--color-primary-rgb), 0.2)"
+        },
+        {
+          "title": "Campaña de Lanzamiento Cosmética Cruceña",
+          "category": "Contenido",
+          "color": "rgba(var(--color-primary-dark-rgb), 0.18)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Valeria Banzer",
+          "company": "Moda Cruceña",
+          "rating": 5,
+          "comment": "Nuestra interacción en Instagram se triplicó en dos meses con Claudia.",
+          "date": "Enero 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-18",
+      "slug": "melissa-arteaga-torrez",
+      "categorySlug": "redes-sociales",
+      "name": "Melissa Arteaga Tórrez",
+      "role": "Creadora de Contenido & Redes Sociales",
+      "city": "Cochabamba",
+      "avatar": "/images/profiles/melissa-arteaga.jpg",
+      "whatsapp": "59170770017",
+      "hourlyRate": "Bs. 40 / hora",
+      "availability": "Disponible (Remoto)",
+      "experienceYears": "3 años",
+      "completedJobs": 19,
+      "rating": 4.9,
+      "bio": "Creadora de contenido enfocada en marcas juveniles, diseño de carruseles educativos, hooks virales y programación organizada de publicaciones.",
+      "skills": [
+        "TikTok Trends",
+        "Instagram Stories",
+        "CapCut",
+        "Copy Creativo",
+        "Planificación Semanal"
+      ],
+      "portfolio": [
+        {
+          "title": "Parrilla de 30 Días para Cafetería Especial",
+          "category": "Contenido",
+          "color": "rgba(var(--color-primary-rgb), 0.16)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Sebastián Rioja",
+          "company": "Café Tostado",
+          "rating": 5,
+          "comment": "Súper creativa, ideas frescas y entrega puntual de cada publicación.",
+          "date": "Febrero 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-19",
+      "slug": "valeria-morales-social",
+      "categorySlug": "redes-sociales",
+      "name": "Valeria Morales Terán",
+      "role": "Diseñadora de Contenido & Carruseles",
+      "city": "Cochabamba",
+      "avatar": "/images/profiles/valeria-morales.jpg",
+      "whatsapp": "59170000001",
+      "hourlyRate": "Bs. 48 / hora",
+      "availability": "Disponible (Part-time)",
+      "experienceYears": "4 años",
+      "completedJobs": 25,
+      "rating": 5,
+      "bio": "Diseñadora gráfica que transforma datos complejos en carruseles visuales de alto engagement para LinkedIn e Instagram.",
+      "skills": [
+        "Carruseles Instagram",
+        "Infografías para Redes",
+        "Photoshop",
+        "Branding Social"
+      ],
+      "portfolio": [
+        {
+          "title": "Serie de 12 Carruseles Financieros",
+          "category": "Social Design",
+          "color": "rgba(var(--color-primary-dark-rgb), 0.2)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Daniela Justiniano",
+          "company": "Finanzas para Todos",
+          "rating": 5,
+          "comment": "Sus carruseles son de nivel internacional. Impecable trabajo.",
+          "date": "Enero 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-20",
+      "slug": "mateo-penaranda-social",
+      "categorySlug": "redes-sociales",
+      "name": "Mateo Peñaranda Alarcón",
+      "role": "Planificador de Medios Digitales & Copies",
+      "city": "Cochabamba",
+      "avatar": "/images/profiles/mateo-penaranda.jpg",
+      "whatsapp": "59173000004",
+      "hourlyRate": "Bs. 42 / hora",
+      "availability": "Disponible Inmediata",
+      "experienceYears": "3 años",
+      "completedJobs": 20,
+      "rating": 4.9,
+      "bio": "Especialista en redacción publicitaria para anuncios en Meta Ads, micro-copys para WhatsApp y calendarios temáticos de ventas para feriados bolivianos.",
+      "skills": [
+        "Copywriting Publicitario",
+        "Meta Ads Texts",
+        "Estrategia WhatsApp",
+        "Notion Content Tracker"
+      ],
+      "portfolio": [
+        {
+          "title": "Estrategia de Ventas Día de la Madre Bolivia",
+          "category": "Campaña Comercial",
+          "color": "rgba(var(--color-primary-rgb), 0.17)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Oscar Terrazas",
+          "company": "ElectroHogar",
+          "rating": 5,
+          "comment": "Los copys de Mateo aumentaron nuestros chats de WhatsApp un 40%.",
+          "date": "Marzo 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-21",
+      "slug": "rodrigo-vargas-web",
+      "categorySlug": "desarrollo-web",
+      "name": "Rodrigo Vargas Choque",
+      "role": "Desarrollador Frontend & Landing Pages",
+      "city": "Cochabamba",
+      "avatar": "/images/profiles/rodrigo-vargas.jpg",
+      "whatsapp": "59179000010",
+      "hourlyRate": "Bs. 55 / hora",
+      "availability": "Disponible (Remoto)",
+      "experienceYears": "4 años",
+      "completedJobs": 18,
+      "rating": 5,
+      "bio": "Desarrollador frontend apasionado por la velocidad de carga (PageSpeed 95+), maquetación CSS moderna sin librerías pesadas y accesibilidad web completa.",
+      "skills": [
+        "HTML5 / Vanilla CSS",
+        "JavaScript ES6+",
+        "Astro",
+        "TailwindCSS",
+        "Accesibilidad WCAG"
+      ],
+      "portfolio": [
+        {
+          "title": "Landing Page Inmobiliaria Cochabamba",
+          "category": "Web Development",
+          "color": "rgba(var(--color-primary-rgb), 0.2)"
+        },
+        {
+          "title": "Portal de Reservas para Hostelería",
+          "category": "Frontend",
+          "color": "rgba(var(--color-primary-dark-rgb), 0.15)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Mauricio Baldivieso",
+          "company": "Urbana Propiedades",
+          "rating": 5,
+          "comment": "La página vuela y carga en menos de 1 segundo en teléfonos. Recomendadísimo.",
+          "date": "Enero 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-22",
+      "slug": "patricia-soliz-guzman",
+      "categorySlug": "desarrollo-web",
+      "name": "Patricia Soliz Guzmán",
+      "role": "Desarrolladora Web WordPress & E-Commerce",
+      "city": "La Paz",
+      "avatar": "/images/profiles/patricia-soliz.jpg",
+      "whatsapp": "59170880018",
+      "hourlyRate": "Bs. 50 / hora",
+      "availability": "Disponible (Remoto)",
+      "experienceYears": "5 años",
+      "completedJobs": 26,
+      "rating": 5,
+      "bio": "Desarrolladora web con foco en tiendas online seguras, pasarelas de pago bolivianas (QR Simple, BCP, Libélula) y administración intuitiva para el cliente.",
+      "skills": [
+        "WordPress",
+        "WooCommerce",
+        "Pagos QR Simple",
+        "Elementor / Bricks",
+        "Seguridad Web"
+      ],
+      "portfolio": [
+        {
+          "title": "Tienda Online de Café de Especialidad Yungas",
+          "category": "E-Commerce",
+          "color": "rgba(var(--color-primary-rgb), 0.18)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Gabriela Montes",
+          "company": "Cafetal Yungas",
+          "rating": 5,
+          "comment": "Patricia nos dejó la tienda con cobro por QR funcionando al 100%.",
+          "date": "Febrero 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-23",
+      "slug": "carlos-mendoza-villarroel",
+      "categorySlug": "desarrollo-web",
+      "name": "Carlos Mendoza Villarroel",
+      "role": "Desarrollador Web & Accesibilidad Digital",
+      "city": "Santa Cruz",
+      "avatar": "/images/profiles/carlos-mendoza.jpg",
+      "whatsapp": "59170990019",
+      "hourlyRate": "Bs. 52 / hora",
+      "availability": "Disponible Inmediata",
+      "experienceYears": "4 años",
+      "completedJobs": 21,
+      "rating": 4.9,
+      "bio": "Ingeniero de sistemas enfocado en desarrollo de portales corporativos accesibles para personas con discapacidad, código limpio y semántica HTML5 estricta.",
+      "skills": [
+        "HTML Semántico",
+        "CSS Grid/Flexbox",
+        "JavaScript",
+        "WCAG 2.1 AA",
+        "SEO Técnico"
+      ],
+      "portfolio": [
+        {
+          "title": "Rediseño Accesible ONG Inclusión",
+          "category": "Accesibilidad",
+          "color": "rgba(var(--color-primary-dark-rgb), 0.2)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Lic. Teresa Claure",
+          "company": "Fundación Crecer",
+          "rating": 5,
+          "comment": "Cuidado milimétrico del contraste y compatibilidad con lectores de pantalla.",
+          "date": "Marzo 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-24",
+      "slug": "alex-quispe-web",
+      "categorySlug": "desarrollo-web",
+      "name": "Alex Quispe Mamani",
+      "role": "Maquetador HTML/CSS & Optimización Web",
+      "city": "La Paz",
+      "avatar": "/images/profiles/alex-quispe.jpg",
+      "whatsapp": "59177000008",
+      "hourlyRate": "Bs. 46 / hora",
+      "availability": "Disponible (Remoto)",
+      "experienceYears": "3 años",
+      "completedJobs": 19,
+      "rating": 4.9,
+      "bio": "Maquetador frontend veloz. Convierto diseños de Figma a código HTML y CSS responsive fiel al píxel, sin errores de scroll horizontal en móviles.",
+      "skills": [
+        "Figma to Code",
+        "CSS Variables",
+        "Responsive Design",
+        "Git / GitHub",
+        "Optimización WebP"
+      ],
+      "portfolio": [
+        {
+          "title": "Maquetación de 8 Páginas Corporativas",
+          "category": "Frontend",
+          "color": "rgba(var(--color-primary-rgb), 0.16)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Diego Morales",
+          "company": "Agencia Pixel",
+          "rating": 5,
+          "comment": "Entrega limpia, código ordenado y fácil de mantener.",
+          "date": "Enero 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-25",
+      "slug": "andrea-torrico-arte",
+      "categorySlug": "ilustracion-arte",
+      "name": "Andrea Torrico Suárez",
+      "role": "Ilustradora Digital & Concept Art",
+      "city": "Santa Cruz",
+      "avatar": "/images/profiles/andrea-torrico.jpg",
+      "whatsapp": "59175000006",
+      "hourlyRate": "Bs. 50 / hora",
+      "availability": "Disponible (Remoto)",
+      "experienceYears": "5 años",
+      "completedJobs": 23,
+      "rating": 5,
+      "bio": "Artista digital especializada en ilustración vectorial, personajes con identidad cultural boliviana contemporánea y concept art para publicaciones y videojuegos.",
+      "skills": [
+        "Procreate",
+        "Adobe Illustrator",
+        "Concept Art",
+        "Paletas Cromáticas",
+        "Vector Art"
+      ],
+      "portfolio": [
+        {
+          "title": "Colección 'Fauna y Flora de la Chiquitania'",
+          "category": "Ilustración",
+          "color": "rgba(var(--color-primary-rgb), 0.2)"
+        },
+        {
+          "title": "Mascota Oficial App Educativa",
+          "category": "Personaje",
+          "color": "rgba(var(--color-primary-dark-rgb), 0.18)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Patricia Céspedes",
+          "company": "Editorial Chiquitana",
+          "rating": 5,
+          "comment": "El estilo de Andrea capturó exactamente la esencia que buscábamos.",
+          "date": "Febrero 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-26",
+      "slug": "melissa-arteaga-arte",
+      "categorySlug": "ilustracion-arte",
+      "name": "Melissa Arteaga Tórrez",
+      "role": "Ilustradora de Stickers & Merchandising",
+      "city": "Cochabamba",
+      "avatar": "/images/profiles/melissa-arteaga.jpg",
+      "whatsapp": "59170770017",
+      "hourlyRate": "Bs. 42 / hora",
+      "availability": "Disponible (Remoto)",
+      "experienceYears": "3 años",
+      "completedJobs": 17,
+      "rating": 4.9,
+      "bio": "Ilustradora con estilo lúdico, colorido y fresco. Diseño stickers para WhatsApp, tazas, poleras y elementos gráficos listos para corte en plotter.",
+      "skills": [
+        "Stickers Vectoriales",
+        "Clip Studio Paint",
+        "Merchandising",
+        "Ilustración Infantil"
+      ],
+      "portfolio": [
+        {
+          "title": "Pack de Stickers para Negocio de Repostería",
+          "category": "Stickers",
+          "color": "rgba(var(--color-primary-rgb), 0.15)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Laura Zubieta",
+          "company": "Dulce Detalle",
+          "rating": 5,
+          "comment": "Nuestros clientes aman los stickers en cada envío.",
+          "date": "Marzo 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-27",
+      "slug": "marcelo-paz-arte",
+      "categorySlug": "ilustracion-arte",
+      "name": "Marcelo Paz Céspedes",
+      "role": "Diseñador de Infografías & Iconografía",
+      "city": "La Paz",
+      "avatar": "/images/profiles/diego-siles.jpg",
+      "whatsapp": "59176000007",
+      "hourlyRate": "Bs. 45 / hora",
+      "availability": "Disponible Inmediata",
+      "experienceYears": "4 años",
+      "completedJobs": 20,
+      "rating": 5,
+      "bio": "Especialista en ilustración técnica y pedagógica: mapas vectoriales, esquemas anatómicos, infografías para ONG e iconografía corporativa unificada.",
+      "skills": [
+        "Infografía Vectorial",
+        "Icon Sets",
+        "Mapas Ilustrados",
+        "Visual Thinking",
+        "Illustrator"
+      ],
+      "portfolio": [
+        {
+          "title": "Mapa Turístico Ilustrado de Copacabana",
+          "category": "Cartografía Artística",
+          "color": "rgba(var(--color-primary-dark-rgb), 0.2)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Lic. Carlos Aliaga",
+          "company": "Guía Turística La Paz",
+          "rating": 5,
+          "comment": "La claridad visual de sus mapas facilitó enormemente a los turistas.",
+          "date": "Enero 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-28",
+      "slug": "gabriela-choque-arte",
+      "categorySlug": "ilustracion-arte",
+      "name": "Gabriela Choque Flores",
+      "role": "Artista Vectorial & Retrato Personalizado",
+      "city": "Santa Cruz",
+      "avatar": "/images/profiles/gabriela-choque.jpg",
+      "whatsapp": "59170220012",
+      "hourlyRate": "Bs. 40 / hora",
+      "availability": "Disponible (Remoto)",
+      "experienceYears": "3 años",
+      "completedJobs": 18,
+      "rating": 4.9,
+      "bio": "Ilustradora de retratos minimalistas vectoriales para regalos corporativos, portadas de podcast y avatares para redes sociales.",
+      "skills": [
+        "Retratos Vectoriales",
+        "Minimalismo",
+        "Portadas Digitales",
+        "Figma Art"
+      ],
+      "portfolio": [
+        {
+          "title": "Galería de Retratos Ejecutivos para Web",
+          "category": "Retrato",
+          "color": "rgba(var(--color-primary-rgb), 0.16)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Renato Doria Medina",
+          "company": "Podcast Voces",
+          "rating": 5,
+          "comment": "Muy rápida y capturó los rasgos con una delicadeza increíble.",
+          "date": "Febrero 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-29",
+      "slug": "sergio-mamani-calle",
+      "categorySlug": "edicion-video",
+      "name": "Sergio Mamani Calle",
+      "role": "Editor de Video & Subtitulado Accesible",
+      "city": "La Paz",
+      "avatar": "/images/profiles/sergio-mamani.jpg",
+      "whatsapp": "59170011020",
+      "hourlyRate": "Bs. 48 / hora",
+      "availability": "Disponible Inmediata",
+      "experienceYears": "4 años",
+      "completedJobs": 27,
+      "rating": 5,
+      "bio": "Editor audiovisual con especialidad en ritmos de retención para Reels, TikTok y YouTube. Pionero en subtitulado accesible de alta legibilidad sincronizado 100% con animación visual.",
+      "skills": [
+        "Adobe Premiere Pro",
+        "CapCut Pro",
+        "Subtitulado Sincronizado",
+        "After Effects Básico",
+        "Color Grading"
+      ],
+      "portfolio": [
+        {
+          "title": "Edición y Subtitulado de 40 Reels Educativos",
+          "category": "Short Form Video",
+          "color": "rgba(var(--color-primary-rgb), 0.2)"
+        },
+        {
+          "title": "Video Promocional Festival Cultural La Paz",
+          "category": "Promocional",
+          "color": "rgba(var(--color-primary-dark-rgb), 0.18)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Martín Echalar",
+          "company": "Academia Líder",
+          "rating": 5,
+          "comment": "Los subtítulos de Sergio son una obra de arte. Retención del 70% en TikTok.",
+          "date": "Febrero 2026"
+        },
+        {
+          "client": "Carla Navarro",
+          "company": "Agencia Creativa 360",
+          "rating": 5,
+          "comment": "Puntualidad suiza y excelente gusto para la música de fondo.",
+          "date": "Enero 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-30",
+      "slug": "diego-siles-video",
+      "categorySlug": "edicion-video",
+      "name": "Diego Siles Gutiérrez",
+      "role": "Creador de Reels, Shorts & TikToks",
+      "city": "Cochabamba",
+      "avatar": "/images/profiles/carlos-mendoza.jpg",
+      "whatsapp": "59178000009",
+      "hourlyRate": "Bs. 45 / hora",
+      "availability": "Disponible (Remoto)",
+      "experienceYears": "3 años",
+      "completedJobs": 23,
+      "rating": 4.9,
+      "bio": "Editor ágil enfocado en contenido vertical para comercio y restaurantes: transiciones limpias, efectos de sonido y resaltado de textos clave.",
+      "skills": [
+        "CapCut",
+        "Reels",
+        "TikTok Video",
+        "Edición Vertical",
+        "Sound FX"
+      ],
+      "portfolio": [
+        {
+          "title": "Campaña de 15 Videos de Recetas Gastronómicas",
+          "category": "Social Video",
+          "color": "rgba(var(--color-primary-rgb), 0.15)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Gonzalo Cossio",
+          "company": "Gourmet Bolivia",
+          "rating": 5,
+          "comment": "Muy profesional y capta las instrucciones por chat al primer intento.",
+          "date": "Marzo 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-31",
+      "slug": "mateo-penaranda-video",
+      "categorySlug": "edicion-video",
+      "name": "Mateo Peñaranda Alarcón",
+      "role": "Montajista de Video & Motion Graphics",
+      "city": "Cochabamba",
+      "avatar": "/images/profiles/mateo-penaranda.jpg",
+      "whatsapp": "59173000004",
+      "hourlyRate": "Bs. 50 / hora",
+      "availability": "Disponible (Part-time)",
+      "experienceYears": "4 años",
+      "completedJobs": 21,
+      "rating": 5,
+      "bio": "Montajista con experiencia en videos institucionales corporativos, animación de logotipos (intros/outros) y corrección de color profesional.",
+      "skills": [
+        "Premiere Pro",
+        "Motion Graphics",
+        "After Effects",
+        "Colorimetría",
+        "Intros de Marca"
+      ],
+      "portfolio": [
+        {
+          "title": "Video Institucional para Constructora",
+          "category": "Corporativo",
+          "color": "rgba(var(--color-primary-dark-rgb), 0.2)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Ing. Jorge Claure",
+          "company": "Constructora Altiplano",
+          "rating": 5,
+          "comment": "Presentamos el video a nuestros inversores y el resultado fue un éxito total.",
+          "date": "Enero 2026"
+        }
+      ]
+    },
+    {
+      "id": "aut-32",
+      "slug": "luis-mendoza-video",
+      "categorySlug": "edicion-video",
+      "name": "Luis Mendoza Albarracín",
+      "role": "Editor de Podcasts & Clips con Subtítulos",
+      "city": "La Paz",
+      "avatar": "/images/stories/luis-mendoza.jpg",
+      "whatsapp": "59170330013",
+      "hourlyRate": "Bs. 44 / hora",
+      "availability": "Disponible (Remoto)",
+      "experienceYears": "3 años",
+      "completedJobs": 19,
+      "rating": 4.9,
+      "bio": "Especialista en convertir episodios largos de entrevistas y podcasts en micro-clips de 60 segundos listos para viralizar en redes sociales.",
+      "skills": [
+        "Recortes de Podcast",
+        "Subtitulado Automático + Corrección Manual",
+        "Formato 9:16",
+        "Limpieza de Audio"
+      ],
+      "portfolio": [
+        {
+          "title": "Edición de Temporada Completa de Video-Podcast",
+          "category": "Podcast",
+          "color": "rgba(var(--color-primary-rgb), 0.17)"
+        }
+      ],
+      "reviews": [
+        {
+          "client": "Rodrigo Salazar",
+          "company": "Canal Digital Bolivia",
+          "rating": 5,
+          "comment": "Luis hace que el proceso de distribución de contenido sea facilísimo.",
+          "date": "Febrero 2026"
+        }
+      ]
+    }
+  ]
+}

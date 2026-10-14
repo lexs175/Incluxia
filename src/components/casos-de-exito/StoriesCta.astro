@@ -1,0 +1,83 @@
+---
+import Button from "../ui/Button.astro";
+---
+
+<section class="section final-cta-section">
+  <div class="container">
+    <div class="final-cta-capsule">
+      <h2 class="final-cta-title">
+        ¿Quieres encontrar un trabajo digno o contratar talento como ellos?
+      </h2>
+      <p class="final-cta-subtitle">
+        En Incluxia conectamos a profesionales con hipoacusia con empresas que
+        coordinan por WhatsApp y ofrecen estabilidad laboral conforme a la Ley
+        977.
+      </p>
+      <div class="final-cta-buttons">
+        <Button
+          href="https://wa.me/59172255726?text=Hola%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Incluxia"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="white-whatsapp"
+          size="lg"
+        >
+          <span>Contactar por WhatsApp</span>
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .final-cta-section {
+    background-color: var(--color-bg-primary);
+    padding-top: var(--space-12);
+  }
+
+  .final-cta-capsule {
+    background: var(--color-surface-dark);
+    border-radius: var(--radius-md);
+    padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+    text-align: center;
+    color: var(--color-text-inverse);
+    margin: 0 auto;
+  }
+
+  .final-cta-title {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--color-text-inverse);
+    margin-bottom: var(--space-4);
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .final-cta-subtitle {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto var(--space-8) auto;
+  }
+
+  .final-cta-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  @media (max-width: 767px) {
+    .final-cta-buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .final-cta-buttons :global(.btn) {
+      width: 100%;
+    }
+  }
+</style>

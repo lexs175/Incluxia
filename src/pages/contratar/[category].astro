@@ -1,0 +1,1226 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import AutonomoCard from "../../components/contratar/AutonomoCard.astro";
+import ServiceCard from "../../components/contratar/ServiceCard.astro";
+import HiringDrawer from "../../components/contratar/HiringDrawer.astro";
+import hiringData from "../../data/hiring.json";
+
+export function getStaticPaths() {
+  const paths = hiringData.categories.map((cat) => ({
+    params: { category: cat.slug },
+    props: { currentCategory: cat },
+  }));
+
+  // Ruta universal para ver todas las categorías juntas
+  paths.push({
+    params: { category: "todos" },
+    props: {
+      currentCategory: {
+        id: "todos",
+        slug: "todos",
+        name: "Todas las Especialidades",
+        shortDesc: "Explora todos los talentos y servicios profesionales disponibles en Bolivia.",
+        countAutonomos: hiringData.autonomos.length,
+        countServices: hiringData.services.length,
+        bgGradient: "linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.8), rgba(var(--color-primary-dark-rgb), 0.9))",
+        tags: ["Diseño", "TI", "Contabilidad", "Digitación", "Redes Sociales", "Desarrollo Web"],
+      },
+    },
+  });
+
+  return paths;
+}
+
+const { currentCategory } = Astro.props;
+const { categories, services, autonomos } = hiringData;
+
+// Filtrar datos según la categoría actual
+const filteredServices =
+  currentCategory.slug === "todos"
+    ? services
+    : services.filter((s) => s.categorySlug === currentCategory.slug);
+
+const filteredAutonomos =
+  currentCategory.slug === "todos"
+    ? autonomos
+    : autonomos.filter((a) => a.categorySlug === currentCategory.slug);
+---
+
+<Layout
+  title={`${currentCategory.name} – Contratar Talento y Servicios | Incluxia Bolivia`}
+  description={`Encuentra profesionales autónomos y paquetes de servicios de ${currentCategory.name} en Bolivia. Comunicación 100% por chat o WhatsApp.`}
+  activePath="/contratar"
+>
+  <div class="hiring-explorer-wrapper">
+    <div class="container hiring-explorer-container">
+      
+      <!-- Layout Maestro de 2 Columnas (Filtros Sidebar + Contenido) -->
+      <div class="hiring-explorer-layout">
+        
+        <!-- Backdrop para móvil cuando el panel de filtros está abierto -->
+        <div class="mobile-sidebar-backdrop" id="mobileSidebarBackdrop" aria-hidden="true"></div>
+
+        <!-- ====================================================
+             1. SIDEBAR DE FILTROS (Desktop: Columna fija · Móvil: Drawer off-canvas)
+             ==================================================== -->
+        <aside class="explorer-sidebar" id="explorerSidebar" aria-label="Filtros de contratación">
+          
+          <!-- Encabezado exclusivo de móvil para cerrar panel -->
+          <div class="mobile-sidebar-header">
+            <div>
+              <span class="mobile-sidebar-title">Filtros y Especialidades</span>
+              <span class="mobile-sidebar-subtitle">Incluxia Bolivia</span>
+            </div>
+            <button type="button" class="mobile-sidebar-close-btn" id="mobileSidebarCloseBtn" aria-label="Cerrar filtros">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="18" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Selector Desktop: Autónomos vs Servicios (Oculto en móvil para eliminar redundancia) -->
+          <div class="availability-toggle-card desktop-only-toggle">
+            <span class="sidebar-block-label">MODALIDAD DE CONTRATACIÓN</span>
+            <div class="toggle-pill-switch" role="tablist">
+              <button
+                type="button"
+                class="toggle-btn active"
+                id="toggleAutonomosBtn"
+                data-mode-btn="autonomos"
+                role="tab"
+                aria-selected="true"
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span>Autónomos ({filteredAutonomos.length})</span>
+              </button>
+              <button
+                type="button"
+                class="toggle-btn"
+                id="toggleServicesBtn"
+                data-mode-btn="servicios"
+                role="tab"
+                aria-selected="false"
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                  <polyline points="2 17 12 22 22 17"></polyline>
+                  <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+                <span>Servicios ({filteredServices.length})</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Filtro de Categorías / Especialidades -->
+          <div class="sidebar-filter-card">
+            <span class="sidebar-block-label">CAMBIAR RUBRO / ESPECIALIDAD</span>
+            <ul class="categories-filter-list" role="list">
+              <li>
+                <a
+                  href="/contratar/todos"
+                  class={`category-filter-item ${currentCategory.slug === "todos" ? "active" : ""}`}
+                >
+                  <span class="category-radio-circle"></span>
+                  <span class="category-filter-name">Todas las categorías</span>
+                  <span class="category-filter-count">{services.length + autonomos.length}</span>
+                </a>
+              </li>
+              {
+                categories.map((cat) => {
+                  const cAutonomos = autonomos.filter((a) => a.categorySlug === cat.slug).length;
+                  const cServices = services.filter((s) => s.categorySlug === cat.slug).length;
+                  return (
+                    <li>
+                      <a
+                        href={`/contratar/${cat.slug}`}
+                        class={`category-filter-item ${currentCategory.slug === cat.slug ? "active" : ""}`}
+                      >
+                        <span class="category-radio-circle"></span>
+                        <span class="category-filter-name">{cat.name}</span>
+                        <span class="category-filter-count">{cAutonomos + cServices}</span>
+                      </a>
+                    </li>
+                  );
+                })
+              }
+            </ul>
+          </div>
+
+          <!-- Filtro de Ubicación (Bolivia) -->
+          <div class="sidebar-filter-card">
+            <span class="sidebar-block-label">UBICACIÓN</span>
+            <div class="city-chips-group" id="cityChipsGroup">
+              <button type="button" class="city-chip active" data-city="">Todas</button>
+              <button type="button" class="city-chip" data-city="Cochabamba">Cochabamba</button>
+              <button type="button" class="city-chip" data-city="La Paz">La Paz</button>
+              <button type="button" class="city-chip" data-city="Santa Cruz">Santa Cruz</button>
+              <button type="button" class="city-chip" data-city="Remoto">100% Remoto</button>
+            </div>
+          </div>
+
+          <!-- Sello de Inclusión Ley 977 -->
+          <div class="sidebar-guarantee-box">
+            <div class="guarantee-badge-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              <span>Ley N° 977 / SIPRUNPCD</span>
+            </div>
+            <p class="guarantee-subtext">
+              Coordinación y entrevistas 100% por chat escrito o WhatsApp sin llamadas telefónicas.
+            </p>
+          </div>
+
+          <!-- Pie del drawer móvil -->
+          <div class="mobile-sidebar-footer">
+            <button type="button" class="mobile-sidebar-apply-btn" id="mobileSidebarApplyBtn">
+              Ver resultados disponibles
+            </button>
+          </div>
+
+        </aside>
+
+        <!-- ====================================================
+             2. ÁREA PRINCIPAL: EXPLORADOR Y RESULTADOS
+             ==================================================== -->
+        <main class="explorer-main-content">
+          
+          <!-- Barra Superior: Título Dinámico + Buscador -->
+          <header class="explorer-top-bar">
+            <div>
+              <div class="breadcrumb-row">
+                <a href="/contratar" class="back-link">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                  </svg>
+                  <span>Ver todos los rubros</span>
+                </a>
+              </div>
+              <h1 class="explorer-headline" id="explorerHeadline">
+                Autónomos disponibles para "{currentCategory.name}"
+              </h1>
+            </div>
+
+            <!-- Buscador en tiempo real -->
+            <div class="explorer-search-wrap">
+              <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input
+                type="text"
+                id="explorerSearchInput"
+                placeholder={`Buscar en ${currentCategory.name}...`}
+                class="explorer-search-input"
+                aria-label="Buscar en esta categoría"
+              />
+            </div>
+          </header>
+
+          <!-- Barra de Controles Móviles: Switch de Modalidad + Botón de Filtros -->
+          <div class="mobile-controls-bar">
+            <div class="mobile-mode-toggle" role="tablist">
+              <button
+                type="button"
+                class="mobile-toggle-btn active"
+                id="mobileToggleAutonomosBtn"
+                data-mode-btn="autonomos"
+                role="tab"
+                aria-selected="true"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span>Autónomos ({filteredAutonomos.length})</span>
+              </button>
+              <button
+                type="button"
+                class="mobile-toggle-btn"
+                id="mobileToggleServicesBtn"
+                data-mode-btn="servicios"
+                role="tab"
+                aria-selected="false"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                  <polyline points="2 17 12 22 22 17"></polyline>
+                  <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+                <span>Servicios ({filteredServices.length})</span>
+              </button>
+            </div>
+
+            <button
+              type="button"
+              class="mobile-filters-trigger-btn"
+              id="mobileFiltersTriggerBtn"
+              aria-label="Abrir panel de filtros y cambiar rubro"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="4" y1="21" x2="4" y2="14"></line>
+                <line x1="4" y1="10" x2="4" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12" y2="3"></line>
+                <line x1="20" y1="21" x2="20" y2="16"></line>
+                <line x1="20" y1="12" x2="20" y2="3"></line>
+                <line x1="1" y1="14" x2="7" y2="14"></line>
+                <line x1="9" y1="8" x2="15" y2="8"></line>
+                <line x1="17" y1="16" x2="23" y2="16"></line>
+              </svg>
+              <span>Filtros</span>
+            </button>
+          </div>
+
+          <!-- Etiquetas Horizontales de Sub-especialidades -->
+          <nav class="subcategories-pills-bar" aria-label="Sub-especialidades">
+            <button type="button" class="sub-pill active" data-tag="">Todo</button>
+            {
+              currentCategory.tags.map((tag) => (
+                <button type="button" class="sub-pill" data-tag={tag.toLowerCase()}>{tag}</button>
+              ))
+            }
+          </nav>
+
+          <!-- ====================================================
+               VISTA A: LISTADO DE AUTÓNOMOS (Componente AutonomoCard)
+               ==================================================== -->
+          <section class="autonomos-view-section" id="autonomosViewSection">
+            <div class="autonomos-list" id="autonomosList">
+              {
+                filteredAutonomos.length === 0 ? (
+                  <div class="empty-state-box">
+                    <p>No hay autónomos registrados aún en esta categoría.</p>
+                  </div>
+                ) : (
+                  filteredAutonomos.map((aut) => (
+                    <AutonomoCard autonomo={aut} />
+                  ))
+                )
+              }
+            </div>
+          </section>
+
+          <!-- ====================================================
+               VISTA B: GRID DE SERVICIOS PAQUETIZADOS (Componente ServiceCard)
+               ==================================================== -->
+          <section class="services-view-section" id="servicesViewSection" style="display: none;">
+            <div class="services-cards-grid" id="servicesGrid">
+              {
+                filteredServices.length === 0 ? (
+                  <div class="empty-state-box">
+                    <p>No hay paquetes de servicios registrados aún en esta categoría.</p>
+                  </div>
+                ) : (
+                  filteredServices.map((serv) => (
+                    <ServiceCard service={serv} />
+                  ))
+                )
+              }
+            </div>
+          </section>
+
+        </main>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ====================================================
+       PANEL LATERAL DERECHO UNIFICADO (Componente HiringDrawer)
+       Pre-renderizado con componentes oficiales y z-index 9999
+       Slot 'drawer' para renderizado directo en <body> fuera de <main>
+       ==================================================== -->
+  <HiringDrawer slot="drawer" autonomos={filteredAutonomos} services={filteredServices} />
+</Layout>
+
+<style>
+  /* ====================================================
+     CAPA 1: WRAPPER EXTERIOR
+     ==================================================== */
+  .hiring-explorer-wrapper {
+    background-color: var(--color-bg-alt);
+    min-height: 100dvh;
+    padding-top: calc(75px + var(--space-4));
+    padding-bottom: var(--space-20);
+    box-sizing: border-box;
+  }
+
+  /* ====================================================
+     CAPA 2: CONTENEDOR 1440px
+     ==================================================== */
+  .hiring-explorer-container {
+    max-width: var(--container-max-width);
+    margin-inline: auto;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* ====================================================
+     LAYOUT 2 COLUMNAS (Sidebar + Main)
+     ==================================================== */
+  .hiring-explorer-layout {
+    display: grid;
+    grid-template-columns: 290px 1fr;
+    gap: var(--space-6);
+    align-items: start;
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* ====================================================
+     1. SIDEBAR IZQUIERDO DE FILTROS
+     ==================================================== */
+  .explorer-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    position: sticky;
+    top: calc(75px + var(--space-4));
+  }
+
+  .sidebar-block-label {
+    font-family: var(--font-heading);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    color: var(--color-text-light);
+    display: block;
+    margin-bottom: var(--space-2);
+  }
+
+  /* Toggle Autónomos vs Servicios */
+  .availability-toggle-card {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    box-shadow: 0 1px 3px rgba(var(--color-primary-dark-rgb), 0.03);
+  }
+
+  .toggle-pill-switch {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    background-color: var(--color-bg-alt);
+    padding: 0.3rem;
+    border-radius: var(--radius-md);
+  }
+
+  .toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.85rem;
+    border-radius: var(--radius-md);
+    border: none;
+    background: transparent;
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-align: left;
+  }
+
+  .toggle-btn:hover {
+    color: var(--color-primary);
+  }
+
+  .toggle-btn.active {
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    box-shadow: 0 2px 6px rgba(var(--color-primary-rgb), 0.25);
+  }
+
+  /* Tarjetas de Filtro */
+  .sidebar-filter-card {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    box-shadow: 0 1px 3px rgba(var(--color-primary-dark-rgb), 0.03);
+  }
+
+  .categories-filter-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .category-filter-item {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.45rem 0.65rem;
+    border-radius: var(--radius-md);
+    color: var(--color-text-main);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+  }
+
+  .category-filter-item:hover {
+    background-color: var(--color-bg-alt);
+    color: var(--color-primary);
+  }
+
+  .category-filter-item.active {
+    background-color: rgba(var(--color-primary-rgb), 0.08);
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .category-radio-circle {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    border: 1.5px solid var(--color-border);
+    flex-shrink: 0;
+  }
+
+  .category-filter-item.active .category-radio-circle {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
+  }
+
+  .category-filter-name {
+    flex: 1;
+  }
+
+  .category-filter-count {
+    font-size: 0.68rem;
+    color: var(--color-text-light);
+  }
+
+  /* Filtro de Ciudad */
+  .city-chips-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .city-chip {
+    padding: 0.3rem 0.65rem;
+    border-radius: var(--radius-full);
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .city-chip:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .city-chip.active {
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    border-color: var(--color-primary);
+  }
+
+  /* Sello de Garantía */
+  .sidebar-guarantee-box {
+    padding: var(--space-4);
+    background-color: rgba(var(--color-primary-rgb), 0.06);
+    border: 1px solid rgba(var(--color-primary-rgb), 0.16);
+    border-radius: var(--radius-md);
+  }
+
+  .guarantee-badge-header {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.35rem;
+  }
+
+  .guarantee-subtext {
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  /* ====================================================
+     2. ÁREA PRINCIPAL
+     ==================================================== */
+  .explorer-main-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .explorer-top-bar {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-5) var(--space-6);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .breadcrumb-row {
+    margin-bottom: var(--space-1);
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+  }
+
+  .back-link:hover {
+    text-decoration: underline;
+  }
+
+  .explorer-headline {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: 800;
+    color: var(--color-text-main);
+    letter-spacing: -0.015em;
+    margin: 0;
+    line-height: 1.3;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .explorer-search-wrap {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    padding: 0.45rem 1rem;
+    width: 280px;
+    max-width: 100%;
+    box-sizing: border-box;
+    transition: border-color var(--transition-fast);
+  }
+
+  .explorer-search-wrap:focus-within {
+    border-color: var(--color-primary);
+    background-color: var(--color-white);
+  }
+
+  .explorer-search-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: var(--text-xs);
+    color: var(--color-text-main);
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* Barra de Pastillas Sub-especialidades */
+  .subcategories-pills-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    overflow-x: auto;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .subcategories-pills-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sub-pill {
+    padding: 0.35rem 0.8rem;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all var(--transition-fast);
+  }
+
+  .sub-pill:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .sub-pill.active {
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    border-color: var(--color-primary);
+  }
+
+  /* Listado de Autónomos */
+  .autonomos-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  /* Grid de Servicios */
+  .services-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5);
+  }
+
+  .empty-state-box {
+    text-align: center;
+    padding: var(--space-12);
+    background-color: var(--color-bg-card);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
+  /* ====================================================
+     ESTILOS MÓVILES POR DEFECTO (Ocultos en Desktop)
+     ==================================================== */
+  .mobile-controls-bar {
+    display: none;
+  }
+
+  .mobile-sidebar-header {
+    display: none;
+  }
+
+  .mobile-sidebar-backdrop {
+    display: none;
+  }
+
+  .mobile-sidebar-footer {
+    display: none;
+  }
+
+  /* ====================================================
+     RESPONSIVE BREAKPOINTS: TABLET Y MÓVIL (< 1080px)
+     Elimina redundancia, pone el contenido PRIMERO, y convierte
+     el sidebar en un drawer off-canvas limpio accesible por botón
+     ==================================================== */
+  @media (max-width: 1079px) {
+    .hiring-explorer-layout {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    /* Ocultar el selector duplicado dentro del drawer en móvil */
+    .desktop-only-toggle {
+      display: none !important;
+    }
+
+    /* Barra de Controles Móviles: Switch horizontal de 2 botones + Botón Filtros */
+    .mobile-controls-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-2);
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+
+    .mobile-mode-toggle {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      gap: 0.25rem;
+      background-color: var(--color-bg-card);
+      padding: 0.25rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+    }
+
+    .mobile-toggle-btn {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      padding: 0.55rem 0.4rem;
+      border: none;
+      border-radius: var(--radius-md);
+      background: transparent;
+      font-family: var(--font-heading);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      text-align: center;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .mobile-toggle-btn.active {
+      background-color: var(--color-primary);
+      color: var(--color-text-inverse);
+      box-shadow: 0 2px 6px rgba(var(--color-primary-rgb), 0.2);
+    }
+
+    .mobile-filters-trigger-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 0.85rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      background-color: var(--color-bg-card);
+      font-family: var(--font-heading);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--color-primary);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .mobile-filters-trigger-btn:hover {
+      background-color: var(--color-bg-alt);
+      border-color: var(--color-primary);
+    }
+
+    /* Backdrop del Drawer de Filtros Móvil */
+    .mobile-sidebar-backdrop {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background-color: rgba(var(--color-primary-dark-rgb), 0.55);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 2099;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-normal);
+      touch-action: none;
+    }
+
+    .mobile-sidebar-backdrop.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Sidebar convertido en Drawer Off-canvas */
+    .explorer-sidebar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(380px, 88vw);
+      background-color: var(--color-bg-card);
+      border-left: 1px solid var(--color-border);
+      box-shadow: -8px 0 35px rgba(var(--color-primary-dark-rgb), 0.25);
+      z-index: 2100;
+      transform: translateX(100%);
+      transition: transform var(--transition-smooth);
+      overflow-y: auto;
+      padding: var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      box-sizing: border-box;
+      overscroll-behavior: contain;
+    }
+
+    .explorer-sidebar.is-mobile-open {
+      transform: translateX(0);
+    }
+
+    .mobile-sidebar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .mobile-sidebar-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-sm);
+      font-weight: 800;
+      color: var(--color-text-main);
+      display: block;
+    }
+
+    .mobile-sidebar-subtitle {
+      font-size: 0.72rem;
+      color: var(--color-primary);
+      font-weight: 600;
+      display: block;
+    }
+
+    .mobile-sidebar-close-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      background: transparent;
+      color: var(--color-text-main);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color var(--transition-fast);
+    }
+
+    .mobile-sidebar-close-btn:hover {
+      background-color: var(--color-bg-alt);
+    }
+
+    .mobile-sidebar-footer {
+      display: block;
+      margin-top: auto;
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--color-border);
+      position: sticky;
+      bottom: 0;
+      background-color: var(--color-bg-card);
+    }
+
+    .mobile-sidebar-apply-btn {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-md);
+      background-color: var(--color-primary);
+      color: var(--color-text-inverse);
+      border: none;
+      font-family: var(--font-heading);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color var(--transition-fast);
+    }
+
+    .mobile-sidebar-apply-btn:hover {
+      background-color: var(--color-primary-hover);
+    }
+
+    /* Top bar en móvil: apilada limpia */
+    .explorer-top-bar {
+      flex-direction: column;
+      align-items: stretch;
+      gap: var(--space-3);
+      padding: var(--space-4);
+    }
+
+    .explorer-search-wrap {
+      width: 100%;
+    }
+
+    .explorer-search-input {
+      width: 100%;
+    }
+
+    .services-cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 680px) {
+    .services-cards-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  function initHiringExplorer() {
+    const toggleAutonomosBtns = document.querySelectorAll('[data-mode-btn="autonomos"]');
+    const toggleServicesBtns = document.querySelectorAll('[data-mode-btn="servicios"]');
+    const autonomosView = document.getElementById("autonomosViewSection");
+    const servicesView = document.getElementById("servicesViewSection");
+    const headline = document.getElementById("explorerHeadline");
+    const searchInput = document.getElementById("explorerSearchInput") as HTMLInputElement | null;
+    const subPills = document.querySelectorAll<HTMLButtonElement>(".sub-pill");
+    const cityChips = document.querySelectorAll<HTMLButtonElement>(".city-chip");
+
+    // Drawer de filtros en móvil
+    const mobileFiltersTrigger = document.getElementById("mobileFiltersTriggerBtn");
+    const mobileSidebarBackdrop = document.getElementById("mobileSidebarBackdrop");
+    const mobileSidebarCloseBtn = document.getElementById("mobileSidebarCloseBtn");
+    const mobileSidebarApplyBtn = document.getElementById("mobileSidebarApplyBtn");
+    const explorerSidebar = document.getElementById("explorerSidebar");
+
+    function openMobileFilters() {
+      explorerSidebar?.classList.add("is-mobile-open");
+      mobileSidebarBackdrop?.classList.add("is-open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeMobileFilters() {
+      explorerSidebar?.classList.remove("is-mobile-open");
+      mobileSidebarBackdrop?.classList.remove("is-open");
+      if (!document.body.classList.contains("drawer-open")) {
+        document.body.style.overflow = "";
+      }
+    }
+
+    mobileFiltersTrigger?.addEventListener("click", openMobileFilters);
+    mobileSidebarCloseBtn?.addEventListener("click", closeMobileFilters);
+    mobileSidebarBackdrop?.addEventListener("click", closeMobileFilters);
+    mobileSidebarApplyBtn?.addEventListener("click", closeMobileFilters);
+
+    // Drawer elements de Detalle (Lateral derecho)
+    const backdrop = document.getElementById("hiringDrawerBackdrop");
+    const drawer = document.getElementById("hiringSideDrawer");
+    const closeBtn = document.getElementById("hiringDrawerCloseBtn");
+    const typeChip = document.getElementById("drawerTypeChip");
+
+    let currentMode: "autonomos" | "servicios" = "autonomos";
+    let activeCity = "";
+    let activeTag = "";
+    let searchQuery = "";
+
+    // 1. Switch sincronizado entre Autónomos y Servicios (Desktop y Móvil)
+    function setMode(mode: "autonomos" | "servicios") {
+      currentMode = mode;
+      if (mode === "autonomos") {
+        toggleAutonomosBtns.forEach((btn) => {
+          btn.classList.add("active");
+          btn.setAttribute("aria-selected", "true");
+        });
+        toggleServicesBtns.forEach((btn) => {
+          btn.classList.remove("active");
+          btn.setAttribute("aria-selected", "false");
+        });
+        if (autonomosView) autonomosView.style.display = "block";
+        if (servicesView) servicesView.style.display = "none";
+        if (headline) headline.textContent = headline.textContent?.replace("Servicios creativos", "Autónomos disponibles") || "";
+      } else {
+        toggleServicesBtns.forEach((btn) => {
+          btn.classList.add("active");
+          btn.setAttribute("aria-selected", "true");
+        });
+        toggleAutonomosBtns.forEach((btn) => {
+          btn.classList.remove("active");
+          btn.setAttribute("aria-selected", "false");
+        });
+        if (autonomosView) autonomosView.style.display = "none";
+        if (servicesView) servicesView.style.display = "block";
+        if (headline) headline.textContent = headline.textContent?.replace("Autónomos disponibles", "Servicios creativos") || "";
+      }
+      filterContent();
+    }
+
+    toggleAutonomosBtns.forEach((btn) => btn.addEventListener("click", () => setMode("autonomos")));
+    toggleServicesBtns.forEach((btn) => btn.addEventListener("click", () => setMode("servicios")));
+
+    // 2. Filtrado interactivo
+    function filterContent() {
+      const autonomoCards = document.querySelectorAll<HTMLElement>(".autonomo-card-item");
+      const serviceCards = document.querySelectorAll<HTMLElement>(".service-card-item");
+
+      if (currentMode === "autonomos") {
+        autonomoCards.forEach((card) => {
+          const name = card.getAttribute("data-name") || "";
+          const role = card.getAttribute("data-role") || "";
+          const city = card.getAttribute("data-city") || "";
+          const skills = card.getAttribute("data-skills") || "";
+
+          const matchesSearch = !searchQuery || name.includes(searchQuery) || role.includes(searchQuery) || skills.includes(searchQuery);
+          const matchesCity = !activeCity || city.toLowerCase() === activeCity.toLowerCase() || (activeCity === "Remoto");
+          const matchesTag = !activeTag || skills.includes(activeTag) || role.includes(activeTag);
+
+          if (matchesSearch && matchesCity && matchesTag) {
+            card.style.display = "";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      } else {
+        serviceCards.forEach((card) => {
+          const title = card.getAttribute("data-title") || "";
+          const city = card.getAttribute("data-city") || "";
+
+          const matchesSearch = !searchQuery || title.includes(searchQuery);
+          const matchesCity = !activeCity || city.toLowerCase() === activeCity.toLowerCase();
+
+          if (matchesSearch && matchesCity) {
+            card.style.display = "";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      }
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener("input", (e) => {
+        searchQuery = (e.target as HTMLInputElement).value.trim().toLowerCase();
+        filterContent();
+      });
+    }
+
+    cityChips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        cityChips.forEach((c) => c.classList.remove("active"));
+        chip.classList.add("active");
+        activeCity = chip.getAttribute("data-city") || "";
+        filterContent();
+      });
+    });
+
+    subPills.forEach((pill) => {
+      pill.addEventListener("click", () => {
+        subPills.forEach((p) => p.classList.remove("active"));
+        pill.classList.add("active");
+        activeTag = (pill.getAttribute("data-tag") || "").toLowerCase();
+        filterContent();
+      });
+    });
+
+    // 3. Apertura y Cierre del Drawer Lateral Unificado
+    function closeDrawer() {
+      drawer?.classList.remove("is-open");
+      backdrop?.classList.remove("is-open");
+
+      // Restaurar scroll del fondo y posición exacta previa
+      const scrollY = parseInt(document.body.dataset.lockedScrollY || "0", 10);
+      document.documentElement.classList.remove("drawer-open");
+      document.body.classList.remove("drawer-open");
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.width = "";
+      window.scrollTo(0, scrollY);
+    }
+
+    closeBtn?.addEventListener("click", closeDrawer);
+    backdrop?.addEventListener("click", closeDrawer);
+
+    // Evitar que el scroll o rueda del ratón en el backdrop mueva el fondo
+    backdrop?.addEventListener("wheel", (e) => e.preventDefault(), { passive: false });
+    backdrop?.addEventListener("touchmove", (e) => e.preventDefault(), { passive: false });
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeDrawer();
+    });
+
+    document.addEventListener("astro:before-swap", () => {
+      closeDrawer();
+    }, { once: true });
+
+    function openPanel(panelId: string, typeName: string) {
+      // Ocultar todos los paneles pre-renderizados
+      document.querySelectorAll<HTMLElement>(".drawer-detail-panel").forEach((p) => {
+        p.style.display = "none";
+      });
+
+      const target = document.getElementById(panelId);
+      if (target) {
+        target.style.display = "flex";
+      }
+
+      if (typeChip) typeChip.textContent = typeName;
+
+      // Abrir drawer y backdrop
+      drawer?.classList.add("is-open");
+      backdrop?.classList.add("is-open");
+
+      // BLOQUEO ABSOLUTO de scroll en el fondo (técnica gold-standard con scrollY guardado)
+      const scrollY = window.scrollY;
+      document.body.dataset.lockedScrollY = String(scrollY);
+      document.documentElement.classList.add("drawer-open");
+      document.body.classList.add("drawer-open");
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = "0";
+      document.body.style.right = "0";
+      document.body.style.width = "100%";
+    }
+
+    // Vincular clics en tarjetas de Autónomos
+    document.querySelectorAll<HTMLElement>(".autonomo-card-item").forEach((card) => {
+      card.addEventListener("click", () => {
+        const id = card.getAttribute("data-id");
+        if (id) openPanel(`drawer-autonomo-${id}`, "Perfil Autónomo");
+      });
+    });
+
+    // Vincular clics en tarjetas de Servicios
+    document.querySelectorAll<HTMLElement>(".service-card-item").forEach((card) => {
+      card.addEventListener("click", () => {
+        const id = card.getAttribute("data-id");
+        if (id) openPanel(`drawer-service-${id}`, "Paquete de Servicio");
+      });
+    });
+
+    // Pestañas internas del Drawer (Portafolio vs Reseñas)
+    document.querySelectorAll<HTMLButtonElement>(".drawer-tab-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const tabType = btn.getAttribute("data-tab");
+        const panelId = btn.getAttribute("data-panel-id");
+        if (!panelId) return;
+
+        const container = document.getElementById(`drawer-autonomo-${panelId}`);
+        if (!container) return;
+
+        container.querySelectorAll(".drawer-tab-btn").forEach((b) => {
+          b.classList.remove("active");
+          b.setAttribute("aria-selected", "false");
+        });
+        btn.classList.add("active");
+        btn.setAttribute("aria-selected", "true");
+
+        const worksBox = document.getElementById(`tabWorksContent-${panelId}`);
+        const reviewsBox = document.getElementById(`tabReviewsContent-${panelId}`);
+
+        if (tabType === "works") {
+          if (worksBox) worksBox.style.display = "grid";
+          if (reviewsBox) reviewsBox.style.display = "none";
+        } else {
+          if (worksBox) worksBox.style.display = "none";
+          if (reviewsBox) reviewsBox.style.display = "flex";
+        }
+      });
+    });
+  }
+
+  document.addEventListener("astro:page-load", initHiringExplorer);
+</script>

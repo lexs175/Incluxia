@@ -1,9 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import Button from "../../components/ui/Button.astro";
-import Badge from "../../components/ui/Badge.astro";
-import profilesData from "../../data/profiles.json";
 import ExpandableButton from "../../components/ui/ExpandableButton.astro";
+import profilesData from "../../data/profiles.json";
 
 export function getStaticPaths() {
   return profilesData.map((profile) => ({
@@ -13,360 +11,382 @@ export function getStaticPaths() {
 }
 
 const { profile } = Astro.props;
-const otherProfiles = profilesData
-  .filter((p) => p.id !== profile.id)
-  .slice(0, 3);
 
-const whatsappUrl = `https://wa.me/${profile.contact.whatsapp}?text=${encodeURIComponent(`Hola ${profile.name}, vi tu perfil en Incluxia Bolivia y me interesa conectar contigo.`)}`;
-const shareUrl = `https://wa.me/?text=${encodeURIComponent(`Te comparto el perfil laboral de ${profile.name} (${profile.role}) en Incluxia Bolivia: ${Astro.url}`)}`;
+const whatsappUrl = `https://wa.me/${profile.contact.whatsapp}?text=${encodeURIComponent(
+  `Hola ${profile.name}, vi tu perfil en Incluxia Bolivia y nos gustaría coordinar una entrevista 100% por chat.`
+)}`;
+
+const shareUrl = `https://wa.me/?text=${encodeURIComponent(
+  `Te comparto el perfil profesional de ${profile.name} (${profile.role}) en Incluxia Bolivia: ${Astro.url}`
+)}`;
 ---
 
 <Layout
-  title={`${profile.name} – ${profile.role} | Perfiles Laborales Incluxia Bolivia`}
+  title={`${profile.name} – ${profile.role} | Incluxia Bolivia`}
   description={profile.tagline}
   activePath="/perfiles"
 >
-  <div class="profile-page-layout">
+  <div class="profile-page-wrapper">
     <div class="container profile-container">
-      <div class="profile-grid">
-        <!-- ==============================
-             COLUMNA PRINCIPAL (izquierda)
-             ============================== -->
-        <main class="profile-main-col">
-          <!-- Header del perfil -->
-          <header class="profile-header-section">
-            <div class="profile-header-inner">
-              <!-- Foto -->
-              <div class="profile-photo-wrap">
-                <img
-                  src={profile.photo}
-                  alt={`Foto de ${profile.name}`}
-                  class="profile-photo"
-                  loading="eager"
-                />
-              </div>
+      
+      <div class="profile-stack">
+        <!-- ====================================================
+             1. TARJETA HERO DE CABECERA (Portada + Avatar + Contacto)
+             ==================================================== -->
+        <section class="profile-detail-card profile-hero-card" aria-label="Información principal del perfil">
+          <!-- Portada / Cover Banner -->
+          <div class="profile-cover-banner" aria-hidden="true">
+            <div class="cover-pattern-watermark">INCLUXIA</div>
+          </div>
 
-              <!-- Info principal -->
-              <div class="profile-header-text">
-                <h1 class="profile-name">{profile.name}</h1>
-                <p class="profile-role-title">{profile.role}</p>
+          <!-- Avatar superpuesto -->
+          <div class="profile-avatar-container">
+            <img
+              src={profile.photo}
+              alt={`Foto de ${profile.name}`}
+              class="profile-avatar-img"
+              loading="eager"
+            />
+          </div>
 
-                <div class="profile-meta-row">
-                  <span class="meta-chip">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      aria-hidden="true"
-                    >
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
-                      ></path>
-                      <circle cx="12" cy="10" r="3"></circle>
-                    </svg>
-                    {profile.city}, Bolivia
-                  </span>
-                </div>
+          <!-- Información del Perfil -->
+          <div class="profile-hero-body">
+            <div class="profile-name-row">
+              <h1 class="profile-name">{profile.name}</h1>
+              <span class="verified-badge">
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Candidato Verificado</span>
+              </span>
+            </div>
 
-                <!-- Botones de contacto directo -->
-                <div class="profile-cta-buttons">
-                  <Button
-                    href={whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    variant="whatsapp"
-                    size="md"
-                  >
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M6.014 8.00613C6.12827 7.1024 7.30277 5.87414 8.23488 6.01043L8.23339 6.00894C9.14051 6.18132 9.85859 7.74261 10.2635 8.44465C10.5504 8.95402 10.3641 9.4701 10.0965 9.68787C9.7355 9.97883 9.17099 10.3803 9.28943 10.7834C9.5 11.5 12 14 13.2296 14.7107C13.695 14.9797 14.0325 14.2702 14.3207 13.9067C14.5301 13.6271 15.0466 13.46 15.5548 13.736C16.3138 14.178 17.0288 14.6917 17.69 15.27C18.0202 15.546 18.0977 15.9539 17.8689 16.385C17.4659 17.1443 16.3003 18.1456 15.4542 17.9421C13.9764 17.5868 8 15.27 6.08033 8.55801C5.97237 8.24048 5.99955 8.12044 6.014 8.00613Z"
-                      ></path>
-                      <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M12 23C10.7764 23 10.0994 22.8687 9 22.5L6.89443 23.5528C5.56462 24.2177 4 23.2507 4 21.7639V19.5C1.84655 17.492 1 15.1767 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23ZM6 18.6303L5.36395 18.0372C3.69087 16.4772 3 14.7331 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C11.0143 21 10.552 20.911 9.63595 20.6038L8.84847 20.3397L6 21.7639V18.6303Z"
-                      ></path>
-                    </svg>
-                    Contactar por WhatsApp
-                  </Button>
-                  <Button
-                    href={`mailto:${profile.contact.email}`}
-                    variant="outline"
-                    size="md"
-                  >
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-                      ></path>
-                      <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg>
-                    Enviar correo
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </header>
+            <p class="profile-headline-role">{profile.role}</p>
 
-          <!-- Sobre mí -->
-          <section class="cv-section" aria-labelledby="about-heading">
-            <div class="cv-section-label-wrap">
-              <h2 id="about-heading" class="cv-section-title">Sobre mí</h2>
+            <div class="profile-meta-info">
+              <span class="meta-city">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                {profile.city}, Bolivia
+              </span>
+              <span class="meta-sep">•</span>
+              <span class="meta-status">
+                <span class="status-indicator"></span>
+                {profile.availability} (Ley 977)
+              </span>
             </div>
-            <div class="cv-section-body">
-              <p class="about-text">{profile.about}</p>
-            </div>
-          </section>
 
-          <!-- Experiencia Laboral -->
-          <section class="cv-section" aria-labelledby="experience-heading">
-            <div class="cv-section-label-wrap">
-              <h2 id="experience-heading" class="cv-section-title">
-                Experiencia Laboral
-              </h2>
+            <!-- Botones de Acción Inmediata (Estilo LinkedIn) -->
+            <div class="profile-hero-actions">
+              <ExpandableButton
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                text="Enviar mensaje WhatsApp"
+                variant="primary"
+                size="md"
+              />
+              <ExpandableButton
+                href={`mailto:${profile.contact.email}`}
+                text="Enviar correo"
+                variant="primary-line"
+                size="md"
+              />
             </div>
-            <div class="cv-section-body">
-              <ol class="experience-timeline" role="list">
-                {
-                  profile.experience.map((exp, i) => (
-                    <li class="timeline-item">
-                      <div class="timeline-marker" aria-hidden="true">
-                        <span class="timeline-dot" />
-                        {i < profile.experience.length - 1 && (
-                          <span class="timeline-line" />
-                        )}
-                      </div>
-                      <div class="timeline-content">
-                        <div class="timeline-header">
-                          <div class="timeline-title-wrap">
-                            <h3 class="timeline-role">{exp.role}</h3>
-                            <p class="timeline-company">{exp.company}</p>
-                          </div>
-                          <span class="timeline-period">{exp.period}</span>
-                        </div>
-                        <ul class="timeline-highlights" role="list">
-                          {exp.highlights.map((h) => (
-                            <li class="highlight-item">
-                              <svg
-                                width="13"
-                                height="13"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="highlight-check"
-                                aria-hidden="true"
-                              >
-                                <polyline points="20 6 9 17 4 12" />
-                              </svg>
-                              {h}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </li>
-                  ))
-                }
-              </ol>
-            </div>
-          </section>
+          </div>
+        </section>
 
-          <!-- Habilidades -->
-          <section class="cv-section" aria-labelledby="skills-heading">
-            <div class="cv-section-label-wrap">
+        <!-- ====================================================
+             2. TARJETA ACERCA DE
+             ==================================================== -->
+        <section class="profile-detail-card" aria-labelledby="about-heading">
+          <div class="card-header-row">
+            <h2 id="about-heading" class="card-section-title">Acerca de</h2>
+          </div>
+          <p class="profile-about-paragraph">{profile.about}</p>
 
-              <h2 id="skills-heading" class="cv-section-title">Habilidades</h2>
-            </div>
-            <div class="cv-section-body">
-              <div class="skills-grid">
-                {
-                  profile.skills.map((skill) => (
-                    <span class="skill-tag">{skill}</span>
-                  ))
-                }
-              </div>
-            </div>
-          </section>
-
-          <!-- Educación -->
-          <section class="cv-section" aria-labelledby="education-heading">
-            <div class="cv-section-label-wrap">
-              <h2 id="education-heading" class="cv-section-title">Educación</h2>
-            </div>
-            <div class="cv-section-body">
-              <ul class="education-list" role="list">
-                {
-                  profile.education.map((ed) => (
-                    <li class="education-item">
-                      <div class="education-year">{ed.year}</div>
-                      <div class="education-info">
-                        <h3 class="education-degree">{ed.degree}</h3>
-                        <p class="education-institution">{ed.institution}</p>
-                      </div>
-                    </li>
-                  ))
-                }
-              </ul>
-            </div>
-          </section>
-
-          <!-- Idiomas -->
-          <section class="cv-section" aria-labelledby="languages-heading">
-            <div class="cv-section-label-wrap">
-              <h2 id="languages-heading" class="cv-section-title">
-                Idiomas y Comunicación
-              </h2>
-            </div>
-            <div class="cv-section-body">
-              <div class="languages-list">
-                {
-                  profile.languages.map((lang) => (
-                    <div class="language-item">
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="lang-check"
-                        aria-hidden="true"
-                      >
-                        <polyline points="20 6 9 17 4 12" />
-                      </svg>
-                      <span>{lang}</span>
-                    </div>
-                  ))
-                }
-              </div>
-            </div>
-          </section>
-
-          <!-- Compartir -->
-          <div class="profile-share-section">
-            <span class="share-label">Compartir perfil:</span>
-            <Button
-              href={shareUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="whatsapp"
-              size="sm"
-            >
+          <!-- Highlight Box: Principales aptitudes (Estilo LinkedIn) -->
+          <div class="aptitudes-highlight-box">
+            <div class="aptitudes-icon" aria-hidden="true">
               <svg
-                width="16"
-                height="16"
+                width="20"
+                height="20"
                 viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
-                <path
-                  d="M6.014 8.00613C6.12827 7.1024 7.30277 5.87414 8.23488 6.01043L8.23339 6.00894C9.14051 6.18132 9.85859 7.74261 10.2635 8.44465C10.5504 8.95402 10.3641 9.4701 10.0965 9.68787C9.7355 9.97883 9.17099 10.3803 9.28943 10.7834C9.5 11.5 12 14 13.2296 14.7107C13.695 14.9797 14.0325 14.2702 14.3207 13.9067C14.5301 13.6271 15.0466 13.46 15.5548 13.736C16.3138 14.178 17.0288 14.6917 17.69 15.27C18.0202 15.546 18.0977 15.9539 17.8689 16.385C17.4659 17.1443 16.3003 18.1456 15.4542 17.9421C13.9764 17.5868 8 15.27 6.08033 8.55801C5.97237 8.24048 5.99955 8.12044 6.014 8.00613Z"
-                ></path>
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M12 23C10.7764 23 10.0994 22.8687 9 22.5L6.89443 23.5528C5.56462 24.2177 4 23.2507 4 21.7639V19.5C1.84655 17.492 1 15.1767 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23ZM6 18.6303L5.36395 18.0372C3.69087 16.4772 3 14.7331 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C11.0143 21 10.552 20.911 9.63595 20.6038L8.84847 20.3397L6 21.7639V18.6303Z"
-                ></path>
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
               </svg>
-              Compartir en WhatsApp
-            </Button>
-          </div>
-        </main>
-
-        <!-- ==============================
-             SIDEBAR (derecha)
-             ============================== -->
-        <aside class="profile-sidebar">
-          <!-- Card: Contacto directo -->
-          <div class="sidebar-contact-card">
-            <h3 class="sidebar-card-title">Contactar a {profile.name}</h3>
-            <p class="sidebar-contact-desc">
-              Proceso 100% por chat escrito. Sin llamadas telefónicas en ninguna
-              etapa.
-            </p>
-            <ExpandableButton href={whatsappUrl} variant="white-whatsapp" size="lg">
-              Escribir por WhatsApp
-            </ExpandableButton>
-          </div>
-
-          <!-- Card: Más perfiles -->
-          <div class="sidebar-more-profiles">
-            <h3 class="sidebar-card-title sidebar-title-dark">Más Perfiles</h3>
-            <div class="more-profiles-list">
-              {
-                otherProfiles.map((p) => (
-                  <a href={`/perfiles/${p.slug}`} class="more-profile-item">
-                    <img
-                      src={p.photo}
-                      alt={p.name}
-                      class="more-profile-photo"
-                      loading="lazy"
-                    />
-                    <div class="more-profile-text">
-                      <h4 class="more-profile-name">{p.name}</h4>
-                      <span class="more-profile-role">
-                        {p.role} · {p.city}
-                      </span>
-                    </div>
-                  </a>
-                ))
-              }
             </div>
-            <a href="/perfiles" class="sidebar-all-profiles-link">
-              Ver todos los perfiles
+            <div class="aptitudes-content">
+              <span class="aptitudes-label">Principales aptitudes</span>
+              <p class="aptitudes-list-preview">
+                {profile.skills.slice(0, 4).join(" · ")}
+              </p>
+            </div>
+            <div class="aptitudes-arrow" aria-hidden="true">
               <svg
-                width="13"
-                height="13"
+                width="18"
+                height="18"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2.5"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                aria-hidden="true"
               >
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
-            </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ====================================================
+             3. TARJETA EXPERIENCIA LABORAL
+             ==================================================== -->
+        <section class="profile-detail-card" aria-labelledby="experience-heading">
+          <div class="card-header-row">
+            <h2 id="experience-heading" class="card-section-title">Experiencia</h2>
           </div>
 
-          <!-- Card: Incluxia Verificación -->
-          <div class="sidebar-verified-card">
-            <h4 class="verified-card-title">Perfil Verificado en Incluxia</h4>
-            <p class="verified-card-desc">
-              Este perfil está registrado y verificado en la plataforma
-              Incluxia. Garantizamos procesos de selección y comunicación 100%
-              por chat escrito.
-            </p>
-            <a href="/nosotros" class="verified-card-link"
-              >Conocer más sobre Incluxia</a
-            >
+          <div class="experience-list">
+            {
+              profile.experience.map((exp, index) => (
+                <div class={`experience-item ${index < profile.experience.length - 1 ? 'has-divider' : ''}`}>
+                  <div class="experience-company-icon" aria-hidden="true">
+                    <span>{exp.company.charAt(0)}</span>
+                  </div>
+
+                  <div class="experience-details">
+                    <h3 class="experience-role">{exp.role}</h3>
+                    <p class="experience-company">{exp.company}</p>
+                    <span class="experience-period">{exp.period}</span>
+
+                    <ul class="experience-highlights" role="list">
+                      {exp.highlights.map((h) => (
+                        <li class="highlight-item">
+                          <svg
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="highlight-bullet"
+                            aria-hidden="true"
+                          >
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                          </svg>
+                          <span>{h}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div class="experience-aptitudes-badge">
+                      <svg
+                        width="13"
+                        height="13"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                      </svg>
+                      <span>{profile.skills.slice(0, 3).join(", ")} y más aptitudes aplicadas</span>
+                    </div>
+                  </div>
+                </div>
+              ))
+            }
           </div>
-        </aside>
+        </section>
+
+        <!-- ====================================================
+             4. TARJETA EDUCACIÓN
+             ==================================================== -->
+        <section class="profile-detail-card" aria-labelledby="education-heading">
+          <div class="card-header-row">
+            <h2 id="education-heading" class="card-section-title">Educación</h2>
+          </div>
+
+          <div class="education-list">
+            {
+              profile.education.map((ed, index) => (
+                <div class={`education-item ${index < profile.education.length - 1 ? 'has-divider' : ''}`}>
+                  <div class="education-icon-box" aria-hidden="true">
+                    <svg
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                      <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                    </svg>
+                  </div>
+
+                  <div class="education-details">
+                    <h3 class="education-institution">{ed.institution}</h3>
+                    <p class="education-degree">{ed.degree}</p>
+                    <span class="education-year">{ed.year}</span>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </section>
+
+        <!-- ====================================================
+             5. TARJETA HABILIDADES Y APTITUDES
+             ==================================================== -->
+        <section class="profile-detail-card" aria-labelledby="skills-heading">
+          <div class="card-header-row">
+            <h2 id="skills-heading" class="card-section-title">Habilidades y Aptitudes</h2>
+            <span class="card-counter-badge">{profile.skills.length} aptitudes</span>
+          </div>
+
+          <div class="skills-card-grid">
+            {
+              profile.skills.map((skill) => (
+                <div class="skill-row-item">
+                  <div class="skill-icon-diamond" aria-hidden="true">
+                    <svg
+                      width="15"
+                      height="15"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                  </div>
+                  <div class="skill-info">
+                    <span class="skill-title-name">{skill}</span>
+                    <span class="skill-tag-check">Aptitud comprobada</span>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </section>
+
+        <!-- ====================================================
+             6. TARJETA IDIOMAS Y COMUNICACIÓN INCLUSIVA
+             ==================================================== -->
+        <section class="profile-detail-card" aria-labelledby="languages-heading">
+          <div class="card-header-row">
+            <h2 id="languages-heading" class="card-section-title">Comunicación e Idiomas</h2>
+          </div>
+          <p class="languages-lead-text">
+            Metodologías de coordinación 100% accesibles y efectivas, operadas por canales escritos y digitales (WhatsApp, Slack, correo).
+          </p>
+
+          <div class="languages-grid">
+            {
+              profile.languages.map((lang) => (
+                <div class="language-pill-item">
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lang-check-icon"
+                    aria-hidden="true"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>{lang}</span>
+                </div>
+              ))
+            }
+          </div>
+        </section>
+
+        <!-- ====================================================
+             7. TARJETA DE COMPARTIR Y GARANTÍA INCLUXIA
+             ==================================================== -->
+        <section class="profile-detail-card share-card" aria-label="Compartir perfil">
+          <div class="share-card-content">
+            <div class="share-card-info">
+              <div class="share-card-badge">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="18" cy="5" r="3"></circle>
+                  <circle cx="6" cy="12" r="3"></circle>
+                  <circle cx="18" cy="19" r="3"></circle>
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                </svg>
+                <span>Recomendación Inmediata</span>
+              </div>
+              <h3 class="share-card-title">¿Deseas compartir este perfil con tu equipo?</h3>
+              <p class="share-card-desc">
+                Facilita la toma de decisiones compartiendo este enlace directamente por WhatsApp con RRHH o gerencia.
+              </p>
+            </div>
+            <ExpandableButton
+              href={shareUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              text="Compartir en WhatsApp"
+              variant="primary-line"
+              size="md"
+            />
+          </div>
+        </section>
+
       </div>
     </div>
   </div>
@@ -374,182 +394,250 @@ const shareUrl = `https://wa.me/?text=${encodeURIComponent(`Te comparto el perfi
 
 <style>
   /* ====================================================
-     PAGE WRAPPER
+     ESTRUCTURA DE PÁGINA (Lienzo Contraste Slate-100)
      ==================================================== */
-  .profile-page-layout {
-    background-color: var(--color-bg);
-    padding-top: calc(90px + var(--space-8));
-    padding-bottom: var(--space-16);
-    min-height: 100vh;
+  .profile-page-wrapper {
+    background-color: var(--color-bg-alt);
+    min-height: 100dvh;
+    padding-top: calc(75px + var(--space-6));
+    padding-bottom: var(--space-20);
   }
 
+  /* Ancho 1440px (Consistencia con el sistema de tokens) */
   .profile-container {
-    width: 100%;
-    max-width: 1320px;
+    max-width: var(--container-max-width);
     margin: 0 auto;
-    padding-inline: var(--container-padding);
+    box-sizing: border-box;
   }
 
-  /* 2-Column grid */
-  .profile-grid {
-    display: grid;
-    grid-template-columns: 1fr 340px;
-    gap: var(--space-10);
-    align-items: start;
-  }
-
-  .profile-main-col {
+  /* Pila de Tarjetas Modulares */
+  .profile-stack {
     display: flex;
     flex-direction: column;
-    gap: var(--space-2);
-    min-width: 0;
+    gap: var(--space-6);
   }
 
-  /* ====================================================
-     PROFILE HEADER
-     ==================================================== */
-  .profile-header-section {
-    background: var(--color-bg-card);
-    border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+  /* Tarjeta Base Elevada */
+  .profile-detail-card {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    box-shadow: none; /* ZERO SHADOWS */
     padding: var(--space-8);
-    margin-bottom: var(--space-6);
+    box-shadow: 0 1px 3px rgba(var(--color-primary-dark-rgb), 0.04), 0 6px 16px -4px rgba(var(--color-primary-dark-rgb), 0.03);
+    box-sizing: border-box;
+    transition: border-color var(--transition-fast);
   }
 
-  .profile-header-inner {
+  /* Cabecera unificada de cada Tarjeta */
+  .card-header-row {
     display: flex;
-    gap: var(--space-8);
-    align-items: flex-start;
-  }
-
-  /* Foto */
-  .profile-photo-wrap {
-    position: relative;
-    flex-shrink: 0;
-  }
-
-  .profile-photo {
-    width: 140px;
-    height: 140px;
-    border-radius: var(--radius-md);
-    object-fit: cover;
-    object-position: top center;
-    border: 2px solid rgba(var(--color-primary-rgb), 0.12);
-    box-shadow: none; /* ZERO SHADOWS */
-  }
-
-  .profile-status-badge {
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: inline-flex;
     align-items: center;
-    gap: var(--space-1);
+    justify-content: space-between;
+    gap: var(--space-4);
+    margin-bottom: var(--space-5);
+  }
+
+  .card-section-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    color: var(--color-text-main);
+    margin: 0;
+  }
+
+  .card-counter-badge {
     font-family: var(--font-heading);
     font-size: var(--text-xs);
     font-weight: 700;
-    padding: 0.25rem 0.6rem;
+    color: var(--color-primary);
+    background-color: rgba(var(--color-primary-rgb), 0.08);
+    padding: 0.25rem 0.65rem;
     border-radius: var(--radius-full);
     white-space: nowrap;
-    box-shadow: none; /* ZERO SHADOWS */
-  }
-
-  .status--open {
-    background-color: var(--color-accent);
-    color: var(--color-primary);
-  }
-
-  .status--searching {
-    background-color: var(--color-warning-bg);
-    color: var(--color-warning);
-    border: 1px solid var(--color-warning);
-  }
-
-  .status-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: var(--radius-full);
-    background-color: currentColor;
-    flex-shrink: 0;
-  }
-
-  /* Info */
-  .profile-header-text {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .profile-category-badge-wrap {
-    margin-bottom: var(--space-3);
-  }
-
-  .profile-name {
-    font-size: var(--text-4xl);
-    font-weight: 900;
-    color: var(--color-primary);
-    line-height: 1.15;
-    margin-bottom: var(--space-2);
-  }
-
-  .profile-role-title {
-    font-size: var(--text-xl);
-    font-weight: 700;
-    color: var(--color-accent);
-    margin-bottom: var(--space-4);
-  }
-
-  .profile-meta-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-3);
-    margin-bottom: var(--space-6);
-  }
-
-  .meta-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-1);
-    background-color: var(--color-bg-alt);
-    color: var(--color-text-muted);
-    font-size: var(--text-sm);
-    font-weight: 500;
-    padding: 0.3rem 0.75rem;
-    border-radius: var(--radius-full);
-  }
-
-  .profile-cta-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-3);
   }
 
   /* ====================================================
-     CV SECTIONS
+     1. TARJETA HERO DE CABECERA
      ==================================================== */
-  .cv-section {
-    background: var(--color-bg-card);
-    border: 1px solid rgba(var(--color-primary-rgb), 0.08);
-    border-radius: var(--radius-md);
-    padding: var(--space-8);
-    margin-bottom: var(--space-6);
+  .profile-hero-card {
+    padding: 0;
+    overflow: hidden;
   }
 
-  .cv-section-label-wrap {
+  .profile-cover-banner {
+    width: 100%;
+    height: clamp(180px, 26vw, 320px);
+    background: linear-gradient(
+      135deg,
+      var(--color-primary-dark) 0%,
+      var(--color-primary) 50%,
+      var(--color-primary-light) 100%
+    );
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover-pattern-watermark {
+    position: absolute;
+    right: clamp(1.5rem, 4vw, 3.5rem);
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    color: rgba(var(--white-rgb), 0.12);
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .profile-avatar-container {
+    margin-top: calc(-1 * clamp(65px, 8vw, 85px));
+    margin-left: var(--space-8);
+    width: clamp(130px, 15vw, 160px);
+    height: clamp(130px, 15vw, 160px);
+    border-radius: var(--radius-full);
+    border: 4px solid var(--color-bg-card);
+    overflow: hidden;
+    background-color: var(--color-bg-alt);
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 4px 12px rgba(var(--color-primary-dark-rgb), 0.08);
+  }
+
+  .profile-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+
+  .profile-hero-body {
+    padding: var(--space-5) var(--space-8) var(--space-8);
+  }
+
+  .profile-name-row {
     display: flex;
     align-items: center;
     gap: var(--space-3);
-    margin-bottom: var(--space-6);
-    padding-bottom: var(--space-4);
-    border-bottom: 1.5px solid var(--color-border);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-1);
   }
 
-  .cv-section-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: var(--radius-lg);
-    background-color: rgba(var(--color-primary-rgb), 0.07);
+  .profile-name {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    color: var(--color-text-main);
+    letter-spacing: -0.02em;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .verified-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-full);
+    background-color: rgba(var(--color-primary-rgb), 0.08);
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .profile-headline-role {
+    font-family: var(--font-heading);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin: 0 0 var(--space-3) 0;
+  }
+
+  .profile-meta-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    font-weight: 500;
+    margin-bottom: var(--space-6);
+    flex-wrap: wrap;
+  }
+
+  .meta-city {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .meta-city svg {
+    color: var(--color-primary);
+  }
+
+  .meta-sep {
+    color: var(--color-border);
+  }
+
+  .meta-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--color-text-main);
+    font-weight: 600;
+  }
+
+  .status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-success);
+  }
+
+  .profile-hero-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  /* ====================================================
+     2. TARJETA ACERCA DE
+     ==================================================== */
+  .profile-about-paragraph {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    color: var(--color-text-main);
+    line-height: 1.7;
+    margin: 0 0 var(--space-5) 0;
+  }
+
+  .aptitudes-highlight-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-4) var(--space-5);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+  }
+
+  .aptitudes-highlight-box:hover {
+    border-color: rgba(var(--color-primary-rgb), 0.35);
+    background-color: rgba(var(--color-primary-rgb), 0.02);
+  }
+
+  .aptitudes-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-md);
+    background-color: rgba(var(--color-primary-rgb), 0.08);
     color: var(--color-primary);
     display: flex;
     align-items: center;
@@ -557,533 +645,407 @@ const shareUrl = `https://wa.me/?text=${encodeURIComponent(`Te comparto el perfi
     flex-shrink: 0;
   }
 
-  .cv-section-title {
-    font-size: var(--text-xl);
-    font-weight: 800;
-    letter-spacing: -0.015em;
-    color: var(--color-primary);
-    margin: 0;
+  .aptitudes-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
   }
 
-  .cv-section-body {
-    /* container for content */
-  }
-
-  /* About */
-  .about-text {
+  .aptitudes-label {
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 700;
     color: var(--color-text-main);
-    font-size: var(--text-base);
-    line-height: 1.8;
+  }
+
+  .aptitudes-list-preview {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
     margin: 0;
+    line-height: 1.4;
   }
 
-  /* Experience Timeline */
-  .experience-timeline {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  .aptitudes-arrow {
+    color: var(--color-text-light);
     display: flex;
-    flex-direction: column;
-  }
-
-  .timeline-item {
-    display: flex;
-    gap: var(--space-5);
-  }
-
-  .timeline-marker {
-    display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
     flex-shrink: 0;
+    transition: transform var(--transition-fast), color var(--transition-fast);
   }
 
-  .timeline-dot {
-    width: 14px;
-    height: 14px;
-    border-radius: var(--radius-full);
-    background-color: var(--color-primary);
-    border: 3px solid var(--color-bg-card);
-    outline: 2px solid var(--color-primary);
-    box-shadow: none; /* ZERO SHADOWS */
-    flex-shrink: 0;
-    margin-top: var(--space-1);
+  .aptitudes-highlight-box:hover .aptitudes-arrow {
+    color: var(--color-primary);
+    transform: translateX(3px);
   }
 
-  .timeline-line {
-    width: 2px;
-    flex: 1;
-    background-color: var(--color-border);
-    margin-top: var(--space-2);
-    margin-bottom: var(--space-2);
-    min-height: var(--space-6);
+  /* ====================================================
+     3. TARJETA EXPERIENCIA LABORAL
+     ==================================================== */
+  .experience-list {
+    display: flex;
+    flex-direction: column;
   }
 
-  .timeline-content {
-    flex: 1;
-    padding-bottom: var(--space-8);
-    min-width: 0;
+  .experience-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-5);
+    padding-block: var(--space-3);
   }
 
-  .timeline-item:last-child .timeline-content {
+  .experience-item:first-child {
+    padding-top: 0;
+  }
+
+  .experience-item:last-child {
     padding-bottom: 0;
   }
 
-  .timeline-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: var(--space-4);
-    margin-bottom: var(--space-4);
-    flex-wrap: wrap;
+  .experience-item.has-divider {
+    padding-bottom: var(--space-6);
+    margin-bottom: var(--space-6);
+    border-bottom: 1px solid var(--color-border);
   }
 
-  .timeline-role {
-    font-size: var(--text-lg);
-    font-weight: 700;
-    color: var(--color-text-main);
-    margin: 0 0 var(--space-1) 0;
-    line-height: 1.3;
-  }
-
-  .timeline-company {
-    font-size: var(--text-sm);
-    font-weight: 600;
+  .experience-company-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
     color: var(--color-primary);
-    margin: 0;
-  }
-
-  .timeline-period {
-    font-size: var(--text-xs);
-    font-weight: 600;
-    color: var(--color-text-muted);
-    background-color: var(--color-bg-alt);
-    padding: 0.3rem 0.7rem;
-    border-radius: var(--radius-full);
-    white-space: nowrap;
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
   }
 
-  .timeline-highlights {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  .experience-details {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: var(--space-3);
+    gap: 0.25rem;
+  }
+
+  .experience-role {
+    font-family: var(--font-heading);
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--color-text-main);
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .experience-company {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin: 0;
+    font-weight: 500;
+  }
+
+  .experience-period {
+    font-size: var(--text-xs);
+    color: var(--color-text-light);
+    margin-bottom: var(--space-2);
+  }
+
+  .experience-highlights {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-1) 0 var(--space-3) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
   }
 
   .highlight-item {
     display: flex;
     align-items: flex-start;
-    gap: var(--space-3);
-    color: var(--color-text-muted);
-    font-size: var(--text-sm);
-    line-height: 1.6;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--color-text-main);
+    line-height: 1.5;
   }
 
-  .highlight-check {
+  .highlight-bullet {
     color: var(--color-primary);
     flex-shrink: 0;
-    margin-top: 3px;
+    margin-top: 2px;
   }
 
-  /* Skills */
-  .skills-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: clamp(0.35rem, 0.3vw + 0.25rem, 0.55rem);
+  .experience-aptitudes-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    font-weight: 500;
+    margin-top: var(--space-1);
   }
 
-  .skill-tag {
-    background-color: rgba(var(--color-primary-rgb), 0.07);
+  .experience-aptitudes-badge svg {
     color: var(--color-primary);
-    border: 1px solid rgba(var(--color-primary-rgb), 0.16);
-    font-family: var(--font-heading);
-    font-size: clamp(0.7rem, 0.35vw + 0.62rem, 0.82rem);
-    font-weight: 600;
-    padding: clamp(0.25rem, 0.2vw + 0.2rem, 0.4rem)
-      clamp(0.6rem, 0.4vw + 0.45rem, 0.85rem);
-    border-radius: var(--radius-full);
-    line-height: 1.3;
-    transition:
-      background-color var(--transition-fast),
-      border-color var(--transition-fast);
+    flex-shrink: 0;
   }
 
-  .skill-tag:hover {
-    background-color: rgba(var(--color-primary-rgb), 0.12);
-    border-color: rgba(var(--color-primary-rgb), 0.3);
-  }
-
-  /* Education */
+  /* ====================================================
+     4. TARJETA EDUCACIÓN
+     ==================================================== */
   .education-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
     display: flex;
     flex-direction: column;
-    gap: var(--space-5);
   }
 
   .education-item {
     display: flex;
-    gap: var(--space-5);
     align-items: flex-start;
+    gap: var(--space-5);
+    padding-block: var(--space-3);
   }
 
-  .education-year {
-    font-family: var(--font-heading);
-    font-size: var(--text-base);
-    font-weight: 800;
-    color: var(--color-primary);
-    background-color: rgba(var(--color-primary-rgb), 0.07);
-    padding: 0.4rem 0.8rem;
+  .education-item:first-child {
+    padding-top: 0;
+  }
+
+  .education-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .education-item.has-divider {
+    padding-bottom: var(--space-5);
+    margin-bottom: var(--space-5);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .education-icon-box {
+    width: 48px;
+    height: 48px;
     border-radius: var(--radius-md);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
-    min-width: 60px;
-    text-align: center;
   }
 
-  .education-degree {
-    font-size: var(--text-base);
-    font-weight: 700;
-    color: var(--color-text-main);
-    margin: 0 0 var(--space-1) 0;
+  .education-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
   }
 
   .education-institution {
+    font-family: var(--font-heading);
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--color-text-main);
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .education-degree {
     font-size: var(--text-sm);
     color: var(--color-text-muted);
     margin: 0;
   }
 
-  /* Languages */
-  .languages-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-  }
-
-  .language-item {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-    font-size: var(--text-base);
-    color: var(--color-text-main);
-    font-weight: 500;
-  }
-
-  .lang-check {
-    color: var(--color-primary);
-    flex-shrink: 0;
-  }
-
-  /* Share */
-  .profile-share-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    padding-top: var(--space-6);
-    margin-top: var(--space-2);
-    border-top: 1.5px solid var(--color-border);
-  }
-
-  .share-label {
-    font-family: var(--font-heading);
-    font-size: var(--text-sm);
-    font-weight: 700;
-    color: var(--color-primary);
+  .education-year {
+    font-size: var(--text-xs);
+    color: var(--color-text-light);
   }
 
   /* ====================================================
-     SIDEBAR
+     5. TARJETA HABILIDADES Y APTITUDES
      ==================================================== */
-  .profile-sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-6);
-    position: sticky;
-    top: calc(90px + var(--space-6));
+  .skills-card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
   }
 
-  /* Contact Card */
-  .sidebar-contact-card {
-    background: linear-gradient(
-      135deg,
-      var(--color-primary) 0%,
-      var(--color-primary-dark) 100%
-    );
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: var(--radius-2xl);
-    box-shadow: none; /* ZERO SHADOWS */
-    padding: var(--space-6);
-    color: var(--color-text-inverse);
-  }
-
-  .sidebar-card-title {
-    font-family: var(--font-heading);
-    font-size: var(--text-lg);
-    font-weight: 800;
-    letter-spacing: -0.015em;
-    color: var(--color-text-inverse);
-    margin: 0 0 var(--space-3) 0;
-    line-height: 1.3;
-  }
-
-  .sidebar-contact-desc {
-    color: rgba(255, 255, 255, 0.78);
-    font-size: var(--text-sm);
-    line-height: 1.55;
-    margin: 0 0 var(--space-5) 0;
-  }
-
-  .sidebar-whatsapp-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-2);
-    width: 100%;
-    background-color: var(--color-whatsapp);
-    color: var(--color-white);
-    font-family: var(--font-heading);
-    font-size: var(--text-sm);
-    font-weight: 700;
+  .skill-row-item {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
     padding: var(--space-3) var(--space-4);
-    border-radius: var(--radius-full);
-    text-decoration: none;
-    margin-bottom: var(--space-3);
-    box-shadow: none; /* ZERO SHADOWS */
-    transition:
-      background-color var(--transition-fast),
-      transform var(--transition-fast);
-  }
-
-  .sidebar-whatsapp-btn:hover {
-    background-color: var(--color-whatsapp-dark);
-    transform: translateY(-2px);
-  }
-
-  .sidebar-email-link {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    color: rgba(255, 255, 255, 0.7);
-    font-size: var(--text-xs);
-    font-weight: 500;
-    transition: color var(--transition-fast);
-    word-break: break-all;
-  }
-
-  .sidebar-email-link:hover {
-    color: var(--color-accent);
-  }
-
-  /* More Profiles */
-  .sidebar-more-profiles {
-    background-color: var(--color-bg-card);
-    border: 1px solid rgba(var(--color-primary-rgb), 0.08);
-    border-radius: var(--radius-2xl);
-    box-shadow: none; /* ZERO SHADOWS */
-    padding: var(--space-6);
-  }
-
-  .sidebar-title-dark {
-    color: var(--color-primary);
-  }
-
-  .more-profiles-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-    margin-bottom: var(--space-5);
-  }
-
-  .more-profile-item {
     display: flex;
     align-items: center;
     gap: var(--space-3);
-    text-decoration: none;
-    transition: transform var(--transition-fast);
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
   }
 
-  .more-profile-item:hover {
-    transform: translateX(4px);
+  .skill-row-item:hover {
+    border-color: rgba(var(--color-primary-rgb), 0.35);
+    background-color: rgba(var(--color-primary-rgb), 0.03);
   }
 
-  .more-profile-photo {
-    width: 52px;
-    height: 52px;
+  .skill-icon-diamond {
+    width: 32px;
+    height: 32px;
     border-radius: var(--radius-sm);
-    object-fit: cover;
+    background-color: rgba(var(--color-primary-rgb), 0.08);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
   }
 
-  .more-profile-name {
+  .skill-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .skill-title-name {
+    font-family: var(--font-heading);
     font-size: var(--text-sm);
     font-weight: 700;
-    color: var(--color-primary);
-    margin: 0 0 var(--space-1) 0;
-    line-height: 1.3;
-    transition: color var(--transition-fast);
+    color: var(--color-text-main);
   }
 
-  .more-profile-item:hover .more-profile-name {
-    color: var(--color-primary-light);
-  }
-
-  .more-profile-role {
+  .skill-tag-check {
     font-size: var(--text-xs);
     color: var(--color-text-muted);
-    font-weight: 500;
   }
 
-  .sidebar-all-profiles-link {
+  /* ====================================================
+     6. TARJETA IDIOMAS Y COMUNICACIÓN
+     ==================================================== */
+  .languages-lead-text {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    margin: 0 0 var(--space-4) 0;
+    line-height: 1.5;
+  }
+
+  .languages-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .language-pill-item {
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
-    color: var(--color-primary);
-    font-family: var(--font-heading);
-    font-size: var(--text-sm);
-    font-weight: 700;
-    transition: gap var(--transition-fast);
-  }
-
-  .sidebar-all-profiles-link:hover {
-    gap: 0.6rem;
-  }
-
-  /* Verified card */
-  .sidebar-verified-card {
-    background-color: rgba(var(--color-primary-rgb), 0.04);
-    border: 1px solid rgba(var(--color-primary-rgb), 0.12);
-    border-radius: var(--radius-2xl);
-    box-shadow: none; /* ZERO SHADOWS */
-    padding: var(--space-6);
-  }
-
-  .verified-card-icon {
-    width: 40px;
-    height: 40px;
+    padding: var(--space-2) var(--space-4);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-full);
-    background-color: var(--color-primary);
-    color: var(--color-accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: var(--space-4);
-  }
-
-  .verified-card-title {
-    font-size: var(--text-base);
-    font-weight: 800;
-    letter-spacing: -0.015em;
-    color: var(--color-primary);
-    margin: 0 0 var(--space-2) 0;
-  }
-
-  .verified-card-desc {
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    line-height: 1.55;
-    margin: 0 0 var(--space-4) 0;
-  }
-
-  .verified-card-link {
     font-family: var(--font-heading);
-    font-size: var(--text-sm);
-    font-weight: 700;
-    color: var(--color-primary);
-    transition: color var(--transition-fast);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-text-main);
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
   }
 
-  .verified-card-link:hover {
-    color: var(--color-primary-light);
+  .language-pill-item:hover {
+    border-color: var(--color-primary);
+    background-color: rgba(var(--color-primary-rgb), 0.04);
+  }
+
+  .lang-check-icon {
+    color: var(--color-primary);
   }
 
   /* ====================================================
-     RESPONSIVE
+     7. TARJETA DE COMPARTIR
      ==================================================== */
-
-  /* Tablet */
-  @media (max-width: 1024px) {
-    .profile-grid {
-      grid-template-columns: 1fr;
-      gap: var(--space-8);
-    }
-    .profile-sidebar {
-      position: static;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-5);
-    }
-    .sidebar-verified-card {
-      grid-column: span 2;
-    }
+  .share-card-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    flex-wrap: wrap;
   }
 
-  /* Mobile Landscape */
+  .share-card-info {
+    flex: 1;
+    min-width: 260px;
+  }
+
+  .share-card-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--space-2);
+  }
+
+  .share-card-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--color-text-main);
+    margin: 0 0 var(--space-1) 0;
+  }
+
+  .share-card-desc {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* ====================================================
+     RESPONSIVE BREAKPOINTS (Mobile Adaptations)
+     ==================================================== */
   @media (max-width: 767px) {
-    .profile-page-layout {
-      padding-top: calc(90px + var(--space-5));
-      padding-bottom: var(--space-10);
+    .profile-page-wrapper {
+      padding-top: calc(60px + var(--space-3));
+      padding-bottom: var(--space-12);
     }
-    .profile-header-inner {
-      flex-direction: column;
-      gap: var(--space-5);
-    }
-    .profile-photo {
-      width: 110px;
-      height: 110px;
-    }
-    .profile-status-badge {
-      left: 55px;
-      transform: none;
-      bottom: -8px;
-    }
-    .profile-sidebar {
-      grid-template-columns: 1fr;
-    }
-    .sidebar-verified-card {
-      grid-column: span 1;
-    }
-    .timeline-header {
-      flex-direction: column;
-      gap: var(--space-2);
-    }
-  }
 
-  /* Mobile Portrait */
-  @media (max-width: 479px) {
-    .profile-page-layout {
-      padding-top: calc(90px + var(--space-4));
-      padding-bottom: var(--space-8);
-    }
-    .profile-header-section {
-      padding: var(--space-5);
-    }
-    .profile-header-inner {
+    .profile-stack {
       gap: var(--space-4);
     }
-    .profile-photo {
-      width: 90px;
-      height: 90px;
+
+    .profile-detail-card {
+      padding: var(--space-5) var(--space-4);
+      border-radius: var(--radius-lg);
     }
-    .cv-section {
-      padding: var(--space-5);
+
+    .profile-hero-body {
+      padding: var(--space-3) var(--space-4) var(--space-5);
     }
-    .profile-cta-buttons {
+
+    .profile-avatar-container {
+      margin-left: var(--space-4);
+    }
+
+    .skills-card-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .share-card-content {
       flex-direction: column;
+      align-items: flex-start;
     }
-    .profile-cta-buttons .btn {
+  }
+
+  @media (max-width: 479px) {
+    .profile-hero-actions {
+      flex-direction: column;
+      align-items: stretch;
       width: 100%;
-      justify-content: center;
     }
-    .education-item {
-      flex-direction: column;
-      gap: var(--space-2);
+
+    .profile-hero-actions :global(.modular-btn) {
+      width: 100%;
+    }
+
+    .profile-hero-actions :global(.btn-text-capsule) {
+      flex: 1;
     }
   }
 </style>

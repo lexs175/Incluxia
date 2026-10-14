@@ -1,0 +1,75 @@
+---
+import StoryCard from "../cards/StoryCard.astro";
+
+interface Props {
+  stories: any[];
+}
+
+const { stories } = Astro.props;
+---
+
+<section class="section stories-grid-section">
+  <div class="container">
+    <div class="section-top-bar">
+      <div>
+        <span class="badge badge-navy">Directorio de Testimonios</span>
+        <h2 class="section-heading">
+          Más trayectorias que derriban barreras
+        </h2>
+        <p class="section-desc">
+          Cada testimonio demuestra que la agudeza visual, la disciplina y el
+          trabajo sin interrupciones acústicas impulsan el éxito corporativo.
+        </p>
+      </div>
+    </div>
+
+    <div class="stories-cards-grid">
+      {stories.map((story) => <StoryCard story={story} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .stories-grid-section {
+    background-color: var(--color-bg);
+  }
+
+  .section-top-bar {
+    margin-bottom: var(--space-10);
+  }
+
+  .section-heading {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.02em;
+    margin-top: var(--space-2);
+    margin-bottom: 0.25rem;
+    line-height: 1.25;
+  }
+
+  .section-desc {
+    color: var(--color-text-muted);
+    font-size: var(--text-base);
+    max-width: 620px;
+    margin: 0;
+  }
+
+  .stories-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+
+  @media (max-width: 991px) {
+    .stories-cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .stories-cards-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

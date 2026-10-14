@@ -1,0 +1,140 @@
+---
+---
+
+<section class="section metrics-showcase-section">
+  <div class="container">
+    <div class="metrics-bento-container">
+      <div class="metrics-banner-top">
+        <h2 class="metrics-banner-title">Métricas de impacto en Bolivia</h2>
+        <p class="metrics-banner-desc">
+          Resultados transparentes que respaldan nuestro compromiso con la
+          inclusión laboral real.
+        </p>
+      </div>
+
+      <div class="metrics-cards-grid">
+        <div class="dark-metric-card">
+          <span class="metric-huge-number">100%</span>
+          <span class="metric-bold-label">Coordinación por Chat</span>
+          <p class="metric-sub-text">
+            Cero llamadas sorpresa. Todas las convocatorias se hacen por
+            WhatsApp o mensajería.
+          </p>
+        </div>
+
+        <div class="dark-metric-card">
+          <span class="metric-huge-number">2% / 4%</span>
+          <span class="metric-bold-label">Cuota Legal Garantizada</span>
+          <p class="metric-sub-text">
+            Cumplimiento formal de la Ley 977 en sector privado y Ley 223 en
+            sector público.
+          </p>
+        </div>
+
+        <div class="dark-metric-card">
+          <span class="metric-huge-number">3</span>
+          <span class="metric-bold-label">Ejes Principales</span>
+          <p class="metric-sub-text">
+            Puestos verificados en Santa Cruz, La Paz y Cochabamba con
+            cobertura nacional.
+          </p>
+        </div>
+
+        <div class="dark-metric-card">
+          <span class="metric-huge-number">0 Bs</span>
+          <span class="metric-bold-label">Costo para Candidatos</span>
+          <p class="metric-sub-text">
+            El registro, postulación y asesoría para personas con hipoacusia
+            es 100% gratuito.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .metrics-showcase-section {
+    background-color: var(--color-white);
+    padding-top: 0;
+  }
+
+  .metrics-bento-container {
+    background-color: var(--color-surface-dark);
+    border-radius: var(--radius-3xl);
+    border: 1px solid var(--color-border-dark);
+    padding: clamp(2.5rem, 5vw, 4rem);
+    box-shadow: none;
+  }
+
+  .metrics-banner-top {
+    max-width: 680px;
+    margin-bottom: var(--space-10);
+  }
+
+  .metrics-banner-title {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--color-white);
+    letter-spacing: -0.025em;
+    margin-bottom: var(--space-2);
+  }
+
+  .metrics-banner-desc {
+    font-size: var(--text-base);
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+  }
+
+  .metrics-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+  }
+
+  .dark-metric-card {
+    background-color: var(--color-surface-dark-card);
+    border: 1px solid var(--color-border-dark);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    box-shadow: none;
+  }
+
+  .metric-huge-number {
+    font-family: var(--font-heading);
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    color: var(--color-accent);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .metric-bold-label {
+    font-family: var(--font-heading);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-white);
+  }
+
+  .metric-sub-text {
+    font-size: var(--text-xs);
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @media (max-width: 991px) {
+    .metrics-cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .metrics-cards-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

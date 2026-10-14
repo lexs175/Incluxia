@@ -18,194 +18,237 @@ interface Props {
 const { profile } = Astro.props;
 ---
 
-<article class="story-card">
-  <div class="story-image-wrap">
+<article class="profile-card">
+  <!-- 1. Padded Inset Image with Gradient Overlay and Overlay Role/Name -->
+  <div class="profile-image-wrapper">
     <img
       src={profile.photo}
       alt={profile.name}
-      class="story-image"
+      class="profile-img"
       loading="lazy"
     />
-    <div class="story-gradient-overlay"></div>
+    <div class="profile-gradient-overlay" aria-hidden="true"></div>
+    <div class="profile-image-overlay-content">
+      <span class="profile-overlay-role">{profile.role}</span>
+      <h3 class="profile-overlay-name">{profile.name}</h3>
+    </div>
   </div>
 
-  <div class="story-content">
-    <p class="story-city">
-      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <!-- 2. Clean Card Body -->
+  <div class="profile-body">
+    <div class="profile-meta-city">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="13"
+        height="13"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
         <circle cx="12" cy="10" r="3"></circle>
       </svg>
-      {profile.city}, Bolivia
-    </p>
-    <h3 class="story-title">
-      <a href={`/perfiles/${profile.slug}`}>
-        {profile.name}: {profile.role}
-      </a>
-    </h3>
-
-    <p class="story-quote">"{profile.tagline}"</p>
-    <!-- Skills pills en lugar del badge -->
-    <div class="story-skills-wrap">
-      {profile.skills.slice(0, 3).map((skill) => (
-        <span class="skill-pill">{skill}</span>
-      ))}
-      {profile.skills.length > 3 && (
-        <span class="skill-pill skill-pill--more">+{profile.skills.length - 3}</span>
-      )}
+      <span>{profile.city}, Bolivia</span>
     </div>
 
-    <div class="story-btn-wrap">
-      <ExpandableButton href={`/perfiles/${profile.slug}`} text="Ver Perfil" variant="white" size="md" />
+    <p class="profile-tagline">"{profile.tagline}"</p>
+
+    <!-- Skills pills -->
+    <div class="profile-skills-wrap">
+      {
+        profile.skills.slice(0, 3).map((skill) => (
+          <span class="skill-pill">{skill}</span>
+        ))
+      }
+      {
+        profile.skills.length > 3 && (
+          <span class="skill-pill skill-pill--more">
+            +{profile.skills.length - 3}
+          </span>
+        )
+      }
+    </div>
+
+    <div class="profile-btn-wrap">
+      <ExpandableButton
+        href={`/perfiles/${profile.slug}`}
+        text="Ver Perfil"
+        variant="primary-line"
+        size="md"
+      />
     </div>
   </div>
 </article>
 
 <style>
-  .story-card {
-    position: relative;
+  .profile-card {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    overflow: hidden;
-    height: 520px;
+    padding: var(--space-4);
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    box-shadow: none; /* ZERO SHADOWS */
     min-width: 0;
     max-width: 100%;
     box-sizing: border-box;
-    box-shadow: none; /* ZERO SHADOWS */
-    border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+    transition: border-color var(--transition-fast);
   }
 
-  .story-card:hover {
-    box-shadow: none; /* ZERO SHADOWS */
-    /* NO TRANSLATEY, NO BORDER CHANGE */
+  .profile-card:hover {
+    border-color: var(--color-border-hover);
   }
 
-  .story-btn-wrap {
-    margin-top: var(--space-4);
+  /* Inset Image with Gradient */
+  .profile-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 270px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background-color: var(--color-bg-alt);
+    flex-shrink: 0;
   }
 
-  .story-image-wrap {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-  }
-
-  .story-image {
+  .profile-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: top center;
+    display: block;
   }
 
-  .story-gradient-overlay {
+  /* Gradient Overlay */
+  .profile-gradient-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(
-      to top,
-      rgba(var(--color-primary-rgb, 33, 32, 81), 0.98) 0%,
-      rgba(var(--color-primary-rgb, 33, 32, 81), 0.90) 38%,
-      rgba(var(--color-primary-rgb, 33, 32, 81), 0.55) 65%,
-      rgba(var(--color-primary-rgb, 33, 32, 81), 0.10) 85%,
-      transparent 100%
+      180deg,
+      transparent 0%,
+      transparent 35%,
+      rgba(var(--color-primary-rgb), 0.45) 60%,
+      rgba(var(--color-primary-rgb), 0.95) 100%
     );
     pointer-events: none;
   }
 
-  .story-content {
-    position: relative;
+  /* Overlay Text: Profesión y Nombre */
+  .profile-image-overlay-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--space-4);
     z-index: 2;
-    padding: var(--space-6);
     color: var(--color-text-inverse);
-  }
-
-  /* Skills pills (Borderless) */
-  .story-skills-wrap {
     display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-    margin-bottom: var(--space-4);
+    flex-direction: column;
+    gap: 0.2rem;
   }
 
-  .skill-pill {
-    background-color: rgba(var(--color-accent-rgb), 0.25);
-    color: var(--color-accent);
-    border: none; /* NO BORDER */
+  .profile-overlay-role {
     font-family: var(--font-heading);
-    font-size: clamp(0.6rem, 0.5vw + 0.5rem, 0.72rem);
-    font-weight: 700;
-    padding: clamp(0.2rem, 0.2vw + 0.15rem, 0.25rem) clamp(0.45rem, 0.5vw + 0.3rem, 0.6rem);
-    border-radius: var(--radius-full);
-    white-space: nowrap;
-    line-height: 1.3;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.02em;
+    line-height: 1.2;
   }
 
-  .skill-pill--more {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: var(--color-white);
-    border: none; /* NO BORDER */
-  }
-
-  .story-title {
-    font-size: var(--text-lg);
-    font-weight: 700;
+  .profile-overlay-name {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 800;
+    letter-spacing: -0.02em;
     color: var(--color-text-inverse);
-    line-height: 1.3;
-    margin-bottom: var(--space-2);
+    line-height: 1.2;
+    margin: 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
   }
 
-  .story-title a {
-    color: var(--color-text-inverse);
+  /* Card Body */
+  .profile-body {
+    padding-top: var(--space-4);
+    padding-inline: var(--space-1);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
   }
 
-  .story-title a:hover {
-    color: var(--color-accent);
-  }
-
-  .story-city {
+  .profile-meta-city {
     display: inline-flex;
     align-items: center;
     gap: var(--space-1);
+    font-family: var(--font-heading);
     font-size: var(--text-xs);
-    color: rgba(255, 255, 255, 0.65);
-    font-weight: 500;
-    margin-bottom: var(--space-2);
+    color: var(--color-text-muted);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
   }
 
-  .story-quote {
+  .profile-meta-city svg {
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+
+  .profile-tagline {
+    font-family: var(--font-body);
     font-size: var(--text-sm);
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--color-text-muted);
     font-style: italic;
-    line-height: 1.5;
-    margin-bottom: var(--space-6);
+    line-height: 1.55;
+    margin: 0 0 var(--space-4) 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
 
-  .story-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--color-accent);
-    font-family: var(--font-heading);
-    font-size: var(--text-sm);
-    font-weight: 700;
-    transition: gap var(--transition-fast);
+  /* Skills pills */
+  .profile-skills-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-5);
   }
 
-  .story-link:hover {
-    gap: 0.75rem;
-    color: var(--color-text-inverse);
+  .skill-pill {
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-main);
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+    line-height: 1.3;
+  }
+
+  .skill-pill--more {
+    background-color: rgba(var(--color-primary-rgb), 0.08);
+    border-color: rgba(var(--color-primary-rgb), 0.2);
+    color: var(--color-primary);
+  }
+
+  .profile-btn-wrap {
+    margin-top: auto;
+    padding-top: var(--space-2);
   }
 
   @media (max-width: 479px) {
-    .story-card {
-      height: 480px;
+    .profile-card {
+      padding: var(--space-3);
     }
-    .story-content {
-      padding: var(--space-4);
+    .profile-image-wrapper {
+      height: 240px;
+    }
+    .profile-body {
+      padding-top: var(--space-3);
     }
   }
 </style>

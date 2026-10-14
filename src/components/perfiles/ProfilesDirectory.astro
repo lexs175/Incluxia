@@ -1,0 +1,96 @@
+---
+import Button from "../ui/Button.astro";
+import ProfileCard from "../cards/ProfileCard.astro";
+
+interface Props {
+  profiles: any[];
+}
+
+const { profiles } = Astro.props;
+---
+
+<section class="section profiles-grid-section">
+  <div class="container">
+    <div class="section-top-bar">
+      <div>
+        <h2 class="section-heading">Profesionales listos para tu empresa</h2>
+        <p class="section-desc">
+          Pasa el cursor sobre cada perfil para conocer sus habilidades clave
+          y abrir su currículum completo.
+        </p>
+      </div>
+
+      <Button href="/empleos" variant="outline" size="sm">
+        <span>Ver Ofertas de Trabajo</span>
+        <svg
+          width="15"
+          height="15"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </Button>
+    </div>
+
+    <div class="profiles-cards-grid">
+      {profiles.map((profile) => <ProfileCard profile={profile} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .profiles-grid-section {
+    background-color: var(--color-bg);
+  }
+
+  .section-top-bar {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-4);
+    margin-bottom: var(--space-10);
+    flex-wrap: wrap;
+  }
+
+  .section-heading {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.02em;
+    margin-top: var(--space-2);
+    margin-bottom: 0.25rem;
+    line-height: 1.25;
+  }
+
+  .section-desc {
+    color: var(--color-text-muted);
+    font-size: var(--text-base);
+    max-width: 620px;
+    margin: 0;
+  }
+
+  .profiles-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+
+  @media (max-width: 991px) {
+    .profiles-cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .profiles-cards-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
