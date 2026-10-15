@@ -383,6 +383,11 @@ const filteredAutonomos =
     gap: var(--space-4);
     position: sticky;
     top: calc(75px + var(--space-4));
+    max-height: calc(100dvh - 75px - var(--space-6));
+    overflow-y: auto;
+    scrollbar-width: thin;
+    overscroll-behavior: contain;
+    padding-inline-end: 2px;
   }
 
   .sidebar-block-label {

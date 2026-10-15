@@ -1,0 +1,753 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Publicar Trabajo o Proyecto | Incluxia Bolivia"
+  description="Publica una vacante o proyecto freelance en Bolivia. Conecta con talento calificado con comunicación 100% por chat escrito sin llamadas telefónicas."
+  activePath="/publicar"
+>
+  <div class="publish-wrapper">
+    <div class="container publish-container">
+      
+      <div class="publish-card">
+        
+        <!-- ESTADO 1: BLOQUEO POR AUTENTICACIÓN (Solo si NO ha iniciado sesión) -->
+        <div id="publishAuthGate" class="publish-auth-gate" style="display: none;">
+          <div class="auth-gate-icon-box">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
+          
+          <h2 class="auth-gate-title" data-animated="true">Inicia sesión o regístrate para publicar</h2>
+          <p class="auth-gate-desc">
+            Para publicar puestos o proyectos, recibir postulaciones de candidatos y coordinar contrataciones por chat, necesitas acceder con tu cuenta.
+          </p>
+
+          <button type="button" class="auth-gate-login-btn" data-auth-trigger="login">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+              <polyline points="10 17 15 12 10 7"></polyline>
+              <line x1="15" y1="12" x2="3" y2="12"></line>
+            </svg>
+            <span>Iniciar Sesión / Registrarme</span>
+          </button>
+        </div>
+
+        <!-- ESTADO 2: FORMULARIO DESBLOQUEADO (Visible ÚNICAMENTE si está logueado) -->
+        <div id="publishFormWrapper" style="display: none;">
+          <div class="publish-header">
+            <h1 class="publish-title">Publica tu trabajo o proyecto</h1>
+            <p class="publish-desc">
+              Publica lo que necesitas en 1 minuto. Encuentra profesionales independientes y candidatos verificados con coordinación 100% por chat escrito.
+            </p>
+          </div>
+
+          <!-- Selector de Modalidad Estilo Contra -->
+          <div class="publish-type-toggle">
+            <button type="button" class="type-pill active" id="btnTypeFreelance" data-type="freelance">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+              <span>Proyecto / Freelance</span>
+            </button>
+            <button type="button" class="type-pill" id="btnTypeFixed" data-type="fixed">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span>Empleo Fijo / Planilla</span>
+            </button>
+          </div>
+
+          <!-- Formulario Oficial -->
+          <form class="publish-form" id="publishJobForm">
+            <input type="hidden" id="jobTypeInput" value="freelance" />
+
+            <!-- 1. Título del Trabajo -->
+            <div class="form-group">
+              <label for="jobTitle" class="form-label">
+                Título del puesto o proyecto <span class="required-star">*</span>
+              </label>
+              <input
+                type="text"
+                id="jobTitle"
+                required
+                placeholder="Ej. Diseño de catálogo y piezas para redes / Auxiliar contable facturación"
+                class="form-control"
+              />
+            </div>
+
+            <!-- 2. Categoría y Ciudad (Grid 2 cols) -->
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="jobCategory" class="form-label">
+                  Especialidad / Rubro <span class="required-star">*</span>
+                </label>
+                <select id="jobCategory" required class="form-control form-select">
+                  <option value="" disabled selected>Selecciona un rubro</option>
+                  <option value="Diseño Gráfico">Diseño Gráfico & Multimedia</option>
+                  <option value="Desarrollo Web">Desarrollo Web & Software</option>
+                  <option value="Sistemas y TI">Sistemas & Soporte Técnico</option>
+                  <option value="Contabilidad y Finanzas">Contabilidad & Finanzas</option>
+                  <option value="Digitación y Archivo">Digitación & Archivo de Datos</option>
+                  <option value="Redes Sociales">Redes Sociales & Contenido</option>
+                  <option value="Edición Audiovisual">Edición Audiovisual & Subtitulado</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="jobCity" class="form-label">
+                  Ubicación <span class="required-star">*</span>
+                </label>
+                <select id="jobCity" required class="form-control form-select">
+                  <option value="100% Remoto">100% Remoto (Toda Bolivia)</option>
+                  <option value="Cochabamba">Cochabamba</option>
+                  <option value="La Paz">La Paz / El Alto</option>
+                  <option value="Santa Cruz">Santa Cruz</option>
+                  <option value="Sucre">Sucre</option>
+                  <option value="Tarija">Tarija</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- 3. Presupuesto o Salario -->
+            <div class="form-group">
+              <label for="jobBudget" class="form-label">
+                <span id="budgetLabelText">Presupuesto estimado (en Bolivianos)</span> <span class="required-star">*</span>
+              </label>
+              <div class="budget-input-wrap">
+                <span class="budget-currency-prefix">Bs.</span>
+                <input
+                  type="text"
+                  id="jobBudget"
+                  required
+                  placeholder="Ej. 650 (por proyecto) o 3200 (mensual)"
+                  class="form-control budget-input"
+                />
+              </div>
+            </div>
+
+            <!-- 4. Descripción y Entregables -->
+            <div class="form-group">
+              <label for="jobDescription" class="form-label">
+                Descripción de las tareas o entregables <span class="required-star">*</span>
+              </label>
+              <textarea
+                id="jobDescription"
+                required
+                rows="4"
+                placeholder="Describe qué necesitas lograr, herramientas requeridas (Photoshop, Excel, SIAT, etc.) y plazos estimados..."
+                class="form-control form-textarea"
+              ></textarea>
+            </div>
+
+            <!-- 5. Datos de la Empresa / Contratante (Grid 2 cols) -->
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="jobCompany" class="form-label">
+                  Empresa o Nombre de Contratante <span class="required-star">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="jobCompany"
+                  required
+                  placeholder="Ej. Estudio Creativo / Farmacorp / Personal"
+                  class="form-control"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="jobWhatsapp" class="form-label">
+                  Tu WhatsApp de contacto <span class="required-star">*</span>
+                </label>
+                <input
+                  type="tel"
+                  id="jobWhatsapp"
+                  required
+                  placeholder="+591 70000000"
+                  class="form-control"
+                />
+              </div>
+            </div>
+
+            <!-- Botón Submit -->
+            <button type="submit" class="publish-submit-btn" id="btnSubmitPublish">
+              <span>Publicar Trabajo Ahora</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- ESTADO 3: ÉXITO TRAS PUBLICAR -->
+        <div id="publishSuccessBox" class="publish-success-state" style="display: none;">
+          <div class="success-icon-badge">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          
+          <h2 class="success-title">¡Tu trabajo ha sido publicado con éxito!</h2>
+          <p class="success-desc" id="successSummaryText">
+            Tu vacante está activa. Los profesionales interesados podrán postular directamente por chat.
+          </p>
+
+          <div class="success-actions-box">
+            <a href="/empleos" class="success-primary-btn">
+              Ver ofertas de empleo activas →
+            </a>
+            
+            <a href="#" id="btnSharePublishWhatsapp" target="_blank" rel="noopener noreferrer" class="success-whatsapp-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              </svg>
+              <span>Notificar a Incluxia por WhatsApp</span>
+            </a>
+          </div>
+
+          <button type="button" class="btn-publish-another" id="btnPublishAnother">
+            + Publicar otro puesto o proyecto
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</Layout>
+
+<script>
+  function initPublishFlow() {
+    const authGate = document.getElementById("publishAuthGate");
+    const formWrapper = document.getElementById("publishFormWrapper");
+    const successBox = document.getElementById("publishSuccessBox");
+    const form = document.getElementById("publishJobForm") as HTMLFormElement | null;
+    const successSummary = document.getElementById("successSummaryText");
+    const btnShareWhatsapp = document.getElementById("btnSharePublishWhatsapp") as HTMLAnchorElement | null;
+    const btnPublishAnother = document.getElementById("btnPublishAnother");
+
+    const btnFreelance = document.getElementById("btnTypeFreelance");
+    const btnFixed = document.getElementById("btnTypeFixed");
+    const jobTypeInput = document.getElementById("jobTypeInput") as HTMLInputElement | null;
+    const budgetLabelText = document.getElementById("budgetLabelText");
+
+    // Verificar si el usuario ha iniciado sesión
+    function checkAuth() {
+      // Si ya está mostrando el estado de éxito, no cambiar
+      if (successBox && successBox.style.display === "flex") return;
+
+      let user = null;
+      try {
+        const stored = localStorage.getItem("incluxia_auth_user");
+        if (stored) user = JSON.parse(stored);
+      } catch {
+        user = null;
+      }
+
+      if (user) {
+        // Logueado: ocultar gate y mostrar formulario
+        if (authGate) authGate.style.display = "none";
+        if (formWrapper) formWrapper.style.display = "block";
+
+        const compField = document.getElementById("jobCompany") as HTMLInputElement | null;
+        if (compField && !compField.value) {
+          compField.value = user.companyName || user.name || "";
+        }
+        const whatsappField = document.getElementById("jobWhatsapp") as HTMLInputElement | null;
+        if (whatsappField && !whatsappField.value && user.phone) {
+          whatsappField.value = user.phone;
+        }
+      } else {
+        // NO logueado: mostrar bloqueo y ocultar formulario
+        if (authGate) authGate.style.display = "flex";
+        if (formWrapper) formWrapper.style.display = "none";
+      }
+    }
+
+    checkAuth();
+    window.addEventListener("incluxia:auth-changed", checkAuth);
+
+    // Toggle Modalidad
+    btnFreelance?.addEventListener("click", () => {
+      btnFreelance.classList.add("active");
+      btnFixed?.classList.remove("active");
+      if (jobTypeInput) jobTypeInput.value = "freelance";
+      if (budgetLabelText) budgetLabelText.textContent = "Presupuesto por proyecto (en Bolivianos)";
+    });
+
+    btnFixed?.addEventListener("click", () => {
+      btnFixed.classList.add("active");
+      btnFreelance?.classList.remove("active");
+      if (jobTypeInput) jobTypeInput.value = "fixed";
+      if (budgetLabelText) budgetLabelText.textContent = "Sueldo mensual estimado (en Bolivianos)";
+    });
+
+    // Envío del formulario
+    form?.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const title = (document.getElementById("jobTitle") as HTMLInputElement)?.value.trim();
+      const category = (document.getElementById("jobCategory") as HTMLSelectElement)?.value;
+      const city = (document.getElementById("jobCity") as HTMLSelectElement)?.value;
+      const budget = (document.getElementById("jobBudget") as HTMLInputElement)?.value.trim();
+      const description = (document.getElementById("jobDescription") as HTMLTextAreaElement)?.value.trim();
+      const company = (document.getElementById("jobCompany") as HTMLInputElement)?.value.trim();
+      const whatsapp = (document.getElementById("jobWhatsapp") as HTMLInputElement)?.value.trim();
+      const type = jobTypeInput?.value || "freelance";
+
+      if (!title || !category || !city || !budget || !company) return;
+
+      const newJob = {
+        id: `custom-job-${Date.now()}`,
+        title,
+        company,
+        category,
+        city,
+        salary: budget.startsWith("Bs.") ? budget : `Bs. ${budget}`,
+        type: type === "freelance" ? "Proyecto Freelance" : "Tiempo Completo",
+        description,
+        whatsapp,
+        publishedAt: new Date().toLocaleDateString("es-BO", { day: "numeric", month: "short", year: "numeric" }),
+      };
+
+      // Guardar en localStorage
+      try {
+        const existing = JSON.parse(localStorage.getItem("incluxia_published_jobs") || "[]");
+        existing.unshift(newJob);
+        localStorage.setItem("incluxia_published_jobs", JSON.stringify(existing));
+        window.dispatchEvent(new CustomEvent("incluxia:job-created", { detail: newJob }));
+      } catch {
+        // Fallback local
+      }
+
+      // Preparar enlace de WhatsApp para soporte de difusión
+      const whatsappMsg = `Hola Incluxia, acabo de publicar un nuevo puesto en la plataforma:\n\n*Puesto:* ${title}\n*Empresa:* ${company}\n*Modalidad:* ${newJob.type} (${city})\n*Presupuesto:* ${newJob.salary}\n*Contacto:* ${whatsapp}`;
+      if (btnShareWhatsapp) {
+        btnShareWhatsapp.href = `https://wa.me/59172255726?text=${encodeURIComponent(whatsappMsg)}`;
+      }
+
+      if (successSummary) {
+        successSummary.textContent = `Tu puesto de "${title}" en "${company}" está registrado y visible para profesionales de ${city} y todo el país.`;
+      }
+
+      // Mostrar pantalla de éxito
+      if (formWrapper) formWrapper.style.display = "none";
+      if (successBox) successBox.style.display = "flex";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    btnPublishAnother?.addEventListener("click", () => {
+      form?.reset();
+      if (formWrapper) formWrapper.style.display = "block";
+      if (successBox) successBox.style.display = "none";
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", initPublishFlow);
+  document.addEventListener("astro:page-load", initPublishFlow);
+</script>
+
+<style>
+  /* ====================================================
+     CAPA 1: WRAPPER
+     ==================================================== */
+  .publish-wrapper {
+    background-color: var(--color-bg-alt);
+    min-height: 100dvh;
+    padding-top: calc(75px + var(--space-8));
+    padding-bottom: var(--space-20);
+    box-sizing: border-box;
+  }
+
+  /* ====================================================
+     CAPA 2: CONTENEDOR 1440px
+     ==================================================== */
+  .publish-container {
+    max-width: var(--container-max-width);
+    margin-inline: auto;
+    padding-inline: var(--container-padding);
+    display: flex;
+    justify-content: center;
+  }
+
+  /* ====================================================
+     CAPA 3: CÁPSULA / TARJETA MAESTRA
+     ==================================================== */
+  .publish-card {
+    width: 100%;
+    max-width: 760px;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-2xl);
+    padding: clamp(1.5rem, 4vw, 3rem);
+    box-shadow: 0 4px 20px rgba(var(--color-primary-dark-rgb), 0.04);
+    box-sizing: border-box;
+  }
+
+  /* ====================================================
+     ESTADO 1: BLOQUEO POR AUTENTICACIÓN (AUTH GATE)
+     ==================================================== */
+  .publish-auth-gate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-block: var(--space-8);
+  }
+
+  .auth-gate-icon-box {
+    width: 68px;
+    height: 68px;
+    border-radius: var(--radius-full);
+    background-color: rgba(var(--color-primary-rgb), 0.08);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-5);
+  }
+
+  .auth-gate-title {
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    margin-bottom: var(--space-3);
+  }
+
+  .auth-gate-desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    max-width: 480px;
+    margin-bottom: var(--space-6);
+  }
+
+  .auth-gate-login-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    padding: 0.95rem 1.75rem;
+    border-radius: var(--radius-md);
+    border: none;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(var(--color-primary-rgb), 0.25);
+    transition: all var(--transition-fast);
+  }
+
+  .auth-gate-login-btn:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(var(--color-primary-rgb), 0.35);
+  }
+
+  /* ====================================================
+     ESTADO 2: FORMULARIO
+     ==================================================== */
+  .publish-header {
+    text-align: center;
+    margin-bottom: var(--space-6);
+  }
+
+  .publish-title {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-2);
+  }
+
+  .publish-desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    max-width: 580px;
+    margin-inline: auto;
+  }
+
+  /* Selector de Modalidad Estilo Contra */
+  .publish-type-toggle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+    background-color: var(--color-bg-alt);
+    padding: 0.35rem;
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-6);
+  }
+
+  .type-pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    border: none;
+    background: transparent;
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .type-pill:hover {
+    color: var(--color-primary);
+  }
+
+  .type-pill.active {
+    background-color: var(--color-bg-card);
+    color: var(--color-primary);
+    box-shadow: 0 2px 6px rgba(var(--color-primary-dark-rgb), 0.08);
+  }
+
+  /* Formulario y Controles */
+  .publish-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-label {
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--color-text-main);
+  }
+
+  .required-star {
+    color: var(--color-error);
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    background-color: var(--color-bg-alt);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    color: var(--color-text-main);
+    box-sizing: border-box;
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+  }
+
+  .form-control:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background-color: var(--color-bg-card);
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.15);
+  }
+
+  .form-select {
+    cursor: pointer;
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 90px;
+    line-height: 1.5;
+  }
+
+  .budget-input-wrap {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .budget-currency-prefix {
+    padding-left: 1rem;
+    padding-right: 0.35rem;
+    font-family: var(--font-heading);
+    font-size: var(--text-sm);
+    font-weight: 800;
+    color: var(--color-primary);
+  }
+
+  .budget-input {
+    border: none !important;
+    background: transparent !important;
+    padding-left: 0.25rem !important;
+  }
+
+  .budget-input:focus {
+    box-shadow: none !important;
+  }
+
+  .budget-input-wrap:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.15);
+    background-color: var(--color-bg-card);
+  }
+
+  /* Botón Submit */
+  .publish-submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0.95rem 1.5rem;
+    border-radius: var(--radius-md);
+    border: none;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(var(--color-primary-rgb), 0.25);
+    transition: all var(--transition-fast);
+  }
+
+  .publish-submit-btn:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(var(--color-primary-rgb), 0.35);
+  }
+
+  /* ====================================================
+     ESTADO 3: ÉXITO
+     ==================================================== */
+  .publish-success-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-block: var(--space-6);
+  }
+
+  .success-icon-badge {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-full);
+    background-color: rgba(var(--color-success-rgb), 0.12);
+    color: var(--color-success);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-4);
+  }
+
+  .success-title {
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: var(--space-2);
+  }
+
+  .success-desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    max-width: 520px;
+    margin-bottom: var(--space-6);
+  }
+
+  .success-actions-box {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    width: 100%;
+    max-width: 420px;
+    margin-bottom: var(--space-6);
+  }
+
+  .success-primary-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.25rem;
+    border-radius: var(--radius-md);
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color var(--transition-fast);
+  }
+
+  .success-primary-btn:hover {
+    background-color: var(--color-primary-hover);
+    color: var(--color-white);
+  }
+
+  .success-whatsapp-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.25rem;
+    border-radius: var(--radius-md);
+    background-color: var(--color-whatsapp-light);
+    color: var(--color-whatsapp-dark);
+    border: 1px solid var(--color-whatsapp);
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+  }
+
+  .success-whatsapp-btn:hover {
+    background-color: var(--color-whatsapp);
+    color: var(--color-white);
+  }
+
+  .btn-publish-another {
+    background: transparent;
+    border: none;
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: color var(--transition-fast);
+  }
+
+  .btn-publish-another:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+
+  /* Responsive Rules (Cero font-sizes en media queries) */
+  @media (max-width: 640px) {
+    .form-grid-2 {
+      grid-template-columns: 1fr;
+    }
+    .publish-type-toggle {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

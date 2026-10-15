@@ -20,7 +20,7 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100%;
   scrollbar-width: thin;
   scrollbar-color: var(--color-primary) transparent;
@@ -63,7 +63,7 @@ body {
   min-width: 240px; /* Base 240px minimum mobile width */
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100%;
   width: 100%;
 }

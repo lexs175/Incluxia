@@ -72,7 +72,7 @@ const { autonomos, services } = Astro.props;
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  text="Enviar consulta por WhatsApp"
+                  text={`Consultar disponibilidad (${aut.hourlyRate})`}
                   variant="primary"
                   size="md"
                 />
@@ -223,13 +223,13 @@ const { autonomos, services } = Astro.props;
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                text="Contratar este servicio por WhatsApp"
+                text={`Contratar este paquete (${serv.price})`}
                 variant="primary"
                 size="md"
                 fullWidth={true}
               />
               <span class="cta-guarantee-note">
-                Coordinación 100% por chat escrito sin llamadas · Ley N° 977
+                Coordinación y entrega 100% por chat escrito sin llamadas telefónicas
               </span>
             </div>
           </div>
