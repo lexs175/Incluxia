@@ -8,13 +8,13 @@ interface Props {
 const { activePath = "/" } = Astro.props;
 
 const navLinks = [
-  { label: "Inicio", href: "/" },
-  { label: "Ofertas de Empleo", href: "/empleos" },
-  { label: "Contratar", href: "/contratar" },
-  { label: "Perfiles", href: "/perfiles" },
-  { label: "Casos de Éxito", href: "/casos-de-exito" },
-  { label: "Blog", href: "/blog" },
-  // { label: "Sobre Nosotros", href: "/nosotros" },
+  { label: "Inicio", href: "/", access: "guest" },
+  { label: "Casos de éxito", href: "/casos-de-exito", access: "guest" },
+  { label: "Inicio", href: "/", access: "member" },
+  { label: "Contratar", href: "/contratar", access: "member" },
+  { label: "Publicar", href: "/publicar", access: "member" },
+  { label: "Postulaciones", href: "/postulaciones", access: "member" },
+  { label: "Perfil", href: "/perfil", access: "member" },
 ];
 ---
 
@@ -23,6 +23,7 @@ const navLinks = [
     <div class="navbar-capsule">
       <!-- Logo -->
       <a href="/" class="brand" aria-label="Incluxia Bolivia - Inicio">
+        <span class="app-brand" data-member>Incluxia</span>
         <!--<img
           src="/images/logo.png"
           alt="Incluxia Bolivia"
@@ -40,7 +41,7 @@ const navLinks = [
                 activePath === link.href ||
                 (link.href !== "/" && activePath.startsWith(link.href));
               return (
-                <li>
+                <li data-access={link.access}>
                   <a
                     href={link.href}
                     class={`nav-link ${isActive ? "active" : ""}`}
@@ -58,48 +59,10 @@ const navLinks = [
       <!-- Header Actions -->
       <div class="header-actions">
         <!-- Botón Publicar Trabajo (CTA Principal) -->
-        <a href="/publicar" class="header-post-btn" aria-label="Publicar vacante o proyecto">
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-          </svg>
-          <span>Publicar Trabajo</span>
-        </a>
+        <ExpandableButton text="Crear cuenta" size="sm" variant="primary" data-auth-trigger="register" data-guest />
 
         <!-- 1. Botón Ingresar (Visible solo cuando NO ha iniciado sesión) -->
-        <button
-          type="button"
-          class="header-auth-btn"
-          id="btnHeaderLogin"
-          data-auth-trigger="login"
-          aria-label="Iniciar sesión o registrarse"
-        >
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-            <circle cx="12" cy="7" r="4"></circle>
-          </svg>
-          <span>Ingresar</span>
-        </button>
+        <ExpandableButton text="Ingresar" id="btnHeaderLogin" size="sm" variant="primary-line" data-auth-trigger="login" data-guest />
 
         <!-- 2. Perfil Autenticado (Recién aparece cuando hayan llenado la simulación de acceso) -->
         <div
@@ -108,7 +71,7 @@ const navLinks = [
           style="display: none;"
         >
           <a
-            href="/perfiles/valeria-morales-teran"
+            href="/perfil"
             class="header-profile-link"
             id="headerProfileLink"
             aria-label="Ver mi perfil profesional"
@@ -202,27 +165,8 @@ const navLinks = [
         <!-- Mobile Auth State Box -->
         <div class="mobile-auth-box" id="mobileAuthBox">
           <div id="mobileGuestBox" class="mobile-guest-content">
-            <button
-              type="button"
-              class="mobile-auth-trigger-btn"
-              data-auth-trigger="login"
-            >
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-              </svg>
-              <span>Ingresar / Crear Cuenta</span>
-            </button>
+            <ExpandableButton text="Crear cuenta" size="sm" data-auth-trigger="register" />
+            <ExpandableButton text="Ingresar" size="sm" variant="primary-line" data-auth-trigger="login" />
           </div>
 
           <div id="mobileUserBox" class="mobile-user-content" style="display: none;">
@@ -266,7 +210,7 @@ const navLinks = [
                 activePath === link.href ||
                 (link.href !== "/" && activePath.startsWith(link.href));
               return (
-                <li>
+                <li data-access={link.access}>
                   <a
                     href={link.href}
                     class={`mobile-nav-link ${isActive ? "active" : ""}`}
@@ -278,28 +222,10 @@ const navLinks = [
             })
           }
         </ul>
-        <div class="mobile-post-btn-wrap">
-          <a href="/publicar" class="mobile-post-job-btn">
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <line x1="12" y1="5" x2="12" y2="19"></line>
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-            </svg>
-            <span>+ Publicar Trabajo o Proyecto</span>
-          </a>
-        </div>
+
         <div class="mobile-drawer-cta" id="mobileDrawerProfileCard" style="display: none;">
           <a
-            href="/perfiles/valeria-morales-teran"
+            href="/perfil"
             class="mobile-drawer-profile-card"
             aria-label="Ver perfil de Valeria Morales"
           >
@@ -316,7 +242,7 @@ const navLinks = [
             </div>
             <div class="mobile-drawer-profile-info">
               <span class="mobile-drawer-profile-name" id="mobileDrawerProfileName">Valeria Morales Terán</span>
-              <span class="mobile-drawer-profile-action">Ver perfil profesional →</span>
+              <span class="mobile-drawer-profile-action">Ver mi perfil</span>
             </div>
           </a>
         </div>
@@ -326,6 +252,7 @@ const navLinks = [
 </header>
 
 <script>
+  import { readStore, user as currentUser, writeStore } from "../../lib/demo";
   function updateHeaderAuthState() {
     const guestBtn = document.getElementById("btnHeaderLogin");
     const profileWrapper = document.getElementById("headerProfileWrapper");
@@ -340,25 +267,33 @@ const navLinks = [
     const mobileDrawerProfileName = document.getElementById("mobileDrawerProfileName");
 
     try {
-      const stored = localStorage.getItem("incluxia_auth_user");
+      const account = currentUser();
+      const stored = account ? JSON.stringify(account) : null;
+      document.documentElement.dataset.session = account ? "member" : "guest";
       if (stored) {
         const user = JSON.parse(stored);
-        const displayName = user.role === "company" && user.companyName ? user.companyName : user.name;
+        const displayName = user.name;
         const initial = displayName ? displayName.charAt(0).toUpperCase() : "U";
 
         // Autenticado: ocultar botón Ingresar y mostrar perfil
         if (guestBtn) guestBtn.style.display = "none";
         if (profileWrapper) profileWrapper.style.display = "inline-flex";
-        if (profileName) profileName.textContent = displayName ? displayName.split(" ")[0] : "Valeria";
+        if (profileName) profileName.textContent = displayName ? displayName.split(" ")[0] : "Perfil";
+        const image = document.getElementById("headerProfileImg") as HTMLImageElement | null;
+        if (image) { image.hidden = !user.photo; if (user.photo) { image.src = user.photo; image.alt = user.name; } }
 
         if (mobileGuest) mobileGuest.style.display = "none";
         if (mobileUser) mobileUser.style.display = "flex";
         if (mobileInitial) mobileInitial.textContent = initial;
         if (mobileName) mobileName.textContent = displayName || "Usuario";
         if (mobileRole) {
-          mobileRole.textContent = user.role === "company" ? "Empresa Inclusiva" : "Candidato verificado";
+          mobileRole.textContent = "Cuenta común · Trabajar y contratar";
         }
         if (mobileDrawerProfile) mobileDrawerProfile.style.display = "block";
+        const mobileLink = mobileDrawerProfile?.querySelector("a");
+        mobileLink?.setAttribute("aria-label", "Ver mi perfil");
+        const mobileImage = mobileDrawerProfile?.querySelector("img");
+        if (mobileImage) { mobileImage.hidden = !user.photo; if (user.photo) { mobileImage.src = user.photo; mobileImage.alt = user.name; } }
         if (mobileDrawerProfileName && displayName) {
           mobileDrawerProfileName.textContent = displayName;
         }
@@ -377,12 +312,16 @@ const navLinks = [
   }
 
   function handleLogout() {
-    localStorage.removeItem("incluxia_auth_user");
-    window.dispatchEvent(new CustomEvent("incluxia:auth-changed", { detail: null }));
-    updateHeaderAuthState();
+    const state = readStore();
+    state.sessionId = null;
+    writeStore(state);
+    window.location.assign("/");
   }
 
   function initHeader() {
+    const root = document.querySelector(".header") as HTMLElement;
+    if (!root || root.dataset.ready) return;
+    root.dataset.ready = "true";
     const btn = document.getElementById("mobileMenuBtn");
     const drawer = document.getElementById("mobileDrawer");
     const mobileLinks = drawer?.querySelectorAll("a");
@@ -448,11 +387,9 @@ const navLinks = [
   /* 2. Floating Navbar Capsule */
   .navbar-capsule {
     pointer-events: auto;
-    background-color: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background-color: var(--color-white);
     border-radius: var(--radius-md);
-    border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+    border: none;
     box-shadow: none; /* ZERO SHADOWS */
     display: flex;
     align-items: center;
@@ -473,6 +410,8 @@ const navLinks = [
     width: auto;
     object-fit: contain;
   }
+
+  .app-brand { font-family: var(--font-heading); font-size: var(--text-2xl); font-weight: 800; letter-spacing: -0.035em; color: var(--color-primary); }
 
   /* Desktop Nav */
   .nav-desktop {
@@ -543,14 +482,14 @@ const navLinks = [
     font-weight: 700;
     text-decoration: none;
     transition: all var(--transition-fast);
-    box-shadow: 0 2px 8px rgba(var(--color-primary-rgb), 0.22);
+    box-shadow: none;
     white-space: nowrap;
   }
 
   .header-post-btn:hover {
     background-color: var(--color-primary-hover);
     transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(var(--color-primary-rgb), 0.35);
+    box-shadow: none;
     color: var(--color-white);
   }
 
@@ -792,10 +731,8 @@ const navLinks = [
     top: calc(100% + 0.5rem);
     left: var(--container-padding);
     right: var(--container-padding);
-    background-color: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--color-border);
+    background-color: var(--color-white);
+    border: none;
     border-radius: var(--radius-md);
     padding: var(--space-6);
     box-shadow: none; /* ZERO SHADOWS */
@@ -907,15 +844,14 @@ const navLinks = [
     height: 38px;
     border-radius: var(--radius-full);
     border: 2px solid var(--color-white);
-    box-shadow: 0 0 0 1.5px rgba(var(--color-primary-rgb), 0.25);
+    box-shadow: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: box-shadow var(--transition-fast);
   }
 
   .header-profile-link:hover .header-profile-avatar-wrap {
-    box-shadow: 0 0 0 2px var(--color-primary);
+    box-shadow: none;
   }
 
   .header-profile-img {
@@ -1055,6 +991,8 @@ const navLinks = [
 
   /* 5. Mobile Portrait Tier (hasta 479px - base 240px) */
   @media (max-width: 479px) {
+    :global(#btnHeaderLogin) { display: none !important; }
+    .header-actions { gap: var(--space-2); }
     .header {
       top: 0.75rem;
     }

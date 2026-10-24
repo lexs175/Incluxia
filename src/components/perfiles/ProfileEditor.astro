@@ -1,0 +1,26 @@
+---
+import Button from '../ui/Button.astro';
+import { categories } from '../../lib/demo';
+---
+<section class="profile-editor" id="profileEditor" hidden>
+  <h2>Editar mi perfil</h2>
+  <form class="account-form" id="profileForm">
+    <div class="form-grid-2"><label>Nombre y apellido<input name="name" required /></label><label>Profesión o especialidad<input name="profession" required placeholder="Ej. Diseñadora gráfica" /></label></div>
+    <div class="form-grid-2"><label>Ciudad<input name="city" required /></label><label>WhatsApp para comunicación escrita<input name="phone" type="tel" required /></label></div>
+    <label>Especialidad en Contratar<select name="category"><option value="">Selecciona una especialidad</option>{categories.map(c=><option value={c.name}>{c.name}</option>)}</select></label>
+    <label>Acerca de ti<textarea name="bio" rows="4" placeholder="Describe lo que sabes hacer y cómo trabajas."></textarea></label>
+    <label>Habilidades (separadas por comas)<input name="skills" placeholder="Diseño editorial, Figma, Illustrator" /></label>
+    <label>Experiencia (un trabajo por línea)<textarea name="experience" rows="3" placeholder="Puesto · organización · periodo y tareas principales"></textarea></label>
+    <label>Educación (un estudio por línea)<textarea name="education" rows="3"></textarea></label>
+    <label>Idiomas y comunicación (uno por línea)<textarea name="languages" rows="2" placeholder="Español escrito, chat o correo..."></textarea></label>
+    <label>Muestras de trabajo (una por línea: título | enlace)<textarea name="portfolio" rows="3" placeholder="Catálogo de productos | https://..."></textarea></label>
+    <label>Currículum (opcional)<input name="cvFile" type="file" accept=".pdf,.doc,.docx" /><span class="demo-caption" id="profileCvName"></span></label>
+    <p class="demo-caption">En esta simulación solo se guarda el nombre del archivo. No se sube el documento.</p>
+    <div class="form-actions"><Button type="submit" text="Guardar perfil" /><Button id="cancelProfileEdit" text="Cancelar" variant="primary-line" /></div>
+    <p id="profileFeedback" class="demo-feedback" role="status"></p>
+  </form>
+</section>
+<style>
+  .profile-editor { border-top: 1px solid var(--color-border); margin-top: var(--space-8); padding-top: var(--space-8); }
+  h2 { font-size: var(--text-2xl); color: var(--color-primary); margin-bottom: var(--space-6); }
+</style>

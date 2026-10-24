@@ -1,0 +1,672 @@
+---
+import Button from '../ui/Button.astro';
+const { job } = Astro.props;
+---
+  <div class="job-detail-page" id="jobDetail" data-job-id={job.id} aria-busy="true">
+    <div class="container">
+      <a href="/" id="backToJobs" class="job-breadcrumb">Volver a las ofertas</a>
+      <!-- Breadcrumb -->
+      <!-- <nav class="job-breadcrumb" aria-label="Migas de pan">
+        <a href="/">Inicio</a>
+        <span class="crumb-separator">/</span>
+        <a href="/empleos">Ofertas de Empleo</a>
+        <span class="crumb-separator">/</span>
+        <span class="crumb-active">{job.title}</span>
+      </nav> -->
+
+      <!-- Main Job Hero Header (Trustly Clean White Style) -->
+      <header class="job-hero-header">
+        <h1 class="job-main-title">{job.title}</h1>
+
+        <div class="job-meta-ribbon">
+          <div class="meta-pill">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+            <span data-job-company>{job.company}</span>
+          </div>
+
+          <div class="meta-pill">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span data-job-city>{job.city}</span>
+          </div>
+
+          <div class="meta-pill">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path
+                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+              ></path>
+            </svg>
+            <span data-job-modality>{job.modality || "Presencial"}</span>
+          </div>
+
+          <div class="meta-pill">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span data-job-date>Oferta de ejemplo</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- 2-Column Content Layout: Job Details + Sticky Apply Card -->
+      <div class="job-layout-grid">
+        <!-- Left Column: Details -->
+        <main class="job-main-column">
+          <!-- 1. Adaptaciones de Inclusión Garantizadas (Bento Soft Box) -->
+          <div class="a11y-guarantee-card">
+            <div class="guarantee-header">
+              <span class="status-pulse-green"></span>
+              <h2 class="guarantee-title">
+                Comunicación para este trabajo
+              </h2>
+            </div>
+            <p class="guarantee-desc">
+              Las tareas y condiciones se acuerdan por escrito. Esta publicación es parte de una simulación: revisa la modalidad y las condiciones indicadas por quien publica.
+            </p>
+
+            <div class="guarantee-grid"><div class="guarantee-item"><span class="item-title">Coordinación escrita</span><p class="item-text">Preguntas, acuerdos y entregas por chat o correo.</p></div><div class="guarantee-item"><span class="item-title">Condiciones claras</span><p class="item-text" data-job-delivery>{job.delivery}</p></div></div></div>
+
+          <!-- 2. Descripción del Puesto -->
+          <div class="job-detail-block">
+            <h2 class="block-title">Descripción y Propósito del Puesto</h2>
+            <p class="block-paragraph" data-job-description>{job.description}</p>
+          </div>
+
+          <!-- 3. Funciones Principales -->
+          <div class="job-detail-block">
+            <h2 class="block-title">Funciones y Responsabilidades</h2>
+            <ul class="clean-bullet-list" id="jobTasks">{job.tasks.map((task: string) => <li>{task}</li>)}</ul>
+          </div>
+
+          <!-- 4. Requisitos -->
+          <div class="job-detail-block">
+            <h2 class="block-title">Requisitos para Postular</h2>
+            <ul class="clean-bullet-list" id="jobRequirements">{job.requirements.map((item: string) => <li>{item}</li>)}</ul>
+          </div>
+        </main>
+
+        <!-- Right Column: Sticky Apply Card (Flat, Zero Shadows) -->
+        <aside class="job-sidebar-column">
+          <div class="apply-bento-card" id="formulario-postulacion">
+            <h3 class="apply-card-title">Postular a este puesto</h3>
+            <p class="apply-card-desc">Revisa las condiciones antes de confirmar. Tu postulación quedará registrada en esta demostración.</p>
+            <p class="job-salary" data-job-salary>{job.salary}</p>
+            <p class="demo-feedback" id="applicationState" role="status"></p>
+            <Button id="openApplication" text="Postular a esta oferta" variant="primary" size="md" fullWidth />
+            <p><a href="/postulaciones" id="viewMyApplications" hidden>Ver mis postulaciones</a></p>
+
+            <form class="apply-form" id="jobApplyForm" hidden>
+              <div class="form-group">
+                <label for="applicantName" class="form-label"
+                  >Tu Nombre y Apellido *</label
+                >
+                <input
+                  type="text"
+                  id="applicantName"
+                  required
+                  placeholder="Ej. Valeria Morales"
+                  class="form-input"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="applicantPhone" class="form-label"
+                  >Tu Número de WhatsApp *</label
+                >
+                <input
+                  type="tel"
+                  id="applicantPhone"
+                  required
+                  placeholder="+591 70000000"
+                  class="form-input"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="applicantCity" class="form-label"
+                  >Ciudad de Residencia *</label
+                >
+                <select id="applicantCity" required class="form-select">
+                  <option value={job.city}
+                    >{job.city} (Ciudad de la vacante)</option
+                  >
+                  <option value="Cochabamba">Cochabamba</option>
+                  <option value="La Paz">La Paz</option>
+                  <option value="Santa Cruz">Santa Cruz</option>
+                  <option value="Otra">Otra ciudad</option>
+                </select>
+              </div>
+
+              <!-- Subir CV -->
+              <div class="form-group">
+                <label for="applicantCv" class="form-label"
+                  >Currículum (PDF o Word, opcional)</label
+                >
+                <div class="file-upload-box">
+                  <input
+                    type="file"
+                    id="applicantCv"
+                    accept=".pdf,.doc,.docx"
+                    class="file-input-hidden"
+                  />
+                  <label
+                    for="applicantCv"
+                    class="file-upload-label"
+                    id="cvUploadLabel"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+                      ></path>
+                      <polyline points="17 8 12 3 7 8"></polyline>
+                      <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <span id="cvFileName">Seleccionar archivo (PDF o Word)</span
+                    >
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="applicantNote" class="form-label"
+                  >Mensaje breve o experiencia previa (Opcional)</label
+                >
+                <textarea
+                  id="applicantNote"
+                  rows="3"
+                  placeholder="Cuéntanos brevemente sobre tus habilidades o estudios..."
+                  class="form-textarea"></textarea>
+              </div>
+
+              <Button type="submit" variant="primary" size="md" fullWidth id="btnSubmitJob" text="Confirmar postulación" />
+            </form>
+
+            <div
+              id="applySuccessMsg"
+              class="apply-success-alert"
+              style="display: none;"
+            >
+              <span class="success-icon">✓</span>
+              <div>
+                <strong>¡Postulación enviada con éxito!</strong>
+                <p>
+                  Quedó guardada en este navegador. Puedes consultar su estado en Postulaciones.
+                </p>
+              </div>
+            </div>
+
+            <div class="apply-security-note">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              <span
+                >En esta simulación se guarda el nombre del archivo, sin subirlo a un servidor.</span
+              >
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+<style>
+.job-detail-page {
+    background-color: var(--color-bg);
+    padding-top: calc(90px + var(--space-8));
+    padding-bottom: var(--space-16);
+  }
+
+  /* Breadcrumb */
+  .job-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--text-xs);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-6);
+    flex-wrap: wrap;
+  }
+
+  .job-breadcrumb a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .job-breadcrumb a:hover {
+    color: var(--color-primary-hover);
+  }
+
+  .crumb-separator {
+    color: var(--color-text-light);
+  }
+
+  .crumb-active {
+    color: var(--color-text-muted);
+  }
+
+  /* Job Hero Header */
+  .job-hero-header {
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--space-8);
+    margin-bottom: var(--space-10);
+  }
+
+
+  .company-badge,
+  .city-badge {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-main);
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-full);
+  }
+
+  .job-main-title {
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: var(--space-6);
+  }
+
+  .job-meta-ribbon {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  .meta-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    padding: 0.4rem 0.95rem;
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-text-main);
+  }
+
+  .meta-pill svg {
+    color: var(--color-primary);
+  }
+
+  /* 2-Column Grid Layout */
+  .job-layout-grid {
+    display: grid;
+    grid-template-columns: 1.35fr 0.65fr;
+    gap: var(--space-10);
+    align-items: start;
+  }
+
+  /* A11y Guarantee Card */
+  .a11y-guarantee-card {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-8);
+    margin-bottom: var(--space-8);
+    box-shadow: none; /* ZERO SHADOWS */
+  }
+
+  .guarantee-header {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .status-pulse-green {
+    width: 9px;
+    height: 9px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-whatsapp);
+    flex-shrink: 0;
+  }
+
+  .guarantee-title {
+    font-size: var(--text-lg);
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+
+  .guarantee-desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: var(--space-6);
+  }
+
+  .guarantee-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
+  .guarantee-item {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-4) var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .item-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .item-text {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Detail Blocks */
+  .job-detail-block {
+    margin-bottom: var(--space-8);
+    padding-bottom: var(--space-8);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .job-detail-block:last-child {
+    border-bottom: none;
+  }
+
+  .block-title {
+    font-size: var(--text-xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.015em;
+    margin-bottom: var(--space-4);
+  }
+
+  .block-paragraph {
+    font-size: var(--text-base);
+    color: var(--color-text-main);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .clean-bullet-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .clean-bullet-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: var(--text-sm);
+    color: var(--color-text-main);
+    line-height: 1.6;
+  }
+
+  .clean-bullet-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0.25rem;
+    color: var(--color-primary);
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+
+  /* Apply Sidebar Card (Flat Minimalism, Zero Shadows) */
+  .apply-bento-card {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-8);
+    box-shadow: none; /* ZERO SHADOWS */
+    position: sticky;
+    top: calc(90px + var(--space-4));
+  }
+
+  .apply-card-title {
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.02em;
+    margin-top: var(--space-3);
+    margin-bottom: var(--space-2);
+  }
+
+  .apply-card-desc {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    margin-bottom: var(--space-6);
+  }
+
+  .apply-card-desc strong {
+    color: var(--color-primary);
+  }
+
+  .apply-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .form-label {
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--color-text-main);
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    color: var(--color-text-main);
+    outline: none;
+    transition: border-color var(--transition-fast);
+  }
+
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    border-color: var(--color-primary);
+  }
+
+  .apply-security-note {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.72rem;
+    color: var(--color-text-light);
+    margin-top: var(--space-4);
+    line-height: 1.4;
+  }
+
+  /* Responsive Rules */
+  @media (max-width: 991px) {
+    .job-layout-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .guarantee-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .apply-bento-card {
+      position: static;
+      margin-top: var(--space-8);
+    }
+  }
+
+  /* File Upload Styles */
+  .file-upload-box {
+    position: relative;
+    width: 100%;
+  }
+
+  .file-input-hidden {
+    position: absolute;
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    z-index: -1;
+  }
+
+  .file-upload-label {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: var(--color-bg);
+    border: 1.5px dashed rgba(var(--color-primary-rgb), 0.25);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: var(--text-xs);
+    color: var(--color-primary);
+    font-weight: 600;
+    transition: all var(--transition-fast);
+  }
+
+  .file-upload-label:hover {
+    background-color: rgba(var(--color-primary-rgb), 0.05);
+    border-color: var(--color-primary);
+  }
+
+  .apply-success-alert {
+    margin-top: 1rem;
+    padding: 0.85rem 1rem;
+    background-color: rgba(var(--color-primary-rgb), 0.06);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    font-size: var(--text-xs);
+    color: var(--color-primary);
+    line-height: 1.45;
+  }
+
+  .apply-success-alert .success-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 800;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .apply-success-alert strong {
+    display: block;
+    font-size: var(--text-sm);
+    margin-bottom: 0.2rem;
+  }
+
+  .apply-success-alert p {
+    margin: 0;
+    color: var(--color-text-muted);
+  }
+
+.job-salary { color: var(--color-primary); font-weight: 800; font-size: var(--text-2xl); margin-block: var(--space-5); }
+#jobDetail[aria-busy="true"] { visibility: hidden; }
+</style>
+<script>
+import { initJobDetail } from '../../lib/job-detail';
+document.addEventListener('astro:page-load',initJobDetail);
+</script>

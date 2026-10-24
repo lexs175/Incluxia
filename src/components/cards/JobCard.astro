@@ -1,8 +1,9 @@
 ---
-import Badge from '../ui/Badge.astro';
 import ExpandableButton from '../ui/ExpandableButton.astro';
 
 interface Props {
+  compact?: boolean;
+  href?: string;
   job: {
     id: string;
     slug: string;
@@ -14,26 +15,17 @@ interface Props {
     postedDays: string;
     accessibilityBadge: string;
     description?: string;
+    salary?: string;
   };
 }
 
-const { job } = Astro.props;
+const { job, compact = false, href = `/empleos/${job.slug}` } = Astro.props;
 ---
 
-<article class="job-card">
-  <!-- Card Header -->
-  <div class="job-card-header">
-
-    <div class="badge-container">
-      <Badge variant="whatsapp">
-        {job.accessibilityBadge}
-      </Badge>
-    </div>
-  </div>
-
+<article class:list={["job-card", { "job-card-compact": compact }]} data-job-id={job.id}>
   <!-- Job Title -->
   <h3 class="job-title">
-    <a href={`/empleos/${job.slug}`}>{job.title}</a>
+    <a href={href}>{job.title}</a>
   </h3>
 
   <!-- Company & Location -->
@@ -49,17 +41,19 @@ const { job } = Astro.props;
     </span>
   </div>
 
+  {compact && <p class="job-budget">{job.salary || "A convenir"}</p>}
   <!-- Card Footer -->
   <div class="job-card-footer">
     <span class="posted-time">{job.postedDays}</span>
-    <ExpandableButton href={`/empleos/${job.slug}`} text="Ver Puesto" variant="white" size="sm" />
+    <ExpandableButton href={href} text={compact ? "Postular" : "Ver Puesto"} variant="white" size="sm" />
   </div>
 </article>
 
 <style>
+
   .job-card {
     background: var(--color-primary);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(var(--color-white-rgb), 0.12);
     border-radius: var(--radius-md);
     padding: var(--space-6);
     display: flex;
@@ -78,20 +72,12 @@ const { job } = Astro.props;
     /* NO TRANSLATEY, NO BORDER CHANGE */
   }
 
-  .job-card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    margin-bottom: var(--space-4);
-    min-width: 0;
-  }
 
   .company-icon-box {
     width: 44px;
     height: 44px;
     border-radius: var(--radius-lg);
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: rgba(var(--color-white-rgb), 0.08);
     color: var(--color-white);
     display: flex;
     align-items: center;
@@ -99,12 +85,6 @@ const { job } = Astro.props;
     flex-shrink: 0;
   }
 
-  .badge-container {
-    min-width: 0;
-    flex-shrink: 1;
-    display: flex;
-    justify-content: flex-end;
-  }
 
   .job-title {
     font-size: var(--text-lg);
@@ -131,7 +111,7 @@ const { job } = Astro.props;
     align-items: center;
     flex-wrap: wrap;
     gap: 0.5rem;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(var(--color-white-rgb), 0.75);
     font-size: var(--text-sm);
     margin-bottom: var(--space-6);
     word-break: break-word;
@@ -143,18 +123,18 @@ const { job } = Astro.props;
   }
 
   .meta-separator {
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(var(--color-white-rgb), 0.3);
   }
 
   .job-location {
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(var(--color-white-rgb), 0.85);
   }
 
   .job-location svg {
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(var(--color-white-rgb), 0.75);
   }
 
   .job-card-footer {
@@ -162,14 +142,14 @@ const { job } = Astro.props;
     align-items: center;
     justify-content: space-between;
     padding-top: var(--space-4);
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-top: 1px solid rgba(var(--color-white-rgb), 0.12);
     margin-top: auto;
     gap: 0.5rem;
   }
 
   .posted-time {
     font-size: var(--text-xs);
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(var(--color-white-rgb), 0.65);
     font-weight: 500;
     white-space: nowrap;
   }
@@ -181,10 +161,6 @@ const { job } = Astro.props;
       min-height: auto;
     }
 
-    .job-card-header {
-      align-items: flex-start;
-      gap: 0.5rem;
-    }
 
     .company-icon-box {
       width: 38px;
@@ -197,4 +173,9 @@ const { job } = Astro.props;
       justify-content: space-between;
     }
   }
+
+  .job-card.job-card-compact { min-height: 230px; padding: var(--space-5); }
+  .job-card-compact .job-card-header, .job-card-compact .meta-separator { display: none; }
+  .job-card-compact .job-meta { display: grid; gap: var(--space-2); }
+  .job-card-compact .job-budget { font-size: var(--text-base); color: var(--color-white); font-weight: 700; margin-block: var(--space-4); }
 </style>

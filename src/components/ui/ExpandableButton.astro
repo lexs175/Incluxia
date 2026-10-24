@@ -21,6 +21,7 @@ interface Props {
   id?: string;
   type?: "button" | "submit" | "reset";
   fullWidth?: boolean;
+  leading?: boolean;
 }
 
 const {
@@ -34,6 +35,7 @@ const {
   id,
   type = "button",
   fullWidth = false,
+  leading = false,
   ...rest
 } = Astro.props;
 
@@ -57,7 +59,7 @@ const sizeClass =
   size === "sm" ? "btn-sm" : size === "lg" ? "btn-lg" : "btn-md";
 const fullWidthClass = fullWidth ? "btn-block" : "";
 const combinedClasses =
-  `modular-btn trustly-expand-btn ${variantClass} ${sizeClass} ${fullWidthClass} ${className}`.trim();
+  `modular-btn trustly-expand-btn ${variantClass} ${sizeClass} ${fullWidthClass} ${leading ? "btn-leading" : ""} ${className}`.trim();
 const ariaLabel = text || undefined;
 ---
 
@@ -72,15 +74,10 @@ const ariaLabel = text || undefined;
       aria-label={ariaLabel}
       {...rest}
     >
-      <!-- Main Text Capsule (Posición fija continua, cero layout shift) -->
-      <span class="btn-text-capsule">
-        <span class="btn-text-label">{text ? text : <slot />}</span>
-      </span>
-
-      <!-- Right Companion Badge with Directional Arrow -->
-      <span class="btn-badge btn-badge--right" aria-hidden="true">
+      <!-- Left Companion Badge (Aparece a la izquierda en hover) -->
+      <span class="btn-badge btn-badge--left" aria-hidden="true">
         <span class="btn-badge-inner">
-          <svg
+          <slot name="arrow"><svg
             class="btn-arrow-svg"
             viewBox="0 0 24 24"
             fill="none"
@@ -91,7 +88,30 @@ const ariaLabel = text || undefined;
           >
             <line x1="5" y1="12" x2="19" y2="12"></line>
             <polyline points="13 6 19 12 13 18"></polyline>
-          </svg>
+          </svg></slot>
+        </span>
+      </span>
+
+      <!-- Main Text Capsule -->
+      <span class="btn-text-capsule">
+        <span class="btn-text-label">{text ? text : <slot />}</span>
+      </span>
+
+      <!-- Right Companion Badge (Visible en reposo, se encoge en hover) -->
+      <span class="btn-badge btn-badge--right" aria-hidden="true">
+        <span class="btn-badge-inner">
+          <slot name="arrow"><svg
+            class="btn-arrow-svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="13 6 19 12 13 18"></polyline>
+          </svg></slot>
         </span>
       </span>
     </a>
@@ -103,15 +123,10 @@ const ariaLabel = text || undefined;
       aria-label={ariaLabel}
       {...rest}
     >
-      <!-- Main Text Capsule (Posición fija continua, cero layout shift) -->
-      <span class="btn-text-capsule">
-        <span class="btn-text-label">{text ? text : <slot />}</span>
-      </span>
-
-      <!-- Right Companion Badge with Directional Arrow -->
-      <span class="btn-badge btn-badge--right" aria-hidden="true">
+      <!-- Left Companion Badge (Aparece a la izquierda en hover) -->
+      <span class="btn-badge btn-badge--left" aria-hidden="true">
         <span class="btn-badge-inner">
-          <svg
+          <slot name="arrow"><svg
             class="btn-arrow-svg"
             viewBox="0 0 24 24"
             fill="none"
@@ -122,7 +137,30 @@ const ariaLabel = text || undefined;
           >
             <line x1="5" y1="12" x2="19" y2="12"></line>
             <polyline points="13 6 19 12 13 18"></polyline>
-          </svg>
+          </svg></slot>
+        </span>
+      </span>
+
+      <!-- Main Text Capsule -->
+      <span class="btn-text-capsule">
+        <span class="btn-text-label">{text ? text : <slot />}</span>
+      </span>
+
+      <!-- Right Companion Badge (Visible en reposo, se encoge en hover) -->
+      <span class="btn-badge btn-badge--right" aria-hidden="true">
+        <span class="btn-badge-inner">
+          <slot name="arrow"><svg
+            class="btn-arrow-svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="13 6 19 12 13 18"></polyline>
+          </svg></slot>
         </span>
       </span>
     </button>
@@ -131,15 +169,12 @@ const ariaLabel = text || undefined;
 
 <style>
   /* ====================================================
-     MODULAR BUTTON (Ultra-Rendimiento GPU, Cero Reflow)
-     Estructura: [ Text Capsule ] [ Companion Badge ↗ ]
-     Hover:       [ Text Capsule ] [ Companion Badge → ]
-     - Anchos y márgenes 100% constantes en todo momento
-     - Cero desplazamiento o salto en elementos contiguos
-     - Animación por GPU pura (transform/opacity) a 60/120 FPS
+     MODULAR BUTTON (4 Variantes Oficiales + Funcionales)
+     Reposo: [ Text Capsule ] [ Badge ↘ ]
+     Hover:  [ Badge → ] [ Text Capsule ]
      ==================================================== */
   .modular-btn {
-    --btn-speed: var(--transition-fast);
+    --btn-speed: 0.45s;
     --btn-ease: cubic-bezier(0.16, 1, 0.3, 1);
     --btn-h: 2.85em;
     --btn-gap: 0.14em;
@@ -174,7 +209,7 @@ const ariaLabel = text || undefined;
     flex: 1;
   }
 
-  /* Cápsula de texto: dimensiones estrictas, sin desplazamientos laterales */
+  /* Cápsula de texto */
   .btn-text-capsule {
     display: inline-flex;
     align-items: center;
@@ -198,49 +233,87 @@ const ariaLabel = text || undefined;
     gap: 0.5em;
   }
 
-  /* Slot de badge: ancho estricto fijo, CERO animación de width/margin */
+  /* Slot de layout */
   .btn-badge {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: var(--btn-h);
     height: var(--btn-h);
-    margin-left: var(--btn-gap);
+    overflow: visible;
     flex-shrink: 0;
-    pointer-events: auto;
+    transition:
+      width var(--btn-speed) var(--btn-ease),
+      max-width var(--btn-speed) var(--btn-ease),
+      margin var(--btn-speed) var(--btn-ease);
   }
 
-  /* Cuadrado visual 1:1 proporcional en 'em' con micro-escala fluida */
+  /* Cuadrado visual 1:1 proporcional en 'em' */
   .btn-badge-inner {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 100%;
+    width: var(--btn-h);
+    height: var(--btn-h);
+    min-width: var(--btn-h);
     border-radius: var(--btn-radius);
     transform-origin: center center;
     box-sizing: border-box;
     transition:
       transform var(--btn-speed) var(--btn-ease),
+      opacity calc(var(--btn-speed) * 0.75) var(--btn-ease),
       background-color var(--btn-speed) var(--btn-ease),
       border-color var(--btn-speed) var(--btn-ease);
-    will-change: transform;
+    will-change: transform, opacity;
   }
 
-  /* Flecha con aceleración GPU: reposo a 45° */
+  /* Flecha SVG */
   .btn-arrow-svg {
     display: block;
     width: 1.1em;
     height: 1.1em;
     transform-origin: center center;
-    transform: rotate(45deg);
     transition: transform var(--btn-speed) var(--btn-ease);
     will-change: transform;
+  }
+
+  /* Reposo: Izquierdo oculto (escala 0, ancho 0) */
+  .btn-badge--left {
+    width: 0;
+    max-width: 0;
+    margin-right: 0;
+    pointer-events: none;
+  }
+  .btn-badge--left .btn-badge-inner {
+    opacity: 0;
+    transform: scale(0);
+  }
+  .btn-badge--left .btn-arrow-svg {
+    transform: rotate(0deg);
+  }
+
+  /* Reposo: Derecho visible (flecha 45° ↘) */
+  .btn-badge--right {
+    width: var(--btn-h);
+    max-width: var(--btn-h);
+    margin-left: var(--btn-gap);
+    pointer-events: auto;
+  }
+  .btn-badge--right .btn-badge-inner {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .btn-badge--right .btn-arrow-svg {
+    transform: rotate(45deg);
   }
 
   /* ====================================================
      4 VARIANTES OFICIALES (Tokens Semánticos Estrictos)
      ==================================================== */
+
+  .modular-btn.btn-leading .btn-badge--left { width: var(--btn-h); max-width: var(--btn-h); margin-right: var(--btn-gap); }
+  .modular-btn.btn-leading .btn-badge--left .btn-badge-inner { opacity: 1; transform: scale(1); }
+  .modular-btn.btn-leading .btn-badge--right { width: 0; max-width: 0; margin-left: 0; }
+  .modular-btn.btn-leading .btn-badge--right .btn-badge-inner { opacity: 0; transform: scale(0); }
 
   /* 1. Primary (Fill Azul) */
   .btn-primary .btn-text-capsule {
@@ -314,7 +387,7 @@ const ariaLabel = text || undefined;
   }
 
   /* ====================================================
-     HOVER & FOCUS STATES (100% GPU Transform, 0 Layout Shift)
+     HOVER & FOCUS STATES
      ==================================================== */
   @media (hover: hover) and (pointer: fine) {
     .modular-btn:hover,
@@ -323,55 +396,117 @@ const ariaLabel = text || undefined;
     :global(.profile-card:hover) .modular-btn,
     :global(.story-card:hover) .modular-btn,
     :global(.blog-card:hover) .modular-btn,
-    :global(.bento-card:hover) .modular-btn {
+    :global(.bento-card:hover) .modular-btn,
+    :global(.category-rubro-card:hover) .modular-btn {
       transform: translateY(-2px);
     }
 
-    .modular-btn:hover .btn-arrow-svg,
-    .modular-btn:focus-visible .btn-arrow-svg,
-    :global(.job-card:hover) .modular-btn .btn-arrow-svg,
-    :global(.profile-card:hover) .modular-btn .btn-arrow-svg,
-    :global(.story-card:hover) .modular-btn .btn-arrow-svg,
-    :global(.blog-card:hover) .modular-btn .btn-arrow-svg,
-    :global(.bento-card:hover) .modular-btn .btn-arrow-svg {
-      transform: rotate(0deg) translateX(3px);
+    /* Left badge abre a 1 (aparece atrás/izquierda) */
+    .modular-btn:hover .btn-badge--left,
+    .modular-btn:focus-visible .btn-badge--left,
+    :global(.job-card:hover) .modular-btn .btn-badge--left,
+    :global(.profile-card:hover) .modular-btn .btn-badge--left,
+    :global(.story-card:hover) .modular-btn .btn-badge--left,
+    :global(.blog-card:hover) .modular-btn .btn-badge--left,
+    :global(.bento-card:hover) .modular-btn .btn-badge--left,
+    :global(.category-rubro-card:hover) .modular-btn .btn-badge--left {
+      width: var(--btn-h);
+      max-width: var(--btn-h);
+      margin-right: var(--btn-gap);
+      pointer-events: auto;
+    }
+    .modular-btn:hover .btn-badge--left .btn-badge-inner,
+    .modular-btn:focus-visible .btn-badge--left .btn-badge-inner,
+    :global(.job-card:hover) .modular-btn .btn-badge--left .btn-badge-inner,
+    :global(.profile-card:hover) .modular-btn .btn-badge--left .btn-badge-inner,
+    :global(.story-card:hover) .modular-btn .btn-badge--left .btn-badge-inner,
+    :global(.blog-card:hover) .modular-btn .btn-badge--left .btn-badge-inner,
+    :global(.bento-card:hover) .modular-btn .btn-badge--left .btn-badge-inner,
+    :global(.category-rubro-card:hover) .modular-btn .btn-badge--left .btn-badge-inner {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .modular-btn:hover .btn-badge--left .btn-arrow-svg,
+    .modular-btn:focus-visible .btn-badge--left .btn-arrow-svg,
+    :global(.job-card:hover) .modular-btn .btn-badge--left .btn-arrow-svg,
+    :global(.profile-card:hover) .modular-btn .btn-badge--left .btn-arrow-svg,
+    :global(.story-card:hover) .modular-btn .btn-badge--left .btn-arrow-svg,
+    :global(.blog-card:hover) .modular-btn .btn-badge--left .btn-arrow-svg,
+    :global(.bento-card:hover) .modular-btn .btn-badge--left .btn-arrow-svg,
+    :global(.category-rubro-card:hover) .modular-btn .btn-badge--left .btn-arrow-svg {
+      transform: rotate(0deg);
     }
 
-    .modular-btn:hover .btn-badge-inner,
-    .modular-btn:focus-visible .btn-badge-inner,
-    :global(.job-card:hover) .modular-btn .btn-badge-inner,
-    :global(.profile-card:hover) .modular-btn .btn-badge-inner,
-    :global(.story-card:hover) .modular-btn .btn-badge-inner,
-    :global(.blog-card:hover) .modular-btn .btn-badge-inner,
-    :global(.bento-card:hover) .modular-btn .btn-badge-inner {
-      transform: scale(1.05);
+    /* Right badge cierra a 0 (se encoge a la derecha) */
+    .modular-btn:hover .btn-badge--right,
+    .modular-btn:focus-visible .btn-badge--right,
+    :global(.job-card:hover) .modular-btn .btn-badge--right,
+    :global(.profile-card:hover) .modular-btn .btn-badge--right,
+    :global(.story-card:hover) .modular-btn .btn-badge--right,
+    :global(.blog-card:hover) .modular-btn .btn-badge--right,
+    :global(.bento-card:hover) .modular-btn .btn-badge--right,
+    :global(.category-rubro-card:hover) .modular-btn .btn-badge--right {
+      width: 0;
+      max-width: 0;
+      margin-left: 0;
+      pointer-events: none;
+    }
+    .modular-btn:hover .btn-badge--right .btn-badge-inner,
+    .modular-btn:focus-visible .btn-badge--right .btn-badge-inner,
+    :global(.job-card:hover) .modular-btn .btn-badge--right .btn-badge-inner,
+    :global(.profile-card:hover) .modular-btn .btn-badge--right .btn-badge-inner,
+    :global(.story-card:hover) .modular-btn .btn-badge--right .btn-badge-inner,
+    :global(.blog-card:hover) .modular-btn .btn-badge--right .btn-badge-inner,
+    :global(.bento-card:hover) .modular-btn .btn-badge--right .btn-badge-inner,
+    :global(.category-rubro-card:hover) .modular-btn .btn-badge--right .btn-badge-inner {
+      opacity: 0;
+      transform: scale(0);
+    }
+    .modular-btn:hover .btn-badge--right .btn-arrow-svg,
+    .modular-btn:focus-visible .btn-badge--right .btn-arrow-svg,
+    :global(.job-card:hover) .modular-btn .btn-badge--right .btn-arrow-svg,
+    :global(.profile-card:hover) .modular-btn .btn-badge--right .btn-arrow-svg,
+    :global(.story-card:hover) .modular-btn .btn-badge--right .btn-arrow-svg,
+    :global(.blog-card:hover) .modular-btn .btn-badge--right .btn-arrow-svg,
+    :global(.bento-card:hover) .modular-btn .btn-badge--right .btn-arrow-svg,
+    :global(.category-rubro-card:hover) .modular-btn .btn-badge--right .btn-arrow-svg {
+      transform: rotate(0deg);
     }
 
-    /* Primary hover */
+    /* Primary hover color */
     .btn-primary:hover .btn-text-capsule,
     .btn-primary:hover .btn-badge-inner {
       background-color: var(--color-primary-hover);
     }
 
-    /* Secondary hover */
+    /* Secondary hover color */
     .btn-secondary:hover .btn-text-capsule,
     .btn-secondary:hover .btn-badge-inner {
       background-color: var(--color-white);
       color: var(--color-primary-dark);
     }
 
-    /* Primary line hover */
+    /* Primary line hover color */
     .btn-primary-line:hover .btn-text-capsule,
     .btn-primary-line:hover .btn-badge-inner {
       border-color: var(--color-primary);
       background-color: rgba(var(--color-primary-rgb), 0.06);
     }
 
-    /* Secondary line hover */
+    /* Secondary line hover color */
     .btn-secondary-line:hover .btn-text-capsule,
     .btn-secondary-line:hover .btn-badge-inner {
       border-color: var(--color-white);
       background-color: rgba(var(--white-rgb), 0.12);
+    }
+
+    /* WhatsApp hover */
+    .btn-whatsapp:hover .btn-text-capsule {
+      background-color: var(--color-primary-hover);
+    }
+    .btn-whatsapp:hover .btn-badge-inner,
+    .btn-white-whatsapp:hover .btn-badge-inner {
+      background-color: var(--color-whatsapp);
     }
   }
 

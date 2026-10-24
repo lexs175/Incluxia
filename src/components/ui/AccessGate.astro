@@ -1,0 +1,22 @@
+---
+import Button from './Button.astro';
+const { title = 'Ingresa para continuar', next = Astro.url.pathname } = Astro.props;
+---
+<section class="access-gate" data-guest>
+  <div class="container"><div class="gate-card">
+    <h1>{title}</h1>
+    <p>Usa una misma cuenta para buscar trabajo, contratar, publicar y seguir tus postulaciones.</p>
+    <div class="gate-actions">
+      <Button text="Ingresar" data-auth-trigger="login" data-auth-next={next} />
+      <Button text="Crear cuenta" variant="primary-line" data-auth-trigger="register" data-auth-next={next} />
+    </div>
+    <p class="demo-caption">Demostración con datos guardados en este navegador.</p>
+  </div></div>
+</section>
+<style>
+  .access-gate { padding-top: calc(80px + var(--space-16)); padding-bottom: var(--space-16); background: var(--color-bg); min-height: 65dvh; }
+  .gate-card { max-width: 800px; margin-inline: auto; padding: var(--space-12) var(--space-6); border: 1px solid var(--color-border); border-radius: var(--radius-2xl); background: var(--color-bg-card); text-align: center; }
+  h1 { font-size: var(--text-3xl); color: var(--color-primary); }
+  p { margin-block: var(--space-5); color: var(--color-text-muted); }
+  .gate-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-4); }
+</style>

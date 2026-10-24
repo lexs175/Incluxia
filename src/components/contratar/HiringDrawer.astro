@@ -1,4 +1,6 @@
 ---
+import ContactRequest from "../ui/ContactRequest.astro";
+import profiles from "../../data/profiles.json";
 import ExpandableButton from "../ui/ExpandableButton.astro";
 
 interface Props {
@@ -68,16 +70,9 @@ const { autonomos, services } = Astro.props;
 
               <!-- Botones oficiales ExpandableButton -->
               <div class="drawer-actions-row">
+                <ContactRequest recipientId={aut.name === 'Valeria Morales Terán' ? 'demo-valeria' : 'talent-'+aut.name} text={`Consultar disponibilidad (${aut.hourlyRate})`} />
                 <ExpandableButton
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  text={`Consultar disponibilidad (${aut.hourlyRate})`}
-                  variant="primary"
-                  size="md"
-                />
-                <ExpandableButton
-                  href={`/perfiles/${aut.slug}`}
+                  href={profiles.some(p=>p.slug===aut.slug) ? `/perfiles/${aut.slug}` : `/perfiles/ver?id=${encodeURIComponent("talent-"+aut.name)}`}
                   text="Ver perfil completo"
                   variant="primary-line"
                   size="md"
@@ -219,15 +214,7 @@ const { autonomos, services } = Astro.props;
 
             <!-- Botón oficial ExpandableButton para Contratar -->
             <div class="drawer-service-cta-block">
-              <ExpandableButton
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                text={`Contratar este paquete (${serv.price})`}
-                variant="primary"
-                size="md"
-                fullWidth={true}
-              />
+              <ContactRequest recipientId={serv.author.name === 'Valeria Morales Terán' ? 'demo-valeria' : 'talent-'+serv.author.name} serviceId={serv.id} text={`Consultar este paquete (${serv.price})`} />
               <span class="cta-guarantee-note">
                 Coordinación y entrega 100% por chat escrito sin llamadas telefónicas
               </span>
@@ -272,7 +259,7 @@ const { autonomos, services } = Astro.props;
     width: min(560px, 100vw);
     background-color: var(--color-bg-card);
     border-left: 1px solid var(--color-border);
-    box-shadow: -12px 0 40px rgba(var(--color-primary-dark-rgb), 0.25);
+    box-shadow: none;
     z-index: 9999 !important;
     transform: translateX(100%);
     transition: transform var(--transition-smooth);
@@ -358,7 +345,7 @@ const { autonomos, services } = Astro.props;
     border-radius: var(--radius-full);
     border: 4px solid var(--color-bg-card);
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(var(--color-primary-dark-rgb), 0.12);
+    box-shadow: none;
     background-color: var(--color-bg-alt);
     margin-left: var(--space-4);
   }

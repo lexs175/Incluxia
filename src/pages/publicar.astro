@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Button from '../components/ui/Button.astro';
+import ActivityList from '../components/ui/ActivityList.astro';
 ---
 
 <Layout
@@ -10,7 +12,11 @@ import Layout from '../layouts/Layout.astro';
   <div class="publish-wrapper">
     <div class="container publish-container">
       
-      <div class="publish-card">
+      <div class="publish-card" id="publishWorkspace">
+        <div class="account-tabs" data-member>
+          <Button text="Nueva publicación" id="newPublicationTab" variant="primary-line" size="sm" aria-selected="true" />
+          <Button text="Mis publicaciones" id="myPublicationsTab" variant="primary-line" size="sm" aria-selected="false" />
+        </div>
         
         <!-- ESTADO 1: BLOQUEO POR AUTENTICACIÓN (Solo si NO ha iniciado sesión) -->
         <div id="publishAuthGate" class="publish-auth-gate" style="display: none;">
@@ -26,27 +32,30 @@ import Layout from '../layouts/Layout.astro';
             Para publicar puestos o proyectos, recibir postulaciones de candidatos y coordinar contrataciones por chat, necesitas acceder con tu cuenta.
           </p>
 
-          <button type="button" class="auth-gate-login-btn" data-auth-trigger="login">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
-              <polyline points="10 17 15 12 10 7"></polyline>
-              <line x1="15" y1="12" x2="3" y2="12"></line>
-            </svg>
-            <span>Iniciar Sesión / Registrarme</span>
-          </button>
+          <Button text="Ingresar" data-auth-trigger="login" data-auth-next="/publicar" />
+          <Button text="Crear cuenta" variant="primary-line" data-auth-trigger="register" data-auth-next="/publicar" />
         </div>
 
         <!-- ESTADO 2: FORMULARIO DESBLOQUEADO (Visible ÚNICAMENTE si está logueado) -->
         <div id="publishFormWrapper" style="display: none;">
           <div class="publish-header">
-            <h1 class="publish-title">Publica tu trabajo o proyecto</h1>
+            <h1 class="publish-title">Crea tu publicación</h1>
             <p class="publish-desc">
-              Publica lo que necesitas en 1 minuto. Encuentra profesionales independientes y candidatos verificados con coordinación 100% por chat escrito.
+              Publica como empresa, como persona u ofrece un servicio desde esta misma cuenta. La actividad de esta demostración se guarda en tu navegador.
             </p>
           </div>
 
-          <!-- Selector de Modalidad Estilo Contra -->
-          <div class="publish-type-toggle">
+          <div class="form-group" style="margin-bottom:var(--space-5)">
+            <label for="publicationKind" class="form-label">¿Qué quieres publicar?</label>
+            <select id="publicationKind" class="form-control form-select">
+              <option value="company">Una vacante o encargo como empresa</option>
+              <option value="person">Un encargo como persona</option>
+              <option value="service">Ofrecer un servicio</option>
+            </select>
+            <p id="publicationKindHelp" class="demo-caption"></p>
+          </div>
+          <!-- Selector de modalidad -->
+          <div class="publish-type-toggle" id="jobTypeToggle">
             <button type="button" class="type-pill active" id="btnTypeFreelance" data-type="freelance">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
@@ -114,6 +123,10 @@ import Layout from '../layouts/Layout.astro';
               </div>
             </div>
 
+            <div class="form-grid-2">
+              <div class="form-group"><label class="form-label" for="jobModality">Modalidad</label><select class="form-control form-select" id="jobModality"><option>Remoto</option><option>Presencial</option><option>Híbrido</option></select></div>
+              <div class="form-group"><label class="form-label" for="jobDelivery">Plazo o disponibilidad</label><input class="form-control" id="jobDelivery" required placeholder="Ej. 10 días / Jornada completa" /></div>
+            </div>
             <!-- 3. Presupuesto o Salario -->
             <div class="form-group">
               <label for="jobBudget" class="form-label">
@@ -145,7 +158,9 @@ import Layout from '../layouts/Layout.astro';
               ></textarea>
             </div>
 
-            <!-- 5. Datos de la Empresa / Contratante (Grid 2 cols) -->
+            <div class="form-group"><label class="form-label" for="jobTasks">Tareas o entregables (uno por línea)</label><textarea id="jobTasks" class="form-control form-textarea" rows="3" required></textarea></div>
+            <div class="form-group"><label class="form-label" for="jobRequirements">Requisitos (uno por línea, opcional)</label><textarea id="jobRequirements" class="form-control form-textarea" rows="3"></textarea></div>
+            <!-- 5. Datos de quien publica -->
             <div class="form-grid-2">
               <div class="form-group">
                 <label for="jobCompany" class="form-label">
@@ -175,13 +190,7 @@ import Layout from '../layouts/Layout.astro';
             </div>
 
             <!-- Botón Submit -->
-            <button type="submit" class="publish-submit-btn" id="btnSubmitPublish">
-              <span>Publicar Trabajo Ahora</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </button>
+            <Button type="submit" id="btnSubmitPublish" text="Revisar publicación" fullWidth size="md" />
           </form>
         </div>
 
@@ -193,29 +202,19 @@ import Layout from '../layouts/Layout.astro';
             </svg>
           </div>
           
-          <h2 class="success-title">¡Tu trabajo ha sido publicado con éxito!</h2>
+          <h2 class="success-title">Tu publicación ya está disponible</h2>
           <p class="success-desc" id="successSummaryText">
             Tu vacante está activa. Los profesionales interesados podrán postular directamente por chat.
           </p>
 
-          <div class="success-actions-box">
-            <a href="/empleos" class="success-primary-btn">
-              Ver ofertas de empleo activas →
-            </a>
-            
-            <a href="#" id="btnSharePublishWhatsapp" target="_blank" rel="noopener noreferrer" class="success-whatsapp-btn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-              </svg>
-              <span>Notificar a Incluxia por WhatsApp</span>
-            </a>
-          </div>
+          <div class="success-actions-box"><Button id="viewPublished" href="/" text="Ver publicación" variant="primary" /><Button id="viewMyPublished" text="Mis publicaciones" variant="primary-line" /></div>
 
-          <button type="button" class="btn-publish-another" id="btnPublishAnother">
-            + Publicar otro puesto o proyecto
-          </button>
+          <Button id="btnPublishAnother" text="Crear otra publicación" variant="primary-line" />
         </div>
 
+        <div id="publicationPreview" hidden><h2 class="publish-title">Revisa antes de publicar</h2><ActivityList id="previewList" /><div class="form-actions"><Button id="confirmPublication" text="Confirmar publicación" /><Button id="editPublicationPreview" text="Volver a editar" variant="primary-line" /></div></div>
+        <section id="myPublications" hidden><h1 class="publish-title">Mis publicaciones</h1><p class="publish-desc">Administra tus empleos, encargos y servicios. Las consultas de contratación aparecen junto a cada servicio.</p><ActivityList id="publicationList" /></section>
+        <p class="demo-feedback" id="publicationFeedback" role="status"></p>
       </div>
 
     </div>
@@ -223,142 +222,16 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <script>
-  function initPublishFlow() {
-    const authGate = document.getElementById("publishAuthGate");
-    const formWrapper = document.getElementById("publishFormWrapper");
-    const successBox = document.getElementById("publishSuccessBox");
-    const form = document.getElementById("publishJobForm") as HTMLFormElement | null;
-    const successSummary = document.getElementById("successSummaryText");
-    const btnShareWhatsapp = document.getElementById("btnSharePublishWhatsapp") as HTMLAnchorElement | null;
-    const btnPublishAnother = document.getElementById("btnPublishAnother");
-
-    const btnFreelance = document.getElementById("btnTypeFreelance");
-    const btnFixed = document.getElementById("btnTypeFixed");
-    const jobTypeInput = document.getElementById("jobTypeInput") as HTMLInputElement | null;
-    const budgetLabelText = document.getElementById("budgetLabelText");
-
-    // Verificar si el usuario ha iniciado sesión
-    function checkAuth() {
-      // Si ya está mostrando el estado de éxito, no cambiar
-      if (successBox && successBox.style.display === "flex") return;
-
-      let user = null;
-      try {
-        const stored = localStorage.getItem("incluxia_auth_user");
-        if (stored) user = JSON.parse(stored);
-      } catch {
-        user = null;
-      }
-
-      if (user) {
-        // Logueado: ocultar gate y mostrar formulario
-        if (authGate) authGate.style.display = "none";
-        if (formWrapper) formWrapper.style.display = "block";
-
-        const compField = document.getElementById("jobCompany") as HTMLInputElement | null;
-        if (compField && !compField.value) {
-          compField.value = user.companyName || user.name || "";
-        }
-        const whatsappField = document.getElementById("jobWhatsapp") as HTMLInputElement | null;
-        if (whatsappField && !whatsappField.value && user.phone) {
-          whatsappField.value = user.phone;
-        }
-      } else {
-        // NO logueado: mostrar bloqueo y ocultar formulario
-        if (authGate) authGate.style.display = "flex";
-        if (formWrapper) formWrapper.style.display = "none";
-      }
-    }
-
-    checkAuth();
-    window.addEventListener("incluxia:auth-changed", checkAuth);
-
-    // Toggle Modalidad
-    btnFreelance?.addEventListener("click", () => {
-      btnFreelance.classList.add("active");
-      btnFixed?.classList.remove("active");
-      if (jobTypeInput) jobTypeInput.value = "freelance";
-      if (budgetLabelText) budgetLabelText.textContent = "Presupuesto por proyecto (en Bolivianos)";
-    });
-
-    btnFixed?.addEventListener("click", () => {
-      btnFixed.classList.add("active");
-      btnFreelance?.classList.remove("active");
-      if (jobTypeInput) jobTypeInput.value = "fixed";
-      if (budgetLabelText) budgetLabelText.textContent = "Sueldo mensual estimado (en Bolivianos)";
-    });
-
-    // Envío del formulario
-    form?.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      const title = (document.getElementById("jobTitle") as HTMLInputElement)?.value.trim();
-      const category = (document.getElementById("jobCategory") as HTMLSelectElement)?.value;
-      const city = (document.getElementById("jobCity") as HTMLSelectElement)?.value;
-      const budget = (document.getElementById("jobBudget") as HTMLInputElement)?.value.trim();
-      const description = (document.getElementById("jobDescription") as HTMLTextAreaElement)?.value.trim();
-      const company = (document.getElementById("jobCompany") as HTMLInputElement)?.value.trim();
-      const whatsapp = (document.getElementById("jobWhatsapp") as HTMLInputElement)?.value.trim();
-      const type = jobTypeInput?.value || "freelance";
-
-      if (!title || !category || !city || !budget || !company) return;
-
-      const newJob = {
-        id: `custom-job-${Date.now()}`,
-        title,
-        company,
-        category,
-        city,
-        salary: budget.startsWith("Bs.") ? budget : `Bs. ${budget}`,
-        type: type === "freelance" ? "Proyecto Freelance" : "Tiempo Completo",
-        description,
-        whatsapp,
-        publishedAt: new Date().toLocaleDateString("es-BO", { day: "numeric", month: "short", year: "numeric" }),
-      };
-
-      // Guardar en localStorage
-      try {
-        const existing = JSON.parse(localStorage.getItem("incluxia_published_jobs") || "[]");
-        existing.unshift(newJob);
-        localStorage.setItem("incluxia_published_jobs", JSON.stringify(existing));
-        window.dispatchEvent(new CustomEvent("incluxia:job-created", { detail: newJob }));
-      } catch {
-        // Fallback local
-      }
-
-      // Preparar enlace de WhatsApp para soporte de difusión
-      const whatsappMsg = `Hola Incluxia, acabo de publicar un nuevo puesto en la plataforma:\n\n*Puesto:* ${title}\n*Empresa:* ${company}\n*Modalidad:* ${newJob.type} (${city})\n*Presupuesto:* ${newJob.salary}\n*Contacto:* ${whatsapp}`;
-      if (btnShareWhatsapp) {
-        btnShareWhatsapp.href = `https://wa.me/59172255726?text=${encodeURIComponent(whatsappMsg)}`;
-      }
-
-      if (successSummary) {
-        successSummary.textContent = `Tu puesto de "${title}" en "${company}" está registrado y visible para profesionales de ${city} y todo el país.`;
-      }
-
-      // Mostrar pantalla de éxito
-      if (formWrapper) formWrapper.style.display = "none";
-      if (successBox) successBox.style.display = "flex";
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-
-    btnPublishAnother?.addEventListener("click", () => {
-      form?.reset();
-      if (formWrapper) formWrapper.style.display = "block";
-      if (successBox) successBox.style.display = "none";
-    });
-  }
-
-  document.addEventListener("DOMContentLoaded", initPublishFlow);
-  document.addEventListener("astro:page-load", initPublishFlow);
+import {initPublish} from '../lib/publish';
+document.addEventListener('astro:page-load',initPublish);
 </script>
 
 <style>
   /* ====================================================
      CAPA 1: WRAPPER
      ==================================================== */
-  .publish-wrapper {
-    background-color: var(--color-bg-alt);
+.publish-wrapper {
+    background-color: var(--color-bg);
     min-height: 100dvh;
     padding-top: calc(75px + var(--space-8));
     padding-bottom: var(--space-20);
@@ -386,7 +259,7 @@ import Layout from '../layouts/Layout.astro';
     border: 1px solid var(--color-border);
     border-radius: var(--radius-2xl);
     padding: clamp(1.5rem, 4vw, 3rem);
-    box-shadow: 0 4px 20px rgba(var(--color-primary-dark-rgb), 0.04);
+    box-shadow: none;
     box-sizing: border-box;
   }
 
@@ -444,14 +317,14 @@ import Layout from '../layouts/Layout.astro';
     font-size: var(--text-sm);
     font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 4px 14px rgba(var(--color-primary-rgb), 0.25);
+    box-shadow: none;
     transition: all var(--transition-fast);
   }
 
   .auth-gate-login-btn:hover {
     background-color: var(--color-primary-hover);
     transform: translateY(-1px);
-    box-shadow: 0 6px 18px rgba(var(--color-primary-rgb), 0.35);
+    box-shadow: none;
   }
 
   /* ====================================================
@@ -513,7 +386,7 @@ import Layout from '../layouts/Layout.astro';
   .type-pill.active {
     background-color: var(--color-bg-card);
     color: var(--color-primary);
-    box-shadow: 0 2px 6px rgba(var(--color-primary-dark-rgb), 0.08);
+    box-shadow: none;
   }
 
   /* Formulario y Controles */
@@ -560,10 +433,11 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .form-control:focus {
-    outline: none;
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
     border-color: var(--color-primary);
     background-color: var(--color-bg-card);
-    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.15);
+    box-shadow: none;
   }
 
   .form-select {
@@ -601,12 +475,15 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .budget-input:focus {
-    box-shadow: none !important;
+    outline: none;
+    box-shadow: none;
   }
 
   .budget-input-wrap:focus-within {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.15);
+    box-shadow: none;
     background-color: var(--color-bg-card);
   }
 
@@ -626,14 +503,14 @@ import Layout from '../layouts/Layout.astro';
     font-size: var(--text-sm);
     font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(var(--color-primary-rgb), 0.25);
+    box-shadow: none;
     transition: all var(--transition-fast);
   }
 
   .publish-submit-btn:hover {
     background-color: var(--color-primary-hover);
     transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(var(--color-primary-rgb), 0.35);
+    box-shadow: none;
   }
 
   /* ====================================================

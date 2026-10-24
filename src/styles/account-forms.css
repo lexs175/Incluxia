@@ -1,0 +1,10 @@
+.account-form { display: grid; gap: var(--space-5); }
+.account-form .form-grid-2 { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--space-4); }
+.account-form label { display: grid; gap: var(--space-2); font-size: var(--text-sm); font-weight: 600; color: var(--color-text-main); }
+.account-form input,.account-form textarea,.account-form select { width: 100%; min-width: 0; font: inherit; font-weight: 400; color: var(--color-text-main); background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); }
+.account-form input:focus,.account-form textarea:focus,.account-form select:focus { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+.account-form textarea { resize: vertical; min-height: 110px; }
+.account-tabs { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-block: var(--space-5); }
+.account-tabs button[aria-selected="true"] { font-weight: 800; }
+.form-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+@media(max-width:479px) { .account-form .form-grid-2 { grid-template-columns: minmax(0,1fr); } }

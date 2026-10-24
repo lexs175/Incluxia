@@ -1,0 +1,11 @@
+html:not([data-session="member"]) [data-member],
+html[data-session="member"] [data-guest],
+[hidden] { display: none !important; }
+.modular-btn:disabled { opacity: .55; cursor: not-allowed; }
+.demo-caption { font-size: var(--text-xs); color: var(--color-text-muted); }
+.demo-feedback { padding: var(--space-4); border-radius: var(--radius-md); background: var(--color-info-bg); color: var(--color-text-main); }
+.demo-feedback:empty { display: none; }
+
+html:not([data-session="member"]) [data-access="member"],
+html[data-session="member"] [data-access="guest"] { display: none !important; }
+.mobile-guest-content { gap: var(--space-3); flex-wrap: wrap; }

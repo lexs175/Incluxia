@@ -1,4 +1,7 @@
 ---
+import AccessGate from "../../components/ui/AccessGate.astro";
+import HiringTemplates from "../../components/contratar/HiringTemplates.astro";
+import Button from "../../components/ui/Button.astro";
 import Layout from "../../layouts/Layout.astro";
 import AutonomoCard from "../../components/contratar/AutonomoCard.astro";
 import ServiceCard from "../../components/contratar/ServiceCard.astro";
@@ -51,7 +54,8 @@ const filteredAutonomos =
   description={`Encuentra profesionales autónomos y paquetes de servicios de ${currentCategory.name} en Bolivia. Comunicación 100% por chat o WhatsApp.`}
   activePath="/contratar"
 >
-  <div class="hiring-explorer-wrapper">
+  <AccessGate title="Ingresa para explorar profesionales y servicios" />
+  <div class="hiring-explorer-wrapper" data-member data-category={currentCategory.slug}>
     <div class="container hiring-explorer-container">
       
       <!-- Layout Maestro de 2 Columnas (Filtros Sidebar + Contenido) -->
@@ -204,6 +208,7 @@ const filteredAutonomos =
               <h1 class="explorer-headline" id="explorerHeadline">
                 Autónomos disponibles para "{currentCategory.name}"
               </h1>
+              <p id="hiringResultCount" class="demo-caption" role="status"></p>
             </div>
 
             <!-- Buscador en tiempo real -->
@@ -290,6 +295,7 @@ const filteredAutonomos =
           <!-- ====================================================
                VISTA A: LISTADO DE AUTÓNOMOS (Componente AutonomoCard)
                ==================================================== -->
+          <div class="empty-state-box" id="hiringEmpty" hidden><p>No hay coincidencias con estos filtros.</p><Button id="resetHiringFilters" text="Limpiar filtros" size="sm" /></div>
           <section class="autonomos-view-section" id="autonomosViewSection">
             <div class="autonomos-list" id="autonomosList">
               {
@@ -336,6 +342,7 @@ const filteredAutonomos =
        Pre-renderizado con componentes oficiales y z-index 9999
        Slot 'drawer' para renderizado directo en <body> fuera de <main>
        ==================================================== -->
+  <HiringTemplates />
   <HiringDrawer slot="drawer" autonomos={filteredAutonomos} services={filteredServices} />
 </Layout>
 
@@ -343,8 +350,8 @@ const filteredAutonomos =
   /* ====================================================
      CAPA 1: WRAPPER EXTERIOR
      ==================================================== */
-  .hiring-explorer-wrapper {
-    background-color: var(--color-bg-alt);
+.hiring-explorer-wrapper {
+    background-color: var(--color-bg);
     min-height: 100dvh;
     padding-top: calc(75px + var(--space-4));
     padding-bottom: var(--space-20);
@@ -406,7 +413,7 @@ const filteredAutonomos =
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     padding: var(--space-4);
-    box-shadow: 0 1px 3px rgba(var(--color-primary-dark-rgb), 0.03);
+    box-shadow: none;
   }
 
   .toggle-pill-switch {
@@ -442,7 +449,7 @@ const filteredAutonomos =
   .toggle-btn.active {
     background-color: var(--color-primary);
     color: var(--color-text-inverse);
-    box-shadow: 0 2px 6px rgba(var(--color-primary-rgb), 0.25);
+    box-shadow: none;
   }
 
   /* Tarjetas de Filtro */
@@ -451,7 +458,7 @@ const filteredAutonomos =
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     padding: var(--space-4);
-    box-shadow: 0 1px 3px rgba(var(--color-primary-dark-rgb), 0.03);
+    box-shadow: none;
   }
 
   .categories-filter-list {
@@ -803,7 +810,7 @@ const filteredAutonomos =
     .mobile-toggle-btn.active {
       background-color: var(--color-primary);
       color: var(--color-text-inverse);
-      box-shadow: 0 2px 6px rgba(var(--color-primary-rgb), 0.2);
+      box-shadow: none;
     }
 
     .mobile-filters-trigger-btn {
@@ -858,7 +865,7 @@ const filteredAutonomos =
       width: min(380px, 88vw);
       background-color: var(--color-bg-card);
       border-left: 1px solid var(--color-border);
-      box-shadow: -8px 0 35px rgba(var(--color-primary-dark-rgb), 0.25);
+      box-shadow: none;
       z-index: 2100;
       transform: translateX(100%);
       transition: transform var(--transition-smooth);
@@ -973,7 +980,12 @@ const filteredAutonomos =
 </style>
 
 <script>
+  import { appendPublishedTalent } from "../../lib/hiring";
   function initHiringExplorer() {
+    const root = document.querySelector<HTMLElement>(".hiring-explorer-wrapper");
+    if (!root || root.dataset.ready) return;
+    root.dataset.ready = "true";
+    appendPublishedTalent(root.dataset.category || "todos");
     const toggleAutonomosBtns = document.querySelectorAll('[data-mode-btn="autonomos"]');
     const toggleServicesBtns = document.querySelectorAll('[data-mode-btn="servicios"]');
     const autonomosView = document.getElementById("autonomosViewSection");
@@ -1067,7 +1079,7 @@ const filteredAutonomos =
           const skills = card.getAttribute("data-skills") || "";
 
           const matchesSearch = !searchQuery || name.includes(searchQuery) || role.includes(searchQuery) || skills.includes(searchQuery);
-          const matchesCity = !activeCity || city.toLowerCase() === activeCity.toLowerCase() || (activeCity === "Remoto");
+          const matchesCity = !activeCity || city.toLowerCase() === activeCity.toLowerCase() || (activeCity === "Remoto" && city.toLowerCase().includes("remoto"));
           const matchesTag = !activeTag || skills.includes(activeTag) || role.includes(activeTag);
 
           if (matchesSearch && matchesCity && matchesTag) {
@@ -1082,15 +1094,19 @@ const filteredAutonomos =
           const city = card.getAttribute("data-city") || "";
 
           const matchesSearch = !searchQuery || title.includes(searchQuery);
+          const matchesTag = !activeTag || title.includes(activeTag) || (card.getAttribute("data-tags") || "").includes(activeTag);
           const matchesCity = !activeCity || city.toLowerCase() === activeCity.toLowerCase();
 
-          if (matchesSearch && matchesCity) {
+          if (matchesSearch && matchesCity && matchesTag) {
             card.style.display = "";
           } else {
             card.style.display = "none";
           }
         });
       }
+      const displayed = Array.from(document.querySelectorAll<HTMLElement>(currentMode === "autonomos" ? "#autonomosList .autonomo-card-item" : "#servicesGrid .service-card-item")).filter(card=>card.style.display !== "none").length;
+      document.getElementById("hiringEmpty")!.hidden = displayed > 0;
+      document.getElementById("hiringResultCount")!.textContent = displayed + " resultados";
     }
 
     if (searchInput) {
@@ -1118,6 +1134,13 @@ const filteredAutonomos =
       });
     });
 
+    document.getElementById("resetHiringFilters")!.onclick = () => {
+      activeCity = ""; activeTag = ""; searchQuery = "";
+      if (searchInput) searchInput.value = "";
+      cityChips.forEach(c=>c.classList.toggle("active",c.getAttribute("data-city")===""));
+      subPills.forEach(p=>p.classList.toggle("active",p.getAttribute("data-tag")===""));
+      filterContent();
+    };
     // 3. Apertura y Cierre del Drawer Lateral Unificado
     function closeDrawer() {
       drawer?.classList.remove("is-open");
@@ -1157,6 +1180,7 @@ const filteredAutonomos =
       });
 
       const target = document.getElementById(panelId);
+      if (!target) return;
       if (target) {
         target.style.display = "flex";
       }
@@ -1225,6 +1249,10 @@ const filteredAutonomos =
         }
       });
     });
+    const params = new URLSearchParams(location.search);
+    setMode(params.get("mode") === "servicios" ? "servicios" : "autonomos");
+    if (params.get("q") && searchInput) { searchInput.value = params.get("q")!; searchQuery = searchInput.value.toLowerCase(); filterContent(); }
+    if (params.get("service")) openPanel("drawer-service-"+params.get("service"), "Paquete de Servicio");
   }
 
   document.addEventListener("astro:page-load", initHiringExplorer);

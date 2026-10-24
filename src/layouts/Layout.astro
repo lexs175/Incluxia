@@ -2,9 +2,12 @@
 import { ClientRouter } from 'astro:transitions';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
-import WhatsAppFAB from '../components/layout/WhatsAppFAB.astro';
 import AuthModal from '../components/ui/AuthModal.astro';
+import ButtonTemplates from '../components/ui/ButtonTemplates.astro';
+import '../styles/session.css';
+import '../styles/account-forms.css';
 import '../styles/global.css';
+import '../styles/workspace.css';
 
 interface Props {
   title?: string;
@@ -23,6 +26,13 @@ const {
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
+    <script is:inline data-astro-rerun>
+      try {
+        const state = JSON.parse(localStorage.getItem('incluxia_demo_v1') || 'null');
+        const legacy = JSON.parse(localStorage.getItem('incluxia_auth_user') || 'null');
+        document.documentElement.dataset.session = (state ? state.sessionId : legacy) ? 'member' : 'guest';
+      } catch { document.documentElement.dataset.session = 'guest'; }
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
@@ -42,14 +52,14 @@ const {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
     <!-- Astro View Transitions / Client-side Router -->
     <ClientRouter />
   </head>
-  <body>
+  <body data-app-surface={activePath === '/' || /^\/(empleos|contratar|publicar|perfil|perfiles|postulaciones)(\/|$)/.test(activePath) ? '' : undefined}>
     <!-- Skip to content for accessibility -->
     <a href="#main-content" class="skip-to-content">Saltar al contenido principal</a>
 
@@ -66,9 +76,8 @@ const {
 
     <!-- Accessible Auth Modal (Login / Registro) -->
     <AuthModal />
+    <ButtonTemplates />
 
-    <!-- Accessible Floating Action Button -->
-    <WhatsAppFAB />
 
     <!-- Modals & Fullscreen Drawers Slot (Direct child of body, above Header and FAB) -->
     <slot name="drawer" />
@@ -201,6 +210,7 @@ const {
       }
 
       async function initGsapMaskAnimations() {
+        if (document.documentElement.dataset.session === 'member' && document.body.hasAttribute('data-app-surface')) return;
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
         // Ensure custom fonts are loaded so line detection measurements are 100% accurate

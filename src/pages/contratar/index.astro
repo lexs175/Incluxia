@@ -1,4 +1,5 @@
 ---
+import AccessGate from "../../components/ui/AccessGate.astro";
 import Layout from "../../layouts/Layout.astro";
 import ExpandableButton from "../../components/ui/ExpandableButton.astro";
 import CategoryCard from "../../components/contratar/CategoryCard.astro";
@@ -19,18 +20,12 @@ const enrichedCategories = categories.map((cat) => ({
   description="Contrata a profesionales autónomos con hipoacusia o paquetes de servicios cerrados en Bolivia. Comunicación 100% por chat o WhatsApp, cumplimiento Ley 977."
   activePath="/contratar"
 >
-  <div class="hiring-hub-wrapper">
+  <AccessGate title="Ingresa para contratar talento" />
+  <div class="hiring-hub-wrapper" data-member>
     <div class="container hiring-hub-container">
       
       <!-- Cabecera Hero del Hub -->
       <header class="hub-hero-section">
-        <div class="hub-hero-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-          </svg>
-          <span>Contratación Directa Ley 977 · Sin Barreras Telefónicas</span>
-        </div>
-
         <h1 class="hub-hero-title">
           Contratar por especialidad y rubro en Bolivia
         </h1>
@@ -137,8 +132,8 @@ const enrichedCategories = categories.map((cat) => ({
   /* ====================================================
      CAPA 1: WRAPPER EXTERIOR
      ==================================================== */
-  .hiring-hub-wrapper {
-    background-color: var(--color-bg-alt);
+.hiring-hub-wrapper {
+    background-color: var(--color-bg);
     min-height: 100dvh;
     padding-top: calc(75px + var(--space-8));
     padding-bottom: var(--space-20);
@@ -166,20 +161,6 @@ const enrichedCategories = categories.map((cat) => ({
     align-items: center;
   }
 
-  .hub-hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.35rem 0.85rem;
-    background-color: rgba(var(--color-primary-rgb), 0.08);
-    border: 1px solid rgba(var(--color-primary-rgb), 0.18);
-    border-radius: var(--radius-full);
-    color: var(--color-primary);
-    font-family: var(--font-heading);
-    font-size: var(--text-xs);
-    font-weight: 700;
-    margin-bottom: var(--space-4);
-  }
 
   .hub-hero-title {
     font-family: var(--font-heading);
@@ -208,7 +189,7 @@ const enrichedCategories = categories.map((cat) => ({
     border: 1px solid var(--color-border);
     border-radius: var(--radius-full);
     padding: 0.3rem 0.45rem 0.3rem var(--space-4);
-    box-shadow: 0 2px 8px rgba(var(--color-primary-dark-rgb), 0.04);
+    box-shadow: none;
     transition: border-color var(--transition-fast);
     box-sizing: border-box;
     gap: var(--space-2);
@@ -267,7 +248,7 @@ const enrichedCategories = categories.map((cat) => ({
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     padding: var(--space-8);
-    box-shadow: 0 1px 3px rgba(var(--color-primary-dark-rgb), 0.03);
+    box-shadow: none;
   }
 
   .guarantee-col {
@@ -338,10 +319,22 @@ const enrichedCategories = categories.map((cat) => ({
 </style>
 
 <script>
+  import { readStore, categories, profiles } from "../../lib/demo";
+  import hiring from "../../data/hiring.json";
   function initHubFilter() {
     const input = document.getElementById("hubSearchInput") as HTMLInputElement | null;
     const cards = document.querySelectorAll<HTMLElement>(".category-rubro-card");
-    if (!input) return;
+    if (!input || input.dataset.ready) return;
+    input.dataset.ready = "true";
+    const state = readStore();
+    cards.forEach(card => {
+      const slug = card.dataset.categorySlug || card.getAttribute("href")?.split("/").pop();
+      const name = categories.find(c=>c.slug===slug)?.name;
+      const people = hiring.autonomos.filter(a=>a.categorySlug===slug && a.name!==profiles[0].name).length + state.accounts.filter(a=>a.profession && (a.category || (a.id==="demo-valeria"?categories[0].name:""))===name).length;
+      const services = state.publications.filter(p=>p.type==="service"&&p.status==="active"&&p.category===name).length;
+      const count = card.querySelector(".count-chip");
+      if(count) count.textContent = people+" autónomos · "+services+" servicios";
+    });
 
     input.addEventListener("input", (e) => {
       const q = (e.target as HTMLInputElement).value.trim().toLowerCase();
@@ -355,6 +348,10 @@ const enrichedCategories = categories.map((cat) => ({
         }
       });
     });
+    cards.forEach(card => card.addEventListener("click", event => {
+      if ((event.target as HTMLElement).closest("a,button")) return;
+      card.querySelector<HTMLAnchorElement>(".category-action-button")?.click();
+    }));
   }
 
   document.addEventListener("astro:page-load", initHubFilter);

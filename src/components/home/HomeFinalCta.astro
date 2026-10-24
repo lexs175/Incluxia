@@ -9,22 +9,22 @@ import Button from "../ui/Button.astro";
         Tu próximo proyecto o contratación empieza aquí
       </h2>
       <p class="final-cta-subtitle">
-        Publica una oportunidad para tu empresa o explora talentos y servicios verificados en Bolivia con coordinación 100% por chat.
+        Crea una cuenta para buscar trabajo, contratar o publicar. Si ya tienes una, ingresa para continuar.
       </p>
       <div class="final-cta-buttons">
         <Button
-          href="/publicar"
+          data-auth-trigger="register"
           variant="white"
           size="lg"
         >
-          <span>Publicar un Trabajo</span>
+          <span>Crear cuenta</span>
         </Button>
         <Button
-          href="/contratar"
+          data-auth-trigger="login"
           variant="outline-white"
           size="lg"
         >
-          <span>Explorar Talentos y Servicios</span>
+          <span>Ingresar</span>
         </Button>
       </div>
     </div>

@@ -1,0 +1,21 @@
+---
+import Button from './Button.astro';
+const { recipientId = '', serviceId = '', text = 'Consultar disponibilidad' } = Astro.props;
+---
+<div class="contact-request" data-recipient={recipientId} data-service={serviceId}>
+  <Button text={text} data-contact-open variant="primary" />
+  <form class="account-form" hidden>
+    <label>Explica lo que necesitas<textarea name="message" required rows="3" placeholder="Describe el trabajo, plazo y lo que te gustaría consultar."></textarea></label>
+    <Button type="submit" text="Enviar consulta" size="sm" />
+    <p class="demo-caption">La consulta queda registrada en esta demostración. No se envía un mensaje fuera de Incluxia.</p>
+  </form>
+  <p class="demo-feedback" role="status"></p>
+</div>
+<script>
+import { initContact } from '../../lib/contact';
+document.addEventListener('astro:page-load',initContact);
+</script>
+<style>
+ .contact-request { width: 100%; }
+ form { margin-top: var(--space-5); }
+</style>

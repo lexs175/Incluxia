@@ -1,0 +1,54 @@
+---
+import ExpandableButton from '../ui/ExpandableButton.astro';
+import { seedAccounts, jobHref, dateLabel, type Publication } from '../../lib/demo';
+import { publisherInfo, paymentInfo, locationLabel } from '../../lib/job-presentation';
+interface Props { job: Publication }
+const { job } = Astro.props;
+const publisher = publisherInfo(job, seedAccounts);
+const payment = paymentInfo(job.salary);
+const href = jobHref(job);
+---
+<article class="job-card offer-card" data-job-id={job.id}>
+  <div class="offer-publisher">
+    <div class="publisher-avatar" aria-hidden="true">
+      <img class="publisher-photo" src={publisher.image || undefined} alt="" width="40" height="40" loading="lazy" hidden={!publisher.image} />
+      <span class="publisher-initials" hidden={!!publisher.image}>{publisher.initials}</span>
+    </div>
+    <div class="publisher-details">
+      <span class="company-name">{publisher.name}</span>
+      <p class="job-location"><img src="/images/offers/location.svg" alt="" width="9" height="9" /><span>{locationLabel(job)}</span></p>
+    </div>
+  </div>
+  <div class="offer-content">
+    <h2 class="job-title"><a href={href}>{job.title}</a></h2>
+    <p class="job-budget"><span class="budget-amount">{payment.amount}</span><span class="budget-period">{payment.period}</span></p>
+  </div>
+  <div class="job-card-footer">
+    <time class="posted-time" datetime={job.createdAt}>{dateLabel(job.createdAt)}</time>
+    <ExpandableButton href={href} text="Ver oferta" variant="primary" size="sm" class="offer-action" leading>
+      <img slot="arrow" src="/images/offers/arrow.svg" alt="" />
+    </ExpandableButton>
+  </div>
+</article>
+<style>
+  .offer-card { display: flex; flex-direction: column; container-type: inline-size; min-width: 0; min-height: 280px; padding: var(--space-5); border-radius: var(--radius-md); background: var(--color-bg-card); color: var(--color-text-main); }
+  .offer-publisher { display: flex; align-items: center; gap: var(--space-3); min-height: 40px; padding-bottom: var(--space-3); }
+  .publisher-avatar { display: grid; place-items: center; flex: 0 0 40px; width: 40px; height: 40px; overflow: hidden; background: var(--color-bg-alt); border-radius: var(--radius-full); color: var(--color-text-muted); }
+  .publisher-photo { width: 100%; height: 100%; object-fit: cover; }
+  .publisher-initials { font-family: var(--font-heading); font-size: var(--text-sm); font-weight: 800; line-height: 1.6; }
+  .publisher-details { flex: 1; min-width: 0; }
+  .company-name { display: block; font-size: var(--text-sm); line-height: 1.45; font-weight: 400; color: var(--color-text-muted); overflow-wrap: anywhere; }
+  .job-location { display: flex; align-items: center; gap: var(--space-1); margin: 0; font-size: var(--text-offer-meta); line-height: 1; color: var(--color-text-muted); }
+  .job-location img { flex-shrink: 0; }
+  .offer-content { display: flex; flex: 1; flex-direction: column; justify-content: space-between; gap: var(--space-6); padding-bottom: var(--space-6); }
+  .job-title { font-size: var(--text-lg); line-height: 1.3; font-weight: 500; color: var(--color-text-strong); letter-spacing: -0.015em; overflow-wrap: anywhere; }
+  .job-title a { color: inherit; }
+  .job-title a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .job-budget { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-2); margin: 0; padding-block: 1px; color: var(--color-text-main); }
+  .budget-amount { font-family: var(--font-body); font-size: var(--text-offer-price); font-weight: 500; font-variant-numeric: tabular-nums; line-height: 0.75; white-space: nowrap; }
+  .budget-period { font-size: var(--text-sm); font-weight: 400; color: var(--color-text-muted); line-height: 1.6; }
+  .job-card-footer { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); }
+  .posted-time { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.6; }
+  .offer-card :global(.offer-action) { --btn-h: 2.125rem; --btn-radius: var(--radius-xs); }
+  .offer-card :global(.offer-action .btn-text-capsule), .offer-card :global(.offer-action .btn-badge-inner) { background: var(--color-primary-dark); border: none; }
+</style>

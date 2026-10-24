@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import JobsDirectory from "../../components/empleos/JobsDirectory.astro";
+import AccessGate from "../../components/ui/AccessGate.astro";
 import jobsData from "../../data/jobs.json";
 ---
 
@@ -9,7 +10,8 @@ import jobsData from "../../data/jobs.json";
   description="Encuentra empleos formales para personas con hipoacusia en Bolivia. Comunicación 100% por chat o WhatsApp, sin llamadas telefónicas. Cumplimiento Ley 977."
   activePath="/empleos"
 >
-  <div class="jobs-page-shell">
+  <AccessGate title="Ingresa para buscar trabajo" next="/" />
+  <div class="jobs-page-shell" data-member>
     <div class="container jobs-container">
       <JobsDirectory jobs={jobsData} />
     </div>
@@ -20,7 +22,7 @@ import jobsData from "../../data/jobs.json";
   .jobs-page-shell {
     background-color: var(--color-bg);
     min-height: 100dvh;
-    padding-top: calc(60px + var(--space-4));
+    padding-top: calc(80px + var(--space-8));
     padding-bottom: var(--space-8);
     box-sizing: border-box;
   }

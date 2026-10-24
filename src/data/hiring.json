@@ -2,6 +2,7 @@
   "categories": [
     {
       "id": "diseno-grafico",
+      "image": "/images/categories/diseno-grafico.png",
       "slug": "diseno-grafico",
       "name": "Diseño Gráfico",
       "shortDesc": "Identidad visual, branding, logotipos y piezas publicitarias digitales.",
@@ -18,6 +19,7 @@
     },
     {
       "id": "sistemas-ti",
+      "image": "/images/categories/sistemas-ti.webp",
       "slug": "sistemas-ti",
       "name": "Sistemas & Soporte TI",
       "shortDesc": "Mantenimiento preventivo, soporte helpdesk escrito y administración básica de redes.",
@@ -34,6 +36,7 @@
     },
     {
       "id": "contabilidad-finanzas",
+      "image": "/images/categories/contabilidad-finanzas.webp",
       "slug": "contabilidad-finanzas",
       "name": "Contabilidad & Facturación",
       "shortDesc": "Conciliaciones bancarias, libros de compras/ventas y facturación electrónica.",
@@ -50,6 +53,7 @@
     },
     {
       "id": "digitacion-datos",
+      "image": "/images/categories/digitacion-datos.webp",
       "slug": "digitacion-datos",
       "name": "Digitación & Archivo de Datos",
       "shortDesc": "Transcripción de documentos, captura masiva de datos y digitalización de archivos.",
@@ -66,6 +70,7 @@
     },
     {
       "id": "redes-sociales",
+      "image": "/images/categories/redes-sociales.webp",
       "slug": "redes-sociales",
       "name": "Redes Sociales & Contenido",
       "shortDesc": "Parrillas de contenido, diseño de post/reels y gestión de comunidad 100% escrita.",
@@ -82,6 +87,7 @@
     },
     {
       "id": "desarrollo-web",
+      "image": "/images/categories/desarrollo-web.webp",
       "slug": "desarrollo-web",
       "name": "Desarrollo Web & Landing Pages",
       "shortDesc": "Páginas web corporativas, tiendas online y landing pages accesibles y rápidas.",
@@ -98,6 +104,7 @@
     },
     {
       "id": "ilustracion-arte",
+      "image": "/images/categories/ilustracion-arte.webp",
       "slug": "ilustracion-arte",
       "name": "Ilustración & Arte Digital",
       "shortDesc": "Personajes, iconos personalizados, infografías visuales y concept art.",
@@ -114,6 +121,7 @@
     },
     {
       "id": "edicion-video",
+      "image": "/images/categories/edicion-video.webp",
       "slug": "edicion-video",
       "name": "Edición Audiovisual & Subtítulos",
       "shortDesc": "Edición de video con subtítulos precisos, subtitulado accesible y clips para redes.",

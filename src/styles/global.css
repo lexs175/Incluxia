@@ -5,6 +5,9 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  /* Todas las superficies del sitio se mantienen sin sombras. */
+  box-shadow: none !important;
+  text-shadow: none !important;
 }
 
 ul, ol {
@@ -59,6 +62,7 @@ html {
 }
 
 body {
+  background-color: var(--color-bg);
   min-height: 100vh;
   min-width: 240px; /* Base 240px minimum mobile width */
   display: flex;

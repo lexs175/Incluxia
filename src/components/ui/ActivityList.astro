@@ -1,0 +1,25 @@
+---
+const { id } = Astro.props;
+---
+<div class="activity-list" id={id}></div>
+<template id={id+'Template'}>
+  <article class="activity-item">
+    <p class="activity-status"></p><h2 class="activity-title"></h2>
+    <p class="activity-meta"></p><p class="activity-message"></p>
+    <div class="activity-actions"></div>
+    <div class="activity-extra"></div>
+  </article>
+</template>
+<style>
+.activity-list { display: grid; gap: var(--space-4); margin-block: var(--space-5); }
+.activity-item { border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-5); background: var(--color-bg-card); }
+.activity-status { font-size: var(--text-xs); font-weight: 700; color: var(--color-primary); margin-bottom: var(--space-2); }
+.activity-title { font-size: var(--text-lg); font-weight: 800; color: var(--color-primary); margin-bottom: var(--space-2); }
+.activity-meta { color: var(--color-text-muted); font-size: var(--text-xs); margin-bottom: var(--space-3); }
+.activity-message { color: var(--color-text-main); font-size: var(--text-sm); white-space: pre-line; overflow-wrap: anywhere; }
+.activity-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-5); }
+.activity-extra { margin-top: var(--space-4); }
+.activity-extra:empty { display: none; }
+.activity-extra :global(select) { border: 1px solid var(--color-border); border-radius: var(--radius-md); color: var(--color-text-main); padding: var(--space-3); background: var(--color-bg); font: inherit; width: 100%; }
+.activity-extra :global(label) { display: grid; gap: var(--space-2); font-size: var(--text-sm); }
+</style>

@@ -83,9 +83,9 @@ const { autonomo } = Astro.props;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     padding: var(--space-6);
-    box-shadow: 0 1px 3px rgba(var(--color-primary-dark-rgb), 0.04);
+    box-shadow: none;
     cursor: pointer;
-    transition: border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    transition: border-color var(--transition-fast), transform var(--transition-fast);
     box-sizing: border-box;
     width: 100%;
     max-width: 100%;
@@ -95,7 +95,7 @@ const { autonomo } = Astro.props;
   .autonomo-card-item:hover {
     border-color: var(--color-primary);
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(var(--color-primary-dark-rgb), 0.08);
+    box-shadow: none;
   }
 
   .autonomo-card-header {

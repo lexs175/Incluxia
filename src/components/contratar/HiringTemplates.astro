@@ -1,0 +1,9 @@
+---
+import AutonomoCard from './AutonomoCard.astro';
+import ServiceCard from './ServiceCard.astro';
+import HiringDrawer from './HiringDrawer.astro';
+import hiring from '../../data/hiring.json';
+---
+<template id="newAutonomoTemplate"><AutonomoCard autonomo={hiring.autonomos[0]} /></template>
+<template id="newServiceTemplate"><ServiceCard service={hiring.services[0]} /></template>
+<template id="newServiceDetailTemplate"><HiringDrawer autonomos={[hiring.autonomos[0]]} services={[hiring.services[0]]} /></template>

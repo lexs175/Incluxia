@@ -12,12 +12,6 @@ const { story } = Astro.props;
   <div class="container">
     <div class="featured-showcase-grid">
       <div class="featured-content-col">
-        <div class="featured-badge-row">
-          <span class="featured-company-pill">
-            {story.company}
-          </span>
-        </div>
-
         <h2 class="featured-name-title">
           {story.name}: {story.role}
         </h2>
@@ -100,23 +94,7 @@ const { story } = Astro.props;
     color: var(--color-white);
   }
 
-  .featured-badge-row {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-    flex-wrap: wrap;
-  }
 
-  .featured-company-pill {
-    font-family: var(--font-heading);
-    font-size: var(--text-xs);
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.7);
-    background: rgba(255, 255, 255, 0.08);
-    padding: 0.35rem 0.85rem;
-    border-radius: var(--radius-full);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
 
   .featured-name-title {
     font-size: var(--text-3xl);

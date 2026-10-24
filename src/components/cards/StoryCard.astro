@@ -2,6 +2,7 @@
 import ExpandableButton from "../ui/ExpandableButton.astro";
 
 interface Props {
+  compact?: boolean;
   story: {
     id: string;
     slug: string;
@@ -15,10 +16,10 @@ interface Props {
   };
 }
 
-const { story } = Astro.props;
+const { story, compact = false } = Astro.props;
 ---
 
-<article class="story-card">
+<article class:list={['story-card', { 'story-card--compact': compact }]}>
   <div class="story-image-wrapper">
     <img
       src={story.image}
@@ -29,22 +30,18 @@ const { story } = Astro.props;
   </div>
 
   <div class="story-body">
-    <span class="story-category-tag">
-      {story.category || "Caso de Éxito"}
-    </span>
-
     <h3 class="story-title">
       <a href={`/casos-de-exito/${story.slug}`}>
-        {story.name}: {story.role} en {story.company}
+        {compact ? story.name : `${story.name}: ${story.role} en ${story.company}`}
       </a>
     </h3>
 
-    <p class="story-quote">“{story.quote}”</p>
+    {compact ? <p class="story-summary">{story.role.replaceAll(' & ', ' y ')} en {story.company}.</p> : <p class="story-quote">“{story.quote}”</p>}
 
     <div class="story-btn-wrap">
       <ExpandableButton
         href={`/casos-de-exito/${story.slug}`}
-        text="Ver testimonio"
+        text={compact ? 'Ver historia' : 'Ver testimonio'}
         variant="primary-line"
         size="md"
       />
@@ -97,21 +94,6 @@ const { story } = Astro.props;
     flex-grow: 1;
   }
 
-  .story-category-tag {
-    align-self: flex-start;
-    display: inline-flex;
-    align-items: center;
-    padding: 0.3rem 0.85rem;
-    border-radius: var(--radius-full);
-    background-color: var(--color-bg-alt);
-    border: 1px solid var(--color-border);
-    color: var(--color-text-muted);
-    font-family: var(--font-heading);
-    font-size: var(--text-xs);
-    font-weight: 600;
-    line-height: 1.2;
-    margin-bottom: var(--space-4);
-  }
 
   .story-title {
     font-family: var(--font-heading);
@@ -149,6 +131,8 @@ const { story } = Astro.props;
     margin-top: auto;
     padding-top: var(--space-2);
   }
+
+  .story-summary { font-size: var(--text-sm); color: var(--color-text-main); line-height: 1.6; margin-bottom: var(--space-6); }
 
   @media (max-width: 479px) {
     .story-card {

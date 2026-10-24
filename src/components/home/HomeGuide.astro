@@ -1,0 +1,62 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+  tone?: 'light' | 'blue';
+  layout?: 'split' | 'stack';
+  steps?: { title: string; text: string }[];
+  images: { src: string; alt: string }[];
+}
+const { id, title, description, tone = 'light', layout = 'stack', steps = [], images } = Astro.props;
+---
+
+<section class:list={['home-guide', `home-guide--${tone}`, `home-guide--${layout}`]} id={id} aria-labelledby={`${id}-title`}>
+  <div class="container">
+    <div class="guide-layout">
+      <header class="guide-header">
+        <h2 id={`${id}-title`}>{title}</h2>
+        <p>{description}</p>
+      </header>
+      <div class="guide-content">
+        {steps.length > 0 && <div class="guide-steps">{steps.map(step => <article class="guide-step"><h3>{step.title}</h3><p>{step.text}</p></article>)}</div>}
+        {images.map((image, index) => <figure class:list={['guide-image', { 'guide-image--wide': index > 0 }]}>
+          <a href={image.src} target="_blank" rel="noopener noreferrer" aria-label={`Ampliar imagen: ${image.alt}`}>
+            <img src={image.src} alt={image.alt} width="1440" height="1000" loading="lazy" />
+          </a>
+        </figure>)}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.home-guide { width: 100%; padding-block: var(--space-20); background: var(--color-bg); color: var(--color-primary-dark); scroll-margin-top: 100px; }
+  .home-guide--blue { background: var(--color-home-primary); color: var(--color-white); }
+  .guide-layout { display: flex; flex-direction: column; gap: var(--space-12); }
+  .guide-header { max-width: 720px; margin-inline: auto; text-align: center; }
+  .guide-header h2 { margin-bottom: var(--space-3); font-size: var(--text-3xl); font-weight: 800; line-height: 1.25; color: inherit; text-wrap: balance; }
+  .guide-header p { margin: 0; font-size: var(--text-base); line-height: 1.6; color: inherit; text-wrap: pretty; }
+  .guide-content { display: grid; gap: var(--space-4); min-width: 0; }
+  .guide-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
+  .guide-step { display: flex; flex-direction: column; justify-content: center; min-width: 0; padding: var(--space-6); border-radius: var(--radius-xl); background: var(--color-white); }
+  .guide-step h3 { font-size: var(--text-base); font-weight: 800; line-height: 1.25; color: inherit; margin-bottom: var(--space-2); }
+  .guide-step p { font-size: var(--text-sm); line-height: 1.55; color: inherit; margin: 0; }
+  .home-guide--blue .guide-step { background: rgba(var(--color-white-rgb), 0.08); }
+  .guide-image { min-width: 0; padding: var(--space-2); background: var(--color-home-primary); border-radius: var(--radius-md); }
+  .guide-image a { display: block; border-radius: var(--radius-sm); overflow: hidden; }
+  .guide-image img { width: 100%; height: auto; aspect-ratio: 1.4379; object-fit: cover; border-radius: var(--radius-sm); }
+  .home-guide--blue .guide-image { padding: 0; }
+  .home-guide--split .guide-content { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+  .home-guide--split .guide-steps { grid-template-columns: 1fr; }
+  .home-guide--split .guide-image--wide { grid-column: 1 / -1; }
+  .home-guide--stack .guide-content { gap: var(--space-10); }
+  @media (max-width: 767px) {
+    .home-guide { padding-block: var(--space-10); }
+    .guide-layout { gap: var(--space-8); }
+    .home-guide--split .guide-content { grid-template-columns: 1fr; }
+    .guide-steps { grid-template-columns: 1fr; }
+    .guide-step { padding: var(--space-5); }
+    .home-guide--stack .guide-content { gap: var(--space-6); }
+  }
+</style>

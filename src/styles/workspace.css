@@ -1,0 +1,42 @@
+html.filters-open { overflow: hidden; }
+
+html[data-session='member'] body[data-app-surface] {
+  --container-max-width: var(--app-content-max);
+  --container-padding: var(--app-gutter);
+  background: var(--color-bg);
+}
+
+html[data-session='member'] body[data-app-surface] > .header {
+  top: 0;
+  background: var(--color-white);
+}
+
+html[data-session='member'] body[data-app-surface] .navbar-capsule {
+  display: grid;
+  grid-template-columns: minmax(130px, 1fr) auto minmax(130px, 1fr);
+  min-height: var(--app-header-height);
+  padding-block: var(--space-3);
+  padding-inline: 0;
+  border-radius: 0;
+}
+
+html[data-session='member'] body[data-app-surface] .header-actions { justify-self: end; }
+html[data-session='member'] body[data-app-surface] .nav-desktop { justify-self: center; }
+html[data-session='member'] body[data-app-surface] .header-profile-wrapper { background: var(--color-bg); border: none; }
+html[data-session='member'] body[data-app-surface] > .footer { display: none; }
+html[data-session='member'] body[data-app-surface] main { min-width: 0; }
+html[data-session='member'] body[data-app-surface] .member-home,
+html[data-session='member'] body[data-app-surface] .jobs-page-shell { padding-top: calc(var(--app-header-height) + var(--space-8)); padding-bottom: var(--space-10); min-height: 100dvh; }
+html[data-session='member'] body[data-app-surface] .member-home > .container,
+html[data-session='member'] body[data-app-surface] .jobs-container,
+html[data-session='member'] body[data-app-surface] .header-container { max-width: none; }
+html[data-session='member'] body[data-app-surface] .profile-container { max-width: 1160px; }
+
+@media (max-width: 1024px) {
+  html[data-session='member'] body[data-app-surface] .navbar-capsule { grid-template-columns: minmax(0, 1fr) auto; }
+}
+
+@media (max-width: 767px) {
+  html[data-session='member'] body[data-app-surface] .member-home,
+  html[data-session='member'] body[data-app-surface] .jobs-page-shell { padding-top: calc(var(--app-header-height) + var(--space-6)); }
+}

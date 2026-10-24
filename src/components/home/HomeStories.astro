@@ -12,10 +12,9 @@ const { stories } = Astro.props;
   <div class="container">
     <div class="section-top-bar">
       <div>
-        <h2 class="section-heading">Talento Sin Barreras en Bolivia</h2>
+        <h2 class="section-heading">Conoce sus experiencias</h2>
         <p class="section-desc">
-          Conoce a personas con hipoacusia que demuestran su capacidad y
-          compromiso en tecnología, diseño y administración.
+          Historias de trabajo en tecnología, diseño y administración.
         </p>
       </div>
       <a href="/casos-de-exito" class="section-action-link">
@@ -38,7 +37,7 @@ const { stories } = Astro.props;
     </div>
 
     <div class="stories-cards-grid">
-      {stories.map((story) => <StoryCard story={story} />)}
+      {stories.map((story) => <StoryCard story={story} compact />)}
     </div>
   </div>
 </section>
@@ -83,7 +82,6 @@ const { stories } = Astro.props;
     font-weight: 700;
     font-size: var(--text-sm);
     padding-bottom: 0.25rem;
-    border-bottom: 2px solid var(--color-accent);
     transition: all var(--transition-fast);
     flex-shrink: 0;
   }

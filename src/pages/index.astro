@@ -2,31 +2,35 @@
 import Layout from "../layouts/Layout.astro";
 import HomeHero from "../components/home/HomeHero.astro";
 import HomeBento from "../components/home/HomeBento.astro";
-import HomeJobs from "../components/home/HomeJobs.astro";
-import HomeEnterprise from "../components/home/HomeEnterprise.astro";
 import HomeStories from "../components/home/HomeStories.astro";
-import HomeBlog from "../components/home/HomeBlog.astro";
-import HomeFinalCta from "../components/home/HomeFinalCta.astro";
+import JobsDirectory from "../components/empleos/JobsDirectory.astro";
+import HomeWalkthrough from "../components/home/HomeWalkthrough.astro";
+import HomeCommunity from "../components/home/HomeCommunity.astro";
 
 import jobsData from "../data/jobs.json";
 import storiesData from "../data/stories.json";
-import articlesData from "../data/articles.json";
 
-const featuredJobs = jobsData.slice(0, 3);
 const featuredStories = storiesData.slice(0, 3);
-const featuredArticles = articlesData.slice(0, 3);
 ---
 
 <Layout
   title="Incluxia Bolivia | Inclusión Laboral para Personas con Hipoacusia"
-  description="Plataforma de trabajo en Bolivia para personas con hipoacusia. Procesos de selección 100% por chat o WhatsApp, sin llamadas telefónicas. Cumplimiento de la Ley 977."
+  description="Encuentra trabajo, ofrece tus servicios o contrata a personas con hipoacusia en Bolivia. Revisa perfiles y comunícate por chat."
   activePath="/"
 >
+  <div data-guest>
   <HomeHero />
   <HomeBento />
-  <HomeJobs jobs={featuredJobs} totalJobs={jobsData.length} />
-  <HomeEnterprise />
+  <HomeWalkthrough />
+
+  <HomeCommunity />
+
   <HomeStories stories={featuredStories} />
-  <HomeBlog articles={featuredArticles} />
-  <HomeFinalCta />
+
+  </div>
+  <section class="member-home" data-member><div class="container"><JobsDirectory jobs={jobsData} /></div></section>
 </Layout>
+
+<style>
+.member-home { background: var(--color-bg); min-height: 85dvh; padding-top: calc(80px + var(--space-8)); padding-bottom: var(--space-16); }
+</style>

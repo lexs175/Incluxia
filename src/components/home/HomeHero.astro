@@ -2,153 +2,44 @@
 import ExpandableButton from "../ui/ExpandableButton.astro";
 ---
 
-<section class="ashico-hero" aria-label="Sección Principal de Incluxia">
-  <div class="container hero-container">
-    <div class="hero-content">
-      <h1 class="hero-title">
-        Trabajos para personas<br />
-        con hipoacusia en<br />
-        <span class="hero-city-title">COCHABAMBA</span>
-      </h1>
-
-      <p class="hero-description">
-        Basta de llamadas telefónicas sorpresa que descartan tu talento.
-        Conectamos profesionales y postulantes con empresas inclusivas en
-        Cochabamba donde todo se coordina <strong>100% por chat o WhatsApp</strong>,
-        con salario justo y tareas claras por escrito.
-      </p>
-
-      <div class="hero-actions">
-        <ExpandableButton
-          href="/contratar"
-          text="Contratar Talento"
-          size="lg"
-          variant="secondary"
-          id="heroBtnContratar"
-        />
-        <ExpandableButton
-          href="/empleos"
-          text="Buscar Trabajo"
-          size="lg"
-          variant="secondary-line"
-          id="heroBtnBuscar"
-        />
+<section class="ashico-hero" aria-labelledby="home-title">
+  <div class="container">
+    <div class="hero-layout">
+      <div class="hero-content">
+        <h1 id="home-title" class="hero-title">Conectamos talento con oportunidades reales</h1>
+        <p class="hero-description">Encuentra trabajo, ofrece tus servicios o contrata a personas con hipoacusia en Bolivia. Comunícate por chat desde el primer contacto.</p>
+        <div class="hero-actions">
+          <ExpandableButton data-auth-trigger="register" data-auth-next="/contratar" text="Contratar talento" size="lg" variant="primary" id="heroBtnContratar" />
+          <ExpandableButton data-auth-trigger="register" data-auth-next="/" text="Buscar trabajo" size="lg" variant="primary-line" id="heroBtnBuscar" />
+        </div>
+      </div>
+      <div class="hero-photos">
+        <img src="/images/home/comunidad-ashico.png" alt="Integrantes de la comunidad ASHICO reunidos al aire libre" width="1600" height="1200" fetchpriority="high" />
+        <img src="/images/home/comunidad-ashico.png" alt="" width="1600" height="1200" aria-hidden="true" />
       </div>
     </div>
   </div>
 </section>
 
 <style>
-  .ashico-hero {
-    position: relative;
-    width: 100%;
-    min-height: 90dvh;
-    display: flex;
-    align-items: center;
-    background-color: var(--color-primary-dark);
-    background-image:
-      linear-gradient(
-        180deg,
-        rgba(var(--color-primary-rgb), 0.30) 0%,
-        rgba(var(--color-primary-rgb), 0.85) 45%,
-        var(--color-primary-dark) 80%,
-        var(--color-primary-dark) 100%
-      ),
-      url("/images/hero-ashico-cochabamba.jpg");
-    background-size: cover;
-    background-position: center 30%;
-    background-repeat: no-repeat;
-    padding-top: calc(90px + var(--space-8));
-    padding-bottom: var(--space-16);
-    margin-bottom: -1px;
-    overflow: hidden;
+.ashico-hero { width: 100%; background: var(--color-bg); padding-top: clamp(6.5rem, 6.36vw, 7.625rem); }
+  .hero-layout { display: flex; flex-direction: column; gap: var(--space-12); }
+  .hero-content { display: flex; flex-direction: column; align-items: center; gap: var(--space-6); text-align: center; }
+  .hero-title { max-width: 100%; margin: 0; font-size: var(--text-home-hero); font-weight: 800; line-height: 1.1; letter-spacing: -0.0175em; color: var(--color-primary-dark); text-wrap: balance; }
+  .hero-description { max-width: 560px; margin: 0; font-size: var(--text-base); line-height: 1.65; color: var(--color-text-main); text-wrap: pretty; }
+  .hero-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: var(--space-4); margin-top: var(--space-6); }
+  .hero-photos { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); grid-template-rows: minmax(0, 1fr); gap: 10px; height: clamp(20rem, 28vw, 33.525rem); overflow: hidden; }
+  .hero-photos img { width: 100%; height: 100%; min-width: 0; min-height: 0; object-fit: cover; border-radius: var(--radius-md) var(--radius-md) 0 0; }
+  .hero-photos img:first-child { grid-column: span 3; }
+  .hero-photos img:last-child { grid-column: span 2; }
+  @media (max-width: 767px) {
+    .hero-layout { gap: var(--space-8); }
+    .hero-actions { margin-top: var(--space-2); gap: var(--space-3); }
+    .hero-photos { height: clamp(16rem, 56vw, 24rem); gap: var(--space-2); }
   }
-
-  .hero-container {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
-
-  .hero-content {
-    max-width: 620px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-    position: relative;
-    z-index: 2;
-  }
-
-  .hero-title {
-    font-family: var(--font-heading);
-    font-size: var(--text-hero);
-    font-weight: 800;
-    color: var(--color-white);
-    letter-spacing: -0.025em;
-    line-height: 1.15;
-    margin-bottom: var(--space-5);
-    text-wrap: balance;
-  }
-
-  .hero-city-title {
-    color: var(--color-white);
-    letter-spacing: -0.01em;
-  }
-
-  .hero-description {
-    font-family: var(--font-body);
-    font-size: var(--text-base);
-    line-height: 1.65;
-    color: rgba(255, 255, 255, 0.88);
-    max-width: 560px;
-    margin-bottom: var(--space-8);
-  }
-
-  .hero-description strong {
-    color: var(--color-white);
-    font-weight: 700;
-  }
-
-  .hero-actions {
-    display: flex;
-    align-items: center;
-    gap: var(--space-4);
-    flex-wrap: wrap;
-  }
-
-  @media (min-width: 480px) and (max-width: 767px) {
-    .ashico-hero {
-      background-image:
-        linear-gradient(
-          180deg,
-          rgba(var(--color-primary-rgb), 0.80) 0%,
-          rgba(var(--color-primary-dark-rgb), 0.90) 45%,
-          var(--color-primary-dark) 78%,
-          var(--color-primary-dark) 100%
-        ),
-        url("/images/hero-ashico-cochabamba.jpg");
-      padding-top: calc(90px + var(--space-6));
-      padding-bottom: var(--space-14);
-      min-height: clamp(520px, 85dvh, 680px);
-    }
-  }
-
   @media (max-width: 479px) {
-    .ashico-hero {
-      background-image:
-        linear-gradient(
-          180deg,
-          rgba(var(--color-primary-rgb), 0.82) 0%,
-          rgba(var(--color-primary-dark-rgb), 0.92) 45%,
-          var(--color-primary-dark) 78%,
-          var(--color-primary-dark) 100%
-        ),
-        url("/images/hero-ashico-cochabamba.jpg");
-      padding-top: calc(85px + var(--space-6));
-      padding-bottom: var(--space-14);
-      min-height: clamp(520px, 85dvh, 680px);
-    }
+    .hero-photos { grid-template-columns: 1fr; }
+    .hero-photos img:first-child { grid-column: auto; }
+    .hero-photos img:last-child { display: none; }
   }
 </style>

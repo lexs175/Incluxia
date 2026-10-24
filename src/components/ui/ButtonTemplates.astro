@@ -1,0 +1,9 @@
+---
+import Button from './Button.astro';
+const variants = ['primary', 'primary-line', 'secondary'] as const;
+const sizes = ['sm', 'md'] as const;
+---
+{variants.map(variant => sizes.map(size => <>
+  <template id={`button-control-${variant}-${size}`}><Button variant={variant} size={size} text="Continuar" /></template>
+  <template id={`button-link-${variant}-${size}`}><Button href="/" variant={variant} size={size} text="Continuar" /></template>
+</>))}

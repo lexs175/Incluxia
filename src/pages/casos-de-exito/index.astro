@@ -3,7 +3,6 @@ import Layout from "../../layouts/Layout.astro";
 import StoriesHero from "../../components/casos-de-exito/StoriesHero.astro";
 import StoriesFeaturedShowcase from "../../components/casos-de-exito/StoriesFeaturedShowcase.astro";
 import StoriesGrid from "../../components/casos-de-exito/StoriesGrid.astro";
-import StoriesCta from "../../components/casos-de-exito/StoriesCta.astro";
 import storiesData from "../../data/stories.json";
 
 const featuredStory = storiesData[0];
@@ -17,5 +16,4 @@ const featuredStory = storiesData[0];
   <StoriesHero />
   {featuredStory && <StoriesFeaturedShowcase story={featuredStory} />}
   <StoriesGrid stories={storiesData} />
-  <StoriesCta />
 </Layout>

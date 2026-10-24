@@ -1,0 +1,47 @@
+---
+import HomeGuide from './HomeGuide.astro';
+---
+
+<HomeGuide id="buscar-trabajo" title="Encuentra trabajo y postula"
+  description="Revisa las ofertas y elige a cuáles postular según tu experiencia."
+  layout="split"
+  steps={[
+    { title: 'Busca una oferta', text: 'Filtra por puesto, ubicación, sueldo y modalidad.' },
+    { title: 'Revisa los requisitos', text: 'Consulta las tareas, el pago y las condiciones del trabajo.' },
+    { title: 'Envía tu postulación', text: 'Comparte tu perfil y revisa la respuesta en Postulaciones.' },
+  ]}
+  images={[
+    { src: '/images/platform/detalle.png', alt: 'Ejemplo del detalle de una oferta de trabajo' },
+    { src: '/images/platform/empleos.png', alt: 'Ejemplo de las ofertas de trabajo y sus filtros' },
+  ]} />
+
+<HomeGuide id="contratar-talento" title="Contrata profesionales"
+  description="Encuentra personas y servicios de diseño, sistemas, contabilidad y otras áreas."
+  tone="blue"
+  steps={[
+    { title: 'Elige una especialidad', text: 'Busca el área de trabajo que necesitas.' },
+    { title: 'Compara perfiles', text: 'Revisa su experiencia, sus servicios y sus trabajos.' },
+    { title: 'Contacta por chat', text: 'Acuerda las tareas, el precio y la fecha de entrega.' },
+  ]}
+  images={[
+    { src: '/images/platform/contratar.png', alt: 'Ejemplo de las especialidades para contratar profesionales' },
+  ]} />
+
+<HomeGuide id="como-publicar" title="Publica un trabajo o servicio"
+  description="Publica una vacante como empresa, pide un trabajo como persona u ofrece tus servicios desde la misma cuenta."
+  images={[
+    { src: '/images/platform/publicar.png', alt: 'Ejemplo del formulario para publicar una vacante, un encargo o un servicio' },
+  ]} />
+
+<HomeGuide id="tu-actividad" title="Tu perfil y tus postulaciones"
+  description="Actualiza tu experiencia y consulta lo que enviaste o publicaste."
+  layout="split" tone="blue"
+  steps={[
+    { title: 'Completa tu perfil', text: 'Agrega tus habilidades, tu experiencia y tus trabajos.' },
+    { title: 'Gestiona tus anuncios', text: 'Edita, pausa o cierra tus publicaciones.' },
+    { title: 'Revisa las respuestas', text: 'Consulta tus postulaciones enviadas y los candidatos de tus ofertas.' },
+  ]}
+  images={[
+    { src: '/images/platform/perfil.png', alt: 'Ejemplo de un perfil profesional en Incluxia' },
+    { src: '/images/platform/postulaciones.png', alt: 'Ejemplo de las postulaciones enviadas y recibidas' },
+  ]} />
