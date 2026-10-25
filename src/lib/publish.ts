@@ -6,18 +6,22 @@ export function initPublish(){
   const gate=document.getElementById('publishAuthGate')!;
   gate.style.display=account?'none':'flex';if(!account)return;
   const fields=document.getElementById('publishFormWrapper')!,mine=document.getElementById('myPublications')!,preview=document.getElementById('publicationPreview')!,success=document.getElementById('publishSuccessBox')!;
-  const kind=document.getElementById('publicationKind') as HTMLSelectElement;
+  const kind=document.getElementById('publicationKind') as HTMLInputElement;
+  const kindOptions=[...root.querySelectorAll<HTMLInputElement>('[data-publication-kind]')];
   const get=(id:string)=>(document.getElementById(id) as HTMLInputElement).value.trim();
   const set=(id:string,value:string)=>{(document.getElementById(id) as HTMLInputElement).value=value;};
   let editing:string|null=null,draft:Publication|null=null;
   function show(view:'form'|'mine'|'preview'|'success'){
     fields.style.display=view==='form'?'block':'none';mine.hidden=view!=='mine';preview.hidden=view!=='preview';success.style.display=view==='success'?'flex':'none';
-    document.getElementById('newPublicationTab')!.setAttribute('aria-selected',String(view!=='mine'));
-    document.getElementById('myPublicationsTab')!.setAttribute('aria-selected',String(view==='mine'));
+    const destination=new URL(location.href);
+    if(view==='mine')destination.searchParams.set('tab','mine');else destination.searchParams.delete('tab');
+    history.replaceState(history.state,'',destination);
+    document.dispatchEvent(new Event('incluxia:view-changed'));
     if(view==='mine')renderMine();
   }
   function kindChanged(){
     const service=kind.value==='service',company=kind.value==='company';
+    kindOptions.forEach(option=>{option.checked=option.value===kind.value;});
     document.getElementById('jobTypeToggle')!.hidden=service||kind.value==='person';
     text(root!,'#publicationKindHelp',company?'Publicas a nombre de una organización.':service?'Este servicio aparecerá en Contratar, dentro de su especialidad.':'Publicas un encargo a tu nombre.');
     const input=document.getElementById('jobCompany') as HTMLInputElement;
@@ -25,13 +29,11 @@ export function initPublish(){
     text(root!,'#budgetLabelText',service?'Precio del servicio (Bs.)':get('jobTypeInput')==='fixed'&&company?'Sueldo mensual (Bs.)':'Presupuesto del proyecto (Bs.)');
   }
   function reset(){editing=null;draft=null;form.reset();kind.value='company';set('jobCompany',account!.company);set('jobWhatsapp',account!.phone);kindChanged();show('form');}
-  document.getElementById('newPublicationTab')!.onclick=reset;
-  document.getElementById('myPublicationsTab')!.onclick=()=>show('mine');
   document.getElementById('viewMyPublished')!.onclick=()=>show('mine');
   document.getElementById('btnPublishAnother')!.onclick=reset;
-  kind.onchange=kindChanged;
-  function type(value:string){set('jobTypeInput',value);document.getElementById('btnTypeFreelance')!.classList.toggle('active',value==='freelance');document.getElementById('btnTypeFixed')!.classList.toggle('active',value==='fixed');kindChanged();}
-  document.getElementById('btnTypeFreelance')!.onclick=()=>type('freelance');document.getElementById('btnTypeFixed')!.onclick=()=>type('fixed');
+  kindOptions.forEach(option=>{option.onchange=()=>{if(option.checked){kind.value=option.value;kindChanged();}};});
+  function type(value:string){set('jobTypeInput',value);kindChanged();}
+  document.getElementById('jobTypeInput')!.onchange=kindChanged;
   function item(publication:Publication,template='publicationListTemplate'){
     const el=cloneTemplate(template);
     text(el,'.activity-title',publication.title);

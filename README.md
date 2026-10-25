@@ -85,6 +85,19 @@ Incluxia/
         └── global.css # Reset, base y utilidades
 ```
 
+## Videos de los casos de éxito
+
+En `src/data/stories.json`, cambia `videoUrl` por el enlace de YouTube de cada
+historia. Se aceptan enlaces compartidos (`https://youtu.be/VIDEO_ID`), normales
+(`https://www.youtube.com/watch?v=VIDEO_ID`), Shorts y directos. Deja `videoUrl`
+vacío o elimina el campo para mostrar la fotografía de `image`.
+
+El primer caso usa un video de ejemplo. El componente `YouTubeVideo.astro`
+genera el reproductor adaptable sin reproducción automática ni archivos de video
+en el hosting. Solicita subtítulos en español cuando el video los tenga; los
+subtítulos y la interpretación LSB deben revisarse en el contenido original.
+Los cambios se reflejan al volver a compilar y desplegar el sitio.
+
 ## 🎨 Sistema de diseño
 
 Toda decisión visual vive en los tokens: los componentes **no** declaran colores ni

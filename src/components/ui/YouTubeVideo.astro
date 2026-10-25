@@ -1,0 +1,89 @@
+---
+import { getYouTubeVideo } from '../../lib/youtube';
+
+interface Props {
+  videoUrl?: string;
+  title: string;
+  poster: string;
+  posterAlt: string;
+}
+
+const { videoUrl, title, poster, posterAlt } = Astro.props;
+const video = getYouTubeVideo(videoUrl);
+---
+
+<figure class="story-media">
+  <div class="story-media-frame">
+    {video ? (
+      <iframe
+        src={video.embedUrl}
+        title={title}
+        width="1280"
+        height="720"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      />
+    ) : (
+      <img src={poster} alt={posterAlt} loading="eager" />
+    )}
+  </div>
+  {video && (
+    <figcaption>
+      <a
+        href={video.watchUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Abrir video en YouTube (nueva pestaña)"
+      >
+        Abrir video en YouTube
+      </a>
+    </figcaption>
+  )}
+</figure>
+
+<style>
+  .story-media {
+    margin: 0 0 var(--space-12);
+  }
+
+  .story-media-frame {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface-dark);
+  }
+
+  .story-media-frame iframe,
+  .story-media-frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .story-media-frame img {
+    object-fit: cover;
+  }
+
+  figcaption {
+    margin-top: var(--space-3);
+    font-size: var(--text-sm);
+  }
+
+  a {
+    color: var(--color-primary);
+    text-underline-offset: 0.2em;
+  }
+
+  a:hover {
+    color: var(--color-primary-hover);
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: var(--space-1);
+  }
+</style>

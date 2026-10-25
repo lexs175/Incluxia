@@ -5,13 +5,12 @@ export function initApplications() {
   if(!root||root.dataset.ready)return;
   root.dataset.ready='true';
   if(!user())return;
-  let received=new URLSearchParams(location.search).get('tab')==='received';
+  const received=new URLSearchParams(location.search).get('tab')==='received';
   const selectedJob=new URLSearchParams(location.search).get('job');
   const list=document.getElementById('applicationList')!;
+  text(root.closest('.account-capsule')!,'.account-heading h1',received?'Postulaciones recibidas':'Postulaciones enviadas');
   function render(){
     const state=readStore(),account=user(state)!;
-    document.getElementById('sentApplications')!.setAttribute('aria-selected',String(!received));
-    document.getElementById('receivedApplications')!.setAttribute('aria-selected',String(received));
     const applications=state.applications.filter(a=>{
       const job=state.publications.find(j=>j.id===a.jobId);
       return received ? job?.ownerId===account.id&&(!selectedJob||job.id===selectedJob) : a.applicantId===account.id;
@@ -55,7 +54,5 @@ export function initApplications() {
       list.append(item);
     }
   }
-  document.getElementById('sentApplications')!.onclick=()=>{received=false;render();};
-  document.getElementById('receivedApplications')!.onclick=()=>{received=true;render();};
   render();
 }

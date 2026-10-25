@@ -30,7 +30,7 @@ async function signup(page,name,email,phone){
 async function logout(page){await page.locator('#btnHeaderLogout').click();await page.locator('.ashico-hero').waitFor({state:'visible'});await page.waitForLoadState('networkidle');}
 async function login(page,email){await page.locator('.header-actions #btnHeaderLogin').click();await page.locator('#loginIdentifier').fill(email);await page.locator('#loginPassword').fill('1234');await page.locator('#btnLoginSubmit').click();await page.locator('.member-home #jobsMasterExplorer').waitFor({state:'visible'});await page.waitForLoadState('networkidle');}
 async function publish(page,kind,title){
- await go(page,'/publicar');await page.locator('#publicationKind').selectOption(kind);
+ await go(page,'/publicar');await page.locator('.publication-kind-option[data-kind="'+kind+'"]').click();
  await page.locator('#jobTitle').fill(title);await page.locator('#jobCategory').selectOption('Diseño Gráfico');await page.locator('#jobDelivery').fill('10 días');await page.locator('#jobBudget').fill('850');await page.locator('#jobDescription').fill('Diseñar un catálogo y coordinar las entregas por escrito.');await page.locator('#jobTasks').fill('Preparar una propuesta visual\nEntregar archivos editables');
  if(kind==='company')await page.locator('#jobCompany').fill('Estudio de prueba');
  const before=await page.evaluate(()=>JSON.parse(localStorage.getItem('incluxia_demo_v1')).publications.length);

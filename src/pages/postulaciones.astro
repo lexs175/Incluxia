@@ -3,17 +3,12 @@ import Layout from '../layouts/Layout.astro';
 import AccessGate from '../components/ui/AccessGate.astro';
 import AccountPanel from '../components/ui/AccountPanel.astro';
 import ActivityList from '../components/ui/ActivityList.astro';
-import Button from '../components/ui/Button.astro';
 ---
 <Layout title="Mis postulaciones | Incluxia" activePath="/postulaciones">
   <AccessGate title="Ingresa para consultar tus postulaciones" />
   <div data-member>
     <AccountPanel title="Mis postulaciones" description="Revisa lo que enviaste y los candidatos de tus publicaciones.">
       <div id="applicationsWorkspace">
-        <div class="account-tabs" role="tablist" aria-label="Tipo de postulaciones">
-          <Button id="sentApplications" text="Enviadas" variant="primary-line" role="tab" aria-selected="true" />
-          <Button id="receivedApplications" text="Recibidas" variant="primary-line" role="tab" aria-selected="false" />
-        </div>
         <p id="applicationsFeedback" class="demo-feedback" role="status"></p>
         <ActivityList id="applicationList" />
       </div>

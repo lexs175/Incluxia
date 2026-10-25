@@ -7,13 +7,25 @@ interface Props {
 
 const { activePath = "/" } = Astro.props;
 
-const navLinks = [
+interface NavLink {
+  label: string;
+  href: string;
+  access: 'guest' | 'member';
+  children?: { label: string; href: string }[];
+}
+const navLinks: NavLink[] = [
   { label: "Inicio", href: "/", access: "guest" },
   { label: "Casos de éxito", href: "/casos-de-exito", access: "guest" },
   { label: "Inicio", href: "/", access: "member" },
   { label: "Contratar", href: "/contratar", access: "member" },
-  { label: "Publicar", href: "/publicar", access: "member" },
-  { label: "Postulaciones", href: "/postulaciones", access: "member" },
+  { label: "Publicar", href: "/publicar", access: "member", children: [
+    { label: "Crear publicación", href: "/publicar" },
+    { label: "Mis publicaciones", href: "/publicar?tab=mine" },
+  ] },
+  { label: "Postulaciones", href: "/postulaciones", access: "member", children: [
+    { label: "Enviadas", href: "/postulaciones?tab=sent" },
+    { label: "Recibidas", href: "/postulaciones?tab=received" },
+  ] },
   { label: "Perfil", href: "/perfil", access: "member" },
 ];
 ---
@@ -42,13 +54,19 @@ const navLinks = [
                 (link.href !== "/" && activePath.startsWith(link.href));
               return (
                 <li data-access={link.access}>
-                  <a
-                    href={link.href}
-                    class={`nav-link ${isActive ? "active" : ""}`}
-                    aria-current={isActive ? "page" : undefined}
-                  >
-                    {link.label}
-                  </a>
+                  {link.children ? (
+                    <details class="nav-dropdown" data-nav-dropdown>
+                      <summary class={`nav-link ${isActive ? "active" : ""}`}>
+                        {link.label}
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+                      </summary>
+                      <ul class="nav-submenu" aria-label={link.label}>
+                        {link.children.map(child => <li><a href={child.href} data-nav-destination>{child.label}</a></li>)}
+                      </ul>
+                    </details>
+                  ) : (
+                    <a href={link.href} class={`nav-link ${isActive ? "active" : ""}`} aria-current={isActive ? "page" : undefined}>{link.label}</a>
+                  )}
                 </li>
               );
             })
@@ -211,12 +229,19 @@ const navLinks = [
                 (link.href !== "/" && activePath.startsWith(link.href));
               return (
                 <li data-access={link.access}>
-                  <a
-                    href={link.href}
-                    class={`mobile-nav-link ${isActive ? "active" : ""}`}
-                  >
-                    {link.label}
-                  </a>
+                  {link.children ? (
+                    <details class="nav-dropdown mobile-nav-dropdown" data-nav-dropdown>
+                      <summary class={`mobile-nav-link ${isActive ? "active" : ""}`}>
+                        {link.label}
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+                      </summary>
+                      <ul class="nav-submenu" aria-label={link.label}>
+                        {link.children.map(child => <li><a href={child.href} data-nav-destination>{child.label}</a></li>)}
+                      </ul>
+                    </details>
+                  ) : (
+                    <a href={link.href} class={`mobile-nav-link ${isActive ? "active" : ""}`}>{link.label}</a>
+                  )}
                 </li>
               );
             })
@@ -318,10 +343,49 @@ const navLinks = [
     window.location.assign("/");
   }
 
+  let headerEvents: AbortController | undefined;
+
   function initHeader() {
     const root = document.querySelector(".header") as HTMLElement;
     if (!root || root.dataset.ready) return;
     root.dataset.ready = "true";
+    headerEvents?.abort();
+    headerEvents = new AbortController();
+    const signal = headerEvents.signal;
+    const dropdowns = [...root.querySelectorAll<HTMLDetailsElement>('[data-nav-dropdown]')];
+    const closeDropdowns = (except?: HTMLDetailsElement) => dropdowns.forEach(dropdown => { if (dropdown !== except) dropdown.open = false; });
+    const markDestination = () => {
+      const current = new URL(location.href);
+      for (const link of root.querySelectorAll<HTMLAnchorElement>('[data-nav-destination]')) {
+        const destination = new URL(link.href);
+        const defaultTab = destination.pathname === '/publicar' ? 'new' : 'sent';
+        const selected = destination.pathname === current.pathname && (destination.searchParams.get('tab') || defaultTab) === (current.searchParams.get('tab') || defaultTab);
+        if (selected) link.setAttribute('aria-current', 'page'); else link.removeAttribute('aria-current');
+      }
+    };
+    dropdowns.forEach(dropdown => {
+      dropdown.addEventListener('toggle', () => { if (dropdown.open) closeDropdowns(dropdown); }, { signal });
+      if (!dropdown.classList.contains('mobile-nav-dropdown')) {
+        dropdown.addEventListener('pointerenter', event => {
+          if (event.pointerType !== 'mouse' || !matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+          closeDropdowns(dropdown);
+          dropdown.open = true;
+        }, { signal });
+        dropdown.addEventListener('pointerleave', () => {
+          if (!dropdown.contains(document.activeElement)) dropdown.open = false;
+        }, { signal });
+        dropdown.addEventListener('focusout', event => {
+          if (!dropdown.contains(event.relatedTarget as Node | null) && !dropdown.matches(':hover')) dropdown.open = false;
+        }, { signal });
+      }
+      dropdown.querySelectorAll('a').forEach(link => link.addEventListener('click', () => closeDropdowns(), { signal }));
+    });
+    document.addEventListener('click', event => {
+      const target = event.target as Node;
+      dropdowns.forEach(dropdown => { if (!dropdown.contains(target)) dropdown.open = false; });
+    }, { signal });
+    document.addEventListener('incluxia:view-changed', markDestination, { signal });
+    markDestination();
     const btn = document.getElementById("mobileMenuBtn");
     const drawer = document.getElementById("mobileDrawer");
     const mobileLinks = drawer?.querySelectorAll("a");
@@ -353,6 +417,25 @@ const navLinks = [
       }
     }
 
+    document.addEventListener('keydown', event => {
+      if (event.key !== 'Escape') return;
+      const expanded = dropdowns.find(dropdown => dropdown.open);
+      if (expanded) {
+        closeDropdowns();
+        expanded.querySelector('summary')?.focus();
+      } else if (drawer?.classList.contains('open')) {
+        drawer.classList.remove('open');
+        btn?.classList.remove('open');
+        btn?.setAttribute('aria-expanded', 'false');
+        btn?.focus();
+      }
+    }, { signal });
+    document.addEventListener('astro:before-swap', () => {
+      closeDropdowns();
+      drawer?.classList.remove('open');
+      btn?.classList.remove('open');
+      btn?.setAttribute('aria-expanded', 'false');
+    }, { once: true, signal });
     updateHeaderAuthState();
 
     document.getElementById("btnHeaderLogout")?.addEventListener("click", handleLogout);
@@ -369,6 +452,22 @@ const navLinks = [
 </script>
 
 <style>
+
+  .nav-dropdown { position: relative; }
+  .nav-dropdown > summary { display: flex; align-items: center; gap: var(--space-2); cursor: pointer; list-style: none; }
+  .nav-dropdown > summary::-webkit-details-marker { display: none; }
+  .nav-dropdown > summary svg { flex-shrink: 0; transition: transform var(--transition-fast); }
+  .nav-dropdown[open] > summary svg { transform: rotate(180deg); }
+  .nav-submenu { position: absolute; top: calc(100% + var(--space-3)); left: 0; min-width: 210px; padding: var(--space-2); border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-bg-card); z-index: 1; }
+  .nav-submenu::before { content: ''; position: absolute; bottom: 100%; left: 0; right: 0; height: var(--space-3); }
+  .nav-submenu a { display: block; padding: var(--space-3) var(--space-4); border-radius: var(--radius-sm); font-size: var(--text-sm); font-weight: 500; line-height: 1.4; color: var(--color-text-main); white-space: nowrap; }
+  .nav-submenu a:hover, .nav-submenu a:focus-visible { background: var(--color-bg); color: var(--color-primary); }
+  .nav-submenu a[aria-current='page'] { color: var(--color-primary); font-weight: 700; }
+  .mobile-nav-dropdown > summary { justify-content: space-between; }
+  .mobile-nav-dropdown .nav-submenu { position: static; min-width: 0; margin-top: var(--space-2); border: none; padding: 0 0 0 var(--space-4); }
+  .mobile-nav-dropdown .nav-submenu::before { display: none; }
+  .mobile-nav-dropdown .nav-submenu a { min-height: 44px; white-space: normal; }
+
   /* 1. Structural Fixed Rail */
   .header {
     position: fixed;
