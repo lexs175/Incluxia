@@ -1,25 +1,27 @@
 ---
-import SiteImage from "../ui/SiteImage.astro";
+import Icon from "../ui/Icon.astro";
 const items = [
-  { icon: 'chat', title: 'Habla por chat', text: 'Coordina tareas y resuelve dudas por chat, WhatsApp o correo.' },
-  { icon: 'experience', title: 'Revisa la experiencia', text: 'Consulta los estudios, las habilidades y los trabajos de cada profesional.' },
-  { icon: 'tasks', title: 'Acuerda las tareas', text: 'Deja por escrito el trabajo, el precio y la fecha de entrega.' },
-  { icon: 'work', title: 'Elige por su trabajo', text: 'Revisa las muestras de trabajo y elige a quien necesita tu proyecto.' },
-];
+  { icon: 'briefcase', title: 'Encuentra trabajo', text: 'Revisa ofertas y postula a las que encajen con tus habilidades y experiencia.' },
+  { icon: 'user', title: 'Ofrece servicios', text: 'Crea tu perfil, muestra tus trabajos y ofrece lo que sabes hacer.' },
+  { icon: 'users', title: 'Contrata talento', text: 'Encuentra profesionales con hipoacusia para tu empresa o proyecto.' },
+  { icon: 'scale', title: 'Inclusión por ley', text: 'Inserción laboral mínima del 4 % en el sector público y del 2 % en el privado.', source: 'https://siip.produccion.gob.bo/repSIIP2/files/normativa_12345_0510201732ae.pdf' },
+] as const;
 ---
 
-<section class="bento-how-section" aria-labelledby="home-hiring-title">
+<section class="bento-how-section" aria-labelledby="home-purpose-title">
   <div class="container">
     <div class="bento-container-box">
       <div class="bento-box-header">
-        <h2 id="home-hiring-title" class="bento-box-title">Contrata y coordina por escrito</h2>
-        <p class="bento-box-desc">Revisa los perfiles, compara su experiencia y acuerda el trabajo por chat.</p>
+        <h2 id="home-purpose-title" class="bento-box-title">Más oportunidades, menos barreras</h2>
+        <p class="bento-box-desc">Eco existe para acercar el trabajo a las personas con hipoacusia en Bolivia. Aquí puedes buscar oportunidades, ofrecer servicios y contratar con comunicación por escrito.</p>
       </div>
       <div class="bento-cards-grid">
         {items.map(item => <article class="bento-card">
-          <div class="bento-card-icon"><SiteImage kind="detail" src={`home/${item.icon}.svg`} width="24" height="24" alt="" loading="lazy" /></div>
-          <h3 class="bento-title">{item.title}</h3>
-          <p class="bento-text">{item.text}</p>
+          <div class="bento-card-heading">
+            <span class="bento-card-icon"><Icon name={item.icon} size={28} /></span>
+            <h3 class="bento-title">{item.title}</h3>
+          </div>
+          <p class="bento-text">{'source' in item && <><a href={item.source} target="_blank" rel="noopener noreferrer" aria-label="Consultar la Ley 977 de inserción laboral (PDF)">Ley 977</a>. </>}{item.text}</p>
         </article>)}
       </div>
     </div>
@@ -33,10 +35,13 @@ const items = [
   .bento-box-title { margin-bottom: var(--space-3); font-size: var(--text-4xl); font-weight: 800; line-height: 1.2; color: var(--color-white); text-wrap: balance; }
   .bento-box-desc { font-size: var(--text-base); color: var(--color-white); line-height: 1.6; margin: 0; text-wrap: pretty; }
   .bento-cards-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-5); width: 100%; }
-  .bento-card { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; padding: var(--space-6); border-radius: var(--radius-md); background: var(--color-white); }
-  .bento-card-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
-  .bento-title { font-size: var(--text-lg); font-weight: 800; line-height: 1.3; color: var(--color-primary-dark); text-wrap: balance; }
-  .bento-text { font-size: var(--text-sm); line-height: 1.55; color: var(--color-primary-dark); margin: 0; }
+  .bento-card { display: flex; flex-direction: column; gap: var(--space-4); min-width: 0; padding: var(--space-8); border-radius: var(--radius-md); background: var(--color-white); }
+  .bento-card-heading { display: flex; align-items: center; gap: var(--space-3); min-width: 0; }
+  .bento-card-icon { display: flex; align-items: center; justify-content: center; flex: 0 0 auto; color: var(--color-primary-dark); }
+  .bento-title { min-width: 0; margin: 0; font-size: var(--text-xl); font-weight: 800; line-height: 1.3; color: var(--color-primary-dark); text-wrap: balance; overflow-wrap: anywhere; }
+  .bento-text { font-size: var(--text-base); line-height: 1.55; color: var(--color-primary-dark); margin: 0; }
+  .bento-text a { color: inherit; text-decoration: underline; text-underline-offset: 0.2em; }
+  .bento-text a:focus-visible { outline: 2px solid var(--color-primary-dark); outline-offset: var(--space-1); border-radius: var(--radius-xs); }
   @media (max-width: 1100px) { .bento-cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 767px) { .bento-how-section { padding-block: var(--space-10); } .bento-container-box { gap: var(--space-8); } }
   @media (max-width: 479px) { .bento-cards-grid { grid-template-columns: 1fr; gap: var(--space-3); } }

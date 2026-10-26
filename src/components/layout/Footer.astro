@@ -5,12 +5,12 @@ import SocialLinks from "../ui/SocialLinks.astro";
 
 <footer class="footer">
   <div class="container footer-container">
-    <!-- Top Grid: 4 Columns (Desktop) / Mobile Accordion -->
+    <!-- Three columns on desktop; navigation accordions on mobile. -->
     <div class="footer-top-grid">
       <!-- Col 1: Connect with us -->
       <div class="footer-col col-connect">
         <h3 class="connect-heading">Conéctate con<br />nosotros hoy</h3>
-        <SocialLinks />
+        <SocialLinks showWhatsApp={false} />
       </div>
 
       <!-- Col 2: Navegación (Accordion on mobile) -->
@@ -79,40 +79,6 @@ import SocialLinks from "../ui/SocialLinks.astro";
         </div>
       </div>
 
-      <!-- Col 4: Contacto (Accordion on mobile) -->
-      <div class="footer-col footer-accordion">
-        <button class="col-accordion-toggle" aria-expanded="false">
-          <span class="col-title">Contacto</span>
-          <svg
-            class="col-chevron"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </button>
-        <div class="col-accordion-panel">
-          <div class="contact-box">
-            <p class="contact-highlight">Eco Bolivia</p>
-            <p class="contact-text">Plataforma 100% Digital</p>
-            <p class="contact-text">Atención por WhatsApp y Correo</p>
-            <a
-              href="https://wa.me/59172255726"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="contact-phone"
-            >
-              (+591) 72255726
-            </a>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Center/Bottom: Massive Vector Brand Logo -->
@@ -188,10 +154,10 @@ import SocialLinks from "../ui/SocialLinks.astro";
     margin: 0 auto;
   }
 
-  /* 5-Column Equal Grid */
+  /* Social links and the two navigation columns. */
   .footer-top-grid {
     display: grid;
-    grid-template-columns: 1.3fr 1fr 1.3fr 1.2fr;
+    grid-template-columns: 1.3fr 1fr 1.3fr;
     gap: 2.5rem;
     align-items: start;
     width: 100%;
@@ -280,41 +246,6 @@ import SocialLinks from "../ui/SocialLinks.astro";
     transform: translateX(3px);
   }
 
-  /* Contact Info */
-  .contact-box {
-    display: flex;
-    flex-direction: column;
-    gap: 0.45rem;
-    font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.72);
-    line-height: 1.5;
-  }
-
-  .contact-highlight {
-    color: var(--color-text-inverse);
-    font-weight: 600;
-    margin: 0;
-  }
-
-  .contact-text {
-    margin: 0;
-    color: rgba(255, 255, 255, 0.72);
-  }
-
-  .contact-phone {
-    color: var(--color-white);
-    font-size: 0.95rem;
-    font-weight: 700;
-    margin-top: 0.35rem;
-    display: inline-block;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-
-  .contact-phone:hover {
-    text-decoration: underline;
-  }
-
   /* Massive Hero Brand Logo */
   .footer-brand-stage {
     width: 100%;
@@ -388,11 +319,11 @@ import SocialLinks from "../ui/SocialLinks.astro";
   /* 1. Tablet Tier (hasta 1024px) */
   @media (max-width: 1024px) {
     .footer-top-grid {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: var(--space-6, 1.5rem);
     }
     .col-connect {
-      grid-column: span 3;
+      grid-column: 1 / -1;
     }
   }
 

@@ -289,13 +289,6 @@ body.drawer-open {
   touch-action: none !important;
 }
 
-body.drawer-open .whatsapp-fab {
-  opacity: 0 !important;
-  pointer-events: none !important;
-  visibility: hidden !important;
-  transition: opacity var(--transition-fast);
-}
-
 body.drawer-open .header {
   pointer-events: none !important;
 }
