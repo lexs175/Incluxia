@@ -12,9 +12,6 @@ export function label(button: Element | null, value: string) {
   if (inner) inner.textContent = value;
   button.setAttribute('aria-label', value);
 }
-export function initPage(fn: () => void) {
-  document.addEventListener('astro:page-load', fn);
-}
 export function cloneTemplate<T extends HTMLElement = HTMLElement>(id: string): T {
   const template = document.getElementById(id) as HTMLTemplateElement;
   return template.content.firstElementChild!.cloneNode(true) as T;

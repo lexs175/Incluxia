@@ -6,6 +6,7 @@ import { resolve, extname, sep } from 'node:path';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
 const dev=process.argv.includes('--dev');
+const refreshPreviews=process.argv.includes('--refresh-preview-images');
 const root=resolve('dist');
 const types={'.html':'text/html','.js':'application/javascript','.css':'text/css','.png':'image/png','.jpg':'image/jpeg','.svg':'image/svg+xml','.woff2':'font/woff2'};
 let server;
@@ -16,7 +17,7 @@ if(!dev){
  });await new Promise(r=>server.listen(0,'127.0.0.1',r));
 }
 const url=dev?'http://localhost:4321':'http://127.0.0.1:'+server.address().port;
-const out='artifacts/platform';mkdirSync(out,{recursive:true});mkdirSync('public/images/platform',{recursive:true});
+const out='artifacts/platform';mkdirSync(out,{recursive:true});
 const executablePath=['C:/Program Files/Google/Chrome/Application/chrome.exe','C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'].find(existsSync);
 const browser=await chromium.launch({headless:true,executablePath});
 const errors=[],reports=[];
@@ -91,7 +92,7 @@ try{
  await context.close();
  const captureContext=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce'}),capture=await captureContext.newPage();await go(capture,'/');await capture.locator('.header-actions #btnHeaderLogin').click();await capture.locator('#btnDemoCandidate').click();await capture.waitForLoadState('networkidle');
  for(const [name,path] of [['empleos','/'],['detalle','/empleos/oferta?id=job-2'],['contratar','/contratar'],['publicar','/publicar'],['perfil','/perfil'],['postulaciones','/postulaciones']]){
-  await go(capture,path);await capture.addStyleTag({content:'astro-dev-toolbar{display:none}'});await capture.screenshot({path:'public/images/platform/'+name+'.png'});if(!dev)copyFileSync('public/images/platform/'+name+'.png','dist/images/platform/'+name+'.png');
+  await go(capture,path);await capture.addStyleTag({content:'astro-dev-toolbar{display:none}'});const preview=out+'/preview-'+name+'.png';await capture.screenshot({path:preview});if(refreshPreviews)copyFileSync(preview,'src/assets/images/platform/'+name+'.png');
  }
  await captureContext.close();pass('Seis capturas de las pantallas reales para la portada.');
  const publicContext=await browser.newContext({reducedMotion:'reduce'}),publicPage=await publicContext.newPage();

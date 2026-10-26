@@ -25,7 +25,6 @@
 - **Accesibilidad primero**: contraste AA, foco visible, soporte de `prefers-reduced-motion`, navegación por teclado y textos alternativos en todos los recursos.
 - **SEO on-page**: meta tags, Open Graph y título/descripción por ruta.
 - **Animación** con GSAP y transiciones de vista con `astro:transitions`.
-- **Botón flotante de WhatsApp** para postular sin llamadas.
 
 ## 🗺️ Rutas
 
@@ -69,14 +68,15 @@ npm run dev      # http://localhost:4321
 ```
 Eco/
 ├── public/
-│   ├── Icon/          # Iconos sociales
-│   ├── Logos/         # Variantes de logo
-│   └── images/        # Imágenes del sitio
+│   └── favicon.svg
+├── scripts/           # Verificación y herramientas de imágenes
+├── archive/           # Páginas y recursos anteriores conservados
 └── src/
+    ├── assets/images/ # Imágenes maestras gestionadas con Astro Assets
     ├── components/
-    │   ├── cards/     # JobCard · ProfileCard · StoryCard
-    │   ├── layout/    # Header · Footer · WhatsAppFAB
-    │   └── ui/        # ActionButton · Button · Badge · ExpandableButton
+    │   ├── cards/     # ProfileCard · StoryCard
+    │   ├── layout/    # Header · HeaderNav · Footer
+    │   └── ui/        # ActionButton · ExpandableButton · SiteImage · PasswordField
     ├── data/          # hiring · jobs · profiles · stories (.json)
     ├── layouts/       # Layout base (head, SEO, fuentes, GSAP)
     ├── pages/         # Rutas del sitio (SSG)
@@ -104,10 +104,12 @@ Toda decisión visual vive en los tokens: los componentes **no** declaran colore
 tamaños de fuente hardcodeados.
 
 ```css
-/* src/styles/tokens.css */
---color-primary: #212051;
---color-accent:  #ACF7FF;
---text-hero:     clamp(2.5rem, 1.2rem + 4vw, 4.5rem);
+/* Consumir los valores actuales de src/styles/tokens.css. */
+.ejemplo {
+  background: var(--color-bg-card);
+  color: var(--color-primary);
+  font-size: var(--text-hero);
+}
 ```
 
 Tres reglas de arquitectura que siguen todos los componentes:

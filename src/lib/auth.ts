@@ -16,14 +16,10 @@ export function initAuth() {
     const field = document.getElementById(id) as HTMLInputElement;
     return field.hasAttribute('data-password-input') ? field.value : field.value.trim();
   };
-  function alert(message = '', tone: 'error' | 'info' = 'error') {
+  function alert(message = '') {
     const container = document.getElementById('authAlert')!;
     document.getElementById('authAlertText')!.textContent = message;
     container.hidden = !message;
-    container.classList.toggle('auth-alert--error', tone === 'error');
-    container.classList.toggle('auth-alert--info', tone === 'info');
-    container.setAttribute('role', tone === 'error' ? 'alert' : 'status');
-    container.setAttribute('aria-live', tone === 'error' ? 'assertive' : 'polite');
   }
   function fieldError(field: HTMLInputElement | HTMLSelectElement, message = '') {
     const id = field.id + 'Error';

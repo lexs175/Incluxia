@@ -138,11 +138,6 @@
   background: transparent;
 }
 
-/* Compatibilidad con vistas heredadas */
-.publish-action {
-  composes: management-action;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .management-action {
     transition: none;

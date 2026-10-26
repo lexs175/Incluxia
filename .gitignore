@@ -65,7 +65,6 @@ $RECYCLE.BIN/
 .stylelintcache
 *.tsbuildinfo
 .vite/
-.parcel-cache/
 
 # --- Documentación interna (no forma parte del sitio) ---
 .agents/
