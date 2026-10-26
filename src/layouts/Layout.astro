@@ -32,6 +32,20 @@ const socialImageAlt = 'Eco: Más oportunidades, menos barreras. Una profesional
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
+    <script is:inline>
+      if (performance.getEntriesByType("navigation")[0]?.type === "reload") {
+        const resetReloadScroll = () => {
+          history.scrollRestoration = "manual";
+          if (history.state) {
+            history.replaceState({ ...history.state, scrollX: 0, scrollY: 0 }, "");
+          }
+          window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+        };
+        // Reset the saved router position before Astro can restore it.
+        resetReloadScroll();
+        document.addEventListener("astro:page-load", resetReloadScroll, { once: true });
+      }
+    </script>
     <script is:inline data-astro-rerun>
       try {
         const state = JSON.parse(

@@ -1,6 +1,5 @@
 ---
 import SiteImage from "../ui/SiteImage.astro";
-import { optimizedImage } from "../../lib/images.server";
 interface Props {
   id: string;
   title: string;
@@ -11,7 +10,7 @@ interface Props {
   images: { src: string; alt: string }[];
 }
 const { id, title, description, tone = 'light', layout = 'stack', steps = [], images } = Astro.props;
-const preparedImages = await Promise.all(images.map(async (image, index) => ({ ...image, full: (await optimizedImage(image.src, "screenshot")).src, kind: layout === "split" && index === 0 ? "screenshotSplit" as const : "screenshot" as const })));
+const preparedImages = images.map((image, index) => ({ ...image, kind: layout === "split" && index === 0 ? "screenshotSplit" as const : "screenshot" as const }));
 ---
 
 <section class:list={['home-guide', `home-guide--${tone}`, `home-guide--${layout}`]} id={id} aria-labelledby={`${id}-title`}>
@@ -24,9 +23,7 @@ const preparedImages = await Promise.all(images.map(async (image, index) => ({ .
       <div class="guide-content">
         {steps.length > 0 && <div class="guide-steps">{steps.map(step => <article class="guide-step"><h3>{step.title}</h3><p>{step.text}</p></article>)}</div>}
         {preparedImages.map((image, index) => <figure class:list={['guide-image', { 'guide-image--wide': index > 0 }]}>
-          <a href={image.full} target="_blank" rel="noopener noreferrer" aria-label={`Ampliar imagen: ${image.alt}`}>
-            <SiteImage kind={image.kind} src={image.src} alt={image.alt} width="1440" height="1000" loading="lazy" />
-          </a>
+          <SiteImage kind={image.kind} src={image.src} alt={image.alt} width="1440" height="1000" loading="lazy" draggable="false" />
         </figure>)}
       </div>
     </div>
@@ -46,9 +43,8 @@ const preparedImages = await Promise.all(images.map(async (image, index) => ({ .
   .guide-step h3 { font-size: var(--text-base); font-weight: 800; line-height: 1.25; color: inherit; margin-bottom: var(--space-2); }
   .guide-step p { font-size: var(--text-sm); line-height: 1.55; color: inherit; margin: 0; }
   .home-guide--blue .guide-step { background: rgba(var(--color-white-rgb), 0.08); }
-  .guide-image { min-width: 0; padding: var(--space-2); background: var(--color-home-primary); border-radius: var(--radius-md); }
-  .guide-image a { display: block; border-radius: var(--radius-md); overflow: hidden; }
-  .guide-image img { width: 100%; height: auto; aspect-ratio: 1.4379; object-fit: cover; border-radius: var(--radius-md); }
+  .guide-image { min-width: 0; padding: var(--space-2); background: var(--color-home-primary); border-radius: var(--radius-md); overflow: hidden; }
+  .guide-image img { width: 100%; height: auto; aspect-ratio: 1.4379; object-fit: cover; border-radius: var(--radius-md); pointer-events: none; }
   .home-guide--blue .guide-image { padding: 0; }
   .home-guide--split .guide-content { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
   .home-guide--split .guide-steps { grid-template-columns: 1fr; }
