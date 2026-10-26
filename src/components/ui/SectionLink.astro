@@ -1,0 +1,36 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import Icon from './Icon.astro';
+
+interface Props extends HTMLAttributes<'a'> {
+  href: string;
+  text?: string;
+}
+
+const { href, text, class: className, ...attributes } = Astro.props;
+---
+
+<a {...attributes} href={href} class:list={['section-link', className]}>
+  <span>{text || <slot />}</span>
+  <Icon name="arrow-right" size={18} strokeWidth={2.5} />
+</a>
+
+<style>
+  .section-link {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: var(--space-2);
+    max-width: 100%;
+    padding-bottom: var(--space-1);
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    transition: color var(--transition-fast), gap var(--transition-fast);
+  }
+  .section-link :global(svg) { flex-shrink: 0; }
+  .section-link:hover { color: var(--color-primary-light); gap: var(--space-3); }
+  .section-link:focus-visible { outline: 2px solid var(--color-primary); outline-offset: var(--space-1); border-radius: var(--radius-md); }
+  @media (prefers-reduced-motion: reduce) { .section-link { transition: none; } }
+</style>

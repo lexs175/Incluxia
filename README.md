@@ -62,6 +62,26 @@ npm run dev      # http://localhost:4321
 | `npm run dev` | Servidor de desarrollo |
 | `npm run build` | Build de producción en `dist/` |
 | `npm run preview` | Vista previa del build |
+| `npm test` | Ocho verificaciones de la interfaz compilada; ejecutar después del build |
+| `npm run test:platform` | Recorrido entre cuentas: perfil, publicaciones, postulaciones y consultas |
+| `npm run test:auth` · `npm run test:header` | Acceso, menú, teclado y móvil |
+| `npm run test:workspace` · `npm run test:hiring` | Ofertas y categorías de contratación |
+| `npm run test:management` · `npm run test:home` | Vistas de gestión, inicio e historias |
+| `npm run test:images` | Fuentes, variantes y carga de imágenes |
+| `npm run images:catalog` | Actualizar el documento de imágenes activas |
+
+Las pruebas usan Chromium mediante Playwright y sirven `dist/` en un puerto local
+libre. Sus capturas e informes se guardan en `artifacts/`, fuera de Git; `npm test`
+consolida el resultado en `artifacts/verification/summary.json`.
+Para repetir solo una parte, usa por ejemplo `npm test -- platform workspace home`.
+Si varias tareas compilan a la vez, se puede generar otra salida con
+`npm run build -- --outDir artifacts/verification-site` y ejecutar las pruebas
+con la variable de entorno `ECO_TEST_DIST=artifacts/verification-site`.
+Las capturas maestras del inicio solo se actualizan expresamente con
+`npm run test:platform -- --refresh-preview-images`; después hay que recompilar.
+
+El código sin uso, las migraciones terminadas y el inventario anterior están en
+[el archivo de mantenimiento](archive/maintenance-2026-10-26/README.md).
 
 ## 📁 Estructura
 

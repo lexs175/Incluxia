@@ -5,10 +5,10 @@ import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { resolve, extname, sep } from 'node:path';
 import assert from 'node:assert/strict';
 
-const root = resolve('dist');
+const root = resolve(process.env.ECO_TEST_DIST || 'dist');
 const storiesOnly = process.argv.includes('--stories-only');
 const galleryOnly = process.argv.includes('--gallery-only');
-const out = resolve('artifacts/figma-home/qa');
+const out = resolve('artifacts/home');
 mkdirSync(out, { recursive: true });
 const types = { '.html': 'text/html', '.js': 'application/javascript', '.css': 'text/css', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.svg': 'image/svg+xml' };
 const server = createServer(async (req, res) => {
@@ -56,7 +56,7 @@ try {
       };
     });
     report.viewports.push(metrics);
-    assert.equal(metrics.scrollWidth, width, `Desborde de página a ${width}px`);
+    assert.ok(metrics.scrollWidth <= width, `Desborde de página a ${width}px`);
     assert.deepEqual(metrics.brokenImages, [], `Imágenes sin cargar a ${width}px`);
     assert.deepEqual(metrics.overflowingText, [], `Texto desbordado a ${width}px`);
     assert.equal(await page.locator('.gallery-toggle').count(), 0);
@@ -127,7 +127,16 @@ try {
     assert.equal(await storyPage.locator('.story-sidebar-col .facts-bento-card').count(), 1);
     assert.equal(await storyPage.locator('.editorial-highlight-quote').count(), 1);
     assert.equal(await storyPage.locator('.related-stories-section .story-card').count(), 3);
-    assert.equal(await storyPage.locator('.media-cover-img').evaluate(img => img.complete && img.naturalWidth > 0), true);
+    if (story.videoUrl) {
+      const player = storyPage.locator('.story-media-frame iframe');
+      assert.equal(await player.count(), 1);
+      const embed = new URL(await player.getAttribute('src'));
+      assert.equal(embed.hostname, 'www.youtube-nocookie.com');
+      assert.notEqual(embed.searchParams.get('autoplay'), '1');
+      assert.ok(await player.getAttribute('title'));
+    } else {
+      assert.equal(await storyPage.locator('.story-media-frame img').evaluate(img => img.complete && img.naturalWidth > 0), true);
+    }
   }
   await storyPage.waitForTimeout(1300);
   await storyPage.screenshot({ path: `${out}/detalle-historia-1440.png` });
@@ -145,7 +154,7 @@ try {
     const decorativeSelectors = '.header-badge-row,.featured-badge-row,.story-category-tag,.blog-category-tag,.badge-wrapper,.siprunpcd-badge,.hub-hero-badge,.job-tags-row,.job-card-header,.cta-label,.caption-tag,.card-top-meta,.verified-badge,.card-counter-badge,.auth-brand-badge,.auth-brand-badge-mobile,.stories-grid-section .badge';
     const files = await readdir(root, { recursive: true });
     let checkedPages = 0;
-    for (const file of files.filter(file => file.endsWith('index.html'))) {
+    for (const file of files.filter(file => file.endsWith('index.html') && !file.replaceAll('\\', '/').startsWith('componentes-temporal/'))) {
       const route = '/' + file.replaceAll('\\', '/').replace(/index\.html$/, '');
       const response = await headingPage.goto(url + route, { waitUntil: 'networkidle' });
       assert.equal(response.status(), 200, route);

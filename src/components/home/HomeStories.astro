@@ -1,5 +1,6 @@
 ---
 import StoryCard from "../cards/StoryCard.astro";
+import SectionLink from "../ui/SectionLink.astro";
 
 interface Props {
   stories: any[];
@@ -17,23 +18,7 @@ const { stories } = Astro.props;
           Historias de trabajo en tecnología, diseño y administración.
         </p>
       </div>
-      <a href="/casos-de-exito" class="section-action-link">
-        <span>Ver todas las historias</span>
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <path d="M5 12h14"></path>
-          <path d="m12 5 7 7-7 7"></path>
-        </svg>
-      </a>
+      <SectionLink href="/casos-de-exito" text="Ver todas las historias" />
     </div>
 
     <div class="stories-cards-grid">
@@ -71,24 +56,6 @@ const { stories } = Astro.props;
     font-size: var(--text-base);
     margin: 0;
     max-width: 620px;
-  }
-
-  .section-action-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--color-primary);
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: var(--text-sm);
-    padding-bottom: 0.25rem;
-    transition: all var(--transition-fast);
-    flex-shrink: 0;
-  }
-
-  .section-action-link:hover {
-    color: var(--color-primary-light);
-    gap: 0.75rem;
   }
 
   .stories-cards-grid {

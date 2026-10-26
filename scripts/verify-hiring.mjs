@@ -5,7 +5,7 @@ import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { resolve, extname, sep } from 'node:path';
 import assert from 'node:assert/strict';
 
-const root = resolve('dist'), out = resolve('artifacts/hiring');
+const root = resolve(process.env.ECO_TEST_DIST || 'dist'), out = resolve('artifacts/hiring');
 mkdirSync(out, { recursive: true });
 const mime = { '.html': 'text/html', '.js': 'application/javascript', '.css': 'text/css', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.svg': 'image/svg+xml' };
 const server = createServer(async (req, res) => {

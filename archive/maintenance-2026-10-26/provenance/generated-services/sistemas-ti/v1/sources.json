@@ -1,0 +1,29 @@
+{
+  "tool": "image_gen built-in",
+  "images": [
+    {
+      "id": "serv-5",
+      "slug": "mantenimiento-remoto",
+      "title": "Optimización, Limpieza y Mantenimiento de Software Remoto",
+      "sourcePath": "C:\\Users\\Lex\\.codex\\generated_images\\01a16e88-94f3-7a32-a617-22f4b1d8f2f4\\exec-b004c082-26de-4e08-850e-ed708d9a3b1d.png"
+    },
+    {
+      "id": "serv-6",
+      "slug": "redes-lan-wifi",
+      "title": "Configuración Segura de Redes LAN y Wi-Fi de Oficina",
+      "sourcePath": "C:\\Users\\Lex\\.codex\\generated_images\\01a16e88-94f3-7a32-a617-22f4b1d8f2f4\\exec-cb61f070-e38b-4590-a4b9-9460535beb69.png"
+    },
+    {
+      "id": "serv-7",
+      "slug": "helpdesk-chat",
+      "title": "Soporte Helpdesk Mensual por Chat para Empresas (Hasta 10 PCs)",
+      "sourcePath": "C:\\Users\\Lex\\.codex\\generated_images\\01a16e88-94f3-7a32-a617-22f4b1d8f2f4\\exec-fc764deb-0c01-4d1c-a574-05984074ca05.png"
+    },
+    {
+      "id": "serv-8",
+      "slug": "instalacion-software",
+      "title": "Instalación y Parametrización de Software Corporativo y Antivirus",
+      "sourcePath": "C:\\Users\\Lex\\.codex\\generated_images\\01a16e88-94f3-7a32-a617-22f4b1d8f2f4\\exec-7245da62-fc0b-45eb-bea3-f5b81600ce74.png"
+    }
+  ]
+}

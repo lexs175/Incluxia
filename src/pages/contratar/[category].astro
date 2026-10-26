@@ -2,6 +2,7 @@
 import AccessGate from "../../components/ui/AccessGate.astro";
 import HiringTemplates from "../../components/contratar/HiringTemplates.astro";
 import Button from "../../components/ui/Button.astro";
+import IconButton from "../../components/ui/IconButton.astro";
 import Layout from "../../layouts/Layout.astro";
 import AutonomoCard from "../../components/contratar/AutonomoCard.astro";
 import ServiceCard from "../../components/contratar/ServiceCard.astro";
@@ -94,26 +95,7 @@ const filteredAutonomos =
               <span class="mobile-sidebar-title">Filtros y Especialidades</span>
               <span class="mobile-sidebar-subtitle">Eco Bolivia</span>
             </div>
-            <button
-              type="button"
-              class="mobile-sidebar-close-btn"
-              id="mobileSidebarCloseBtn"
-              aria-label="Cerrar filtros"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="18" x2="18" y2="18"></line>
-              </svg>
-            </button>
+            <IconButton id="mobileSidebarCloseBtn" ariaLabel="Cerrar filtros" size="sm" strokeWidth={2.5} />
           </div>
 
           <!-- Selector Desktop: Autónomos vs Servicios (Oculto en móvil para eliminar redundancia) -->
@@ -1045,24 +1027,6 @@ const filteredAutonomos =
       color: var(--color-primary);
       font-weight: 600;
       display: block;
-    }
-
-    .mobile-sidebar-close-btn {
-      width: 36px;
-      height: 36px;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--color-border);
-      background: transparent;
-      color: var(--color-text-main);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color var(--transition-fast);
-    }
-
-    .mobile-sidebar-close-btn:hover {
-      background-color: var(--color-bg-alt);
     }
 
     .mobile-sidebar-footer {

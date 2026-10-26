@@ -1,0 +1,348 @@
+---
+// Galería temporal: reutiliza los componentes actuales sin cargar la lógica de cuenta.
+import '../styles/global.css';
+import '../styles/session.css';
+import '../styles/auth.css';
+import Button from '../components/ui/Button.astro';
+import ActionButton from '../components/ui/ActionButton.astro';
+import SectionLink from '../components/ui/SectionLink.astro';
+import IconButton from '../components/ui/IconButton.astro';
+import MenuToggle from '../components/ui/MenuToggle.astro';
+import GoogleAccessButton from '../components/ui/GoogleAccessButton.astro';
+import PasswordField from '../components/ui/PasswordField.astro';
+import SocialLinks from '../components/ui/SocialLinks.astro';
+import Icon from '../components/ui/Icon.astro';
+import ProfileCard from '../components/cards/ProfileCard.astro';
+import StoryCard from '../components/cards/StoryCard.astro';
+import OfferCard from '../components/empleos/OfferCard.astro';
+import CategoryCard from '../components/contratar/CategoryCard.astro';
+import ServiceCard from '../components/contratar/ServiceCard.astro';
+import AutonomoCard from '../components/contratar/AutonomoCard.astro';
+import PublicationList from '../components/publicar/PublicationList.astro';
+import ApplicationList from '../components/postulaciones/ApplicationList.astro';
+import profiles from '../data/profiles.json';
+import stories from '../data/stories.json';
+import hiring from '../data/hiring.json';
+import { seedJobs } from '../lib/demo';
+
+export const prerender = true;
+const sizes = ['sm', 'md', 'lg'] as const;
+const actions = [
+  { variant: 'primary', label: 'Guardar cambios' },
+  { variant: 'secondary', label: 'Ver postulaciones' },
+  { variant: 'ghost', label: 'Editar' },
+  { variant: 'quiet', label: 'Cancelar' },
+  { variant: 'link', label: 'Crear otra publicación' },
+  { variant: 'danger', label: 'Retirar postulación' },
+] as const;
+const previewData = { job: seedJobs[0], candidate: profiles[0] };
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Cards y botones · Galería temporal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="preview-header">
+      <div class="container">
+        <h1>Cards y botones</h1>
+        <p>Galería temporal de los componentes actuales. Datos de ejemplo y acciones de demostración.</p>
+        <nav aria-label="Secciones de la galería">
+          <a href="#botones">Botones expandibles</a>
+          <a href="#acciones">Botones de gestión</a>
+          <a href="#iconos">Botones de icono</a>
+          <a href="#cards">Cards</a>
+          <a href="#gestion">Cards de gestión</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="botones" class="preview-section" aria-labelledby="botones-title">
+        <div class="container">
+          <h2 id="botones-title">Botones expandibles</h2>
+          <p class="preview-description">Button y ExpandableButton comparten el mismo diseño. Pasa el cursor o usa Tab para ver el movimiento de la flecha.</p>
+          <div class="preview-button-surface" data-sample>
+            <figure><figcaption>primary</figcaption><Button variant="primary" text="Explorar empleos" /></figure>
+            <figure><figcaption>primary-line</figcaption><Button variant="primary-line" text="Ver perfil" /></figure>
+          </div>
+          <div class="preview-button-surface preview-button-surface--brand" data-sample>
+            <figure><figcaption>secondary / white</figcaption><Button variant="secondary" text="Ver oportunidades" /></figure>
+            <figure><figcaption>secondary-line / outline-white</figcaption><Button variant="secondary-line" text="Conocer más" /></figure>
+          </div>
+          <h3 class="preview-subheading">Tamaños y composición</h3>
+          <div class="preview-button-surface" data-sample>
+            {sizes.map(size => <figure><figcaption>{size}</figcaption><Button size={size} text="Continuar" /></figure>)}
+          </div>
+          <div class="preview-full-width" data-sample>
+            <span class="preview-label">fullWidth</span>
+            <Button fullWidth text="Continuar" />
+          </div>
+        </div>
+      </section>
+
+      <section id="acciones" class="preview-section" aria-labelledby="acciones-title">
+        <div class="container">
+          <h2 id="acciones-title">Botones de gestión</h2>
+          <p class="preview-description">ActionButton: acciones normales para editar, guardar y administrar.</p>
+          <div class="preview-button-surface" data-sample>
+            {actions.map(action => <figure><figcaption>{action.variant}</figcaption><ActionButton variant={action.variant} text={action.label} /></figure>)}
+          </div>
+          <h3 class="preview-subheading">Tamaños y estados</h3>
+          <div class="preview-button-surface" data-sample>
+            {sizes.map(size => <figure><figcaption>{size}</figcaption><ActionButton size={size} text="Guardar" /></figure>)}
+            <figure><figcaption>Con icono</figcaption><ActionButton variant="secondary"><Icon name="check" /> Guardar cambios</ActionButton></figure>
+            <figure><figcaption>Deshabilitado</figcaption><ActionButton disabled text="Guardar" /></figure>
+            <figure><figcaption>Contador en cero</figcaption><ActionButton variant="secondary" disabled text="Ver postulaciones (0)" /></figure>
+            <figure><figcaption>Procesando</figcaption><ActionButton disabled aria-busy="true" text="Guardando…" /></figure>
+          </div>
+          <div class="preview-full-width" data-sample>
+            <span class="preview-label">GoogleAccessButton</span>
+            <GoogleAccessButton />
+          </div>
+          <h3 class="preview-subheading">Enlace de sección · Inicio / Historias</h3>
+          <div class="preview-button-surface" data-sample>
+            <figure>
+              <figcaption>SectionLink · HomeStories</figcaption>
+              <SectionLink href="/casos-de-exito" text="Ver todas las historias" />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="iconos" class="preview-section" aria-labelledby="iconos-title">
+        <div class="container">
+          <h2 id="iconos-title">Botones de icono</h2>
+          <p class="preview-description">Componentes compartidos con las páginas reales, incluidos sus tamaños y estados.</p>
+          <h3 class="preview-subheading">ActionButton · variant="icon"</h3>
+          <div class="preview-button-surface preview-icon-surface" data-sample>
+            <figure>
+              <figcaption>Tamaños sm / md · 36 px</figcaption>
+              <ActionButton variant="icon" ariaLabel="Más opciones, tamaño compacto">
+                <Icon name="more" size={20} />
+              </ActionButton>
+            </figure>
+            <figure>
+              <figcaption>Más opciones · Publicaciones · 44 px</figcaption>
+              <ActionButton variant="icon" size="lg" ariaLabel="Más opciones de publicación">
+                <Icon name="more" size={24} />
+              </ActionButton>
+            </figure>
+            <figure>
+              <figcaption>Cerrar · Ventana de acceso · 44 px</figcaption>
+              <ActionButton variant="icon" size="lg" ariaLabel="Cerrar ventana de acceso"><Icon name="close" size={20} /></ActionButton>
+            </figure>
+            <figure>
+              <figcaption>Estado deshabilitado</figcaption>
+              <ActionButton variant="icon" size="lg" disabled ariaLabel="Más opciones no disponibles">
+                <Icon name="more" size={24} />
+              </ActionButton>
+            </figure>
+          </div>
+          <h3 class="preview-subheading">MenuToggle e IconButton · Cabecera, panel y filtros</h3>
+          <div class="preview-button-surface preview-icon-surface" data-sample>
+            <figure>
+              <figcaption>MenuToggle · Abrir / cerrar · 44 px</figcaption>
+              <MenuToggle data-preview-menu />
+            </figure>
+            <figure>
+              <figcaption>IconButton · Cerrar panel · 44 px</figcaption>
+              <IconButton ariaLabel="Cerrar panel de detalle" />
+            </figure>
+            <figure>
+              <figcaption>IconButton · Cerrar filtros · 36 px</figcaption>
+              <IconButton ariaLabel="Cerrar filtros" size="sm" strokeWidth={2.5} />
+            </figure>
+          </div>
+          <h3 class="preview-subheading">Mostrar / ocultar contraseña</h3>
+          <div class="preview-full-width" data-sample>
+            <PasswordField id="previewPassword" toggleId="previewPasswordToggle" hint="Escribe un texto de prueba y pulsa el ojo para alternar su visibilidad." />
+          </div>
+          <h3 class="preview-subheading">Enlaces sociales · Pie de página</h3>
+          <div class="preview-button-surface preview-button-surface--brand preview-icon-surface" data-sample>
+            <figure><figcaption>Facebook · TikTok · WhatsApp</figcaption><SocialLinks /></figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="cards" class="preview-section" aria-labelledby="cards-title">
+        <div class="container">
+          <h2 id="cards-title">Cards</h2>
+          <p class="preview-description">Componentes del directorio, el inicio y las historias, con sus imágenes y estilos actuales.</p>
+          <div class="preview-card-grid" data-sample>
+            <figure><figcaption>OfferCard · Directorio de empleos</figcaption><OfferCard job={seedJobs[0]} /></figure>
+            <figure><figcaption>ProfileCard · Perfil profesional</figcaption><ProfileCard profile={profiles[0]} /></figure>
+            <figure><figcaption>StoryCard · Testimonio</figcaption><StoryCard story={stories[0]} /></figure>
+            <figure><figcaption>StoryCard · compact</figcaption><StoryCard story={stories[1]} compact /></figure>
+            <figure><figcaption>CategoryCard · Categoría</figcaption><CategoryCard category={hiring.categories[0]} /></figure>
+            <figure><figcaption>ServiceCard · Paquete de servicio</figcaption><ServiceCard service={hiring.services[0]} /></figure>
+            <figure><figcaption>AutonomoCard · Profesional</figcaption><AutonomoCard autonomo={hiring.autonomos[0]} /></figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="gestion" class="preview-section" aria-labelledby="gestion-title">
+        <div class="container">
+          <div class="preview-workspace" data-sample>
+            <h2 id="gestion-title">Cards de gestión</h2>
+            <p class="preview-description">Plantillas actuales de publicaciones y postulaciones, rellenadas solo para esta muestra.</p>
+            <h3 class="preview-subheading">Publicaciones · con postulaciones y en cero</h3>
+            <PublicationList id="previewPublications" />
+            <h3 class="preview-subheading">Postulaciones · recibida y enviada</h3>
+            <ApplicationList />
+            <h3 class="preview-subheading">Estado vacío</h3>
+            <div id="previewEmpty"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="preview-feedback-rail" hidden>
+      <div class="container">
+        <p id="previewFeedback" class="preview-feedback" role="status" aria-live="polite">Vista previa: puedes probar los botones sin cambiar datos.</p>
+      </div>
+    </div>
+
+    <template id="previewPrimaryAction"><ActionButton text="Ver publicación" /></template>
+    <template id="previewSecondaryAction"><ActionButton variant="secondary" text="Ver postulaciones" /></template>
+    <template id="previewQuietAction"><ActionButton variant="quiet" text="Editar" /></template>
+    <template id="previewDangerAction"><ActionButton variant="danger" text="Retirar postulación" /></template>
+
+    <script is:inline define:vars={{ previewData }}>
+      // Solo DOM de la galería: sin acceso a la sesión ni al almacenamiento del sitio.
+      const clonePreview = id => document.getElementById(id).content.firstElementChild.cloneNode(true);
+      const fillPreview = (root, selector, value) => { root.querySelector(selector).textContent = value; };
+      const previewAction = (id, label) => {
+        const button = clonePreview(id);
+        button.textContent = label;
+        return button;
+      };
+      const { job, candidate } = previewData;
+      for (const count of [3, 0]) {
+        const card = clonePreview('previewPublicationsTemplate');
+        card.dataset.status = 'active';
+        fillPreview(card, '.publication-state', 'Activa');
+        fillPreview(card, '.publication-kind', 'Publicada como empresa');
+        fillPreview(card, '.publication-title', job.title);
+        fillPreview(card, '.publication-owner', job.company);
+        fillPreview(card, '.publication-salary', job.salary);
+        fillPreview(card, '.publication-location', job.city + ' · ' + job.modality);
+        fillPreview(card, '.publication-delivery', job.delivery);
+        fillPreview(card, '.publication-description', job.description);
+        const primary = previewAction('previewPrimaryAction', 'Ver publicación');
+        const secondary = previewAction('previewSecondaryAction', 'Ver postulaciones');
+        const counter = document.createElement('span');
+        counter.className = 'publication-count';
+        counter.textContent = count;
+        secondary.append(counter);
+        secondary.disabled = count === 0;
+        const edit = previewAction('previewQuietAction', 'Editar');
+        edit.classList.add('publication-edit');
+        card.querySelector('.publication-footer').append(primary, secondary, edit);
+        card.querySelector('.publication-menu-trigger').setAttribute('aria-label', 'Más opciones de publicación');
+        document.getElementById('previewPublications').append(card);
+      }
+      for (const received of [true, false]) {
+        const card = clonePreview('applicationListTemplate');
+        card.dataset.status = 'Recibida';
+        fillPreview(card, '.application-status', received ? 'Recibida' : 'Enviada · Recibida');
+        fillPreview(card, '.application-title', received ? candidate.name : job.title);
+        fillPreview(card, '.application-context', received ? 'Para «' + job.title + '»' : job.company);
+        fillPreview(card, '.application-location', received ? candidate.city : job.city);
+        fillPreview(card, '.application-date', '22 oct 2026');
+        fillPreview(card, '.application-file', 'Currículum de ejemplo.pdf');
+        fillPreview(card, '.application-message-label', received ? 'Mensaje del candidato' : 'Tu mensaje');
+        fillPreview(card, '.application-message', 'Me interesa esta oportunidad. Tengo disponibilidad para coordinar las tareas y las entregas por escrito.');
+        const footer = card.querySelector('.application-actions');
+        footer.append(previewAction('previewPrimaryAction', received ? 'Ver perfil' : 'Ver oferta'));
+        footer.append(previewAction('previewSecondaryAction', 'Ver currículum'));
+        if (received) {
+          const update = card.querySelector('.application-update');
+          update.hidden = false;
+          const label = document.createElement('label');
+          label.textContent = 'Estado de la postulación';
+          const select = document.createElement('select');
+          for (const state of ['Recibida', 'En revisión', 'Seleccionada', 'No seleccionada']) {
+            const option = document.createElement('option');
+            option.textContent = state;
+            select.append(option);
+          }
+          select.addEventListener('change', () => {
+            card.dataset.status = select.value;
+            fillPreview(card, '.application-status', select.value);
+            document.querySelector('.preview-feedback-rail').hidden = false;
+            document.getElementById('previewFeedback').textContent = 'Demostración: estado cambiado a «' + select.value + '».';
+          });
+          label.append(select);
+          update.append(label);
+        } else footer.append(previewAction('previewDangerAction', 'Retirar postulación'));
+        document.getElementById('applicationList').append(card);
+      }
+      const empty = clonePreview('applicationEmptyTemplate');
+      fillPreview(empty, '.application-empty-title', 'Todavía no enviaste postulaciones');
+      fillPreview(empty, '.application-empty-description', 'Explora las ofertas y encuentra una oportunidad para empezar.');
+      empty.querySelector('.application-empty-action').append(previewAction('previewPrimaryAction', 'Explorar empleos'));
+      document.getElementById('previewEmpty').append(empty);
+      document.addEventListener('click', event => {
+        const control = event.target.closest('[data-sample] button, [data-sample] a');
+        if (!control || control.disabled) return;
+        event.preventDefault();
+        if (control.matches('[data-preview-menu]')) {
+          const open = control.getAttribute('aria-expanded') !== 'true';
+          control.setAttribute('aria-expanded', String(open));
+          control.setAttribute('aria-label', open ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
+        }
+        if (control.matches('[data-password-toggle]')) {
+          const input = document.getElementById(control.dataset.passwordToggle);
+          const visible = input.type === 'password';
+          input.type = visible ? 'text' : 'password';
+          control.setAttribute('aria-pressed', String(visible));
+          control.setAttribute('aria-label', visible ? 'Ocultar contraseña' : 'Mostrar contraseña');
+          control.querySelector('[data-password-show]').hidden = visible;
+          control.querySelector('[data-password-hide]').hidden = !visible;
+        }
+        const label = control.getAttribute('aria-label') || control.textContent.replace(/\s+/g, ' ').trim();
+        document.querySelector('.preview-feedback-rail').hidden = false;
+        document.getElementById('previewFeedback').textContent = 'Demostración: «' + label + '». No se modificaron datos.';
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  .preview-header { width: 100%; padding-block: var(--space-12) var(--space-8); border-bottom: 1px solid var(--color-border); }
+  .preview-header h1 { margin-bottom: var(--space-3); }
+  .preview-header p, .preview-description { max-width: 75ch; color: var(--color-text-muted); font-size: var(--text-sm); }
+  .preview-header nav { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); margin-top: var(--space-6); }
+  .preview-header nav a { display: inline-flex; align-items: center; min-height: 44px; color: var(--color-primary); font-size: var(--text-sm); font-weight: 600; text-decoration: underline; text-underline-offset: var(--space-1); }
+  main { padding-bottom: var(--space-24); }
+  .preview-section { width: 100%; padding-block: var(--space-10); scroll-margin-top: var(--space-6); }
+  .preview-section h2 { margin-bottom: var(--space-3); font-size: var(--text-3xl); }
+  .preview-description { margin-bottom: var(--space-6); }
+  .preview-subheading { margin-block: var(--space-8) var(--space-5); color: var(--color-text-main); font-size: var(--text-lg); }
+  .preview-button-surface { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-6) var(--space-8); padding: var(--space-6); background: var(--color-bg-card); border-radius: var(--radius-md); }
+  .preview-button-surface + .preview-button-surface { margin-top: var(--space-4); }
+  .preview-button-surface--brand { background: var(--color-primary); }
+  .preview-button-surface--brand figcaption { color: var(--color-text-inverse); }
+  .preview-icon-surface figure { align-items: flex-start; }
+  figure { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; margin: 0; }
+  figcaption, .preview-label { color: var(--color-text-muted); font-size: var(--text-xs); font-weight: 500; overflow-wrap: anywhere; }
+  .preview-full-width { display: grid; gap: var(--space-3); max-width: 420px; margin-top: var(--space-6); }
+  .preview-card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: var(--space-8) var(--space-6); }
+  .preview-workspace { max-width: var(--workspace-content-max); margin-inline: auto; }
+  .preview-feedback-rail { position: fixed; inset-inline: 0; bottom: var(--space-3); z-index: 10; width: 100%; pointer-events: none; }
+  .preview-feedback { width: fit-content; max-width: 100%; margin: 0; padding: var(--space-3) var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-bg-card); color: var(--color-text-main); font-size: var(--text-xs); overflow-wrap: anywhere; pointer-events: auto; }
+  @media (max-width: 991px) { .preview-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 639px) {
+    .preview-card-grid { grid-template-columns: minmax(0, 1fr); }
+    .preview-button-surface { padding: var(--space-4); }
+    .preview-header { padding-top: var(--space-8); }
+  }
+</style>

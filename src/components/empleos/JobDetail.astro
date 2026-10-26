@@ -1,6 +1,7 @@
 ---
 import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
+import SectionLink from '../ui/SectionLink.astro';
 const { job } = Astro.props;
 ---
   <div class="job-detail-page" id="jobDetail" data-job-id={job.id} aria-busy="true">
@@ -146,23 +147,7 @@ const { job } = Astro.props;
             <p class="demo-feedback" id="applicationState" role="status"></p>
             <Button id="openApplication" text="Postular a esta oferta" variant="primary" size="md" fullWidth />
             <div class="apply-status-footer">
-              <a href="/postulaciones" id="viewMyApplications" class="apply-view-link" hidden>
-                <span>Ver en Mis postulaciones</span>
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M5 12h14"></path>
-                  <path d="m12 5 7 7-7 7"></path>
-                </svg>
-              </a>
+              <SectionLink href="/postulaciones" id="viewMyApplications" text="Ver en Mis postulaciones" hidden />
             </div>
 
             <form class="apply-form" id="jobApplyForm" hidden>

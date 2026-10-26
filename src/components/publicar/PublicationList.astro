@@ -1,5 +1,7 @@
 ---
 import '../../styles/management.css';
+import ActionButton from '../ui/ActionButton.astro';
+import Icon from '../ui/Icon.astro';
 interface Props { id: string; preview?: boolean }
 const { id, preview = false } = Astro.props;
 ---
@@ -12,11 +14,18 @@ const { id, preview = false } = Astro.props;
         <span class="publication-state"></span>
         <span class="publication-kind"></span>
       </p>
-      {!preview && <button type="button" class="publication-menu-trigger management-action management-action--icon management-action--lg" aria-haspopup="menu" aria-expanded="false">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <circle cx="5" cy="12" r="1.75" /><circle cx="12" cy="12" r="1.75" /><circle cx="19" cy="12" r="1.75" />
-        </svg>
-      </button>}
+      {!preview && (
+        <ActionButton
+          variant="icon"
+          size="lg"
+          class="publication-menu-trigger"
+          ariaLabel="Más opciones de publicación"
+          aria-haspopup="menu"
+          aria-expanded="false"
+        >
+          <Icon name="more" size={24} />
+        </ActionButton>
+      )}
       {!preview && <div class="publication-menu" popover="auto" role="menu"></div>}
     </header>
 

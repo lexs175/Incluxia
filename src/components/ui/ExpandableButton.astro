@@ -9,8 +9,6 @@ interface Props {
     | "secondary-line"
     | "default"
     | "white"
-    | "whatsapp"
-    | "white-whatsapp"
     | "accent"
     | "dark"
     | "outline-white";
@@ -21,7 +19,6 @@ interface Props {
   id?: string;
   type?: "button" | "submit" | "reset";
   fullWidth?: boolean;
-  leading?: boolean;
 }
 
 const {
@@ -35,11 +32,10 @@ const {
   id,
   type = "button",
   fullWidth = false,
-  leading = false,
   ...rest
 } = Astro.props;
 
-// Normalización limpia a las 4 variantes oficiales + variantes funcionales
+// Normalización a las cuatro variantes oficiales.
 let variantClass = "btn-primary";
 if (variant === "primary-line") {
   variantClass = "btn-primary-line";
@@ -47,10 +43,6 @@ if (variant === "primary-line") {
   variantClass = "btn-secondary";
 } else if (variant === "secondary-line" || variant === "outline-white") {
   variantClass = "btn-secondary-line";
-} else if (variant === "whatsapp") {
-  variantClass = "btn-whatsapp";
-} else if (variant === "white-whatsapp") {
-  variantClass = "btn-white-whatsapp";
 } else {
   variantClass = "btn-primary"; // default, primary, dark, accent
 }
@@ -59,7 +51,7 @@ const sizeClass =
   size === "sm" ? "btn-sm" : size === "lg" ? "btn-lg" : "btn-md";
 const fullWidthClass = fullWidth ? "btn-block" : "";
 const combinedClasses =
-  `modular-btn trustly-expand-btn ${variantClass} ${sizeClass} ${fullWidthClass} ${leading ? "btn-leading" : ""} ${className}`.trim();
+  `modular-btn trustly-expand-btn ${variantClass} ${sizeClass} ${fullWidthClass} ${className}`.trim();
 const ariaLabel = text || undefined;
 ---
 
@@ -169,7 +161,7 @@ const ariaLabel = text || undefined;
 
 <style>
   /* ====================================================
-     MODULAR BUTTON (4 Variantes Oficiales + Funcionales)
+     MODULAR BUTTON (4 Variantes Oficiales)
      Reposo: [ Text Capsule ] [ Badge ↘ ]
      Hover:  [ Badge → ] [ Text Capsule ]
      ==================================================== */
@@ -310,11 +302,6 @@ const ariaLabel = text || undefined;
      4 VARIANTES OFICIALES (Tokens Semánticos Estrictos)
      ==================================================== */
 
-  .modular-btn.btn-leading .btn-badge--left { width: var(--btn-h); max-width: var(--btn-h); margin-right: var(--btn-gap); }
-  .modular-btn.btn-leading .btn-badge--left .btn-badge-inner { opacity: 1; transform: scale(1); }
-  .modular-btn.btn-leading .btn-badge--right { width: 0; max-width: 0; margin-left: 0; }
-  .modular-btn.btn-leading .btn-badge--right .btn-badge-inner { opacity: 0; transform: scale(0); }
-
   /* 1. Primary (Fill Azul) */
   .btn-primary .btn-text-capsule {
     background-color: var(--color-bg-primary);
@@ -360,29 +347,6 @@ const ariaLabel = text || undefined;
   .btn-secondary-line .btn-badge-inner {
     background-color: transparent;
     border: 1.5px solid var(--color-border-white);
-    color: var(--color-text-inverse);
-  }
-
-  /* Variantes Funcionales (WhatsApp) */
-  .btn-whatsapp .btn-text-capsule {
-    background-color: var(--color-bg-primary);
-    border: 1.5px solid transparent;
-    color: var(--color-text-inverse);
-  }
-  .btn-whatsapp .btn-badge-inner {
-    background-color: var(--color-whatsapp);
-    border: 1.5px solid transparent;
-    color: var(--color-text-inverse);
-  }
-
-  .btn-white-whatsapp .btn-text-capsule {
-    background-color: var(--color-bg-white);
-    border: 1.5px solid transparent;
-    color: var(--color-text-primary);
-  }
-  .btn-white-whatsapp .btn-badge-inner {
-    background-color: var(--color-whatsapp);
-    border: 1.5px solid transparent;
     color: var(--color-text-inverse);
   }
 
@@ -498,15 +462,6 @@ const ariaLabel = text || undefined;
     .btn-secondary-line:hover .btn-badge-inner {
       border-color: var(--color-white);
       background-color: rgba(var(--white-rgb), 0.12);
-    }
-
-    /* WhatsApp hover */
-    .btn-whatsapp:hover .btn-text-capsule {
-      background-color: var(--color-primary-hover);
-    }
-    .btn-whatsapp:hover .btn-badge-inner,
-    .btn-white-whatsapp:hover .btn-badge-inner {
-      background-color: var(--color-whatsapp);
     }
   }
 

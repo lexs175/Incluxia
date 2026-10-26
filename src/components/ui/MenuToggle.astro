@@ -1,0 +1,31 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import IconButton from './IconButton.astro';
+import Icon from './Icon.astro';
+
+interface Props extends Omit<HTMLAttributes<'button'>, 'aria-expanded'> {
+  controls?: string;
+  expanded?: boolean;
+}
+
+const { controls, expanded = false, class: className, ...attributes } = Astro.props;
+---
+
+<IconButton
+  {...attributes}
+  variant="plain"
+  ariaLabel={expanded ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'}
+  aria-expanded={String(expanded)}
+  aria-controls={controls}
+  class:list={['menu-toggle', className]}
+  data-menu-toggle
+>
+  <span class="icon-open"><Icon name="menu" size={26} /></span>
+  <span class="icon-close"><Icon name="close" size={26} /></span>
+</IconButton>
+
+<style>
+  .icon-close { display: none; }
+  :global(.menu-toggle[aria-expanded='true']) .icon-open { display: none; }
+  :global(.menu-toggle[aria-expanded='true']) .icon-close { display: block; }
+</style>

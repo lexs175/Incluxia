@@ -5,7 +5,7 @@ import { existsSync } from 'node:fs';
 import { resolve, extname, sep } from 'node:path';
 import assert from 'node:assert/strict';
 
-const root = resolve('dist'), out = resolve('artifacts/auth-simplification');
+const root = resolve(process.env.ECO_TEST_DIST || 'dist'), out = resolve('artifacts/auth-simplification');
 await mkdir(out, { recursive: true });
 const mime = { '.html': 'text/html', '.js': 'application/javascript', '.css': 'text/css', '.webp': 'image/webp', '.png': 'image/png', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml' };
 const server = createServer(async (req, res) => {

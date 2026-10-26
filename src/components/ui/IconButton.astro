@@ -1,0 +1,46 @@
+---
+import type { ComponentProps, HTMLAttributes } from 'astro/types';
+import Icon from './Icon.astro';
+
+interface Props extends HTMLAttributes<'button'> {
+  ariaLabel: string;
+  icon?: ComponentProps<typeof Icon>['name'];
+  iconSize?: number;
+  strokeWidth?: number;
+  variant?: 'outline' | 'plain';
+  size?: 'sm' | 'md';
+}
+
+const {
+  ariaLabel, icon = 'close', iconSize = 20, strokeWidth = 2,
+  variant = 'outline', size = 'md', type = 'button', class: className,
+  ...attributes
+} = Astro.props;
+---
+
+<button {...attributes} type={type} aria-label={ariaLabel} class:list={['icon-button', `icon-button--${variant}`, `icon-button--${size}`, className]}>
+  <slot><Icon name={icon} size={iconSize} strokeWidth={strokeWidth} /></slot>
+</button>
+
+<style>
+  .icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    background: transparent;
+    cursor: pointer;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+  }
+  .icon-button--sm { width: 36px; height: 36px; }
+  .icon-button--md { width: 44px; height: 44px; }
+  .icon-button--outline { border-color: var(--color-border); color: var(--color-text-main); }
+  .icon-button--outline:hover { background: var(--color-bg-alt); color: var(--color-primary); }
+  .icon-button--plain { color: var(--color-primary); }
+  .icon-button:focus-visible { outline: 2px solid var(--color-primary); outline-offset: var(--space-1); }
+  .icon-button:disabled { opacity: 0.55; cursor: default; pointer-events: none; }
+  @media (prefers-reduced-motion: reduce) { .icon-button { transition: none; } }
+</style>

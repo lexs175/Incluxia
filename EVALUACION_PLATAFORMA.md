@@ -457,7 +457,7 @@ Si se elige un enlace o código por correo, la pantalla no necesita un campo de 
 - Playwright con Chromium: 1440 × 1000, 1024 × 600, 390 × 844 y 240 × 720. Sin desborde horizontal del modal; título accesible visible y envío alcanzable en los cuatro tamaños.
 - Trece comprobaciones funcionales: conservación del scroll; pestañas y ciclo de foco; fondo inerte; campos vacíos e inválidos; duplicados por correo y teléfono; registro con conservación del destino; cuenta desconocida; ayuda informativa del PIN; mostrar/ocultar PIN; ingreso con celular local; conservación del identificador de oferta; cuenta de ejemplo; migración de sesión anterior.
 - Sin errores JavaScript durante esos recorridos. El detector mecánico de diseño no emitió hallazgos en el componente, lo que no sustituye la revisión de producto.
-- Evidencia local: `artifacts/auth-review/final.json`, capturas `final-*.png` y `build-final.log`.
+- La evidencia de esta revisión anterior se retiró durante la limpieza del 26 de octubre. El acceso vigente se comprueba con `npm run test:auth`, descrito en la sección 17.
 - Los tamaños móviles son ventanas emuladas de Chromium. No se afirma validación en un teléfono físico, Safari/iOS ni certificación de accesibilidad con lectores de pantalla.
 
 La gestión del diálogo sigue el criterio de [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/): foco interior, control por teclado, fondo inerte y devolución del foco al cerrar.
@@ -491,4 +491,14 @@ En el menú móvil, la navegación ocupa la parte superior. Avatar, nombre compl
 
 Se corrigió también el evento de actualización de la cabecera para escuchar `incluxia:auth-changed`, que es el evento emitido por el estado de cuentas.
 
-Verificación: `npm run build` completado con 51 rutas; Playwright comprobó hover, paso al panel, cierre al salir, teclado, toque en pantalla amplia, navegación y cierre de sesión en 768, 390, 320 y 240 px, nombres largos y avatar sin foto. Sin errores JavaScript. Evidencia: `artifacts/header-interaction/verification.json` y las capturas de esa carpeta.
+Verificación inicial: `npm run build` completado con 51 rutas; Playwright comprobó hover, paso al panel, cierre al salir, teclado, toque en pantalla amplia, navegación y cierre de sesión en 768, 390, 320 y 240 px, nombres largos y avatar sin foto. Sin errores JavaScript. La prueba se conserva como `npm run test:header`; genera `artifacts/header/verification.json` y sus capturas.
+
+## 19. Limpieza de archivos y verificación vigente — 26 de octubre de 2026
+
+Se retiraron de las carpetas activas siete componentes sin referencias, tres migraciones de imágenes ya completadas y dos pruebas anteriores dependientes del puerto 4322. Se conservan con su inventario anterior y hashes en `archive/maintenance-2026-10-26/`. La galería temporal de componentes permanece activa.
+
+Se eliminaron 331 archivos regenerables o duplicados, unos 80 MiB. Los 24 PNG originales distintos de los maestros actuales, tres referencias visuales y los registros de procedencia se conservaron en el archivo de mantenimiento. Los originales y referencias pesados quedan fuera de Git. Los archivos anteriores de Blog, Nosotros e imágenes no se alteraron.
+
+`IMAGENES.md` sigue siendo el catálogo vigente. `npm test` agrupa ocho verificaciones sobre `dist/`: recorrido entre cuentas, acceso, ofertas, contratación, gestión, imágenes, cabecera e inicio/historias. Los informes y capturas se regeneran bajo `artifacts/`; el resumen se escribe en `artifacts/verification/summary.json`. Las capturas maestras no se modifican durante una prueba normal.
+
+Las comprobaciones de desborde admiten el espacio reservado por la barra de desplazamiento: fallan cuando el contenido supera el ancho de la ventana. La prueba de funcionamiento utiliza las ocho ofertas, los cuatro enlaces interiores, los menús de estado y el acceso al perfil móvil actuales, sin comparar el código visual con un commit anterior.

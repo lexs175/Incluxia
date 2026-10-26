@@ -1,0 +1,2837 @@
+[
+  {
+    "original": "artifacts/build-header-navigation.log",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "11371b5d4d781c080301a1d6f65558f8b0abb903090f9afe724644e3a8786ff0",
+    "bytes": 90310
+  },
+  {
+    "original": "artifacts/build-ui-fixes.log",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "8857a12b29abcb1e766d7424bb152eac6ae4440974f4e43b89d61d01fcb9b13d",
+    "bytes": 90403
+  },
+  {
+    "original": "artifacts/auth-review/after-login-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "4c4bf67bbe5e08bbb4b2e1f618c995e6aa058371befa15b17e43c17d54ddbc5a",
+    "bytes": 174535
+  },
+  {
+    "original": "artifacts/auth-review/after-login-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "a54ce0cf99f2e102b6f8c723dba5577fd1571dc61241d6ac64ee9371042738b3",
+    "bytes": 59351
+  },
+  {
+    "original": "artifacts/auth-review/after-register-1024.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "0b5ad35b942d144775ef45e53d941208a7509fd0924fb6634e5f926a36b8ff19",
+    "bytes": 105306
+  },
+  {
+    "original": "artifacts/auth-review/after-register-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "0eadaf147ecca00200766b24a516865a7ce54a5dac27ffe5b3fc2dd16a9bfbfa",
+    "bytes": 178176
+  },
+  {
+    "original": "artifacts/auth-review/after-register-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "123367063d3281582b6b22bf9d3cde95ce74c2b7a15d58076aa170ecd47c6280",
+    "bytes": 52315
+  },
+  {
+    "original": "artifacts/auth-review/after.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "fb034b4473f453acb462d517f37114deb05edc7ed16ced3d51b39292aa07d158",
+    "bytes": 1377
+  },
+  {
+    "original": "artifacts/auth-review/before-login-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "ea89e202769480999d00fd59eae8e37e010cb274809be3151ea3a79316262802",
+    "bytes": 335872
+  },
+  {
+    "original": "artifacts/auth-review/before-login-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "3940c9b317fe2b26bb4a62e28da3670cdd84649aa036f8e03f77278f19a71411",
+    "bytes": 70342
+  },
+  {
+    "original": "artifacts/auth-review/before-register-1024.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "639aa72583e07195b882acb0a6e4836837284051b4dcbe20957efd4304f0a78b",
+    "bytes": 98703
+  },
+  {
+    "original": "artifacts/auth-review/before-register-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "81c1393040cdc0e8e8dcda29f471ce66e40b5e25eac6f17dd711b05fc396d8ff",
+    "bytes": 307433
+  },
+  {
+    "original": "artifacts/auth-review/before-register-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "4e42720a5b12ba163ffa4155ab7fb0936af6b369d4c26beb2de8160e12a7b9bd",
+    "bytes": 54843
+  },
+  {
+    "original": "artifacts/auth-review/before.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "7fd321c9f9a7e021f91c919849a3ee4f45853e28e20dca61f6fdfbf82cf57dec",
+    "bytes": 1750
+  },
+  {
+    "original": "artifacts/auth-review/build-after.log",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "4f3d349ef14259524467a4ff4accffb336025429127bcc51e0ad124f3d869d1f",
+    "bytes": 90682
+  },
+  {
+    "original": "artifacts/auth-review/build-before.log",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "532b6261b0f0e39110c8a1df9de3ac5d10e172b30ac8729696fee565ba1012a6",
+    "bytes": 90310
+  },
+  {
+    "original": "artifacts/auth-review/build-final.log",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "8dd1486d01f9afa7eeb9081c10c251780aa471632f4039dd47926360299a90e4",
+    "bytes": 106357
+  },
+  {
+    "original": "artifacts/auth-review/design-detector.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "bytes": 3
+  },
+  {
+    "original": "artifacts/auth-review/final-error-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "0a91ea5e11177b25776178a38e46a294678cc6d145b659bd4e8e96ebc325765e",
+    "bytes": 47765
+  },
+  {
+    "original": "artifacts/auth-review/final-login-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "f360024cefd35385799070e88393b491c33dc027a42bc7c0b3523083bfa87b8d",
+    "bytes": 175465
+  },
+  {
+    "original": "artifacts/auth-review/final-login-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "c743ea9fcbcef6f4238df9e1ebdffbdd9eb8fa182e52a8358a67e43bc44440bb",
+    "bytes": 57476
+  },
+  {
+    "original": "artifacts/auth-review/final-register-1024.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "7a80212c89ff684f6219ba12ee596e6f716999e817a40bd7475ac94f9722f6a6",
+    "bytes": 110140
+  },
+  {
+    "original": "artifacts/auth-review/final-register-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "418b68b78408271dc6c5dbe370a02816904bbb051fed055256f293b8b968b92c",
+    "bytes": 184046
+  },
+  {
+    "original": "artifacts/auth-review/final-register-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "48c4ba4d6b016aa6fb23254f9091126217e7853dc2b9c67dee29b5b2f395bce5",
+    "bytes": 53781
+  },
+  {
+    "original": "artifacts/auth-review/final.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "e4268c762f7f19ffdeaf7e5c31b80fd6ddfe337bd2ae36f1a17c85f69245e2b4",
+    "bytes": 1799
+  },
+  {
+    "original": "artifacts/auth-review/inspect.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/auth-review/inspect.mjs",
+    "sha256": "33d8aadf49098a40b2a59debd0851e72897e9011c8879934e03ec26d4e09d56a",
+    "bytes": 10940
+  },
+  {
+    "original": "artifacts/auth-simplification/build.log",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "bf3c5792649a3462b182665474238cbca218694932d589cb20438c76f33354f4",
+    "bytes": 108364
+  },
+  {
+    "original": "artifacts/auth-simplification/design-detector.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "bytes": 3
+  },
+  {
+    "original": "artifacts/backgrounds/detalle-mobile.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "6ea4e2a227ea7518616c658c16e6099d85d7c837152813c67c75039da7ff76e7",
+    "bytes": 194405
+  },
+  {
+    "original": "artifacts/backgrounds/inicio-desktop.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "259de3e209d0da0d2f7097a00c13dcac76d817916e83e39e1e3dc7e2152b450b",
+    "bytes": 1045008
+  },
+  {
+    "original": "artifacts/backgrounds/verification.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "953064cbd7c8ba8ef7110e5c80d4bc4dcfed432c19909b44b07808a22f39ff33",
+    "bytes": 20230
+  },
+  {
+    "original": "artifacts/button-review/card-mobile.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "49cec04b40abd973689bcc4b4ba8df557cff670b3986d11fffef255483345b80",
+    "bytes": 27276
+  },
+  {
+    "original": "artifacts/button-review/inspect.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/button-review/inspect.mjs",
+    "sha256": "17917427f965034d7b91764558dba242f8673b292dc9482e1645f1b72f38bf3e",
+    "bytes": 5066
+  },
+  {
+    "original": "artifacts/button-review/inspection.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "a851d392f7dcb1452df5ab9a89b07a664fd482bbdf8107ffdbd70725f7cbc767",
+    "bytes": 2177
+  },
+  {
+    "original": "artifacts/button-review/preview-desktop.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "d07dd42f15c026b495813d0160beb94f3ef64b34e1bdd5d61343cd642212ce00",
+    "bytes": 53538
+  },
+  {
+    "original": "artifacts/figma-home/contratar.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "5e94eef9c7d7d5e6f60521f9d901b9b0c30a3522ed7ea165fc150552a7a1164c",
+    "bytes": 469530
+  },
+  {
+    "original": "artifacts/figma-home/design.png",
+    "action": "archive-reference",
+    "target": "archive/maintenance-2026-10-26/design-references/figma-home/design.png",
+    "sha256": "2906abce66de131224693603a8ce6d4b1ef05d468b74172534dc90ad5718311e",
+    "bytes": 1018163
+  },
+  {
+    "original": "artifacts/figma-home/detalle.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "fbf45359915c44291800db92568e4f7ea4151e271e940b8ae573f55e8557f336",
+    "bytes": 142614
+  },
+  {
+    "original": "artifacts/figma-home/empleos.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "dd951a8bb0f1363a9f6fb2a77c1ae25f5ecbefb6e2ca3a2992c6e17766f53b93",
+    "bytes": 150155
+  },
+  {
+    "original": "artifacts/figma-home/perfil.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "4d5fc9258a075b171a56f836d6c936905856fac03b63a6dda007c90d0cc4be55",
+    "bytes": 273272
+  },
+  {
+    "original": "artifacts/figma-home/postulaciones.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "38af9bc6b587b97e5f9bf9e1740a09d28774181a8957d3558dc7be0670684e32",
+    "bytes": 104452
+  },
+  {
+    "original": "artifacts/figma-home/publicar.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "d8877a83f3abae33634143635d746ef0ff5c6baca232d2fed558b7263c55f55b",
+    "bytes": 95575
+  },
+  {
+    "original": "artifacts/figma-home/qa/bento-how-section.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "775dc4aa32d1a1a4ce189218c0776dd6a4fb1fa71a3c9f12ef999bc9149861b1",
+    "bytes": 44942
+  },
+  {
+    "original": "artifacts/figma-home/qa/buscar-trabajo.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "821683d6191e7157fa0ce398e373beb089e045a3028fa5c1e9af35de353d4b08",
+    "bytes": 721256
+  },
+  {
+    "original": "artifacts/figma-home/qa/como-publicar.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "f1a9055d953d47c4c91c649d13369b8d1dd9508d7a73f9ecbd5be78d0fbb6593",
+    "bytes": 247931
+  },
+  {
+    "original": "artifacts/figma-home/qa/comunidad.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "d7944af53e5f55d2357d50e7090623b9d9be2ed054fbc8a10758c3ac67024a7b",
+    "bytes": 1074692
+  },
+  {
+    "original": "artifacts/figma-home/qa/contratar-talento.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "88364941ff93ab40159279aed47d54f1c8cd23ae86ae2dc2b22bc07ca07c2edd",
+    "bytes": 627645
+  },
+  {
+    "original": "artifacts/figma-home/qa/detalle-historia-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "8069edbd5206dc1bb1cc920bdc95bd078c059099e2255635a0ce2df4f3555b1c",
+    "bytes": 1118666
+  },
+  {
+    "original": "artifacts/figma-home/qa/detalle-historia-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "f378150c71d247337a30f2aff0ce2324d91674e51b63ff6df314908a4a563327",
+    "bytes": 191072
+  },
+  {
+    "original": "artifacts/figma-home/qa/detalle-historia-completa-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "72b7306cef048a72d46e4f94a1ad093d9ef55a60185b6f72c1c1ddf24fb739f2",
+    "bytes": 1814949
+  },
+  {
+    "original": "artifacts/figma-home/qa/hero-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "34fe9940eec10e5ab9d25b11f3f450a68568fcd9048cc8e5692f2b23561a7ad7",
+    "bytes": 936337
+  },
+  {
+    "original": "artifacts/figma-home/qa/hero-1920.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "2c2d2d3125910e3723f0b4f20b7239d214c4624aedc6d651a58d5874f3ff6d27",
+    "bytes": 1153045
+  },
+  {
+    "original": "artifacts/figma-home/qa/hero-240.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "a2fe159d62f3d51df43c6f77a79bf1220dd4f52486d7085dac5653a13f9fbf1c",
+    "bytes": 132466
+  },
+  {
+    "original": "artifacts/figma-home/qa/hero-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "99fe781f91d121526aad2483626e89abe3f29da8b582446f7012f3bcf0b6c4ba",
+    "bytes": 207590
+  },
+  {
+    "original": "artifacts/figma-home/qa/hero-768.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "cf96909d79d9e9be06d70531cb1acc45a3edb7b52285ee23e7d28fc5149d017d",
+    "bytes": 445606
+  },
+  {
+    "original": "artifacts/figma-home/qa/historias-destacada-sin-etiquetas.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "7b13a71a3cbe243f29f4f21882278ebd0a63cb109697d5623ce7288cb6c5cb4a",
+    "bytes": 274885
+  },
+  {
+    "original": "artifacts/figma-home/qa/home-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "48569c663cba6f7b3365cbfd1adc400e58dec5aebe6a9d743e716e0b08ceb48a",
+    "bytes": 4605450
+  },
+  {
+    "original": "artifacts/figma-home/qa/home-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "62493c935683692e5c501b9efaaef3cd6f1cb0e83f00d10e257b146c01249587",
+    "bytes": 1290239
+  },
+  {
+    "original": "artifacts/figma-home/qa/home-768.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "af9c72e6ec64a8a44bfa20021856c68e662b9ac987ddf2501a665bf68d2dccc7",
+    "bytes": 2275945
+  },
+  {
+    "original": "artifacts/figma-home/qa/stories-section.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "8064887f08dc3ea55283d60ed17632b7b3fb1eae7ab2d4955aec7adb007b40d3",
+    "bytes": 456358
+  },
+  {
+    "original": "artifacts/figma-home/qa/tu-actividad.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "258b228ccda3f55e433f90425aca20f107cd3cf2cf8f96f184991c10c7973269",
+    "bytes": 469649
+  },
+  {
+    "original": "artifacts/figma-home/qa/verification.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "6ead831233bbc78682561dd5125e9b70b0fff03ac2e1e404abe6cc95a9fb87ab",
+    "bytes": 10269
+  },
+  {
+    "original": "artifacts/generated-services/diseno-grafico/prompts.json",
+    "action": "archive-provenance",
+    "target": "archive/maintenance-2026-10-26/provenance/generated-services/diseno-grafico/prompts.json",
+    "sha256": "7c5830a93f91e2ae839f67a9f5ceed26c2a0ef8bf2473914a4bbad6aa42ed5f6",
+    "bytes": 192
+  },
+  {
+    "original": "artifacts/generated-services/diseno-grafico/v2/hiring-before.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "946318873e565129deb59a1175fa9806ad2acbd17dfdb76efc9cbc05952fc1e2",
+    "bytes": 85484
+  },
+  {
+    "original": "artifacts/generated-services/diseno-grafico/v2/install.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/generated-services/diseno-grafico/v2/install.mjs",
+    "sha256": "7dd50ca64722de65399d2efbcb7dadd5be0dc8b5524c84c82a74f32696358f6b",
+    "bytes": 2051
+  },
+  {
+    "original": "artifacts/generated-services/diseno-grafico/v2/manifest.json",
+    "action": "archive-provenance",
+    "target": "archive/maintenance-2026-10-26/provenance/generated-services/diseno-grafico/v2/manifest.json",
+    "sha256": "5a747a7ac5682c59bc66c49cd4d39e800752f762ceee11ed0a59e4dcfd2474a2",
+    "bytes": 2355
+  },
+  {
+    "original": "artifacts/generated-services/diseno-grafico/v2/prompts.json",
+    "action": "archive-provenance",
+    "target": "archive/maintenance-2026-10-26/provenance/generated-services/diseno-grafico/v2/prompts.json",
+    "sha256": "24c207572e4d07c96f2b090c4e91997b4e05f909152fcb0469356d021743df47",
+    "bytes": 7764
+  },
+  {
+    "original": "artifacts/generated-services/diseno-grafico/v2/README.md",
+    "action": "archive-provenance",
+    "target": "archive/maintenance-2026-10-26/provenance/generated-services/diseno-grafico/v2/README.md",
+    "sha256": "3465cb08aa37312e08f2d56d195b27b140a1ac7d5bf5aaa9d2558239ea443b62",
+    "bytes": 2751
+  },
+  {
+    "original": "artifacts/generated-services/diseno-grafico/v2/servicios-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "96a22f5093b6e512f4a8fff201cc7cfa5f3aa7b0e708a6f3b2fe408d0a82c04e",
+    "bytes": 412202
+  },
+  {
+    "original": "artifacts/generated-services/diseno-grafico/v2/servicios-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "034124a6d09e83588cde62c963ffdca9ef192f9a3fe6dd3578c4909566234707",
+    "bytes": 349639
+  },
+  {
+    "original": "artifacts/generated-services/diseno-grafico/v2/sources.json",
+    "action": "archive-provenance",
+    "target": "archive/maintenance-2026-10-26/provenance/generated-services/diseno-grafico/v2/sources.json",
+    "sha256": "a5fdc55daf6c049d4e19ae6ea33d13ac44b9d90ed5c0f892c8e8f0719d29c87f",
+    "bytes": 2360
+  },
+  {
+    "original": "artifacts/generated-services/diseno-grafico/v2/verification.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "72645d28a2ee28ebcead000dc788ff28abe4fa75b624f60d7f4f92115a270ad4",
+    "bytes": 1121
+  },
+  {
+    "original": "artifacts/generated-services/diseno-grafico/v2/verify.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/generated-services/diseno-grafico/v2/verify.mjs",
+    "sha256": "7724cd37cf93318bd6b856eb7e40c39c2005bc2135cdf28cfdf1d8e0b92a8a33",
+    "bytes": 7159
+  },
+  {
+    "original": "artifacts/generated-services/diseno-grafico/v2/originals/identidad-visual-v2.png",
+    "action": "remove-exact-duplicate",
+    "target": "src/assets/images/services/diseno-grafico/identidad-visual-v2.png",
+    "sha256": "04a13ce56365629b836af6c847fefcf7e9436b63f100cefa2e5ac2ce5b006496",
+    "bytes": 1314605
+  },
+  {
+    "original": "artifacts/generated-services/diseno-grafico/v2/originals/manual-marca-v2.png",
+    "action": "remove-exact-duplicate",
+    "target": "src/assets/images/services/diseno-grafico/manual-marca-v2.png",
+    "sha256": "10a20572fab2079620623ba00d048ed66ac9ca9b9587e843aafb5554355fb646",
+    "bytes": 1436954
+  },
+  {
+    "original": "artifacts/generated-services/diseno-grafico/v2/originals/packaging-producto-v2.png",
+    "action": "remove-exact-duplicate",
+    "target": "src/assets/images/services/diseno-grafico/packaging-producto-v2.png",
+    "sha256": "18cc68e028366955b3d091db2badfd4662b0573f4dce06cac86b573cdfc7de06",
+    "bytes": 2148419
+  },
+  {
+    "original": "artifacts/generated-services/diseno-grafico/v2/originals/piezas-redes-sociales-v2.png",
+    "action": "remove-exact-duplicate",
+    "target": "src/assets/images/services/diseno-grafico/piezas-redes-sociales-v2.png",
+    "sha256": "2911b38c12d82892f64cd98fe9ce0a18a4bc839636a2fe6801226e617a1aabd9",
+    "bytes": 2560153
+  },
+  {
+    "original": "artifacts/generated-services/sistemas-ti/v1/hiring-before.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "8e95cc13c232c61cb95534fae4123233bf142097c27c60e293a87312d2e95ee2",
+    "bytes": 86142
+  },
+  {
+    "original": "artifacts/generated-services/sistemas-ti/v1/install.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/generated-services/sistemas-ti/v1/install.mjs",
+    "sha256": "d101adcdc84698bffaccdcaa9032fa930fb0d8d5eaec47735dc19b948c056eee",
+    "bytes": 2042
+  },
+  {
+    "original": "artifacts/generated-services/sistemas-ti/v1/manifest.json",
+    "action": "archive-provenance",
+    "target": "archive/maintenance-2026-10-26/provenance/generated-services/sistemas-ti/v1/manifest.json",
+    "sha256": "61a03048b3b8dfb629cf3d6c937591ea6dd02081721b61d78bc9631123a93345",
+    "bytes": 2387
+  },
+  {
+    "original": "artifacts/generated-services/sistemas-ti/v1/prepare.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/generated-services/sistemas-ti/v1/prepare.mjs",
+    "sha256": "20a217d5e81b315f876dfa8f502cc76f15f760cd5e3544593f3fd2aa569d12fc",
+    "bytes": 1172
+  },
+  {
+    "original": "artifacts/generated-services/sistemas-ti/v1/prompts.json",
+    "action": "archive-provenance",
+    "target": "archive/maintenance-2026-10-26/provenance/generated-services/sistemas-ti/v1/prompts.json",
+    "sha256": "8b9c2e4f1f87017ec0da615f872ead2362ab2e11c31ce516da41c815934a7b38",
+    "bytes": 8758
+  },
+  {
+    "original": "artifacts/generated-services/sistemas-ti/v1/README.md",
+    "action": "archive-provenance",
+    "target": "archive/maintenance-2026-10-26/provenance/generated-services/sistemas-ti/v1/README.md",
+    "sha256": "5d0dd2c1b5e543b9736f1c0d61ecd421d4e546808e791231b091abbb3b3c73a3",
+    "bytes": 2851
+  },
+  {
+    "original": "artifacts/generated-services/sistemas-ti/v1/servicios-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "d7c2ce12a15d030eea9ac0deb1a416e0054770bbf72cfc634d2a03c80f8d1542",
+    "bytes": 487851
+  },
+  {
+    "original": "artifacts/generated-services/sistemas-ti/v1/servicios-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "17862baf94dead15558e32051cd064ba9de323f1284c82be0d9f79e6c3d07580",
+    "bytes": 413304
+  },
+  {
+    "original": "artifacts/generated-services/sistemas-ti/v1/sources.json",
+    "action": "archive-provenance",
+    "target": "archive/maintenance-2026-10-26/provenance/generated-services/sistemas-ti/v1/sources.json",
+    "sha256": "5064054e9dc87713653962aa7c4687583b15b438a204a4fa23463f4e2de2aa09",
+    "bytes": 1240
+  },
+  {
+    "original": "artifacts/generated-services/sistemas-ti/v1/verification.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "e0738e968dd4ff51e2f7344a140301c2807353784c6e53167f48fc96e2e800b0",
+    "bytes": 1163
+  },
+  {
+    "original": "artifacts/generated-services/sistemas-ti/v1/verify.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/generated-services/sistemas-ti/v1/verify.mjs",
+    "sha256": "9ada3e364c5e8f44c4cdbb9b8e8c5423937204ae6f05b3f845382c69337d530c",
+    "bytes": 7181
+  },
+  {
+    "original": "artifacts/generated-services/sistemas-ti/v1/originals/helpdesk-chat-v1.png",
+    "action": "remove-exact-duplicate",
+    "target": "src/assets/images/services/sistemas-ti/helpdesk-chat-v1.png",
+    "sha256": "a2f92a408813b5c150e63e4c8985fe4e74de88c0b783c8e461570f46085b1abb",
+    "bytes": 1861579
+  },
+  {
+    "original": "artifacts/generated-services/sistemas-ti/v1/originals/instalacion-software-v1.png",
+    "action": "remove-exact-duplicate",
+    "target": "src/assets/images/services/sistemas-ti/instalacion-software-v1.png",
+    "sha256": "77f4b568ebe5c3bc09af6940a89105873dca39dec94bf68b8a5cc876cd6ddd40",
+    "bytes": 2000940
+  },
+  {
+    "original": "artifacts/generated-services/sistemas-ti/v1/originals/mantenimiento-remoto-v1.png",
+    "action": "remove-exact-duplicate",
+    "target": "src/assets/images/services/sistemas-ti/mantenimiento-remoto-v1.png",
+    "sha256": "17ac1243f23bf3324b83598c3f141e3a3dde7feff1aae797eceb2d97d3f69c64",
+    "bytes": 1978149
+  },
+  {
+    "original": "artifacts/generated-services/sistemas-ti/v1/originals/redes-lan-wifi-v1.png",
+    "action": "remove-exact-duplicate",
+    "target": "src/assets/images/services/sistemas-ti/redes-lan-wifi-v1.png",
+    "sha256": "4ae79f1c58e00721c8f3663a6af0b9b33c8f47d3476bfa10fe3d169c5bb69663",
+    "bytes": 1895333
+  },
+  {
+    "original": "artifacts/header-interaction/build.log",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "36907149e083a7465121b9a22efe7f769538bf896128f003ea5830cbb5d0b8b6",
+    "bytes": 108273
+  },
+  {
+    "original": "artifacts/header-interaction/design-detector.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "bytes": 3
+  },
+  {
+    "original": "artifacts/header-interaction/desktop-hover.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "57e1e5664e3c94383d20761456f8c8778219ad5ca8701489ca66f519e523846f",
+    "bytes": 33016
+  },
+  {
+    "original": "artifacts/header-interaction/mobile-240.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "a286e5c29c14606cf2536b74bb8ca520a5977fedcfb3c3d348f219556c06b806",
+    "bytes": 18666
+  },
+  {
+    "original": "artifacts/header-interaction/mobile-320.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "0950cb37ff7a0bbcbf823290b6ea192a51f28dab36aab7f773340e7bae4c509f",
+    "bytes": 17497
+  },
+  {
+    "original": "artifacts/header-interaction/mobile-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "668d1062baad66e80ecd83e0346a063d0188138ed4cca45a06f9441c23e66cb0",
+    "bytes": 19587
+  },
+  {
+    "original": "artifacts/header-interaction/mobile-768.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "dcd10d14eed1d32b59dbbb936a6323fd6172b0ee7124973bdbc4b9a1e304bb0f",
+    "bytes": 22606
+  },
+  {
+    "original": "artifacts/header-interaction/verification.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "eced8bf63cb6e2a111022b455103396c25802bca2bfa320edb28ce818923701a",
+    "bytes": 1232
+  },
+  {
+    "original": "artifacts/header-interaction/verify.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/header-interaction/verify.mjs",
+    "sha256": "8c60a68e993dcf5b2de0e10d005bdf1f26b2f4cf0c9ca167d64933f9950c833e",
+    "bytes": 8617
+  },
+  {
+    "original": "artifacts/header-review/build.log",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "f1148287871c2a6cbd5b6d05ceb163efbfc74e9327d104ff50700fbb95823d7d",
+    "bytes": 90335
+  },
+  {
+    "original": "artifacts/header-review/color-build.log",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "b29549a6e2dc154afe47a7068947dbeea8851901e84e528ea290eb4d1018fd4f",
+    "bytes": 90361
+  },
+  {
+    "original": "artifacts/header-review/detector.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "bytes": 4
+  },
+  {
+    "original": "artifacts/header-review/Header.before.astro",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "1e7cd52babcb44e19f1ffccc395411383bdad358d4f545f4364c401fc7e08ea8",
+    "bytes": 39763
+  },
+  {
+    "original": "artifacts/header-review/inspect-header.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/header-review/inspect-header.mjs",
+    "sha256": "ea9b585ed513df7aa076a7db813dc868dd8046946c4d19e534d1d8a75106d6d3",
+    "bytes": 4103
+  },
+  {
+    "original": "artifacts/header-review/secondary-build.log",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "b966f9867f5649e23f37ba63e0f17d2a8da7e9f0fb6e73e1b13ce5667ca0f96f",
+    "bytes": 90309
+  },
+  {
+    "original": "artifacts/header-review/secondary-desktop.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "f224d461b0cdc5df71e6dac940d86f2e089e8f237c2bb951871e75d24ff2decd",
+    "bytes": 8709
+  },
+  {
+    "original": "artifacts/header-review/secondary-mobile.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "7ba8617b4d80a3a1653a1ce383cd2d79ff0a5df392e222194cfcb2d2e75fa38f",
+    "bytes": 8616
+  },
+  {
+    "original": "artifacts/header-review/secondary-verification.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "983f79b4e97cc6213ffaf98a566a2f4a26627d28bf142bac5e7812d5137ede9f",
+    "bytes": 635
+  },
+  {
+    "original": "artifacts/header-review/verify-actions.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/header-review/verify-actions.mjs",
+    "sha256": "c4b8e07d70023d0d1e1c54a81965f7877ac6a308d2a6d5be51689b10ac201de0",
+    "bytes": 5515
+  },
+  {
+    "original": "artifacts/header-review/verify-secondary.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/header-review/verify-secondary.mjs",
+    "sha256": "fbd3ce4638a7e19adea829787a92ad3fd486093427c59c09988d5d984e582797",
+    "bytes": 4442
+  },
+  {
+    "original": "artifacts/header-review/after/actions.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "5d71206e542271915f690ee2e5bf9cc24f8069e6802dcfe62552551337e046a1",
+    "bytes": 543
+  },
+  {
+    "original": "artifacts/header-review/after/guest-1024.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "ea9e7cd41882da02991c9a3c060a9ff1f6dad1ce1e0abb7d165906f9e45d248a",
+    "bytes": 53264
+  },
+  {
+    "original": "artifacts/header-review/after/guest-1100.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "d14550a6165c659ee029044c6e6afac73bc6ba93501e023dcc0fed6577162ba1",
+    "bytes": 53285
+  },
+  {
+    "original": "artifacts/header-review/after/guest-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "e6617f71196d3f89ae8d37f6eaf2b06c0dc157fdc3a5ce29239c6d1998e0915c",
+    "bytes": 56108
+  },
+  {
+    "original": "artifacts/header-review/after/guest-1920.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "9d0fc36c69b7b1820534bdae9a974529fc2a6af4c060d228d4342c122f3d10b3",
+    "bytes": 55977
+  },
+  {
+    "original": "artifacts/header-review/after/guest-240.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "8e35d1ee5d21684198a4eed706bf88c3689f0ad6edaf475cb06d6c3c4a44b934",
+    "bytes": 24143
+  },
+  {
+    "original": "artifacts/header-review/after/guest-320.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "419050441a015dd83aaeb9e51f5cfabbf94a3b41f4e9b3fedfd36a904f131ef4",
+    "bytes": 29200
+  },
+  {
+    "original": "artifacts/header-review/after/guest-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "d189e84e726c332a85b95eba0fa3f7c0d79b7b537ab81a4743cb7db532f79be5",
+    "bytes": 33546
+  },
+  {
+    "original": "artifacts/header-review/after/guest-768.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "e06a2a6523a8ee31b42edefae9ee8e62f45bda9ccf5a83e855d378204b7a7ad9",
+    "bytes": 50635
+  },
+  {
+    "original": "artifacts/header-review/after/guest-menu-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "0795f0669a2a131d2ab8b3fedde95d16cbf951811e1c7843d01e28b943181451",
+    "bytes": 9702
+  },
+  {
+    "original": "artifacts/header-review/after/guest-menu-768.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "0bf313eabc017bd0e6c6fbda2630974ae3fda7357acba03ac4d370044225cf1a",
+    "bytes": 11442
+  },
+  {
+    "original": "artifacts/header-review/after/measurements.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "0de046fe3b9b60b05b6c3d3858814cbde31d1d253ca6ef30e1ea6b7ffa6cc5e8",
+    "bytes": 20200
+  },
+  {
+    "original": "artifacts/header-review/after/member-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "02d3edff4b389e0627b51084c0aee760c9a2e0363fe58529c8ac4facaba36355",
+    "bytes": 22001
+  },
+  {
+    "original": "artifacts/header-review/before/guest-1024.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "e78156507630555ece4ea2fbca406c1f68df41f26abf935fde8302449db3350c",
+    "bytes": 52310
+  },
+  {
+    "original": "artifacts/header-review/before/guest-1100.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "dc2af13b1a104dbd14529c1441f3dcc6ff7c2a7e2ae9b1657876e4e3a2ac4dff",
+    "bytes": 52340
+  },
+  {
+    "original": "artifacts/header-review/before/guest-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "47151833924816f85e9f9b0a58e757c9ffc7a3faebad50e9c98342947cbbfff2",
+    "bytes": 56628
+  },
+  {
+    "original": "artifacts/header-review/before/guest-320.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "903cf832fbff511839ab1d6e2977591cf1c7f20c788dbfa03af1f6fe2eb6c312",
+    "bytes": 30248
+  },
+  {
+    "original": "artifacts/header-review/before/guest-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "02b740bf422937a3b757a59ff4c65b1e77e0702fef5150ba0fc475fb7e816a8d",
+    "bytes": 32653
+  },
+  {
+    "original": "artifacts/header-review/before/guest-768.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "cae42c5fffb64cbaab950c0eecf65ff996a7a92fc763952f02eed2fa59b5c4d3",
+    "bytes": 49573
+  },
+  {
+    "original": "artifacts/header-review/before/guest-menu-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "393dae3db06331344bc69fdafcbffd005e1ee27f4f79be171e489e1836d95298",
+    "bytes": 164306
+  },
+  {
+    "original": "artifacts/header-review/before/guest-menu-768.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "60202010dcf38203156428ff2c20a15b70e096710db813bd8b83368ac4dbbd2b",
+    "bytes": 355303
+  },
+  {
+    "original": "artifacts/header-review/before/measurements.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "5025c1bc4382ad01b02b80f34f12d3760d55ab2887d3583d480b0637be101e76",
+    "bytes": 15309
+  },
+  {
+    "original": "artifacts/hiring/asset-sources.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "5dbecccc6a407d5655535080aad0652dc83865ee550921dfd51ecf0aed2982a3",
+    "bytes": 979
+  },
+  {
+    "original": "artifacts/hiring-cards/autonomo-card-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "c8d4f6a0c7109ca3b4f756f939b89cf982fded1d5b290bb73047b0df364034cc",
+    "bytes": 27171
+  },
+  {
+    "original": "artifacts/hiring-cards/autonomo-card-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "902f6d1701d3333d87b41334987fa330ab7ec74f03f2b17033c8d265ca7708cb",
+    "bytes": 26441
+  },
+  {
+    "original": "artifacts/hiring-cards/autonomo-card-768.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "7f77c16b9bf86adfdbf7930bdce636c09f8062bd8d149a57d8404730abc81915",
+    "bytes": 27026
+  },
+  {
+    "original": "artifacts/hiring-cards/autonomos-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "cdfdcc1bd0606b5ba671cd7c4ec17ccd1f63cbbc3c45657df8c3e7842b280cba",
+    "bytes": 184192
+  },
+  {
+    "original": "artifacts/hiring-cards/autonomos-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "5322d387c4f38a4bdcdbe4e3594796da041d7b2a53fab1db3557c58bb5763071",
+    "bytes": 137119
+  },
+  {
+    "original": "artifacts/hiring-cards/autonomos-768.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "9aabcaf6188645e4df7d46814a07a283c0f2115d1ba0c20e13961e2474137359",
+    "bytes": 125045
+  },
+  {
+    "original": "artifacts/hiring-cards/design-scan.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "bytes": 3
+  },
+  {
+    "original": "artifacts/hiring-cards/service-card-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "16bcff2e65e736e264c21998c3223f1b552947898619ceff2855c9fc617e0b82",
+    "bytes": 67470
+  },
+  {
+    "original": "artifacts/hiring-cards/service-card-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "d2dc5f0a5bbe3808894e1788086dc910f2a585e0b17775ada27c3d91f93effde",
+    "bytes": 69923
+  },
+  {
+    "original": "artifacts/hiring-cards/service-card-768.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "0f2ff0dffca2b503609ab81b5ed2323fc3e092feac70e7100ebfd70f2ce79f9c",
+    "bytes": 70614
+  },
+  {
+    "original": "artifacts/hiring-cards/servicios-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "9b6f86d58e1bdc244cfcf40cfb7a1d1d729288469f90022af734e3afef7d82a8",
+    "bytes": 353136
+  },
+  {
+    "original": "artifacts/hiring-cards/servicios-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "34216e4321730d259b0eb9331cd85783e3c133a23e42f24e5c3ccdc705b234c9",
+    "bytes": 320391
+  },
+  {
+    "original": "artifacts/hiring-cards/servicios-768.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "de95ad4185c0b934d3c51dfe7f4427dedfb5fcd6e5fa4a2f996dab8b91a0d9f8",
+    "bytes": 270943
+  },
+  {
+    "original": "artifacts/hiring-cards/verification.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "b12de2c0a94057b7cdfa14f0a6552e7ba116ea1471b67b64bd0aad8b269a6678",
+    "bytes": 5630
+  },
+  {
+    "original": "artifacts/hiring-cards/verify.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/hiring-cards/verify.mjs",
+    "sha256": "ef72fc7daa8c16e5bedd9a61e1839816d6ff1696b9b7e12caecdbc8bd4d13b75",
+    "bytes": 8582
+  },
+  {
+    "original": "artifacts/home-image-import/build.log",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "2249c7aa4326d2284241e143f383ce3cb917df34299d13522cf583f1e2712714",
+    "bytes": 109307
+  },
+  {
+    "original": "artifacts/home-image-import/gallery-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "27f8cec1ab002a91576ad83a6616281f601d38f02f51140039f275746b372f83",
+    "bytes": 1070226
+  },
+  {
+    "original": "artifacts/home-image-import/gallery-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "472cbe78295ea6d33ad0df33e25e76fce09448028e0063f51b84d4918c834ae5",
+    "bytes": 210860
+  },
+  {
+    "original": "artifacts/home-image-import/hero-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "bcfe501ff251ad5a027cf2d748f4a7e7b5c8a30ba2f6ac31614fac67ad1b22c5",
+    "bytes": 923306
+  },
+  {
+    "original": "artifacts/home-image-import/hero-1920.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "223a70f51b6c15a15ad8e4bdeae8c44d96a1f31eaf7fffbbb4aebf73c6465e1b",
+    "bytes": 1152231
+  },
+  {
+    "original": "artifacts/home-image-import/hero-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "1f6dc96f3197fe9fd35fafdede03836d48df81d8f4124fe4f0264dcd9316ded8",
+    "bytes": 192078
+  },
+  {
+    "original": "artifacts/home-image-import/install-home-images.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/home-image-import/install-home-images.mjs",
+    "sha256": "8a99871ec1ac75f56c51a2a431db1da7a142dba2d11022d36cec1afcefffdb94",
+    "bytes": 7578
+  },
+  {
+    "original": "artifacts/home-image-import/manifest.json",
+    "action": "archive-provenance",
+    "target": "archive/maintenance-2026-10-26/provenance/home-image-import/manifest.json",
+    "sha256": "c13303d2fd4aa8e773266dbd7a4120488fb9659fc211dd90a283e7204d1746ad",
+    "bytes": 7013
+  },
+  {
+    "original": "artifacts/home-image-import/received-contact-sheet.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "281774115cefa833242a0fc247e7dc8817e7ce7e67745770e58fbdc5637c617e",
+    "bytes": 1408748
+  },
+  {
+    "original": "artifacts/home-image-import/received-images.json",
+    "action": "archive-provenance",
+    "target": "archive/maintenance-2026-10-26/provenance/home-image-import/received-images.json",
+    "sha256": "d65ce2e8cf7c100f280cdfaae97a5702d41a8a1e48197853d045ba235c3f19ac",
+    "bytes": 1395
+  },
+  {
+    "original": "artifacts/home-image-import/verification.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "1b10fa1a606a3d25b16107b80f92cc67dcc1356083b007e9b786150ed52dc0da",
+    "bytes": 9375
+  },
+  {
+    "original": "artifacts/home-image-import/verify-home-images.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/home-image-import/verify-home-images.mjs",
+    "sha256": "eb0ec2108f68bf4dc54d66c015fa8285548aed55dd651af3b478cbecc5620368",
+    "bytes": 7166
+  },
+  {
+    "original": "artifacts/home-photo-audit/contact-sheet.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "2073acf780c7e88114b6e16b9e0fcba5b79dcfbe25d95c0fce64edefb8f71de4",
+    "bytes": 1564705
+  },
+  {
+    "original": "artifacts/home-photo-audit/sources.json",
+    "action": "archive-provenance",
+    "target": "archive/maintenance-2026-10-26/provenance/home-photo-audit/sources.json",
+    "sha256": "b68f6d127d36af237a688a8c511e83860c928b7e13e2540dd0790c72737301ca",
+    "bytes": 3481
+  },
+  {
+    "original": "artifacts/image-audit/archive-unused-pages.ps1",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/image-audit/archive-unused-pages.ps1",
+    "sha256": "cfc4fe0c44c962579e70961a375360e6a6a722b0d8e0cb76738f9b2693a7fa38",
+    "bytes": 2308
+  },
+  {
+    "original": "artifacts/image-audit/branding.jpg",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "f78596c68705dbe80157e9eebcfa39d998e5556a1f30d34b1456e159e92ec7e2",
+    "bytes": 92945
+  },
+  {
+    "original": "artifacts/image-audit/codex-inventory.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "1d3b80c3adc5adacc95f315e25f09b3f6a9449fa842d5e288e5ba1481df39d30",
+    "bytes": 21447
+  },
+  {
+    "original": "artifacts/image-audit/contenido.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "565097c3febdfa617595655ad7f2781b66f6b28e0a870feee760ffbe926725aa",
+    "bytes": 1519424
+  },
+  {
+    "original": "artifacts/image-audit/editorial.jpg",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "e4cf29cb4967654b488ec50bbf5d0e3673bb477d4fb3f79538938721d1f5e7b3",
+    "bytes": 373789
+  },
+  {
+    "original": "artifacts/image-audit/inventory.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "3309f0694eb97622f9c996480a22f86b86d53da439b0ac70e1f7795cdf6417bc",
+    "bytes": 86377
+  },
+  {
+    "original": "artifacts/image-audit/inventory.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/image-audit/inventory.mjs",
+    "sha256": "8dd167b91ab2b3ee6df3f95b781ae3f6ca77be66372eb50ce9eb2fc8a49f1ff8",
+    "bytes": 3685
+  },
+  {
+    "original": "artifacts/image-audit/LISTA_EDICION_Y_GENERACION.md",
+    "action": "archive-provenance",
+    "target": "archive/maintenance-2026-10-26/provenance/image-audit/LISTA_EDICION_Y_GENERACION.md",
+    "sha256": "9cfa177ed9a6c564714ba09f2ccc3de74a29665a41e5e8df2bb607fdc1e77c9c",
+    "bytes": 9252
+  },
+  {
+    "original": "artifacts/image-audit/migration-references.txt",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "b25c37b88aa64b99be209d48cd2c5c8ca8e00c1545e781dc132a3b4c758af0b0",
+    "bytes": 15642
+  },
+  {
+    "original": "artifacts/image-audit/personas.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "6594812ef222c11326e37e4f7b902c67ed960004c1fa764476b806923dba6298",
+    "bytes": 2312002
+  },
+  {
+    "original": "artifacts/image-audit/persons.jpg",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "4ed1166e4d10bc582cda34c6a50f32a84039b74bfbfbe4133d02a9130e5a1f2e",
+    "bytes": 336021
+  },
+  {
+    "original": "artifacts/image-audit/PLAN_IMAGENES_CODEX.md",
+    "action": "archive-provenance",
+    "target": "archive/maintenance-2026-10-26/provenance/image-audit/PLAN_IMAGENES_CODEX.md",
+    "sha256": "83f194c22d6938d402ffdb729646caedb1b9d63df04246e20150600e196aaf0b",
+    "bytes": 8308
+  },
+  {
+    "original": "artifacts/image-audit/screens.jpg",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "4b769c16466cd1a8681fab90efc22660cf0d65fef046d5a7e88de67d7bb2ee1d",
+    "bytes": 93446
+  },
+  {
+    "original": "artifacts/image-optimization/build.log",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "f09937bea20f4a3f61a3255ae77f605fb671e66c239847070158f9b6f32ddc40",
+    "bytes": 60432
+  },
+  {
+    "original": "artifacts/image-optimization/migration-sources.json",
+    "action": "archive-provenance",
+    "target": "archive/maintenance-2026-10-26/provenance/image-optimization/migration-sources.json",
+    "sha256": "c93295c2434f34c3b8d4358127b0040c6da83bc3c4182f5b6186c9a077f07ef6",
+    "bytes": 23454
+  },
+  {
+    "original": "artifacts/image-optimization/before/hiring.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "50e6c5ea012c016fe2e23987831fa993d297dd644102cfd2812478590b0635dc",
+    "bytes": 86855
+  },
+  {
+    "original": "artifacts/image-optimization/before/jobs.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "95f2bff376a028f96ccbe624faa89b38da27dd6ae1e25d1df853425facf26cfb",
+    "bytes": 10015
+  },
+  {
+    "original": "artifacts/image-optimization/before/profiles.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "f4a38fa4553e8d33272388a4ab554e7c488795c1e51ece2259b959845b04d3fa",
+    "bytes": 36334
+  },
+  {
+    "original": "artifacts/image-optimization/before/stories.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "c3320173f75e6750f57e1a4ebe8696d4e1ded5aaa7883361d9f67fc38cd2cdb9",
+    "bytes": 4500
+  },
+  {
+    "original": "artifacts/image-optimization/source-before/src/components/cards/ProfileCard.astro",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "ef72e0e6a603fa36b1e394945b134bf68cbb0c70d39e2e9e04e08cfc0c47e635",
+    "bytes": 5807
+  },
+  {
+    "original": "artifacts/image-optimization/source-before/src/components/cards/StoryCard.astro",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "efe643f409d70cd075887a4d3cd65fe6ea2f6ff589c59ebbce6fced784859b30",
+    "bytes": 3290
+  },
+  {
+    "original": "artifacts/image-optimization/source-before/src/components/casos-de-exito/StoriesFeaturedShowcase.astro",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "40a4ecdb051fb01f9be8765959774824ccf49cebd90661681b87f7204ef7676c",
+    "bytes": 4508
+  },
+  {
+    "original": "artifacts/image-optimization/source-before/src/components/contratar/AutonomoCard.astro",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "60a9f1948c062eeec87ec8446d12792f408839742d697ba6a3f4ca4ecf731c81",
+    "bytes": 6232
+  },
+  {
+    "original": "artifacts/image-optimization/source-before/src/components/contratar/CategoryCard.astro",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "85d02db4bc9c735440b108dd0ee32ac10ec777bb410a68f3aacb3cdfcd047527",
+    "bytes": 2905
+  },
+  {
+    "original": "artifacts/image-optimization/source-before/src/components/contratar/HiringDrawer.astro",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "f5bfc49a8e84bc2434dc0551e72dd66a7a888054010b5b6cc597684c1f37358d",
+    "bytes": 20329
+  },
+  {
+    "original": "artifacts/image-optimization/source-before/src/components/contratar/ServiceCard.astro",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "3856192dcc134172ce03d4738c6fc9a1668777521573a137987b47c0fc70d2bd",
+    "bytes": 6017
+  },
+  {
+    "original": "artifacts/image-optimization/source-before/src/components/empleos/OfferCard.astro",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "9e1576bedee800822685f40dbb4adfed81e7bccdd41ff1f6594267f30ee0d3f6",
+    "bytes": 4215
+  },
+  {
+    "original": "artifacts/image-optimization/source-before/src/components/home/HomeBento.astro",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "5865a2e7cad9464c6cd6c4894bcf8985a7accb03324697783fb43c6b2e30f2dd",
+    "bytes": 2916
+  },
+  {
+    "original": "artifacts/image-optimization/source-before/src/components/home/HomeCommunity.astro",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "c19ec33e2176cd922c2030454fc850e423f5687fc8280d948c62e48d66385d0c",
+    "bytes": 5532
+  },
+  {
+    "original": "artifacts/image-optimization/source-before/src/components/home/HomeGuide.astro",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "212f0f72ab188cef803a0cd8618cc5576f081e9a8d1a9e2452f7109150180046",
+    "bytes": 3628
+  },
+  {
+    "original": "artifacts/image-optimization/source-before/src/components/home/HomeHero.astro",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "558f1c9b8b0976248b7b57e29f6d4418a88a32e47f60988d7f76a363b1cacbf8",
+    "bytes": 2885
+  },
+  {
+    "original": "artifacts/image-optimization/source-before/src/components/layout/Header.astro",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "74258297c5a7a231ee0e08b05792ea95380a82469957899464f74a906ae459c4",
+    "bytes": 37311
+  },
+  {
+    "original": "artifacts/image-optimization/source-before/src/components/perfiles/ProfileDetail.astro",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "a8bc143a9bd4ecb6bb24b22f34e2120f88e6467a6013ffda5dd5c7ab7cf24790",
+    "bytes": 29716
+  },
+  {
+    "original": "artifacts/image-optimization/source-before/src/components/ui/YouTubeVideo.astro",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "60aa965e1ba8e907e0451b4174697a6897e8bee9bfcb29727149c754fa05d489",
+    "bytes": 1793
+  },
+  {
+    "original": "artifacts/image-optimization/source-before/src/lib/hiring.ts",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "bf15a2f81480a61176c1da28941124d31efc1a55955b6ba84e338f74da788a6e",
+    "bytes": 9325
+  },
+  {
+    "original": "artifacts/image-optimization/source-before/src/lib/job-presentation.ts",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "16f6aa77e4d9210dfefe6457b56e5bfcd8dacef63b7c1f6e62cc800dc4ce64dd",
+    "bytes": 1461
+  },
+  {
+    "original": "artifacts/image-optimization/source-before/src/lib/jobs.ts",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "20352aa5372f0ff0da86af3027fe4d24d2cee21fcd2791f97bae783d50727fef",
+    "bytes": 7655
+  },
+  {
+    "original": "artifacts/image-optimization/source-before/src/lib/profile.ts",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "dabde4fd5c8f2501b752dbfc5f5b73e8a8bfbaf0956438ed358ba44e6eb83c79",
+    "bytes": 12839
+  },
+  {
+    "original": "artifacts/motion/design-scan.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "ece1e2447b8df4a604b7a30467ea73f6f11577deaf1e7f1c0c912f3b0a36be21",
+    "bytes": 556
+  },
+  {
+    "original": "artifacts/motion/inspect.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/motion/inspect.mjs",
+    "sha256": "26c5f0c79493eaeea643cef0696500248f24d0123050abdbf52032b4c54df3df",
+    "bytes": 4056
+  },
+  {
+    "original": "artifacts/motion/inspection.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "71eb53b6c60c46b944ece02f90038467440b8c1a3baf89c1db608b3ba9a5d128",
+    "bytes": 13965
+  },
+  {
+    "original": "artifacts/motion/mobile-fallback.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "1f6675767c8719bd9154ca6b1596b492ef741097486288d8f7dc7a769c3d9719",
+    "bytes": 34885
+  },
+  {
+    "original": "artifacts/motion/mobile-native.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "1f6675767c8719bd9154ca6b1596b492ef741097486288d8f7dc7a769c3d9719",
+    "bytes": 34885
+  },
+  {
+    "original": "artifacts/motion/navigation-verification.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "8c8756c341580dd0037118d2cee163bee59e64f91d6ef9dc570cb6749a036cc9",
+    "bytes": 6632
+  },
+  {
+    "original": "artifacts/motion/verify-navigation.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/motion/verify-navigation.mjs",
+    "sha256": "5f5ee683679640142173a0dda8aa9c4b47e3f72a5f75671f70b984162318b8ad",
+    "bytes": 8383
+  },
+  {
+    "original": "artifacts/navigation-label/build.log",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "7ec637d51c76b82db1ae87dc507dbc4813b7a91fa10746f483d428b2ae9100f1",
+    "bytes": 109319
+  },
+  {
+    "original": "artifacts/navigation-label/cleanup-build.log",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "9b92ce50d50a6fc76995a31664e258aba41e1fce384b446816d89387fda27b46",
+    "bytes": 109591
+  },
+  {
+    "original": "artifacts/platform/design-check.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "bytes": 4
+  },
+  {
+    "original": "artifacts/platform/publico-final-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "a303e36d06a6738e663643c1a20cd965a524d494cbb05a43377d05d5abfda7a4",
+    "bytes": 791677
+  },
+  {
+    "original": "artifacts/platform/publico-final-240.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "6a41b2e2c7d2242957e3ad286840ab097125d779994fd42d70e88d6e3bc49114",
+    "bytes": 120508
+  },
+  {
+    "original": "artifacts/platform/publico-final-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "f52ad3e650876df2de35969949b00ca494d7cc4ce220e807db527ff5d22ab2a2",
+    "bytes": 174063
+  },
+  {
+    "original": "artifacts/platform/publico-final-768.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "c15f611b2995f2eaa9d8ba23c7d13532a5d23d9ff4694aeada4a321064a28d8a",
+    "bytes": 441399
+  },
+  {
+    "original": "artifacts/platform/verification.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "1a3c8c065ef500bd10e679ff469c3a33bdb7ed8537db2eb8bdf4e104c5bfc481",
+    "bytes": 231
+  },
+  {
+    "original": "artifacts/platform/visual/categoria-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "3125af47a55d36755d01ac5c2067ac0add02fe83cdc287439a12b1f8cdb81262",
+    "bytes": 211271
+  },
+  {
+    "original": "artifacts/platform/visual/categoria-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "6386928e1ce58b89470016e7aa3582593f5adaf1f84322a8d913f4937d0308a3",
+    "bytes": 75792
+  },
+  {
+    "original": "artifacts/platform/visual/categoria-final-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "fe31f611adf4bcbf62f3faf748a4d8eab3d39a58ba4ecdbda3837de0df849266",
+    "bytes": 320154
+  },
+  {
+    "original": "artifacts/platform/visual/contratar-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "cccfd98e5baf956b5e153f694039d4956f07e65d49d44458c8337dbbecf5394f",
+    "bytes": 469511
+  },
+  {
+    "original": "artifacts/platform/visual/contratar-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "5fc98c10ac932c10c1667b9f9781841999f796845eed06b2d7094062fd5e598a",
+    "bytes": 86921
+  },
+  {
+    "original": "artifacts/platform/visual/explicacion-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "09016e0dffecaa1cad5706862ae588973a1828cd99d25546cc49ea1cb4b526d1",
+    "bytes": 401634
+  },
+  {
+    "original": "artifacts/platform/visual/footer-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "6249c3c2619a4196c4af4f164a54430c3b0d508d94dd77501f26b35aa507f203",
+    "bytes": 74567
+  },
+  {
+    "original": "artifacts/platform/visual/hero-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "fd7d4c975e275ba0e4990e9b414d5cc75cce1d150cc4bbd0e24a93ff90378531",
+    "bytes": 783879
+  },
+  {
+    "original": "artifacts/platform/visual/inicio-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "6a70bb28dcfb713c41fd19f07b1eae625b44b886fe2a926611f7043d4a550131",
+    "bytes": 157841
+  },
+  {
+    "original": "artifacts/platform/visual/inicio-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "e983fbc9c7e59400086cb77c7915387290875f3e2e065750501fd94d84237daf",
+    "bytes": 61801
+  },
+  {
+    "original": "artifacts/platform/visual/inicio-final-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "dd951a8bb0f1363a9f6fb2a77c1ae25f5ecbefb6e2ca3a2992c6e17766f53b93",
+    "bytes": 150155
+  },
+  {
+    "original": "artifacts/platform/visual/inicio-final-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "604332af8c68dba8bee8721bcde72228f22354d75fea4bee3d0e3f69560fde08",
+    "bytes": 60237
+  },
+  {
+    "original": "artifacts/platform/visual/metrics.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "f31bd3836efcfa85e9738072b89129a5064fea9db8854e960b0116606348c83d",
+    "bytes": 819
+  },
+  {
+    "original": "artifacts/platform/visual/perfil-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "4d5fc9258a075b171a56f836d6c936905856fac03b63a6dda007c90d0cc4be55",
+    "bytes": 273272
+  },
+  {
+    "original": "artifacts/platform/visual/perfil-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "583b23717a060364e3961b25580e99a1e46647abf8e16f7beb9e62108782cd32",
+    "bytes": 92905
+  },
+  {
+    "original": "artifacts/platform/visual/postulaciones-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "38af9bc6b587b97e5f9bf9e1740a09d28774181a8957d3558dc7be0670684e32",
+    "bytes": 104452
+  },
+  {
+    "original": "artifacts/platform/visual/postulaciones-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "9729065e570317758f5d08978ae7104e93fc764790513e802a169b427601b34f",
+    "bytes": 49236
+  },
+  {
+    "original": "artifacts/platform/visual/publicar-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "445ed014782057797808d2021bba66884e06928f2716439c2baf4e250d55c226",
+    "bytes": 95563
+  },
+  {
+    "original": "artifacts/platform/visual/publicar-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "d9672f41ca5add8fb64af32eea672523d5b330e46a9c697e6dcbaec73ad73520",
+    "bytes": 52234
+  },
+  {
+    "original": "artifacts/platform/visual/publico-240.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "3afea0b2758d7dcf229a88247e1b235ad3024376ddefa6f84631a12d7d3ecefb",
+    "bytes": 112175
+  },
+  {
+    "original": "artifacts/platform/visual/publico-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "5d8f56e2931c879fd90cffb8613225cf3d628dbf4976bcccafe0e3ad0970f919",
+    "bytes": 162370
+  },
+  {
+    "original": "artifacts/platform/visual/publico-768.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "76df4e11b58a587a2580ba872cd01918106aabcf1039230e929c5f7840e1723d",
+    "bytes": 398668
+  },
+  {
+    "original": "artifacts/platform/visual/segunda-seccion-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "0a479d4f0bb5d0970da2f12061caafe6ad02e2baa4d9e3306b6493cf153abd10",
+    "bytes": 72228
+  },
+  {
+    "original": "artifacts/profile-covers/build.log",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "85ddd7765bb31acb1cedbec3e3bbb8e71c7947d0a2d4d68b2195a1f2dc65f13c",
+    "bytes": 108093
+  },
+  {
+    "original": "artifacts/profile-covers/contact-sheet.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "6daa1c165b7c769fd3981f0d24d294e400c3f21a366719e66ecec1d8807bdf21",
+    "bytes": 1879466
+  },
+  {
+    "original": "artifacts/profile-covers/design-detector.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "bytes": 4
+  },
+  {
+    "original": "artifacts/profile-covers/drawer-camila-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "a248852d887dec1b31e2373e855d6a83e41c3ba31154d2aeffd1b9b85d43e38c",
+    "bytes": 374982
+  },
+  {
+    "original": "artifacts/profile-covers/drawer-camila-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "297886f5704e4ff5010b4c51809101d275dbb1994678ea897a41c045ee92b099",
+    "bytes": 151345
+  },
+  {
+    "original": "artifacts/profile-covers/import.json",
+    "action": "archive-provenance",
+    "target": "archive/maintenance-2026-10-26/provenance/profile-covers/import.json",
+    "sha256": "e2e52df1eb1c658c756d578b585dcc0ee0747faf551ea457b47f911e48bc2f48",
+    "bytes": 5842
+  },
+  {
+    "original": "artifacts/profile-covers/profile-camila-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "88e4f94e2562697228eac0edb397078dd2f9d94e5053a28c076343fad3199717",
+    "bytes": 390765
+  },
+  {
+    "original": "artifacts/profile-covers/verification.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "cbbe991b08e6e724183022f836c87709d3f0eec4a5cbfc870b31adf68dbd1788",
+    "bytes": 6744
+  },
+  {
+    "original": "artifacts/profile-covers/verify.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/profile-covers/verify.mjs",
+    "sha256": "eed9f82a1c6429bc7c49e071ce38ba831e8ece5bf574266ae319ce053da8be35",
+    "bytes": 7077
+  },
+  {
+    "original": "artifacts/profiles/complete-examples.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/profiles/complete-examples.mjs",
+    "sha256": "78083e9a2c38a34a0db85b4a0d28c8002fc856fbfc48a31a4ed0cc141852c034",
+    "bytes": 3325
+  },
+  {
+    "original": "artifacts/profiles/completed-design-scan.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "bytes": 3
+  },
+  {
+    "original": "artifacts/profiles/completed-verification.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "b700d9ade9e7ecee9e0cb9ebce2ba6dd1462b9c1a88ae9b83b36383287b1d9f9",
+    "bytes": 1948
+  },
+  {
+    "original": "artifacts/profiles/design-scan.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "bytes": 3
+  },
+  {
+    "original": "artifacts/profiles/examples-before.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "2b2fa30eafa9e68542b2e920847e52a8667bb577e82a55294c5de7aa7acfc98f",
+    "bytes": 101429
+  },
+  {
+    "original": "artifacts/profiles/postulante-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "97631de23b081cf752d0f7a4d6544e71a7cffcd412d55c5baa7d78d155333d01",
+    "bytes": 120757
+  },
+  {
+    "original": "artifacts/profiles/postulante-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "31f9464f08259e05df4d0617bd3526ec4372f5a5b4dba7f430dfa3e605deded3",
+    "bytes": 98246
+  },
+  {
+    "original": "artifacts/profiles/postulante-completo-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "acb70b04d459ac4d093db8f78290c806f05fcc1eb7894d14df8fa828b5609fd4",
+    "bytes": 324767
+  },
+  {
+    "original": "artifacts/profiles/postulante-completo-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "365bf403fe1b058fbeef39ebc80e9061a4b75426a9695fb56fbc3b250d140158",
+    "bytes": 291539
+  },
+  {
+    "original": "artifacts/profiles/profesional-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "a4a54c96e64a869c6c47d58e232f478973b2db8434a9835f9c8975ded8db1416",
+    "bytes": 222830
+  },
+  {
+    "original": "artifacts/profiles/verification.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "c35d0d7a8ffc08319838be5418b884d717cdf6bd8a4d72fcd7fdfe5bff6b8473",
+    "bytes": 2504
+  },
+  {
+    "original": "artifacts/profiles/verify-completed.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/profiles/verify-completed.mjs",
+    "sha256": "e83672baf38b3499f0d7f6c34ac5f86dbfa7871f978f4d4e349905efc0b8f022",
+    "bytes": 8137
+  },
+  {
+    "original": "artifacts/profiles/verify.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/profiles/verify.mjs",
+    "sha256": "5f58e5aa20d939851f56b30b85c9b830c79840f4f430db2c90c59ca1662394de",
+    "bytes": 9021
+  },
+  {
+    "original": "artifacts/publication-actions/mine-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "d10cb2a47aca6f6e642a46b034c80a0b93c9b497261c7481c8f1ad62a6345573",
+    "bytes": 160179
+  },
+  {
+    "original": "artifacts/publication-actions/mine-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "69ba9718f3b011c3b185628eb6ea9b9000d786488af6e1831678583bc08386ac",
+    "bytes": 150249
+  },
+  {
+    "original": "artifacts/publication-actions/mine-768.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "cf7d07300679015b91907c8379ea9f83e22801dbb7997e2ca4010f81aa2b5db9",
+    "bytes": 157799
+  },
+  {
+    "original": "artifacts/publication-actions/mine-final-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "3f414cba535ba58babddcaf6da70ad9fd8a1672728c6223866fc37aae8942849",
+    "bytes": 178919
+  },
+  {
+    "original": "artifacts/publication-actions/mine-final-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "a5797c107117102982b169d81182e6dc0c32bb7fb8ed5067d9d32bb36e38aaad",
+    "bytes": 156646
+  },
+  {
+    "original": "artifacts/publication-actions/mine-final-768.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "ad2d19ce2c7a7a81f988027d4e3fab05af00f09f9d2dfd4b1d817fc11fbfdc8c",
+    "bytes": 164777
+  },
+  {
+    "original": "artifacts/publication-actions/report.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "1c72881f8e44d728848c4adb43c4047d882dd29a987ce59a849d419256d2d350",
+    "bytes": 724
+  },
+  {
+    "original": "artifacts/publication-actions/success-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "72058f5b5092238f170b7b92040579de6607e7de5083793039320bbd19fb2c16",
+    "bytes": 25521
+  },
+  {
+    "original": "artifacts/publication-actions/success-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "62b8594524140eddedc96704174e612484bdb1d3372d5542b08fa5bd633d9e3c",
+    "bytes": 20492
+  },
+  {
+    "original": "artifacts/publication-actions/success-768.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "ef69ca100a98935164aecb7f03ad8cf62925f983f184f98b61beaff0b3f58f05",
+    "bytes": 25410
+  },
+  {
+    "original": "artifacts/publication-reference/card-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "c416ccb63aaba160967dd080bfc1dc36d7f07a840e62a50c8e82cf094022630b",
+    "bytes": 50282
+  },
+  {
+    "original": "artifacts/publication-reference/card-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "df4659062d082d2b725206a79f5e9078fb80523e32aa92d08273c6db20b1c316",
+    "bytes": 47397
+  },
+  {
+    "original": "artifacts/publication-reference/card-768.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "7f9d45cad2df559d83fadd9f0de9124eace3edb5689d7fbc61005d8f6b5902df",
+    "bytes": 50934
+  },
+  {
+    "original": "artifacts/publication-reference/menu-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "2d7914e4b1de2752332e17992e686cc8e3d05da3015c913d4e11e7d64efae783",
+    "bytes": 120783
+  },
+  {
+    "original": "artifacts/publication-reference/menu-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "34a79f7c11c2e40f715e5cd3f60e0189037b9305ca2aa695b2f07c26dd1302cb",
+    "bytes": 63457
+  },
+  {
+    "original": "artifacts/publication-reference/menu-768.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "5a18425dcd0eea47d0afe5cdfed0f1b355365fb9506864b1573048c3fbfe68b8",
+    "bytes": 111162
+  },
+  {
+    "original": "artifacts/publication-reference/report.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "45936ffac84ad072d167f64f56c2255df55d24d09dcc60b814aeeef3277b50c5",
+    "bytes": 700
+  },
+  {
+    "original": "artifacts/publish-navigation/design-scan.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "bytes": 3
+  },
+  {
+    "original": "artifacts/publish-navigation/menu-mobile-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "bccba403ac233ce8009587b8471fb435f4235c6d7caca6c5ef01610255934b7d",
+    "bytes": 45068
+  },
+  {
+    "original": "artifacts/publish-navigation/menu-mobile-768.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "635959defef0f89dd76d45a4212a0d0080ea91ce6b03cb5ad5dc69b7dd69a3ac",
+    "bytes": 47233
+  },
+  {
+    "original": "artifacts/publish-navigation/postulaciones-recibidas-desktop.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "ca309affd5c1a1a2bc61a18f210fa40a6a1655826a7b412ea767f0d3a774f222",
+    "bytes": 59763
+  },
+  {
+    "original": "artifacts/publish-navigation/publicar-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "69f9088b5c31822b6d494b6676faa892b4c5c992b6f8bc2eb4edc9da2c3dc12d",
+    "bytes": 98076
+  },
+  {
+    "original": "artifacts/publish-navigation/publicar-768.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "c3325ee919d747f9da957cd87b5737f8fea1f34ac1160cecfb0ccc3beeca002d",
+    "bytes": 102110
+  },
+  {
+    "original": "artifacts/publish-navigation/publicar-desktop.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "a3dd37933e2275bf02001489a218bacab0a32c7433fe2d03e371d0babdf5c32d",
+    "bytes": 119366
+  },
+  {
+    "original": "artifacts/publish-navigation/publicar-menu-desktop.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "d56da777adaf27b98c7d0b1b1160dbd7b6093ef0d46d04c0f112ec550550d6d6",
+    "bytes": 94803
+  },
+  {
+    "original": "artifacts/publish-navigation/verification.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "a646e9f2f86679958428d91bd556b25478a215de38cfdef6d51719d1a1a99740",
+    "bytes": 739
+  },
+  {
+    "original": "artifacts/publish-navigation/verify.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/publish-navigation/verify.mjs",
+    "sha256": "675735dc1c856159c713b0f514fb856f1b6eea7de5035cce5d0429fd98551cc1",
+    "bytes": 11141
+  },
+  {
+    "original": "artifacts/publish-review/evidence.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "6ed4a16ced6c8354499ab3e23a0d9331a80fcd460bb181b1fbf1852f9cd88c75",
+    "bytes": 23750
+  },
+  {
+    "original": "artifacts/publish-review/publicar-empresa-empleo.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "7188842f6ececfa4316690a4464041a91d7e6fe5a959f9256663c1ed19d97161",
+    "bytes": 124338
+  },
+  {
+    "original": "artifacts/publish-review/publicar-empresa-proyecto.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "1d79419895ddaefd7a7fa58c45d023cbbf8f1b9d6d20ceb46c7f88c08c011e59",
+    "bytes": 125124
+  },
+  {
+    "original": "artifacts/publish-review/publicar-mis-publicaciones.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "71a50b8219525f4b948aa116fc86e070f9bf6ed7cd157ae6b9019c2f3f69ecfa",
+    "bytes": 188424
+  },
+  {
+    "original": "artifacts/publish-review/publicar-mobile.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "fd02ddd3a16c64d9c32f20893970fc10731c4d9969a3517b7adf8f0b98afaae5",
+    "bytes": 106397
+  },
+  {
+    "original": "artifacts/publish-review/publicar-persona.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "ef6886748213cb6e116f04ac1cf062c68e480fb6aedee15be595c1d189d8a955",
+    "bytes": 118370
+  },
+  {
+    "original": "artifacts/publish-review/publicar-servicio.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "d27896a6dfbac710132b31f28f83aa7a7df7523efdeee51ef524d4fbe38c4d90",
+    "bytes": 118951
+  },
+  {
+    "original": "artifacts/publish-review/publicar-vista-previa.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "fb7793480fc95777444e68833a88cd676ee4bc16e18721f38a0f87891dbb2a95",
+    "bytes": 53372
+  },
+  {
+    "original": "artifacts/publish-review/referencia-contratar.png",
+    "action": "archive-reference",
+    "target": "archive/maintenance-2026-10-26/design-references/publish-review/referencia-contratar.png",
+    "sha256": "b47c1510c09f35f6e7fed507a5d7c3e6f0dc5f384e4397bf28dff81ea0dad421",
+    "bytes": 1029380
+  },
+  {
+    "original": "artifacts/publish-review/referencia-inicio.png",
+    "action": "archive-reference",
+    "target": "archive/maintenance-2026-10-26/design-references/publish-review/referencia-inicio.png",
+    "sha256": "d0967a2c57603ea99cdb875aa7571ac1ed94a8ffc095498dbfc44cd24381980b",
+    "bytes": 137781
+  },
+  {
+    "original": "artifacts/radius/changes.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "f30b6ae130e6efc465fc79e8ed6f1ea608df711702fa6240118f38fe58f754a0",
+    "bytes": 21082
+  },
+  {
+    "original": "artifacts/radius/contratar-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "86407985b6e302107e6bddb8a524474dfd21437b8e33153e3be676faeec4f26c",
+    "bytes": 1028297
+  },
+  {
+    "original": "artifacts/radius/contratar-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "d05b4a0a4d240486d37777fd1fc3723aee1a9326f3037f379c815c6976fc425a",
+    "bytes": 213749
+  },
+  {
+    "original": "artifacts/radius/design-scan.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "c6bbd772c5a3e0b0c0b903cb335e4003251c3d0d1e726d0816a3cedc15da55d1",
+    "bytes": 477
+  },
+  {
+    "original": "artifacts/radius/dropdown-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "cf6356b01a41e1549d482ee37523e5889b834055c6f99c48aa1f426b8fb7178d",
+    "bytes": 94233
+  },
+  {
+    "original": "artifacts/radius/dropdown-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "97a137a534023a595fdef01f76920390bfda94f1188c628a5e6a78e2fd8ee277",
+    "bytes": 44669
+  },
+  {
+    "original": "artifacts/radius/inicio-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "629e2a4d85951930ab107151f1551aba6e14a66809dddce20d2baea9cdbac068",
+    "bytes": 136525
+  },
+  {
+    "original": "artifacts/radius/inicio-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "cd3b8d2be50444c32ed004a191217e88e7637a2d5a705ea6b57255da4628c25d",
+    "bytes": 66158
+  },
+  {
+    "original": "artifacts/radius/login-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "e05c639a754544a75be5ad4987ec232d0b3d7a1e1c0dc3dd862fbf49477f3c5f",
+    "bytes": 332847
+  },
+  {
+    "original": "artifacts/radius/login-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "ba8c827b3f5ad9e04f7e1fb516c365833b8963a2730df1b7ed1720f784e59af6",
+    "bytes": 73561
+  },
+  {
+    "original": "artifacts/radius/normalize.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/radius/normalize.mjs",
+    "sha256": "615fe6e05f21242ce3ecd2f364e90a7ab15a3685fc5ced0fce1b6a39aa77b671",
+    "bytes": 3230
+  },
+  {
+    "original": "artifacts/radius/postulaciones-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "0a5c4a6d8e8439615002981d1e8a628c2c3e41d5f4939e845a2aadac04709db3",
+    "bytes": 57607
+  },
+  {
+    "original": "artifacts/radius/postulaciones-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "6fd7d439a06fb9c9d55b5fc9833dfdf7baeab0d02303a74a6e5c8428d9288d87",
+    "bytes": 45358
+  },
+  {
+    "original": "artifacts/radius/publicar-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "7cf4e2fd5bedaeef8f5490e96a04d1dad096b90e659ea573c63649f3f2756417",
+    "bytes": 90284
+  },
+  {
+    "original": "artifacts/radius/publicar-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "a5fadfbcb31dd433b7ff5fb6802306e20d09dfd58388d191714d55981d16f488",
+    "bytes": 54088
+  },
+  {
+    "original": "artifacts/radius/verification-final.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "d82dbf8f750bc5240adaacf546a249d1b141aa3a2c4d59e9ea1f8567b2f7802f",
+    "bytes": 2827
+  },
+  {
+    "original": "artifacts/radius/verification.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "e9a780ce67e5372854edbb3ba9cca63b46fd1c3a8300be027795d573a6029fda",
+    "bytes": 74039
+  },
+  {
+    "original": "artifacts/radius/verify.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/radius/verify.mjs",
+    "sha256": "469325289320c498df4c9ed6b07183f52bfd300bfbd60941e7543ddcbceda412",
+    "bytes": 6082
+  },
+  {
+    "original": "artifacts/service-image-import/build.log",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "4f5a10f90c1f626e57c8b4d952271d413955283f1753f4a3051c0f7f822f5b7c",
+    "bytes": 93330
+  },
+  {
+    "original": "artifacts/service-image-import/contabilidad-finanzas-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "b6a274cf98ef6771c91fea3c3db2737ac6b0ba0936e3600c9efe2603e59e068a",
+    "bytes": 399329
+  },
+  {
+    "original": "artifacts/service-image-import/contabilidad-finanzas-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "7f59610104b71f6a262d5ec990d2487e644c99f31944f1a6f88ab15cafd17aff",
+    "bytes": 408476
+  },
+  {
+    "original": "artifacts/service-image-import/contact-1-12.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "24b18b12bd1b9004454a9ee0527e7252cf03c35631b3721b030bdd9a153b0d47",
+    "bytes": 1898371
+  },
+  {
+    "original": "artifacts/service-image-import/contact-13-24.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "5f4baafbc81418096f13d2d2a0de07f20e29d5c8e78a7ff58e4edf251470042b",
+    "bytes": 1709372
+  },
+  {
+    "original": "artifacts/service-image-import/hiring.before.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "adc4d892ddbd34ec962bf9e626527a0e4c4cd0fceba3999b6546168e1915299a",
+    "bytes": 92928
+  },
+  {
+    "original": "artifacts/service-image-import/ilustracion-arte-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "b9b04543dff6d3936e128b54109c4754f549911579f921580cf90141a21e2395",
+    "bytes": 397481
+  },
+  {
+    "original": "artifacts/service-image-import/ilustracion-arte-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "47addf5ad83220c28731cfd4fca34aaa6cd8f59700dd24316c849492871910f7",
+    "bytes": 402073
+  },
+  {
+    "original": "artifacts/service-image-import/image-slots.before.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "fa0d0631ac012f98c408149289b637a736486d9fa6f033a9ac62d724c5acbb2a",
+    "bytes": 13033
+  },
+  {
+    "original": "artifacts/service-image-import/inspect-images.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/service-image-import/inspect-images.mjs",
+    "sha256": "b00a144a465d6c958f8fbf1614621c2999f69731454d6e81c88cca51c2ec29c4",
+    "bytes": 1997
+  },
+  {
+    "original": "artifacts/service-image-import/install-images.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/service-image-import/install-images.mjs",
+    "sha256": "70c09457a4e17430b84acf6d93c4bc191a252a360a7814a4ff33273df2f38b55",
+    "bytes": 7852
+  },
+  {
+    "original": "artifacts/service-image-import/manifest.json",
+    "action": "archive-provenance",
+    "target": "archive/maintenance-2026-10-26/provenance/service-image-import/manifest.json",
+    "sha256": "991888a56dd8aab0a0d20b442d9a965da2242e0131e2c38c57e505735d55dd00",
+    "bytes": 27012
+  },
+  {
+    "original": "artifacts/service-image-import/received-images.json",
+    "action": "archive-provenance",
+    "target": "archive/maintenance-2026-10-26/provenance/service-image-import/received-images.json",
+    "sha256": "709def019d88f4ade16b4d85e63969aa4a9bd15160c1abcecd8b7dacf7ece298",
+    "bytes": 3110
+  },
+  {
+    "original": "artifacts/service-image-import/verification.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "4705cb01526014c4a7315d6b066091c8a7902c2884e97e17778c2f2061bf8bbe",
+    "bytes": 30724
+  },
+  {
+    "original": "artifacts/service-image-import/verify-import.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/service-image-import/verify-import.mjs",
+    "sha256": "0f3bce73fad8370a84c34f4ec9bf4ea67d19339b5f5c5a1bf8dc1d515b72b4bd",
+    "bytes": 7159
+  },
+  {
+    "original": "artifacts/service-image-import/originals/Animación 2D en proceso-24.png",
+    "action": "archive-original",
+    "target": "archive/maintenance-2026-10-26/media-sources/service-image-import/originals/Animación 2D en proceso-24.png",
+    "sha256": "ec2b7a875e62de8e7317923ae932e25f973859a3a5ddbdee93604975cd4960e6",
+    "bytes": 1914574
+  },
+  {
+    "original": "artifacts/service-image-import/originals/Atención por WhatsApp en negocio familiar-11.png",
+    "action": "archive-original",
+    "target": "archive/maintenance-2026-10-26/media-sources/service-image-import/originals/Atención por WhatsApp en negocio familiar-11.png",
+    "sha256": "a6986f603a9e8f99544f0408652e42215bcead7578c2e87a69101a40d86bcaba",
+    "bytes": 2062430
+  },
+  {
+    "original": "artifacts/service-image-import/originals/Auditoría de accesibilidad y rendimiento web-15.png",
+    "action": "archive-original",
+    "target": "archive/maintenance-2026-10-26/media-sources/service-image-import/originals/Auditoría de accesibilidad y rendimiento web-15.png",
+    "sha256": "94f5f6348d78baeb5a8edfe2cd3062775ffd53228281816dce0713b14a6f6292",
+    "bytes": 1992581
+  },
+  {
+    "original": "artifacts/service-image-import/originals/Calendario editorial entre notas y laptop-9.png",
+    "action": "archive-original",
+    "target": "archive/maintenance-2026-10-26/media-sources/service-image-import/originals/Calendario editorial entre notas y laptop-9.png",
+    "sha256": "babc5e0a85a4059464985ff646c71bad01b92fa7c3650f4b13eb55d7d28d4427",
+    "bytes": 2120171
+  },
+  {
+    "original": "artifacts/service-image-import/originals/Conciliación bancaria y cierre mensual-1.png",
+    "action": "archive-original",
+    "target": "archive/maintenance-2026-10-26/media-sources/service-image-import/originals/Conciliación bancaria y cierre mensual-1.png",
+    "sha256": "35e494c050f02801d1eb9d2eb62271d005fc2a7c58e3d6e17c8b63d0961d5e1b",
+    "bytes": 2228481
+  },
+  {
+    "original": "artifacts/service-image-import/originals/Cuadrícula de iconos vectoriales-17.png",
+    "action": "archive-original",
+    "target": "archive/maintenance-2026-10-26/media-sources/service-image-import/originals/Cuadrícula de iconos vectoriales-17.png",
+    "sha256": "962860595d2a6e3d14b9f8f4fd025861b1b710dfd9adf9f6189cabe36dbaa988",
+    "bytes": 1977665
+  },
+  {
+    "original": "artifacts/service-image-import/originals/Digitando encuestas en una oficina boliviana-5.png",
+    "action": "archive-original",
+    "target": "archive/maintenance-2026-10-26/media-sources/service-image-import/originals/Digitando encuestas en una oficina boliviana-5.png",
+    "sha256": "70d09ae16e0eb68b74f3a3f6d50851b2f3f377d3fe8c2bf410171883aa086f91",
+    "bytes": 2260105
+  },
+  {
+    "original": "artifacts/service-image-import/originals/Diseñador boliviano creando carruseles educativos-12.png",
+    "action": "archive-original",
+    "target": "archive/maintenance-2026-10-26/media-sources/service-image-import/originals/Diseñador boliviano creando carruseles educativos-12.png",
+    "sha256": "72246eea08f3c95c3cfcf091601520fbe4e1b0f4fa9981abfc678b293628ca3c",
+    "bytes": 2079092
+  },
+  {
+    "original": "artifacts/service-image-import/originals/Diseño y código en dos monitores-16.png",
+    "action": "archive-original",
+    "target": "archive/maintenance-2026-10-26/media-sources/service-image-import/originals/Diseño y código en dos monitores-16.png",
+    "sha256": "151ff85896685145496177514a4fbdd0306d8f9a8bff9d854894b942008723b7",
+    "bytes": 2031097
+  },
+  {
+    "original": "artifacts/service-image-import/originals/Documentos de compras y ventas para IVA-4.png",
+    "action": "archive-original",
+    "target": "archive/maintenance-2026-10-26/media-sources/service-image-import/originals/Documentos de compras y ventas para IVA-4.png",
+    "sha256": "c128485e39cc0ab5e8b14b8711146378d0d94cd0e534342d1f74a41d55e6eb4e",
+    "bytes": 2313538
+  },
+  {
+    "original": "artifacts/service-image-import/originals/Edición de subtítulos en Bolivia-22.png",
+    "action": "archive-original",
+    "target": "archive/maintenance-2026-10-26/media-sources/service-image-import/originals/Edición de subtítulos en Bolivia-22.png",
+    "sha256": "4fdf8965903e853f97947199fd72f58c156f4a80258814ba8610e4fd177494b2",
+    "bytes": 2186350
+  },
+  {
+    "original": "artifacts/service-image-import/originals/Edición documental en una oficina boliviana-23.png",
+    "action": "archive-original",
+    "target": "archive/maintenance-2026-10-26/media-sources/service-image-import/originals/Edición documental en una oficina boliviana-23.png",
+    "sha256": "f4a743b739102138558243bd3817c3ed1676cd56dbfe5ecf8f99c34c5223fc05",
+    "bytes": 2118079
+  },
+  {
+    "original": "artifacts/service-image-import/originals/Editando reels en un escritorio boliviano-21.png",
+    "action": "archive-original",
+    "target": "archive/maintenance-2026-10-26/media-sources/service-image-import/originals/Editando reels en un escritorio boliviano-21.png",
+    "sha256": "a536f259b684a1e36dfb2aab1fc3f64eccd9e0fcb9ab885bf47048d4b6c7f5ee",
+    "bytes": 1860581
+  },
+  {
+    "original": "artifacts/service-image-import/originals/Editando un sitio web en WordPress-14.png",
+    "action": "archive-original",
+    "target": "archive/maintenance-2026-10-26/media-sources/service-image-import/originals/Editando un sitio web en WordPress-14.png",
+    "sha256": "c6d657f165bcb3065b72e129b3652d22e8ae9e649c34815daa5fff1878267266",
+    "bytes": 1964722
+  },
+  {
+    "original": "artifacts/service-image-import/originals/Escaneo de documentos en una oficina comunitaria-7.png",
+    "action": "archive-original",
+    "target": "archive/maintenance-2026-10-26/media-sources/service-image-import/originals/Escaneo de documentos en una oficina comunitaria-7.png",
+    "sha256": "dd15e04ff1faf069afc7476ba036889fa691d5ef8bedb0ebec576b098083a4fc",
+    "bytes": 2325735
+  },
+  {
+    "original": "artifacts/service-image-import/originals/Factura electrónica SIAT en oficina boliviana-2.png",
+    "action": "archive-original",
+    "target": "archive/maintenance-2026-10-26/media-sources/service-image-import/originals/Factura electrónica SIAT en oficina boliviana-2.png",
+    "sha256": "48ba81f720bd9536b956c084c39e3718f40bf812113283275441ad48e543e142",
+    "bytes": 1855957
+  },
+  {
+    "original": "artifacts/service-image-import/originals/Gestión de redes desde casa-10.png",
+    "action": "archive-original",
+    "target": "archive/maintenance-2026-10-26/media-sources/service-image-import/originals/Gestión de redes desde casa-10.png",
+    "sha256": "6c62739eef9e258c62bae3451296462bcc4ebb3bc8d06205cd5f7451e13a2e18",
+    "bytes": 2285929
+  },
+  {
+    "original": "artifacts/service-image-import/originals/Ilustrador vectorizando un pájaro abstracto-19.png",
+    "action": "archive-original",
+    "target": "archive/maintenance-2026-10-26/media-sources/service-image-import/originals/Ilustrador vectorizando un pájaro abstracto-19.png",
+    "sha256": "19dd5182cedb9272aeccd4eac6980fdec1993987350c93158f26dd07f317b3e6",
+    "bytes": 2101058
+  },
+  {
+    "original": "artifacts/service-image-import/originals/Ilustradora boliviana creando stickers a mano-20.png",
+    "action": "archive-original",
+    "target": "archive/maintenance-2026-10-26/media-sources/service-image-import/originals/Ilustradora boliviana creando stickers a mano-20.png",
+    "sha256": "5a994878f7e459e1bb64e6e7cfdd8710c04bd6ec0d5059e2edb924d1c7a475f4",
+    "bytes": 2569694
+  },
+  {
+    "original": "artifacts/service-image-import/originals/Limpieza de datos en oficina boliviana-6.png",
+    "action": "archive-original",
+    "target": "archive/maintenance-2026-10-26/media-sources/service-image-import/originals/Limpieza de datos en oficina boliviana-6.png",
+    "sha256": "b1baf11974bc270761a7fe81df0cd853730aec885048ff96deefc3a6717421e8",
+    "bytes": 2358806
+  },
+  {
+    "original": "artifacts/service-image-import/originals/Preparación de nómina en oficina boliviana-3.png",
+    "action": "archive-original",
+    "target": "archive/maintenance-2026-10-26/media-sources/service-image-import/originals/Preparación de nómina en oficina boliviana-3.png",
+    "sha256": "1d99871d561a128704dc9a394052b82bb653963ae553b7a7b2c39f3a6a1446a5",
+    "bytes": 2107928
+  },
+  {
+    "original": "artifacts/service-image-import/originals/Revisión de infografía educativa impresa-18.png",
+    "action": "archive-original",
+    "target": "archive/maintenance-2026-10-26/media-sources/service-image-import/originals/Revisión de infografía educativa impresa-18.png",
+    "sha256": "9cb34feb997e9c00209373419b5e8f8a07b0ba53e7cb074b85a0047d48ac12a8",
+    "bytes": 2627245
+  },
+  {
+    "original": "artifacts/service-image-import/originals/Revisión web en laptop y móvil-13.png",
+    "action": "archive-original",
+    "target": "archive/maintenance-2026-10-26/media-sources/service-image-import/originals/Revisión web en laptop y móvil-13.png",
+    "sha256": "1e1852919ae2ca2cd2ec05996a209780392dd1bd8b95cc25a44093b0b6dd851d",
+    "bytes": 2064230
+  },
+  {
+    "original": "artifacts/service-image-import/originals/Trabajador escanea caja en almacén boliviano-8.png",
+    "action": "archive-original",
+    "target": "archive/maintenance-2026-10-26/media-sources/service-image-import/originals/Trabajador escanea caja en almacén boliviano-8.png",
+    "sha256": "02efa986617717115bc58f84e31cc199332e5795ecffe4f2df29acffaf0c4445",
+    "bytes": 2297489
+  },
+  {
+    "original": "artifacts/service-image-import/previous/serv-10-emision-y-registro-de-facturacion-electronica-siat.webp",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "76bee72592fede1726b16ff9083371c7a2394f33d17a5d52a71e24e1dbcfe7ec",
+    "bytes": 60358
+  },
+  {
+    "original": "artifacts/service-image-import/previous/serv-11-armado-de-libros-de-compras-y-ventas-iva-para-negocios.webp",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "76bee72592fede1726b16ff9083371c7a2394f33d17a5d52a71e24e1dbcfe7ec",
+    "bytes": 60358
+  },
+  {
+    "original": "artifacts/service-image-import/previous/serv-12-planilla-de-sueldos-y-aportes-patronales-hasta-15-dependientes.webp",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "76bee72592fede1726b16ff9083371c7a2394f33d17a5d52a71e24e1dbcfe7ec",
+    "bytes": 60358
+  },
+  {
+    "original": "artifacts/service-image-import/previous/serv-13-digitacion-y-transcripcion-masiva-de-documentos-hasta-150-paginas.webp",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "b6021da740a1f898edcd431797df663af0e80da9640a3d29df5e322096a97a71",
+    "bytes": 40856
+  },
+  {
+    "original": "artifacts/service-image-import/previous/serv-14-limpieza-y-normalizacion-de-bases-de-datos-en-excel-google-sheets.webp",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "b6021da740a1f898edcd431797df663af0e80da9640a3d29df5e322096a97a71",
+    "bytes": 40856
+  },
+  {
+    "original": "artifacts/service-image-import/previous/serv-15-digitalizacion-e-indexacion-de-archivos-fisicos-a-pdf-buscable.webp",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "b6021da740a1f898edcd431797df663af0e80da9640a3d29df5e322096a97a71",
+    "bytes": 40856
+  },
+  {
+    "original": "artifacts/service-image-import/previous/serv-16-captura-masiva-de-formularios-e-inventarios-comerciales.webp",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "b6021da740a1f898edcd431797df663af0e80da9640a3d29df5e322096a97a71",
+    "bytes": 40856
+  },
+  {
+    "original": "artifacts/service-image-import/previous/serv-17-gestion-mensual-de-redes-sociales-16-publicaciones-atencion-por-chat.webp",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "ae50c2c38058e3303780ca45e2cd94e0ae4d7d6450260f35f37cf079fdcd9c48",
+    "bytes": 13994
+  },
+  {
+    "original": "artifacts/service-image-import/previous/serv-18-parrilla-mensual-de-contenido-con-20-ideas-y-guiones-escritos.webp",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "ae50c2c38058e3303780ca45e2cd94e0ae4d7d6450260f35f37cf079fdcd9c48",
+    "bytes": 13994
+  },
+  {
+    "original": "artifacts/service-image-import/previous/serv-19-diseno-de-10-carruseles-educativos-de-alto-alcance-para-instagram.webp",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "ae50c2c38058e3303780ca45e2cd94e0ae4d7d6450260f35f37cf079fdcd9c48",
+    "bytes": 13994
+  },
+  {
+    "original": "artifacts/service-image-import/previous/serv-20-moderacion-y-respuesta-de-mensajes-por-whatsapp-y-dms-1-mes.webp",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "ae50c2c38058e3303780ca45e2cd94e0ae4d7d6450260f35f37cf079fdcd9c48",
+    "bytes": 13994
+  },
+  {
+    "original": "artifacts/service-image-import/previous/serv-21-creacion-de-landing-page-moderna-de-alta-conversion-y-accesible.webp",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "debb6e2a0843126353a4a88af3ca6c6cedda5e109ba1cc62fb7bbdb8c73426a8",
+    "bytes": 76136
+  },
+  {
+    "original": "artifacts/service-image-import/previous/serv-22-desarrollo-de-sitio-web-corporativo-en-wordpress-5-secciones.webp",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "debb6e2a0843126353a4a88af3ca6c6cedda5e109ba1cc62fb7bbdb8c73426a8",
+    "bytes": 76136
+  },
+  {
+    "original": "artifacts/service-image-import/previous/serv-23-optimizacion-de-velocidad-y-auditoria-de-accesibilidad-web-wcag.webp",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "debb6e2a0843126353a4a88af3ca6c6cedda5e109ba1cc62fb7bbdb8c73426a8",
+    "bytes": 76136
+  },
+  {
+    "original": "artifacts/service-image-import/previous/serv-24-maquetacion-responsive-html5-css3-desde-diseno-de-figma.webp",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "debb6e2a0843126353a4a88af3ca6c6cedda5e109ba1cc62fb7bbdb8c73426a8",
+    "bytes": 76136
+  },
+  {
+    "original": "artifacts/service-image-import/previous/serv-25-ilustracion-de-mascota-o-personaje-corporativo-de-marca.webp",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "58844c9338e2f782bfd1c1c680b205986905285ef3a699cee899f1b5c5bd63b2",
+    "bytes": 92326
+  },
+  {
+    "original": "artifacts/service-image-import/previous/serv-26-pack-de-15-iconos-vectoriales-personalizados-para-web-y-app.webp",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "58844c9338e2f782bfd1c1c680b205986905285ef3a699cee899f1b5c5bd63b2",
+    "bytes": 92326
+  },
+  {
+    "original": "artifacts/service-image-import/previous/serv-27-diseno-de-infografia-educativa-y-visual-de-gran-formato.webp",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "58844c9338e2f782bfd1c1c680b205986905285ef3a699cee899f1b5c5bd63b2",
+    "bytes": 92326
+  },
+  {
+    "original": "artifacts/service-image-import/previous/serv-28-pack-de-stickers-digitales-personalizados-para-whatsapp-y-telegram.webp",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "58844c9338e2f782bfd1c1c680b205986905285ef3a699cee899f1b5c5bd63b2",
+    "bytes": 92326
+  },
+  {
+    "original": "artifacts/service-image-import/previous/serv-29-pack-de-5-reels-tiktoks-con-subtitulos-dinamicos-y-efectos.webp",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "7b49a4b7cc25c6d5b621cd2c158d40eaa82e15bbc74ac134724392a7d1ca8230",
+    "bytes": 62924
+  },
+  {
+    "original": "artifacts/service-image-import/previous/serv-30-subtitulado-accesible-y-sincronizado-para-videos-de-hasta-15-minutos.webp",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "7b49a4b7cc25c6d5b621cd2c158d40eaa82e15bbc74ac134724392a7d1ca8230",
+    "bytes": 62924
+  },
+  {
+    "original": "artifacts/service-image-import/previous/serv-31-edicion-completa-de-video-institucional-o-entrevista-hasta-5-min.webp",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "7b49a4b7cc25c6d5b621cd2c158d40eaa82e15bbc74ac134724392a7d1ca8230",
+    "bytes": 62924
+  },
+  {
+    "original": "artifacts/service-image-import/previous/serv-32-creacion-de-video-promocional-animado-para-redes-sociales-30-seg.webp",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "7b49a4b7cc25c6d5b621cd2c158d40eaa82e15bbc74ac134724392a7d1ca8230",
+    "bytes": 62924
+  },
+  {
+    "original": "artifacts/service-image-import/previous/serv-9-conciliacion-bancaria-y-cierre-mensual-de-facturacion.webp",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "76bee72592fede1726b16ff9083371c7a2394f33d17a5d52a71e24e1dbcfe7ec",
+    "bytes": 60358
+  },
+  {
+    "original": "artifacts/story-video/1440-debug.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "1c3888cc4cc92bc61fe03279f24f5ca8a071495106c35b1361826d2011d24f44",
+    "bytes": 855120
+  },
+  {
+    "original": "artifacts/story-video/1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "148581558a223c2e0611aaa94c7b9bf71a3d2d9e520169f1c625dab8736df26b",
+    "bytes": 953738
+  },
+  {
+    "original": "artifacts/story-video/390-debug.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "95bbf707c7350cef7b4cdd0b348e82eee039ef6131c4dab327a39e9356d09923",
+    "bytes": 174608
+  },
+  {
+    "original": "artifacts/story-video/390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "d17783404fc11878d983837e78ffbe8ef52f901d8fa5ab20fe4756cac39dc8f0",
+    "bytes": 169598
+  },
+  {
+    "original": "artifacts/story-video/768-debug.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "c36493e1fdb8270204cb61b2c134dae1a402e211ec8e20cf4455e5817412b15b",
+    "bytes": 416766
+  },
+  {
+    "original": "artifacts/story-video/768.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "7f7ddc52da02fb35ed9ae8fbccafa12dc4228227e6817f8bf795126c229f6525",
+    "bytes": 428679
+  },
+  {
+    "original": "artifacts/story-video/report.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "6754d8da67a9971857741f5317929bdc1bb6770b5f1e5c5f3bf8b286e2104f67",
+    "bytes": 744
+  },
+  {
+    "original": "artifacts/title-word-motion/build.log",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "fda46937424a8da77501483a89bd4deaaed773faa7c577135fc6cb7ff5dee08b",
+    "bytes": 90331
+  },
+  {
+    "original": "artifacts/title-word-motion/home-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "eb0c3b1a37f4542d341f7cc578525b310b1c0a1a675c33cd4a636c232af0a30d",
+    "bytes": 934217
+  },
+  {
+    "original": "artifacts/title-word-motion/home-240.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "25a9e19f0c19341a67706a7216f1a87add56c5997123cc2c786fe61289bb75b0",
+    "bytes": 135772
+  },
+  {
+    "original": "artifacts/title-word-motion/home-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "9b85699bbdf517e8bc26255a697e693f0b8c9a7d357e7089eb49af84815f5e45",
+    "bytes": 219142
+  },
+  {
+    "original": "artifacts/title-word-motion/verification.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "ab9ea95a532a728ff52c57acd97fb68f2ee960e9996a966f4bad954bd42f0b64",
+    "bytes": 2167
+  },
+  {
+    "original": "artifacts/title-word-motion/verify.mjs",
+    "action": "archive-one-off-tool",
+    "target": "archive/maintenance-2026-10-26/one-off-tools/title-word-motion/verify.mjs",
+    "sha256": "0559a997686e61c0866374339c04c62efc28426108e670f2dcfd5c50087dd6ef",
+    "bytes": 6858
+  },
+  {
+    "original": "artifacts/workspace/design-scan.json",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "bytes": 4
+  },
+  {
+    "original": "artifacts/workspace/filtros-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "6a32bd152cdc1695d5a0eeeb1d2880644143e526e6ebfa4897e99d7e25bef032",
+    "bytes": 159609
+  },
+  {
+    "original": "artifacts/workspace/filtros-1920.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "04e7c01a33fd1e3a2b3abd71e391cf465db2a3501554d5117fdf659fdb4fd6d1",
+    "bytes": 149055
+  },
+  {
+    "original": "artifacts/workspace/filtros-320.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "2f0ae1a028004ad8879bcaf1ce6be003fd6e4124d651bdf00b27b6ededb19707",
+    "bytes": 156510
+  },
+  {
+    "original": "artifacts/workspace/filtros-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "0d76ec9765f2fe98d920291c5512dba09c00d4234d636b8bd669f512f52ab53f",
+    "bytes": 167940
+  },
+  {
+    "original": "artifacts/workspace/filtros-768.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "fce54f4bc059aeedc9c1ca6e4e17a74daad403f5a379954b123a29393110d6e8",
+    "bytes": 185158
+  },
+  {
+    "original": "artifacts/workspace/inicio-1440.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "10db2068ce09cd6268669f1c169798b85210613695de0980da8b5bfce65008f7",
+    "bytes": 137518
+  },
+  {
+    "original": "artifacts/workspace/inicio-1920.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "aa36f0e00af33a49274c5e4a7671ad0648d7f44703eb190df716de015dff51d5",
+    "bytes": 137948
+  },
+  {
+    "original": "artifacts/workspace/inicio-320.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "51112c9b71604df46c22329652be1a462a0bb314302699216c5f50ca1de84fc4",
+    "bytes": 143237
+  },
+  {
+    "original": "artifacts/workspace/inicio-390.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "98b8ee65b5f93cd44cd30330a1d9eb775531bef83528041fc42d36356ac498be",
+    "bytes": 155705
+  },
+  {
+    "original": "artifacts/workspace/inicio-768.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "779d12731da66b332945154142b47be328fdc15180fcf898f72e529d67552f2d",
+    "bytes": 143249
+  },
+  {
+    "original": "artifacts/workspace/tarjeta-figma.png",
+    "action": "remove-regenerable",
+    "target": null,
+    "sha256": "cfce8515bdf309c7e9b19e1654dce7be7347f0cee2167bab2564df63ba04ac3d",
+    "bytes": 20923
+  }
+]

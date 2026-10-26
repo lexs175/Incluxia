@@ -1,0 +1,49 @@
+{
+  "generatedWith": "image_gen built-in",
+  "assets": [
+    {
+      "id": "serv-5",
+      "title": "Optimización, Limpieza y Mantenimiento de Software Remoto",
+      "url": "/images/services/sistemas-ti/mantenimiento-remoto-v1.webp",
+      "original": "artifacts/generated-services/sistemas-ti/v1/originals/mantenimiento-remoto-v1.png",
+      "width": 1942,
+      "height": 809,
+      "bytes": 130712,
+      "sha256": "8c528538ac589440f94f3281328ba1f86be9d4565c7e2d51b742b033d15b37a8",
+      "sourcePath": "C:\\Users\\Lex\\.codex\\generated_images\\01a16e88-94f3-7a32-a617-22f4b1d8f2f4\\exec-b004c082-26de-4e08-850e-ed708d9a3b1d.png"
+    },
+    {
+      "id": "serv-6",
+      "title": "Configuración Segura de Redes LAN y Wi-Fi de Oficina",
+      "url": "/images/services/sistemas-ti/redes-lan-wifi-v1.webp",
+      "original": "artifacts/generated-services/sistemas-ti/v1/originals/redes-lan-wifi-v1.png",
+      "width": 1942,
+      "height": 809,
+      "bytes": 118430,
+      "sha256": "30c715e804c18fc52afe8a1de7463a58d1b9f1850d967c3e41caa988f3cd1b98",
+      "sourcePath": "C:\\Users\\Lex\\.codex\\generated_images\\01a16e88-94f3-7a32-a617-22f4b1d8f2f4\\exec-cb61f070-e38b-4590-a4b9-9460535beb69.png"
+    },
+    {
+      "id": "serv-7",
+      "title": "Soporte Helpdesk Mensual por Chat para Empresas (Hasta 10 PCs)",
+      "url": "/images/services/sistemas-ti/helpdesk-chat-v1.webp",
+      "original": "artifacts/generated-services/sistemas-ti/v1/originals/helpdesk-chat-v1.png",
+      "width": 1942,
+      "height": 809,
+      "bytes": 118938,
+      "sha256": "884eed1169e0c71350792ed3032804686a1ab7cdf898712bbec81376985afa59",
+      "sourcePath": "C:\\Users\\Lex\\.codex\\generated_images\\01a16e88-94f3-7a32-a617-22f4b1d8f2f4\\exec-fc764deb-0c01-4d1c-a574-05984074ca05.png"
+    },
+    {
+      "id": "serv-8",
+      "title": "Instalación y Parametrización de Software Corporativo y Antivirus",
+      "url": "/images/services/sistemas-ti/instalacion-software-v1.webp",
+      "original": "artifacts/generated-services/sistemas-ti/v1/originals/instalacion-software-v1.png",
+      "width": 1942,
+      "height": 809,
+      "bytes": 155832,
+      "sha256": "b607d64cb87d8857749d068049ed6facddabd6752d89740e52a186280bbf6030",
+      "sourcePath": "C:\\Users\\Lex\\.codex\\generated_images\\01a16e88-94f3-7a32-a617-22f4b1d8f2f4\\exec-7245da62-fc0b-45eb-bea3-f5b81600ce74.png"
+    }
+  ]
+}

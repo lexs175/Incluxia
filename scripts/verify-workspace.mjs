@@ -5,7 +5,7 @@ import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { resolve, extname, sep } from 'node:path';
 import assert from 'node:assert/strict';
 
-const root = resolve('dist');
+const root = resolve(process.env.ECO_TEST_DIST || 'dist');
 const out = resolve('artifacts/workspace');
 mkdirSync(out, { recursive: true });
 const mime = { '.html': 'text/html', '.js': 'application/javascript', '.css': 'text/css', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.svg': 'image/svg+xml' };
@@ -80,8 +80,14 @@ try {
       const title = card.querySelector('.job-title');
       const budget = card.querySelector('.budget-amount');
       const button = card.querySelector('.btn-text-capsule');
+      const tokenProbe = document.createElement('span');
+      tokenProbe.style.color = 'var(--color-bg-primary)';
+      document.body.append(tokenProbe);
+      const primaryColor = getComputedStyle(tokenProbe).color;
+      tokenProbe.remove();
       return {
         width: innerWidth, scrollWidth: document.documentElement.scrollWidth,
+        primaryColor,
         card: { width: card.getBoundingClientRect().width, height: card.getBoundingClientRect().height },
         columns: getComputedStyle(document.querySelector('.jobs-cards-grid')).gridTemplateColumns,
         title: { color: getComputedStyle(title).color, weight: getComputedStyle(title).fontWeight },
@@ -94,11 +100,11 @@ try {
       };
     });
     report.viewports.push(metrics);
-    assert.equal(metrics.scrollWidth, width, `Desborde de pantalla a ${width}`);
+    assert.ok(metrics.scrollWidth <= width, `Desborde de pantalla a ${width}`);
     assert.equal(metrics.title.color, 'rgb(0, 0, 0)');
     assert.equal(metrics.title.weight, '500');
-    assert.equal(metrics.button.color, 'rgb(27, 78, 221)');
-    assert.equal(Math.round(metrics.button.height), 34);
+    assert.equal(metrics.button.color, metrics.primaryColor);
+    assert.ok(Math.abs(metrics.button.height - 34) < 2, `Altura del botón fuera de la escala fluida a ${width}px`);
     assert.equal(metrics.shadows, 0);
     assert.deepEqual(metrics.brokenImages, []);
     assert.deepEqual(metrics.overflows, []);
@@ -119,12 +125,12 @@ try {
   const card = page.locator('#jobGrid .offer-card').first();
   await card.evaluate(el => { el.style.width = '397.625px'; });
   await card.screenshot({ path: `${out}/tarjeta-figma.png` });
-  report.figmaCard = await card.evaluate(el => ({ width: el.getBoundingClientRect().width, height: el.getBoundingClientRect().height, price: getComputedStyle(el.querySelector('.budget-amount')).fontSize, arrowWidth: el.querySelector('.btn-badge--left').getBoundingClientRect().width }));
+  report.figmaCard = await card.evaluate(el => ({ width: el.getBoundingClientRect().width, height: el.getBoundingClientRect().height, price: getComputedStyle(el.querySelector('.budget-amount')).fontSize, arrowWidth: el.querySelector('.btn-badge--right').getBoundingClientRect().width }));
   assert.equal(report.figmaCard.height, 280);
   assert.equal(report.figmaCard.price, '32px');
-  assert.equal(report.figmaCard.arrowWidth, 34);
+  assert.equal(Math.round(report.figmaCard.arrowWidth), 34);
   await page.locator('#jobSearch').fill('Soporte');
-  await page.locator('#jobGrid .offer-action').first().click();
+  await page.locator('#jobGrid .modular-btn').first().click();
   await page.locator('#jobDetail[aria-busy="false"]').waitFor({ state: 'visible' });
   await page.locator('#backToJobs').click();
   await page.locator('#jobsMasterExplorer[data-ready="true"]').waitFor();

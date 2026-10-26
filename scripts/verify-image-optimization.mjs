@@ -6,7 +6,7 @@ import sharp from 'sharp';
 import assert from 'node:assert/strict';
 
 const output = path.resolve('artifacts/image-optimization');
-const root = path.resolve('dist');
+const root = path.resolve(process.env.ECO_TEST_DIST || 'dist');
 const slots = JSON.parse(fs.readFileSync('src/data/image-slots.json', 'utf8'));
 const hiring = JSON.parse(fs.readFileSync('src/data/hiring.json', 'utf8'));
 const profiles = JSON.parse(fs.readFileSync('src/data/profiles.json', 'utf8'));
@@ -22,7 +22,7 @@ check(slots.home.hero.primary.src !== slots.home.hero.secondary.src, 'Two indepe
 const unrelated = new Set([...hiring.categories.map(category => category.image), ...profiles.map(profile => profile.photo), ...stories.map(story => story.image), ...Object.values(slots.home.hero).map(image => image.src)]);
 check(slots.home.gallery.flat().every(image => !unrelated.has(image.src)), 'Replacing a gallery file does not replace a profile, story, category or hero file.');
 check(walk('public').every(file => file.endsWith('favicon.svg') || !/\.(png|jpe?g|webp|avif|gif|svg)$/i.test(file)), 'Image masters are outside public; favicon keeps its public URL.');
-check(walk('dist/images').length === 0, 'No former public image originals are shipped in dist/images.');
+check(walk(path.join(root, 'images')).length === 0, 'No former public image originals are shipped in dist/images.');
 for (const file of walk(root).filter(file => file.endsWith('.html'))) {
   report.staticPages++;
   const html = fs.readFileSync(file, 'utf8');

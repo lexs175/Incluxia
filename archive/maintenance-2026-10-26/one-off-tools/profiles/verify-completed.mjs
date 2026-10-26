@@ -1,0 +1,40 @@
+import {chromium,expect} from '@playwright/test';import {createServer} from 'node:http';import {readFile,stat,mkdir,writeFile} from 'node:fs/promises';import {existsSync} from 'node:fs';import {resolve,extname,sep} from 'node:path';import assert from 'node:assert/strict';
+const profiles=JSON.parse(await readFile('src/data/profiles.json','utf8')),hiring=JSON.parse(await readFile('src/data/hiring.json','utf8'));
+for(const person of hiring.autonomos){const profile=profiles.find(p=>p.name===person.name);assert(profile,person.name);assert.equal(person.avatar,profile.photo);assert(existsSync('public'+person.avatar));}
+for(const service of hiring.services)assert.equal(service.author.avatar,profiles.find(p=>p.name===service.author.name).photo);
+const root=resolve('dist'),out=resolve('artifacts/profiles'),mime={'.html':'text/html','.js':'application/javascript','.css':'text/css','.png':'image/png','.jpg':'image/jpeg','.webp':'image/webp','.svg':'image/svg+xml','.woff2':'font/woff2'};
+await mkdir(out,{recursive:true});const server=createServer(async(req,res)=>{try{let file=resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://local').pathname));if(file!==root&&!file.startsWith(root+sep))throw Error('Path');if((await stat(file)).isDirectory())file=resolve(file,'index.html');res.writeHead(200,{'Content-Type':mime[extname(file)]||'application/octet-stream'});res.end(await readFile(file));}catch{res.writeHead(404);res.end();}});await new Promise(done=>server.listen(0,'127.0.0.1',done));const base='http://127.0.0.1:'+server.address().port,report={checks:[],errors:[]};let browser;
+try{
+ browser=await chromium.launch({headless:true,executablePath:['C:/Program Files/Google/Chrome/Application/chrome.exe','C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'].find(existsSync)});const context=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce'}),page=await context.newPage();page.on('pageerror',error=>report.errors.push(error.message));
+ async function go(path){await page.goto(base+path,{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);}
+ async function check(profile){
+  await expect(page.locator('.profile-name')).toHaveText(profile.name);await page.locator('.profile-avatar-img').evaluate(image=>image.decode());
+  assert.equal(await page.locator('.profile-avatar-img').getAttribute('src'),profile.photo);await expect(page.locator('.profile-avatar-initial')).toBeHidden();
+  const facts=await page.locator('#profileDetail').evaluate(root=>({cover:root.querySelector('.profile-cover-banner').getBoundingClientRect().height,gap:getComputedStyle(root.querySelector('.profile-stack')).gap,experience:root.querySelector('.experience-list').textContent,education:root.querySelector('.education-list').textContent,projects:root.querySelectorAll('.profile-project-card').length,stars:root.querySelectorAll('.aptitudes-icon,.skill-icon-diamond,polygon').length,overflow:[...root.querySelectorAll('.profile-detail-card')].filter(card=>card.scrollWidth>card.clientWidth+1).map(card=>card.className)}));
+  assert(facts.cover>=160);assert.equal(facts.gap,'12px');assert(!facts.experience.includes('Sin experiencia'));assert(!facts.education.includes('Sin estudios'));assert(facts.projects>0);assert.equal(facts.stars,0);assert.deepEqual(facts.overflow,[],profile.name+' card overflow');report.checks.push({name:profile.name,width:page.viewportSize().width,...facts});
+ }
+ await go('/');await page.locator('#btnHeaderLogin').click();await page.locator('#btnDemoCandidate').click();await page.locator('.member-home').waitFor();
+ const migrationFixture=await page.evaluate(()=>{
+  const state=JSON.parse(localStorage.getItem('incluxia_demo_v1'));delete state.exampleProfilesVersion;
+  const team=state.accounts.find(account=>account.id==='demo-equipo');Object.assign(team,{name:'Equipo de contratación',profession:'Selección y proyectos',bio:'Equipo de ejemplo para recorrer la contratación con comunicación escrita.',skills:'Coordinación, Administración',photo:'',city:'Cochabamba'});
+  for(const account of state.accounts){delete account.profileSlug;delete account.experience;delete account.education;delete account.languages;}
+  const valeria=state.accounts.find(account=>account.id==='demo-valeria');valeria.experience='Experiencia editada por Lex';valeria.education='Estudios editados por Lex';
+  const custom={...valeria,id:'qa-real-account',name:'Cuenta creada por una persona',photo:'',experience:'Datos escritos por la persona',education:'Educación personal',skills:'Habilidad propia'};state.accounts.push(custom);
+  const publication={...state.publications[0],id:'qa-own-publication',ownerId:custom.id,title:'Publicación que debe conservarse',status:'paused'};state.publications.push(publication);
+  state.applications[0].status='Seleccionada';state.saved[custom.id]=[publication.id];
+  localStorage.setItem('incluxia_demo_v1',JSON.stringify(state));return {custom,publication,saved:state.saved,session:state.sessionId,applications:state.applications};
+ });
+ await go('/postulaciones?tab=received');await page.getByRole('link',{name:'Ver perfil',exact:true}).click();const candidate=profiles.find(profile=>profile.slug==='diego-siles-montano');await check(candidate);await expect(page.locator('.nav-desktop summary.active')).toHaveText('Postulaciones');await page.screenshot({path:resolve(out,'postulante-completo-1440.png'),fullPage:true});
+ const migrated=await page.evaluate(()=>JSON.parse(localStorage.getItem('incluxia_demo_v1')));assert.equal(migrated.exampleProfilesVersion,1);assert.equal(migrated.sessionId,migrationFixture.session);assert.deepEqual(migrated.accounts.find(account=>account.id===migrationFixture.custom.id),migrationFixture.custom);assert.deepEqual(migrated.publications.find(publication=>publication.id===migrationFixture.publication.id),migrationFixture.publication);assert.deepEqual(migrated.saved,migrationFixture.saved);assert.deepEqual(migrated.applications,migrationFixture.applications);assert.equal(migrated.accounts.find(account=>account.id==='demo-valeria').experience,'Experiencia editada por Lex');
+ console.log('PASS Existing-browser upgrade fills the example applicant without changing session, user data, applications or publications.');
+ for(const profile of process.argv.includes('--remaining')?[]:profiles){await go('/perfiles/'+profile.slug);await check(profile);}
+ console.log('PASS All 19 example profiles have the matching photo, experience, education and projects.');
+ for(const width of [390,240]){await page.setViewportSize({width,height:1000});await go('/postulaciones/perfil?id=demo-equipo');await check(candidate);if(width===390)await page.screenshot({path:resolve(out,'postulante-completo-390.png'),fullPage:true});}
+ await page.setViewportSize({width:1440,height:1000});
+ for(const slug of hiring.categories.map(category=>category.slug)){
+  await go('/contratar/'+slug);assert.equal(await page.locator('#autonomosList .autonomo-card-item').count(),4,slug+' keeps all four professionals');
+  const card=page.locator('.autonomo-card-item').first();await card.locator('.card-open-trigger').click();await expect(page.locator('#hiringSideDrawer')).toHaveClass(/is-open/);await page.locator('#hiringDrawerCloseBtn').click();
+ }
+ await go('/perfil');await page.locator('#editMyProfile').click();await page.locator('#profileForm [name=experience]').fill('Otra experiencia guardada por la persona');await page.locator('#profileForm [name=education]').fill('Otros estudios propios');await page.locator('#profileForm button[type=submit]').click();await page.reload({waitUntil:'networkidle'});await expect(page.locator('.experience-list')).toContainText('Otra experiencia guardada por la persona');await expect(page.locator('.education-list')).toContainText('Otros estudios propios');
+ assert.deepEqual(report.errors,[]);console.log('PASS Mobile layout, eight category grids, detail buttons and profile editing; no JavaScript errors.');
+}finally{await writeFile(resolve(out,'completed-verification.json'),JSON.stringify(report,null,2));await browser?.close();await new Promise(done=>server.close(done));}

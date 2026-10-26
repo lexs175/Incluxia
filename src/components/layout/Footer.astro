@@ -1,4 +1,5 @@
 ---
+import SocialLinks from "../ui/SocialLinks.astro";
 // Footer Component with 21shares-inspired layout & mobile accordion
 ---
 
@@ -9,72 +10,7 @@
       <!-- Col 1: Connect with us -->
       <div class="footer-col col-connect">
         <h3 class="connect-heading">Conéctate con<br />nosotros hoy</h3>
-        <div class="social-row">
-          <a
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="social-btn"
-            aria-label="Facebook de Eco"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 32 32"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M12.6,16.1v11.6c0,0.2,0.1,0.3,0.3,0.3h4.6c0.2,0,0.3-0.1,0.3-0.3V15.9h3.4c0.2,0,0.3-0.1,0.3-0.3l0.3-3.6 c0-0.2-0.1-0.3-0.3-0.3h-3.7V9.2c0-0.6,0.5-1.1,1.2-1.1h2.6C21.9,8.1,22,8,22,7.8V4.3C22,4.1,21.9,4,21.7,4h-4.4 c-2.6,0-4.7,1.9-4.7,4.3v3.4h-2.3c-0.2,0-0.3,0.1-0.3,0.3v3.6c0,0.2,0.1,0.3,0.3,0.3h2.3V16.1z"
-              ></path>
-            </svg>
-          </a>
-          <a
-            href="https://tiktok.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="social-btn"
-            aria-label="TikTok de Eco"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 512 512"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M412.19,118.66a109.27,109.27,0,0,1-9.45-5.5,132.87,132.87,0,0,1-24.27-20.62c-18.1-20.71-24.86-41.72-27.35-56.43h.1C349.14,23.9,350,16,350.13,16H267.69V334.78c0,4.28,0,8.51-.18,12.69,0,.52-.05,1-.08,1.56,0,.23,0,.47-.05.71,0,.06,0,.12,0,.18a70,70,0,0,1-35.22,55.56,68.8,68.8,0,0,1-34.11,9c-38.41,0-69.54-31.32-69.54-70s31.13-70,69.54-70a68.9,68.9,0,0,1,21.41,3.39l.1-83.94a153.14,153.14,0,0,0-118,34.52,161.79,161.79,0,0,0-35.3,43.53c-3.48,6-16.61,30.11-18.2,69.24-1,22.21,5.67,45.22,8.85,54.73v.2c2,5.6,9.75,24.71,22.38,40.82A167.53,167.53,0,0,0,115,470.66v-.2l.2.2C155.11,497.78,199.36,496,199.36,496c7.66-.31,33.32,0,62.46-13.81,32.32-15.31,50.72-38.12,50.72-38.12a158.46,158.46,0,0,0,27.64-45.93c7.46-19.61,9.95-43.13,9.95-52.53V176.49c1,.6,14.32,9.41,14.32,9.41s19.19,12.3,49.13,20.31c21.48,5.7,50.42,6.9,50.42,6.9V131.27C453.86,132.37,433.27,129.17,412.19,118.66Z"
-              ></path>
-            </svg>
-          </a>
-          <a
-            href="https://wa.me/59172255726"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="social-btn"
-            aria-label="WhatsApp de Eco"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M6.014 8.00613C6.12827 7.1024 7.30277 5.87414 8.23488 6.01043L8.23339 6.00894C9.14051 6.18132 9.85859 7.74261 10.2635 8.44465C10.5504 8.95402 10.3641 9.4701 10.0965 9.68787C9.7355 9.97883 9.17099 10.3803 9.28943 10.7834C9.5 11.5 12 14 13.2296 14.7107C13.695 14.9797 14.0325 14.2702 14.3207 13.9067C14.5301 13.6271 15.0466 13.46 15.5548 13.736C16.3138 14.178 17.0288 14.6917 17.69 15.27C18.0202 15.546 18.0977 15.9539 17.8689 16.385C17.4659 17.1443 16.3003 18.1456 15.4542 17.9421C13.9764 17.5868 8 15.27 6.08033 8.55801C5.97237 8.24048 5.99955 8.12044 6.014 8.00613Z"
-                fill="currentColor"></path>
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M12 23C10.7764 23 10.0994 22.8687 9 22.5L6.89443 23.5528C5.56462 24.2177 4 23.2507 4 21.7639V19.5C1.84655 17.492 1 15.1767 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23ZM6 18.6303L5.36395 18.0372C3.69087 16.4772 3 14.7331 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C11.0143 21 10.552 20.911 9.63595 20.6038L8.84847 20.3397L6 21.7639V18.6303Z"
-                fill="currentColor"></path>
-            </svg>
-          </a>
-        </div>
+        <SocialLinks />
       </div>
 
       <!-- Col 2: Navegación (Accordion on mobile) -->
@@ -276,33 +212,6 @@
     line-height: 1.2;
     margin: 0 0 1.25rem 0;
     letter-spacing: -0.02em;
-  }
-
-  .social-row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .social-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: var(--radius-sm);
-    background-color: rgba(255, 255, 255, 0.08);
-    color: var(--color-text-inverse);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    transition: all 0.2s ease;
-  }
-
-  .social-btn:hover {
-    background-color: var(--color-white);
-    color: var(--color-primary);
-    border-color: var(--color-white);
-    transform: translateY(-2px);
   }
 
   /* Column Titles & Desktop Button Reset */
