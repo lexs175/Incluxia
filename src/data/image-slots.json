@@ -634,6 +634,12 @@
       "key": "companies/altura.svg",
       "role": "companyLogo",
       "provisional": false
+    },
+    {
+      "key": "brand/open-graph-eco.png",
+      "role": "social",
+      "provisional": false,
+      "generatedOn": "2026-10-26"
     }
   ]
 }

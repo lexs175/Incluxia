@@ -16,6 +16,7 @@ export const imagePresets = {
   screenshot: { width: 1200, widths: [384, 640, 768, 960, 1200, 1440], quality: 90, sizes: '(max-width: 767px) calc(100vw - 48px), (max-width: 1440px) calc(100vw - 64px), 1376px' },
   screenshotSplit: { width: 960, widths: [384, 640, 768, 960, 1200, 1440], quality: 90, sizes: '(max-width: 767px) calc(100vw - 48px), (max-width: 1440px) calc((100vw - 80px) * 0.6667), 906px' },
   brand: { width: 1200, widths: [600, 1200], quality: 90, sizes: '1200px', format: 'png' },
+  social: { width: 1200, widths: [1200], ratio: 1200 / 630, quality: 90, sizes: '1200px', format: 'jpg' },
 } as const;
 
 export type ImageKind = keyof typeof imagePresets;

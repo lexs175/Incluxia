@@ -17,22 +17,47 @@
 
 ---
 
+## Documentación y estado de la entrega
+
+Actualizado el **26 de octubre de 2026**. Eco es un prototipo funcional con datos
+y actividad guardados en el navegador. La misma cuenta permite buscar trabajo,
+postular, contratar, publicar y ofrecer servicios.
+
+| Documento | Qué explica |
+| --- | --- |
+| [Estado del proyecto](docs/ESTADO_DEL_PROYECTO.md) | Funciones implementadas, decisiones y pendientes de esta entrega |
+| [Manual de usuario](docs/MANUAL_USUARIO.md) | Recorridos para trabajar, contratar, publicar y gestionar la cuenta |
+| [Mantenimiento técnico](docs/MANTENIMIENTO.md) | Instalación, arquitectura, datos, imágenes, pruebas y actualización de capturas |
+| [Open Graph](docs/OPEN_GRAPH.md) | Imagen para compartir enlaces, dominio, metadatos y prompt de generación |
+
+**Pendientes visuales:** incorporar el logo definitivo, cambiar la imagen del
+home y después renovar las capturas para el cierre de la entrega. Las capturas
+actuales documentan una versión intermedia; el logo y la nueva imagen todavía no
+están incorporados.
+
 ## ✨ Características
 
 - **Páginas generadas estáticamente** (SSG), incluidas vistas de detalle con `[slug]`.
 - **Colecciones de datos** en JSON: empleos, perfiles, contratación y casos de éxito.
 - **Sistema de diseño con tokens**: color, tipografía fluida `clamp()` y espaciados centralizados en `src/styles/tokens.css`.
-- **Accesibilidad primero**: contraste AA, foco visible, soporte de `prefers-reduced-motion`, navegación por teclado y textos alternativos en todos los recursos.
+- **Accesibilidad**: foco visible, soporte de `prefers-reduced-motion`, navegación por teclado y textos alternativos. Las comprobaciones realizadas se detallan en la documentación; no equivalen a una certificación de accesibilidad.
 - **SEO on-page**: meta tags, Open Graph y título/descripción por ruta.
+- **Vista previa al compartir**: portada Open Graph de Eco con imagen de 1200 × 630 px y URLs completas para `https://eco-bolivia.vercel.app/`.
 - **Animación** con GSAP y transiciones de vista con `astro:transitions`.
 
 ## 🗺️ Rutas
 
 | Ruta | Descripción |
 |------|-------------|
-| `/` | Inicio: hero, categorías y destacados |
-| `/empleos` · `/empleos/[slug]` | Bolsa de empleo y detalle de vacante |
-| `/perfiles` · `/perfiles/[slug]` | Perfiles profesionales y detalle |
+| `/` | Portada para visitantes; listado de Trabajos al ingresar |
+| `/empleos` · `/empleos/oferta?id=…` | Ofertas y detalle de una publicación |
+| `/empleos/[slug]` | Rutas estáticas de las ofertas iniciales |
+| `/contratar` · `/contratar/[category]` | Especialidades, profesionales, servicios y sus detalles |
+| `/publicar` · `/publicar?tab=mine` | Crear publicaciones y gestionar las propias |
+| `/postulaciones` · `/postulaciones?tab=received` | Postulaciones enviadas y recibidas |
+| `/perfil` | Perfil de la cuenta que inició sesión y su editor |
+| `/perfiles` · `/perfiles/[slug]` · `/perfiles/ver?id=…` | Directorio y perfiles estáticos o vinculados a cuentas locales |
+| `/postulaciones/perfil?id=…` | Perfil de un candidato desde una postulación recibida |
 | `/casos-de-exito` · `/casos-de-exito/[slug]` | Historias de inclusión laboral |
 
 ## 🛠️ Stack
@@ -55,16 +80,27 @@ npm install
 npm run dev      # http://localhost:4321
 ```
 
+Requiere Node.js **22.12.0 o posterior** y npm. Si ya tienes el repositorio y su
+`package-lock.json`, utiliza `npm ci` para instalar las versiones fijadas.
+
 | Comando | Descripción |
 |---------|-------------|
 | `npm run dev` | Servidor de desarrollo |
 | `npm run build` | Build de producción en `dist/` |
 | `npm run preview` | Vista previa del build |
+| `npm test` | Ocho verificaciones locales sobre el sitio compilado |
+| `npm run images:catalog` | Regenera el catálogo local de imágenes |
+
+Los comandos de pruebas y catálogo requieren la carpeta local `scripts/`, que
+actualmente está excluida de Git, al igual que `docs/`. Los enlaces de
+documentación anteriores corresponden a esta copia local. Los requisitos y el procedimiento completo
+están en [Mantenimiento técnico](docs/MANTENIMIENTO.md).
 
 ## 📁 Estructura
 
 ```
 Eco/
+├── docs/              # Estado, manual de usuario y mantenimiento
 ├── public/
 │   └── favicon.svg
 └── src/
@@ -147,7 +183,8 @@ El contenido se edita sin tocar componentes:
 
 | Archivo | Ítems |
 |---------|-------|
-| `src/data/jobs.json` | 4 vacantes |
+| `src/data/jobs.json` | 4 vacantes; `src/lib/demo.ts` agrega otros 4 ejemplos al listado |
+| `src/data/hiring.json` | 8 categorías y 32 servicios iniciales |
 | `src/data/profiles.json` | 19 perfiles |
 | `src/data/stories.json` | 4 casos de éxito |
 

@@ -19,6 +19,7 @@ function preserveBackdropFilterPlugin() {
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://eco-bolivia.vercel.app',
   vite: {
     plugins: [preserveBackdropFilterPlugin()],
   },

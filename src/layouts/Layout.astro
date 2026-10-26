@@ -22,7 +22,10 @@ const {
   activePath = "/",
 } = Astro.props;
 const imageManifest = await clientImageManifest();
-const socialImage = await optimizedImage('brand/logo.png', 'brand');
+const socialImage = await optimizedImage('brand/open-graph-eco.png', 'social');
+const socialImageUrl = new URL(socialImage.src!, Astro.site);
+const pageUrl = new URL(Astro.url.pathname, Astro.site);
+const socialImageAlt = 'Eco: Más oportunidades, menos barreras. Una profesional con audífono trabaja en una computadora junto a un compañero.';
 ---
 
 <!doctype html>
@@ -53,13 +56,28 @@ const socialImage = await optimizedImage('brand/logo.png', 'brand');
     <!-- SEO Meta Tags -->
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={pageUrl} />
     <meta name="theme-color" content="#285FF3" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Eco Bolivia" />
+    <meta property="og:locale" content="es_BO" />
+    <meta property="og:url" content={pageUrl.href} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={socialImage.src} />
+    <meta property="og:image" content={socialImageUrl.href} />
+    <meta property="og:image:secure_url" content={socialImageUrl.href} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content={String(socialImage.width)} />
+    <meta property="og:image:height" content={String(socialImage.height)} />
+    <meta property="og:image:alt" content={socialImageAlt} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageUrl.href} />
+    <meta name="twitter:image:alt" content={socialImageAlt} />
 
     <!-- Google Fonts: Montserrat (Headings) & Poppins (Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
