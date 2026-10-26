@@ -16,6 +16,7 @@
     "test:management": "node scripts/verify-management.mjs",
     "test:header": "node scripts/verify-header.mjs",
     "test:home": "node scripts/verify-home.mjs",
+    "test:scroll": "node scripts/verify-scroll.mjs",
     "test:images": "node scripts/verify-image-optimization.mjs",
     "images:catalog": "node scripts/document-image-assets.mjs"
   },

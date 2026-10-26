@@ -88,7 +88,8 @@ Requiere Node.js **22.12.0 o posterior** y npm. Si ya tienes el repositorio y su
 | `npm run dev` | Servidor de desarrollo |
 | `npm run build` | Build de producción en `dist/` |
 | `npm run preview` | Vista previa del build |
-| `npm test` | Ocho verificaciones locales sobre el sitio compilado |
+| `npm test` | Nueve verificaciones locales sobre el sitio compilado |
+| `npm run test:scroll` | Estabilidad de títulos, rueda, navegación y adaptación al cambiar la ventana |
 | `npm run images:catalog` | Regenera el catálogo local de imágenes |
 
 Los comandos de pruebas y catálogo requieren la carpeta local `scripts/`, que
