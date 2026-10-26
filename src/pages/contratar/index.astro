@@ -1,7 +1,6 @@
 ---
 import AccessGate from "../../components/ui/AccessGate.astro";
 import Layout from "../../layouts/Layout.astro";
-import ExpandableButton from "../../components/ui/ExpandableButton.astro";
 import CategoryCard from "../../components/contratar/CategoryCard.astro";
 import hiringData from "../../data/hiring.json";
 
@@ -16,14 +15,13 @@ const enrichedCategories = categories.map((cat) => ({
 ---
 
 <Layout
-  title="Contratar Talento Inclusivo y Servicios por Rubro | Incluxia Bolivia"
+  title="Contratar Talento Inclusivo y Servicios por Rubro | Eco Bolivia"
   description="Contrata a profesionales autónomos con hipoacusia o paquetes de servicios cerrados en Bolivia. Comunicación 100% por chat o WhatsApp, cumplimiento Ley 977."
   activePath="/contratar"
 >
   <AccessGate title="Ingresa para contratar talento" />
   <div class="hiring-hub-wrapper" data-member>
     <div class="container hiring-hub-container">
-      
       <!-- Cabecera Hero del Hub -->
       <header class="hub-hero-section">
         <h1 class="hub-hero-title">
@@ -31,99 +29,19 @@ const enrichedCategories = categories.map((cat) => ({
         </h1>
 
         <p class="hub-hero-desc">
-          Encuentra profesionales autónomos con hipoacusia listos para sumarse a tu equipo, o adquiere paquetes de servicios cerrados con entrega garantizada y coordinación 100% por chat.
+          Encuentra profesionales autónomos con hipoacusia listos para sumarse a
+          tu equipo, o adquiere paquetes de servicios cerrados con entrega
+          garantizada y coordinación 100% por chat.
         </p>
-
-        <!-- Barra de búsqueda rápida -->
-        <div class="hub-quick-search-box">
-          <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          <input
-            type="search"
-            id="hubSearchInput"
-            placeholder="¿Qué servicio o profesional necesitas? (ej. Logotipos, Digitación, Facturación...)"
-            class="hub-search-input"
-            aria-label="Buscar rubros o servicios"
-          />
-          <ExpandableButton
-            href="/contratar/todos"
-            text="Explorar todo"
-            variant="primary"
-            size="sm"
-          />
-        </div>
       </header>
 
       <!-- Cuadrícula de Rubros (Componente CategoryCard) -->
-      <section class="hub-categories-grid" aria-label="Especialidades de contratación">
-        {
-          enrichedCategories.map((cat) => (
-            <CategoryCard category={cat} />
-          ))
-        }
+      <section
+        class="hub-categories-grid"
+        aria-label="Especialidades de contratación"
+      >
+        {enrichedCategories.map((cat) => <CategoryCard category={cat} />)}
       </section>
-
-      <!-- Botón de acción central inferior -->
-      <div class="hub-bottom-action">
-        <ExpandableButton
-          href="/contratar/todos"
-          text="Examinar todas las categorías y talentos"
-          variant="primary-line"
-          size="lg"
-        />
-      </div>
-
-      <!-- Banner de Garantía y Marco Legal Boliviano -->
-      <section class="hub-guarantee-banner" aria-label="Garantía de contratación">
-        <div class="guarantee-col">
-          <div class="guarantee-icon-box" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-              <line x1="8" y1="21" x2="16" y2="21"></line>
-              <line x1="12" y1="17" x2="12" y2="21"></line>
-            </svg>
-          </div>
-          <div>
-            <h3 class="guarantee-title">Procesos 100% Escritos</h3>
-            <p class="guarantee-desc">
-              Coordinación fluida por WhatsApp, Slack y correo electrónico. Cero llamadas telefónicas obligatorias.
-            </p>
-          </div>
-        </div>
-
-        <div class="guarantee-col">
-          <div class="guarantee-icon-box" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-            </svg>
-          </div>
-          <div>
-            <h3 class="guarantee-title">Cumplimiento Ley N° 977</h3>
-            <p class="guarantee-desc">
-              Talentos con carnet SIPRUNPCD vigente. Apoyo directo en la inclusión laboral en empresas bolivianas.
-            </p>
-          </div>
-        </div>
-
-        <div class="guarantee-col">
-          <div class="guarantee-icon-box" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="12" y1="8" x2="12" y2="12"></line>
-              <line x1="12" y1="16" x2="12.01" y2="16"></line>
-            </svg>
-          </div>
-          <div>
-            <h3 class="guarantee-title">Precios Transparentes en Bs.</h3>
-            <p class="guarantee-desc">
-              Tarifas claras en moneda nacional. Contratación por horas, por proyecto cerrado o por contrato formal.
-            </p>
-          </div>
-        </div>
-      </section>
-
     </div>
   </div>
 </Layout>
@@ -132,7 +50,7 @@ const enrichedCategories = categories.map((cat) => ({
   /* ====================================================
      CAPA 1: WRAPPER EXTERIOR
      ==================================================== */
-.hiring-hub-wrapper {
+  .hiring-hub-wrapper {
     background-color: var(--color-bg);
     min-height: 100dvh;
     padding-top: calc(75px + var(--space-8));
@@ -161,7 +79,6 @@ const enrichedCategories = categories.map((cat) => ({
     align-items: center;
   }
 
-
   .hub-hero-title {
     font-family: var(--font-heading);
     font-size: var(--text-4xl);
@@ -176,46 +93,7 @@ const enrichedCategories = categories.map((cat) => ({
     font-size: var(--text-base);
     color: var(--color-text-muted);
     line-height: 1.6;
-    margin: 0 0 var(--space-8) 0;
-  }
-
-  /* Buscador del Hero */
-  .hub-quick-search-box {
-    width: 100%;
-    max-width: 680px;
-    display: flex;
-    align-items: center;
-    background-color: var(--color-bg-card);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-full);
-    padding: 0.3rem 0.45rem 0.3rem var(--space-4);
-    box-shadow: none;
-    transition: border-color var(--transition-fast);
-    box-sizing: border-box;
-    gap: var(--space-2);
-  }
-
-  .hub-quick-search-box:focus-within {
-    border-color: var(--color-primary);
-  }
-
-  .search-icon {
-    color: var(--color-text-light);
-    flex-shrink: 0;
-  }
-
-  .hub-search-input {
-    flex: 1;
-    border: none;
-    outline: none;
-    background: transparent;
-    font-family: var(--font-body);
-    font-size: var(--text-sm);
-    color: var(--color-text-main);
-  }
-
-  .hub-search-input::placeholder {
-    color: var(--color-text-light);
+    margin: 0;
   }
 
   /* ====================================================
@@ -225,63 +103,6 @@ const enrichedCategories = categories.map((cat) => ({
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: var(--space-5);
-    margin-bottom: var(--space-12);
-  }
-
-  /* ====================================================
-     BOTÓN CENTRAL INFERIOR
-     ==================================================== */
-  .hub-bottom-action {
-    display: flex;
-    justify-content: center;
-    margin-bottom: var(--space-16);
-  }
-
-  /* ====================================================
-     BANNER DE GARANTÍAS Y MARCO LEGAL
-     ==================================================== */
-  .hub-guarantee-banner {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-6);
-    background-color: var(--color-bg-card);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: var(--space-8);
-    box-shadow: none;
-  }
-
-  .guarantee-col {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-4);
-  }
-
-  .guarantee-icon-box {
-    width: 48px;
-    height: 48px;
-    border-radius: var(--radius-md);
-    background-color: rgba(var(--color-primary-rgb), 0.08);
-    color: var(--color-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .guarantee-title {
-    font-family: var(--font-heading);
-    font-size: var(--text-base);
-    font-weight: 800;
-    color: var(--color-text-main);
-    margin: 0 0 0.3rem 0;
-  }
-
-  .guarantee-desc {
-    font-size: var(--text-xs);
-    color: var(--color-text-muted);
-    line-height: 1.5;
-    margin: 0;
   }
 
   /* ====================================================
@@ -297,23 +118,11 @@ const enrichedCategories = categories.map((cat) => ({
     .hub-categories-grid {
       grid-template-columns: repeat(2, 1fr);
     }
-
-    .hub-guarantee-banner {
-      grid-template-columns: 1fr;
-      gap: var(--space-5);
-    }
   }
 
   @media (max-width: 540px) {
     .hub-categories-grid {
       grid-template-columns: 1fr;
-    }
-
-    .hub-quick-search-box {
-      border-radius: var(--radius-md);
-      flex-direction: column;
-      padding: var(--space-3);
-      gap: var(--space-3);
     }
   }
 </style>
@@ -321,38 +130,47 @@ const enrichedCategories = categories.map((cat) => ({
 <script>
   import { readStore, categories, profiles } from "../../lib/demo";
   import hiring from "../../data/hiring.json";
-  function initHubFilter() {
-    const input = document.getElementById("hubSearchInput") as HTMLInputElement | null;
-    const cards = document.querySelectorAll<HTMLElement>(".category-rubro-card");
-    if (!input || input.dataset.ready) return;
-    input.dataset.ready = "true";
+  function initHubCategories() {
+    const grid = document.querySelector<HTMLElement>(".hub-categories-grid");
+    if (!grid || grid.dataset.ready) return;
+    grid.dataset.ready = "true";
+    const cards = document.querySelectorAll<HTMLElement>(
+      ".category-rubro-card",
+    );
     const state = readStore();
-    cards.forEach(card => {
-      const slug = card.dataset.categorySlug || card.getAttribute("href")?.split("/").pop();
-      const name = categories.find(c=>c.slug===slug)?.name;
-      const people = hiring.autonomos.filter(a=>a.categorySlug===slug && a.name!==profiles[0].name).length + state.accounts.filter(a=>a.profession && (a.category || (a.id==="demo-valeria"?categories[0].name:""))===name).length;
-      const services = state.publications.filter(p=>p.type==="service"&&p.status==="active"&&p.category===name).length;
+    cards.forEach((card) => {
+      const slug =
+        card.dataset.categorySlug ||
+        card.getAttribute("href")?.split("/").pop();
+      const name = categories.find((c) => c.slug === slug)?.name;
+      const people =
+        hiring.autonomos.filter(
+          (a) => a.categorySlug === slug && a.name !== profiles[0].name,
+        ).length +
+        state.accounts.filter(
+          (a) =>
+            a.profession &&
+            (a.category ||
+              (a.id === "demo-valeria" ? categories[0].name : "")) === name,
+        ).length;
+      const services = state.publications.filter(
+        (p) =>
+          p.type === "service" && p.status === "active" && p.category === name,
+      ).length;
       const count = card.querySelector(".count-chip");
-      if(count) count.textContent = people+" autónomos · "+services+" servicios";
+      if (count)
+        count.textContent = people + " autónomos · " + services + " servicios";
     });
 
-    input.addEventListener("input", (e) => {
-      const q = (e.target as HTMLInputElement).value.trim().toLowerCase();
-      cards.forEach((card) => {
-        const name = card.getAttribute("data-name") || "";
-        const tags = card.getAttribute("data-tags") || "";
-        if (!q || name.includes(q) || tags.includes(q)) {
-          card.style.display = "";
-        } else {
-          card.style.display = "none";
-        }
-      });
-    });
-    cards.forEach(card => card.addEventListener("click", event => {
-      if ((event.target as HTMLElement).closest("a,button")) return;
-      card.querySelector<HTMLAnchorElement>(".category-action-button")?.click();
-    }));
+    cards.forEach((card) =>
+      card.addEventListener("click", (event) => {
+        if ((event.target as HTMLElement).closest("a,button")) return;
+        card
+          .querySelector<HTMLAnchorElement>(".category-action-button")
+          ?.click();
+      }),
+    );
   }
 
-  document.addEventListener("astro:page-load", initHubFilter);
+  document.addEventListener("astro:page-load", initHubCategories);
 </script>

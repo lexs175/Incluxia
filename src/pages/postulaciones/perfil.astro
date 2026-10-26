@@ -1,0 +1,13 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import AccessGate from "../../components/ui/AccessGate.astro";
+import ProfileDetail from "../../components/perfiles/ProfileDetail.astro";
+import profiles from "../../data/profiles.json";
+---
+
+<Layout title="Perfil del postulante | Eco" activePath="/postulaciones">
+  <AccessGate title="Ingresa para consultar este perfil" />
+  <div data-member>
+    <ProfileDetail profile={profiles[0]} dynamic application />
+  </div>
+</Layout>

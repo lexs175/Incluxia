@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="public/images/logo.png" alt="Incluxia — Más oportunidades, menos barreras" width="360" />
+  <img src="src/assets/images/brand/logo.png" alt="Eco — Más oportunidades, menos barreras" width="360" />
 </p>
 
-<h1 align="center">Incluxia</h1>
+<h1 align="center">Eco</h1>
 
 <p align="center">
   Plataforma laboral boliviana para personas con pérdida auditiva e hipoacusia.<br/>
@@ -19,8 +19,8 @@
 
 ## ✨ Características
 
-- **10 rutas** generadas estáticamente (SSG), incluidas vistas de detalle con `[slug]`.
-- **4 colecciones de datos** en JSON: artículos, empleos, perfiles y casos de éxito.
+- **Páginas generadas estáticamente** (SSG), incluidas vistas de detalle con `[slug]`.
+- **Colecciones de datos** en JSON: empleos, perfiles, contratación y casos de éxito.
 - **Sistema de diseño con tokens**: color, tipografía fluida `clamp()` y espaciados centralizados en `src/styles/tokens.css`.
 - **Accesibilidad primero**: contraste AA, foco visible, soporte de `prefers-reduced-motion`, navegación por teclado y textos alternativos en todos los recursos.
 - **SEO on-page**: meta tags, Open Graph y título/descripción por ruta.
@@ -32,11 +32,11 @@
 | Ruta | Descripción |
 |------|-------------|
 | `/` | Inicio: hero, categorías y destacados |
-| `/nosotros` | Quiénes somos y misión |
 | `/empleos` · `/empleos/[slug]` | Bolsa de empleo y detalle de vacante |
 | `/perfiles` · `/perfiles/[slug]` | Perfiles profesionales y detalle |
 | `/casos-de-exito` · `/casos-de-exito/[slug]` | Historias de inclusión laboral |
-| `/blog` · `/blog/[slug]` | Artículos y guías |
+
+«Nosotros» y «Blog» están archivados en [archive/inactive-pages](archive/inactive-pages/README.md), fuera de las rutas activas.
 
 ## 🛠️ Stack
 
@@ -52,8 +52,8 @@
 ## 🚀 Inicio rápido
 
 ```bash
-git clone https://github.com/lexs175/Incluxia.git
-cd Incluxia
+git clone https://github.com/lexs175/Eco.git
+cd Eco
 npm install
 npm run dev      # http://localhost:4321
 ```
@@ -67,17 +67,17 @@ npm run dev      # http://localhost:4321
 ## 📁 Estructura
 
 ```
-Incluxia/
+Eco/
 ├── public/
 │   ├── Icon/          # Iconos sociales
 │   ├── Logos/         # Variantes de logo
 │   └── images/        # Imágenes del sitio
 └── src/
     ├── components/
-    │   ├── cards/     # BlogCard · JobCard · ProfileCard · StoryCard
+    │   ├── cards/     # JobCard · ProfileCard · StoryCard
     │   ├── layout/    # Header · Footer · WhatsAppFAB
-    │   └── ui/        # Button · Badge · ExpandableButton
-    ├── data/          # articles · jobs · profiles · stories (.json)
+    │   └── ui/        # ActionButton · Button · Badge · ExpandableButton
+    ├── data/          # hiring · jobs · profiles · stories (.json)
     ├── layouts/       # Layout base (head, SEO, fuentes, GSAP)
     ├── pages/         # Rutas del sitio (SSG)
     └── styles/
@@ -118,17 +118,35 @@ Tres reglas de arquitectura que siguen todos los componentes:
 3. **Layout en 3 capas** → *wrapper* (`100%`) → `.container`
    (`max-width` + `padding-inline`) → *cápsula* visual (fondo, radio, sombra).
 
+Los controles normales usan `src/components/ui/ActionButton.astro`. Sus variantes
+y estados se definen una sola vez en `src/styles/management.css`:
+
+| Variante | Presentación y uso |
+| --- | --- |
+| `primary` | Fondo de marca para la acción principal. |
+| `secondary` | Fondo neutro `var(--color-bg)`, borde y texto de marca; acciones alternativas como «Ingresar». |
+| `ghost` / `quiet` | Sin fondo ni borde en reposo; acciones discretas. |
+| `icon` | Control compacto para una acción representada por un icono. |
+| `danger` | Acción destructiva con los tokens de error. |
+
+Los tamaños `sm`, `md` y `lg` tienen alturas mínimas de 36, 44 y 50 px.
+`link` se reserva para acciones con presentación de enlace. Selecciona la variante
+en el componente; no redefinas su color, fondo o borde mediante clases locales.
+`ExpandableButton.astro` se reserva para llamadas principales de avance cuando
+corresponda; los controles de gestión usan `ActionButton`.
+
 ## 📦 Datos
+
+Las imágenes locales se gestionan con Astro desde `src/assets/images/`. La lista de archivos independientes y las instrucciones para reemplazarlos están en [IMAGENES.md](IMAGENES.md). Ejecuta `npm run test:images` para verificar tamaños, rutas y comportamiento con sesión iniciada.
 
 El contenido se edita sin tocar componentes:
 
 | Archivo | Ítems |
 |---------|-------|
-| `src/data/articles.json` | 7 artículos |
 | `src/data/jobs.json` | 4 vacantes |
-| `src/data/profiles.json` | 6 perfiles |
-| `src/data/stories.json` | 3 casos de éxito |
+| `src/data/profiles.json` | 19 perfiles |
+| `src/data/stories.json` | 4 casos de éxito |
 
 ---
 
-<p align="center">Incluxia Bolivia · Más oportunidades, menos barreras</p>
+<p align="center">Eco Bolivia · Más oportunidades, menos barreras</p>

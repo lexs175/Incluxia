@@ -1,3 +1,4 @@
+import { setImage } from "./image-client";
 import { readStore, jobHref, dateLabel, type Publication } from './demo';
 import { cloneTemplate, text } from './ui';
 import { amountValue, locationLabel, paymentInfo, publisherInfo } from './job-presentation';
@@ -47,9 +48,9 @@ export function initJobs() {
     const initials = el.querySelector<HTMLElement>('.publisher-initials')!;
     photo.hidden = !publisher.image;
     initials.hidden = !!publisher.image;
-    photo.onerror = () => { photo.hidden = true; initials.hidden = false; photo.removeAttribute('src'); };
-    if (publisher.image) photo.src = publisher.image;
-    else photo.removeAttribute('src');
+    photo.onerror = () => { photo.hidden = true; initials.hidden = false; setImage(photo, undefined); };
+    if (publisher.image) setImage(photo, publisher.image);
+    else setImage(photo, undefined);
     el.querySelectorAll<HTMLAnchorElement>('a').forEach(anchor => anchor.href = jobHref(job));
     return el;
   }

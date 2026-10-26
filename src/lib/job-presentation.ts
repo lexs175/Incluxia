@@ -1,3 +1,4 @@
+import { isLocalImageKey } from "./image-presets";
 import type { Account, Publication } from './demo';
 
 export function amountValue(value: string) {
@@ -18,7 +19,7 @@ export function publisherInfo(job: Publication, accounts: Account[]) {
   const owner = accounts.find(account => account.id === job.ownerId);
   const name = job.company || owner?.name || 'Quien publica';
   const image = job.companyLogo || (job.kind === 'person' ? owner?.photo : '') || '';
-  const safeImage = /^(?:\/(?!\/)|https?:\/\/|data:image\/(?:png|jpe?g|webp);base64,)/i.test(image) ? image : '';
+  const safeImage = isLocalImageKey(image) || /^(?:\/(?!\/)|https?:\/\/|data:image\/(?:png|jpe?g|webp);base64,)/i.test(image) ? image : '';
   const initials = name.split(/\s+/).filter(Boolean).slice(0, 2).map(word => word[0]).join('').toLocaleUpperCase('es');
   return { name, image: safeImage, initials };
 }

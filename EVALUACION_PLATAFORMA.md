@@ -1,4 +1,4 @@
-# Incluxia: evaluación del estado actual y plan de funcionamiento
+# Eco: evaluación del estado actual y plan de funcionamiento
 
 Plan e implementación actualizados el 23 de octubre de 2026 con las indicaciones y referencias de Lex.
 
@@ -22,7 +22,7 @@ La puntuación final corresponde a la implementación evaluada, no a las ideas n
 
 ## 2. El objetivo y la cuenta común
 
-Incluxia conecta a personas con hipoacusia en Bolivia con oportunidades de trabajo y con quienes necesitan contratar su talento. La comunicación debe poder realizarse por escrito, sin exigir llamadas telefónicas.
+Eco conecta a personas con hipoacusia en Bolivia con oportunidades de trabajo y con quienes necesitan contratar su talento. La comunicación debe poder realizarse por escrito, sin exigir llamadas telefónicas.
 
 **Una misma cuenta permite buscar trabajo, postular, ofrecer servicios, publicar una oferta y contratar a otra persona.**
 
@@ -36,7 +36,7 @@ No hay dos registros separados ni un cambio obligatorio entre «modo trabajador�
 | --- | --- | --- | --- |
 | **Portada después de ingresar** | Se conserva la presentación grande y el menú público después del acceso simulado. | Ingresar no lleva directamente a buscar oportunidades. | Abrir el Inicio interior, que es el propio listado de empleos en tarjetas. |
 | **Menú público** | Incluye Inicio, Ofertas de Empleo, Contratar, Perfiles, Casos de Éxito y Blog, además del acceso y la publicación. | Mezcla presentación y herramientas de uso; no coincide con el esquema nuevo. | Mostrar Inicio y Casos de éxito, con Ingresar y Crear cuenta como acciones de acceso. |
-| **Explicación de la plataforma en la portada** | El encabezado se centra en trabajos para personas con hipoacusia y después aparecen bloques de comunicación, ofertas y contratación. | Falta organizar la presentación para que explique primero qué es Incluxia y después cómo se utiliza cada función desde la misma cuenta. | Presentar la plataforma en el hero; explicar después por qué contratar talento con hipoacusia y mostrar cómo buscar trabajo, contratar y publicar mediante textos breves y capturas de las pantallas. |
+| **Explicación de la plataforma en la portada** | El encabezado se centra en trabajos para personas con hipoacusia y después aparecen bloques de comunicación, ofertas y contratación. | Falta organizar la presentación para que explique primero qué es Eco y después cómo se utiliza cada función desde la misma cuenta. | Presentar la plataforma en el hero; explicar después por qué contratar talento con hipoacusia y mostrar cómo buscar trabajo, contratar y publicar mediante textos breves y capturas de las pantallas. |
 | **Blog** | Tiene componentes, páginas, enlaces en el menú y presencia en la portada. | Lex ha decidido dejarlo fuera de la navegación activa por ahora. Es un cambio de alcance, no un defecto del contenido. | Retirar sus accesos de la experiencia prevista y conservar los componentes y contenidos para reutilizarlos en el futuro. |
 | **Registro** | Pide elegir entre «Busco Trabajo» y «Soy Empresa». | Puede hacer pensar que hay que elegir una actividad y renunciar a la otra. | Usar un registro común; trabajar, contratar y publicar siguen disponibles desde la misma cuenta. |
 | **Listado de empleos** | Presenta una lista estrecha de ofertas a la izquierda y el detalle seleccionado al lado, con búsqueda y filtros en la zona del listado. | Ese formato no corresponde a la nueva referencia de tarjetas. | Mostrar seis tarjetas de resumen, con filtros a la derecha. El detalle se abre en otra página. |
@@ -44,7 +44,7 @@ No hay dos registros separados ni un cambio obligatorio entre «modo trabajador�
 | **Contratar y Perfiles** | Hay accesos separados a profesionales, servicios y perfiles. | No está suficientemente definida la relación entre encontrar a alguien y consultar su perfil. | Organizar la búsqueda desde Contratar y conectar cada resultado con su detalle y perfil. |
 | **Crear una oferta** | El formulario guarda información en el navegador y confirma que la oferta está publicada. En la comprobación no apareció en el listado enlazado. | La confirmación no se puede comprobar dentro de la propia simulación. | Conectar la publicación con Inicio y con Mis publicaciones dentro de Publicar. |
 | **Administrar publicaciones** | No hay una sección completa para administrar todas las publicaciones propias. | Falta un lugar para volver, editar, pausar o cerrar lo publicado. | Reunir la creación y la administración en Publicar, incluyendo empleos, encargos y servicios. |
-| **Postulaciones** | Los botones permiten contactar por WhatsApp, pero falta el seguimiento personal completo. | No se puede comprobar dentro de Incluxia qué postulaciones se hicieron ni cuáles recibió una publicación propia. | Crear Postulaciones con enviadas y recibidas, relacionadas con cada oferta. |
+| **Postulaciones** | Los botones permiten contactar por WhatsApp, pero falta el seguimiento personal completo. | No se puede comprobar dentro de Eco qué postulaciones se hicieron ni cuáles recibió una publicación propia. | Crear Postulaciones con enviadas y recibidas, relacionadas con cada oferta. |
 | **Perfil propio** | Existen perfiles de ejemplo y el enlace de la cabecera apunta a uno concreto de demostración. | No representa la consulta y edición del perfil de quien ingresó. | Vincular Perfil con la persona que ingresó y permitir editar sus datos y muestras de trabajo. |
 | **Casos de éxito** | Tienen páginas propias, acceso desde el menú y presencia en la portada. | Son compatibles con la presentación pública acordada. | Conservar su acceso público y sus páginas de lectura. |
 
@@ -67,11 +67,11 @@ Inicio abre la página de presentación. Casos de éxito abre su página con las
 
 ### 4.2. Contenido dentro de la página Inicio
 
-La presentación pública es una sola página. Su primera pantalla explica qué es Incluxia; al bajar se entiende por qué existe y cómo se utiliza. Este es el orden de contenido:
+La presentación pública es una sola página. Su primera pantalla explica qué es Eco; al bajar se entiende por qué existe y cómo se utiliza. Este es el orden de contenido:
 
 | Orden | Bloque dentro de Inicio público | Qué debe entender la persona |
 | --- | --- | --- |
-| **1** | **Presentación principal o hero** | Qué es Incluxia, para quién sirve y qué permite hacer. Debe quedar claro que una misma cuenta permite trabajar, contratar y publicar. Incluye Crear cuenta e Ingresar. |
+| **1** | **Presentación principal o hero** | Qué es Eco, para quién sirve y qué permite hacer. Debe quedar claro que una misma cuenta permite trabajar, contratar y publicar. Incluye Crear cuenta e Ingresar. |
 | **2** | **Por qué contratar a una persona con hipoacusia** | Cómo conocer su talento, experiencia y muestras de trabajo, y cómo coordinar por escrito. Se aprovecha y ajusta la explicación de contratación que ya existe. |
 | **3** | **Cómo encontrar trabajo y postular** | Que al ingresar se ven ofertas en tarjetas, se pueden filtrar y se abre el detalle antes de confirmar una postulación. Se acompaña con capturas del listado y del detalle. |
 | **4** | **Cómo contratar profesionales o servicios** | Cómo explorar especialidades, revisar un perfil o un servicio y comenzar una consulta por escrito. Se acompaña con una captura de Contratar y del resultado que se está explicando. |
@@ -84,7 +84,7 @@ La presentación pública es una sola página. Su primera pantalla explica qué 
 
 #### El hero presenta la plataforma
 
-El hero es el bloque inicial con el título, una explicación breve y las acciones de acceso. Su función principal es decir qué es Incluxia. No necesita explicar en detalle cada formulario ni convertir trabajar y contratar en dos registros diferentes.
+El hero es el bloque inicial con el título, una explicación breve y las acciones de acceso. Su función principal es decir qué es Eco. No necesita explicar en detalle cada formulario ni convertir trabajar y contratar en dos registros diferentes.
 
 Ejemplo de explicación para desarrollar al redactar la página: «Una plataforma para encontrar trabajo, ofrecer tus servicios y contratar talento con hipoacusia en Bolivia, con comunicación por escrito».
 
@@ -110,9 +110,9 @@ En la explicación de Publicar se distinguen estos ejemplos:
 
 Son acciones disponibles desde la misma cuenta. La portada explica esas posibilidades; los formularios completos y la administración de la actividad se utilizan después de ingresar.
 
-### 4.3. Capturas de Incluxia para las imágenes de ejemplo
+### 4.3. Capturas de Eco para las imágenes de ejemplo
 
-Las imágenes que enseñan cómo funciona la plataforma serán capturas de las propias pantallas de Incluxia. El agente que implemente la página preparará esas capturas con el navegador, utilizando Playwright según las reglas del proyecto.
+Las imágenes que enseñan cómo funciona la plataforma serán capturas de las propias pantallas de Eco. El agente que implemente la página preparará esas capturas con el navegador, utilizando Playwright según las reglas del proyecto.
 
 | Captura que se preparará | Qué debe permitir reconocer |
 | --- | --- |
@@ -127,9 +127,9 @@ Se tomarán cuando las pantallas estén implementadas y coincidan con este plan.
 
 Las capturas deben centrarse en la parte que se está explicando, con texto y controles legibles también en celular. Una sección puede utilizar más de un recorte cuando necesite mostrar dos pasos.
 
-Los datos de las capturas serán ejemplos de demostración. Las referencias de Contra orientan la organización, pero no se colocan como si fueran imágenes de Incluxia. Las imágenes que muestran funciones deben corresponder a la interfaz construida, no a una imagen inventada de una pantalla que no existe.
+Los datos de las capturas serán ejemplos de demostración. Las referencias de Contra orientan la organización, pero no se colocan como si fueran imágenes de Eco. Las imágenes que muestran funciones deben corresponder a la interfaz construida, no a una imagen inventada de una pantalla que no existe.
 
-**Las capturas ya se prepararon con las propias pantallas de Incluxia y están incorporadas en la portada. Se pueden abrir para ampliarlas. Se conservan el estilo y los componentes del proyecto.**
+**Las capturas ya se prepararon con las propias pantallas de Eco y están incorporadas en la portada. Se pueden abrir para ampliarlas. Se conservan el estilo y los componentes del proyecto.**
 
 ### 4.4. El Blog queda reservado para más adelante
 
@@ -230,7 +230,7 @@ Se aprovecha la página individual de empleo que ya existe y se adapta a este re
 
 Si falta información del perfil, se indica qué completar y después se permite continuar con la misma oferta.
 
-Se toma de la imagen la organización del contenido y de la acción. No se copian requisitos de la referencia como grabar un video o realizar una presentación oral. La comunicación de Incluxia mantiene su objetivo de acceso por escrito.
+Se toma de la imagen la organización del contenido y de la acción. No se copian requisitos de la referencia como grabar un video o realizar una presentación oral. La comunicación de Eco mantiene su objetivo de acceso por escrito.
 
 ### 8.3. Volver al listado
 
@@ -314,17 +314,17 @@ No hace falta construir un chat interno, pagos ni contratos reales para demostra
 
 Se conserva la identidad visual. Los colores, la tipografía y los espacios se toman de los tokens existentes, manteniendo las reglas del proyecto sobre tipografía fluida y contenedores con márgenes seguros.
 
-[Contra](https://contra.com/) y las imágenes compartidas sirven como referencias de organización. La marca, los contenidos, los importes y las condiciones de Incluxia responden a su propio objetivo.
+[Contra](https://contra.com/) y las imágenes compartidas sirven como referencias de organización. La marca, los contenidos, los importes y las condiciones de Eco responden a su propio objetivo.
 
 ## 13. Comprobaciones de la simulación implementada
 
 - [x] El menú público muestra Inicio y Casos de éxito, con Ingresar y Crear cuenta como acciones.
 - [x] El Blog queda fuera de toda navegación activa y sus componentes se conservan para una etapa futura.
-- [x] El hero de Inicio público explica qué es Incluxia y que una cuenta permite trabajar, contratar y publicar.
+- [x] El hero de Inicio público explica qué es Eco y que una cuenta permite trabajar, contratar y publicar.
 - [x] Después del hero aparece la explicación de por qué contratar talento con hipoacusia, centrada en capacidades, trabajos y comunicación escrita.
 - [x] Las secciones siguientes explican cómo buscar trabajo, contratar y publicar como empresa, como persona u ofreciendo servicios.
 - [x] Esas explicaciones son contenido dentro de Inicio público, sin convertirse en opciones nuevas del menú ni tipos de cuenta.
-- [x] Las imágenes de uso son capturas legibles de las pantallas de Incluxia ya ajustadas al plan y coinciden con lo que se está explicando.
+- [x] Las imágenes de uso son capturas legibles de las pantallas de Eco ya ajustadas al plan y coinciden con lo que se está explicando.
 - [x] Existe una cuenta común para trabajar, contratar y publicar.
 - [x] El menú interior es Inicio, Contratar, Publicar, Postulaciones y Perfil.
 - [x] Inicio interior es el listado de empleo; no hay otra entrada duplicada de Buscar trabajo.

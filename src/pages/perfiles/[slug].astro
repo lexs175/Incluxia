@@ -1,8 +1,18 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import ProfileDetail from '../../components/perfiles/ProfileDetail.astro';
-import profiles from '../../data/profiles.json';
-export function getStaticPaths(){ return profiles.map(profile=>({params:{slug:profile.slug},props:{profile}})); }
-const {profile}=Astro.props;
+import Layout from "../../layouts/Layout.astro";
+import ProfileDetail from "../../components/perfiles/ProfileDetail.astro";
+import profiles from "../../data/profiles.json";
+export function getStaticPaths() {
+    return profiles.map((profile) => ({
+        params: { slug: profile.slug },
+        props: { profile },
+    }));
+}
+const { profile } = Astro.props;
 ---
-<Layout title={profile.name+' | Incluxia'} description={profile.tagline} activePath="/contratar"><ProfileDetail profile={profile} /></Layout>
+
+<Layout
+    title={profile.name + " | Eco"}
+    description={profile.tagline}
+    activePath="/contratar"><ProfileDetail profile={profile} /></Layout
+>

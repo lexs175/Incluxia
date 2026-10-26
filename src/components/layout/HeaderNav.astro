@@ -1,0 +1,81 @@
+---
+interface Props {
+  activePath: string;
+  mobile?: boolean;
+}
+const { activePath, mobile = false } = Astro.props;
+const links = [
+  { label: "Inicio", href: "/", access: "guest" },
+  { label: "Casos de éxito", href: "/casos-de-exito", access: "guest" },
+  { label: "Inicio", href: "/", access: "member" },
+  { label: "Contratar", href: "/contratar", access: "member" },
+  {
+    label: "Publicaciones", href: "/publicar", access: "member",
+    children: [
+      { label: "Crear publicación", href: "/publicar" },
+      { label: "Mis publicaciones", href: "/publicar?tab=mine" },
+    ],
+  },
+  {
+    label: "Postulaciones", href: "/postulaciones", access: "member",
+    children: [
+      { label: "Enviadas", href: "/postulaciones?tab=sent" },
+      { label: "Recibidas", href: "/postulaciones?tab=received" },
+    ],
+  },
+];
+---
+
+<ul class:list={["nav-list", { "mobile-nav-list": mobile }]}>
+  {links.map(link => {
+    const active = activePath === link.href || (link.href !== "/" && activePath.startsWith(link.href));
+    const classes = ["nav-link", { active, "mobile-nav-link": mobile }];
+    return (
+      <li data-access={link.access}>
+        {link.children ? (
+          <details class:list={["nav-dropdown", { "mobile-nav-dropdown": mobile }]} data-nav-dropdown>
+            <summary class:list={classes}>
+              {link.label}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+            </summary>
+            <ul class="nav-submenu" aria-label={link.label}>
+              {link.children.map(child => <li><a href={child.href} data-nav-destination>{child.label}</a></li>)}
+            </ul>
+          </details>
+        ) : (
+          <a href={link.href} class:list={classes} aria-current={active ? "page" : undefined}>{link.label}</a>
+        )}
+      </li>
+    );
+  })}
+</ul>
+
+<style>
+  .nav-list { display: flex; align-items: center; gap: var(--space-6); list-style: none; }
+  .nav-link { display: flex; align-items: center; gap: var(--space-2); position: relative; min-height: 44px; padding: var(--space-2) var(--space-1); color: var(--color-text-main); font-family: var(--font-heading); font-size: var(--text-sm); font-weight: 500; line-height: 1.4; cursor: pointer; }
+  .nav-link.active { color: var(--color-primary); }
+  .nav-link.active { font-weight: 600; }
+  .nav-link.active::after { content: ""; position: absolute; inset-inline: var(--space-1); bottom: 0; height: 2px; background: var(--color-primary); }
+  .nav-link:focus-visible, .nav-submenu a:focus-visible { outline: 2px solid var(--color-primary); outline-offset: var(--space-1); border-radius: var(--radius-md); }
+  .nav-dropdown { position: relative; }
+  .nav-dropdown > summary { list-style: none; }
+  .nav-dropdown > summary::-webkit-details-marker { display: none; }
+  .nav-dropdown > summary svg { flex-shrink: 0; transition: transform var(--transition-fast); }
+  .nav-dropdown[open] > summary svg { transform: rotate(180deg); }
+  .nav-submenu { position: absolute; top: calc(100% + var(--space-2)); left: 0; min-width: 210px; padding: var(--space-2); border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-bg-card); z-index: 1; }
+  .nav-submenu::before { content: ""; position: absolute; bottom: 100%; inset-inline: 0; height: var(--space-2); }
+  .nav-submenu a { display: flex; align-items: center; min-height: 44px; padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); color: var(--color-text-main); font-size: var(--text-sm); line-height: 1.4; white-space: nowrap; }
+  .nav-submenu a[aria-current="page"] { background: var(--color-bg-alt); color: var(--color-primary); font-weight: 600; }
+  .mobile-nav-list { flex-direction: column; align-items: stretch; gap: var(--space-1); }
+  .mobile-nav-link { justify-content: space-between; min-height: 56px; padding: var(--space-4) var(--space-3); border-radius: var(--radius-md); font-size: var(--text-lg); }
+  .mobile-nav-link.active { background: var(--color-bg-alt); }
+  .mobile-nav-link.active::after { display: none; }
+  .mobile-nav-dropdown .nav-submenu { position: static; min-width: 0; margin-inline-start: var(--space-3); padding: var(--space-1) 0 var(--space-2); border: none; }
+  .mobile-nav-dropdown .nav-submenu::before { display: none; }
+  .mobile-nav-dropdown .nav-submenu a { white-space: normal; overflow-wrap: anywhere; }
+  @media (hover: hover) and (pointer: fine) {
+    .nav-link:hover { color: var(--color-primary); }
+    .nav-submenu a:hover, .mobile-nav-link:hover { background: var(--color-bg-alt); }
+  }
+  @media (prefers-reduced-motion: reduce) { .nav-dropdown > summary svg { transition: none; } }
+</style>

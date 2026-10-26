@@ -1,4 +1,6 @@
 ---
+import SiteImage from "../ui/SiteImage.astro";
+import Icon from "../ui/Icon.astro";
 import ContactRequest from "../ui/ContactRequest.astro";
 import profiles from "../../data/profiles.json";
 import ExpandableButton from "../ui/ExpandableButton.astro";
@@ -26,10 +28,7 @@ const { autonomos, services } = Astro.props;
   <div class="drawer-header-bar">
     <span class="drawer-type-chip" id="drawerTypeChip">Detalle</span>
     <button type="button" class="drawer-close-btn" id="hiringDrawerCloseBtn" aria-label="Cerrar panel de detalle">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="18" x2="18" y2="18"></line>
-      </svg>
+      <Icon name="close" size={20} />
     </button>
   </div>
 
@@ -39,8 +38,9 @@ const { autonomos, services } = Astro.props;
     <!-- PANELES DE AUTÓNOMOS (Pre-renderizados limpios con ExpandableButton) -->
     {
       autonomos.map((aut) => {
+        const profile = profiles.find(p => p.slug === aut.slug) || profiles.find(p => p.name === aut.name);
         const whatsappUrl = `https://wa.me/${aut.whatsapp}?text=${encodeURIComponent(
-          `Hola ${aut.name}, vi tu perfil profesional en Incluxia Bolivia y deseo consultar tu disponibilidad para un proyecto.`
+          `Hola ${aut.name}, vi tu perfil profesional en Eco Bolivia y deseo consultar tu disponibilidad para un proyecto.`
         )}`;
 
         return (
@@ -51,9 +51,11 @@ const { autonomos, services } = Astro.props;
             style="display: none;"
           >
             <!-- Banner superior con avatar superpuesto -->
-            <div class="drawer-hero-banner" aria-hidden="true"></div>
+            <div class="drawer-hero-banner" aria-hidden="true">
+              <SiteImage kind="profileCover" sizes="min(512px, calc(100vw - 48px))" src={profile?.cover} alt="" class="drawer-cover-image" hidden={!profile?.cover} />
+            </div>
             <div class="drawer-avatar-wrap">
-              <img src={aut.avatar} alt={aut.name} class="drawer-avatar-img" />
+              <SiteImage kind="avatar" sizes="100px" src={aut.avatar} alt={aut.name} class="drawer-avatar-img" />
             </div>
 
             <!-- Títulos e información principal -->
@@ -62,17 +64,17 @@ const { autonomos, services } = Astro.props;
               <p class="drawer-headline">{aut.role} · {aut.city}, Bolivia</p>
               
               <div class="drawer-meta-badges">
-                <span class="drawer-meta-pill">💼 Tarifa: <strong>{aut.hourlyRate}</strong></span>
-                <span class="drawer-meta-pill">⭐ {aut.rating.toFixed(1)} ({aut.completedJobs} trabajos)</span>
-                <span class="drawer-meta-pill">⏱ {aut.experienceYears} de exp.</span>
-                <span class="drawer-meta-pill">💬 Chat 100% fluido</span>
+                <span class="drawer-meta-pill"><Icon name="briefcase" /> Tarifa: <strong>{aut.hourlyRate}</strong></span>
+                <span class="drawer-meta-pill" aria-label={`Valoración: ${aut.rating.toFixed(1)} de 5, ${aut.completedJobs} trabajos`}><Icon name="star" /> {aut.rating.toFixed(1)} ({aut.completedJobs} trabajos)</span>
+                <span class="drawer-meta-pill"><Icon name="clock" /> {aut.experienceYears} de exp.</span>
+                <span class="drawer-meta-pill"><Icon name="message" /> Chat 100% fluido</span>
               </div>
 
               <!-- Botones oficiales ExpandableButton -->
               <div class="drawer-actions-row">
                 <ContactRequest recipientId={aut.name === 'Valeria Morales Terán' ? 'demo-valeria' : 'talent-'+aut.name} text={`Consultar disponibilidad (${aut.hourlyRate})`} />
                 <ExpandableButton
-                  href={profiles.some(p=>p.slug===aut.slug) ? `/perfiles/${aut.slug}` : `/perfiles/ver?id=${encodeURIComponent("talent-"+aut.name)}`}
+                  href={profile ? `/perfiles/${profile.slug}` : `/perfiles/ver?id=${encodeURIComponent("talent-"+aut.name)}`}
                   text="Ver perfil completo"
                   variant="primary-line"
                   size="md"
@@ -135,7 +137,7 @@ const { autonomos, services } = Astro.props;
                       <strong class="review-client">{r.client} ({r.company})</strong>
                       <span class="review-date">{r.date}</span>
                     </div>
-                    <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+                    <div class="review-stars" role="img" aria-label="5 de 5 estrellas">{Array.from({ length: 5 }, () => <Icon name="star" />)}</div>
                     <p class="review-comment">"{r.comment}"</p>
                   </div>
                 ))}
@@ -150,7 +152,7 @@ const { autonomos, services } = Astro.props;
     {
       services.map((serv) => {
         const whatsappUrl = `https://wa.me/${serv.author.whatsapp}?text=${encodeURIComponent(
-          `Hola ${serv.author.name}, vi tu paquete de servicio "${serv.title}" en Incluxia Bolivia (${serv.price}) y nos gustaría contratarlo.`
+          `Hola ${serv.author.name}, vi tu paquete de servicio "${serv.title}" en Eco Bolivia (${serv.price}) y nos gustaría contratarlo.`
         )}`;
 
         return (
@@ -161,16 +163,19 @@ const { autonomos, services } = Astro.props;
             style="display: none;"
           >
             <!-- Portada visual del paquete -->
-            <div class="drawer-service-gallery" style={`background-color: ${serv.previewColor};`}>
-              <div class="service-gallery-art">
+            <div class:list={["drawer-service-gallery", { "drawer-service-gallery--image": Boolean(serv.previewImage) }]} style={serv.previewImage ? undefined : `background-color: ${serv.previewColor};`}>
+              {serv.previewImage ? (
+                <SiteImage kind="service" sizes="min(512px, calc(100vw - 48px))" class="drawer-service-image" src={serv.previewImage} alt={serv.previewAlt || ""} width="720" height="300" loading="lazy" />
+              ) : <div class="service-gallery-art">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
                   <polyline points="2 17 12 22 22 17"></polyline>
                   <polyline points="2 12 12 17 22 12"></polyline>
                 </svg>
                 <span class="gallery-package-title">{serv.title}</span>
-              </div>
+              </div>}
             </div>
+            {serv.previewImage && <h2 class="gallery-package-title service-detail-title">{serv.title}</h2>}
 
             <!-- Caja de Precio y Plazo Oficial -->
             <div class="drawer-service-price-box">
@@ -180,13 +185,13 @@ const { autonomos, services } = Astro.props;
               </div>
               <div class="price-box-delivery">
                 <span class="price-box-label">Plazo de entrega:</span>
-                <span class="delivery-time-val">⏱ {serv.deliveryTime}</span>
+                <span class="delivery-time-val">{serv.deliveryTime}</span>
               </div>
             </div>
 
             <!-- Ficha del profesional a cargo -->
             <div class="drawer-author-card">
-              <img src={serv.author.avatar} alt={serv.author.name} class="drawer-author-avatar" />
+              <SiteImage kind="avatar" sizes="44px" src={serv.author.avatar} alt={serv.author.name} class="drawer-author-avatar" />
               <div>
                 <strong class="drawer-author-name">Profesional a cargo: {serv.author.name}</strong>
                 <span class="drawer-author-meta">{serv.author.role} · {serv.author.city}</span>
@@ -205,7 +210,7 @@ const { autonomos, services } = Astro.props;
               <div class="drawer-checklist">
                 {serv.highlights.map((h: string) => (
                   <div class="drawer-check-item">
-                    <span class="drawer-check-bullet" aria-hidden="true">✔</span>
+                    <span class="drawer-check-bullet" aria-hidden="true"><Icon name="check" /></span>
                     <span>{h}</span>
                   </div>
                 ))}
@@ -286,7 +291,7 @@ const { autonomos, services } = Astro.props;
 
   .drawer-type-chip {
     padding: 0.25rem 0.75rem;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-md);
     background-color: rgba(var(--color-primary-rgb), 0.08);
     color: var(--color-primary);
     font-family: var(--font-heading);
@@ -295,8 +300,9 @@ const { autonomos, services } = Astro.props;
   }
 
   .drawer-close-btn {
-    width: 38px;
-    height: 38px;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
     border-radius: var(--radius-md);
     background: transparent;
     border: 1px solid var(--color-border);
@@ -337,6 +343,15 @@ const { autonomos, services } = Astro.props;
     border-radius: var(--radius-md);
     background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
     margin-bottom: -50px;
+    overflow: hidden;
+  }
+
+  .drawer-cover-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 
   .drawer-avatar-wrap {
@@ -385,8 +400,11 @@ const { autonomos, services } = Astro.props;
   }
 
   .drawer-meta-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
     padding: 0.25rem 0.6rem;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-md);
     background-color: var(--color-bg-alt);
     border: 1px solid var(--color-border);
     font-size: var(--text-xs);
@@ -528,6 +546,8 @@ const { autonomos, services } = Astro.props;
   }
 
   .review-stars {
+    display: flex;
+    gap: var(--space-1);
     color: var(--color-warning);
     font-size: 0.75rem;
     margin-bottom: 0.25rem;
@@ -559,6 +579,10 @@ const { autonomos, services } = Astro.props;
     gap: var(--space-2);
     color: var(--color-primary);
   }
+
+  .drawer-service-gallery--image { height: auto; aspect-ratio: 12 / 5; display: block; padding: 0; overflow: hidden; }
+  .drawer-service-image { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .service-detail-title { margin-block: var(--space-4); color: var(--color-text-main); }
 
   .gallery-package-title {
     font-family: var(--font-heading);

@@ -1,4 +1,5 @@
 ---
+import SiteImage from "../ui/SiteImage.astro";
 import ExpandableButton from "../ui/ExpandableButton.astro";
 
 interface Props {
@@ -21,7 +22,7 @@ const { story, compact = false } = Astro.props;
 
 <article class:list={['story-card', { 'story-card--compact': compact }]}>
   <div class="story-image-wrapper">
-    <img
+    <SiteImage kind="storyCard"
       src={story.image}
       alt={story.name}
       class="story-img"

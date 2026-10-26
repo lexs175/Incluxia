@@ -1,0 +1,11 @@
+---
+import { optimizedImage } from '../../lib/images.server';
+import { imagePresets, type ImageKind } from '../../lib/image-presets';
+import type { HTMLAttributes } from 'astro/types';
+interface Props extends Omit<HTMLAttributes<'img'>, 'src'> { src?: string; kind?: ImageKind; priority?: boolean; }
+const { src, kind = 'detail', priority = false, sizes, width, height, loading, decoding, fetchpriority, ...attributes } = Astro.props;
+const responsive = await optimizedImage(src, kind, sizes);
+const { key, ...imageAttributes } = responsive;
+const sizeHint = sizes || responsive.sizes || imagePresets[kind].sizes;
+---
+<img {...attributes} {...imageAttributes} width={responsive.width || width} height={responsive.height || height} data-image-kind={kind} data-image-source={key} data-image-sizes={sizeHint} sizes={responsive.srcset ? sizeHint : undefined} loading={priority ? 'eager' : loading || 'lazy'} decoding={priority ? 'sync' : decoding || 'async'} fetchpriority={priority ? 'high' : fetchpriority} />

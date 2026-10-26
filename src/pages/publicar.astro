@@ -1,35 +1,61 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Button from '../components/ui/Button.astro';
-import ActivityList from '../components/ui/ActivityList.astro';
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/ui/Button.astro";
+import ActionButton from "../components/ui/ActionButton.astro";
+import PublicationList from "../components/publicar/PublicationList.astro";
 ---
 
 <Layout
-  title="Publicar Trabajo o Proyecto | Incluxia Bolivia"
+  title="Publicar Trabajo o Proyecto | Eco Bolivia"
   description="Publica una vacante o proyecto freelance en Bolivia. Conecta con talento calificado con comunicación 100% por chat escrito sin llamadas telefónicas."
   activePath="/publicar"
 >
   <div class="publish-wrapper">
     <div class="container publish-container">
-      
       <div class="publish-card" id="publishWorkspace">
-        
         <!-- ESTADO 1: BLOQUEO POR AUTENTICACIÓN (Solo si NO ha iniciado sesión) -->
-        <div id="publishAuthGate" class="publish-auth-gate" style="display: none;">
+        <div
+          id="publishAuthGate"
+          class="publish-auth-gate"
+          style="display: none;"
+        >
           <div class="auth-gate-icon-box">
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg
+              width="34"
+              height="34"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
               <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
               <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
             </svg>
           </div>
-          
-          <h2 class="auth-gate-title" data-animated="true">Inicia sesión o regístrate para publicar</h2>
+
+          <h2 class="auth-gate-title" data-animated="true">
+            Inicia sesión o regístrate para publicar
+          </h2>
           <p class="auth-gate-desc">
-            Para publicar puestos o proyectos, recibir postulaciones de candidatos y coordinar contrataciones por chat, necesitas acceder con tu cuenta.
+            Para publicar puestos o proyectos, recibir postulaciones de
+            candidatos y coordinar contrataciones por chat, necesitas acceder
+            con tu cuenta.
           </p>
 
-          <Button text="Ingresar" data-auth-trigger="login" data-auth-next="/publicar" />
-          <Button text="Crear cuenta" variant="primary-line" data-auth-trigger="register" data-auth-next="/publicar" />
+          <Button
+            text="Ingresar"
+            data-auth-trigger="login"
+            data-auth-next="/publicar"
+          />
+          <Button
+            text="Crear cuenta"
+            variant="primary-line"
+            data-auth-trigger="register"
+            data-auth-next="/publicar"
+          />
         </div>
 
         <!-- ESTADO 2: FORMULARIO DESBLOQUEADO (Visible ÚNICAMENTE si está logueado) -->
@@ -37,7 +63,9 @@ import ActivityList from '../components/ui/ActivityList.astro';
           <div class="publish-header">
             <h1 class="publish-title">Crea tu publicación</h1>
             <p class="publish-desc">
-              Publica como empresa, como persona u ofrece un servicio desde esta misma cuenta. La actividad de esta demostración se guarda en tu navegador.
+              Publica como empresa, como persona u ofrece un servicio desde esta
+              misma cuenta. La actividad de esta demostración se guarda en tu
+              navegador.
             </p>
           </div>
 
@@ -45,26 +73,52 @@ import ActivityList from '../components/ui/ActivityList.astro';
             <legend class="form-label">¿Qué quieres publicar?</legend>
             <div class="publication-kind-options">
               <label class="publication-kind-option" data-kind="company">
-                <input type="radio" name="publicationKindChoice" value="company" form="publishJobForm" data-publication-kind checked />
+                <input
+                  type="radio"
+                  name="publicationKindChoice"
+                  value="company"
+                  form="publishJobForm"
+                  data-publication-kind
+                  checked
+                />
                 <span>Una vacante</span>
               </label>
               <label class="publication-kind-option" data-kind="person">
-                <input type="radio" name="publicationKindChoice" value="person" form="publishJobForm" data-publication-kind />
+                <input
+                  type="radio"
+                  name="publicationKindChoice"
+                  value="person"
+                  form="publishJobForm"
+                  data-publication-kind
+                />
                 <span>Encargo como persona</span>
               </label>
               <label class="publication-kind-option" data-kind="service">
-                <input type="radio" name="publicationKindChoice" value="service" form="publishJobForm" data-publication-kind />
+                <input
+                  type="radio"
+                  name="publicationKindChoice"
+                  value="service"
+                  form="publishJobForm"
+                  data-publication-kind
+                />
                 <span>Ofrecer un servicio</span>
               </label>
             </div>
           </fieldset>
-          <input type="hidden" id="publicationKind" value="company" form="publishJobForm" />
+          <input
+            type="hidden"
+            id="publicationKind"
+            value="company"
+            form="publishJobForm"
+          />
           <p id="publicationKindHelp" class="demo-caption"></p>
 
           <!-- Formulario Oficial -->
           <form class="publish-form" id="publishJobForm">
             <div class="form-group" id="jobTypeToggle">
-              <label for="jobTypeInput" class="form-label">Tipo de trabajo</label>
+              <label for="jobTypeInput" class="form-label"
+                >Tipo de trabajo</label
+              >
               <select id="jobTypeInput" class="form-control form-select">
                 <option value="freelance">Proyecto / Freelance</option>
                 <option value="fixed">Empleo fijo / Planilla</option>
@@ -74,7 +128,8 @@ import ActivityList from '../components/ui/ActivityList.astro';
             <!-- 1. Título del Trabajo -->
             <div class="form-group">
               <label for="jobTitle" class="form-label">
-                Título del puesto o proyecto <span class="required-star">*</span>
+                Título del puesto o proyecto <span class="required-star">*</span
+                >
               </label>
               <input
                 type="text"
@@ -91,15 +146,34 @@ import ActivityList from '../components/ui/ActivityList.astro';
                 <label for="jobCategory" class="form-label">
                   Especialidad / Rubro <span class="required-star">*</span>
                 </label>
-                <select id="jobCategory" required class="form-control form-select">
-                  <option value="" disabled selected>Selecciona un rubro</option>
-                  <option value="Diseño Gráfico">Diseño Gráfico & Multimedia</option>
-                  <option value="Desarrollo Web">Desarrollo Web & Software</option>
-                  <option value="Sistemas y TI">Sistemas & Soporte Técnico</option>
-                  <option value="Contabilidad y Finanzas">Contabilidad & Finanzas</option>
-                  <option value="Digitación y Archivo">Digitación & Archivo de Datos</option>
-                  <option value="Redes Sociales">Redes Sociales & Contenido</option>
-                  <option value="Edición Audiovisual">Edición Audiovisual & Subtitulado</option>
+                <select
+                  id="jobCategory"
+                  required
+                  class="form-control form-select"
+                >
+                  <option value="" disabled selected>Selecciona un rubro</option
+                  >
+                  <option value="Diseño Gráfico"
+                    >Diseño Gráfico & Multimedia</option
+                  >
+                  <option value="Desarrollo Web"
+                    >Desarrollo Web & Software</option
+                  >
+                  <option value="Sistemas y TI"
+                    >Sistemas & Soporte Técnico</option
+                  >
+                  <option value="Contabilidad y Finanzas"
+                    >Contabilidad & Finanzas</option
+                  >
+                  <option value="Digitación y Archivo"
+                    >Digitación & Archivo de Datos</option
+                  >
+                  <option value="Redes Sociales"
+                    >Redes Sociales & Contenido</option
+                  >
+                  <option value="Edición Audiovisual"
+                    >Edición Audiovisual & Subtitulado</option
+                  >
                 </select>
               </div>
 
@@ -108,7 +182,8 @@ import ActivityList from '../components/ui/ActivityList.astro';
                   Ubicación <span class="required-star">*</span>
                 </label>
                 <select id="jobCity" required class="form-control form-select">
-                  <option value="100% Remoto">100% Remoto (Toda Bolivia)</option>
+                  <option value="100% Remoto">100% Remoto (Toda Bolivia)</option
+                  >
                   <option value="Cochabamba">Cochabamba</option>
                   <option value="La Paz">La Paz / El Alto</option>
                   <option value="Santa Cruz">Santa Cruz</option>
@@ -119,13 +194,31 @@ import ActivityList from '../components/ui/ActivityList.astro';
             </div>
 
             <div class="form-grid-2">
-              <div class="form-group"><label class="form-label" for="jobModality">Modalidad</label><select class="form-control form-select" id="jobModality"><option>Remoto</option><option>Presencial</option><option>Híbrido</option></select></div>
-              <div class="form-group"><label class="form-label" for="jobDelivery">Plazo o disponibilidad</label><input class="form-control" id="jobDelivery" required placeholder="Ej. 10 días / Jornada completa" /></div>
+              <div class="form-group">
+                <label class="form-label" for="jobModality">Modalidad</label
+                ><select class="form-control form-select" id="jobModality"
+                  ><option>Remoto</option><option>Presencial</option><option
+                    >Híbrido</option
+                  ></select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="jobDelivery"
+                  >Plazo o disponibilidad</label
+                ><input
+                  class="form-control"
+                  id="jobDelivery"
+                  required
+                  placeholder="Ej. 10 días / Jornada completa"
+                />
+              </div>
             </div>
             <!-- 3. Presupuesto o Salario -->
             <div class="form-group">
               <label for="jobBudget" class="form-label">
-                <span id="budgetLabelText">Presupuesto estimado (en Bolivianos)</span> <span class="required-star">*</span>
+                <span id="budgetLabelText"
+                  >Presupuesto estimado (en Bolivianos)</span
+                >
+                <span class="required-star">*</span>
               </label>
               <div class="budget-input-wrap">
                 <span class="budget-currency-prefix">Bs.</span>
@@ -142,24 +235,42 @@ import ActivityList from '../components/ui/ActivityList.astro';
             <!-- 4. Descripción y Entregables -->
             <div class="form-group">
               <label for="jobDescription" class="form-label">
-                Descripción de las tareas o entregables <span class="required-star">*</span>
+                Descripción de las tareas o entregables <span
+                  class="required-star">*</span
+                >
               </label>
               <textarea
                 id="jobDescription"
                 required
                 rows="4"
                 placeholder="Describe qué necesitas lograr, herramientas requeridas (Photoshop, Excel, SIAT, etc.) y plazos estimados..."
-                class="form-control form-textarea"
-              ></textarea>
+                class="form-control form-textarea"></textarea>
             </div>
 
-            <div class="form-group"><label class="form-label" for="jobTasks">Tareas o entregables (uno por línea)</label><textarea id="jobTasks" class="form-control form-textarea" rows="3" required></textarea></div>
-            <div class="form-group"><label class="form-label" for="jobRequirements">Requisitos (uno por línea, opcional)</label><textarea id="jobRequirements" class="form-control form-textarea" rows="3"></textarea></div>
+            <div class="form-group">
+              <label class="form-label" for="jobTasks"
+                >Tareas o entregables (uno por línea)</label
+              ><textarea
+                id="jobTasks"
+                class="form-control form-textarea"
+                rows="3"
+                required></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="jobRequirements"
+                >Requisitos (uno por línea, opcional)</label
+              ><textarea
+                id="jobRequirements"
+                class="form-control form-textarea"
+                rows="3"></textarea>
+            </div>
             <!-- 5. Datos de quien publica -->
             <div class="form-grid-2">
               <div class="form-group">
                 <label for="jobCompany" class="form-label">
-                  Empresa o Nombre de Contratante <span class="required-star">*</span>
+                  Empresa o Nombre de Contratante <span class="required-star"
+                    >*</span
+                  >
                 </label>
                 <input
                   type="text"
@@ -185,58 +296,166 @@ import ActivityList from '../components/ui/ActivityList.astro';
             </div>
 
             <!-- Botón Submit -->
-            <Button type="submit" id="btnSubmitPublish" text="Revisar publicación" fullWidth size="md" />
+            <Button
+              type="submit"
+              id="btnSubmitPublish"
+              text="Revisar publicación"
+              fullWidth
+              size="md"
+            />
           </form>
         </div>
 
         <!-- ESTADO 3: ÉXITO TRAS PUBLICAR -->
-        <div id="publishSuccessBox" class="publish-success-state" style="display: none;">
+        <div
+          id="publishSuccessBox"
+          class="publish-success-state"
+          style="display: none;"
+        >
           <div class="success-icon-badge">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg
+              width="36"
+              height="36"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
           </div>
-          
+
           <h2 class="success-title">Tu publicación ya está disponible</h2>
           <p class="success-desc" id="successSummaryText">
-            Tu vacante está activa. Los profesionales interesados podrán postular directamente por chat.
+            Tu vacante está activa. Los profesionales interesados podrán
+            postular directamente por chat.
           </p>
 
-          <div class="success-actions-box"><Button id="viewPublished" href="/" text="Ver publicación" variant="primary" /><Button id="viewMyPublished" text="Mis publicaciones" variant="primary-line" /></div>
+          <div class="success-actions-box">
+            <Button
+              id="viewPublished"
+              href="/"
+              text="Ver publicación"
+              variant="primary"
+            />
+            <ActionButton
+              id="viewMyPublished"
+              variant="secondary"
+              text="Mis publicaciones"
+            />
+          </div>
 
-          <Button id="btnPublishAnother" text="Crear otra publicación" variant="primary-line" />
+          <ActionButton
+            id="btnPublishAnother"
+            variant="link"
+            text="Crear otra publicación"
+          />
         </div>
 
-        <div id="publicationPreview" hidden><h2 class="publish-title">Revisa antes de publicar</h2><ActivityList id="previewList" /><div class="form-actions"><Button id="confirmPublication" text="Confirmar publicación" /><Button id="editPublicationPreview" text="Volver a editar" variant="primary-line" /></div></div>
-        <section id="myPublications" hidden><h1 class="publish-title">Mis publicaciones</h1><p class="publish-desc">Administra tus empleos, encargos y servicios. Las consultas de contratación aparecen junto a cada servicio.</p><ActivityList id="publicationList" /></section>
+        <div id="publicationPreview" hidden>
+          <h2 class="publish-title">
+            Revisa antes de publicar
+          </h2><PublicationList id="previewList" preview /><div
+            class="form-actions"
+          >
+            <Button
+              id="confirmPublication"
+              text="Confirmar publicación"
+            /><ActionButton
+              id="editPublicationPreview"
+              variant="secondary"
+              text="Volver a editar"
+            />
+          </div>
+        </div>
+        <section id="myPublications" hidden>
+          <h1 class="publish-title">Mis publicaciones</h1><p
+            class="publish-desc"
+          >
+            Administra tus empleos, encargos y servicios. Las consultas de
+            contratación aparecen junto a cada servicio.
+          </p><PublicationList id="publicationList" />
+        </section>
         <p class="demo-feedback" id="publicationFeedback" role="status"></p>
       </div>
-
     </div>
   </div>
 </Layout>
 
 <script>
-import {initPublish} from '../lib/publish';
-document.addEventListener('astro:page-load',initPublish);
+  import { initPublish } from "../lib/publish";
+  document.addEventListener("astro:page-load", initPublish);
 </script>
 
 <style>
-  .publication-kind-picker { border: 0; padding: 0; margin: 0; min-width: 0; }
-  .publication-kind-picker legend { margin-bottom: var(--space-3); }
-  .publication-kind-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-3); }
-  .publication-kind-option { position: relative; display: flex; align-items: center; justify-content: center; min-height: 48px; padding: var(--space-3) var(--space-2); border: 1px solid var(--color-primary); border-radius: var(--radius-sm); color: var(--color-primary); font-family: var(--font-heading); font-size: var(--text-xs); font-weight: 700; line-height: 1.4; text-align: center; cursor: pointer; }
-  .publication-kind-option input { position: absolute; width: 1px; height: 1px; opacity: 0; }
-  .publication-kind-option:has(input:checked) { background: var(--color-primary); color: var(--color-text-inverse); }
-  .publication-kind-option:has(input:focus-visible) { outline: 2px solid var(--color-primary); outline-offset: 3px; }
-  .publication-kind-option:hover { border-color: var(--color-primary-hover); }
-  #publicationKindHelp { margin-block: var(--space-2) var(--space-6); }
-  @media (max-width: 479px) { .publication-kind-options { grid-template-columns: 1fr; gap: var(--space-2); } .publication-kind-option { min-height: 44px; } }
+  .publication-kind-picker {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+  }
+  .publication-kind-picker legend {
+    margin-bottom: var(--space-3);
+  }
+  .publication-kind-options {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-3);
+  }
+  .publication-kind-option {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: var(--space-3) var(--space-2);
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+    cursor: pointer;
+  }
+  .publication-kind-option input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+  .publication-kind-option:has(input:checked) {
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+  }
+  .publication-kind-option:has(input:focus-visible) {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+  .publication-kind-option:hover {
+    border-color: var(--color-primary-hover);
+  }
+  #publicationKindHelp {
+    margin-block: var(--space-2) var(--space-6);
+  }
+  @media (max-width: 479px) {
+    .publication-kind-options {
+      grid-template-columns: 1fr;
+      gap: var(--space-2);
+    }
+    .publication-kind-option {
+      min-height: 44px;
+    }
+  }
 
   /* ====================================================
      CAPA 1: WRAPPER
      ==================================================== */
-.publish-wrapper {
+  .publish-wrapper {
     background-color: var(--color-bg);
     min-height: 100dvh;
     padding-top: calc(75px + var(--space-8));
@@ -263,10 +482,28 @@ document.addEventListener('astro:page-load',initPublish);
     max-width: 760px;
     background-color: var(--color-bg-card);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-2xl);
+    border-radius: var(--radius-md);
     padding: clamp(1.5rem, 4vw, 3rem);
     box-shadow: none;
     box-sizing: border-box;
+  }
+
+  .publish-card[data-view="mine"],
+  .publish-card[data-view="preview"] {
+    max-width: var(--workspace-content-max);
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  #myPublications > .publish-desc {
+    max-width: 70ch;
+    margin-inline: 0;
+  }
+
+  #publicationPreview > .form-actions {
+    margin-top: var(--space-5);
+    align-items: center;
   }
 
   /* ====================================================
@@ -397,7 +634,9 @@ document.addEventListener('astro:page-load',initPublish);
     font-size: var(--text-sm);
     color: var(--color-text-main);
     box-sizing: border-box;
-    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+    transition:
+      border-color var(--transition-fast),
+      background-color var(--transition-fast);
   }
 
   .form-control:focus {
@@ -521,11 +760,74 @@ document.addEventListener('astro:page-load',initPublish);
 
   .success-actions-box {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     gap: var(--space-3);
-    width: 100%;
-    max-width: 420px;
-    margin-bottom: var(--space-6);
+    max-width: 100%;
+    margin-bottom: var(--space-3);
+  }
+
+  .publish-card :global(.publish-action) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--color-text-main);
+    font-family: var(--font-heading);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition:
+      background-color var(--transition-fast),
+      color var(--transition-fast);
+  }
+
+  .publish-card :global(.publish-action--secondary) {
+    border-color: var(--color-border);
+  }
+
+  .publish-card :global(.publish-action--link) {
+    color: var(--color-primary);
+  }
+
+  .publish-card :global(.publish-action--danger) {
+    color: var(--color-error-text);
+  }
+
+  .publish-card :global(.publish-action:hover) {
+    background-color: var(--color-bg-alt);
+  }
+
+  .publish-card :global(.publish-action--link:hover) {
+    color: var(--color-primary-hover);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .publish-card :global(.publish-action--danger:hover) {
+    background-color: var(--color-error-bg);
+  }
+
+  .publish-card :global(.publish-action:focus-visible) {
+    outline: 2px solid var(--color-primary);
+    outline-offset: var(--space-1);
+  }
+
+  .publish-card :global(.publish-action:active) {
+    background-color: var(--color-bg-alt);
+  }
+
+  .publish-card :global(.publish-action:disabled) {
+    opacity: 0.55;
+    cursor: default;
   }
 
   .success-primary-btn {

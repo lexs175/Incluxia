@@ -32,3 +32,21 @@ export function list(root: Element | null, values: string[], tag = 'li', classNa
   if (!root) return;
   root.replaceChildren(...values.map(value => { const el = document.createElement(tag); el.className = className; el.textContent = value; return el; }));
 }
+
+// Task controls have their own quiet hierarchy; expandable CTAs stay opt-in.
+export function managementAction(value: string, options: {
+  href?: string;
+  variant?: 'primary'|'secondary'|'ghost'|'quiet'|'link'|'danger'|'icon';
+  size?: 'sm'|'md'|'lg';
+  data?: Record<string,string>;
+} = {}) {
+  const control = options.href ? document.createElement('a') : document.createElement('button');
+  const variantClass = 'management-action--' + (options.variant || 'quiet');
+  const sizeClass = options.size ? 'management-action--' + options.size : '';
+  control.className = ['management-action', variantClass, sizeClass].filter(Boolean).join(' ');
+  control.textContent = value;
+  if (options.href) (control as HTMLAnchorElement).href = options.href;
+  else (control as HTMLButtonElement).type = 'button';
+  for (const [name, val] of Object.entries(options.data || {})) control.setAttribute('data-' + name, val);
+  return control;
+}

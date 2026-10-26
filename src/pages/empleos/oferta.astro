@@ -1,10 +1,14 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import AccessGate from '../../components/ui/AccessGate.astro';
-import JobDetail from '../../components/empleos/JobDetail.astro';
-import { seedJobs } from '../../lib/demo';
+import Layout from "../../layouts/Layout.astro";
+import AccessGate from "../../components/ui/AccessGate.astro";
+import JobDetail from "../../components/empleos/JobDetail.astro";
+import { seedJobs } from "../../lib/demo";
 ---
-<Layout title="Detalle de la oferta | Incluxia" activePath="/">
-  <AccessGate title="Ingresa para consultar esta oferta" next="/empleos/oferta" />
+
+<Layout title="Detalle de la oferta | Eco" activePath="/">
+  <AccessGate
+    title="Ingresa para consultar esta oferta"
+    next="/empleos/oferta"
+  />
   <div data-member><JobDetail job={seedJobs[0]} /></div>
 </Layout>

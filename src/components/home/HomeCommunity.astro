@@ -1,74 +1,182 @@
 ---
-import ExpandableButton from '../ui/ExpandableButton.astro';
+import SiteImage from "../ui/SiteImage.astro";
+import imageSlots from "../../data/image-slots.json";
+import ExpandableButton from "../ui/ExpandableButton.astro";
 
 // Imágenes provisionales del proyecto. Sustituir por las fotos finales de la comunidad.
-const columns = [
-  [{ src: '/images/stories/luis-mendoza.jpg', alt: 'Profesional trabajando con una computadora' }],
-  [
-    { src: '/images/community/comunidad-ashico-voluntaria.jpg', alt: 'Participación en una actividad de ASHICO' },
-    { src: '/images/community/comunidad-ashico-triptico.jpg', alt: 'Material de una actividad de ASHICO' },
-  ],
-  [{ src: '/images/stories/maria-rene-morales.jpg', alt: 'Profesional trabajando con su computadora portátil' }],
-  [
-    { src: '/images/about/equipo-colaboracion.jpg', alt: 'Personas colaborando en el trabajo' },
-    { src: '/images/about/vision-trabajo.jpg', alt: 'Una actividad de trabajo en equipo' },
-  ],
-  [{ src: '/images/home/comunidad-ashico.png', alt: 'Encuentro de la comunidad ASHICO' }],
-  [
-    { src: '/images/about/mision-profesional.jpg', alt: 'Una profesional durante su jornada de trabajo' },
-    { src: '/images/hero-ashico-cochabamba.jpg', alt: 'Participantes de la comunidad ASHICO en Cochabamba' },
-  ],
-];
+const columns = imageSlots.home.gallery;
 ---
 
-<section class="community-section" id="comunidad" aria-labelledby="community-title">
+<section
+  class="community-section"
+  id="comunidad"
+  aria-labelledby="community-title"
+>
   <div class="container">
     <div class="community-content">
-      <h2 id="community-title">Crea tu cuenta en Incluxia</h2>
-      <p>Busca trabajo, ofrece tus servicios o contrata a personas con hipoacusia. Comparte tu experiencia y contacta por chat.</p>
+      <h2 id="community-title">Crea tu cuenta en Eco</h2>
+      <p>
+        Busca trabajo, ofrece tus servicios o contrata a personas con
+        hipoacusia. Comparte tu experiencia y contacta por chat.
+      </p>
       <div class="community-actions">
-        <ExpandableButton text="Crear cuenta" data-auth-trigger="register" variant="white" size="md" />
+        <ExpandableButton
+          text="Crear cuenta"
+          data-auth-trigger="register"
+          variant="white"
+          size="md"
+        />
       </div>
     </div>
   </div>
   <div class="community-gallery" id="community-gallery">
     <div class="gallery-track">
-      {[0, 1].map(copy => <div class="gallery-group" aria-hidden={copy === 1 ? 'true' : undefined}>
-        {columns.map(column => <div class="gallery-column">
-          {column.map(photo => <div class:list={['gallery-photo', { 'gallery-photo--tall': column.length === 1 }]}>
-            <img src={photo.src} alt={copy === 0 ? photo.alt : ''} width="640" height="800" loading="lazy" />
-          </div>)}
-        </div>)}
-      </div>)}
+      {
+        [0, 1].map((copy) => (
+          <div
+            class="gallery-group"
+            aria-hidden={copy === 1 ? "true" : undefined}
+          >
+            {columns.map((column) => (
+              <div class="gallery-column">
+                {column.map((photo) => (
+                  <div
+                    class:list={[
+                      "gallery-photo",
+                      { "gallery-photo--tall": column.length === 1 },
+                    ]}
+                  >
+                    <SiteImage kind={column.length === 1 ? "galleryTall" : "gallery"}
+                      src={photo.src}
+                      alt={copy === 0 ? photo.alt : ""}
+                      width="640"
+                      height="800"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>
 
 <style>
-  .community-section { width: 100%; overflow: hidden; background: var(--color-home-primary); color: var(--color-white); padding-block: var(--space-16); }
-  .community-content { max-width: 830px; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-6); }
-  .community-content h2 { font-size: var(--text-3xl); font-weight: 700; color: inherit; line-height: 1.1; letter-spacing: -0.03em; text-wrap: balance; }
-  .community-content p { max-width: 720px; font-size: var(--text-base); line-height: 1.75; color: inherit; margin: 0; }
-  .community-actions { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-6); }
-  .community-gallery { --gallery-card-width: clamp(10rem, 16.667vw, 20rem); --gallery-card-height: clamp(9rem, 14.896vw, 17.875rem); --gallery-gap: var(--space-5); margin-top: var(--space-10); overflow: hidden; }
-  .gallery-track { display: flex; width: max-content; animation: community-drift 75s linear infinite; }
-  .gallery-group { display: flex; align-items: flex-start; gap: var(--gallery-gap); padding-right: var(--gallery-gap); }
-  .gallery-column { display: flex; flex-direction: column; flex: 0 0 var(--gallery-card-width); width: var(--gallery-card-width); gap: var(--gallery-gap); }
-  .gallery-column:nth-child(3n + 1) { padding-top: var(--space-16); }
-  .gallery-column:nth-child(3n + 2) { padding-top: var(--space-24); }
-  .gallery-photo { width: 100%; height: var(--gallery-card-height); overflow: hidden; border-radius: var(--radius-xl); background: var(--color-primary-dark); }
-  .gallery-photo--tall { height: calc(var(--gallery-card-height) * 2); }
-  .gallery-photo img { width: 100%; height: 100%; object-fit: cover; }
-  @keyframes community-drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .community-section {
+    width: 100%;
+    overflow: hidden;
+    background: var(--color-home-primary);
+    color: var(--color-white);
+    padding-block: var(--space-16);
+  }
+  .community-content {
+    max-width: 830px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-6);
+  }
+  .community-content h2 {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: inherit;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+  .community-content p {
+    max-width: 720px;
+    font-size: var(--text-base);
+    line-height: 1.75;
+    color: inherit;
+    margin: 0;
+  }
+  .community-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+  }
+  .community-gallery {
+    --gallery-card-width: clamp(10rem, 16.667vw, 20rem);
+    --gallery-card-height: clamp(9rem, 14.896vw, 17.875rem);
+    --gallery-gap: var(--space-5);
+    margin-top: var(--space-10);
+    overflow: hidden;
+  }
+  .gallery-track {
+    display: flex;
+    width: max-content;
+    animation: community-drift 75s linear infinite;
+  }
+  .gallery-group {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--gallery-gap);
+    padding-right: var(--gallery-gap);
+  }
+  .gallery-column {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 var(--gallery-card-width);
+    width: var(--gallery-card-width);
+    gap: var(--gallery-gap);
+  }
+  .gallery-column:nth-child(3n + 1) {
+    padding-top: var(--space-16);
+  }
+  .gallery-column:nth-child(3n + 2) {
+    padding-top: var(--space-24);
+  }
+  .gallery-photo {
+    width: 100%;
+    height: var(--gallery-card-height);
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    background: var(--color-primary-dark);
+  }
+  .gallery-photo--tall {
+    height: calc(var(--gallery-card-height) * 2);
+  }
+  .gallery-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  @keyframes community-drift {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
   @media (max-width: 767px) {
-    .community-section { padding-block: var(--space-10); }
-    .community-gallery { --gallery-gap: var(--space-3); }
-    .gallery-column:nth-child(3n + 1) { padding-top: var(--space-8); }
-    .gallery-column:nth-child(3n + 2) { padding-top: var(--space-12); }
+    .community-section {
+      padding-block: var(--space-10);
+    }
+    .community-gallery {
+      --gallery-gap: var(--space-3);
+    }
+    .gallery-column:nth-child(3n + 1) {
+      padding-top: var(--space-8);
+    }
+    .gallery-column:nth-child(3n + 2) {
+      padding-top: var(--space-12);
+    }
   }
   @media (prefers-reduced-motion: reduce) {
-    .gallery-track { animation: none; }
-    .community-gallery { overflow-x: auto; }
-    .gallery-group[aria-hidden='true'] { display: none; }
+    .gallery-track {
+      animation: none;
+    }
+    .community-gallery {
+      overflow-x: auto;
+    }
+    .gallery-group[aria-hidden="true"] {
+      display: none;
+    }
   }
 </style>

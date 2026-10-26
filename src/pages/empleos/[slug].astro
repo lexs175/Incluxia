@@ -1,12 +1,21 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import AccessGate from '../../components/ui/AccessGate.astro';
-import JobDetail from '../../components/empleos/JobDetail.astro';
-import { seedJobs } from '../../lib/demo';
-export function getStaticPaths() { return seedJobs.map(job=>({params:{slug:job.slug},props:{job}})); }
+import Layout from "../../layouts/Layout.astro";
+import AccessGate from "../../components/ui/AccessGate.astro";
+import JobDetail from "../../components/empleos/JobDetail.astro";
+import { seedJobs } from "../../lib/demo";
+export function getStaticPaths() {
+  return seedJobs.map((job) => ({
+    params: { slug: job.slug },
+    props: { job },
+  }));
+}
 const { job } = Astro.props;
 ---
-<Layout title={job.title + ' | Incluxia'} activePath="/">
-  <AccessGate title="Ingresa para consultar esta oferta" next={Astro.url.pathname} />
+
+<Layout title={job.title + " | Eco"} activePath="/">
+  <AccessGate
+    title="Ingresa para consultar esta oferta"
+    next={Astro.url.pathname}
+  />
   <div data-member><JobDetail job={job} /></div>
 </Layout>

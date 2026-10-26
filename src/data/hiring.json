@@ -2,7 +2,7 @@
   "categories": [
     {
       "id": "diseno-grafico",
-      "image": "/images/categories/diseno-grafico.png",
+      "image": "categories/diseno-grafico.png",
       "slug": "diseno-grafico",
       "name": "Diseño Gráfico",
       "shortDesc": "Identidad visual, branding, logotipos y piezas publicitarias digitales.",
@@ -19,7 +19,7 @@
     },
     {
       "id": "sistemas-ti",
-      "image": "/images/categories/sistemas-ti.webp",
+      "image": "categories/sistemas-ti.webp",
       "slug": "sistemas-ti",
       "name": "Sistemas & Soporte TI",
       "shortDesc": "Mantenimiento preventivo, soporte helpdesk escrito y administración básica de redes.",
@@ -36,7 +36,7 @@
     },
     {
       "id": "contabilidad-finanzas",
-      "image": "/images/categories/contabilidad-finanzas.webp",
+      "image": "categories/contabilidad-finanzas.webp",
       "slug": "contabilidad-finanzas",
       "name": "Contabilidad & Facturación",
       "shortDesc": "Conciliaciones bancarias, libros de compras/ventas y facturación electrónica.",
@@ -53,7 +53,7 @@
     },
     {
       "id": "digitacion-datos",
-      "image": "/images/categories/digitacion-datos.webp",
+      "image": "categories/digitacion-datos.webp",
       "slug": "digitacion-datos",
       "name": "Digitación & Archivo de Datos",
       "shortDesc": "Transcripción de documentos, captura masiva de datos y digitalización de archivos.",
@@ -70,7 +70,7 @@
     },
     {
       "id": "redes-sociales",
-      "image": "/images/categories/redes-sociales.webp",
+      "image": "categories/redes-sociales.webp",
       "slug": "redes-sociales",
       "name": "Redes Sociales & Contenido",
       "shortDesc": "Parrillas de contenido, diseño de post/reels y gestión de comunidad 100% escrita.",
@@ -87,7 +87,7 @@
     },
     {
       "id": "desarrollo-web",
-      "image": "/images/categories/desarrollo-web.webp",
+      "image": "categories/desarrollo-web.webp",
       "slug": "desarrollo-web",
       "name": "Desarrollo Web & Landing Pages",
       "shortDesc": "Páginas web corporativas, tiendas online y landing pages accesibles y rápidas.",
@@ -104,7 +104,7 @@
     },
     {
       "id": "ilustracion-arte",
-      "image": "/images/categories/ilustracion-arte.webp",
+      "image": "categories/ilustracion-arte.webp",
       "slug": "ilustracion-arte",
       "name": "Ilustración & Arte Digital",
       "shortDesc": "Personajes, iconos personalizados, infografías visuales y concept art.",
@@ -121,7 +121,7 @@
     },
     {
       "id": "edicion-video",
-      "image": "/images/categories/edicion-video.webp",
+      "image": "categories/edicion-video.webp",
       "slug": "edicion-video",
       "name": "Edición Audiovisual & Subtítulos",
       "shortDesc": "Edición de video con subtítulos precisos, subtitulado accesible y clips para redes.",
@@ -141,6 +141,8 @@
     {
       "id": "serv-1",
       "categorySlug": "diseno-grafico",
+      "previewImage": "services/diseno-grafico/identidad-visual-v2.png",
+      "previewAlt": "Ejemplo de identidad visual con logotipo y aplicaciones de marca",
       "title": "Diseño de Identidad Visual y Logotipo Profesional",
       "price": "Bs. 280",
       "priceNumeric": 280,
@@ -148,7 +150,7 @@
         "name": "Valeria Morales Terán",
         "role": "Diseñadora Gráfica",
         "city": "Cochabamba",
-        "avatar": "/images/profiles/valeria-morales.jpg",
+        "avatar": "profiles/valeria-morales.png",
         "whatsapp": "59170000001",
         "rating": 5,
         "completed": 16
@@ -167,6 +169,8 @@
     {
       "id": "serv-2",
       "categorySlug": "diseno-grafico",
+      "previewImage": "services/diseno-grafico/piezas-redes-sociales-v2.png",
+      "previewAlt": "Ejemplo de doce piezas digitales diseñadas para redes sociales",
       "title": "Pack de 12 Piezas Gráficas para Redes Sociales",
       "price": "Bs. 190",
       "priceNumeric": 190,
@@ -174,7 +178,7 @@
         "name": "Mateo Peñaranda Alarcón",
         "role": "Diseñador Gráfico & Editor",
         "city": "Cochabamba",
-        "avatar": "/images/profiles/mateo-penaranda.jpg",
+        "avatar": "profiles/mateo-penaranda.jpg",
         "whatsapp": "59173000004",
         "rating": 4.9,
         "completed": 24
@@ -193,6 +197,8 @@
     {
       "id": "serv-3",
       "categorySlug": "diseno-grafico",
+      "previewImage": "services/diseno-grafico/packaging-producto-v2.png",
+      "previewAlt": "Ejemplo de empaques y etiquetas con su diseño aplicado",
       "title": "Diseño de Packaging y Etiquetas de Producto",
       "price": "Bs. 220",
       "priceNumeric": 220,
@@ -200,7 +206,7 @@
         "name": "Andrea Torrico Suárez",
         "role": "Diseñadora de Packaging",
         "city": "Santa Cruz",
-        "avatar": "/images/profiles/andrea-torrico.jpg",
+        "avatar": "profiles/andrea-torrico.png",
         "whatsapp": "59175000006",
         "rating": 5,
         "completed": 21
@@ -219,14 +225,16 @@
     {
       "id": "serv-4",
       "categorySlug": "diseno-grafico",
+      "previewImage": "services/diseno-grafico/manual-marca-v2.png",
+      "previewAlt": "Ejemplo de páginas de un manual de marca digital",
       "title": "Manual de Marca y Guía de Estilo Corporativo",
       "price": "Bs. 310",
       "priceNumeric": 310,
       "author": {
-        "name": "Marcelo Paz Céspedes",
+        "name": "Diego Siles Montaño",
         "role": "Diseñador Gráfico",
         "city": "La Paz",
-        "avatar": "/images/profiles/diego-siles.jpg",
+        "avatar": "profiles/diego-siles.png",
         "whatsapp": "59176000007",
         "rating": 4.9,
         "completed": 18
@@ -245,6 +253,8 @@
     {
       "id": "serv-5",
       "categorySlug": "sistemas-ti",
+      "previewImage": "services/sistemas-ti/mantenimiento-remoto-v1.png",
+      "previewAlt": "Ejemplo de diagnóstico y optimización de software mediante acceso remoto",
       "title": "Optimización, Limpieza y Mantenimiento de Software Remoto",
       "price": "Bs. 120",
       "priceNumeric": 120,
@@ -252,7 +262,7 @@
         "name": "Camila Rojas Claure",
         "role": "Técnica en Soporte TI",
         "city": "Santa Cruz",
-        "avatar": "/images/profiles/camila-rojas.jpg",
+        "avatar": "profiles/camila-rojas.jpg",
         "whatsapp": "59171000002",
         "rating": 5,
         "completed": 19
@@ -271,6 +281,8 @@
     {
       "id": "serv-6",
       "categorySlug": "sistemas-ti",
+      "previewImage": "services/sistemas-ti/redes-lan-wifi-v1.png",
+      "previewAlt": "Router y switch conectados junto a una configuración de redes LAN y Wi-Fi",
       "title": "Configuración Segura de Redes LAN y Wi-Fi de Oficina",
       "price": "Bs. 250",
       "priceNumeric": 250,
@@ -278,7 +290,7 @@
         "name": "Alex Quispe Mamani",
         "role": "Administrador de Sistemas",
         "city": "La Paz",
-        "avatar": "/images/profiles/alex-quispe.jpg",
+        "avatar": "profiles/alex-quispe.jpg",
         "whatsapp": "59177000008",
         "rating": 4.9,
         "completed": 22
@@ -297,14 +309,16 @@
     {
       "id": "serv-7",
       "categorySlug": "sistemas-ti",
+      "previewImage": "services/sistemas-ti/helpdesk-chat-v1.png",
+      "previewAlt": "Ejemplo de mesa de ayuda con tickets y soporte escrito por chat",
       "title": "Soporte Helpdesk Mensual por Chat para Empresas (Hasta 10 PCs)",
       "price": "Bs. 450",
       "priceNumeric": 450,
       "author": {
-        "name": "Diego Siles Gutiérrez",
+        "name": "Diego Siles Montaño",
         "role": "Especialista en Soporte",
         "city": "Cochabamba",
-        "avatar": "/images/profiles/carlos-mendoza.jpg",
+        "avatar": "profiles/diego-siles.png",
         "whatsapp": "59178000009",
         "rating": 5,
         "completed": 27
@@ -323,6 +337,8 @@
     {
       "id": "serv-8",
       "categorySlug": "sistemas-ti",
+      "previewImage": "services/sistemas-ti/instalacion-software-v1.png",
+      "previewAlt": "Ejemplo de instalación de programas y configuración de protección en una computadora",
       "title": "Instalación y Parametrización de Software Corporativo y Antivirus",
       "price": "Bs. 140",
       "priceNumeric": 140,
@@ -330,7 +346,7 @@
         "name": "Rodrigo Vargas Choque",
         "role": "Técnico Informático",
         "city": "Cochabamba",
-        "avatar": "/images/profiles/rodrigo-vargas.jpg",
+        "avatar": "profiles/rodrigo-vargas.jpg",
         "whatsapp": "59179000010",
         "rating": 4.9,
         "completed": 17
@@ -356,7 +372,7 @@
         "name": "Javier Mercado Rocha",
         "role": "Auxiliar Contable",
         "city": "La Paz",
-        "avatar": "/images/profiles/javier-mercado.jpg",
+        "avatar": "profiles/javier-mercado.jpg",
         "whatsapp": "59172000003",
         "rating": 4.9,
         "completed": 14
@@ -370,7 +386,10 @@
         "Cumplimiento con normas contables bolivianas",
         "Manejo confidencial de datos bajo acuerdo escrito"
       ],
-      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.12)"
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.12)",
+      "previewImage": "services/contabilidad-finanzas/serv-9-conciliacion-bancaria-y-cierre-mensual-de-facturacion.webp",
+      "previewAlt": "Revisión de extractos bancarios y registros contables en una oficina",
+      "previewProvisional": false
     },
     {
       "id": "serv-10",
@@ -382,7 +401,7 @@
         "name": "Gabriela Choque Flores",
         "role": "Especialista Tributaria",
         "city": "Santa Cruz",
-        "avatar": "/images/profiles/gabriela-choque.jpg",
+        "avatar": "profiles/gabriela-choque.png",
         "whatsapp": "59170220012",
         "rating": 5,
         "completed": 25
@@ -396,7 +415,10 @@
         "Entrega de archivo consolidado para contador general",
         "Coordinación 100% por chat de WhatsApp"
       ],
-      "previewColor": "rgba(var(--color-primary-rgb), 0.15)"
+      "previewColor": "rgba(var(--color-primary-rgb), 0.15)",
+      "previewImage": "services/contabilidad-finanzas/serv-10-emision-y-registro-de-facturacion-electronica-siat.webp",
+      "previewAlt": "Registro de una factura electrónica SIAT en una computadora portátil",
+      "previewProvisional": false
     },
     {
       "id": "serv-11",
@@ -408,7 +430,7 @@
         "name": "Fernando Gutiérrez Rios",
         "role": "Contador General",
         "city": "Cochabamba",
-        "avatar": "/images/profiles/fernando-gutierrez.jpg",
+        "avatar": "profiles/fernando-gutierrez.jpg",
         "whatsapp": "59170110011",
         "rating": 5,
         "completed": 33
@@ -422,7 +444,10 @@
         "Exportación directa a formato requerido por el SIAT",
         "Ahorro de multas por declaraciones erróneas"
       ],
-      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.18)"
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.18)",
+      "previewImage": "services/contabilidad-finanzas/serv-11-armado-de-libros-de-compras-y-ventas-iva-para-negocios.webp",
+      "previewAlt": "Organización de documentos de compras y ventas para el libro IVA",
+      "previewProvisional": false
     },
     {
       "id": "serv-12",
@@ -434,7 +459,7 @@
         "name": "Luis Mendoza Albarracín",
         "role": "Auditor Contable",
         "city": "La Paz",
-        "avatar": "/images/stories/luis-mendoza.jpg",
+        "avatar": "profiles/luis-mendoza-albarracin.png",
         "whatsapp": "59170330013",
         "rating": 4.9,
         "completed": 28
@@ -448,7 +473,10 @@
         "Planilla lista para Ministerio de Trabajo (OVT)",
         "Confidencialidad absoluta de sueldos"
       ],
-      "previewColor": "rgba(var(--color-primary-rgb), 0.17)"
+      "previewColor": "rgba(var(--color-primary-rgb), 0.17)",
+      "previewImage": "services/contabilidad-finanzas/serv-12-planilla-de-sueldos-y-aportes-patronales-hasta-15-dependientes.webp",
+      "previewAlt": "Preparación de una planilla de sueldos con documentos y una hoja de cálculo",
+      "previewProvisional": false
     },
     {
       "id": "serv-13",
@@ -460,7 +488,7 @@
         "name": "Lucía Salazar Pinto",
         "role": "Digitadora de Datos",
         "city": "La Paz",
-        "avatar": "/images/profiles/lucia-salazar.jpg",
+        "avatar": "profiles/lucia-salazar.png",
         "whatsapp": "59174000005",
         "rating": 5,
         "completed": 31
@@ -474,7 +502,10 @@
         "Entrega en DOCX, XLSX y PDF listo para imprimir",
         "Revisión doble antes de entrega final"
       ],
-      "previewColor": "rgba(var(--color-primary-rgb), 0.1)"
+      "previewColor": "rgba(var(--color-primary-rgb), 0.1)",
+      "previewImage": "services/digitacion-datos/serv-13-digitacion-y-transcripcion-masiva-de-documentos-hasta-150-paginas.webp",
+      "previewAlt": "Digitación de formularios y documentos en una computadora",
+      "previewProvisional": false
     },
     {
       "id": "serv-14",
@@ -486,7 +517,7 @@
         "name": "Juan Pablo Claros",
         "role": "Transcriptor & Data Entry",
         "city": "Cochabamba",
-        "avatar": "/images/stories/juan-pablo-claros.jpg",
+        "avatar": "profiles/juan-pablo-claros.png",
         "whatsapp": "59170440014",
         "rating": 5,
         "completed": 29
@@ -500,7 +531,10 @@
         "Fórmulas y validaciones de datos aplicadas",
         "Resumen ejecutivo del estado de la base de datos"
       ],
-      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.15)"
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.15)",
+      "previewImage": "services/digitacion-datos/serv-14-limpieza-y-normalizacion-de-bases-de-datos-en-excel-google-sheets.webp",
+      "previewAlt": "Revisión y limpieza de registros en una hoja de cálculo",
+      "previewProvisional": false
     },
     {
       "id": "serv-15",
@@ -512,7 +546,7 @@
         "name": "Claudia Arce Montaño",
         "role": "Especialista en Archivo",
         "city": "Santa Cruz",
-        "avatar": "/images/profiles/claudia-arce.jpg",
+        "avatar": "profiles/claudia-arce.jpg",
         "whatsapp": "59170550015",
         "rating": 4.9,
         "completed": 26
@@ -526,7 +560,10 @@
         "Optimización de peso en megabytes sin pérdida visual",
         "Garantía de confidencialidad para archivos legales"
       ],
-      "previewColor": "rgba(var(--color-primary-rgb), 0.16)"
+      "previewColor": "rgba(var(--color-primary-rgb), 0.16)",
+      "previewImage": "services/digitacion-datos/serv-15-digitalizacion-e-indexacion-de-archivos-fisicos-a-pdf-buscable.webp",
+      "previewAlt": "Escaneo de documentos físicos para su archivo digital",
+      "previewProvisional": false
     },
     {
       "id": "serv-16",
@@ -538,7 +575,7 @@
         "name": "María René Morales",
         "role": "Digitadora Documental",
         "city": "Cochabamba",
-        "avatar": "/images/stories/maria-rene-morales.jpg",
+        "avatar": "profiles/maria-rene-morales.png",
         "whatsapp": "59170660016",
         "rating": 5,
         "completed": 23
@@ -552,7 +589,10 @@
         "Entrega organizada con columnas protegidas",
         "Rapidez y discreción con datos comerciales"
       ],
-      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.17)"
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.17)",
+      "previewImage": "services/digitacion-datos/serv-16-captura-masiva-de-formularios-e-inventarios-comerciales.webp",
+      "previewAlt": "Registro del inventario de un almacén con un lector de códigos",
+      "previewProvisional": false
     },
     {
       "id": "serv-17",
@@ -564,7 +604,7 @@
         "name": "Claudia Arce Montaño",
         "role": "Community Manager",
         "city": "Santa Cruz",
-        "avatar": "/images/profiles/claudia-arce.jpg",
+        "avatar": "profiles/claudia-arce.jpg",
         "whatsapp": "59170550015",
         "rating": 5,
         "completed": 22
@@ -578,7 +618,10 @@
         "Atención de consultas por chat de Facebook e Instagram",
         "Reporte mensual de métricas y alcance"
       ],
-      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.15)"
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.15)",
+      "previewImage": "services/redes-sociales/serv-17-gestion-mensual-de-redes-sociales-16-publicaciones-atencion-por-chat.webp",
+      "previewAlt": "Gestión de publicaciones en redes sociales desde una computadora portátil",
+      "previewProvisional": false
     },
     {
       "id": "serv-18",
@@ -590,7 +633,7 @@
         "name": "Melissa Arteaga Tórrez",
         "role": "Creadora de Contenido",
         "city": "Cochabamba",
-        "avatar": "/images/profiles/melissa-arteaga.jpg",
+        "avatar": "profiles/melissa-arteaga.jpg",
         "whatsapp": "59170770017",
         "rating": 4.9,
         "completed": 19
@@ -604,7 +647,10 @@
         "Sugerencias de audios en tendencia y formato visual",
         "Plantilla en Notion o Google Docs para tu equipo"
       ],
-      "previewColor": "rgba(var(--color-primary-rgb), 0.18)"
+      "previewColor": "rgba(var(--color-primary-rgb), 0.18)",
+      "previewImage": "services/redes-sociales/serv-18-parrilla-mensual-de-contenido-con-20-ideas-y-guiones-escritos.webp",
+      "previewAlt": "Planificación de un calendario editorial con notas y una computadora portátil",
+      "previewProvisional": false
     },
     {
       "id": "serv-19",
@@ -616,7 +662,7 @@
         "name": "Valeria Morales Terán",
         "role": "Diseñadora Gráfica",
         "city": "Cochabamba",
-        "avatar": "/images/profiles/valeria-morales.jpg",
+        "avatar": "profiles/valeria-morales.png",
         "whatsapp": "59170000001",
         "rating": 5,
         "completed": 25
@@ -630,7 +676,10 @@
         "Exportación en JPG/PNG a 1080x1350px (vertical óptimo)",
         "Incluye archivos editables en Figma"
       ],
-      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.17)"
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.17)",
+      "previewImage": "services/redes-sociales/serv-19-diseno-de-10-carruseles-educativos-de-alto-alcance-para-instagram.webp",
+      "previewAlt": "Diseño de un carrusel educativo para redes sociales en un monitor",
+      "previewProvisional": false
     },
     {
       "id": "serv-20",
@@ -642,7 +691,7 @@
         "name": "Mateo Peñaranda Alarcón",
         "role": "Gestor de Mensajería",
         "city": "Cochabamba",
-        "avatar": "/images/profiles/mateo-penaranda.jpg",
+        "avatar": "profiles/mateo-penaranda.jpg",
         "whatsapp": "59173000004",
         "rating": 4.9,
         "completed": 20
@@ -656,7 +705,10 @@
         "Registro de contactos calificados en hoja compartida",
         "100% comunicación escrita sin barreras"
       ],
-      "previewColor": "rgba(var(--color-primary-rgb), 0.15)"
+      "previewColor": "rgba(var(--color-primary-rgb), 0.15)",
+      "previewImage": "services/redes-sociales/serv-20-moderacion-y-respuesta-de-mensajes-por-whatsapp-y-dms-1-mes.webp",
+      "previewAlt": "Atención de mensajes por WhatsApp en una computadora y un teléfono",
+      "previewProvisional": false
     },
     {
       "id": "serv-21",
@@ -668,7 +720,7 @@
         "name": "Rodrigo Vargas Choque",
         "role": "Desarrollador Frontend",
         "city": "Cochabamba",
-        "avatar": "/images/profiles/rodrigo-vargas.jpg",
+        "avatar": "profiles/rodrigo-vargas.jpg",
         "whatsapp": "59179000010",
         "rating": 5,
         "completed": 18
@@ -682,7 +734,10 @@
         "Formulario conectado a correo electrónico o Sheets",
         "Dominio y hosting guiados paso a paso"
       ],
-      "previewColor": "rgba(var(--color-primary-rgb), 0.18)"
+      "previewColor": "rgba(var(--color-primary-rgb), 0.18)",
+      "previewImage": "services/desarrollo-web/serv-21-creacion-de-landing-page-moderna-de-alta-conversion-y-accesible.webp",
+      "previewAlt": "Revisión de una página web en una computadora portátil y un teléfono",
+      "previewProvisional": false
     },
     {
       "id": "serv-22",
@@ -694,7 +749,7 @@
         "name": "Patricia Soliz Guzmán",
         "role": "Desarrolladora Web",
         "city": "La Paz",
-        "avatar": "/images/profiles/patricia-soliz.jpg",
+        "avatar": "profiles/patricia-soliz.jpg",
         "whatsapp": "59170880018",
         "rating": 5,
         "completed": 26
@@ -708,7 +763,10 @@
         "Optimización SEO básica para Google Bolivia",
         "Manual en video de 15 minutos enseñando a editar el contenido"
       ],
-      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.2)"
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.2)",
+      "previewImage": "services/desarrollo-web/serv-22-desarrollo-de-sitio-web-corporativo-en-wordpress-5-secciones.webp",
+      "previewAlt": "Edición de un sitio web desde el panel de WordPress",
+      "previewProvisional": false
     },
     {
       "id": "serv-23",
@@ -720,7 +778,7 @@
         "name": "Carlos Mendoza Villarroel",
         "role": "Especialista en Accesibilidad",
         "city": "Santa Cruz",
-        "avatar": "/images/profiles/carlos-mendoza.jpg",
+        "avatar": "profiles/carlos-mendoza.jpg",
         "whatsapp": "59170990019",
         "rating": 4.9,
         "completed": 21
@@ -734,7 +792,10 @@
         "Informe con métricas Core Web Vitals antes y después",
         "Cumplimiento con estándares internacionales WCAG 2.1"
       ],
-      "previewColor": "rgba(var(--color-primary-rgb), 0.15)"
+      "previewColor": "rgba(var(--color-primary-rgb), 0.15)",
+      "previewImage": "services/desarrollo-web/serv-23-optimizacion-de-velocidad-y-auditoria-de-accesibilidad-web-wcag.webp",
+      "previewAlt": "Revisión de métricas de rendimiento y accesibilidad de una página web",
+      "previewProvisional": false
     },
     {
       "id": "serv-24",
@@ -746,7 +807,7 @@
         "name": "Alex Quispe Mamani",
         "role": "Maquetador Frontend",
         "city": "La Paz",
-        "avatar": "/images/profiles/alex-quispe.jpg",
+        "avatar": "profiles/alex-quispe.jpg",
         "whatsapp": "59177000008",
         "rating": 4.9,
         "completed": 19
@@ -760,7 +821,10 @@
         "Animaciones sutiles y micro-interacciones suaves",
         "Listo para integrar a cualquier backend o CMS"
       ],
-      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.16)"
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.16)",
+      "previewImage": "services/desarrollo-web/serv-24-maquetacion-responsive-html5-css3-desde-diseno-de-figma.webp",
+      "previewAlt": "Maquetación de una página web con el diseño y el código en dos monitores",
+      "previewProvisional": false
     },
     {
       "id": "serv-25",
@@ -772,7 +836,7 @@
         "name": "Andrea Torrico Suárez",
         "role": "Ilustradora Digital",
         "city": "Santa Cruz",
-        "avatar": "/images/profiles/andrea-torrico.jpg",
+        "avatar": "profiles/andrea-torrico.png",
         "whatsapp": "59175000006",
         "rating": 5,
         "completed": 23
@@ -786,7 +850,10 @@
         "Cesión completa de derechos de uso comercial",
         "Guía básica de aplicación del personaje"
       ],
-      "previewColor": "rgba(var(--color-primary-rgb), 0.19)"
+      "previewColor": "rgba(var(--color-primary-rgb), 0.19)",
+      "previewImage": "services/ilustracion-arte/serv-25-ilustracion-de-mascota-o-personaje-corporativo-de-marca.webp",
+      "previewAlt": "Ilustración vectorial de un personaje de ave en una tableta gráfica",
+      "previewProvisional": false
     },
     {
       "id": "serv-26",
@@ -798,7 +865,7 @@
         "name": "Melissa Arteaga Tórrez",
         "role": "Ilustradora Vectorial",
         "city": "Cochabamba",
-        "avatar": "/images/profiles/melissa-arteaga.jpg",
+        "avatar": "profiles/melissa-arteaga.jpg",
         "whatsapp": "59170770017",
         "rating": 4.9,
         "completed": 17
@@ -812,7 +879,10 @@
         "Colores primarios y secundarios de tu negocio",
         "Listo para subir a Figma o desarrollo web"
       ],
-      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.14)"
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.14)",
+      "previewImage": "services/ilustracion-arte/serv-26-pack-de-15-iconos-vectoriales-personalizados-para-web-y-app.webp",
+      "previewAlt": "Diseño de una cuadrícula de iconos vectoriales para interfaces",
+      "previewProvisional": false
     },
     {
       "id": "serv-27",
@@ -821,10 +891,10 @@
       "price": "Bs. 240",
       "priceNumeric": 240,
       "author": {
-        "name": "Marcelo Paz Céspedes",
+        "name": "Diego Siles Montaño",
         "role": "Ilustrador & Diseñador",
         "city": "La Paz",
-        "avatar": "/images/profiles/diego-siles.jpg",
+        "avatar": "profiles/diego-siles.png",
         "whatsapp": "59176000007",
         "rating": 5,
         "completed": 20
@@ -838,7 +908,10 @@
         "Versión vertical para celular y horizontal para folleto",
         "Entrega en PDF de prensa y PNG de alta resolución"
       ],
-      "previewColor": "rgba(var(--color-primary-rgb), 0.17)"
+      "previewColor": "rgba(var(--color-primary-rgb), 0.17)",
+      "previewImage": "services/ilustracion-arte/serv-27-diseno-de-infografia-educativa-y-visual-de-gran-formato.webp",
+      "previewAlt": "Revisión de una infografía educativa impresa",
+      "previewProvisional": false
     },
     {
       "id": "serv-28",
@@ -850,7 +923,7 @@
         "name": "Gabriela Choque Flores",
         "role": "Artista Digital",
         "city": "Santa Cruz",
-        "avatar": "/images/profiles/gabriela-choque.jpg",
+        "avatar": "profiles/gabriela-choque.png",
         "whatsapp": "59170220012",
         "rating": 4.9,
         "completed": 18
@@ -864,7 +937,10 @@
         "Frases bolivianas y de cortesía comercial a medida",
         "Diseño divertido que humaniza tu negocio"
       ],
-      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.16)"
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.16)",
+      "previewImage": "services/ilustracion-arte/serv-28-pack-de-stickers-digitales-personalizados-para-whatsapp-y-telegram.webp",
+      "previewAlt": "Diseño de stickers ilustrados en una tableta gráfica",
+      "previewProvisional": false
     },
     {
       "id": "serv-29",
@@ -876,7 +952,7 @@
         "name": "Sergio Mamani Calle",
         "role": "Editor Audiovisual",
         "city": "La Paz",
-        "avatar": "/images/profiles/sergio-mamani.jpg",
+        "avatar": "profiles/sergio-mamani.jpg",
         "whatsapp": "59170011020",
         "rating": 5,
         "completed": 27
@@ -890,7 +966,10 @@
         "Formato 9:16 optimizado en 1080x1920 Full HD",
         "Música y efectos de sonido con licencia incluida"
       ],
-      "previewColor": "rgba(var(--color-primary-rgb), 0.18)"
+      "previewColor": "rgba(var(--color-primary-rgb), 0.18)",
+      "previewImage": "services/edicion-video/serv-29-pack-de-5-reels-tiktoks-con-subtitulos-dinamicos-y-efectos.webp",
+      "previewAlt": "Edición de un video vertical con subtítulos y una línea de tiempo",
+      "previewProvisional": false
     },
     {
       "id": "serv-30",
@@ -902,7 +981,7 @@
         "name": "Sergio Mamani Calle",
         "role": "Editor Audiovisual",
         "city": "La Paz",
-        "avatar": "/images/profiles/sergio-mamani.jpg",
+        "avatar": "profiles/sergio-mamani.jpg",
         "whatsapp": "59170011020",
         "rating": 5,
         "completed": 27
@@ -916,7 +995,10 @@
         "Versión de video con subtítulos quemados en alta legibilidad",
         "Cumplimiento con pautas de accesibilidad audiovisual"
       ],
-      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.15)"
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.15)",
+      "previewImage": "services/edicion-video/serv-30-subtitulado-accesible-y-sincronizado-para-videos-de-hasta-15-minutos.webp",
+      "previewAlt": "Sincronización de subtítulos de una entrevista en un editor de video",
+      "previewProvisional": false
     },
     {
       "id": "serv-31",
@@ -928,7 +1010,7 @@
         "name": "Mateo Peñaranda Alarcón",
         "role": "Montajista de Video",
         "city": "Cochabamba",
-        "avatar": "/images/profiles/mateo-penaranda.jpg",
+        "avatar": "profiles/mateo-penaranda.jpg",
         "whatsapp": "59173000004",
         "rating": 5,
         "completed": 21
@@ -942,7 +1024,10 @@
         "Mezcla de sonido balanceada con música de fondo",
         "Exportación en 4K o 1080p para presentaciones o YouTube"
       ],
-      "previewColor": "rgba(var(--color-primary-rgb), 0.16)"
+      "previewColor": "rgba(var(--color-primary-rgb), 0.16)",
+      "previewImage": "services/edicion-video/serv-31-edicion-completa-de-video-institucional-o-entrevista-hasta-5-min.webp",
+      "previewAlt": "Montaje de una entrevista con varias pistas en un editor de video",
+      "previewProvisional": false
     },
     {
       "id": "serv-32",
@@ -951,10 +1036,10 @@
       "price": "Bs. 320",
       "priceNumeric": 320,
       "author": {
-        "name": "Diego Siles Gutiérrez",
+        "name": "Diego Siles Montaño",
         "role": "Creador de Contenido",
         "city": "Cochabamba",
-        "avatar": "/images/profiles/carlos-mendoza.jpg",
+        "avatar": "profiles/diego-siles.png",
         "whatsapp": "59178000009",
         "rating": 4.9,
         "completed": 23
@@ -968,7 +1053,10 @@
         "Entrega en formato cuadrado (1:1) y vertical (9:16)",
         "Orientado a generar clics y mensajes de compra"
       ],
-      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.19)"
+      "previewColor": "rgba(var(--color-primary-dark-rgb), 0.19)",
+      "previewImage": "services/edicion-video/serv-32-creacion-de-video-promocional-animado-para-redes-sociales-30-seg.webp",
+      "previewAlt": "Animación de textos e ilustraciones para un video promocional",
+      "previewProvisional": false
     }
   ],
   "autonomos": [
@@ -979,7 +1067,7 @@
       "name": "Valeria Morales Terán",
       "role": "Diseñadora Gráfica & Branding",
       "city": "Cochabamba",
-      "avatar": "/images/profiles/valeria-morales.jpg",
+      "avatar": "profiles/valeria-morales.png",
       "whatsapp": "59170000001",
       "hourlyRate": "Bs. 45 / hora",
       "availability": "Disponible inmediata (Part-time / Full-time)",
@@ -1036,7 +1124,7 @@
       "name": "Mateo Peñaranda Alarcón",
       "role": "Diseñador Gráfico & Piezas Digitales",
       "city": "Cochabamba",
-      "avatar": "/images/profiles/mateo-penaranda.jpg",
+      "avatar": "profiles/mateo-penaranda.jpg",
       "whatsapp": "59173000004",
       "hourlyRate": "Bs. 40 / hora",
       "availability": "Disponible (Remoto)",
@@ -1080,7 +1168,7 @@
       "name": "Andrea Torrico Suárez",
       "role": "Diseñadora de Identidad & Packaging",
       "city": "Santa Cruz",
-      "avatar": "/images/profiles/andrea-torrico.jpg",
+      "avatar": "profiles/andrea-torrico.png",
       "whatsapp": "59175000006",
       "hourlyRate": "Bs. 50 / hora",
       "availability": "Disponible (Remoto)",
@@ -1121,10 +1209,10 @@
       "id": "aut-4",
       "slug": "marcelo-paz-cespedes",
       "categorySlug": "diseno-grafico",
-      "name": "Marcelo Paz Céspedes",
+      "name": "Diego Siles Montaño",
       "role": "Diseñador Gráfico & Folletería",
       "city": "La Paz",
-      "avatar": "/images/profiles/diego-siles.jpg",
+      "avatar": "profiles/diego-siles.png",
       "whatsapp": "59176000007",
       "hourlyRate": "Bs. 42 / hora",
       "availability": "Disponible Inmediata",
@@ -1168,7 +1256,7 @@
       "name": "Camila Rojas Claure",
       "role": "Técnica de Soporte TI & Helpdesk",
       "city": "Santa Cruz",
-      "avatar": "/images/profiles/camila-rojas.jpg",
+      "avatar": "profiles/camila-rojas.jpg",
       "whatsapp": "59171000002",
       "hourlyRate": "Bs. 40 / hora",
       "availability": "Disponible (Remoto o Híbrido)",
@@ -1213,7 +1301,7 @@
       "name": "Alex Quispe Mamani",
       "role": "Administrador de Sistemas Junior",
       "city": "La Paz",
-      "avatar": "/images/profiles/alex-quispe.jpg",
+      "avatar": "profiles/alex-quispe.jpg",
       "whatsapp": "59177000008",
       "hourlyRate": "Bs. 48 / hora",
       "availability": "Disponible (Remoto)",
@@ -1254,10 +1342,10 @@
       "id": "aut-7",
       "slug": "diego-siles-gutierrez",
       "categorySlug": "sistemas-ti",
-      "name": "Diego Siles Gutiérrez",
+      "name": "Diego Siles Montaño",
       "role": "Especialista en Redes & Soporte Técnico",
       "city": "Cochabamba",
-      "avatar": "/images/profiles/carlos-mendoza.jpg",
+      "avatar": "profiles/diego-siles.png",
       "whatsapp": "59178000009",
       "hourlyRate": "Bs. 45 / hora",
       "availability": "Disponible (Remoto / Presencial)",
@@ -1296,7 +1384,7 @@
       "name": "Rodrigo Vargas Choque",
       "role": "Técnico de Mantenimiento & Soporte PC",
       "city": "Cochabamba",
-      "avatar": "/images/profiles/rodrigo-vargas.jpg",
+      "avatar": "profiles/rodrigo-vargas.jpg",
       "whatsapp": "59179000010",
       "hourlyRate": "Bs. 38 / hora",
       "availability": "Disponible Inmediata",
@@ -1335,7 +1423,7 @@
       "name": "Javier Mercado Rocha",
       "role": "Auxiliar Contable & Conciliación",
       "city": "La Paz",
-      "avatar": "/images/profiles/javier-mercado.jpg",
+      "avatar": "profiles/javier-mercado.jpg",
       "whatsapp": "59172000003",
       "hourlyRate": "Bs. 50 / hora",
       "availability": "Disponible (Remoto)",
@@ -1379,7 +1467,7 @@
       "name": "Fernando Gutiérrez Rios",
       "role": "Contador General & Asistente Tributario",
       "city": "Cochabamba",
-      "avatar": "/images/profiles/fernando-gutierrez.jpg",
+      "avatar": "profiles/fernando-gutierrez.jpg",
       "whatsapp": "59170110011",
       "hourlyRate": "Bs. 55 / hora",
       "availability": "Disponible Inmediata",
@@ -1418,7 +1506,7 @@
       "name": "Gabriela Choque Flores",
       "role": "Especialista en Facturación SIAT",
       "city": "Santa Cruz",
-      "avatar": "/images/profiles/gabriela-choque.jpg",
+      "avatar": "profiles/gabriela-choque.png",
       "whatsapp": "59170220012",
       "hourlyRate": "Bs. 45 / hora",
       "availability": "Disponible (Remoto)",
@@ -1456,7 +1544,7 @@
       "name": "Luis Mendoza Albarracín",
       "role": "Auditor de Cuentas & Planillas Salariales",
       "city": "La Paz",
-      "avatar": "/images/stories/luis-mendoza.jpg",
+      "avatar": "profiles/luis-mendoza-albarracin.png",
       "whatsapp": "59170330013",
       "hourlyRate": "Bs. 52 / hora",
       "availability": "Disponible (Remoto)",
@@ -1495,7 +1583,7 @@
       "name": "Lucía Salazar Pinto",
       "role": "Digitadora de Datos Senior",
       "city": "La Paz",
-      "avatar": "/images/profiles/lucia-salazar.jpg",
+      "avatar": "profiles/lucia-salazar.png",
       "whatsapp": "59174000005",
       "hourlyRate": "Bs. 35 / hora",
       "availability": "Disponible Inmediata",
@@ -1534,7 +1622,7 @@
       "name": "Juan Pablo Claros",
       "role": "Transcriptor & Operador de Entrada de Datos",
       "city": "Cochabamba",
-      "avatar": "/images/stories/juan-pablo-claros.jpg",
+      "avatar": "profiles/juan-pablo-claros.png",
       "whatsapp": "59170440014",
       "hourlyRate": "Bs. 32 / hora",
       "availability": "Disponible Inmediata (Full-time)",
@@ -1573,7 +1661,7 @@
       "name": "Claudia Arce Montaño",
       "role": "Especialista en Archivo Digital & Validación",
       "city": "Santa Cruz",
-      "avatar": "/images/profiles/claudia-arce.jpg",
+      "avatar": "profiles/claudia-arce.jpg",
       "whatsapp": "59170550015",
       "hourlyRate": "Bs. 36 / hora",
       "availability": "Disponible (Remoto)",
@@ -1612,7 +1700,7 @@
       "name": "María René Morales",
       "role": "Digitadora Documental & Verificación",
       "city": "Cochabamba",
-      "avatar": "/images/stories/maria-rene-morales.jpg",
+      "avatar": "profiles/maria-rene-morales.png",
       "whatsapp": "59170660016",
       "hourlyRate": "Bs. 34 / hora",
       "availability": "Disponible (Remoto)",
@@ -1650,7 +1738,7 @@
       "name": "Claudia Arce Montaño",
       "role": "Community Manager & Estratega de Contenido",
       "city": "Santa Cruz",
-      "avatar": "/images/profiles/claudia-arce.jpg",
+      "avatar": "profiles/claudia-arce.jpg",
       "whatsapp": "59170550015",
       "hourlyRate": "Bs. 45 / hora",
       "availability": "Disponible (Remoto)",
@@ -1694,7 +1782,7 @@
       "name": "Melissa Arteaga Tórrez",
       "role": "Creadora de Contenido & Redes Sociales",
       "city": "Cochabamba",
-      "avatar": "/images/profiles/melissa-arteaga.jpg",
+      "avatar": "profiles/melissa-arteaga.jpg",
       "whatsapp": "59170770017",
       "hourlyRate": "Bs. 40 / hora",
       "availability": "Disponible (Remoto)",
@@ -1733,7 +1821,7 @@
       "name": "Valeria Morales Terán",
       "role": "Diseñadora de Contenido & Carruseles",
       "city": "Cochabamba",
-      "avatar": "/images/profiles/valeria-morales.jpg",
+      "avatar": "profiles/valeria-morales.png",
       "whatsapp": "59170000001",
       "hourlyRate": "Bs. 48 / hora",
       "availability": "Disponible (Part-time)",
@@ -1771,7 +1859,7 @@
       "name": "Mateo Peñaranda Alarcón",
       "role": "Planificador de Medios Digitales & Copies",
       "city": "Cochabamba",
-      "avatar": "/images/profiles/mateo-penaranda.jpg",
+      "avatar": "profiles/mateo-penaranda.jpg",
       "whatsapp": "59173000004",
       "hourlyRate": "Bs. 42 / hora",
       "availability": "Disponible Inmediata",
@@ -1809,7 +1897,7 @@
       "name": "Rodrigo Vargas Choque",
       "role": "Desarrollador Frontend & Landing Pages",
       "city": "Cochabamba",
-      "avatar": "/images/profiles/rodrigo-vargas.jpg",
+      "avatar": "profiles/rodrigo-vargas.jpg",
       "whatsapp": "59179000010",
       "hourlyRate": "Bs. 55 / hora",
       "availability": "Disponible (Remoto)",
@@ -1853,7 +1941,7 @@
       "name": "Patricia Soliz Guzmán",
       "role": "Desarrolladora Web WordPress & E-Commerce",
       "city": "La Paz",
-      "avatar": "/images/profiles/patricia-soliz.jpg",
+      "avatar": "profiles/patricia-soliz.jpg",
       "whatsapp": "59170880018",
       "hourlyRate": "Bs. 50 / hora",
       "availability": "Disponible (Remoto)",
@@ -1892,7 +1980,7 @@
       "name": "Carlos Mendoza Villarroel",
       "role": "Desarrollador Web & Accesibilidad Digital",
       "city": "Santa Cruz",
-      "avatar": "/images/profiles/carlos-mendoza.jpg",
+      "avatar": "profiles/carlos-mendoza.jpg",
       "whatsapp": "59170990019",
       "hourlyRate": "Bs. 52 / hora",
       "availability": "Disponible Inmediata",
@@ -1931,7 +2019,7 @@
       "name": "Alex Quispe Mamani",
       "role": "Maquetador HTML/CSS & Optimización Web",
       "city": "La Paz",
-      "avatar": "/images/profiles/alex-quispe.jpg",
+      "avatar": "profiles/alex-quispe.jpg",
       "whatsapp": "59177000008",
       "hourlyRate": "Bs. 46 / hora",
       "availability": "Disponible (Remoto)",
@@ -1970,7 +2058,7 @@
       "name": "Andrea Torrico Suárez",
       "role": "Ilustradora Digital & Concept Art",
       "city": "Santa Cruz",
-      "avatar": "/images/profiles/andrea-torrico.jpg",
+      "avatar": "profiles/andrea-torrico.png",
       "whatsapp": "59175000006",
       "hourlyRate": "Bs. 50 / hora",
       "availability": "Disponible (Remoto)",
@@ -2014,7 +2102,7 @@
       "name": "Melissa Arteaga Tórrez",
       "role": "Ilustradora de Stickers & Merchandising",
       "city": "Cochabamba",
-      "avatar": "/images/profiles/melissa-arteaga.jpg",
+      "avatar": "profiles/melissa-arteaga.jpg",
       "whatsapp": "59170770017",
       "hourlyRate": "Bs. 42 / hora",
       "availability": "Disponible (Remoto)",
@@ -2049,10 +2137,10 @@
       "id": "aut-27",
       "slug": "marcelo-paz-arte",
       "categorySlug": "ilustracion-arte",
-      "name": "Marcelo Paz Céspedes",
+      "name": "Diego Siles Montaño",
       "role": "Diseñador de Infografías & Iconografía",
       "city": "La Paz",
-      "avatar": "/images/profiles/diego-siles.jpg",
+      "avatar": "profiles/diego-siles.png",
       "whatsapp": "59176000007",
       "hourlyRate": "Bs. 45 / hora",
       "availability": "Disponible Inmediata",
@@ -2091,7 +2179,7 @@
       "name": "Gabriela Choque Flores",
       "role": "Artista Vectorial & Retrato Personalizado",
       "city": "Santa Cruz",
-      "avatar": "/images/profiles/gabriela-choque.jpg",
+      "avatar": "profiles/gabriela-choque.png",
       "whatsapp": "59170220012",
       "hourlyRate": "Bs. 40 / hora",
       "availability": "Disponible (Remoto)",
@@ -2129,7 +2217,7 @@
       "name": "Sergio Mamani Calle",
       "role": "Editor de Video & Subtitulado Accesible",
       "city": "La Paz",
-      "avatar": "/images/profiles/sergio-mamani.jpg",
+      "avatar": "profiles/sergio-mamani.jpg",
       "whatsapp": "59170011020",
       "hourlyRate": "Bs. 48 / hora",
       "availability": "Disponible Inmediata",
@@ -2177,10 +2265,10 @@
       "id": "aut-30",
       "slug": "diego-siles-video",
       "categorySlug": "edicion-video",
-      "name": "Diego Siles Gutiérrez",
+      "name": "Diego Siles Montaño",
       "role": "Creador de Reels, Shorts & TikToks",
       "city": "Cochabamba",
-      "avatar": "/images/profiles/carlos-mendoza.jpg",
+      "avatar": "profiles/diego-siles.png",
       "whatsapp": "59178000009",
       "hourlyRate": "Bs. 45 / hora",
       "availability": "Disponible (Remoto)",
@@ -2219,7 +2307,7 @@
       "name": "Mateo Peñaranda Alarcón",
       "role": "Montajista de Video & Motion Graphics",
       "city": "Cochabamba",
-      "avatar": "/images/profiles/mateo-penaranda.jpg",
+      "avatar": "profiles/mateo-penaranda.jpg",
       "whatsapp": "59173000004",
       "hourlyRate": "Bs. 50 / hora",
       "availability": "Disponible (Part-time)",
@@ -2258,7 +2346,7 @@
       "name": "Luis Mendoza Albarracín",
       "role": "Editor de Podcasts & Clips con Subtítulos",
       "city": "La Paz",
-      "avatar": "/images/stories/luis-mendoza.jpg",
+      "avatar": "profiles/luis-mendoza-albarracin.png",
       "whatsapp": "59170330013",
       "hourlyRate": "Bs. 44 / hora",
       "availability": "Disponible (Remoto)",

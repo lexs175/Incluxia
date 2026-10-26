@@ -1,4 +1,5 @@
 ---
+import SiteImage from "../ui/SiteImage.astro";
 import ExpandableButton from '../ui/ExpandableButton.astro';
 
 interface Props {
@@ -19,7 +20,7 @@ const href = `/contratar/${category.slug}`;
 ---
 
 <article class="category-rubro-card" data-category-slug={category.slug} data-name={category.name.toLowerCase()} data-tags={category.tags.join(' ').toLowerCase()} aria-labelledby={`category-${category.slug}`}>
-  <img class="category-cover" src={category.image} alt="" width="900" height="800" loading="lazy" />
+  <SiteImage kind="category" class="category-cover" src={category.image} alt="" width="900" height="800" loading="lazy" />
   <div class="card-image-overlay" aria-hidden="true"></div>
   <div class="card-content-wrap">
     <div class="card-main-info">

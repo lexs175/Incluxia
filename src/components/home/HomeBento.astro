@@ -1,4 +1,5 @@
 ---
+import SiteImage from "../ui/SiteImage.astro";
 const items = [
   { icon: 'chat', title: 'Habla por chat', text: 'Coordina tareas y resuelve dudas por chat, WhatsApp o correo.' },
   { icon: 'experience', title: 'Revisa la experiencia', text: 'Consulta los estudios, las habilidades y los trabajos de cada profesional.' },
@@ -16,7 +17,7 @@ const items = [
       </div>
       <div class="bento-cards-grid">
         {items.map(item => <article class="bento-card">
-          <div class="bento-card-icon"><img src={`/images/home/${item.icon}.svg`} width="24" height="24" alt="" loading="lazy" /></div>
+          <div class="bento-card-icon"><SiteImage kind="detail" src={`home/${item.icon}.svg`} width="24" height="24" alt="" loading="lazy" /></div>
           <h3 class="bento-title">{item.title}</h3>
           <p class="bento-text">{item.text}</p>
         </article>)}

@@ -1,21 +1,73 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import AccessGate from '../components/ui/AccessGate.astro';
-import AccountPanel from '../components/ui/AccountPanel.astro';
-import ActivityList from '../components/ui/ActivityList.astro';
+import Layout from "../layouts/Layout.astro";
+import AccessGate from "../components/ui/AccessGate.astro";
+import AccountPanel from "../components/ui/AccountPanel.astro";
+import ApplicationList from "../components/postulaciones/ApplicationList.astro";
 ---
-<Layout title="Mis postulaciones | Incluxia" activePath="/postulaciones">
+
+<Layout title="Mis postulaciones | Eco" activePath="/postulaciones">
   <AccessGate title="Ingresa para consultar tus postulaciones" />
   <div data-member>
-    <AccountPanel title="Mis postulaciones" description="Revisa lo que enviaste y los candidatos de tus publicaciones.">
+    <AccountPanel
+      title="Mis postulaciones"
+      description="Revisa lo que enviaste y los candidatos de tus publicaciones."
+    >
       <div id="applicationsWorkspace">
+        <nav class="application-tabs" aria-label="Tipo de postulaciones">
+          <a href="/postulaciones" data-application-tab="sent"
+            >Enviadas <span data-application-count="sent"></span></a
+          >
+          <a href="/postulaciones?tab=received" data-application-tab="received"
+            >Recibidas <span data-application-count="received"></span></a
+          >
+        </nav>
+        <p id="applicationsContext" class="applications-context" hidden></p>
         <p id="applicationsFeedback" class="demo-feedback" role="status"></p>
-        <ActivityList id="applicationList" />
+        <ApplicationList />
       </div>
     </AccountPanel>
   </div>
 </Layout>
 <script>
-import {initApplications} from '../lib/applications';
-document.addEventListener('astro:page-load',initApplications);
+  import { initApplications } from "../lib/applications";
+  document.addEventListener("astro:page-load", initApplications);
 </script>
+<style>
+  .application-tabs {
+    display: flex;
+    gap: var(--space-6);
+    margin-bottom: var(--space-6);
+  }
+  .application-tabs a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 44px;
+    padding-block: var(--space-2);
+    border-bottom: 2px solid transparent;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .application-tabs a[aria-current="page"] {
+    border-bottom-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+  .application-tabs a:hover {
+    color: var(--color-primary-hover);
+  }
+  .application-tabs a:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: var(--space-1);
+  }
+  .application-tabs span {
+    font-variant-numeric: tabular-nums;
+  }
+  .applications-context {
+    margin-bottom: var(--space-4);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+  }
+</style>

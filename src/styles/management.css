@@ -1,0 +1,150 @@
+.management-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: var(--space-2) var(--space-5);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--color-text-main);
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+/* 3 Tamaños Estándar */
+.management-action--sm {
+  min-height: 36px;
+  padding: 0.35rem 0.85rem;
+  font-size: var(--text-xs);
+  gap: var(--space-1);
+}
+.management-action--md {
+  min-height: 44px;
+  padding: var(--space-2) var(--space-5);
+  font-size: var(--text-sm);
+}
+.management-action--lg {
+  min-height: 50px;
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--text-base);
+}
+
+/* 5 Variantes Oficiales */
+/* 1. Primary */
+.management-action--primary {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  border-color: var(--color-primary);
+}
+.management-action--primary:hover {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+/* 2. Secondary: superficie neutra y borde de marca. */
+.management-action--secondary {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-bg);
+}
+.management-action--secondary:hover {
+  background: var(--color-bg-primary-soft);
+}
+
+/* 3. Ghost / Quiet (Ideal para cards repetidas y acciones neutras) */
+.management-action--ghost,
+.management-action--quiet {
+  border-color: transparent;
+  color: var(--color-text-main);
+  background: transparent;
+}
+.management-action--ghost:hover,
+.management-action--quiet:hover {
+  background: var(--color-bg-alt);
+  color: var(--color-primary);
+}
+
+/* Link */
+.management-action--link {
+  color: var(--color-primary);
+  background: transparent;
+  border-color: transparent;
+  padding-inline: 0;
+  min-height: auto;
+}
+.management-action--link:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* 4. Icon Button (Compacto solo ícono) */
+.management-action--icon {
+  padding: 0;
+  min-width: 36px;
+  min-height: 36px;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--color-bg-primary-soft);
+  color: var(--color-text-muted);
+}
+.management-action--icon:hover {
+  background: var(--color-bg-alt);
+  color: var(--color-text-main);
+}
+.management-action--icon.management-action--lg {
+  min-width: 44px;
+  min-height: 44px;
+  width: 44px;
+  height: 44px;
+}
+
+/* 5. Danger / Destructive */
+.management-action--danger {
+  color: var(--color-error-text);
+  border-color: transparent;
+  background: transparent;
+}
+.management-action--danger:hover {
+  background: var(--color-error-bg);
+}
+
+/* Estados Globales */
+.management-action:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: var(--space-1);
+}
+.management-action:disabled {
+  opacity: 0.55;
+  cursor: default;
+  pointer-events: none;
+}
+.management-action--secondary:disabled {
+  opacity: 1;
+  border-color: var(--color-text-muted);
+  color: var(--color-text-muted);
+}
+.management-action--secondary:disabled:hover {
+  background: transparent;
+}
+
+/* Compatibilidad con vistas heredadas */
+.publish-action {
+  composes: management-action;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .management-action {
+    transition: none;
+  }
+}

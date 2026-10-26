@@ -1,0 +1,66 @@
+---
+import '../../styles/management.css';
+
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'ghost' | 'quiet' | 'link' | 'danger' | 'icon';
+  size?: 'sm' | 'md' | 'lg';
+  type?: 'button' | 'submit' | 'reset';
+  id?: string;
+  class?: string;
+  disabled?: boolean;
+  target?: string;
+  rel?: string;
+  text?: string;
+  ariaLabel?: string;
+}
+
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  type = 'button',
+  id,
+  class: className = '',
+  disabled = false,
+  target,
+  rel,
+  text,
+  ariaLabel,
+  ...rest
+} = Astro.props;
+
+const classes = [
+  'management-action',
+  `management-action--${variant}`,
+  `management-action--${size}`,
+  className
+].filter(Boolean).join(' ');
+---
+
+{
+  href ? (
+    <a
+      href={href}
+      id={id}
+      class={classes}
+      target={target}
+      rel={rel}
+      aria-label={ariaLabel}
+      {...rest}
+    >
+      {text || <slot />}
+    </a>
+  ) : (
+    <button
+      type={type}
+      id={id}
+      class={classes}
+      disabled={disabled}
+      aria-label={ariaLabel}
+      {...rest}
+    >
+      {text || <slot />}
+    </button>
+  )
+}

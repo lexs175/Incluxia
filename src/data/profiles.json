@@ -5,12 +5,25 @@
     "name": "Valeria Morales Terán",
     "role": "Diseñadora Gráfica",
     "city": "Cochabamba",
-    "photo": "/images/profiles/valeria-morales.jpg",
+    "photo": "profiles/valeria-morales.png",
     "tagline": "Creativa visual con 4 años en diseño editorial y branding.",
     "availability": "Disponible",
     "about": "Diseñadora gráfica especializada en identidad visual, diseño editorial y piezas digitales. Me comunico por chat escrito y WhatsApp con fluidez. Trabajo con precisión tipográfica y atención al detalle cromático. Tengo experiencia colaborando con equipos de marketing en entornos 100% escritos.",
-    "skills": ["Adobe Illustrator", "Adobe Photoshop", "InDesign", "Figma", "Canva Pro", "Branding", "Tipografía", "Diseño Editorial"],
-    "languages": ["Español escrito (nativo)", "LSB (básico)", "Inglés técnico (lectura)"],
+    "skills": [
+      "Adobe Illustrator",
+      "Adobe Photoshop",
+      "InDesign",
+      "Figma",
+      "Canva Pro",
+      "Branding",
+      "Tipografía",
+      "Diseño Editorial"
+    ],
+    "languages": [
+      "Español escrito (nativo)",
+      "LSB (básico)",
+      "Inglés técnico (lectura)"
+    ],
     "experience": [
       {
         "company": "Agencia Creativa Nodo",
@@ -42,7 +55,27 @@
     "contact": {
       "whatsapp": "59170000001",
       "email": "valeria.morales@example.com"
-    }
+    },
+    "demo": true,
+    "projects": [
+      {
+        "title": "Identidad Visual Café Altura",
+        "category": "Branding"
+      },
+      {
+        "title": "Packaging Cosmética Natural",
+        "category": "Packaging"
+      },
+      {
+        "title": "Manual de Marca Fintech Cochabamba",
+        "category": "Manual de Marca"
+      },
+      {
+        "title": "Serie de 12 Carruseles Financieros",
+        "category": "Social Design"
+      }
+    ],
+    "cover": "profiles/covers/valeria-morales-teran.png"
   },
   {
     "id": "2",
@@ -50,12 +83,23 @@
     "name": "Javier Mercado Rocha",
     "role": "Auxiliar Contable",
     "city": "La Paz",
-    "photo": "/images/profiles/javier-mercado.jpg",
+    "photo": "profiles/javier-mercado.jpg",
     "tagline": "Contador con habilidades en ERP y conciliación bancaria.",
     "availability": "Disponible",
     "about": "Profesional contable con experiencia en manejo de software ERP, conciliaciones bancarias y archivo de comprobantes fiscales. Me adapto fácilmente a entornos de trabajo escritos y digitales. Tengo carnet de discapacidad vigente (SIPRUNPCD) y cuento con referencias laborales verificables.",
-    "skills": ["Microsoft Excel", "SAP Básico", "Conciliación Bancaria", "Archivo Digital", "QuickBooks", "Facturación Electrónica", "Tablas Dinámicas"],
-    "languages": ["Español escrito (nativo)", "LSB (intermedio)"],
+    "skills": [
+      "Microsoft Excel",
+      "SAP Básico",
+      "Conciliación Bancaria",
+      "Archivo Digital",
+      "QuickBooks",
+      "Facturación Electrónica",
+      "Tablas Dinámicas"
+    ],
+    "languages": [
+      "Español escrito (nativo)",
+      "LSB (intermedio)"
+    ],
     "experience": [
       {
         "company": "Farmacorp S.A.",
@@ -78,7 +122,19 @@
     "contact": {
       "whatsapp": "59171000002",
       "email": "javier.mercado@example.com"
-    }
+    },
+    "demo": true,
+    "projects": [
+      {
+        "title": "Plantilla Automatizada de Flujo de Caja",
+        "category": "Finanzas"
+      },
+      {
+        "title": "Auditoría de Conciliaciones Anuales",
+        "category": "Contabilidad"
+      }
+    ],
+    "cover": "profiles/covers/javier-mercado-rocha.png"
   },
   {
     "id": "3",
@@ -86,12 +142,24 @@
     "name": "Camila Rojas Claure",
     "role": "Digitadora de Datos y Soporte TI",
     "city": "Santa Cruz",
-    "photo": "/images/profiles/camila-rojas.jpg",
+    "photo": "profiles/camila-rojas.jpg",
     "tagline": "Técnica en sistemas con velocidad de digitación de 75 PPM.",
     "availability": "Disponible",
     "about": "Técnica en sistemas especializada en soporte de primer nivel, digitación de datos y gestión de tickets escritos. Disponible para trabajo remoto o híbrido. Me comunico de forma precisa y empática por WhatsApp, Slack y correo. Velocidad de digitación certificada de 75 palabras por minuto con 98% de precisión.",
-    "skills": ["Soporte Técnico Nivel 1", "Digitación Avanzada", "Gestión de Tickets", "Slack", "Google Workspace", "Windows Server Básico", "Atención al Cliente Escrita"],
-    "languages": ["Español escrito (nativo)", "LSB (básico)", "Inglés básico (escrito)"],
+    "skills": [
+      "Soporte Técnico Nivel 1",
+      "Digitación Avanzada",
+      "Gestión de Tickets",
+      "Slack",
+      "Google Workspace",
+      "Windows Server Básico",
+      "Atención al Cliente Escrita"
+    ],
+    "languages": [
+      "Español escrito (nativo)",
+      "LSB (básico)",
+      "Inglés básico (escrito)"
+    ],
     "experience": [
       {
         "company": "EMTech Soluciones Digitales",
@@ -123,7 +191,19 @@
     "contact": {
       "whatsapp": "59172000003",
       "email": "camila.rojas@example.com"
-    }
+    },
+    "demo": true,
+    "projects": [
+      {
+        "title": "Base de Conocimiento Helpdesk Remoto",
+        "category": "Documentación TI"
+      },
+      {
+        "title": "Protocolo de Mantenimiento de Equipos",
+        "category": "Soporte Técnico"
+      }
+    ],
+    "cover": "profiles/covers/camila-rojas-claure.png"
   },
   {
     "id": "4",
@@ -131,12 +211,24 @@
     "name": "Diego Siles Montaño",
     "role": "Operador de Preprensa",
     "city": "Cochabamba",
-    "photo": "/images/profiles/diego-siles.jpg",
+    "photo": "profiles/diego-siles.png",
     "tagline": "Especialista en artes gráficas con dominio de Adobe Creative Suite.",
     "availability": "Buscando empleo",
     "about": "Operador de preprensa con sólido manejo de flujos de impresión offset y gran formato. Experto en corrección de color CMYK, imposición de páginas y preparación de archivos para CTP. Trabajo en entornos visuales de taller con comunicación escrita mediante órdenes de trabajo y señalética.",
-    "skills": ["Adobe Illustrator", "Adobe Photoshop", "InDesign", "Preprensa Offset", "Control de Color CMYK", "Imposición de Páginas", "CTP", "Gran Formato"],
-    "languages": ["Español escrito (nativo)", "LSB (avanzado)"],
+    "skills": [
+      "Adobe Illustrator",
+      "Adobe Photoshop",
+      "InDesign",
+      "Preprensa Offset",
+      "Control de Color CMYK",
+      "Imposición de Páginas",
+      "CTP",
+      "Gran Formato"
+    ],
+    "languages": [
+      "Español escrito (nativo)",
+      "LSB (avanzado)"
+    ],
     "experience": [
       {
         "company": "Conecta Impresores Offset & Digital",
@@ -159,7 +251,31 @@
     "contact": {
       "whatsapp": "59173000004",
       "email": "diego.siles@example.com"
-    }
+    },
+    "demo": true,
+    "projects": [
+      {
+        "title": "Memoria Anual Fundación Progreso",
+        "category": "Editorial"
+      },
+      {
+        "title": "Trípticos Sanitarios Hospitalarios",
+        "category": "Informativo"
+      },
+      {
+        "title": "Migración de Red Corporativa 20 Puestos",
+        "category": "Redes"
+      },
+      {
+        "title": "Mapa Turístico Ilustrado de Copacabana",
+        "category": "Cartografía Artística"
+      },
+      {
+        "title": "Campaña de 15 Videos de Recetas Gastronómicas",
+        "category": "Social Video"
+      }
+    ],
+    "cover": "profiles/covers/diego-siles-montano.png"
   },
   {
     "id": "5",
@@ -167,12 +283,22 @@
     "name": "Lucía Salazar Pinto",
     "role": "Asistente Administrativa",
     "city": "La Paz",
-    "photo": "/images/profiles/lucia-salazar.jpg",
+    "photo": "profiles/lucia-salazar.png",
     "tagline": "Organizada y precisa, 3 años gestionando documentación y agendas ejecutivas.",
     "availability": "Disponible",
     "about": "Asistente administrativa con experiencia en gestión documental, coordinación de agendas y atención de correspondencia interna. Me desenvuelvo con eficiencia en entornos de trabajo escritos y digitales. Carnet de Discapacidad SIPRUNPCD vigente.",
-    "skills": ["Microsoft Office", "Gestión Documental", "Organización", "Atención Escrita", "Google Workspace", "Archivo Digital"],
-    "languages": ["Español escrito (nativo)", "LSB (básico)"],
+    "skills": [
+      "Microsoft Office",
+      "Gestión Documental",
+      "Organización",
+      "Atención Escrita",
+      "Google Workspace",
+      "Archivo Digital"
+    ],
+    "languages": [
+      "Español escrito (nativo)",
+      "LSB (básico)"
+    ],
     "experience": [
       {
         "company": "Grupo Empresarial Inti",
@@ -195,7 +321,15 @@
     "contact": {
       "whatsapp": "59174000005",
       "email": "lucia.salazar@example.com"
-    }
+    },
+    "demo": true,
+    "projects": [
+      {
+        "title": "Migración de 25,000 Fichas Médicas a Base Digital",
+        "category": "Data Entry"
+      }
+    ],
+    "cover": "profiles/covers/lucia-salazar-pinto.png"
   },
   {
     "id": "6",
@@ -203,12 +337,24 @@
     "name": "Mateo Peñaranda Alarcón",
     "role": "Desarrollador Web Junior",
     "city": "Cochabamba",
-    "photo": "/images/profiles/mateo-penaranda.jpg",
+    "photo": "profiles/mateo-penaranda.jpg",
     "tagline": "Desarrollador front-end con dominio de React y diseño responsivo.",
     "availability": "Disponible",
     "about": "Desarrollador web junior especializado en interfaces con React y CSS moderno. Trabajo de forma completamente remota y gestiono proyectos vía GitHub, Slack y Notion. Me comunico con precisión por escrito y entrego código limpio y documentado.",
-    "skills": ["React", "JavaScript", "HTML & CSS", "Git & GitHub", "Figma", "Tailwind CSS", "Node.js Básico"],
-    "languages": ["Español escrito (nativo)", "LSB (intermedio)", "Inglés técnico (lectura/escritura)"],
+    "skills": [
+      "React",
+      "JavaScript",
+      "HTML & CSS",
+      "Git & GitHub",
+      "Figma",
+      "Tailwind CSS",
+      "Node.js Básico"
+    ],
+    "languages": [
+      "Español escrito (nativo)",
+      "LSB (intermedio)",
+      "Inglés técnico (lectura/escritura)"
+    ],
     "experience": [
       {
         "company": "Freelance / Proyectos propios",
@@ -231,6 +377,784 @@
     "contact": {
       "whatsapp": "59175000006",
       "email": "mateo.penaranda@example.com"
-    }
+    },
+    "demo": true,
+    "projects": [
+      {
+        "title": "Campaña Anual Gastronomía Criolla",
+        "category": "Publicidad"
+      },
+      {
+        "title": "Kits de Bienvenida para Startups",
+        "category": "Merchandising"
+      },
+      {
+        "title": "Estrategia de Ventas Día de la Madre Bolivia",
+        "category": "Campaña Comercial"
+      },
+      {
+        "title": "Video Institucional para Constructora",
+        "category": "Corporativo"
+      }
+    ],
+    "cover": "profiles/covers/mateo-penaranda-alarcon.png"
+  },
+  {
+    "id": "7",
+    "slug": "andrea-torrico-suarez",
+    "name": "Andrea Torrico Suárez",
+    "role": "Diseñadora de Identidad & Packaging",
+    "city": "Santa Cruz",
+    "photo": "profiles/andrea-torrico.png",
+    "tagline": "Diseñadora senior con pasión por el empaque sostenible y la tipografía editorial limpia.",
+    "availability": "Disponible",
+    "about": "Diseñadora senior con pasión por el empaque sostenible y la tipografía editorial limpia. Certificada en producción gráfica para imprenta digital.",
+    "skills": [
+      "InDesign",
+      "Illustrator",
+      "Mockups 3D",
+      "Packaging",
+      "Identidad Corporativa",
+      "Procreate",
+      "Adobe Illustrator",
+      "Concept Art",
+      "Paletas Cromáticas",
+      "Vector Art"
+    ],
+    "languages": [
+      "Español escrito",
+      "Coordinación por chat y correo"
+    ],
+    "experience": [
+      {
+        "company": "Proyectos independientes",
+        "role": "Diseñadora de Identidad & Packaging",
+        "period": "5 años de experiencia",
+        "highlights": [
+          "Empaque Cacao Orgánico Madidi",
+          "Catálogo Anual Ropa Andina",
+          "Colección 'Fauna y Flora de la Chiquitania'",
+          "Mascota Oficial App Educativa"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "Formación técnica",
+        "degree": "Diseño gráfico y producción de piezas digitales",
+        "year": "Actualización profesional"
+      }
+    ],
+    "contact": {
+      "whatsapp": "59175000006",
+      "email": "andrea.torrico@ejemplo.test"
+    },
+    "demo": true,
+    "projects": [
+      {
+        "title": "Empaque Cacao Orgánico Madidi",
+        "category": "Packaging"
+      },
+      {
+        "title": "Catálogo Anual Ropa Andina",
+        "category": "Editorial"
+      },
+      {
+        "title": "Colección 'Fauna y Flora de la Chiquitania'",
+        "category": "Ilustración"
+      },
+      {
+        "title": "Mascota Oficial App Educativa",
+        "category": "Personaje"
+      }
+    ],
+    "cover": "profiles/covers/andrea-torrico-suarez.png"
+  },
+  {
+    "id": "8",
+    "slug": "alex-quispe-mamani",
+    "name": "Alex Quispe Mamani",
+    "role": "Administrador de Sistemas Junior",
+    "city": "La Paz",
+    "photo": "profiles/alex-quispe.jpg",
+    "tagline": "Administrador de sistemas enfocado en entornos Linux, servidores Windows y configuración de copias de seguridad automatizadas.",
+    "availability": "Disponible",
+    "about": "Administrador de sistemas enfocado en entornos Linux, servidores Windows y configuración de copias de seguridad automatizadas. Coordinación 100% escrita por Slack o Discord.",
+    "skills": [
+      "Linux Ubuntu Server",
+      "Backups Cloud",
+      "Redes LAN / Mikrotik",
+      "AnyDesk",
+      "PowerShell",
+      "Figma to Code",
+      "CSS Variables",
+      "Responsive Design",
+      "Git / GitHub",
+      "Optimización WebP"
+    ],
+    "languages": [
+      "Español escrito",
+      "Coordinación por chat y correo"
+    ],
+    "experience": [
+      {
+        "company": "Proyectos independientes",
+        "role": "Administrador de Sistemas Junior",
+        "period": "4 años de experiencia",
+        "highlights": [
+          "Script de Copia de Seguridad Diaria",
+          "Montaje de Servidor NAS de Oficina",
+          "Maquetación de 8 Páginas Corporativas"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "Formación técnica",
+        "degree": "Soporte técnico y mantenimiento de sistemas",
+        "year": "Actualización profesional"
+      }
+    ],
+    "contact": {
+      "whatsapp": "59177000008",
+      "email": "alex.quispe@ejemplo.test"
+    },
+    "demo": true,
+    "projects": [
+      {
+        "title": "Script de Copia de Seguridad Diaria",
+        "category": "Automatización"
+      },
+      {
+        "title": "Montaje de Servidor NAS de Oficina",
+        "category": "Infraestructura"
+      },
+      {
+        "title": "Maquetación de 8 Páginas Corporativas",
+        "category": "Frontend"
+      }
+    ],
+    "cover": "profiles/covers/alex-quispe-mamani.png"
+  },
+  {
+    "id": "9",
+    "slug": "rodrigo-vargas-choque",
+    "name": "Rodrigo Vargas Choque",
+    "role": "Técnico de Mantenimiento & Soporte PC",
+    "city": "Cochabamba",
+    "photo": "profiles/rodrigo-vargas.jpg",
+    "tagline": "Técnico informático experto en formateo, clonación de discos SSD, optimización de velocidad de Windows y diagnóstico de componentes por teleasistencia..",
+    "availability": "Disponible",
+    "about": "Técnico informático experto en formateo, clonación de discos SSD, optimización de velocidad de Windows y diagnóstico de componentes por teleasistencia.",
+    "skills": [
+      "Clonación SSD",
+      "Windows 10/11",
+      "Instalación de Suites de Oficina",
+      "Soporte Remoto",
+      "Antivirus",
+      "HTML5 / Vanilla CSS",
+      "JavaScript ES6+",
+      "Astro",
+      "TailwindCSS",
+      "Accesibilidad WCAG"
+    ],
+    "languages": [
+      "Español escrito",
+      "Coordinación por chat y correo"
+    ],
+    "experience": [
+      {
+        "company": "Proyectos independientes",
+        "role": "Técnico de Mantenimiento & Soporte PC",
+        "period": "3 años de experiencia",
+        "highlights": [
+          "Plan de Mantenimiento Preventivo para Call Center",
+          "Landing Page Inmobiliaria Cochabamba",
+          "Portal de Reservas para Hostelería"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "Formación técnica",
+        "degree": "Soporte técnico y mantenimiento de sistemas",
+        "year": "Actualización profesional"
+      }
+    ],
+    "contact": {
+      "whatsapp": "59179000010",
+      "email": "rodrigo.vargas@ejemplo.test"
+    },
+    "demo": true,
+    "projects": [
+      {
+        "title": "Plan de Mantenimiento Preventivo para Call Center",
+        "category": "Hardware/Software"
+      },
+      {
+        "title": "Landing Page Inmobiliaria Cochabamba",
+        "category": "Web Development"
+      },
+      {
+        "title": "Portal de Reservas para Hostelería",
+        "category": "Frontend"
+      }
+    ],
+    "cover": "profiles/covers/rodrigo-vargas-choque.png"
+  },
+  {
+    "id": "10",
+    "slug": "fernando-gutierrez-rios",
+    "name": "Fernando Gutiérrez Rios",
+    "role": "Contador General & Asistente Tributario",
+    "city": "Cochabamba",
+    "photo": "profiles/fernando-gutierrez.jpg",
+    "tagline": "Profesional contable con dominio de la normativa impositiva boliviana (IUE, IT, IVA), bancarización y preparación de estados financieros para auditoría externa..",
+    "availability": "Disponible",
+    "about": "Profesional contable con dominio de la normativa impositiva boliviana (IUE, IT, IVA), bancarización y preparación de estados financieros para auditoría externa.",
+    "skills": [
+      "Estados Financieros",
+      "SIAT en Línea",
+      "Bancarización",
+      "Excel Financiero",
+      "Declaraciones Juradas"
+    ],
+    "languages": [
+      "Español escrito",
+      "Coordinación por chat y correo"
+    ],
+    "experience": [
+      {
+        "company": "Proyectos independientes",
+        "role": "Contador General & Asistente Tributario",
+        "period": "6 años de experiencia",
+        "highlights": [
+          "Cierre Contable Anual y Formulario 500"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "Formación técnica",
+        "degree": "Registro contable y manejo de hojas de cálculo",
+        "year": "Actualización profesional"
+      }
+    ],
+    "contact": {
+      "whatsapp": "59170110011",
+      "email": "fernando.gutierrez@ejemplo.test"
+    },
+    "demo": true,
+    "projects": [
+      {
+        "title": "Cierre Contable Anual y Formulario 500",
+        "category": "Tributario"
+      }
+    ],
+    "cover": "profiles/covers/fernando-gutierrez-rios.png"
+  },
+  {
+    "id": "11",
+    "slug": "gabriela-choque-flores",
+    "name": "Gabriela Choque Flores",
+    "role": "Especialista en Facturación SIAT",
+    "city": "Santa Cruz",
+    "photo": "profiles/gabriela-choque.png",
+    "tagline": "Especialista en emisión masiva y validación de facturas electrónicas computarizadas en línea con el SIAT.",
+    "availability": "Disponible",
+    "about": "Especialista en emisión masiva y validación de facturas electrónicas computarizadas en línea con el SIAT. Cuidado riguroso de NITs y códigos de autorización.",
+    "skills": [
+      "SIAT Facturación",
+      "Libro de Ventas IVA",
+      "Conciliación de Cajas",
+      "Excel Tablas Dinámicas",
+      "Retratos Vectoriales",
+      "Minimalismo",
+      "Portadas Digitales",
+      "Figma Art"
+    ],
+    "languages": [
+      "Español escrito",
+      "Coordinación por chat y correo"
+    ],
+    "experience": [
+      {
+        "company": "Proyectos independientes",
+        "role": "Especialista en Facturación SIAT",
+        "period": "3 años de experiencia",
+        "highlights": [
+          "Automatización de Registro de Facturas",
+          "Galería de Retratos Ejecutivos para Web"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "Formación técnica",
+        "degree": "Registro contable y manejo de hojas de cálculo",
+        "year": "Actualización profesional"
+      }
+    ],
+    "contact": {
+      "whatsapp": "59170220012",
+      "email": "gabriela.choque@ejemplo.test"
+    },
+    "demo": true,
+    "projects": [
+      {
+        "title": "Automatización de Registro de Facturas",
+        "category": "Facturación"
+      },
+      {
+        "title": "Galería de Retratos Ejecutivos para Web",
+        "category": "Retrato"
+      }
+    ],
+    "cover": "profiles/covers/gabriela-choque-flores.png"
+  },
+  {
+    "id": "12",
+    "slug": "luis-mendoza-albarracin",
+    "name": "Luis Mendoza Albarracín",
+    "role": "Auditor de Cuentas & Planillas Salariales",
+    "city": "La Paz",
+    "photo": "profiles/luis-mendoza-albarracin.png",
+    "tagline": "Experto en elaboración de planillas de sueldos según Ley General del Trabajo, aportes a Gestora Pública, cajas de salud y liquidaciones laborales por escrito..",
+    "availability": "Disponible",
+    "about": "Experto en elaboración de planillas de sueldos según Ley General del Trabajo, aportes a Gestora Pública, cajas de salud y liquidaciones laborales por escrito.",
+    "skills": [
+      "Planillas Salariales",
+      "Gestora Pública",
+      "Caja Nacional de Salud",
+      "Excel Macro",
+      "Finiquitos",
+      "Recortes de Podcast",
+      "Subtitulado Automático + Corrección Manual",
+      "Formato 9:16",
+      "Limpieza de Audio"
+    ],
+    "languages": [
+      "Español escrito",
+      "Coordinación por chat y correo"
+    ],
+    "experience": [
+      {
+        "company": "Proyectos independientes",
+        "role": "Auditor de Cuentas & Planillas Salariales",
+        "period": "5 años de experiencia",
+        "highlights": [
+          "Sistema Parametrizado de Planilla Mensual",
+          "Edición de Temporada Completa de Video-Podcast"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "Formación técnica",
+        "degree": "Registro contable y manejo de hojas de cálculo",
+        "year": "Actualización profesional"
+      }
+    ],
+    "contact": {
+      "whatsapp": "59170330013",
+      "email": "luis.mendoza@ejemplo.test"
+    },
+    "demo": true,
+    "projects": [
+      {
+        "title": "Sistema Parametrizado de Planilla Mensual",
+        "category": "Planillas"
+      },
+      {
+        "title": "Edición de Temporada Completa de Video-Podcast",
+        "category": "Podcast"
+      }
+    ],
+    "cover": "profiles/covers/luis-mendoza-albarracin.png"
+  },
+  {
+    "id": "13",
+    "slug": "juan-pablo-claros",
+    "name": "Juan Pablo Claros",
+    "role": "Transcriptor & Operador de Entrada de Datos",
+    "city": "Cochabamba",
+    "photo": "profiles/juan-pablo-claros.png",
+    "tagline": "Digitador veloz enfocado en transcripción de documentos notariales, encuestas de mercado y bases de datos de clientes con verificación cruzada..",
+    "availability": "Disponible",
+    "about": "Digitador veloz enfocado en transcripción de documentos notariales, encuestas de mercado y bases de datos de clientes con verificación cruzada.",
+    "skills": [
+      "Digitación 75 PPM",
+      "Google Sheets",
+      "Limpieza de Datos",
+      "Formularios Web",
+      "Word Avanzado"
+    ],
+    "languages": [
+      "Español escrito",
+      "Coordinación por chat y correo"
+    ],
+    "experience": [
+      {
+        "company": "Proyectos independientes",
+        "role": "Transcriptor & Operador de Entrada de Datos",
+        "period": "3 años de experiencia",
+        "highlights": [
+          "Digitalización de Registros Notariales 2021-2024"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "Formación técnica",
+        "degree": "Digitación y organización de archivos digitales",
+        "year": "Actualización profesional"
+      }
+    ],
+    "contact": {
+      "whatsapp": "59170440014",
+      "email": "juan.pablo@ejemplo.test"
+    },
+    "demo": true,
+    "projects": [
+      {
+        "title": "Digitalización de Registros Notariales 2021-2024",
+        "category": "Transcripción"
+      }
+    ],
+    "cover": "profiles/covers/juan-pablo-claros.png"
+  },
+  {
+    "id": "14",
+    "slug": "claudia-arce-montano",
+    "name": "Claudia Arce Montaño",
+    "role": "Especialista en Archivo Digital & Validación",
+    "city": "Santa Cruz",
+    "photo": "profiles/claudia-arce.jpg",
+    "tagline": "Experta en clasificación documental, nombrado estandarizado de archivos PDF, extracción de metadatos y conversión de inventarios físicos a tablas dinámicas..",
+    "availability": "Disponible",
+    "about": "Experta en clasificación documental, nombrado estandarizado de archivos PDF, extracción de metadatos y conversión de inventarios físicos a tablas dinámicas.",
+    "skills": [
+      "Archivo Digital",
+      "Acrobat OCR",
+      "Excel Tablas Dinámicas",
+      "Control de Calidad",
+      "GDrive",
+      "Copywriting",
+      "Instagram Reels",
+      "Meta Business Suite",
+      "Atención por Chat",
+      "Canva Pro"
+    ],
+    "languages": [
+      "Español escrito",
+      "Coordinación por chat y correo"
+    ],
+    "experience": [
+      {
+        "company": "Proyectos independientes",
+        "role": "Especialista en Archivo Digital & Validación",
+        "period": "4 años de experiencia",
+        "highlights": [
+          "Organización de Archivo Histórico Empresarial",
+          "Plan de Crecimiento Orgánico Marca de Moda",
+          "Campaña de Lanzamiento Cosmética Cruceña"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "Formación técnica",
+        "degree": "Digitación y organización de archivos digitales",
+        "year": "Actualización profesional"
+      }
+    ],
+    "contact": {
+      "whatsapp": "59170550015",
+      "email": "claudia.arce@ejemplo.test"
+    },
+    "demo": true,
+    "projects": [
+      {
+        "title": "Organización de Archivo Histórico Empresarial",
+        "category": "Gestión Documental"
+      },
+      {
+        "title": "Plan de Crecimiento Orgánico Marca de Moda",
+        "category": "Social Media"
+      },
+      {
+        "title": "Campaña de Lanzamiento Cosmética Cruceña",
+        "category": "Contenido"
+      }
+    ],
+    "cover": "profiles/covers/claudia-arce-montano.png"
+  },
+  {
+    "id": "15",
+    "slug": "maria-rene-morales",
+    "name": "María René Morales",
+    "role": "Digitadora Documental & Verificación",
+    "city": "Cochabamba",
+    "photo": "profiles/maria-rene-morales.png",
+    "tagline": "Digitadora metódica enfocada en captura de encuestas, ingreso de compras y verificación de duplicados con 0% margen de error en tablas maestras..",
+    "availability": "Disponible",
+    "about": "Digitadora metódica enfocada en captura de encuestas, ingreso de compras y verificación de duplicados con 0% margen de error en tablas maestras.",
+    "skills": [
+      "Excel VLOOKUP/XLOOKUP",
+      "Digitación Precisa",
+      "Validación de Datos",
+      "Formularios CSV"
+    ],
+    "languages": [
+      "Español escrito",
+      "Coordinación por chat y correo"
+    ],
+    "experience": [
+      {
+        "company": "Proyectos independientes",
+        "role": "Digitadora Documental & Verificación",
+        "period": "3 años de experiencia",
+        "highlights": [
+          "Consolidación de 10,000 Respuestas de Encuesta"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "Formación técnica",
+        "degree": "Digitación y organización de archivos digitales",
+        "year": "Actualización profesional"
+      }
+    ],
+    "contact": {
+      "whatsapp": "59170660016",
+      "email": "maria.rene@ejemplo.test"
+    },
+    "demo": true,
+    "projects": [
+      {
+        "title": "Consolidación de 10,000 Respuestas de Encuesta",
+        "category": "Data Entry"
+      }
+    ],
+    "cover": "profiles/covers/maria-rene-morales.png"
+  },
+  {
+    "id": "16",
+    "slug": "melissa-arteaga-torrez",
+    "name": "Melissa Arteaga Tórrez",
+    "role": "Creadora de Contenido & Redes Sociales",
+    "city": "Cochabamba",
+    "photo": "profiles/melissa-arteaga.jpg",
+    "tagline": "Creadora de contenido enfocada en marcas juveniles, diseño de carruseles educativos, hooks virales y programación organizada de publicaciones..",
+    "availability": "Disponible",
+    "about": "Creadora de contenido enfocada en marcas juveniles, diseño de carruseles educativos, hooks virales y programación organizada de publicaciones.",
+    "skills": [
+      "TikTok Trends",
+      "Instagram Stories",
+      "CapCut",
+      "Copy Creativo",
+      "Planificación Semanal",
+      "Stickers Vectoriales",
+      "Clip Studio Paint",
+      "Merchandising",
+      "Ilustración Infantil"
+    ],
+    "languages": [
+      "Español escrito",
+      "Coordinación por chat y correo"
+    ],
+    "experience": [
+      {
+        "company": "Proyectos independientes",
+        "role": "Creadora de Contenido & Redes Sociales",
+        "period": "3 años de experiencia",
+        "highlights": [
+          "Parrilla de 30 Días para Cafetería Especial",
+          "Pack de Stickers para Negocio de Repostería"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "Formación técnica",
+        "degree": "Creación y gestión de contenidos digitales",
+        "year": "Actualización profesional"
+      }
+    ],
+    "contact": {
+      "whatsapp": "59170770017",
+      "email": "melissa.arteaga@ejemplo.test"
+    },
+    "demo": true,
+    "projects": [
+      {
+        "title": "Parrilla de 30 Días para Cafetería Especial",
+        "category": "Contenido"
+      },
+      {
+        "title": "Pack de Stickers para Negocio de Repostería",
+        "category": "Stickers"
+      }
+    ],
+    "cover": "profiles/covers/melissa-arteaga-torrez.png"
+  },
+  {
+    "id": "17",
+    "slug": "patricia-soliz-guzman",
+    "name": "Patricia Soliz Guzmán",
+    "role": "Desarrolladora Web WordPress & E-Commerce",
+    "city": "La Paz",
+    "photo": "profiles/patricia-soliz.jpg",
+    "tagline": "Desarrolladora web con foco en tiendas online seguras, pasarelas de pago bolivianas (QR Simple, BCP, Libélula) y administración intuitiva para el cliente..",
+    "availability": "Disponible",
+    "about": "Desarrolladora web con foco en tiendas online seguras, pasarelas de pago bolivianas (QR Simple, BCP, Libélula) y administración intuitiva para el cliente.",
+    "skills": [
+      "WordPress",
+      "WooCommerce",
+      "Pagos QR Simple",
+      "Elementor / Bricks",
+      "Seguridad Web"
+    ],
+    "languages": [
+      "Español escrito",
+      "Coordinación por chat y correo"
+    ],
+    "experience": [
+      {
+        "company": "Proyectos independientes",
+        "role": "Desarrolladora Web WordPress & E-Commerce",
+        "period": "5 años de experiencia",
+        "highlights": [
+          "Tienda Online de Café de Especialidad Yungas"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "Formación técnica",
+        "degree": "Desarrollo de sitios web y diseño adaptable",
+        "year": "Actualización profesional"
+      }
+    ],
+    "contact": {
+      "whatsapp": "59170880018",
+      "email": "patricia.soliz@ejemplo.test"
+    },
+    "demo": true,
+    "projects": [
+      {
+        "title": "Tienda Online de Café de Especialidad Yungas",
+        "category": "E-Commerce"
+      }
+    ],
+    "cover": "profiles/covers/patricia-soliz-guzman.png"
+  },
+  {
+    "id": "18",
+    "slug": "carlos-mendoza-villarroel",
+    "name": "Carlos Mendoza Villarroel",
+    "role": "Desarrollador Web & Accesibilidad Digital",
+    "city": "Santa Cruz",
+    "photo": "profiles/carlos-mendoza.jpg",
+    "tagline": "Ingeniero de sistemas enfocado en desarrollo de portales corporativos accesibles para personas con discapacidad, código limpio y semántica HTML5 estricta..",
+    "availability": "Disponible",
+    "about": "Ingeniero de sistemas enfocado en desarrollo de portales corporativos accesibles para personas con discapacidad, código limpio y semántica HTML5 estricta.",
+    "skills": [
+      "HTML Semántico",
+      "CSS Grid/Flexbox",
+      "JavaScript",
+      "WCAG 2.1 AA",
+      "SEO Técnico"
+    ],
+    "languages": [
+      "Español escrito",
+      "Coordinación por chat y correo"
+    ],
+    "experience": [
+      {
+        "company": "Proyectos independientes",
+        "role": "Desarrollador Web & Accesibilidad Digital",
+        "period": "4 años de experiencia",
+        "highlights": [
+          "Rediseño Accesible ONG Inclusión"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "Formación técnica",
+        "degree": "Desarrollo de sitios web y diseño adaptable",
+        "year": "Actualización profesional"
+      }
+    ],
+    "contact": {
+      "whatsapp": "59170990019",
+      "email": "carlos.mendoza@ejemplo.test"
+    },
+    "demo": true,
+    "projects": [
+      {
+        "title": "Rediseño Accesible ONG Inclusión",
+        "category": "Accesibilidad"
+      }
+    ],
+    "cover": "profiles/covers/carlos-mendoza-villarroel.png"
+  },
+  {
+    "id": "19",
+    "slug": "sergio-mamani-calle",
+    "name": "Sergio Mamani Calle",
+    "role": "Editor de Video & Subtitulado Accesible",
+    "city": "La Paz",
+    "photo": "profiles/sergio-mamani.jpg",
+    "tagline": "Editor audiovisual con especialidad en ritmos de retención para Reels, TikTok y YouTube.",
+    "availability": "Disponible",
+    "about": "Editor audiovisual con especialidad en ritmos de retención para Reels, TikTok y YouTube. Pionero en subtitulado accesible de alta legibilidad sincronizado 100% con animación visual.",
+    "skills": [
+      "Adobe Premiere Pro",
+      "CapCut Pro",
+      "Subtitulado Sincronizado",
+      "After Effects Básico",
+      "Color Grading"
+    ],
+    "languages": [
+      "Español escrito",
+      "Coordinación por chat y correo"
+    ],
+    "experience": [
+      {
+        "company": "Proyectos independientes",
+        "role": "Editor de Video & Subtitulado Accesible",
+        "period": "4 años de experiencia",
+        "highlights": [
+          "Edición y Subtitulado de 40 Reels Educativos",
+          "Video Promocional Festival Cultural La Paz"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "Formación técnica",
+        "degree": "Edición de video y subtitulado",
+        "year": "Actualización profesional"
+      }
+    ],
+    "contact": {
+      "whatsapp": "59170011020",
+      "email": "sergio.mamani@ejemplo.test"
+    },
+    "demo": true,
+    "projects": [
+      {
+        "title": "Edición y Subtitulado de 40 Reels Educativos",
+        "category": "Short Form Video"
+      },
+      {
+        "title": "Video Promocional Festival Cultural La Paz",
+        "category": "Promocional"
+      }
+    ],
+    "cover": "profiles/covers/sergio-mamani-calle.png"
   }
 ]

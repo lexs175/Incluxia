@@ -1,0 +1,186 @@
+---
+
+---
+
+<section class="section team-culture-section">
+  <div class="container">
+    <div class="section-top-bar">
+      <div>
+        <h2 class="section-heading">Liderazgo con vocación inclusiva</h2>
+        <p class="section-desc">
+          Especialistas en accesibilidad, derecho laboral y tecnología
+          trabajando por una Bolivia sin barreras.
+        </p>
+      </div>
+    </div>
+
+    <div class="team-cards-grid">
+      <div class="team-card">
+        <div class="team-photo-wrap">
+          <img
+            src="/images/profiles/diego-siles.png"
+            alt="Diego Siles - Dirección de Inclusión y Selección"
+            class="team-photo"
+            loading="lazy"
+          />
+        </div>
+        <div class="team-card-body">
+          <h3 class="team-member-name">Diego Siles Montaño</h3>
+          <span class="team-member-role"
+            >Dirección de Inclusión y Enlace ASHICO</span
+          >
+          <p class="team-member-bio">
+            Representante con amplia trayectoria en la comunidad de
+            hipoacúsicos, especialista en procesos de selección accesibles y
+            adaptación de puestos.
+          </p>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-photo-wrap">
+          <img
+            src="/images/community/comunidad-ashico-triptico.jpg"
+            alt="Dra. Gabriela Siles Rocha - Asesoría Legal Laboral"
+            class="team-photo"
+            loading="lazy"
+          />
+        </div>
+        <div class="team-card-body">
+          <h3 class="team-member-name">Dra. Gabriela Siles Rocha</h3>
+          <span class="team-member-role"
+            >Asesoría Legal Laboral (Ley 977 / 223)</span
+          >
+          <p class="team-member-bio">
+            Abogada especializada en derechos de personas con discapacidad,
+            carnetización SIPRUNPCD e intermediación empresarial.
+          </p>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-photo-wrap">
+          <img
+            src="/images/stories/juan-pablo-claros.png"
+            alt="Rodrigo Peñaranda - Coordinación de Lengua de Señas"
+            class="team-photo"
+            loading="lazy"
+          />
+        </div>
+        <div class="team-card-body">
+          <h3 class="team-member-name">Rodrigo Peñaranda</h3>
+          <span class="team-member-role"
+            >Coordinación de Lengua de Señas (LSB)</span
+          >
+          <p class="team-member-bio">
+            Intérprete acreditado de Lengua de Señas Boliviana para entrevistas
+            técnicas y facilitación de reuniones corporativas.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .team-culture-section {
+    background-color: var(--color-bg);
+  }
+
+  .section-top-bar {
+    margin-bottom: var(--space-10);
+  }
+
+  .section-heading {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.02em;
+    margin-top: var(--space-2);
+    margin-bottom: 0.25rem;
+    line-height: 1.25;
+  }
+
+  .section-desc {
+    color: var(--color-text-muted);
+    font-size: var(--text-base);
+    max-width: 620px;
+    margin: 0;
+  }
+
+  .team-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+
+  .team-card {
+    background-color: var(--color-white);
+    border: 1px solid rgba(var(--color-primary-rgb), 0.1);
+    border-radius: var(--radius-md);
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: none;
+  }
+
+  .team-photo-wrap {
+    width: 100%;
+    height: 260px;
+    border-radius: 0;
+    overflow: hidden;
+    margin-bottom: 0;
+    background-color: var(--color-bg);
+  }
+
+  .team-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    filter: grayscale(100%);
+  }
+
+  .team-card-body {
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .team-member-name {
+    font-size: var(--text-lg);
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.015em;
+    margin: 0 0 0.25rem 0;
+  }
+
+  .team-member-role {
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: var(--space-3);
+  }
+
+  .team-member-bio {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 991px) {
+    .team-cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .team-cards-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

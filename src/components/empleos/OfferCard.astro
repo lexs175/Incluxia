@@ -1,4 +1,5 @@
 ---
+import SiteImage from "../ui/SiteImage.astro";
 import ExpandableButton from '../ui/ExpandableButton.astro';
 import { seedAccounts, jobHref, dateLabel, type Publication } from '../../lib/demo';
 import { publisherInfo, paymentInfo, locationLabel } from '../../lib/job-presentation';
@@ -11,12 +12,12 @@ const href = jobHref(job);
 <article class="job-card offer-card" data-job-id={job.id}>
   <div class="offer-publisher">
     <div class="publisher-avatar" aria-hidden="true">
-      <img class="publisher-photo" src={publisher.image || undefined} alt="" width="40" height="40" loading="lazy" hidden={!publisher.image} />
+      <SiteImage kind="avatar" sizes="40px" class="publisher-photo" src={publisher.image || undefined} alt="" width="40" height="40" loading="lazy" hidden={!publisher.image} />
       <span class="publisher-initials" hidden={!!publisher.image}>{publisher.initials}</span>
     </div>
     <div class="publisher-details">
       <span class="company-name">{publisher.name}</span>
-      <p class="job-location"><img src="/images/offers/location.svg" alt="" width="9" height="9" /><span>{locationLabel(job)}</span></p>
+      <p class="job-location"><SiteImage kind="detail" src="offers/location.svg" alt="" width="9" height="9" /><span>{locationLabel(job)}</span></p>
     </div>
   </div>
   <div class="offer-content">
@@ -25,9 +26,7 @@ const href = jobHref(job);
   </div>
   <div class="job-card-footer">
     <time class="posted-time" datetime={job.createdAt}>{dateLabel(job.createdAt)}</time>
-    <ExpandableButton href={href} text="Ver oferta" variant="primary" size="sm" class="offer-action" leading>
-      <img slot="arrow" src="/images/offers/arrow.svg" alt="" />
-    </ExpandableButton>
+    <ExpandableButton href={href} text="Ver oferta" variant="primary" size="sm" />
   </div>
 </article>
 <style>
@@ -49,6 +48,4 @@ const href = jobHref(job);
   .budget-period { font-size: var(--text-sm); font-weight: 400; color: var(--color-text-muted); line-height: 1.6; }
   .job-card-footer { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); }
   .posted-time { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.6; }
-  .offer-card :global(.offer-action) { --btn-h: 2.125rem; --btn-radius: var(--radius-xs); }
-  .offer-card :global(.offer-action .btn-text-capsule), .offer-card :global(.offer-action .btn-badge-inner) { background: var(--color-primary-dark); border: none; }
 </style>

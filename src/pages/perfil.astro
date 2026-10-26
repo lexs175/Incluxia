@@ -1,10 +1,11 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import AccessGate from '../components/ui/AccessGate.astro';
-import ProfileDetail from '../components/perfiles/ProfileDetail.astro';
-import profiles from '../data/profiles.json';
+import Layout from "../layouts/Layout.astro";
+import AccessGate from "../components/ui/AccessGate.astro";
+import ProfileDetail from "../components/perfiles/ProfileDetail.astro";
+import profiles from "../data/profiles.json";
 ---
-<Layout title="Mi perfil | Incluxia" activePath="/perfil">
-<AccessGate title="Ingresa para completar tu perfil" />
-<div data-member><ProfileDetail profile={profiles[0]} own /></div>
+
+<Layout title="Mi perfil | Eco" activePath="/perfil">
+    <AccessGate title="Ingresa para completar tu perfil" />
+    <div data-member><ProfileDetail profile={profiles[0]} own /></div>
 </Layout>

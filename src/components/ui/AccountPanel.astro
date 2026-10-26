@@ -3,14 +3,17 @@ const { title, description } = Astro.props;
 ---
 <section class="account-surface">
   <div class="container"><div class="account-capsule">
-    <header class="account-heading"><h1>{title}</h1>{description && <p>{description}</p>}<p class="demo-caption">Demostración: tu actividad se guarda en este navegador.</p></header>
+    <header class="account-heading"><h1>{title}</h1>{description && <p class="account-description">{description}</p>}</header>
     <slot />
+    <p class="demo-caption">Demostración: tu actividad se guarda en este navegador.</p>
   </div></div>
 </section>
 <style>
 .account-surface { background: var(--color-bg); min-height: 75dvh; padding-top: calc(75px + var(--space-8)); padding-bottom: var(--space-20); }
-  .account-capsule { width: 100%; max-width: 900px; margin-inline: auto; background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-2xl); padding: clamp(1.5rem,4vw,3rem); box-shadow: none; }
-  .account-heading { margin-bottom: var(--space-8); }
+  .account-capsule { width: 100%; max-width: var(--workspace-content-max); margin-inline: auto; }
+  .account-heading { margin-bottom: var(--space-6); }
   h1 { font-size: var(--text-3xl); font-weight: 800; color: var(--color-primary); margin-bottom: var(--space-3); }
   p { color: var(--color-text-muted); font-size: var(--text-sm); }
+  .account-description { max-width: 70ch; line-height: 1.6; }
+  .demo-caption { margin-top: var(--space-6); font-size: var(--text-xs); }
 </style>

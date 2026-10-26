@@ -43,16 +43,16 @@ const quickCategories = [...new Set(seedJobs.map(job => job.category))];
 <style>
   .jobs-master-explorer { width: 100%; }
   .jobs-toolbar { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: var(--space-3); margin-bottom: var(--space-6); }
-  .filter-toggle { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); min-height: 46px; padding-inline: var(--space-5); border: 1px solid var(--color-border); border-radius: var(--radius-full); background: var(--color-white); color: var(--color-text-main); font-size: var(--text-sm); font-weight: 500; white-space: nowrap; }
+  .filter-toggle { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); min-height: 46px; padding-inline: var(--space-5); border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-white); color: var(--color-text-main); font-size: var(--text-sm); font-weight: 500; white-space: nowrap; }
   .filter-toggle[aria-expanded='true'] { background: var(--color-bg-alt); border-color: var(--color-border-hover); }
-  .jobs-search-shell { display: flex; align-items: center; gap: var(--space-4); min-width: 0; padding: var(--space-1); border: 1px solid var(--color-border); border-radius: var(--radius-full); background: var(--color-white); }
+  .jobs-search-shell { display: flex; align-items: center; gap: var(--space-4); min-width: 0; padding: var(--space-1); border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-white); }
   .jobs-search-shell:focus-within { border-color: var(--color-primary); }
   .jobs-search { display: flex; flex: 1; align-items: center; gap: var(--space-3); min-width: 0; padding-inline: var(--space-3); color: var(--color-text-muted); }
   .jobs-search svg { flex-shrink: 0; }
   .jobs-search input { width: 100%; min-width: 0; min-height: 36px; padding-block: var(--space-2); background: transparent; border: none; outline: none; font: inherit; font-size: var(--text-base); color: var(--color-text-main); }
   .jobs-search input::placeholder { color: var(--color-text-muted); }
   .job-type-options { display: flex; flex-shrink: 0; gap: var(--space-1); }
-  .job-type-options button { min-height: 36px; padding-inline: var(--space-4); border-radius: var(--radius-full); font-size: var(--text-sm); color: var(--color-text-muted); }
+  .job-type-options button { min-height: 36px; padding-inline: var(--space-4); border-radius: var(--radius-md); font-size: var(--text-sm); color: var(--color-text-muted); }
   .job-type-options button[aria-pressed='true'] { background: var(--color-bg-alt); color: var(--color-text-main); font-weight: 600; }
   .jobs-body { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: var(--space-6); }
   .jobs-master-explorer[data-filters-open='true'] .jobs-body { grid-template-columns: 248px minmax(0, 1fr); }
@@ -66,7 +66,7 @@ const quickCategories = [...new Set(seedJobs.map(job => job.category))];
   .results-count { margin: 0; font-size: var(--text-sm); font-weight: 400; color: var(--color-text-muted); }
   .jobs-results-bar select { max-width: 100%; padding: var(--space-2); padding-right: var(--space-6); border: none; background: transparent; font-size: var(--text-sm); color: var(--color-text-muted); cursor: pointer; }
   .jobs-cards-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-5); }
-  .jobs-filters { position: sticky; top: calc(var(--app-header-height) + var(--space-6)); min-width: 0; padding: var(--space-4); border-radius: var(--radius-lg); background: var(--color-white); }
+  .jobs-filters { position: sticky; top: calc(var(--app-header-height) + var(--space-6)); min-width: 0; padding: var(--space-4); border-radius: var(--radius-md); background: var(--color-white); }
   .filters-heading-row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); margin-bottom: var(--space-3); }
   .filters-heading-row h2 { font-size: var(--text-base); font-weight: 600; color: var(--color-text-main); }
   .filters-reset { min-height: 40px; color: var(--color-text-muted); font-size: var(--text-sm); text-underline-offset: 4px; }
@@ -81,7 +81,7 @@ const quickCategories = [...new Set(seedJobs.map(job => job.category))];
   .budget-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2); }
   .filters-apply { display: none; }
   .filters-apply button { width: 100%; min-height: 44px; margin-top: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-white); color: var(--color-text-main); font-size: var(--text-sm); }
-  .jobs-empty { padding: var(--space-12) var(--space-6); border-radius: var(--radius-lg); background: var(--color-white); text-align: center; }
+  .jobs-empty { padding: var(--space-12) var(--space-6); border-radius: var(--radius-md); background: var(--color-white); text-align: center; }
   .jobs-empty h2 { font-size: var(--text-xl); color: var(--color-text-main); margin-bottom: var(--space-3); }
   .jobs-empty p { color: var(--color-text-muted); font-size: var(--text-base); margin-bottom: var(--space-5); }
   .reset-empty { min-height: 44px; padding-inline: var(--space-5); border-radius: var(--radius-md); background: var(--color-primary); color: var(--color-white); font-size: var(--text-sm); font-weight: 600; }
@@ -97,7 +97,7 @@ const quickCategories = [...new Set(seedJobs.map(job => job.category))];
     .filters-apply { display: block; }
     .jobs-toolbar { display: flex; flex-wrap: wrap; margin-bottom: var(--space-4); }
     .jobs-search-shell { display: contents; }
-    .jobs-search { min-height: 46px; border: 1px solid var(--color-border); border-radius: var(--radius-full); background: var(--color-white); }
+    .jobs-search { min-height: 46px; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-white); }
     .job-type-options { flex-basis: 100%; }
     .job-type-options button { min-height: 40px; }
     .jobs-cards-grid { gap: var(--space-4); }

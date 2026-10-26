@@ -1,4 +1,6 @@
 ---
+import SiteImage from "../ui/SiteImage.astro";
+import imageSlots from "../../data/image-slots.json";
 import ExpandableButton from "../ui/ExpandableButton.astro";
 ---
 
@@ -14,8 +16,8 @@ import ExpandableButton from "../ui/ExpandableButton.astro";
         </div>
       </div>
       <div class="hero-photos">
-        <img src="/images/home/comunidad-ashico.png" alt="Integrantes de la comunidad ASHICO reunidos al aire libre" width="1600" height="1200" fetchpriority="high" />
-        <img src="/images/home/comunidad-ashico.png" alt="" width="1600" height="1200" aria-hidden="true" />
+        <SiteImage kind="hero" priority src={imageSlots.home.hero.primary.src} alt="Integrantes de la comunidad ASHICO reunidos al aire libre" width="1600" height="1200" fetchpriority="high" />
+        <SiteImage kind="heroSecondary" src={imageSlots.home.hero.secondary.src} alt="" width="1600" height="1200" aria-hidden="true" />
       </div>
     </div>
   </div>

@@ -1,4 +1,5 @@
 ---
+import SiteImage from "./SiteImage.astro";
 import { getYouTubeVideo } from '../../lib/youtube';
 
 interface Props {
@@ -26,7 +27,7 @@ const video = getYouTubeVideo(videoUrl);
         allowfullscreen
       />
     ) : (
-      <img src={poster} alt={posterAlt} loading="eager" />
+      <SiteImage kind="detail" priority src={poster} alt={posterAlt} loading="eager" />
     )}
   </div>
   {video && (

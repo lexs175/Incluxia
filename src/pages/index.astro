@@ -14,23 +14,29 @@ const featuredStories = storiesData.slice(0, 3);
 ---
 
 <Layout
-  title="Incluxia Bolivia | Inclusión Laboral para Personas con Hipoacusia"
+  title="Eco Bolivia | Inclusión Laboral para Personas con Hipoacusia"
   description="Encuentra trabajo, ofrece tus servicios o contrata a personas con hipoacusia en Bolivia. Revisa perfiles y comunícate por chat."
   activePath="/"
 >
   <div data-guest>
-  <HomeHero />
-  <HomeBento />
-  <HomeWalkthrough />
+    <HomeHero />
+    <HomeBento />
+    <HomeWalkthrough />
 
-  <HomeCommunity />
+    <HomeCommunity />
 
-  <HomeStories stories={featuredStories} />
-
+    <HomeStories stories={featuredStories} />
   </div>
-  <section class="member-home" data-member><div class="container"><JobsDirectory jobs={jobsData} /></div></section>
+  <section class="member-home" data-member>
+    <div class="container"><JobsDirectory jobs={jobsData} /></div>
+  </section>
 </Layout>
 
 <style>
-.member-home { background: var(--color-bg); min-height: 85dvh; padding-top: calc(80px + var(--space-8)); padding-bottom: var(--space-16); }
+  .member-home {
+    background: var(--color-bg);
+    min-height: 85dvh;
+    padding-top: calc(80px + var(--space-8));
+    padding-bottom: var(--space-16);
+  }
 </style>

@@ -11,7 +11,9 @@ import Button from "../ui/Button.astro";
             ¿Necesitas contratar talento para tu empresa o proyecto?
           </h2>
           <p class="enterprise-card-desc">
-            Publica tu vacante o proyecto en Incluxia en 1 minuto. Conectamos a tu equipo con profesionales calificados con coordinación 100% por chat escrito.
+            Publica tu vacante o proyecto en Eco en 1 minuto. Conectamos a tu
+            equipo con profesionales calificados con coordinación 100% por chat
+            escrito.
           </p>
           <div class="enterprise-actions">
             <Button href="/publicar" variant="white" size="lg">
@@ -40,13 +42,13 @@ import Button from "../ui/Button.astro";
 </section>
 
 <style>
-.enterprise-cta-section {
+  .enterprise-cta-section {
     background-color: var(--color-bg);
   }
 
   .enterprise-dark-card {
     background-color: var(--color-primary);
-    border-radius: var(--radius-3xl);
+    border-radius: var(--radius-md);
     padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3.5rem);
     box-shadow: none;
   }
@@ -119,7 +121,7 @@ import Button from "../ui/Button.astro";
   @media (max-width: 479px) {
     .enterprise-dark-card {
       padding: var(--space-6) var(--space-4);
-      border-radius: var(--radius-2xl);
+      border-radius: var(--radius-md);
     }
   }
 </style>

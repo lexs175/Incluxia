@@ -8,7 +8,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test:platform": "node scripts/verify-platform.mjs"
+    "test:platform": "node scripts/verify-platform.mjs",
+    "test:images": "node scripts/verify-image-optimization.mjs",
+    "images:catalog": "node scripts/document-image-assets.mjs"
   },
   "dependencies": {
     "astro": "^7.3.5",

@@ -1,4 +1,4 @@
-import { readStore, register, signIn, safePath, user } from './demo';
+import { register, signIn, safePath } from './demo';
 
 let events: AbortController | undefined;
 export function initAuth() {
@@ -10,82 +10,164 @@ export function initAuth() {
   const registration = document.getElementById('registerPanel')!;
   let next = '/';
   let previousFocus: HTMLElement | null = null;
+  let scrollPosition = { left: 0, top: 0 };
+  let background: [HTMLElement, boolean][] = [];
   const value = (id: string) => (document.getElementById(id) as HTMLInputElement).value.trim();
-  function alert(message = '') {
+  function alert(message = '', tone: 'error' | 'info' = 'error') {
+    const container = document.getElementById('authAlert')!;
     document.getElementById('authAlertText')!.textContent = message;
-    document.getElementById('authAlert')!.style.display = message ? 'flex' : 'none';
+    container.hidden = !message;
+    container.classList.toggle('auth-alert--error', tone === 'error');
+    container.classList.toggle('auth-alert--info', tone === 'info');
+    container.setAttribute('role', tone === 'error' ? 'alert' : 'status');
+    container.setAttribute('aria-live', tone === 'error' ? 'assertive' : 'polite');
+  }
+  function fieldError(field: HTMLInputElement | HTMLSelectElement, message = '') {
+    const id = field.id + 'Error';
+    let error = document.getElementById(id);
+    if (!error) {
+      error = document.createElement('p'); error.id = id; error.className = 'auth-field-error';
+      field.closest('.form-group')!.append(error);
+      field.setAttribute('aria-describedby', [field.getAttribute('aria-describedby'), id].filter(Boolean).join(' '));
+    }
+    error.textContent = message; error.hidden = !message;
+    if (message) field.setAttribute('aria-invalid', 'true');
+    else field.removeAttribute('aria-invalid');
+  }
+  function validationMessage(field: HTMLInputElement | HTMLSelectElement) {
+    if (field.required && !field.value.trim()) return 'Completa este campo.';
+    if (field.validity.typeMismatch) return 'Escribe un correo válido, por ejemplo nombre@correo.com.';
+    if (field.id === 'regWhatsApp' && !/^(?:591)?[67]\d{7}$/.test(field.value.replace(/\D/g, ''))) return 'Escribe un celular de Bolivia de 8 dígitos; puedes añadir +591.';
+    if (field.id.endsWith('Password') && field.value.trim().length < 4) return 'Utiliza al menos 4 caracteres de prueba.';
+    return '';
+  }
+  function validate(form: HTMLFormElement) {
+    const fields = [...form.querySelectorAll<HTMLInputElement | HTMLSelectElement>('input,select')];
+    let first: HTMLInputElement | HTMLSelectElement | undefined;
+    fields.forEach(field => {
+      const message = validationMessage(field); fieldError(field, message);
+      if (message) first ??= field;
+    });
+    if (first) {
+      alert('Revisa los campos indicados para continuar.');
+      first.focus({ preventScroll: true }); first.scrollIntoView({ block: 'nearest', behavior: 'instant' });
+      return false;
+    }
+    alert(); return true;
   }
   function tab(mode: string) {
     const isLogin = mode === 'login';
-    login.style.display = isLogin ? 'block' : 'none';
-    registration.style.display = isLogin ? 'none' : 'block';
+    login.hidden = !isLogin;
+    registration.hidden = isLogin;
+    wrapper!.setAttribute('aria-labelledby', isLogin ? 'loginPanelTitle' : 'registerPanelTitle');
+    wrapper!.setAttribute('aria-describedby', isLogin ? 'loginPanelDescription' : 'registerPanelDescription');
     for (const [id, selected] of [['tabLoginBtn', isLogin], ['tabRegisterBtn', !isLogin]] as const) {
       const btn = document.getElementById(id)!;
       btn.classList.toggle('active', selected); btn.setAttribute('aria-selected', String(selected));
+      btn.tabIndex = selected ? 0 : -1;
     }
     alert();
   }
-  function close() {
+  function close(restoreFocus = true) {
+    if (!wrapper!.classList.contains('open')) return;
     wrapper!.classList.remove('open'); wrapper!.setAttribute('aria-hidden', 'true');
+    wrapper!.inert = true;
     document.documentElement.classList.remove('modal-open'); document.body.classList.remove('modal-open');
-    document.documentElement.style.overflow = ''; document.body.style.overflow = '';
-    previousFocus?.focus();
+    background.forEach(([element, inert]) => { element.inert = inert; }); background = [];
+    window.scrollTo({ ...scrollPosition, behavior: 'instant' });
+    if (restoreFocus) {
+      const target = previousFocus?.isConnected && previousFocus.getClientRects().length ? previousFocus : document.getElementById('mobileMenuBtn');
+      target?.focus({ preventScroll: true });
+    }
   }
-  function open(mode = 'login', destination = '/') {
+  function open(mode = 'login', destination = location.pathname + location.search + location.hash) {
     previousFocus = document.activeElement as HTMLElement;
+    scrollPosition = { left: window.scrollX, top: window.scrollY };
     next = safePath(destination);
     wrapper!.classList.add('open'); wrapper!.setAttribute('aria-hidden', 'false');
+    wrapper!.inert = false;
     document.documentElement.classList.add('modal-open'); document.body.classList.add('modal-open');
-    document.documentElement.style.overflow = 'hidden'; document.body.style.overflow = 'hidden';
+    background = [...document.querySelectorAll<HTMLElement>('body > header, body > main, body > footer, .skip-to-content')].map(element => [element, element.inert]);
+    background.forEach(([element]) => { element.inert = true; });
     tab(mode);
-    (document.getElementById(mode === 'register' ? 'regFullName' : 'loginIdentifier') as HTMLInputElement)?.focus();
+    const capsule = wrapper!.querySelector<HTMLElement>('.auth-modal-capsule')!;
+    capsule.scrollTop = 0;
+    document.getElementById(mode === 'register' ? 'registerPanelTitle' : 'loginPanelTitle')?.focus({ preventScroll: true });
   }
-  function finish() { close(); window.location.assign(next); }
+  function finish() { close(false); window.location.assign(next); }
   document.addEventListener('click', e => {
     const target = (e.target as HTMLElement).closest<HTMLElement>('[data-auth-trigger]');
     if (!target) return;
     e.preventDefault();
     const destination = target.dataset.authNext;
-    open(target.dataset.authTrigger, destination && destination === location.pathname ? location.pathname + location.search : destination || '/');
+    open(target.dataset.authTrigger, destination && destination === location.pathname ? location.pathname + location.search + location.hash : destination);
   }, { signal });
-  document.getElementById('authCloseBtn')!.onclick = close;
-  document.getElementById('authBackdrop')!.onclick = close;
+  document.getElementById('authCloseBtn')!.onclick = () => close();
+  document.getElementById('authBackdrop')!.onclick = () => close();
   document.getElementById('tabLoginBtn')!.onclick = () => tab('login');
   document.getElementById('tabRegisterBtn')!.onclick = () => tab('register');
   document.getElementById('toggleLoginPass')!.onclick = () => {
     const input = document.getElementById('loginPassword') as HTMLInputElement;
     input.type = input.type === 'password' ? 'text' : 'password';
+    const control = document.getElementById('toggleLoginPass')!;
+    control.setAttribute('aria-label', input.type === 'password' ? 'Mostrar PIN de prueba' : 'Ocultar PIN de prueba');
+    control.setAttribute('aria-pressed', String(input.type === 'text'));
   };
-  document.getElementById('btnForgotPassword')!.onclick = () => alert('Esta es una simulación local. Puedes ingresar con tu correo o WhatsApp y cualquier PIN de prueba de 4 caracteres.');
+  document.getElementById('btnForgotPassword')!.onclick = () => alert('En esta demostración puedes usar cualquier PIN de 4 caracteres. No se guarda ni se comprueba como una contraseña real.', 'info');
+  wrapper.addEventListener('input', e => {
+    const field = e.target as HTMLInputElement;
+    if (field.hasAttribute('aria-invalid')) fieldError(field, validationMessage(field));
+  }, { signal });
+  wrapper.querySelector('.auth-tabs')!.addEventListener('keydown', (event: Event) => {
+    const e = event as KeyboardEvent;
+    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return;
+    e.preventDefault();
+    const isLogin = e.key === 'Home' || (e.key !== 'End' && document.activeElement?.id !== 'tabLoginBtn');
+    tab(isLogin ? 'login' : 'register');
+    document.getElementById(isLogin ? 'tabLoginBtn' : 'tabRegisterBtn')!.focus({ preventScroll: true });
+  }, { signal });
   document.getElementById('loginForm')!.onsubmit = e => {
     e.preventDefault();
+    if (!validate(e.currentTarget as HTMLFormElement)) return;
     try {
-      if (!value('loginIdentifier') || value('loginPassword').length < 4) throw Error('Ingresa tu correo o WhatsApp y un PIN de prueba de al menos 4 caracteres.');
       signIn(value('loginIdentifier')); finish();
-    } catch (error) { alert((error as Error).message); }
+    } catch (error) {
+      const field = document.getElementById('loginIdentifier') as HTMLInputElement;
+      const message = error instanceof DOMException ? 'No se pudo guardar la sesión. Revisa el almacenamiento del navegador e inténtalo otra vez.' : (error as Error).message;
+      alert(message); fieldError(field, message); field.focus({ preventScroll: true });
+    }
   };
   document.getElementById('registerForm')!.onsubmit = e => {
     e.preventDefault();
     const form = e.currentTarget as HTMLFormElement;
-    if (!form.reportValidity()) return;
+    if (!validate(form)) return;
     try {
-      if (!value('regFullName') || !value('regWhatsApp')) throw Error('Completa tu nombre y WhatsApp.');
-      if (value('regPassword').length < 4) throw Error('El PIN de prueba debe tener al menos 4 caracteres.');
       register({ name: value('regFullName'), email: value('regEmail').toLowerCase(), phone: value('regWhatsApp'), city: value('regCity') });
       finish();
-    } catch (error) { alert((error as Error).message); }
+    } catch (error) {
+      const message = error instanceof DOMException ? 'No se pudo guardar la cuenta de prueba. Revisa el almacenamiento del navegador e inténtalo otra vez.' : (error as Error).message;
+      alert(message);
+      const id = /correo/.test(message) ? 'regEmail' : /WhatsApp/.test(message) ? 'regWhatsApp' : null;
+      if (id) { const field = document.getElementById(id) as HTMLInputElement; fieldError(field, message); field.focus({ preventScroll: true }); field.scrollIntoView({ block: 'nearest', behavior: 'instant' }); }
+      else document.getElementById('authAlert')!.scrollIntoView({ block: 'nearest', behavior: 'instant' });
+    }
   };
-  document.getElementById('btnDemoCandidate')!.onclick = () => { signIn('valeria@ejemplo.test'); finish(); };
-  document.getElementById('btnDemoCompany')!.onclick = () => { signIn('equipo@ejemplo.test'); finish(); };
+  function example(email: string) {
+    try { signIn(email); finish(); }
+    catch { alert('No se pudo abrir el ejemplo. Revisa el almacenamiento del navegador e inténtalo otra vez.'); }
+  }
+  document.getElementById('btnDemoCandidate')!.onclick = () => example('valeria@ejemplo.test');
+  document.getElementById('btnDemoCompany')!.onclick = () => example('equipo@ejemplo.test');
   document.addEventListener('keydown', e => {
     if (!wrapper.classList.contains('open')) return;
     if (e.key === 'Escape') close();
     if (e.key === 'Tab') {
-      const elements = [...wrapper.querySelectorAll<HTMLElement>('button,a,input,select,textarea')].filter(el => !el.hasAttribute('disabled') && el.offsetParent !== null);
+      const elements = [...wrapper.querySelectorAll<HTMLElement>('button,a[href],input,select,textarea')].filter(el => !el.hasAttribute('disabled') && el.tabIndex >= 0 && el.getClientRects().length > 0);
       const first = elements[0], last = elements.at(-1);
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last?.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first?.focus(); }
+      else if (e.shiftKey && document.activeElement?.getAttribute('tabindex') === '-1') { e.preventDefault(); last?.focus(); }
     }
   }, { signal });
-  document.addEventListener('astro:before-swap', close, { once: true, signal });
+  document.addEventListener('astro:before-swap', () => close(false), { once: true, signal });
 }

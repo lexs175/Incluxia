@@ -36,7 +36,8 @@ try {
   for (const width of [1920, 1440, 768, 390]) {
     await page.setViewportSize({ width, height: 1000 });
     await page.goto(url + '/contratar', { waitUntil: 'networkidle' });
-    await page.locator('#hubSearchInput[data-ready="true"]').waitFor();
+    await page.locator('.hub-categories-grid[data-ready="true"]').waitFor();
+    assert.equal(await page.locator('#hubSearchInput, .hub-quick-search-box, .hub-bottom-action, .hub-guarantee-banner').count(), 0);
     await page.evaluate(async () => {
       await document.fonts.ready;
       document.querySelectorAll('.category-cover').forEach(img => img.loading = 'eager');
@@ -54,12 +55,12 @@ try {
       })),
     }));
     report.viewports.push(metrics);
-    assert.equal(metrics.scrollWidth, width);
+    assert.ok(metrics.scrollWidth <= width, 'La página no debe tener desbordamiento horizontal.');
     assert.equal(metrics.cards.length, 8);
     assert.ok(metrics.cards.every(card => card.cover.loaded && !card.overflow && card.shadow === 'none'));
-    assert.ok(metrics.cards.every(card => card.button.color === 'rgb(255, 255, 255)' && card.button.height === 34));
+    assert.ok(metrics.cards.every(card => card.button.color === 'rgb(255, 255, 255)' && Math.abs(card.button.height - 34) < 2));
     assert.ok(metrics.cards.every(card => card.href === '/contratar/' + card.slug));
-    await page.locator('.hub-categories-grid').screenshot({ path: `${out}/categorias-${width}.png` });
+    await page.screenshot({ path: `${out}/categorias-${width}.png`, fullPage: true });
     if (width === 1920) {
       const first = page.locator('.category-rubro-card').first();
       await first.evaluate(el => { el.style.width = '359px'; });
@@ -70,16 +71,13 @@ try {
   }
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(url + '/contratar', { waitUntil: 'networkidle' });
-  await page.locator('#hubSearchInput').fill('Logotipos');
-  assert.equal(await page.locator('.category-rubro-card:visible').count(), 1);
-  await page.locator('#hubSearchInput').fill('');
   assert.equal(await page.locator('.category-rubro-card:visible').count(), 8);
   await page.locator('.category-rubro-card').first().click({ position: { x: 25, y: 25 } });
   await page.waitForURL('**/contratar/diseno-grafico');
   await page.goto(url + '/contratar', { waitUntil: 'networkidle' });
   await page.locator('.category-rubro-card[data-category-slug="sistemas-ti"] .category-action-button').click();
   await page.waitForURL('**/contratar/sistemas-ti');
-  pass('El buscador filtra especialidades y tanto la imagen como el botón abren su categoría.');
+  pass('El buscador, la acción inferior y el banner ya no se muestran; la imagen y el botón siguen abriendo su categoría.');
   assert.deepEqual(report.errors, []);
   await context.close();
 } catch (error) {

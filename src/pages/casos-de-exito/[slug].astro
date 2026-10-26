@@ -19,7 +19,7 @@ const otherStories = storiesData.filter((s) => s.id !== story.id).slice(0, 3);
 ---
 
 <Layout
-  title={`${story.name} - ${story.role} | Caso de Éxito Incluxia Bolivia`}
+  title={`${story.name} - ${story.role} | Caso de Éxito Eco Bolivia`}
   description={story.quote}
   activePath="/casos-de-exito"
 >
@@ -47,7 +47,13 @@ const otherStories = storiesData.filter((s) => s.id !== story.id).slice(0, 3);
             {story.city}, Bolivia
           </span>
           <span class="byline-dot">·</span>
-          <span class="byline-item">{hasVideo ? "Video del caso de éxito" : "Entrevista con Intérprete LSB"}</span>
+          <span class="byline-item"
+            >{
+              hasVideo
+                ? "Video del caso de éxito"
+                : "Entrevista con Intérprete LSB"
+            }</span
+          >
         </div>
       </header>
 
@@ -68,7 +74,7 @@ const otherStories = storiesData.filter((s) => s.id !== story.id).slice(0, 3);
           </blockquote>
 
           <section class="editorial-section">
-            <h2 class="editorial-heading">El desafío antes de Incluxia</h2>
+            <h2 class="editorial-heading">El desafío antes de Eco</h2>
             <p class="editorial-paragraph">
               Durante meses, {story.name} enfrentó el filtro más injusto del mercado
               tradicional en Bolivia: llamadas telefónicas imprevistas de reclutadores
@@ -82,12 +88,11 @@ const otherStories = storiesData.filter((s) => s.id !== story.id).slice(0, 3);
               La adaptación razonable en {story.company}
             </h2>
             <p class="editorial-paragraph">
-              A través de Incluxia, {story.company} coordinó todo el proceso 100%
-              por mensaje de WhatsApp. En su puesto de trabajo diario como {
-                story.role
-              }, las tareas se definen con manuales escritos, tableros digitales
-              y seguimiento por chat. Sin teléfono de por medio, el rendimiento
-              y la precisión de {story.name} superaron todas las expectativas.
+              A través de Eco, {story.company} coordinó todo el proceso 100% por mensaje
+              de WhatsApp. En su puesto de trabajo diario como {story.role}, las
+              tareas se definen con manuales escritos, tableros digitales y
+              seguimiento por chat. Sin teléfono de por medio, el rendimiento y
+              la precisión de {story.name} superaron todas las expectativas.
             </p>
           </section>
 
@@ -102,7 +107,6 @@ const otherStories = storiesData.filter((s) => s.id !== story.id).slice(0, 3);
               lealtad profesional.
             </p>
           </section>
-
         </main>
 
         <!-- Right Sidebar: Quick Facts & Contact (Flat Bento Card, Zero Shadows) -->
@@ -166,22 +170,16 @@ const otherStories = storiesData.filter((s) => s.id !== story.id).slice(0, 3);
 </Layout>
 
 <style>
-.story-detail-page {
+  .story-detail-page {
     background-color: var(--color-bg);
     padding-top: calc(90px + var(--space-8));
     padding-bottom: var(--space-16);
   }
 
-
-
-
   /* Header Section */
   .story-header {
     margin-bottom: var(--space-8);
   }
-
-
-
 
   .story-main-title {
     font-size: var(--text-4xl);
@@ -251,8 +249,6 @@ const otherStories = storiesData.filter((s) => s.id !== story.id).slice(0, 3);
     line-height: 1.7;
     margin: 0;
   }
-
-
 
   /* Sidebar Facts Card */
   .facts-bento-card {

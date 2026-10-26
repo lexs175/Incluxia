@@ -1,5 +1,7 @@
 html.filters-open { overflow: hidden; }
 
+html[data-session='member'] { scrollbar-gutter: stable; }
+
 html[data-session='member'] body[data-app-surface] {
   --container-max-width: var(--app-content-max);
   --container-padding: var(--app-gutter);
@@ -9,6 +11,7 @@ html[data-session='member'] body[data-app-surface] {
 html[data-session='member'] body[data-app-surface] > .header {
   top: 0;
   background: var(--color-white);
+  transition: none;
 }
 
 html[data-session='member'] body[data-app-surface] .navbar-capsule {
@@ -18,11 +21,12 @@ html[data-session='member'] body[data-app-surface] .navbar-capsule {
   padding-block: var(--space-3);
   padding-inline: 0;
   border-radius: 0;
+  transition: none;
 }
 
+html[data-session='member'] body[data-app-surface] .nav-desktop .nav-link { font-weight: 600; }
 html[data-session='member'] body[data-app-surface] .header-actions { justify-self: end; }
 html[data-session='member'] body[data-app-surface] .nav-desktop { justify-self: center; }
-html[data-session='member'] body[data-app-surface] .header-profile-wrapper { background: var(--color-bg); border: none; }
 html[data-session='member'] body[data-app-surface] > .footer { display: none; }
 html[data-session='member'] body[data-app-surface] main { min-width: 0; }
 html[data-session='member'] body[data-app-surface] .member-home,

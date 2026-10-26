@@ -1,13 +1,14 @@
 ---
-import { ClientRouter } from 'astro:transitions';
-import Header from '../components/layout/Header.astro';
-import Footer from '../components/layout/Footer.astro';
-import AuthModal from '../components/ui/AuthModal.astro';
-import ButtonTemplates from '../components/ui/ButtonTemplates.astro';
-import '../styles/session.css';
-import '../styles/account-forms.css';
-import '../styles/global.css';
-import '../styles/workspace.css';
+import { ClientRouter } from "astro:transitions";
+import { clientImageManifest, optimizedImage } from "../lib/images.server";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import AuthModal from "../components/ui/AuthModal.astro";
+import ButtonTemplates from "../components/ui/ButtonTemplates.astro";
+import "../styles/session.css";
+import "../styles/account-forms.css";
+import "../styles/global.css";
+import "../styles/workspace.css";
 
 interface Props {
   title?: string;
@@ -16,10 +17,12 @@ interface Props {
 }
 
 const {
-  title = 'Incluxia Bolivia | Trabajos para Personas con Pérdida Auditiva e Hipoacusia',
-  description = 'Plataforma boliviana de trabajo y oportunidades laborales para personas con pérdida auditiva o hipoacusia. Postulaciones y entrevistas 100% por chat o WhatsApp, sin llamadas telefónicas.',
-  activePath = '/',
+  title = "Eco Bolivia | Trabajos para Personas con Pérdida Auditiva e Hipoacusia",
+  description = "Plataforma boliviana de trabajo y oportunidades laborales para personas con pérdida auditiva o hipoacusia. Postulaciones y entrevistas 100% por chat o WhatsApp, sin llamadas telefónicas.",
+  activePath = "/",
 } = Astro.props;
+const imageManifest = await clientImageManifest();
+const socialImage = await optimizedImage('brand/logo.png', 'brand');
 ---
 
 <!doctype html>
@@ -28,10 +31,20 @@ const {
     <meta charset="UTF-8" />
     <script is:inline data-astro-rerun>
       try {
-        const state = JSON.parse(localStorage.getItem('incluxia_demo_v1') || 'null');
-        const legacy = JSON.parse(localStorage.getItem('incluxia_auth_user') || 'null');
-        document.documentElement.dataset.session = (state ? state.sessionId : legacy) ? 'member' : 'guest';
-      } catch { document.documentElement.dataset.session = 'guest'; }
+        const state = JSON.parse(
+          localStorage.getItem("incluxia_demo_v1") || "null",
+        );
+        const legacy = JSON.parse(
+          localStorage.getItem("incluxia_auth_user") || "null",
+        );
+        document.documentElement.dataset.session = (
+          state ? state.sessionId : legacy
+        )
+          ? "member"
+          : "guest";
+      } catch {
+        document.documentElement.dataset.session = "guest";
+      }
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -46,7 +59,7 @@ const {
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/images/logo.png" />
+    <meta property="og:image" content={socialImage.src} />
 
     <!-- Google Fonts: Montserrat (Headings) & Poppins (Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -59,9 +72,19 @@ const {
     <!-- Astro View Transitions / Client-side Router -->
     <ClientRouter />
   </head>
-  <body data-app-surface={activePath === '/' || /^\/(empleos|contratar|publicar|perfil|perfiles|postulaciones)(\/|$)/.test(activePath) ? '' : undefined}>
+  <body
+    data-app-surface={activePath === "/" ||
+    /^\/(empleos|contratar|publicar|perfil|perfiles|postulaciones)(\/|$)/.test(
+      activePath,
+    )
+      ? ""
+      : undefined}
+  >
+    <script id="site-image-manifest" type="application/json" is:inline set:html={JSON.stringify(imageManifest).replace(/</g, '\\u003c')} />
     <!-- Skip to content for accessibility -->
-    <a href="#main-content" class="skip-to-content">Saltar al contenido principal</a>
+    <a href="#main-content" class="skip-to-content"
+      >Saltar al contenido principal</a
+    >
 
     <!-- Top Navigation Header -->
     <Header activePath={activePath} />
@@ -78,15 +101,20 @@ const {
     <AuthModal />
     <ButtonTemplates />
 
-
     <!-- Modals & Fullscreen Drawers Slot (Direct child of body, above Header and FAB) -->
     <slot name="drawer" />
 
-    <!-- GSAP Title & Heading Entrance Animations (Line Mask + Letter-by-Letter Stagger) -->
     <script>
-      import gsap from 'gsap';
+      import "../lib/navigation";
+    </script>
 
-      function splitIntoMaskedLinesAndChars(element: HTMLElement): HTMLElement[] {
+    <!-- GSAP Title & Heading Entrance Animations (Left-to-Right Word Stagger) -->
+    <script>
+      import gsap from "gsap";
+
+      function splitIntoMaskedLinesAndWords(
+        element: HTMLElement,
+      ): HTMLElement[] {
         // If element is not rendered or hidden, skip
         if (element.offsetWidth === 0 && element.offsetHeight === 0) return [];
 
@@ -99,15 +127,15 @@ const {
         }
 
         // Accessibility: preserve full text for screen readers
-        const fullText = (element.textContent || '').trim();
-        if (!element.getAttribute('aria-label') && fullText) {
-          element.setAttribute('aria-label', fullText);
+        const fullText = (element.textContent || "").trim();
+        if (!element.getAttribute("aria-label") && fullText) {
+          element.setAttribute("aria-label", fullText);
         }
 
-        // 1. Process DOM recursively: wrap words in .line-word and characters in .line-char
-        function processNodeToWordsAndChars(node: Node): Node[] {
+        // 1. Preserve inline formatting and wrap each complete word.
+        function processNodeToWords(node: Node): Node[] {
           if (node.nodeType === Node.TEXT_NODE) {
-            const text = node.textContent || '';
+            const text = node.textContent || "";
             if (!text) return [];
             const tokens = text.split(/(\s+)/);
             const result: Node[] = [];
@@ -116,19 +144,9 @@ const {
               if (/^\s+$/.test(token)) {
                 result.push(document.createTextNode(token));
               } else if (token.length > 0) {
-                const wordSpan = document.createElement('span');
-                wordSpan.className = 'line-word';
-                wordSpan.style.display = 'inline-block';
-                wordSpan.style.whiteSpace = 'nowrap';
-
-                for (const char of token) {
-                  const charSpan = document.createElement('span');
-                  charSpan.className = 'line-char';
-                  charSpan.style.display = 'inline-block';
-                  charSpan.style.willChange = 'transform';
-                  charSpan.textContent = char;
-                  wordSpan.appendChild(charSpan);
-                }
+                const wordSpan = document.createElement("span");
+                wordSpan.className = "line-word";
+                wordSpan.textContent = token;
                 result.push(wordSpan);
               }
             });
@@ -138,7 +156,7 @@ const {
             const clone = el.cloneNode(false) as HTMLElement;
             const childNodes = Array.from(el.childNodes);
             childNodes.forEach((child) => {
-              const processedChildren = processNodeToWordsAndChars(child);
+              const processedChildren = processNodeToWords(child);
               processedChildren.forEach((pChild) => clone.appendChild(pChild));
             });
             return [clone];
@@ -147,14 +165,16 @@ const {
         }
 
         const childNodes = Array.from(element.childNodes);
-        element.innerHTML = '';
+        element.innerHTML = "";
         childNodes.forEach((child) => {
-          const processed = processNodeToWordsAndChars(child);
+          const processed = processNodeToWords(child);
           processed.forEach((p) => element.appendChild(p));
         });
 
         // 2. Measure rendered top position of each .line-word to detect lines
-        const wordElements = Array.from(element.querySelectorAll<HTMLElement>('.line-word'));
+        const wordElements = Array.from(
+          element.querySelectorAll<HTMLElement>(".line-word"),
+        );
         if (wordElements.length === 0) return [];
 
         const lineGroups: HTMLElement[][] = [];
@@ -190,28 +210,52 @@ const {
           range.setEndAfter(lastWord);
           const contents = range.extractContents();
 
-          const mask = document.createElement('span');
-          mask.className = 'line-mask';
-          mask.style.display = 'block';
-          mask.style.overflow = 'hidden';
-          mask.style.lineHeight = 'inherit';
-          mask.style.paddingBottom = '0.14em'; // Prevents clipping descenders (g, j, p, q, y)
-          mask.style.marginBottom = '-0.14em';
+          const mask = document.createElement("span");
+          mask.className = "line-mask";
+          mask.style.display = "block";
+          mask.style.overflow = "hidden";
+          mask.style.lineHeight = "inherit";
+          mask.style.paddingBottom = "0.14em"; // Prevents clipping descenders (g, j, p, q, y)
+          mask.style.marginBottom = "-0.14em";
 
           mask.appendChild(contents);
           maskList.push(mask);
         }
 
-        element.innerHTML = '';
+        element.innerHTML = "";
         maskList.forEach((mask) => element.appendChild(mask));
 
-        // Return all characters across all line masks in reading order
-        return Array.from(element.querySelectorAll<HTMLElement>('.line-char'));
+        // Keep reading order across lines: first word, second word, third word…
+        return Array.from(element.querySelectorAll<HTMLElement>(".line-word"));
+      }
+
+      function revealWords(words: HTMLElement[], duration: number) {
+        if (!words.length) return;
+        gsap.fromTo(
+          words,
+          { x: -24, autoAlpha: 0 },
+          {
+            x: 0,
+            autoAlpha: 1,
+            duration,
+            stagger: {
+              each: Math.min(0.09, 0.5 / Math.max(words.length - 1, 1)),
+              from: "start",
+            },
+            ease: "power3.out",
+            clearProps: "transform,opacity,visibility",
+          },
+        );
       }
 
       async function initGsapMaskAnimations() {
-        if (document.documentElement.dataset.session === 'member' && document.body.hasAttribute('data-app-surface')) return;
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        if (
+          document.documentElement.dataset.session === "member" &&
+          document.body.hasAttribute("data-app-surface")
+        )
+          return;
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+          return;
 
         // Ensure custom fonts are loaded so line detection measurements are 100% accurate
         if (document.fonts) {
@@ -222,69 +266,45 @@ const {
           }
         }
 
-        // 1. Immediate masked line + letter-by-letter reveal for Hero titles (h1)
+        // 1. Reveal hero titles one complete word at a time, from left to right.
         const heroTitles = document.querySelectorAll<HTMLElement>(
-          'h1, .hero-main-title, .page-header-title, .jobs-hero-title, .casos-hero-title, .perfiles-hero-title, .blog-hero-title, .about-hero-title, .article-headline'
+          "h1, .hero-main-title, .page-header-title, .jobs-hero-title, .casos-hero-title, .perfiles-hero-title, .blog-hero-title, .about-hero-title, .article-headline",
         );
 
         heroTitles.forEach((heroTitle) => {
-          if (heroTitle.dataset.animated === 'true') return;
-          heroTitle.dataset.animated = 'true';
+          if (heroTitle.dataset.animated === "true") return;
+          heroTitle.dataset.animated = "true";
 
-          const chars = splitIntoMaskedLinesAndChars(heroTitle);
-          if (chars.length > 0) {
-            // Pure mask reveal: letters start below the mask line and emerge letter-by-letter with 0 opacity fade
-            gsap.fromTo(
-              chars,
-              { yPercent: 125 },
-              {
-                yPercent: 0,
-                duration: 0.65,
-                stagger: 0.018, // Letter by letter cascade
-                ease: 'power3.out',
-                clearProps: 'transform',
-              }
-            );
-          }
+          revealWords(splitIntoMaskedLinesAndWords(heroTitle), 0.5);
         });
 
-        // 2. Scroll-triggered masked line + letter-by-letter reveal for section titles (h2, etc.)
+        // 2. Use the same word sequence when section titles enter the viewport.
         const sectionHeadings = document.querySelectorAll<HTMLElement>(
-          'h2, .section-heading, .bento-box-title, .enterprise-title, .split-title, .final-cta-title, .metrics-banner-title'
+          "h2, .section-heading, .bento-box-title, .enterprise-title, .split-title, .final-cta-title, .metrics-banner-title",
         );
 
-        if (sectionHeadings.length > 0 && 'IntersectionObserver' in window) {
+        if (sectionHeadings.length > 0 && "IntersectionObserver" in window) {
           const observer = new IntersectionObserver(
             (entries) => {
               entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                   const target = entry.target as HTMLElement;
-                  if (target.dataset.animated !== 'true') {
-                    target.dataset.animated = 'true';
-                    const chars = splitIntoMaskedLinesAndChars(target);
-                    if (chars.length > 0) {
-                      gsap.fromTo(
-                        chars,
-                        { yPercent: 125 },
-                        {
-                          yPercent: 0,
-                          duration: 0.6,
-                          stagger: 0.015,
-                          ease: 'power3.out',
-                          clearProps: 'transform',
-                        }
-                      );
-                    }
+                  if (target.dataset.animated !== "true") {
+                    target.dataset.animated = "true";
+                    revealWords(splitIntoMaskedLinesAndWords(target), 0.45);
                   }
                   observer.unobserve(target);
                 }
               });
             },
-            { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+            { threshold: 0.15, rootMargin: "0px 0px -40px 0px" },
           );
 
           sectionHeadings.forEach((heading) => {
-            if (heading.tagName !== 'H1' && heading.dataset.animated !== 'true') {
+            if (
+              heading.tagName !== "H1" &&
+              heading.dataset.animated !== "true"
+            ) {
               observer.observe(heading);
             }
           });
@@ -294,7 +314,7 @@ const {
         let resizeTimer: any;
         let prevWidth = window.innerWidth;
 
-        window.addEventListener('resize', () => {
+        window.addEventListener("resize", () => {
           clearTimeout(resizeTimer);
           resizeTimer = setTimeout(() => {
             if (Math.abs(window.innerWidth - prevWidth) > 15) {
@@ -302,15 +322,15 @@ const {
 
               heroTitles.forEach((el) => {
                 if (el.dataset.origHtml) {
-                  const chars = splitIntoMaskedLinesAndChars(el);
-                  gsap.set(chars, { yPercent: 0, clearProps: 'transform' });
+                  const words = splitIntoMaskedLinesAndWords(el);
+                  gsap.set(words, { clearProps: "transform,opacity,visibility" });
                 }
               });
 
               sectionHeadings.forEach((el) => {
-                if (el.dataset.origHtml && el.dataset.animated === 'true') {
-                  const chars = splitIntoMaskedLinesAndChars(el);
-                  gsap.set(chars, { yPercent: 0, clearProps: 'transform' });
+                if (el.dataset.origHtml && el.dataset.animated === "true") {
+                  const words = splitIntoMaskedLinesAndWords(el);
+                  gsap.set(words, { clearProps: "transform,opacity,visibility" });
                 }
               });
             }
@@ -318,13 +338,13 @@ const {
         });
       }
 
-      document.addEventListener('astro:page-load', initGsapMaskAnimations);
+      document.addEventListener("astro:page-load", initGsapMaskAnimations);
     </script>
   </body>
 </html>
 
 <style is:global>
-  /* Line Mask Reveal Animation Core Styles */
+  /* Keep full words together inside each responsive line mask. */
   .line-mask {
     display: block;
     overflow: hidden;
@@ -335,12 +355,8 @@ const {
 
   .line-word {
     display: inline-block;
-    white-space: nowrap;
-  }
-
-  .line-char {
-    display: inline-block;
-    will-change: transform;
+    max-inline-size: 100%;
+    overflow-wrap: anywhere;
   }
 
   .skip-to-content {

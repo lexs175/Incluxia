@@ -1,5 +1,5 @@
 ---
-import Button from '../ui/Button.astro';
+import ActionButton from '../ui/ActionButton.astro';
 import { categories } from '../../lib/demo';
 ---
 <section class="profile-editor" id="profileEditor" hidden>
@@ -15,8 +15,7 @@ import { categories } from '../../lib/demo';
     <label>Idiomas y comunicación (uno por línea)<textarea name="languages" rows="2" placeholder="Español escrito, chat o correo..."></textarea></label>
     <label>Muestras de trabajo (una por línea: título | enlace)<textarea name="portfolio" rows="3" placeholder="Catálogo de productos | https://..."></textarea></label>
     <label>Currículum (opcional)<input name="cvFile" type="file" accept=".pdf,.doc,.docx" /><span class="demo-caption" id="profileCvName"></span></label>
-    <p class="demo-caption">En esta simulación solo se guarda el nombre del archivo. No se sube el documento.</p>
-    <div class="form-actions"><Button type="submit" text="Guardar perfil" /><Button id="cancelProfileEdit" text="Cancelar" variant="primary-line" /></div>
+    <div class="form-actions"><ActionButton type="submit" variant="primary" text="Guardar perfil" /><ActionButton id="cancelProfileEdit" variant="secondary" text="Cancelar" /></div>
     <p id="profileFeedback" class="demo-feedback" role="status"></p>
   </form>
 </section>
