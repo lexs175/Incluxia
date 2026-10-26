@@ -139,6 +139,14 @@ corresponda; los controles de gestión usan `ActionButton`.
 
 Las imágenes locales se gestionan con Astro desde `src/assets/images/`. La lista de archivos independientes y las instrucciones para reemplazarlos están en [IMAGENES.md](IMAGENES.md). Ejecuta `npm run test:images` para verificar tamaños, rutas y comportamiento con sesión iniciada.
 
+## Acceso del prototipo
+
+Ingreso y registro comparten un modal compacto. El registro solicita nombre, correo y contraseña; ciudad, especialidad y contacto se completan después en Perfil. Ambos formularios permiten mostrar u ocultar la contraseña y conservan el destino y el scroll.
+
+«Continuar con Google» simula el acceso con la cuenta local de Valeria; no usa Google Identity Services ni necesita un ID de cliente. «Ingresar como Valeria» ofrece también acceso directo para pruebas. Los formularios y sus contraseñas pertenecen a la simulación local existente, no a un servicio de identidad de producción.
+
+Después de `npm run build`, ejecuta `npm run test:auth` para comprobar el ancho del modal, móvil, teclado, errores, los ojos de ambos campos, registro sin teléfono ni ciudad, Google simulado y acceso de Valeria. La evidencia se guarda en `artifacts/auth-simplification/`.
+
 El contenido se edita sin tocar componentes:
 
 | Archivo | Ítems |

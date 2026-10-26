@@ -396,3 +396,99 @@ Toda esta actividad se guarda en el navegador utilizado. No requiere un servidor
 La comprobación técnica se ejecuta con `npm run build` y `npm run test:platform`. Las pruebas recorren esas acciones, revisan la navegación móvil y comprueban que se conserva el diseño original indicado.
 
 La nota histórica de **5/10** describe el estado anterior a estos cambios. No es una nueva valoración de la implementación actual.
+
+## 16. Revisión de ingreso y creación de cuenta — 26 de octubre de 2026
+
+### Contexto y criterio de producto
+
+Se revisaron el modal de acceso, sus formularios, la lógica de cuentas locales, los accesos desde la cabecera y desde una oferta, la edición posterior del perfil y el sistema de diseño existente. Esta revisión conserva el acuerdo de una sola cuenta para trabajar, contratar, publicar y ofrecer servicios. No se recomienda volver a introducir una elección obligatoria de candidato o empresa en el registro.
+
+La plataforma actual es una simulación local y eso es válido para esta etapa. `src/lib/demo.ts` guarda cuentas y actividad en el navegador; el PIN del formulario no se almacena ni se verifica como una contraseña. La interfaz no debe presentarlo como autenticación de producción. No se configuró un proveedor real de identidad ni se añadió un botón de Google sin conexión funcional.
+
+### Fallos corregidos
+
+| Problema observado | Corrección y resultado |
+| --- | --- |
+| Abrir Crear cuenta desde un scroll de 1.400 px llevaba la página a 0 px; al cerrar tampoco se recuperaba la posición. | Se eliminó la altura forzada del documento, se conservó su posición y se gestionó el foco sin desplazar la página. Abrir y cerrar conserva exactamente los 1.400 px en los cuatro tamaños comprobados. |
+| En móvil, el nombre accesible del diálogo apuntaba a un título oculto en la columna lateral. | El nombre y la descripción del diálogo corresponden ahora al panel visible de ingreso o registro. El foco inicial va a su título, evitando abrir automáticamente el teclado del móvil. |
+| Las pestañas tenían roles, pero no el comportamiento completo de teclado. | Se añadió selección con flechas, Inicio y Fin, un único tabulador activo y el retorno del foco al cerrar. El contenido de fondo queda inerte mientras está abierto el modal. |
+| Errores generales y validación nativa sin relación clara con cada campo. | Se añadieron mensajes asociados a los campos, `aria-invalid`, conservación de lo escrito y foco en el primer error. Se comprueban vacíos, correo, celular y longitud del PIN de prueba. |
+| El enlace de recuperación prometía una función inexistente en la simulación. | Se sustituyó por «Cómo funciona el PIN», con explicación informativa del comportamiento real. El control de mostrar u ocultar PIN actualiza su nombre y su estado accesibles. |
+| Controles pequeños y botones de acceso con flechas decorativas. | Se usan los controles normales del sistema de diseño; cierre, pestañas y acciones principales tienen al menos 44 px de altura. Se añadió un token de texto para entradas con mínimo de 16 px y se mejoró la legibilidad del texto lateral. |
+| El formulario podía quedar cortado en pantallas bajas. | La cápsula tiene desplazamiento interior y una altura máxima adaptada a la ventana. El botón de envío sigue siendo alcanzable. |
+| Un mismo celular con y sin +591 podía reconocerse como dos cuentas. | Se normaliza el número al registrar, buscar una cuenta y comprobar duplicados. |
+| La recuperación de sesiones antiguas contenía referencias rotas y abandonaba la migración silenciosamente. | Se reparó la búsqueda y creación de la cuenta anterior; el recorrido de migración se comprobó. |
+| El acceso genérico enviaba siempre al inicio. | Se conserva el destino actual, incluida la consulta de la oferta, salvo que la acción indique expresamente otro destino. |
+
+### Decisiones de UX/UI pendientes, ordenadas por impacto
+
+Estas son recomendaciones para la siguiente versión, no funcionalidades que ya se hayan implementado.
+
+| Prioridad | Hallazgo | Recomendación |
+| --- | --- | --- |
+| P1 antes de admitir cuentas reales | El PIN es decorativo desde el punto de vista de autenticación: se acepta cualquier valor de prueba de cuatro caracteres. | Elegir e integrar autenticación real, con verificación de identidad y sesiones. Si se mantiene una versión de pruebas, no pedir una contraseña personal ni dar a entender que el PIN protege la cuenta. |
+| P1 | «Área de interés» aparece en el registro, pero `register()` no guarda su valor. | Retirarlo del alta y solicitarlo al completar el perfil; si se conserva, guardar y reutilizar realmente la elección. No pedir información que el sistema descarta. |
+| P1 para la versión pública | Los accesos de ejemplo compiten con el ingreso y pueden hacer dudar sobre la finalidad de la plataforma. | Separar la experiencia de demostración de la experiencia pública. Mientras solo exista la simulación, mantener una explicación breve y honesta; ocultar la etiqueta no convierte el registro en real. Los botones de ejemplo deben nombrar claramente qué cuenta abren. |
+| P1 para un registro real | El formulario no ofrece acceso a textos de privacidad y condiciones. | Preparar contenido real y enlaces accesibles antes de recoger datos para cuentas de producción. No colocar enlaces vacíos o documentos inventados. |
+| P2 | El alta pide nombre, WhatsApp, ciudad, interés, correo y PIN antes de que la persona pueda continuar. | Reducir el primer paso a Google o correo y los datos mínimos de identidad. Pedir ciudad, teléfono y datos profesionales cuando se necesiten para postular, publicar o contactar. Explicar el motivo de cada dato obligatorio. |
+| P2 | Cochabamba y Diseño y Multimedia están preseleccionados aunque la persona no los haya elegido. Además, Beni y Pando son departamentos dentro de un campo llamado Ciudad. | Evitar elecciones silenciosas. Separar departamento y ciudad o utilizar una lista coherente de ciudades; diferir esta selección al perfil si no es imprescindible para el alta. |
+| P2 | La columna promocional, el fondo azul intenso y dos columnas de campos dan mucho peso visual al acceso. | En una siguiente composición, usar un formulario compacto en una columna, una introducción breve y una acción principal clara. La identidad de Eco puede mantenerse en tipografía, color y tono sin repetir toda la explicación de la portada. |
+| P2 | El soporte lateral muestra un número para copiar, sin una acción directa desde ese texto. | Ofrecer «Ayuda por WhatsApp» como enlace funcional de comunicación escrita, conservando una alternativa visible. |
+
+### Google y flujo recomendado
+
+Google es una alternativa razonable para reducir escritura y gestión de contraseñas, manteniendo el correo como opción para quien no utilice Google. La propuesta es un único «Continuar con Google» válido tanto para registrarse como para ingresar, seguido de una alternativa por correo.
+
+No basta con dibujar el botón: Google Identity Services requiere un ID de cliente y la verificación del token en el sistema que gestione las cuentas. Referencias oficiales: [configuración de Google](https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid) y [verificación del token](https://developers.google.com/identity/gsi/web/guides/verify-google-id-token).
+
+Secuencia propuesta:
+
+1. La persona elige Google o correo.
+2. Se verifica su identidad con el proveedor real elegido.
+3. Si es una cuenta nueva, se solicita solo la información adicional imprescindible.
+4. Se vuelve a la oferta o acción desde la que inició el acceso.
+5. Al postular o publicar por primera vez, se solicitan los datos de perfil necesarios en ese contexto, conservando el trabajo iniciado.
+
+Si se elige un enlace o código por correo, la pantalla no necesita un campo de contraseña ni un enlace para recuperarla. Si se elige contraseña, deben existir comprobación y recuperación reales. La modalidad de acceso no debe exigir llamadas de voz.
+
+### Verificación y límites
+
+- `npm run build`: completado sin errores, 51 rutas estáticas.
+- Playwright con Chromium: 1440 × 1000, 1024 × 600, 390 × 844 y 240 × 720. Sin desborde horizontal del modal; título accesible visible y envío alcanzable en los cuatro tamaños.
+- Trece comprobaciones funcionales: conservación del scroll; pestañas y ciclo de foco; fondo inerte; campos vacíos e inválidos; duplicados por correo y teléfono; registro con conservación del destino; cuenta desconocida; ayuda informativa del PIN; mostrar/ocultar PIN; ingreso con celular local; conservación del identificador de oferta; cuenta de ejemplo; migración de sesión anterior.
+- Sin errores JavaScript durante esos recorridos. El detector mecánico de diseño no emitió hallazgos en el componente, lo que no sustituye la revisión de producto.
+- Evidencia local: `artifacts/auth-review/final.json`, capturas `final-*.png` y `build-final.log`.
+- Los tamaños móviles son ventanas emuladas de Chromium. No se afirma validación en un teléfono físico, Safari/iOS ni certificación de accesibilidad con lectores de pantalla.
+
+La gestión del diálogo sigue el criterio de [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/): foco interior, control por teclado, fondo inerte y devolución del foco al cerrar.
+
+## 17. Simplificación del acceso y Google simulado — 26 de octubre de 2026
+
+Esta sección actualiza las recomendaciones de registro de la sección 16. Lex confirmó que el acceso de Google también debe ser una simulación y pidió conservar un botón directo para ingresar como Valeria. No se necesita configurar OAuth en esta etapa.
+
+| Cambio | Resultado |
+| --- | --- |
+| Modal demasiado ancho | Su contenedor tiene un máximo de 560 px con una regla específica, independiente del contenedor global de la página. En las capturas de escritorio verificadas, la cápsula visible mide entre 464 y 496 px. |
+| Registro con campos innecesarios | Quedan nombre y apellido, correo y contraseña. Se retiraron WhatsApp, ciudad y área de interés; los datos profesionales y de contacto se completan en Perfil. Una cuenta nueva muestra «Añade tu ciudad» en lugar de una ciudad asignada o una coma suelta. |
+| Ingreso con teléfono e icono incorrecto | El acceso usa correo electrónico y el icono de correo del componente compartido. |
+| Textos técnicos del PIN y mensajes que interrumpían el recorrido | Se retiraron el enlace «Cómo funciona el PIN», el campo denominado PIN y la explicación técnica del prototipo dentro del modal. La documentación conserva el alcance real de la simulación. |
+| Mostrar y ocultar contraseña | `PasswordField.astro` se reutiliza en los dos formularios. El ojo cambia a tachado al mostrar la contraseña y vuelve al estado inicial al ocultarla, cambiar de pestaña o cerrar. Se actualizan la etiqueta accesible y `aria-pressed`; lo escrito se conserva. |
+| Google ausente | «Continuar con Google» aparece en los dos paneles. Al pulsarlo, se abre la cuenta local de Valeria y se conserva el destino solicitado. No se abre una pantalla de Google ni se solicitan credenciales externas. |
+| Acceso directo para pruebas | «Ingresar como Valeria» queda visible al pie, separado de la acción principal. |
+| Demasiado contenido promocional | Se retiró la columna lateral y el código de éxito sin uso. Se mantienen marca, títulos claros, formularios en una columna, iconos compartidos y controles normales del sistema de diseño. |
+
+### Comprobaciones
+
+`npm run build` genera 51 rutas sin errores. `npm run test:auth` pasó con Chromium en 1440 × 1000, 1024 × 600, 390 × 844 y 240 × 720: ancho acotado, sin desborde horizontal, controles de al menos 44 px, texto de entradas de al menos 16 px, scroll conservado, teclado, errores y duplicados, registro y perfil posterior, Google simulado desde ambos paneles y acceso de Valeria. No se registraron errores JavaScript.
+
+Las capturas y el informe actual se encuentran en `artifacts/auth-simplification/`. No se conectó un servidor de autenticación ni se cambió el acuerdo de utilizar una simulación local.
+
+## 18. Perfil con hover y cuenta al pie del menú móvil — 26 de octubre de 2026
+
+En escritorio, el perfil utiliza el mismo comportamiento de hover que Publicaciones y Postulaciones. Se añadió un puente sobre el espacio entre el disparador y el panel, y un cierre breve diferido para que el cursor pueda alcanzar las opciones. Se conserva la apertura con teclado y toque, el cierre con Escape y la exclusión entre desplegables.
+
+En el menú móvil, la navegación ocupa la parte superior. Avatar, nombre completo y «Mi perfil» aparecen una sola vez al pie, junto a «Cerrar sesión» con la variante de peligro del componente global. Por debajo de 360 px, las acciones se acomodan en dos filas para mantener legibles los nombres y conservar zonas táctiles cómodas. El fondo sigue bloqueado al abrir el menú y se recupera el scroll al cerrarlo.
+
+Se corrigió también el evento de actualización de la cabecera para escuchar `incluxia:auth-changed`, que es el evento emitido por el estado de cuentas.
+
+Verificación: `npm run build` completado con 51 rutas; Playwright comprobó hover, paso al panel, cierre al salir, teclado, toque en pantalla amplia, navegación y cierre de sesión en 768, 390, 320 y 240 px, nombres largos y avatar sin foto. Sin errores JavaScript. Evidencia: `artifacts/header-interaction/verification.json` y las capturas de esa carpeta.

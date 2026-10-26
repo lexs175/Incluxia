@@ -24,8 +24,9 @@ const pass=message=>{reports.push(message);console.log('PASS',message);};
 async function go(page,path){const response=await page.goto(url+path,{waitUntil:'networkidle'});assert.equal(response.status(),200,path);await page.evaluate(()=>document.fonts.ready);}
 async function signup(page,name,email,phone){
  await go(page,'/');await page.locator('.header-actions [data-auth-trigger=register]').click();
- await page.locator('#regFullName').fill(name);await page.locator('#regWhatsApp').fill(phone);await page.locator('#regEmail').fill(email);await page.locator('#regPassword').fill('1234');await page.locator('#btnRegisterSubmit').click();
+ await page.locator('#regFullName').fill(name);await page.locator('#regEmail').fill(email);await page.locator('#regPassword').fill('Prueba1234');await page.locator('#btnRegisterSubmit').click();
  await page.locator('.member-home #jobsMasterExplorer').waitFor({state:'visible'});await page.waitForLoadState('networkidle');
+ await go(page,'/perfil');await page.locator('#editMyProfile').click();await page.locator('#profileForm [name=profession]').fill('Profesional de prueba');await page.locator('#profileForm [name=city]').fill('Cochabamba');await page.locator('#profileForm [name=phone]').fill(phone);await page.locator('#profileForm button[type=submit]').click();await go(page,'/');
 }
 async function logout(page){await page.locator('#btnHeaderLogout').click();await page.locator('.ashico-hero').waitFor({state:'visible'});await page.waitForLoadState('networkidle');}
 async function login(page,email){await page.locator('.header-actions #btnHeaderLogin').click();await page.locator('#loginIdentifier').fill(email);await page.locator('#loginPassword').fill('1234');await page.locator('#btnLoginSubmit').click();await page.locator('.member-home #jobsMasterExplorer').waitFor({state:'visible'});await page.waitForLoadState('networkidle');}

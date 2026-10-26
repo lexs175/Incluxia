@@ -166,15 +166,15 @@ function accountPhone(value: string) {
 }
 export function signIn(identifier: string) {
   const state = readStore(); const account = state.accounts.find(a => a.email.toLowerCase() === identifier.trim().toLowerCase() || (a.phone && accountPhone(a.phone) === accountPhone(identifier)));
-  if (!account) throw new Error('No encontramos esa cuenta en este navegador. Crea una cuenta o prueba el ejemplo.');
+  if (!account) throw new Error('No encontramos una cuenta con ese correo. Revisa el correo o crea una cuenta.');
   state.sessionId = account.id; writeStore(state); return account;
 }
-export function register(data: { name: string; email: string; phone: string; city: string }) {
+export function register(data: { name: string; email: string; phone?: string; city?: string }) {
   const state = readStore();
-  data = { name: data.name.trim(), email: data.email.trim().toLowerCase(), phone: accountPhone(data.phone), city: data.city.trim() };
-  if (state.accounts.some(a => a.email.toLowerCase() === data.email.toLowerCase())) throw new Error('Este correo ya tiene una cuenta en la demostración. Utiliza Ingresar.');
-  if (state.accounts.some(a => a.phone && accountPhone(a.phone) === data.phone)) throw new Error('Este WhatsApp ya tiene una cuenta en la demostración. Utiliza Ingresar.');
-  const account: Account = { ...data, id: uid('account'), profession: '', bio: '', skills: '', company: '', portfolio: '', cv: '', photo: '' };
+  data = { name: data.name.trim(), email: data.email.trim().toLowerCase(), phone: accountPhone(data.phone || ''), city: data.city?.trim() || '' };
+  if (state.accounts.some(a => a.email.toLowerCase() === data.email.toLowerCase())) throw new Error('Este correo ya tiene una cuenta. Utiliza Ingresar.');
+  if (data.phone && state.accounts.some(a => a.phone && accountPhone(a.phone) === data.phone)) throw new Error('Este número ya tiene una cuenta. Utiliza Ingresar.');
+  const account: Account = { ...data, phone: data.phone || '', city: data.city || '', id: uid('account'), profession: '', bio: '', skills: '', company: '', portfolio: '', cv: '', photo: '' };
   state.accounts.push(account); state.sessionId = account.id; writeStore(state); return account;
 }
 export function apply(jobId: string, message: string, cv: string) {

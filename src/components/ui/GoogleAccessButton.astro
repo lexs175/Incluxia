@@ -1,0 +1,9 @@
+---
+import ActionButton from './ActionButton.astro';
+import googleMark from '../../assets/images/brand/google.svg?url';
+const { id } = Astro.props;
+---
+<ActionButton id={id} variant="secondary" class="auth-social-button" data-auth-google>
+  <img src={googleMark} width="20" height="20" alt="" aria-hidden="true" />
+  <span>Continuar con Google</span>
+</ActionButton>

@@ -58,26 +58,28 @@ Un mismo avatar se reutiliza en el menú, las tarjetas y los servicios de esa pe
 | Ilustración & Arte Digital | [categories/ilustracion-arte.webp](src/assets/images/categories/ilustracion-arte.webp) | Imagen existente; reemplazable por separado |
 | Edición Audiovisual & Subtítulos | [categories/edicion-video.webp](src/assets/images/categories/edicion-video.webp) | Imagen existente; reemplazable por separado |
 
+Las fotos del inicio se actualizaron el 26 de octubre de 2026 con los diez PNG recibidos en la carpeta home. Se conserva además una foto de ASHICO en la galería. Los PNG se copiaron íntegros, sin recompresión ni reducción de tamaño; Astro genera sus versiones WebP. Las imágenes sustituidas y la relación de archivos recibidos están en `archive/home-images-before-2026-10-26/`.
+
 ## Dos fotos del inicio
 
 | Uso | Archivo maestro | Estado |
 | --- | --- | --- |
-| Foto principal | [home/hero/principal.jpg](src/assets/images/home/hero/principal.jpg) | Provisional; archivo propio |
-| Foto secundaria | [home/hero/secundaria.jpg](src/assets/images/home/hero/secundaria.jpg) | Provisional; archivo propio |
+| Foto principal | [home/hero/principal.png](src/assets/images/home/hero/principal.png) | Imagen seleccionada |
+| Foto secundaria | [home/hero/secundaria.png](src/assets/images/home/hero/secundaria.png) | Imagen seleccionada |
 
 ## Nueve posiciones de galería
 
 | Uso | Archivo maestro | Estado |
 | --- | --- | --- |
-| Posición 1 | [home/gallery/01-trabajo-computadora.png](src/assets/images/home/gallery/01-trabajo-computadora.png) | Provisional; archivo propio |
-| Posición 2 | [home/gallery/02-participacion-ashico.jpg](src/assets/images/home/gallery/02-participacion-ashico.jpg) | Provisional; archivo propio |
-| Posición 3 | [home/gallery/03-actividad-ashico.jpg](src/assets/images/home/gallery/03-actividad-ashico.jpg) | Provisional; archivo propio |
-| Posición 4 | [home/gallery/04-trabajo-portatil.png](src/assets/images/home/gallery/04-trabajo-portatil.png) | Provisional; archivo propio |
-| Posición 5 | [home/gallery/05-colaboracion-trabajo.jpg](src/assets/images/home/gallery/05-colaboracion-trabajo.jpg) | Provisional; archivo propio |
-| Posición 6 | [home/gallery/06-jornada-profesional.jpg](src/assets/images/home/gallery/06-jornada-profesional.jpg) | Provisional; archivo propio |
-| Posición 7 | [home/gallery/07-encuentro-comunidad.jpg](src/assets/images/home/gallery/07-encuentro-comunidad.jpg) | Provisional; archivo propio |
-| Posición 8 | [home/gallery/08-actividad-profesional.jpg](src/assets/images/home/gallery/08-actividad-profesional.jpg) | Provisional; archivo propio |
-| Posición 9 | [home/gallery/09-comunidad-cochabamba.jpg](src/assets/images/home/gallery/09-comunidad-cochabamba.jpg) | Provisional; archivo propio |
+| Posición 1 | [home/gallery/01-trabajo-computadora.png](src/assets/images/home/gallery/01-trabajo-computadora.png) | Imagen seleccionada |
+| Posición 2 | [home/gallery/02-plantines-equipo.png](src/assets/images/home/gallery/02-plantines-equipo.png) | Imagen seleccionada |
+| Posición 3 | [home/gallery/03-actividad-ashico.png](src/assets/images/home/gallery/03-actividad-ashico.png) | Imagen seleccionada |
+| Posición 4 | [home/gallery/04-reparacion-madera.png](src/assets/images/home/gallery/04-reparacion-madera.png) | Imagen seleccionada |
+| Posición 5 | [home/gallery/05-colaboracion-trabajo.png](src/assets/images/home/gallery/05-colaboracion-trabajo.png) | Imagen seleccionada |
+| Posición 6 | [home/gallery/06-diseno-grafico.png](src/assets/images/home/gallery/06-diseno-grafico.png) | Imagen seleccionada |
+| Posición 7 | [home/gallery/07-emprendimiento-reposteria.png](src/assets/images/home/gallery/07-emprendimiento-reposteria.png) | Imagen seleccionada |
+| Posición 8 | [home/gallery/08-inventario-archivo.png](src/assets/images/home/gallery/08-inventario-archivo.png) | Imagen seleccionada |
+| Posición 9 | [home/gallery/09-taller-informatica.png](src/assets/images/home/gallery/09-taller-informatica.png) | Imagen seleccionada |
 
 ## Retratos de los 19 perfiles
 

@@ -2,61 +2,61 @@
   "home": {
     "hero": {
       "primary": {
-        "src": "home/hero/principal.jpg",
-        "alt": "Integrantes de la comunidad ASHICO reunidos al aire libre"
+        "src": "home/hero/principal.png",
+        "alt": "Mujer cosiendo una prenda en una máquina de coser dentro de un taller"
       },
       "secondary": {
-        "src": "home/hero/secundaria.jpg",
-        "alt": ""
+        "src": "home/hero/secundaria.png",
+        "alt": "Personas reunidas al aire libre en un encuentro comunitario"
       }
     },
     "gallery": [
       [
         {
           "src": "home/gallery/01-trabajo-computadora.png",
-          "alt": "Profesional trabajando con una computadora"
+          "alt": "Hombre trabajando frente a una computadora en un espacio compartido"
         }
       ],
       [
         {
-          "src": "home/gallery/02-participacion-ashico.jpg",
-          "alt": "Participación en una actividad de ASHICO"
+          "src": "home/gallery/02-plantines-equipo.png",
+          "alt": "Dos personas trasplantando plantines en un espacio de trabajo"
         },
         {
-          "src": "home/gallery/03-actividad-ashico.jpg",
-          "alt": "Material de una actividad de ASHICO"
+          "src": "home/gallery/03-actividad-ashico.png",
+          "alt": "Mujer sosteniendo material de ASHICO durante una actividad"
         }
       ],
       [
         {
-          "src": "home/gallery/04-trabajo-portatil.png",
-          "alt": "Profesional trabajando con su computadora portátil"
+          "src": "home/gallery/04-reparacion-madera.png",
+          "alt": "Mujer reparando una silla de madera en un taller"
         }
       ],
       [
         {
-          "src": "home/gallery/05-colaboracion-trabajo.jpg",
-          "alt": "Personas colaborando en el trabajo"
+          "src": "home/gallery/05-colaboracion-trabajo.png",
+          "alt": "Dos personas montando una estantería de madera"
         },
         {
-          "src": "home/gallery/06-jornada-profesional.jpg",
-          "alt": "Una actividad de trabajo en equipo"
+          "src": "home/gallery/06-diseno-grafico.png",
+          "alt": "Diseñadora trabajando con muestras de color y una computadora portátil"
         }
       ],
       [
         {
-          "src": "home/gallery/07-encuentro-comunidad.jpg",
-          "alt": "Encuentro de la comunidad ASHICO"
+          "src": "home/gallery/07-emprendimiento-reposteria.png",
+          "alt": "Emprendedora preparando pedidos de repostería"
         }
       ],
       [
         {
-          "src": "home/gallery/08-actividad-profesional.jpg",
-          "alt": "Una profesional durante su jornada de trabajo"
+          "src": "home/gallery/08-inventario-archivo.png",
+          "alt": "Persona revisando carpetas y registros en una oficina"
         },
         {
-          "src": "home/gallery/09-comunidad-cochabamba.jpg",
-          "alt": "Participantes de la comunidad ASHICO en Cochabamba"
+          "src": "home/gallery/09-taller-informatica.png",
+          "alt": "Personas participando en un taller de informática"
         }
       ]
     ]
@@ -378,59 +378,59 @@
       "provisional": false
     },
     {
-      "key": "home/hero/principal.jpg",
+      "key": "home/hero/principal.png",
       "role": "hero",
-      "provisional": true
+      "provisional": false
     },
     {
-      "key": "home/hero/secundaria.jpg",
+      "key": "home/hero/secundaria.png",
       "role": "hero",
-      "provisional": true
+      "provisional": false
     },
     {
       "key": "home/gallery/01-trabajo-computadora.png",
       "role": "gallery",
-      "provisional": true
+      "provisional": false
     },
     {
-      "key": "home/gallery/02-participacion-ashico.jpg",
+      "key": "home/gallery/02-plantines-equipo.png",
       "role": "gallery",
-      "provisional": true
+      "provisional": false
     },
     {
-      "key": "home/gallery/03-actividad-ashico.jpg",
+      "key": "home/gallery/03-actividad-ashico.png",
       "role": "gallery",
-      "provisional": true
+      "provisional": false
     },
     {
-      "key": "home/gallery/04-trabajo-portatil.png",
+      "key": "home/gallery/04-reparacion-madera.png",
       "role": "gallery",
-      "provisional": true
+      "provisional": false
     },
     {
-      "key": "home/gallery/05-colaboracion-trabajo.jpg",
+      "key": "home/gallery/05-colaboracion-trabajo.png",
       "role": "gallery",
-      "provisional": true
+      "provisional": false
     },
     {
-      "key": "home/gallery/06-jornada-profesional.jpg",
+      "key": "home/gallery/06-diseno-grafico.png",
       "role": "gallery",
-      "provisional": true
+      "provisional": false
     },
     {
-      "key": "home/gallery/07-encuentro-comunidad.jpg",
+      "key": "home/gallery/07-emprendimiento-reposteria.png",
       "role": "gallery",
-      "provisional": true
+      "provisional": false
     },
     {
-      "key": "home/gallery/08-actividad-profesional.jpg",
+      "key": "home/gallery/08-inventario-archivo.png",
       "role": "gallery",
-      "provisional": true
+      "provisional": false
     },
     {
-      "key": "home/gallery/09-comunidad-cochabamba.jpg",
+      "key": "home/gallery/09-taller-informatica.png",
       "role": "gallery",
-      "provisional": true
+      "provisional": false
     },
     {
       "key": "platform/publicar.png",

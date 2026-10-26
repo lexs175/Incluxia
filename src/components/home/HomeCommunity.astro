@@ -3,7 +3,7 @@ import SiteImage from "../ui/SiteImage.astro";
 import imageSlots from "../../data/image-slots.json";
 import ExpandableButton from "../ui/ExpandableButton.astro";
 
-// Imágenes provisionales del proyecto. Sustituir por las fotos finales de la comunidad.
+// Cada posición conserva un archivo propio; las dos vueltas reutilizan la misma selección.
 const columns = imageSlots.home.gallery;
 ---
 
@@ -145,6 +145,7 @@ const columns = imageSlots.home.gallery;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center top;
   }
   @keyframes community-drift {
     from {

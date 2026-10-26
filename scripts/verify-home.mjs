@@ -78,11 +78,10 @@ try {
       }
       await page.locator('#heroBtnContratar').click();
       await page.locator('#registerPanel').waitFor({ state: 'visible' });
-      assert.equal(await page.locator('#regFullName').evaluate(el => el === document.activeElement), true);
+      assert.equal(await page.locator('#registerPanelTitle').evaluate(el => el === document.activeElement), true);
       await page.locator('#regFullName').fill('Prueba contratar');
-      await page.locator('#regWhatsApp').fill('59170000101');
       await page.locator('#regEmail').fill('contratar@prueba.test');
-      await page.locator('#regPassword').fill('1234');
+      await page.locator('#regPassword').fill('Prueba1234');
       await page.locator('#btnRegisterSubmit').click();
       await page.waitForURL('**/contratar');
       assert.equal(await page.locator('.access-gate').isVisible(), false);
@@ -95,9 +94,8 @@ try {
       await page.locator('#heroBtnBuscar').click();
       await page.locator('#registerPanel').waitFor({ state: 'visible' });
       await page.locator('#regFullName').fill('Prueba buscar trabajo');
-      await page.locator('#regWhatsApp').fill('59170000102');
       await page.locator('#regEmail').fill('buscar@prueba.test');
-      await page.locator('#regPassword').fill('1234');
+      await page.locator('#regPassword').fill('Prueba1234');
       await page.locator('#btnRegisterSubmit').click();
       await page.locator('#jobGrid .job-card').first().waitFor({ state: 'visible' });
       assert.equal(await page.locator('.ashico-hero').isVisible(), false);

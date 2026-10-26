@@ -46,16 +46,15 @@ const { activePath = "/" } = Astro.props;
             <ActionButton text="Crear cuenta" data-auth-trigger="register" />
           </div>
 
-          <a href="/perfil" class="mobile-account-link" id="mobileAccountLink" data-nav-destination data-member>
-            <AccountAvatar size="md" />
-            <span class="mobile-account-copy"><strong data-account-name>Cuenta</strong><span>Mi perfil</span></span>
-          </a>
-
           <HeaderNav activePath={activePath} mobile />
         </div>
 
         <div class="mobile-menu-footer" data-member>
-          <ActionButton text="Cerrar sesión" id="btnMobileLogout" variant="quiet" />
+          <a href="/perfil" class="mobile-account-link" id="mobileAccountLink" data-nav-destination>
+            <AccountAvatar />
+            <span class="mobile-account-copy"><strong data-account-name>Cuenta</strong><span>Mi perfil</span></span>
+          </a>
+          <ActionButton text="Cerrar sesión" id="btnMobileLogout" variant="danger" />
         </div>
       </nav>
     </div>
@@ -132,7 +131,10 @@ const { activePath = "/" } = Astro.props;
         },
         { signal },
       );
-      if (!dropdown.classList.contains("mobile-nav-dropdown") && !dropdown.hasAttribute("data-account-menu")) {
+      if (!dropdown.classList.contains("mobile-nav-dropdown")) {
+        let closeTimer: ReturnType<typeof setTimeout> | undefined;
+        const cancelClose = () => { clearTimeout(closeTimer); };
+        signal.addEventListener("abort", cancelClose, { once: true });
         dropdown.addEventListener(
           "pointerenter",
           (event) => {
@@ -141,6 +143,7 @@ const { activePath = "/" } = Astro.props;
               !matchMedia("(hover: hover) and (pointer: fine)").matches
             )
               return;
+            cancelClose();
             closeDropdowns(dropdown);
             dropdown.open = true;
           },
@@ -149,8 +152,11 @@ const { activePath = "/" } = Astro.props;
         dropdown.addEventListener(
           "pointerleave",
           () => {
-            if (!dropdown.contains(document.activeElement))
-              dropdown.open = false;
+            cancelClose();
+            closeTimer = setTimeout(() => {
+              if (!dropdown.contains(document.activeElement) && !dropdown.matches(":hover"))
+                dropdown.open = false;
+            }, 160);
           },
           { signal },
         );
@@ -296,7 +302,7 @@ const { activePath = "/" } = Astro.props;
     initHeader();
   }
   document.addEventListener("astro:page-load", initHeader);
-  window.addEventListener("Eco:auth-changed", updateHeaderAuthState);
+  window.addEventListener("incluxia:auth-changed", updateHeaderAuthState);
 </script>
 
 <style>
@@ -319,10 +325,11 @@ const { activePath = "/" } = Astro.props;
   .account-menu[open] .account-trigger > svg { transform: rotate(180deg); }
   .header-profile-name { max-width: 9rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: var(--text-sm); font-weight: 600; }
   .account-popup { position: absolute; top: calc(100% + var(--space-2)); right: 0; width: 224px; padding: var(--space-2); border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-bg-card); }
+  .account-popup::before { content: ""; position: absolute; inset-inline: 0; bottom: 100%; height: var(--space-2); }
   .account-popup > a { display: flex; align-items: center; min-height: 44px; padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); color: var(--color-text-main); font-size: var(--text-sm); line-height: 1.4; }
   .account-popup > a:hover, .account-popup > a[aria-current="page"] { background: var(--color-bg-alt); color: var(--color-primary); }
   .account-logout { margin-top: var(--space-2); padding-top: var(--space-2); border-top: 1px solid var(--color-border); }
-  .account-popup :global(.management-action), .mobile-menu-footer :global(.management-action) { justify-content: flex-start; width: 100%; padding-inline: var(--space-3); font-weight: 500; }
+  .account-popup :global(.management-action) { justify-content: flex-start; width: 100%; padding-inline: var(--space-3); font-weight: 500; }
   .brand:focus-visible, .account-trigger:focus-visible, .account-popup > a:focus-visible, .mobile-account-link:focus-visible, .mobile-toggle:focus-visible { outline: 2px solid var(--color-primary); outline-offset: var(--space-1); border-radius: var(--radius-md); }
   .mobile-toggle { display: none; place-items: center; width: 44px; height: 44px; flex-shrink: 0; border-radius: var(--radius-md); color: var(--color-primary); }
   .icon-close, .mobile-toggle.open .icon-open { display: none; }
@@ -333,12 +340,13 @@ const { activePath = "/" } = Astro.props;
   .mobile-nav-scroll { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior-y: contain; padding: var(--space-1) var(--space-1) var(--space-6); }
   .mobile-guest-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); padding-bottom: var(--space-5); margin-bottom: var(--space-3); border-bottom: 1px solid var(--color-border); }
   .mobile-guest-actions :global(.management-action) { padding-inline: var(--space-2); }
-  .mobile-account-link { display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-4) var(--space-3); margin-bottom: var(--space-5); border-radius: var(--radius-md); color: var(--color-text-main); }
+  .mobile-account-link { display: flex; flex: 1; min-width: 0; align-items: center; gap: var(--space-3); padding: var(--space-3); border-radius: var(--radius-md); color: var(--color-text-main); }
   .mobile-account-link[aria-current="page"] { background: var(--color-bg-alt); }
   .mobile-account-copy { display: flex; flex-direction: column; gap: var(--space-1); min-width: 0; }
-  .mobile-account-copy strong { font-size: var(--text-base); font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; }
+  .mobile-account-copy strong { font-size: var(--text-sm); font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; }
   .mobile-account-copy > span { color: var(--color-text-muted); font-size: var(--text-sm); line-height: 1.4; }
-  .mobile-menu-footer { flex-shrink: 0; border-top: 1px solid var(--color-border); padding-top: var(--space-3); padding-inline: var(--space-1); padding-bottom: max(var(--space-4), env(safe-area-inset-bottom)); }
+  .mobile-menu-footer { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); flex-shrink: 0; padding-top: var(--space-3); padding-inline: var(--space-1); padding-bottom: max(var(--space-4), env(safe-area-inset-bottom)); }
+  .mobile-menu-footer :global(.management-action) { flex-shrink: 0; padding-inline: var(--space-2); font-weight: 500; }
   @media (hover: hover) and (pointer: fine) { .mobile-account-link:hover { background: var(--color-bg-alt); } }
   @media (max-width: 1024px) {
     .navbar-capsule { grid-template-columns: minmax(0, 1fr) auto; min-height: var(--space-16); }
@@ -355,6 +363,11 @@ const { activePath = "/" } = Astro.props;
     .header-actions { gap: var(--space-2); }
     .header-actions :global(.header-login) { display: none; }
   }
-  @media (max-width: 359px) { .header-actions :global(.header-register) { display: none; } }
+  @media (max-width: 359px) {
+    .header-actions :global(.header-register) { display: none; }
+    .mobile-menu-footer { flex-wrap: wrap; }
+    .mobile-account-link { flex-basis: 100%; }
+    .mobile-menu-footer :global(.management-action) { margin-inline-start: auto; }
+  }
   @media (prefers-reduced-motion: reduce) { .account-trigger > svg { transition: none; } }
 </style>

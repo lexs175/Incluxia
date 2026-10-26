@@ -12,7 +12,10 @@ export function initAuth() {
   let previousFocus: HTMLElement | null = null;
   let scrollPosition = { left: 0, top: 0 };
   let background: [HTMLElement, boolean][] = [];
-  const value = (id: string) => (document.getElementById(id) as HTMLInputElement).value.trim();
+  const value = (id: string) => {
+    const field = document.getElementById(id) as HTMLInputElement;
+    return field.hasAttribute('data-password-input') ? field.value : field.value.trim();
+  };
   function alert(message = '', tone: 'error' | 'info' = 'error') {
     const container = document.getElementById('authAlert')!;
     document.getElementById('authAlertText')!.textContent = message;
@@ -35,10 +38,13 @@ export function initAuth() {
     else field.removeAttribute('aria-invalid');
   }
   function validationMessage(field: HTMLInputElement | HTMLSelectElement) {
-    if (field.required && !field.value.trim()) return 'Completa este campo.';
+    if (field.required && !field.value.trim()) {
+      if (field.id === 'regFullName') return 'Escribe tu nombre y apellido.';
+      if (field.hasAttribute('data-password-input')) return 'Escribe tu contraseña.';
+      return 'Escribe tu correo electrónico.';
+    }
     if (field.validity.typeMismatch) return 'Escribe un correo válido, por ejemplo nombre@correo.com.';
-    if (field.id === 'regWhatsApp' && !/^(?:591)?[67]\d{7}$/.test(field.value.replace(/\D/g, ''))) return 'Escribe un celular de Bolivia de 8 dígitos; puedes añadir +591.';
-    if (field.id.endsWith('Password') && field.value.trim().length < 4) return 'Utiliza al menos 4 caracteres de prueba.';
+    if (field.id === 'regPassword' && field.value.length < 8) return 'Usa una contraseña de al menos 8 caracteres.';
     return '';
   }
   function validate(form: HTMLFormElement) {
@@ -56,6 +62,7 @@ export function initAuth() {
     alert(); return true;
   }
   function tab(mode: string) {
+    maskPasswords();
     const isLogin = mode === 'login';
     login.hidden = !isLogin;
     registration.hidden = isLogin;
@@ -70,6 +77,7 @@ export function initAuth() {
   }
   function close(restoreFocus = true) {
     if (!wrapper!.classList.contains('open')) return;
+    maskPasswords();
     wrapper!.classList.remove('open'); wrapper!.setAttribute('aria-hidden', 'true');
     wrapper!.inert = true;
     document.documentElement.classList.remove('modal-open'); document.body.classList.remove('modal-open');
@@ -106,14 +114,20 @@ export function initAuth() {
   document.getElementById('authBackdrop')!.onclick = () => close();
   document.getElementById('tabLoginBtn')!.onclick = () => tab('login');
   document.getElementById('tabRegisterBtn')!.onclick = () => tab('register');
-  document.getElementById('toggleLoginPass')!.onclick = () => {
-    const input = document.getElementById('loginPassword') as HTMLInputElement;
-    input.type = input.type === 'password' ? 'text' : 'password';
-    const control = document.getElementById('toggleLoginPass')!;
-    control.setAttribute('aria-label', input.type === 'password' ? 'Mostrar PIN de prueba' : 'Ocultar PIN de prueba');
-    control.setAttribute('aria-pressed', String(input.type === 'text'));
-  };
-  document.getElementById('btnForgotPassword')!.onclick = () => alert('En esta demostración puedes usar cualquier PIN de 4 caracteres. No se guarda ni se comprueba como una contraseña real.', 'info');
+  function passwordVisibility(control: HTMLElement, visible: boolean) {
+    const field = document.getElementById(control.dataset.passwordToggle!) as HTMLInputElement;
+    field.type = visible ? 'text' : 'password';
+    control.setAttribute('aria-label', visible ? 'Ocultar contraseña' : 'Mostrar contraseña');
+    control.setAttribute('aria-pressed', String(visible));
+    control.querySelector<HTMLElement>('[data-password-show]')!.hidden = visible;
+    control.querySelector<HTMLElement>('[data-password-hide]')!.hidden = !visible;
+  }
+  function maskPasswords() {
+    wrapper!.querySelectorAll<HTMLElement>('[data-password-toggle]').forEach(control => passwordVisibility(control, false));
+  }
+  wrapper.querySelectorAll<HTMLElement>('[data-password-toggle]').forEach(control => {
+    control.onclick = () => passwordVisibility(control, control.getAttribute('aria-pressed') !== 'true');
+  });
   wrapper.addEventListener('input', e => {
     const field = e.target as HTMLInputElement;
     if (field.hasAttribute('aria-invalid')) fieldError(field, validationMessage(field));
@@ -132,9 +146,10 @@ export function initAuth() {
     try {
       signIn(value('loginIdentifier')); finish();
     } catch (error) {
-      const field = document.getElementById('loginIdentifier') as HTMLInputElement;
       const message = error instanceof DOMException ? 'No se pudo guardar la sesión. Revisa el almacenamiento del navegador e inténtalo otra vez.' : (error as Error).message;
-      alert(message); fieldError(field, message); field.focus({ preventScroll: true });
+      alert(message);
+      if (error instanceof DOMException) { document.getElementById('authAlert')!.focus({ preventScroll: true }); }
+      else { const field = document.getElementById('loginIdentifier') as HTMLInputElement; fieldError(field, message); field.focus({ preventScroll: true }); }
     }
   };
   document.getElementById('registerForm')!.onsubmit = e => {
@@ -142,12 +157,12 @@ export function initAuth() {
     const form = e.currentTarget as HTMLFormElement;
     if (!validate(form)) return;
     try {
-      register({ name: value('regFullName'), email: value('regEmail').toLowerCase(), phone: value('regWhatsApp'), city: value('regCity') });
+      register({ name: value('regFullName'), email: value('regEmail').toLowerCase() });
       finish();
     } catch (error) {
-      const message = error instanceof DOMException ? 'No se pudo guardar la cuenta de prueba. Revisa el almacenamiento del navegador e inténtalo otra vez.' : (error as Error).message;
+      const message = error instanceof DOMException ? 'No se pudo guardar tu cuenta. Revisa el almacenamiento del navegador e inténtalo otra vez.' : (error as Error).message;
       alert(message);
-      const id = /correo/.test(message) ? 'regEmail' : /WhatsApp/.test(message) ? 'regWhatsApp' : null;
+      const id = /correo/.test(message) ? 'regEmail' : null;
       if (id) { const field = document.getElementById(id) as HTMLInputElement; fieldError(field, message); field.focus({ preventScroll: true }); field.scrollIntoView({ block: 'nearest', behavior: 'instant' }); }
       else document.getElementById('authAlert')!.scrollIntoView({ block: 'nearest', behavior: 'instant' });
     }
@@ -157,7 +172,10 @@ export function initAuth() {
     catch { alert('No se pudo abrir el ejemplo. Revisa el almacenamiento del navegador e inténtalo otra vez.'); }
   }
   document.getElementById('btnDemoCandidate')!.onclick = () => example('valeria@ejemplo.test');
-  document.getElementById('btnDemoCompany')!.onclick = () => example('equipo@ejemplo.test');
+  // The prototype simulates the Google shortcut with the populated example account.
+  wrapper.querySelectorAll<HTMLElement>('[data-auth-google]').forEach(button => {
+    button.onclick = () => example('valeria@ejemplo.test');
+  });
   document.addEventListener('keydown', e => {
     if (!wrapper.classList.contains('open')) return;
     if (e.key === 'Escape') close();

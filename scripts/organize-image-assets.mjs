@@ -74,7 +74,7 @@ const hero = {
 const galleryInputs = [
   ['/images/stories/luis-mendoza.png', '01-trabajo-computadora.png', 'Profesional trabajando con una computadora', false],
   ['/images/community/comunidad-ashico-voluntaria.jpg', '02-participacion-ashico.jpg', 'Participación en una actividad de ASHICO', true],
-  ['/images/community/comunidad-ashico-triptico.jpg', '03-actividad-ashico.jpg', 'Material de una actividad de ASHICO', true],
+  ['/images/community/comunidad-ashico-triptico.jpg', '03-actividad-ashico.png', 'Material de una actividad de ASHICO', true],
   ['/images/stories/maria-rene-morales.png', '04-trabajo-portatil.png', 'Profesional trabajando con su computadora portátil', false],
   ['/images/about/equipo-colaboracion.jpg', '05-colaboracion-trabajo.jpg', 'Personas colaborando en el trabajo', true],
   ['/images/about/vision-trabajo.jpg', '06-jornada-profesional.jpg', 'Una actividad de trabajo en equipo', true],

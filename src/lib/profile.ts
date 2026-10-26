@@ -54,7 +54,7 @@ export function initProfile() {
     const current = readStore(), a = current.accounts.find(p => p.id === id);
     const original = a ? (profiles.find(profile => profile.slug === a.profileSlug) || (a.id === 'demo-valeria' ? profiles[0] : null)) : profiles.find(profile => profile.name === person!.name);
     const p = a ? { name: a.name, role: a.profession, city: a.city, avatar: a.photo, bio: a.bio, skills: a.skills.split(',').map(s => s.trim()).filter(Boolean), whatsapp: a.phone, portfolio: a.portfolio } : original ? { ...person!, role: original.role, city: original.city, avatar: original.photo, bio: original.about, skills: original.skills } : person!;
-    text(root!, '.profile-name', p.name); text(root!, '.profile-headline-role', p.role || (own ? 'Completa tu profesión' : 'Profesional en Eco')); text(root!, '[data-profile-city]', p.city + ', Bolivia'); text(root!, '.profile-about-paragraph', p.bio || (own ? 'Añade una presentación sobre tu experiencia y el trabajo que realizas.' : 'Aún no añadió una presentación.'));
+    text(root!, '.profile-name', p.name); text(root!, '.profile-headline-role', p.role || (own ? 'Completa tu profesión' : 'Profesional en Eco')); text(root!, '[data-profile-city]', p.city ? p.city + ', Bolivia' : own ? 'Añade tu ciudad' : 'Bolivia'); text(root!, '.profile-about-paragraph', p.bio || (own ? 'Añade una presentación sobre tu experiencia y el trabajo que realizas.' : 'Aún no añadió una presentación.'));
     text(root!, '.meta-status', original?.availability || 'Comunicación por escrito');
     renderAvatar(root!, p.avatar, p.name);
     renderCover(root!, original?.cover);
