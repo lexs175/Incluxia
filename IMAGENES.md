@@ -138,16 +138,28 @@ Las fotos del inicio se actualizaron el 26 de octubre de 2026 con los diez PNG r
 | Juan Pablo Claros | [stories/juan-pablo-claros.png](src/assets/images/stories/juan-pablo-claros.png) | Imagen actual conservada |
 | Carla Rodríguez Vaca | [stories/historia-destacada-bolivia.png](src/assets/images/stories/historia-destacada-bolivia.png) | Imagen actual conservada |
 
+## Logos de empresas
+
+| Uso | Archivo maestro | Estado |
+| --- | --- | --- |
+| bmsc.svg | [companies/bmsc.svg](src/assets/images/companies/bmsc.svg) | Logo del [sitio oficial](https://www.bmsc.com.bo/_nuxt/img/header-logo.96143ea.svg) |
+| farmacorp.png | [companies/farmacorp.png](src/assets/images/companies/farmacorp.png) | Logo del [sitio oficial](https://farmacorp.com/cdn/shop/files/isotipo32x32.png?v=1613629902) |
+| emtech.svg | [companies/emtech.svg](src/assets/images/companies/emtech.svg) | Identidad creada para la empresa del prototipo |
+| conecta.svg | [companies/conecta.svg](src/assets/images/companies/conecta.svg) | Identidad creada para la empresa del prototipo |
+| marea.svg | [companies/marea.svg](src/assets/images/companies/marea.svg) | Identidad creada para la empresa del prototipo |
+| plano-sur.svg | [companies/plano-sur.svg](src/assets/images/companies/plano-sur.svg) | Identidad creada para la empresa del prototipo |
+| altura.svg | [companies/altura.svg](src/assets/images/companies/altura.svg) | Identidad creada para la empresa del prototipo |
+
 ## Capturas de la plataforma
 
 | Uso | Archivo maestro | Estado |
 | --- | --- | --- |
-| publicar.png | [platform/publicar.png](src/assets/images/platform/publicar.png) | Se renovará con el sitio terminado |
-| postulaciones.png | [platform/postulaciones.png](src/assets/images/platform/postulaciones.png) | Se renovará con el sitio terminado |
-| perfil.png | [platform/perfil.png](src/assets/images/platform/perfil.png) | Se renovará con el sitio terminado |
-| empleos.png | [platform/empleos.png](src/assets/images/platform/empleos.png) | Se renovará con el sitio terminado |
-| detalle.png | [platform/detalle.png](src/assets/images/platform/detalle.png) | Se renovará con el sitio terminado |
-| contratar.png | [platform/contratar.png](src/assets/images/platform/contratar.png) | Se renovará con el sitio terminado |
+| publicar.png | [platform/publicar.png](src/assets/images/platform/publicar.png) | Captura final actualizada el 2026-10-26 |
+| postulaciones.png | [platform/postulaciones.png](src/assets/images/platform/postulaciones.png) | Captura final actualizada el 2026-10-26 |
+| perfil.png | [platform/perfil.png](src/assets/images/platform/perfil.png) | Captura final actualizada el 2026-10-26 |
+| empleos.png | [platform/empleos.png](src/assets/images/platform/empleos.png) | Captura final actualizada el 2026-10-26 |
+| detalle.png | [platform/detalle.png](src/assets/images/platform/detalle.png) | Captura final actualizada el 2026-10-26 |
+| contratar.png | [platform/contratar.png](src/assets/images/platform/contratar.png) | Captura final actualizada el 2026-10-26 |
 
 ## Cómo se optimizan
 

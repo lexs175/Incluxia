@@ -82,7 +82,13 @@ try{
  await context.close();
  const captureContext=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce'}),capture=await captureContext.newPage();await go(capture,'/');await capture.locator('.header-actions #btnHeaderLogin').click();await capture.locator('#btnDemoCandidate').click();await capture.waitForLoadState('networkidle');
  for(const [name,path] of [['empleos','/'],['detalle','/empleos/oferta?id=job-2'],['contratar','/contratar'],['publicar','/publicar'],['perfil','/perfil'],['postulaciones','/postulaciones']]){
-  await go(capture,path);await capture.addStyleTag({content:'astro-dev-toolbar{display:none}'});const preview=out+'/preview-'+name+'.png';await capture.screenshot({path:preview});if(refreshPreviews)copyFileSync(preview,'src/assets/images/platform/'+name+'.png');
+  await go(capture,path);await capture.addStyleTag({content:'astro-dev-toolbar{display:none}'});
+  await capture.locator('img[src]').evaluateAll(async images=>{await Promise.all(images.filter(image=>image.getBoundingClientRect().width>0).map(async image=>{image.loading='eager';await image.decode();}));});
+  if(name==='empleos'){
+   assert.equal(await capture.locator('#jobGrid [data-publisher-kind="company"] .publisher-photo:visible').count(),7);
+   assert.equal(await capture.getByText('Organización de ejemplo',{exact:true}).count(),0);
+  }
+  const preview=out+'/preview-'+name+'.png';await capture.screenshot({path:preview,animations:'disabled'});if(refreshPreviews)copyFileSync(preview,'src/assets/images/platform/'+name+'.png');
  }
  await captureContext.close();pass('Seis capturas de las pantallas reales para la portada.');
  const publicContext=await browser.newContext({reducedMotion:'reduce'}),publicPage=await publicContext.newPage();

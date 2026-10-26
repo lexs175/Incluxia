@@ -435,32 +435,38 @@
     {
       "key": "platform/publicar.png",
       "role": "screenshot",
-      "provisional": true
+      "provisional": false,
+      "capturedOn": "2026-10-26"
     },
     {
       "key": "platform/postulaciones.png",
       "role": "screenshot",
-      "provisional": true
+      "provisional": false,
+      "capturedOn": "2026-10-26"
     },
     {
       "key": "platform/perfil.png",
       "role": "screenshot",
-      "provisional": true
+      "provisional": false,
+      "capturedOn": "2026-10-26"
     },
     {
       "key": "platform/empleos.png",
       "role": "screenshot",
-      "provisional": true
+      "provisional": false,
+      "capturedOn": "2026-10-26"
     },
     {
       "key": "platform/detalle.png",
       "role": "screenshot",
-      "provisional": true
+      "provisional": false,
+      "capturedOn": "2026-10-26"
     },
     {
       "key": "platform/contratar.png",
       "role": "screenshot",
-      "provisional": true
+      "provisional": false,
+      "capturedOn": "2026-10-26"
     },
     {
       "key": "brand/logo.png",
@@ -590,6 +596,43 @@
     {
       "key": "profiles/covers/sergio-mamani-calle.png",
       "role": "profileCover",
+      "provisional": false
+    },
+    {
+      "key": "companies/bmsc.svg",
+      "role": "companyLogo",
+      "provisional": false,
+      "source": "https://www.bmsc.com.bo/_nuxt/img/header-logo.96143ea.svg"
+    },
+    {
+      "key": "companies/farmacorp.png",
+      "role": "companyLogo",
+      "provisional": false,
+      "source": "https://farmacorp.com/cdn/shop/files/isotipo32x32.png?v=1613629902"
+    },
+    {
+      "key": "companies/emtech.svg",
+      "role": "companyLogo",
+      "provisional": false
+    },
+    {
+      "key": "companies/conecta.svg",
+      "role": "companyLogo",
+      "provisional": false
+    },
+    {
+      "key": "companies/marea.svg",
+      "role": "companyLogo",
+      "provisional": false
+    },
+    {
+      "key": "companies/plano-sur.svg",
+      "role": "companyLogo",
+      "provisional": false
+    },
+    {
+      "key": "companies/altura.svg",
+      "role": "companyLogo",
       "provisional": false
     }
   ]

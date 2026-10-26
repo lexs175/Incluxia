@@ -39,7 +39,7 @@ export function clientImageManifest() {
   return manifest ||= (async () => {
     const result: Record<string, Partial<Record<ImageKind, ResponsiveImage>>> = {};
     await Promise.all(slots.assets.flatMap(asset => {
-      const kinds: ImageKind[] = asset.role === 'profileCover' ? ['profileCover'] : asset.role === 'profile' || asset.role === 'story' ? ['avatar'] : asset.role === 'service' || asset.role === 'category' ? ['service'] : [];
+      const kinds: ImageKind[] = asset.role === 'profileCover' ? ['profileCover'] : asset.role === 'profile' || asset.role === 'story' || asset.role === 'companyLogo' ? ['avatar'] : asset.role === 'service' || asset.role === 'category' ? ['service'] : [];
       return kinds.map(async kind => { const image = await optimizedImage(asset.key, kind); (result[image.key!] ||= {})[kind] = image; });
     }));
     return result;

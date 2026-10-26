@@ -27,6 +27,7 @@ export interface Inquiry {
 export interface Store {
   version: number; sessionId: string | null; accounts: Account[];
   exampleProfilesVersion?: number;
+  examplePublishersVersion?: number;
   publications: Publication[]; applications: Application[]; saved: Record<string, string[]>;
   inquiries: Inquiry[];
 }
@@ -49,18 +50,18 @@ export const seedAccounts: Account[] = [
 ];
 export const seedJobs: Publication[] = sourceJobs.map((j, i) => ({
   id: `job-${j.id}`, slug: j.slug, ownerId: 'demo-equipo', kind: 'company', type: 'employment',
-  title: j.title, company: j.company, city: j.city, modality: j.modality,
+  title: j.title, company: j.company, companyLogo: j.companyLogo, city: j.city, modality: j.modality,
   category: j.department, salary: j.salary, description: j.description,
   tasks: j.functions, requirements: j.requirements.filter(r => !/carnet|SIPRUNPCD/i.test(r)),
   delivery: 'Acordar por escrito', status: 'active', createdAt: `2026-10-${22 - i}T14:00:00.000Z`,
 }));
 const extras: Partial<Publication>[] = [
   { id: 'job-catalogo', slug: 'diseno-catalogo-digital', ownerId: 'demo-valeria', kind: 'person', type: 'project', title: 'Diseño de un catálogo digital', company: 'Estudio Valeria', city: 'Remoto', modality: 'Remoto', category: 'Diseño Gráfico', salary: 'Bs. 850 / proyecto', description: 'Busco apoyo para diseñar un catálogo de doce páginas. Compartiré fotografías y textos organizados. Acordaremos las revisiones por escrito.', tasks: ['Organizar los contenidos y preparar una propuesta visual.', 'Entregar el archivo editable y un PDF para compartir.'], requirements: ['Experiencia en diseño editorial.', 'Una muestra de trabajo similar.'], delivery: '10 días' },
-  { id: 'job-redes', slug: 'contenido-redes-sociales', title: 'Contenido para redes sociales', category: 'Redes Sociales', salary: 'Bs. 1.400 / mes', city: 'Santa Cruz', modality: 'Híbrido', description: 'Preparar piezas y textos breves para un calendario de publicaciones, con entregas y revisiones por chat.' },
-  { id: 'job-subtitulos', slug: 'edicion-subtitulos', type: 'project', title: 'Edición y subtítulos para cuatro videos', category: 'Edición Audiovisual', salary: 'Bs. 600 / proyecto', city: 'Remoto', modality: 'Remoto', description: 'Editar cuatro videos cortos y entregar subtítulos revisados. Se facilitarán los archivos y las instrucciones por escrito.' },
-  { id: 'job-asistente', slug: 'asistencia-administrativa', title: 'Asistencia administrativa', category: 'Administración', salary: 'Bs. 3.100 / mes', city: 'La Paz', modality: 'Presencial', description: 'Organizar documentos y actualizar reportes del equipo. Las tareas, consultas y prioridades se coordinan por escrito.' },
+  { id: 'job-redes', slug: 'contenido-redes-sociales', company: 'Marea Estudio Creativo', companyLogo: 'companies/marea.svg', title: 'Contenido para redes sociales', category: 'Redes Sociales', salary: 'Bs. 1.400 / mes', city: 'Santa Cruz', modality: 'Híbrido', description: 'Preparar piezas y textos breves para un calendario de publicaciones, con entregas y revisiones por chat.' },
+  { id: 'job-subtitulos', slug: 'edicion-subtitulos', company: 'Plano Sur Audiovisual', companyLogo: 'companies/plano-sur.svg', type: 'project', title: 'Edición y subtítulos para cuatro videos', category: 'Edición Audiovisual', salary: 'Bs. 600 / proyecto', city: 'Remoto', modality: 'Remoto', description: 'Editar cuatro videos cortos y entregar subtítulos revisados. Se facilitarán los archivos y las instrucciones por escrito.' },
+  { id: 'job-asistente', slug: 'asistencia-administrativa', company: 'Altura Gestión Empresarial', companyLogo: 'companies/altura.svg', title: 'Asistencia administrativa', category: 'Administración', salary: 'Bs. 3.100 / mes', city: 'La Paz', modality: 'Presencial', description: 'Organizar documentos y actualizar reportes del equipo. Las tareas, consultas y prioridades se coordinan por escrito.' },
 ];
-seedJobs.push(...extras.map((j, i) => ({ ownerId: 'demo-equipo', kind: 'company', type: 'employment', company: 'Organización de ejemplo', tasks: ['Coordinar las entregas por escrito.', 'Revisar los materiales y documentar los avances.'], requirements: ['Experiencia o muestras relacionadas con el trabajo.', 'Disponibilidad para la modalidad indicada.'], delivery: 'Acordar por escrito', status: 'active', createdAt: `2026-10-${18 - i}T14:00:00.000Z`, ...j } as Publication)));
+seedJobs.push(...extras.map((j, i) => ({ ownerId: 'demo-equipo', kind: 'company', type: 'employment', company: '', tasks: ['Coordinar las entregas por escrito.', 'Revisar los materiales y documentar los avances.'], requirements: ['Experiencia o muestras relacionadas con el trabajo.', 'Disponibilidad para la modalidad indicada.'], delivery: 'Acordar por escrito', status: 'active', createdAt: `2026-10-${18 - i}T14:00:00.000Z`, ...j } as Publication)));
 
 export const seedServices: Publication[] = hiring.services.map((s, i) => ({
   id: s.id, slug: s.id, ownerId: seedAccounts.find(account => account.name === s.author.name)?.id || `talent-${s.author.name}`,
@@ -72,7 +73,7 @@ export const seedServices: Publication[] = hiring.services.map((s, i) => ({
 
 export function initialStore(): Store {
   return {
-    version: 1, exampleProfilesVersion: 2, sessionId: null, accounts: structuredClone(seedAccounts), publications: structuredClone([...seedJobs, ...seedServices]),
+    version: 1, exampleProfilesVersion: 2, examplePublishersVersion: 1, sessionId: null, accounts: structuredClone(seedAccounts), publications: structuredClone([...seedJobs, ...seedServices]),
     applications: [
       { id: 'application-example-sent', jobId: seedJobs[0].id, applicantId: 'demo-valeria', message: 'Comparto mi perfil para que puedan conocer mi experiencia. Podemos coordinar por escrito.', cv: 'Portafolio-Valeria.pdf', status: 'En revisión', createdAt: exampleDate },
       { id: 'application-example-received', jobId: 'job-catalogo', applicantId: 'demo-equipo', message: 'Me interesa colaborar con el catálogo. Puedo preparar una primera propuesta esta semana.', cv: 'Muestras-editoriales.pdf', status: 'Recibida', createdAt: exampleDate },
@@ -119,10 +120,22 @@ function upgradeExampleProfiles(state: Store): Store {
   } catch {/* The current page can still use the completed examples. */ }
   return state;
 }
+function upgradeExamplePublishers(state: Store): Store {
+  if (state.examplePublishersVersion === 1) return state;
+  for (const publication of state.publications) {
+    const seed = seedJobs.find(job => job.id === publication.id);
+    if (!seed || publication.ownerId !== seed.ownerId || publication.kind !== 'company') continue;
+    if (publication.company === 'Organización de ejemplo') publication.company = seed.company;
+    if (publication.company === seed.company && !publication.companyLogo) publication.companyLogo = seed.companyLogo;
+  }
+  state.examplePublishersVersion = 1;
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch { /* Use the updated names and logos even when storage is unavailable. */ }
+  return state;
+}
 export function readStore(): Store {
   try {
     const value = JSON.parse(localStorage.getItem(STORE_KEY) || 'null');
-    if (value?.version === 1 && Array.isArray(value.accounts) && Array.isArray(value.publications) && Array.isArray(value.applications) && Array.isArray(value.inquiries) && value.saved) return upgradeExampleProfiles(value);
+    if (value?.version === 1 && Array.isArray(value.accounts) && Array.isArray(value.publications) && Array.isArray(value.applications) && Array.isArray(value.inquiries) && value.saved) return upgradeExamplePublishers(upgradeExampleProfiles(value));
   } catch { /* Recover the demonstration, never execute stored text. */ }
   const state = initialStore();
   // Keep the session created by the original prototype when upgrading it.

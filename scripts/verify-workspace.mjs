@@ -41,6 +41,32 @@ try {
   assert.equal(await page.locator('.footer').isVisible(), false);
   assert.equal(await page.locator('.whatsapp-fab').count(), 0);
   pass('Las ocho ofertas están visibles, sin paginación, footer ni botón flotante.');
+  assert.equal(await page.locator('#jobGrid [data-publisher-kind="company"] .publisher-photo:visible').count(), 7);
+  assert.equal(await page.locator('#jobGrid .company-name').filter({ hasText: 'Organización de ejemplo' }).count(), 0);
+  const legacy = await page.evaluate(() => JSON.parse(localStorage.getItem('incluxia_demo_v1')));
+  delete legacy.examplePublishersVersion;
+  for (const job of legacy.publications.filter(job => job.kind === 'company')) {
+    delete job.companyLogo;
+    if (['job-redes', 'job-subtitulos', 'job-asistente'].includes(job.id)) job.company = 'Organización de ejemplo';
+  }
+  legacy.publications[0].status = 'paused';
+  const custom = { ...legacy.publications[0], id: 'publisher-migration-custom', ownerId: legacy.sessionId, company: 'Empresa propia', companyLogo: 'companies/marea.svg', status: 'active' };
+  legacy.publications.push(custom);
+  legacy.saved[legacy.sessionId] = ['job-2'];
+  const migrationContext = await browser.newContext();
+  await migrationContext.addInitScript(state => localStorage.setItem('incluxia_demo_v1', JSON.stringify(state)), legacy);
+  const migrationPage = await migrationContext.newPage();
+  await migrationPage.goto(url, { waitUntil: 'networkidle' });
+  const migrated = await migrationPage.evaluate(() => JSON.parse(localStorage.getItem('incluxia_demo_v1')));
+  assert.equal(migrated.sessionId, legacy.sessionId);
+  assert.deepEqual(migrated.applications, legacy.applications);
+  assert.deepEqual(migrated.saved, legacy.saved);
+  assert.equal(migrated.publications[0].status, 'paused');
+  assert.deepEqual(migrated.publications.find(job => job.id === custom.id), custom);
+  assert.deepEqual(migrated.publications.filter(job => ['job-redes', 'job-subtitulos', 'job-asistente'].includes(job.id)).map(job => job.company), ['Marea Estudio Creativo', 'Plano Sur Audiovisual', 'Altura Gestión Empresarial']);
+  assert.ok(migrated.publications.filter(job => job.kind === 'company').every(job => job.companyLogo));
+  await migrationContext.close();
+  pass('Siete logos y nombres propios; sesiones anteriores actualizadas conservando publicaciones propias, estados y postulaciones.');
   await page.locator('[data-job-type="project"]').click();
   assert.equal(await page.locator('#jobGrid .offer-card').count(), 2);
   await page.locator('[data-job-type=""]').click();

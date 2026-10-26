@@ -36,6 +36,7 @@ export function initJobs() {
     const publisher = publisherInfo(job, state.accounts);
     const payment = paymentInfo(job.salary);
     el.dataset.jobId = job.id;
+    el.dataset.publisherKind = job.kind;
     text(el, '.job-title a', job.title);
     text(el, '.company-name', publisher.name);
     text(el, '.publisher-initials', publisher.initials);
