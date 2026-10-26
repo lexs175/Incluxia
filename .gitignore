@@ -66,7 +66,7 @@ $RECYCLE.BIN/
 *.tsbuildinfo
 .vite/
 
-# --- Documentación interna (no forma parte del sitio) ---
+# --- Documentación interna, pruebas y archivos de mantenimiento (no forman parte del sitio) ---
 .agents/
 informacion/
 Hipoacusia/
@@ -78,6 +78,8 @@ screenshot-*.png
 componentes-temporal.html
 test-results/
 artifacts/
-archive/maintenance-2026-10-26/media-sources/
-archive/maintenance-2026-10-26/design-references/
+archive/
+scripts/
+EVALUACION_PLATAFORMA.md
+IMAGENES.md
 .stacki/

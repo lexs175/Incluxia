@@ -35,8 +35,6 @@
 | `/perfiles` · `/perfiles/[slug]` | Perfiles profesionales y detalle |
 | `/casos-de-exito` · `/casos-de-exito/[slug]` | Historias de inclusión laboral |
 
-«Nosotros» y «Blog» están archivados en [archive/inactive-pages](archive/inactive-pages/README.md), fuera de las rutas activas.
-
 ## 🛠️ Stack
 
 | Capa | Tecnología |
@@ -62,26 +60,6 @@ npm run dev      # http://localhost:4321
 | `npm run dev` | Servidor de desarrollo |
 | `npm run build` | Build de producción en `dist/` |
 | `npm run preview` | Vista previa del build |
-| `npm test` | Ocho verificaciones de la interfaz compilada; ejecutar después del build |
-| `npm run test:platform` | Recorrido entre cuentas: perfil, publicaciones, postulaciones y consultas |
-| `npm run test:auth` · `npm run test:header` | Acceso, menú, teclado y móvil |
-| `npm run test:workspace` · `npm run test:hiring` | Ofertas y categorías de contratación |
-| `npm run test:management` · `npm run test:home` | Vistas de gestión, inicio e historias |
-| `npm run test:images` | Fuentes, variantes y carga de imágenes |
-| `npm run images:catalog` | Actualizar el documento de imágenes activas |
-
-Las pruebas usan Chromium mediante Playwright y sirven `dist/` en un puerto local
-libre. Sus capturas e informes se guardan en `artifacts/`, fuera de Git; `npm test`
-consolida el resultado en `artifacts/verification/summary.json`.
-Para repetir solo una parte, usa por ejemplo `npm test -- platform workspace home`.
-Si varias tareas compilan a la vez, se puede generar otra salida con
-`npm run build -- --outDir artifacts/verification-site` y ejecutar las pruebas
-con la variable de entorno `ECO_TEST_DIST=artifacts/verification-site`.
-Las capturas maestras del inicio solo se actualizan expresamente con
-`npm run test:platform -- --refresh-preview-images`; después hay que recompilar.
-
-El código sin uso, las migraciones terminadas y el inventario anterior están en
-[el archivo de mantenimiento](archive/maintenance-2026-10-26/README.md).
 
 ## 📁 Estructura
 
@@ -89,8 +67,6 @@ El código sin uso, las migraciones terminadas y el inventario anterior están e
 Eco/
 ├── public/
 │   └── favicon.svg
-├── scripts/           # Verificación y herramientas de imágenes
-├── archive/           # Páginas y recursos anteriores conservados
 └── src/
     ├── assets/images/ # Imágenes maestras gestionadas con Astro Assets
     ├── components/
@@ -159,15 +135,13 @@ corresponda; los controles de gestión usan `ActionButton`.
 
 ## 📦 Datos
 
-Las imágenes locales se gestionan con Astro desde `src/assets/images/`. La lista de archivos independientes y las instrucciones para reemplazarlos están en [IMAGENES.md](IMAGENES.md). Ejecuta `npm run test:images` para verificar tamaños, rutas y comportamiento con sesión iniciada.
+Las imágenes locales se gestionan con optimización nativa mediante Astro Assets desde `src/assets/images/`.
 
 ## Acceso del prototipo
 
 Ingreso y registro comparten un modal compacto. El registro solicita nombre, correo y contraseña; ciudad, especialidad y contacto se completan después en Perfil. Ambos formularios permiten mostrar u ocultar la contraseña y conservan el destino y el scroll.
 
 «Continuar con Google» simula el acceso con la cuenta local de Valeria; no usa Google Identity Services ni necesita un ID de cliente. «Ingresar como Valeria» ofrece también acceso directo para pruebas. Los formularios y sus contraseñas pertenecen a la simulación local existente, no a un servicio de identidad de producción.
-
-Después de `npm run build`, ejecuta `npm run test:auth` para comprobar el ancho del modal, móvil, teclado, errores, los ojos de ambos campos, registro sin teléfono ni ciudad, Google simulado y acceso de Valeria. La evidencia se guarda en `artifacts/auth-simplification/`.
 
 El contenido se edita sin tocar componentes:
 
