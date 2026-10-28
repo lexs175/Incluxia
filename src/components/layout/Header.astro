@@ -4,6 +4,7 @@ import ActionButton from "../ui/ActionButton.astro";
 import AccountAvatar from "../ui/AccountAvatar.astro";
 import HeaderNav from "./HeaderNav.astro";
 import MenuToggle from "../ui/MenuToggle.astro";
+import EcoLogo from "../../assets/images/brand/eco-logo.svg";
 
 interface Props { activePath?: string; }
 const { activePath = "/" } = Astro.props;
@@ -12,7 +13,7 @@ const { activePath = "/" } = Astro.props;
 <header class="header">
   <div class="container header-container">
     <div class="navbar-capsule">
-      <a href="/" class="brand" aria-label="Eco Bolivia - Inicio"><span class="app-brand">Eco</span></a>
+      <a href="/" class="brand" aria-label="Eco Bolivia - Inicio"><EcoLogo class="app-brand" aria-hidden="true" focusable="false" /></a>
 
       <nav class="nav-desktop" aria-label="Navegación principal"><HeaderNav activePath={activePath} /></nav>
 
@@ -310,7 +311,7 @@ const { activePath = "/" } = Astro.props;
   .header-container { position: relative; }
   .navbar-capsule { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; min-height: var(--app-header-height); padding: var(--space-2) var(--space-4); border-radius: var(--radius-md); background: var(--color-white); pointer-events: auto; }
   .brand { display: inline-flex; align-items: center; justify-self: start; min-height: 44px; color: var(--color-primary); }
-  .app-brand { font-family: var(--font-heading); font-size: var(--text-2xl); font-weight: 800; letter-spacing: -0.035em; line-height: 1; }
+  .app-brand { width: 78px; height: 30px; color: var(--color-primary-dark); flex-shrink: 0; }
   .nav-desktop { justify-self: center; }
   .header-actions { display: flex; align-items: center; justify-self: end; gap: var(--space-3); }
   .header-actions :global(.header-register) { --btn-h: 44px; }

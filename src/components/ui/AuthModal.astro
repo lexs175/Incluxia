@@ -3,6 +3,7 @@ import ActionButton from './ActionButton.astro';
 import Icon from './Icon.astro';
 import PasswordField from './PasswordField.astro';
 import GoogleAccessButton from './GoogleAccessButton.astro';
+import EcoLogo from '../../assets/images/brand/eco-logo.svg';
 import '../../styles/auth.css';
 ---
 <div class="auth-modal-wrapper" id="authModalWrapper" role="dialog" aria-modal="true" aria-labelledby="loginPanelTitle" aria-describedby="loginPanelDescription" aria-hidden="true" inert>
@@ -10,7 +11,7 @@ import '../../styles/auth.css';
   <div class="container auth-modal-container">
     <div class="auth-modal-capsule">
       <header class="auth-header-bar">
-        <span class="auth-brand" aria-hidden="true">Eco</span>
+        <EcoLogo class="auth-brand" aria-hidden="true" focusable="false" />
         <ActionButton id="authCloseBtn" variant="icon" size="lg" ariaLabel="Cerrar ventana de acceso"><Icon name="close" size={20} /></ActionButton>
       </header>
       <div class="auth-tabs" role="tablist" aria-label="Opciones de acceso">

@@ -13,6 +13,7 @@ export const imagePresets = {
   heroSecondary: { width: 960, widths: [384, 640, 768, 960, 1200, 1600], quality: 85, coverageHeight: 'clamp(320px, 28vw, 536.4px)', sizes: '(max-width: 1440px) calc((100vw - 58px) * 0.4), 553px' },
   gallery: { width: 480, widths: [160, 240, 320, 480, 640, 960], quality: 84, coverageHeight: 'clamp(144px, 14.896vw, 286px)', sizes: 'clamp(160px, 16.667vw, 320px)' },
   galleryTall: { width: 640, widths: [160, 240, 320, 480, 640, 960, 1280, 1600], quality: 84, coverageHeight: 'clamp(288px, 29.792vw, 572px)', sizes: 'clamp(160px, 16.667vw, 320px)' },
+  heroMarquee: { width: 640, widths: [240, 320, 480, 640, 960, 1280, 1600], quality: 85, coverageHeight: 'clamp(240px, 21.3vw, 428px)', sizes: 'clamp(272px, 27.5vw, 528px)' },
   screenshot: { width: 1200, widths: [384, 640, 768, 960, 1200, 1440], quality: 90, sizes: '(max-width: 767px) calc(100vw - 48px), (max-width: 1440px) calc(100vw - 64px), 1376px' },
   screenshotSplit: { width: 960, widths: [384, 640, 768, 960, 1200, 1440], quality: 90, sizes: '(max-width: 767px) calc(100vw - 48px), (max-width: 1440px) calc((100vw - 80px) * 0.6667), 906px' },
   brand: { width: 1200, widths: [600, 1200], quality: 90, sizes: '1200px', format: 'png' },
