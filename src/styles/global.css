@@ -73,7 +73,14 @@ body {
 }
 
 /* Headings with Fluid Clamp */
-h1, h2, h3, h4, h5, h6 {
+h1, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+h2 {
   font-family: var(--font-heading);
   color: var(--color-primary);
   font-weight: 700;
