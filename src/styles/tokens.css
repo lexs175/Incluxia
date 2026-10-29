@@ -1,112 +1,106 @@
 :root {
   /* ====================================================
-     1. TOKENS PRIMITIVOS (Paleta global de valores)
+     1. TOKENS PRIMITIVOS (Escala Numérica Pura - Cero Funciones UI)
      ==================================================== */
-  /* Azules de Marca (#285FF3) */
-  --blue-400: #4f7dfa;
+
+  /* --- Azules --- */
+  --blue-400: #4F7DFA;
   --blue-400-rgb: 79, 125, 250;
   --blue-500: #285FF3;
   --blue-500-rgb: 40, 95, 243;
-  --blue-600: #1b4edd;
-  --blue-600-rgb: 27, 78, 221;
-  --blue-700: #1545ca;
-  --blue-700-rgb: 21, 69, 202;
+  --blue-600: #1545CA;
+  --blue-600-rgb: 21, 69, 202;
+  --blue-700: #1843b8;
+  --blue-700-rgb: 24, 67, 184;
 
-  /* Neutros & Superficies */
+  /* --- Cyan --- */
+  --cyan-500: #17B4EA;
+  --cyan-500-rgb: 23, 180, 234;
+
+  /* --- Lienzo & Neutros --- */
+  --sand: #F4F3EF;            /* Crema/arena base del layout */
   --white: #FFFFFF;
-  --white-rgb: 255, 255, 255;
-  --slate-50: #F8FAFC;
-  --slate-100: #F1F5F9;
-  --slate-200: #E2E8F0;
-  --slate-300: #CBD5E1;
-  --slate-400: #94A3B8;
-  --slate-500: #64748B;
-  --slate-800: #1E293B;
+  --white-rgb: 255, 255, 255;           
+  --gray-100: #F1F5F9;        
+  --gray-200: #E2E8F0;        
+  --gray-500: #64748B;        
+  --gray-800: #1E293B;        
 
-  /* Superficies Oscuras */
-  --surface-dark-base: #020531;
-  --surface-dark-card: #020531;
-
-  /* Estados Funcionales */
-  --whatsapp-green: #25D366;
-  --whatsapp-dark: #1EBE5D;
-  --whatsapp-light: #E7F9EE;
-  --emerald-500: #10B981;
-  --emerald-700: #047857;
-  --emerald-50: #ECFDF5;
-  --amber-500: #F59E0B;
-  --amber-700: #B45309;
-  --amber-50: #FFFBEB;
+  /* --- Feedback --- */
+  --red-100: #FEF2F2;
+  --red-200: #FECACA;
   --red-500: #EF4444;
   --red-700: #B91C1C;
-  --red-50: #FEF2F2;
-  --sky-500: #3B82F6;
-  --sky-50: #EFF6FF;
+
+  --green-100: #ECFDF5;
+  --green-500: #10B981;
+  --green-700: #047857;
+
+  --amber-100: #FFFBEB;
+  --amber-500: #F59E0B;
+  --amber-700: #B45309;
+
+  --whatsapp: #25D366;
+
 
   /* ====================================================
-     2. TOKENS SEMÁNTICOS (Propósito y función en la UI)
+     2. TOKENS SEMÁNTICOS (Reutilizables en todo el sitio - Cero nombres de páginas)
      ==================================================== */
-  /* Marca: Roles universales */
-  --color-primary: var(--blue-500);
-  --color-primary-dark: var(--blue-600);
-  --color-primary-light: var(--blue-400);
-  --color-primary-hover: var(--blue-700);
-  --color-primary-rgb: var(--blue-500-rgb);
-  --color-primary-dark-rgb: var(--blue-600-rgb);
 
-  /* Acento de marca (armónico con primario) */
-  --color-accent: var(--blue-500);
-  --color-accent-rgb: var(--blue-500-rgb);
-  --color-accent-light: var(--blue-400);
-
-  /* Semánticos explícitos de Fondos (bg-*) */
-  --color-bg-white: var(--white);
-  --color-bg: #F4F3EF;
-  --color-bg-alt: var(--slate-100);
+  /* --- Fondos (bg-*) --- */
+  --color-bg: var(--sand);
   --color-bg-card: var(--white);
-  --color-bg-primary: var(--color-primary);
-  --color-bg-primary-hover: var(--color-primary-hover);
-  --color-bg-primary-soft: rgba(var(--color-primary-rgb), 0.08);
-  --color-bg-primary-dark: var(--color-primary-dark);
-  --color-surface-dark: var(--surface-dark-base);
-  --color-surface-dark-card: var(--surface-dark-card);
-  /* Azul de las secciones del inicio diseñadas en Figma. */
-  --color-home-primary: rgb(33, 86, 232);
-  --color-border-dark: rgba(var(--white-rgb), 0.08);
+  --color-bg-alt: var(--gray-100);
+  --color-bg-primary: var(--blue-500);
+  --color-bg-blue-dark: var(--blue-700);
+  --color-bg-accent: var(--cyan-500);
 
-  /* Semánticos explícitos de Textos (text-*) */
-  --color-text-main: var(--slate-800);
-  --color-text-strong: rgb(0, 0, 0);
-  --color-text-muted: var(--slate-500);
-  --color-text-light: var(--slate-400);
+  /* --- Textos (text-*) --- */
+  --color-text-main: var(--gray-800);
+  --color-text-muted: var(--gray-500);
+  --color-text-strong: var(--gray-800);
   --color-text-inverse: var(--white);
-  --color-text-primary: var(--color-primary);
+  --color-text-primary: var(--blue-500);
+  --color-text-primary-dark: var(--blue-700);
+  --color-text-accent: var(--cyan-500);
+  --color-text-light: var(--gray-500);
 
-  /* Semánticos explícitos de Bordes (border-*) */
-  --color-border: var(--slate-200);
-  --color-border-hover: var(--slate-300);
-  --color-border-primary: var(--color-primary);
+  /* --- Bordes (border-*) --- */
+  --color-border: var(--gray-200);
+  --color-border-hover: var(--blue-500);
+  --color-border-primary: var(--blue-500);
+  --color-border-primary-dark: var(--blue-700);
+  --color-border-accent: var(--cyan-500);
   --color-border-white: var(--white);
 
-  /* Estados Funcionales */
+  /* --- Acciones / Roles --- */
+  --color-primary: var(--blue-500);
+  --color-primary-hover: var(--blue-600);
+  --color-primary-dark: var(--blue-700);
+  --color-primary-rgb: var(--blue-500-rgb);
+  --color-primary-hover-rgb: var(--blue-600-rgb);
+  --color-primary-dark-rgb: var(--blue-700-rgb);
+  --color-accent: var(--cyan-500);
+  --color-accent-rgb: var(--cyan-500-rgb);
   --color-white: var(--white);
   --color-white-rgb: var(--white-rgb);
-  --color-whatsapp: var(--whatsapp-green);
-  --color-whatsapp-dark: var(--whatsapp-dark);
-  --color-whatsapp-light: var(--whatsapp-light);
 
-  --color-success: var(--emerald-500);
-  --color-success-text: var(--emerald-700);
-  --color-success-bg: var(--emerald-50);
-  --color-warning: var(--amber-500);
-  --color-warning-text: var(--amber-700);
-  --color-warning-bg: var(--amber-50);
+  /* --- Feedback --- */
   --color-error: var(--red-500);
   --color-error-text: var(--red-700);
-  --color-error-bg: var(--red-50);
-  --color-error-border: rgba(239, 68, 68, 0.3);
-  --color-info: var(--sky-500);
-  --color-info-bg: var(--sky-50);
+  --color-error-bg: var(--red-100);
+  --color-error-border: var(--red-200);
+
+  --color-success: var(--green-500);
+  --color-success-text: var(--green-700);
+  --color-success-bg: var(--green-100);
+
+  --color-warning: var(--amber-500);
+  --color-warning-text: var(--amber-700);
+  --color-warning-bg: var(--amber-100);
+
+  --color-whatsapp: var(--whatsapp);
+  --color-white: var(--white);
 
   /* Typography */
   --font-heading: 'Montserrat', system-ui, -apple-system, sans-serif;

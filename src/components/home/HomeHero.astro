@@ -15,41 +15,97 @@ const photos = [
 <section class="ashico-hero" aria-labelledby="home-title">
   <div class="container">
     <div class="hero-content">
-      <h1 id="home-title" class="hero-title">Conectamos talento con oportunidades reales</h1>
-      <p class="hero-description">Encuentra trabajo, ofrece tus servicios o contrata a personas con hipoacusia en Bolivia. Comunícate por chat desde el primer contacto.</p>
+      <h1 id="home-title" class="hero-title">
+        Conectamos talento con oportunidades reales
+      </h1>
+      <p class="hero-description">
+        Encuentra trabajo, ofrece tus servicios o contrata a personas con
+        hipoacusia en Bolivia. Comunícate por chat desde el primer contacto.
+      </p>
       <div class="hero-actions">
-        <ExpandableButton data-auth-trigger="register" data-auth-next="/contratar" text="Contratar talento" size="lg" variant="primary" id="heroBtnContratar" />
-        <ExpandableButton data-auth-trigger="register" data-auth-next="/" text="Buscar trabajo" size="lg" variant="primary-line" id="heroBtnBuscar" />
+        <ExpandableButton
+          data-auth-trigger="register"
+          data-auth-next="/contratar"
+          text="Contratar talento"
+          size="lg"
+          variant="primary"
+          id="heroBtnContratar"
+        />
+        <ExpandableButton
+          data-auth-trigger="register"
+          data-auth-next="/"
+          text="Buscar trabajo"
+          size="lg"
+          variant="primary-line"
+          id="heroBtnBuscar"
+        />
       </div>
     </div>
   </div>
   <div class="hero-photos">
     <div class="hero-photo-track" id="hero-photo-track">
-      {[0, 1].map(copy => (
-        <div class="hero-photo-group" aria-hidden={copy === 1 ? "true" : undefined}>
-          {photos.map((photo, index) => (
-            <div class:list={["hero-photo", `hero-photo--${photo.shape}`]}>
-              <SiteImage
-                kind="heroMarquee"
-                src={photo.src}
-                alt={copy === 0 ? photo.alt : ""}
-                priority={copy === 0 && index === 0}
-                loading="eager"
-              />
-            </div>
-          ))}
-        </div>
-      ))}
+      {
+        [0, 1].map((copy) => (
+          <div
+            class="hero-photo-group"
+            aria-hidden={copy === 1 ? "true" : undefined}
+          >
+            {photos.map((photo, index) => (
+              <div class:list={["hero-photo", `hero-photo--${photo.shape}`]}>
+                <SiteImage
+                  kind="heroMarquee"
+                  src={photo.src}
+                  alt={copy === 0 ? photo.alt : ""}
+                  priority={copy === 0 && index === 0}
+                  loading="eager"
+                />
+              </div>
+            ))}
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>
 
 <style>
-  .ashico-hero { width: 100%; background: var(--color-bg); padding-top: clamp(6.5rem, 6.36vw, 7.625rem); }
-  .hero-content { display: flex; flex-direction: column; align-items: center; gap: var(--space-6); text-align: center; }
-  .hero-title { max-width: 22ch; margin: 0; font-size: var(--text-home-hero); font-weight: 800; line-height: 1.1; letter-spacing: -0.0175em; color: var(--color-primary-dark); text-wrap: balance; }
-  .hero-description { max-width: 560px; margin: 0; font-size: var(--text-base); line-height: 1.65; color: var(--color-text-main); text-wrap: pretty; }
-  .hero-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: var(--space-4); margin-top: var(--space-6); }
+  .ashico-hero {
+    width: 100%;
+    background: var(--color-bg);
+    padding-top: clamp(6.5rem, 6.36vw, 7.625rem);
+  }
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6);
+    text-align: center;
+  }
+  .hero-title {
+    max-width: 22ch;
+    margin: 0;
+    font-size: var(--text-home-hero);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.0175em;
+    color: var(--color-primary);
+    text-wrap: balance;
+  }
+  .hero-description {
+    max-width: 560px;
+    margin: 0;
+    font-size: var(--text-base);
+    line-height: 1.65;
+    color: var(--color-text-main);
+    text-wrap: pretty;
+  }
+  .hero-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+  }
   .hero-photos {
     --hero-photo-height: clamp(15rem, 21.3vw, 26.75rem);
     --hero-photo-gap: var(--space-5);
@@ -58,25 +114,75 @@ const photos = [
     margin-top: clamp(3rem, 5.5vw, 6.5rem);
     overflow: hidden;
   }
-  .hero-photo-track { display: flex; width: max-content; animation: hero-photo-drift 75s linear infinite; }
-  .hero-photo-group { display: flex; flex: none; align-items: flex-end; height: var(--hero-photo-height); gap: var(--hero-photo-gap); padding-inline-end: var(--hero-photo-gap); }
-  .hero-photo { flex: none; width: clamp(14rem, 23vw, 28rem); height: 100%; overflow: hidden; border-radius: var(--radius-md) var(--radius-md) 0 0; background: var(--color-bg-alt); }
-  .hero-photo--small { width: clamp(10rem, 13.3vw, 16rem); height: 62%; margin-bottom: calc(var(--hero-photo-height) * 0.19); border-radius: var(--radius-md); }
-  .hero-photo--medium { width: clamp(12rem, 19.1vw, 23rem); }
-  .hero-photo--portrait { width: clamp(10rem, 13.3vw, 16rem); height: 86%; }
-  .hero-photo--panorama { width: clamp(17rem, 27.5vw, 33rem); }
-  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .hero-photo-track {
+    display: flex;
+    width: max-content;
+    animation: hero-photo-drift 75s linear infinite;
+  }
+  .hero-photo-group {
+    display: flex;
+    flex: none;
+    align-items: flex-end;
+    height: var(--hero-photo-height);
+    gap: var(--hero-photo-gap);
+    padding-inline-end: var(--hero-photo-gap);
+  }
+  .hero-photo {
+    flex: none;
+    width: clamp(14rem, 23vw, 28rem);
+    height: 100%;
+    overflow: hidden;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    background: var(--color-bg-alt);
+  }
+  .hero-photo--small {
+    width: clamp(10rem, 13.3vw, 16rem);
+    height: 62%;
+    margin-bottom: calc(var(--hero-photo-height) * 0.19);
+    border-radius: var(--radius-md);
+  }
+  .hero-photo--medium {
+    width: clamp(12rem, 19.1vw, 23rem);
+  }
+  .hero-photo--portrait {
+    width: clamp(10rem, 13.3vw, 16rem);
+    height: 86%;
+  }
+  .hero-photo--panorama {
+    width: clamp(17rem, 27.5vw, 33rem);
+  }
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
   @keyframes hero-photo-drift {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
   }
   @media (max-width: 767px) {
-    .hero-actions { margin-top: var(--space-2); gap: var(--space-3); }
-    .hero-photos { --hero-photo-gap: var(--space-3); }
+    .hero-actions {
+      margin-top: var(--space-2);
+      gap: var(--space-3);
+    }
+    .hero-photos {
+      --hero-photo-gap: var(--space-3);
+    }
   }
   @media (prefers-reduced-motion: reduce) {
-    .hero-photo-track { animation: none; }
-    .hero-photos { overflow-x: auto; }
-    .hero-photo-group[aria-hidden="true"] { display: none; }
+    .hero-photo-track {
+      animation: none;
+    }
+    .hero-photos {
+      overflow-x: auto;
+    }
+    .hero-photo-group[aria-hidden="true"] {
+      display: none;
+    }
   }
 </style>

@@ -131,8 +131,8 @@ const { profile } = Astro.props;
       180deg,
       transparent 0%,
       transparent 35%,
-      rgba(var(--color-primary-rgb), 0.45) 60%,
-      rgba(var(--color-primary-rgb), 0.95) 100%
+      rgba(2, 5, 49, 0.45) 60%,
+      var(--color-primary-dark) 100%
     );
     pointer-events: none;
   }
@@ -231,8 +231,8 @@ const { profile } = Astro.props;
   }
 
   .skill-pill--more {
-    background-color: rgba(var(--color-primary-rgb), 0.08);
-    border-color: rgba(var(--color-primary-rgb), 0.2);
+    background-color: var(--color-bg-primary-soft);
+    border-color: var(--color-border);
     color: var(--color-primary);
   }
 

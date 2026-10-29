@@ -328,12 +328,12 @@ const ariaLabel = text || undefined;
 
   /* 3. Secondary (Fill Blanco) */
   .btn-secondary .btn-text-capsule {
-    background-color: var(--color-bg-white);
+    background-color: var(--color-white);
     border: 1.5px solid transparent;
     color: var(--color-text-primary);
   }
   .btn-secondary .btn-badge-inner {
-    background-color: var(--color-bg-white);
+    background-color: var(--color-white);
     border: 1.5px solid transparent;
     color: var(--color-text-primary);
   }
@@ -446,22 +446,22 @@ const ariaLabel = text || undefined;
     /* Secondary hover color */
     .btn-secondary:hover .btn-text-capsule,
     .btn-secondary:hover .btn-badge-inner {
-      background-color: var(--color-white);
-      color: var(--color-primary-dark);
+      background-color: var(--color-bg-alt);
+      color: var(--color-primary-hover);
     }
 
     /* Primary line hover color */
     .btn-primary-line:hover .btn-text-capsule,
     .btn-primary-line:hover .btn-badge-inner {
       border-color: var(--color-primary);
-      background-color: rgba(var(--color-primary-rgb), 0.06);
+      background-color: var(--color-bg-alt);
     }
 
     /* Secondary line hover color */
     .btn-secondary-line:hover .btn-text-capsule,
     .btn-secondary-line:hover .btn-badge-inner {
       border-color: var(--color-white);
-      background-color: rgba(var(--white-rgb), 0.12);
+      background-color: rgba(255, 255, 255, 0.12);
     }
   }
 

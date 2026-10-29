@@ -1,12 +1,12 @@
 html.modal-open, body.modal-open { overflow: hidden !important; overscroll-behavior: none; }
 .auth-modal-wrapper { position: fixed; inset: 0; z-index: 2000; display: none; align-items: center; justify-content: center; overflow: hidden; overscroll-behavior: contain; pointer-events: none; }
 .auth-modal-wrapper.open { display: flex; }
-.auth-modal-backdrop { position: absolute; inset: 0; background: rgba(var(--color-primary-dark-rgb), 0.42); backdrop-filter: blur(6px); pointer-events: auto; }
+.auth-modal-backdrop { position: absolute; inset: 0; background: rgba(2, 5, 49, 0.45); backdrop-filter: blur(6px); pointer-events: auto; }
 .auth-modal-wrapper .auth-modal-container { position: relative; max-width: 560px; padding-block: var(--space-4); pointer-events: none; }
 .auth-modal-capsule { display: flex; flex-direction: column; gap: var(--space-5); max-height: calc(100dvh - var(--space-8)); padding: var(--space-6); background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; pointer-events: auto; touch-action: pan-y; }
 .auth-modal-capsule > * { flex-shrink: 0; }
 .auth-header-bar { display: flex; justify-content: space-between; align-items: center; gap: var(--space-4); }
-.auth-brand { font-family: var(--font-heading); font-size: var(--text-2xl); font-weight: 800; letter-spacing: -0.03em; color: var(--color-primary); }
+.auth-brand { height: 32px; width: auto; max-width: 104px; flex-shrink: 0; }
 .auth-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-1); padding: var(--space-1); border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-bg-alt); }
 .auth-tab-btn { min-width: 0; min-height: 44px; padding: var(--space-2); border-radius: var(--radius-md); color: var(--color-text-muted); font-family: var(--font-heading); font-size: var(--text-sm); font-weight: 700; line-height: 1.4; cursor: pointer; transition: color var(--transition-fast), background-color var(--transition-fast); }
 .auth-tab-btn:hover { color: var(--color-primary); }
