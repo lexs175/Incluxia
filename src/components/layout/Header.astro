@@ -348,6 +348,8 @@ const { activePath = "/" } = Astro.props;
   @media (max-width: 1024px) {
     .navbar-capsule { grid-template-columns: minmax(0, 1fr) auto; min-height: var(--space-16); }
     .nav-desktop, .header-profile-wrapper { display: none; }
+    .header-actions :global(.header-login),
+    .header-actions :global(.header-register) { display: none; }
     .header-actions :global(.mobile-toggle) { display: inline-flex; }
     .header[data-menu-open="true"] { inset: 0; height: 100dvh; background: var(--color-white); pointer-events: auto; }
     .header[data-menu-open="true"] .header-container { display: flex; flex-direction: column; height: 100%; min-height: 0; padding-top: env(safe-area-inset-top); }
@@ -358,10 +360,8 @@ const { activePath = "/" } = Astro.props;
     .header { top: var(--space-3); }
     .navbar-capsule { padding-inline: var(--space-3); }
     .header-actions { gap: var(--space-2); }
-    .header-actions :global(.header-login) { display: none; }
   }
   @media (max-width: 359px) {
-    .header-actions :global(.header-register) { display: none; }
     .mobile-menu-footer { flex-wrap: wrap; }
     .mobile-account-link { flex-basis: 100%; }
     .mobile-menu-footer :global(.management-action) { margin-inline-start: auto; }
