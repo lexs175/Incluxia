@@ -15,9 +15,7 @@ const photos = [
 <section class="ashico-hero" aria-labelledby="home-title">
   <div class="container">
     <div class="hero-content">
-      <h1 id="home-title" class="hero-title">
-        Conectamos talento con oportunidades reales
-      </h1>
+      <h1 id="home-title" class="hero-title">Conectando personas hipoacusicas con oportunidades laborales </h1>
       <p class="hero-description">
         Encuentra trabajo, ofrece tus servicios o contrata a personas con
         hipoacusia en Bolivia. Comunícate por chat desde el primer contacto.
@@ -51,7 +49,7 @@ const photos = [
             aria-hidden={copy === 1 ? "true" : undefined}
           >
             {photos.map((photo, index) => (
-              <div class:list={["hero-photo", `hero-photo--${photo.shape}`]}>
+              <div class:list={["hero-photo", "skeleton", `hero-photo--${photo.shape}`]}>
                 <SiteImage
                   kind="heroMarquee"
                   src={photo.src}
@@ -128,12 +126,12 @@ const photos = [
     padding-inline-end: var(--hero-photo-gap);
   }
   .hero-photo {
+    position: relative;
     flex: none;
     width: clamp(14rem, 23vw, 28rem);
     height: 100%;
     overflow: hidden;
     border-radius: var(--radius-md) var(--radius-md) 0 0;
-    background: var(--color-bg-alt);
   }
   .hero-photo--small {
     width: clamp(10rem, 13.3vw, 16rem);
@@ -152,10 +150,13 @@ const photos = [
     width: clamp(17rem, 27.5vw, 33rem);
   }
   .hero-photo img {
+    position: relative;
+    z-index: 1;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center top;
+    display: block;
   }
   @keyframes hero-photo-drift {
     from {
@@ -183,6 +184,11 @@ const photos = [
     }
     .hero-photo-group[aria-hidden="true"] {
       display: none;
+    }
+  }
+  @media (min-width: 1440px) {
+    .hero-title {
+      max-width: 26ch;
     }
   }
 </style>

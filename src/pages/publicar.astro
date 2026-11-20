@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Button from "../components/ui/Button.astro";
 import ActionButton from "../components/ui/ActionButton.astro";
 import PublicationList from "../components/publicar/PublicationList.astro";
+import Skeleton from "../components/ui/Skeleton.astro";
 ---
 
 <Layout
@@ -13,6 +14,27 @@ import PublicationList from "../components/publicar/PublicationList.astro";
   <div class="publish-wrapper">
     <div class="container publish-container">
       <div class="publish-card" id="publishWorkspace">
+        <!-- ESTADO 0: SKELETON MIENTRAS DETERMINA LA SESIÓN EN CLIENTE -->
+        <div id="publishSkeleton" class="publish-skeleton" aria-hidden="true">
+          <div class="publish-header-skeleton">
+            <Skeleton width="240px" height="28px" />
+            <Skeleton width="65%" height="16px" />
+          </div>
+          <div class="publish-picker-skeleton">
+            <Skeleton width="130px" height="40px" />
+            <Skeleton width="155px" height="40px" />
+            <Skeleton width="140px" height="40px" />
+          </div>
+          <div class="publish-field-skeleton">
+            <Skeleton width="140px" height="14px" />
+            <Skeleton height="46px" />
+          </div>
+          <div class="publish-field-skeleton">
+            <Skeleton width="180px" height="14px" />
+            <Skeleton height="46px" />
+          </div>
+        </div>
+
         <!-- ESTADO 1: BLOQUEO POR AUTENTICACIÓN (Solo si NO ha iniciado sesión) -->
         <div
           id="publishAuthGate"
@@ -391,6 +413,28 @@ import PublicationList from "../components/publicar/PublicationList.astro";
 </script>
 
 <style>
+  .publish-skeleton {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    padding: var(--space-2) 0;
+  }
+  .publish-header-skeleton {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .publish-picker-skeleton {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+  .publish-field-skeleton {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
   .publication-kind-picker {
     border: 0;
     padding: 0;

@@ -21,7 +21,7 @@ const { story, compact = false } = Astro.props;
 ---
 
 <article class:list={['story-card', { 'story-card--compact': compact }]}>
-  <div class="story-image-wrapper">
+  <div class="story-image-wrapper skeleton">
     <SiteImage kind="storyCard"
       src={story.image}
       alt={story.name}
@@ -80,6 +80,8 @@ const { story, compact = false } = Astro.props;
   }
 
   .story-img {
+    position: relative;
+    z-index: 1;
     width: 100%;
     height: 100%;
     object-fit: cover;

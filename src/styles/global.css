@@ -285,6 +285,88 @@ button {
 }
 
 /* ====================================================
+   Skeleton Loading Utilities (Zero Layout Shift)
+   ==================================================== */
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.skeleton {
+  background-color: var(--color-skeleton-base);
+  background-image: linear-gradient(
+    90deg,
+    var(--color-skeleton-base) 0%,
+    var(--color-skeleton-highlight) 50%,
+    var(--color-skeleton-base) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.8s ease-in-out infinite;
+  border-radius: var(--radius-md);
+  pointer-events: none;
+  user-select: none;
+}
+
+.skeleton-text {
+  display: block;
+  height: 1em;
+  border-radius: var(--radius-xs);
+}
+
+.skeleton-circle {
+  border-radius: var(--radius-full);
+  aspect-ratio: 1 / 1;
+}
+
+.skeleton-badge {
+  display: inline-block;
+  height: 1.5rem;
+  border-radius: var(--radius-full);
+}
+
+.skeleton-button {
+  display: inline-block;
+  height: 2.5rem;
+  border-radius: var(--radius-full);
+}
+
+/* Skeleton adaptativo en superficies azules u oscuras (evita confundirse con el fondo) */
+.skeleton-inverse,
+.home-guide--blue .skeleton,
+.community-section .skeleton,
+.featured-showcase-section .skeleton,
+.bento-how-section .skeleton {
+  background-color: var(--color-skeleton-inverse-base);
+  background-image: linear-gradient(
+    90deg,
+    var(--color-skeleton-inverse-base) 0%,
+    var(--color-skeleton-inverse-highlight) 50%,
+    var(--color-skeleton-inverse-base) 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+    background-image: none;
+    background-color: var(--color-skeleton-base);
+  }
+  .skeleton-inverse,
+  .home-guide--blue .skeleton,
+  .community-section .skeleton,
+  .featured-showcase-section .skeleton,
+  .bento-how-section .skeleton {
+    animation: none;
+    background-image: none;
+    background-color: var(--color-skeleton-inverse-base);
+  }
+}
+
+/* ====================================================
    BLOQUEO TOTAL DE SCROLL (Modal / Drawer Lateral Abierto)
    Cero deslizamiento del fondo, cero eventos de rueda
    ==================================================== */

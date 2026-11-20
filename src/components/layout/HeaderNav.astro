@@ -7,6 +7,7 @@ const { activePath, mobile = false } = Astro.props;
 const links = [
   { label: "Inicio", href: "/", access: "guest" },
   { label: "Casos de éxito", href: "/casos-de-exito", access: "guest" },
+  { label: "Blog", href: "/blog", access: "guest" },
   { label: "Trabajos", href: "/", access: "member" },
   { label: "Contratar", href: "/contratar", access: "member" },
   {
@@ -52,7 +53,7 @@ const links = [
 
 <style>
   .nav-list { display: flex; align-items: center; gap: var(--space-6); list-style: none; }
-  .nav-link { display: flex; align-items: center; gap: var(--space-2); position: relative; min-height: 44px; padding: var(--space-2) var(--space-1); color: var(--color-text-main); font-family: var(--font-heading); font-size: var(--text-sm); font-weight: 500; line-height: 1.4; cursor: pointer; }
+  .nav-link { display: flex; align-items: center; gap: var(--space-2); position: relative; min-height: 44px; padding: var(--space-2) var(--space-1); color: var(--color-text-main); font-family: var(--font-heading); font-size: var(--text-base); font-weight: 500; line-height: 1.4; cursor: pointer; }
   .nav-link.active { color: var(--color-primary); }
   .nav-link.active { font-weight: 600; }
   .nav-link.active::after { content: ""; position: absolute; inset-inline: var(--space-1); bottom: 0; height: 2px; background: var(--color-primary); }

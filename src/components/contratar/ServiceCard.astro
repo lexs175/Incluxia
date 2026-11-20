@@ -9,13 +9,13 @@ const initials = service.author.name.split(/\s+/).slice(0, 2).map((part: string)
 ---
 
 <article class="service-card-item" data-id={service.id} data-title={service.title.toLowerCase()} data-city={service.author.city}>
-  <div class:list={["service-cover-preview", { "service-cover-preview--custom": Boolean(service.previewImage) }]}>
+  <div class:list={["service-cover-preview", "skeleton", { "service-cover-preview--custom": Boolean(service.previewImage) }]}>
     <SiteImage kind="service" class="service-cover-image" src={cover} data-service-preview={service.previewImage} alt={service.previewAlt || ""} width="720" height="300" loading="lazy" />
     <span class="delivery-badge">{service.deliveryTime}</span>
   </div>
   <div class="service-card-body">
     <div class="service-author-row">
-      <div class="service-author-photo">
+      <div class="service-author-photo skeleton">
         <span class="service-author-initials" aria-hidden="true">{initials}</span>
         <SiteImage kind="avatar" sizes="32px" src={service.author.avatar} alt={service.author.name} class="service-author-avatar" width="32" height="32" loading="lazy" />
       </div>
@@ -50,7 +50,7 @@ const initials = service.author.name.split(/\s+/).slice(0, 2).map((part: string)
   .service-cover-preview { position: relative; aspect-ratio: 12 / 5; overflow: hidden; background: var(--color-bg); }
   .service-cover-preview::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, var(--color-primary), transparent 85%); pointer-events: none; }
   .service-cover-preview--custom::after { display: none; }
-  .service-cover-image { width: 100%; height: 100%; object-fit: cover; }
+  .service-cover-image { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; }
   .delivery-badge { position: absolute; top: var(--space-3); right: var(--space-3); z-index: 1; max-width: 85%; padding: var(--space-1) var(--space-2); border-radius: var(--radius-md); background: var(--color-bg); color: var(--color-text-main); font-family: var(--font-heading); font-size: var(--text-xs); font-weight: 700; line-height: 1.4; }
   .service-card-body { display: flex; flex: 1; flex-direction: column; gap: var(--space-3); min-width: 0; padding: var(--space-5); }
   .service-author-row { display: flex; align-items: center; gap: var(--space-3); min-width: 0; }

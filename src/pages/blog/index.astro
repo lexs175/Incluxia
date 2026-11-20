@@ -1,0 +1,172 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import BlogCard from "../../components/cards/BlogCard.astro";
+import BlogHero from "../../components/blog/BlogHero.astro";
+import BlogCtaBanner from "../../components/blog/BlogCtaBanner.astro";
+import articlesData from "../../data/articles.json";
+---
+
+<Layout
+  title="Blog y Guías Útiles | Eco Bolivia"
+  description="Artículos claros sobre leyes laborales en Bolivia (Ley 223 y 977), carnet de discapacidad, salud auditiva y consejos para trabajar por chat."
+  activePath="/blog"
+>
+  <BlogHero />
+
+  <section class="blog-content-section" aria-label="Listado de artículos del blog">
+    <div class="container">
+      <div class="category-pills" role="tablist" aria-label="Filtrar por categoría">
+        <button class="cat-pill active" data-cat="all" role="tab" aria-selected="true">
+          Todos los Artículos
+        </button>
+        <button class="cat-pill" data-cat="leyes" role="tab" aria-selected="false">
+          Leyes y Derechos Bolivia
+        </button>
+        <button class="cat-pill" data-cat="salud" role="tab" aria-selected="false">
+          Salud Auditiva
+        </button>
+        <button class="cat-pill" data-cat="consejos" role="tab" aria-selected="false">
+          Consejos para Empresas
+        </button>
+      </div>
+
+      <div class="blog-articles-grid" id="articlesGrid">
+        {
+          articlesData.map((article) => (
+            <div
+              class="article-item"
+              data-category={article.category.toLowerCase()}
+            >
+              <BlogCard article={article} />
+            </div>
+          ))
+        }
+      </div>
+
+      <BlogCtaBanner />
+    </div>
+  </section>
+</Layout>
+
+<script>
+  function initBlogFilters() {
+    const pills = document.querySelectorAll(".cat-pill");
+    const items = document.querySelectorAll(".article-item");
+
+    pills.forEach((pill) => {
+      pill.addEventListener("click", () => {
+        pills.forEach((p) => {
+          p.classList.remove("active");
+          p.setAttribute("aria-selected", "false");
+        });
+        pill.classList.add("active");
+        pill.setAttribute("aria-selected", "true");
+
+        const cat = pill.getAttribute("data-cat") || "all";
+
+        items.forEach((item) => {
+          const itemCat = item.getAttribute("data-category") || "";
+          const el = item as HTMLElement;
+          if (cat === "all" || itemCat.includes(cat)) {
+            el.style.display = "";
+          } else {
+            el.style.display = "none";
+          }
+        });
+      });
+    });
+  }
+
+  document.addEventListener("astro:page-load", initBlogFilters);
+</script>
+
+<style>
+  .blog-content-section {
+    width: 100%;
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-16);
+    background-color: var(--color-bg);
+  }
+
+  .category-pills {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-8);
+  }
+
+  .cat-pill {
+    padding: var(--space-2) var(--space-5);
+    border-radius: var(--radius-md);
+    font-family: var(--font-heading);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    background-color: var(--color-bg-card);
+    color: var(--color-text-main);
+    border: 1px solid var(--color-border);
+    box-shadow: none;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+  }
+
+  .cat-pill:hover {
+    background-color: var(--color-bg-alt);
+    color: var(--color-primary);
+    border-color: var(--color-border-hover);
+  }
+
+  .cat-pill.active {
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    border-color: var(--color-primary);
+    box-shadow: none;
+  }
+
+  .cat-pill:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  .blog-articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+
+  .article-item {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  @media (max-width: 1024px) {
+    .blog-articles-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-5);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .blog-articles-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+
+    .category-pills {
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      padding-bottom: var(--space-2);
+      scrollbar-width: none;
+    }
+
+    .category-pills::-webkit-scrollbar {
+      display: none;
+    }
+
+    .cat-pill {
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+  }
+</style>

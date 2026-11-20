@@ -1,0 +1,39 @@
+---
+interface Props {
+  width?: string;
+  height?: string;
+  variant?: 'rect' | 'circle' | 'text' | 'badge' | 'button';
+  class?: string;
+}
+
+const {
+  width = '100%',
+  height,
+  variant = 'rect',
+  class: className = '',
+} = Astro.props;
+
+// Alturas predeterminadas según variante
+const defaultHeight = 
+  variant === 'text' ? '1em' :
+  variant === 'circle' ? (width !== '100%' ? width : '40px') :
+  variant === 'badge' ? '1.5rem' :
+  variant === 'button' ? '2.5rem' : '1.25rem';
+
+const finalHeight = height || defaultHeight;
+---
+
+<div
+  class:list={[
+    'skeleton',
+    {
+      'skeleton-text': variant === 'text',
+      'skeleton-circle': variant === 'circle',
+      'skeleton-badge': variant === 'badge',
+      'skeleton-button': variant === 'button',
+    },
+    className,
+  ]}
+  style={{ width, height: finalHeight }}
+  aria-hidden="true"
+></div>

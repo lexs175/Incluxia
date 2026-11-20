@@ -8,3 +8,12 @@
 .account-tabs button[aria-selected="true"] { font-weight: 800; }
 .form-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
 @media(max-width:479px) { .account-form .form-grid-2 { grid-template-columns: minmax(0,1fr); } }
+@media (min-width: 1440px) {
+	.brand {
+		min-height: 60px;
+	}
+	.app-brand {
+		max-width: 90px;
+		height: 30px;
+	}
+}

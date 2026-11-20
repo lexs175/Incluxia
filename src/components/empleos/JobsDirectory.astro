@@ -1,5 +1,6 @@
 ---
 import OfferCard from './OfferCard.astro';
+import OfferCardSkeleton from '../skeletons/OfferCardSkeleton.astro';
 import Button from '../ui/Button.astro';
 import { seedJobs, categories } from '../../lib/demo';
 const quickCategories = [...new Set(seedJobs.map(job => job.category))];
@@ -35,6 +36,7 @@ const quickCategories = [...new Set(seedJobs.map(job => job.category))];
     </div>
   </div>
   <template id="jobCardTemplate"><OfferCard job={seedJobs[0]} /></template>
+  <template id="jobSkeletonTemplate"><OfferCardSkeleton /></template>
 </section>
 <script>
   import { initJobs } from '../../lib/jobs';

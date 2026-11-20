@@ -8,6 +8,7 @@ function publicationAction(title: string, href?: string, tone: 'primary' | 'seco
 }
 export function initPublish() {
   const root = document.getElementById('publishWorkspace'); if (!root || root.dataset.ready) return; root.dataset.ready = 'true';
+  const skeleton = document.getElementById('publishSkeleton'); if (skeleton) skeleton.style.display = 'none';
   const account = user(), form = document.getElementById('publishJobForm') as HTMLFormElement;
   const gate = document.getElementById('publishAuthGate')!;
   gate.style.display = account ? 'none' : 'flex'; if (!account) return;

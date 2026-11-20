@@ -54,7 +54,7 @@ const preparedImages = images.map((image, index) => ({
         {
           preparedImages.map((image, index) => (
             <figure
-              class:list={["guide-image", { "guide-image--wide": index > 0 }]}
+              class:list={["guide-image", "skeleton", { "guide-image--wide": index > 0 }]}
             >
               <SiteImage
                 kind={image.kind}
@@ -146,22 +146,26 @@ const preparedImages = images.map((image, index) => ({
     background: rgba(255, 255, 255, 0.08);
   }
   .guide-image {
+    position: relative;
     min-width: 0;
-    padding: var(--space-2);
-    background: var(--color-bg-primary);
+    aspect-ratio: 1.4379;
     border-radius: var(--radius-md);
     overflow: hidden;
+    border: 1px solid var(--color-border);
   }
   .guide-image img {
+    position: relative;
+    z-index: 1;
     width: 100%;
-    height: auto;
+    height: 100%;
     aspect-ratio: 1.4379;
     object-fit: cover;
     border-radius: var(--radius-md);
     pointer-events: none;
+    display: block;
   }
   .home-guide--blue .guide-image {
-    padding: 0;
+    border-color: rgba(255, 255, 255, 0.18);
   }
   .home-guide--split .guide-content {
     grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);

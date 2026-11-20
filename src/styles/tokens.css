@@ -55,6 +55,12 @@
   --color-bg-blue-dark: var(--blue-700);
   --color-bg-accent: var(--cyan-500);
 
+  /* --- Skeleton Loading (Shimmer) --- */
+  --color-skeleton-base: var(--gray-100);
+  --color-skeleton-highlight: var(--gray-200);
+  --color-skeleton-inverse-base: rgba(var(--white-rgb), 0.12);
+  --color-skeleton-inverse-highlight: rgba(var(--white-rgb), 0.28);
+
   /* --- Textos (text-*) --- */
   --color-text-main: var(--gray-800);
   --color-text-muted: var(--gray-500);
